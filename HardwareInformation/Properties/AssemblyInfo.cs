@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HardwareInformation")]
+[assembly: AssemblyTitle("Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Laboratório de Informática / CCSH - UFSM")]
-[assembly: AssemblyProduct("HardwareInformation")]
-[assembly: AssemblyCopyright("Copyright UFSM © 2017")]
+[assembly: AssemblyCompany("Unidade de Tecnologia da Informação / CCSH - UFSM")]
+[assembly: AssemblyProduct("Análise e Cadastro de Máquinas do CCSH")]
+[assembly: AssemblyCopyright("Copyright UFSM © 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.1.3")]
-[assembly: AssemblyFileVersion("1.0.1.3")]
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]
