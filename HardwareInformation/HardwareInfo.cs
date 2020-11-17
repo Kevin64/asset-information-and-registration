@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using System.Management;
+using System.Management.Automation;
+using System.Collections.ObjectModel;
 
 public static class HardwareInfo
 {
@@ -36,7 +38,7 @@ public static class HardwareInfo
         foreach (ManagementObject mo in moc)
         {
             Id = mo.Properties["name"].Value.ToString() + " " + mo.Properties["CurrentClockSpeed"].Value.ToString()
-               + " " + "MHz" + " (" + mo.Properties["NumberOfCores"].Value.ToString() + " cores)";
+               + " " + "MHz" + " (" + mo.Properties["NumberOfCores"].Value.ToString() + " nucleos)";
             break;
         }
         return Id;
@@ -64,9 +66,10 @@ public static class HardwareInfo
         string MACAddress = String.Empty;
         foreach (ManagementObject mo in moc)
         {
+            string[] gat = (string[])mo["DefaultIPGateway"];
             if (MACAddress == String.Empty)
             {
-                if ((bool)mo["IPEnabled"] == true)
+                if ((bool)mo["IPEnabled"] == true && gat != null)
                     MACAddress = mo["MacAddress"].ToString();
             }
             mo.Dispose();
@@ -82,7 +85,8 @@ public static class HardwareInfo
         string[] IPAddress = null;
         foreach (ManagementObject mo in moc)
         {
-            if ((bool)mo["IPEnabled"] == true)
+            string[] gat = (string[])mo["DefaultIPGateway"];
+            if ((bool)mo["IPEnabled"] == true && gat != null)
                 IPAddress = (string[])mo["IPAddress"];
             mo.Dispose();
         }
@@ -148,11 +152,11 @@ public static class HardwareInfo
             mCap = Convert.ToInt64(obj["Capacity"]);
             MemSize += mCap;
         }
-        MemSize = (MemSize / 1024) / 1024;
-        return MemSize.ToString() + " MB";
+        MemSize = (MemSize / 1024) / 1024 / 1024;
+        return MemSize.ToString() + " GB";
     }
 
-    public static string GetNoRamSlots()
+    public static string GetNumRamSlots()
     {
         int MemSlots = 0;
         ManagementScope oMs = new ManagementScope();
@@ -332,5 +336,24 @@ public static class HardwareInfo
             biosVersion = (string)obj["SMBIOSBIOSVersion"];
         }
         return biosVersion;
+    }
+
+    public static string GetBIOSType()
+    {
+        try
+        {
+            PowerShell PowerShellInst = PowerShell.Create();        
+            PowerShellInst.AddScript("Confirm-SecureBootUEFI");        
+            Collection<PSObject> PSOutput = PowerShellInst.Invoke();
+            foreach (PSObject obj in PSOutput)
+            {
+                return "UEFI";
+            }
+            return "BIOS";
+        }
+        catch
+        {
+            return "BIOS";
+        }        
     }
 }
