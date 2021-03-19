@@ -1,62 +1,169 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.IO;
 using System.Management;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 
 public static class HardwareInfo
 {
+    private static string unknown = "Unknown";
+
     public static string Truncate(this string value, int maxLength)
     {
-        if (string.IsNullOrEmpty(value)) return value;
+        if (string.IsNullOrEmpty(value))
+            return value;
         return value.Length <= maxLength ? value : value.Substring(0, maxLength);
     }
 
-    public static string GetProcessorInformation()
-    {
-        ManagementClass mc = new ManagementClass("win32_processor");
-        ManagementObjectCollection moc = mc.GetInstances();
-        String info = String.Empty;
-        foreach (ManagementObject mo in moc)
-        {
-            string name = (string)mo["Name"];
-            name = name.Replace("(TM)", "™").Replace("(tm)", "™").Replace("(R)", "®").Replace("(r)", "®").Replace("(C)", "©").Replace("(c)", "©").Replace("    ", " ").Replace("  ", " ");
-
-            info = name + ", " + (string)mo["Caption"] + ", " + (string)mo["SocketDesignation"];
-            //mo.Properties["Name"].Value.ToString();
-            //break;
-        }
-        return info;
-    }
-
-    public static string GetProcessorInfo()
+    public static string GetProcessorCores()
     {
         ManagementClass mc = new ManagementClass("win32_processor");
         ManagementObjectCollection moc = mc.GetInstances();
         String Id = String.Empty;
+        string logical = "";
+        foreach (var item in new ManagementObjectSearcher("Select * from Win32_ComputerSystem").Get())
+        {
+            logical = item["NumberOfLogicalProcessors"].ToString();
+        }
         foreach (ManagementObject mo in moc)
         {
             Id = mo.Properties["name"].Value.ToString() + " " + mo.Properties["CurrentClockSpeed"].Value.ToString()
-               + " " + "MHz" + " (" + mo.Properties["NumberOfCores"].Value.ToString() + " nucleos)";
+               + " " + "MHz" + " (" + mo.Properties["NumberOfCores"].Value.ToString() + "C/" + logical + "T)";
             break;
         }
+        Id = Id.Replace("(R)","");
+        Id = Id.Replace("(TM)", "");
+        Id = Id.Replace("(tm)", "");
         return Id;
+    }
+
+    public static string GetGPUInfo()
+    {
+        string gpuname = "", gpuramStr = "";
+        double gpuram = 0;
+        ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_VideoController");
+        foreach(ManagementObject queryObj in searcher.Get())
+        {      
+            if(queryObj["DeviceID"].ToString().Equals("VideoController1"))
+            {
+                gpuram = Convert.ToInt64(queryObj["AdapterRAM"]);
+                gpuram = Math.Round(gpuram / 1048576, 0);
+                if (Math.Ceiling(Math.Log10(gpuram)) > 3)
+                {
+                    gpuramStr = Convert.ToString(Math.Round(gpuram / 1024, 1)) + " GB";
+                }
+                else
+                {
+                    gpuramStr = gpuram + " MB";
+                }
+                gpuname = queryObj["Caption"].ToString() + " (" + gpuramStr + ")";
+            }            
+        }
+        return gpuname;
+    }
+
+    public static string GetStorageType()
+    {
+        int j = 0;
+        if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
+        {
+            ManagementScope scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM MSFT_PhysicalDisk");
+            int size = 10, i = 0;
+            string[] type = new string[size];
+            string concat = "", msftName = "Msft Virtual Disk";
+            scope.Connect();
+            searcher.Scope = scope;
+
+            foreach (ManagementObject queryObj in searcher.Get())
+            {
+                if (!Convert.ToString(queryObj["FriendlyName"]).Equals(msftName))
+                {
+                    switch (Convert.ToInt16(queryObj["MediaType"]))
+                    {
+                        case 3:
+                            type[i] = "HDD";
+                            i++;
+                            j++;
+                            break;
+                        case 4:
+                            type[i] = "SSD";
+                            i++;
+                            j++;
+                            break;
+                    }
+                }
+            }
+            if(j == 0)
+            {
+                type[i] = "HDD";
+                i++;
+            }
+            var typeSliced = type.Take(i);
+            searcher.Dispose();
+            concat = countDistinct(typeSliced.ToArray());
+            return concat;
+        }
+        else
+        {
+            return "Desconhecido (provavelmente HDD)";
+        }        
     }
 
     public static string GetHDSize()
     {
-        DriveInfo[] allDrives = DriveInfo.GetDrives();
+        int i = 0;
         double dresult = 0;
-
-        foreach (DriveInfo d in allDrives)
+        string dresultStr = "";
+        if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
         {
-            if (d.IsReady == true && d.DriveType != DriveType.Network)
+            ManagementScope scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM MSFT_PhysicalDisk");
+            scope.Connect();
+            searcher.Scope = scope;
+
+            foreach (ManagementObject queryObj in searcher.Get())
             {
-                dresult += d.TotalSize;
+                if (Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4))
+                {
+                    dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
+                    i++;
+                }
+            }           
+            if(i == 0)
+            {
+                foreach (ManagementObject queryObj in searcher.Get())
+                {                    
+                    dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());                    
+                }
             }
         }
-        return Convert.ToString(Math.Round(dresult / 1000000000, 0)) + " GB";
+        else
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+
+            foreach (DriveInfo d in allDrives)
+            {
+                if (d.IsReady == true && d.DriveType != DriveType.Network)
+                {
+                    dresult += d.TotalSize;
+                }
+            }            
+        }
+        dresult = Math.Round(dresult / 1000000000, 0);
+        if(Math.Ceiling(Math.Log10(dresult)) > 3)
+        {
+            dresultStr = Convert.ToString(Math.Round(dresult / 1000, 1)) + " TB";
+            return dresultStr;
+        }
+        else
+        {
+            dresultStr = dresult + " GB";
+            return dresultStr;
+        }
+
     }
 
     public static string GetMACAddress()
@@ -74,7 +181,6 @@ public static class HardwareInfo
             }
             mo.Dispose();
         }
-
         return MACAddress;
     }
 
@@ -90,7 +196,6 @@ public static class HardwareInfo
                 IPAddress = (string[])mo["IPAddress"];
             mo.Dispose();
         }
-
         return IPAddress[0];
     }
 
@@ -105,7 +210,7 @@ public static class HardwareInfo
             }
             catch { }
         }
-        return "Unknown";
+        return unknown;
     }
 
     public static string GetModel()
@@ -119,7 +224,7 @@ public static class HardwareInfo
             }
             catch { }
         }
-        return "Unknown";
+        return unknown;
     }
 
     public static string GetBoardProductId()
@@ -133,7 +238,7 @@ public static class HardwareInfo
             }
             catch { }
         }
-        return "Unknown";
+        return unknown;
     }
 
     public static string GetPhysicalMemory()
@@ -146,7 +251,6 @@ public static class HardwareInfo
         long MemSize = 0;
         long mCap = 0;
 
-        // In case more than one Memory sticks are installed
         foreach (ManagementObject obj in oCollection)
         {
             mCap = Convert.ToInt64(obj["Capacity"]);
@@ -160,100 +264,71 @@ public static class HardwareInfo
     {
         int MemSlots = 0;
         ManagementScope oMs = new ManagementScope();
-        ObjectQuery oQuery2 = new ObjectQuery("SELECT MemoryDevices FROM Win32_PhysicalMemoryArray");
+        ObjectQuery oQuery2 = new ObjectQuery("SELECT * FROM Win32_PhysicalMemoryArray");
         ManagementObjectSearcher oSearcher2 = new ManagementObjectSearcher(oMs, oQuery2);
         ManagementObjectCollection oCollection2 = oSearcher2.Get();
         foreach (ManagementObject obj in oCollection2)
         {
-            MemSlots = Convert.ToInt32(obj["MemoryDevices"]);
+            if(Convert.ToString(obj["Tag"]).Equals("Physical Memory Array 0"))
+            {
+                MemSlots = Convert.ToInt32(obj["MemoryDevices"]);
+            }            
         }
         return MemSlots.ToString();
     }
 
+    public static int GetNumFreeRamSlots(int num)
+    {
+        int i = 0;
+        string[] MemSlotsUsed = new string[num];
+        ManagementScope oMs = new ManagementScope();
+        ObjectQuery oQuery3 = new ObjectQuery("SELECT * FROM Win32_PhysicalMemory");
+        ManagementObjectSearcher oSearcher3 = new ManagementObjectSearcher(oMs, oQuery3);
+        ManagementObjectCollection oCollection3 = oSearcher3.Get();
+        foreach (ManagementObject obj in oCollection3)
+        {
+            if(!Convert.ToString(obj["DeviceLocator"]).Contains("SYSTEM ROM"))
+            {
+                MemSlotsUsed[i] = Convert.ToString(obj["DeviceLocator"]);
+                i++;
+            }            
+        }        
+        return i;
+    }
+
     public static string GetDefaultIPGateway()
     {
-        //create out management class object using the
-        //Win32_NetworkAdapterConfiguration class to get the attributes
-        //of the network adapter
         ManagementClass mgmt = new ManagementClass("Win32_NetworkAdapterConfiguration");
-        //create our ManagementObjectCollection to get the attributes with
         ManagementObjectCollection objCol = mgmt.GetInstances();
         string gateway = String.Empty;
-        //loop through all the objects we find
+
         foreach (ManagementObject obj in objCol)
         {
-            if (gateway == String.Empty)  // only return MAC Address from first card
+            if (gateway == String.Empty)
             {
-                //grab the value from the first network adapter we find
-                //you can change the string to an array and get all
-                //network adapters found as well
-                //check to see if the adapter's IPEnabled
-                //equals true
                 if ((bool)obj["IPEnabled"] == true)
                 {
                     gateway = obj["DefaultIPGateway"].ToString();
                 }
             }
-            //dispose of our object
             obj.Dispose();
         }
-        //replace the ":" with an empty space, this could also
-        //be removed if you wish
         gateway = gateway.Replace(":", "");
-        //return the mac address
         return gateway;
     }
 
     static string getOSInfoAux()
     {
-        //Get Operating system information.
         OperatingSystem os = Environment.OSVersion;
-        //Get version information about the os.
         Version vs = os.Version;
 
-        //Variable to hold our return value
         string operatingSystem = "";
 
-        //if (os.Platform == PlatformID.Win32Windows)
-        //{
-        //    //This is a pre-NT version of Windows
-        //    switch (vs.Minor)
-        //    {
-        //        case 0:
-        //            operatingSystem = "95";
-        //            break;
-        //        case 10:
-        //            if (vs.Revision.ToString() == "2222A")
-        //                operatingSystem = "98SE";
-        //            else
-        //                operatingSystem = "98";
-        //            break;
-        //        case 90:
-        //            operatingSystem = "Me";
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
         if (os.Platform == PlatformID.Win32NT)
         {
             switch (vs.Major)
             {
-                //case 3:
-                //    operatingSystem = "NT 3.51";
-                //    break;
-                //case 4:
-                //    operatingSystem = "NT 4.0";
-                //    break;
-                //case 5:
-                //    if (vs.Minor == 0)
-                //        operatingSystem = "2000";
-                //    else
-                //        operatingSystem = "XP";
-                //    break;
                 case 6:
-                    //if (vs.Minor == 0)
-                    //    operatingSystem = "Vista";
                     if (vs.Minor == 1)
                         operatingSystem = "7";
                     else if (vs.Minor == 2)
@@ -268,23 +343,6 @@ public static class HardwareInfo
                     break;
             }
         }
-        ////Make sure we actually got something in our OS check
-        ////We don't want to just return " Service Pack 2" or " 32-bit"
-        ////That information is useless without the OS version.
-        //if (operatingSystem != "")
-        //{
-        //    //Got something.  Let's prepend "Windows" and get more info.
-        //    operatingSystem = "Windows " + operatingSystem;
-        //    //See if there's a service pack installed.
-        //    if (os.ServicePack != "")
-        //    {
-        //        //Append it to the OS name.  i.e. "Windows XP Service Pack 3"
-        //        operatingSystem += " " + os.ServicePack;
-        //    }
-        //    //Append the OS architecture.  i.e. "Windows XP Service Pack 3 32-bit"
-        //    //operatingSystem += " " + getOSArchitecture().ToString() + "-bit";
-        //}
-        ////Return the information we've gathered.
         return operatingSystem;
     }
 
@@ -299,17 +357,16 @@ public static class HardwareInfo
             {
                 if (getOSInfoAux().Equals("10"))
                 {
-                    return ((string)wmi["Caption"]).Trim() + ", v" + releaseId + ", build " + (string)wmi["Version"] + ", " + (string)wmi["OSArchitecture"];
+                    return (((string)wmi["Caption"]).Trim() + ", v" + releaseId + ", build " + (string)wmi["Version"] + ", " + (string)wmi["OSArchitecture"]).Substring(10);
                 }
                 else
                 {
-                    return ((string)wmi["Caption"]).Trim() + ", build " + (string)wmi["Version"] + ", " + (string)wmi["OSArchitecture"];
+                    return (((string)wmi["Caption"]).Trim() + ", build " + (string)wmi["Version"] + ", " + (string)wmi["OSArchitecture"]).Substring(10);
                 }
-
             }
             catch { }
         }
-        return "BIOS Maker: Unknown";
+        return unknown;
     }
 
     public static string GetComputerName()
@@ -320,8 +377,6 @@ public static class HardwareInfo
         foreach (ManagementObject mo in moc)
         {
             info = (string)mo["Name"];
-            //mo.Properties["Name"].Value.ToString();
-            //break;
         }
         return info;
     }
@@ -355,5 +410,16 @@ public static class HardwareInfo
         {
             return "BIOS";
         }        
+    }
+
+    public static string countDistinct(string[] array)
+    {
+        string result = "";
+        char[] comma = { ',' , ' ' };
+        var groups = array.GroupBy(z => z);
+
+        foreach (var group in groups)
+            result += group.Count() + "x " + group.Key + ", ";
+        return result.TrimEnd(comma);
     }
 }
