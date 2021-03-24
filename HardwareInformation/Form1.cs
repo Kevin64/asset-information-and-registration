@@ -19,6 +19,7 @@ namespace HardwareInformation
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
+            this.toolStripStatusLabel2.Text = version();
         }
 
         private void InitializeComponent()
@@ -57,7 +58,6 @@ namespace HardwareInformation
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.cadastraButton = new System.Windows.Forms.Button();
@@ -90,6 +90,7 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -103,6 +104,7 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -448,16 +450,6 @@ namespace HardwareInformation
             this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 39;
             // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(6, 382);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.ScrollBarsEnabled = false;
-            this.webBrowser1.Size = new System.Drawing.Size(402, 43);
-            this.webBrowser1.TabIndex = 19;
-            this.webBrowser1.TabStop = false;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -494,7 +486,7 @@ namespace HardwareInformation
             this.cadastraButton.TabIndex = 50;
             this.cadastraButton.Text = "Cadastrar / Atualizar dados";
             this.cadastraButton.UseVisualStyleBackColor = false;
-            this.cadastraButton.Click += new System.EventHandler(this.cadastra_Click);
+            this.cadastraButton.Click += new System.EventHandler(this.cadastra_ClickAsync);
             // 
             // label18
             // 
@@ -841,6 +833,7 @@ namespace HardwareInformation
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.webView2);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
@@ -850,7 +843,6 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.comboBox8);
-            this.groupBox2.Controls.Add(this.webBrowser1);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label16);
@@ -876,6 +868,16 @@ namespace HardwareInformation
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
             // 
+            // webView2
+            // 
+            this.webView2.CreationProperties = null;
+            this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView2.Location = new System.Drawing.Point(6, 370);
+            this.webView2.Name = "webView2";
+            this.webView2.Size = new System.Drawing.Size(402, 52);
+            this.webView2.TabIndex = 72;
+            this.webView2.ZoomFactor = 1D;
+            // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)));
@@ -884,7 +886,6 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
-            this.toolStripStatusLabel2.Text = version();
             // 
             // statusStrip1
             // 
@@ -989,6 +990,7 @@ namespace HardwareInformation
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1028,7 +1030,6 @@ namespace HardwareInformation
         private Label label16;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
-        private WebBrowser webBrowser1;
         private Label lblOS;
         private Label label17;
         private ComboBox comboBox3;
@@ -1069,10 +1070,7 @@ namespace HardwareInformation
         private ComboBox comboBoxTheme;
         private Label label26;
         private string coletando = "Coletando...";
-        private string coletar = "Coletar novamente";
-        private string cancelar = "Cancelar coleta";
         private bool pass = true;
-        private bool clicked = false;
         private ComboBox comboBox8;
         private MonthCalendar monthCalendar1;
         private Button coletaButton;
@@ -1084,6 +1082,7 @@ namespace HardwareInformation
         private Label label28;
         private Label lblSecBoot;
         private Label label32;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
         private Label label22;
 
         //Fetches the program's binary version
@@ -1181,7 +1180,6 @@ namespace HardwareInformation
             this.label32.ForeColor = SystemColors.ControlText;
             this.lblGPUInfo.ForeColor = SystemColors.ControlText;
             this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.webBrowser1.DocumentText = "<html><body style='background-color: white;'></body></html>";
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
         }
 
@@ -1274,7 +1272,6 @@ namespace HardwareInformation
             this.label32.ForeColor = SystemColors.ControlLightLight;
             this.lblGPUInfo.ForeColor = SystemColors.ControlLightLight;
             this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.webBrowser1.DocumentText = "<html><body style='background-color: #404040;'></body></html>";
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
         }
 
@@ -1541,12 +1538,12 @@ namespace HardwareInformation
                 lblHostname.Text += " (Nome incorreto, alterar)";
                 timer1.Enabled = true;
             }
-            if (!lblModel.Text.Equals("7057") && !lblModel.Text.Equals("8814") && !lblModel.Text.Equals("6078") && lblMediaOperation.Text.Equals("IDE/Legacy"))
+            /*if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals("IDE/Legacy"))
             {
                 pass = false;
                 lblMediaOperation.Text += " (Modo de operação incorreto, alterar)";
                 timer2.Enabled = true;
-            }
+            }*/
             if (lblSecBoot.Text.Equals("Desativado") && !lblGPUInfo.Text.Contains("210") && !lblGPUInfo.Text.Contains("430"))
             {
                 pass = false;
@@ -1635,7 +1632,7 @@ namespace HardwareInformation
         }
 
         //Runs the registration for the website
-        private void cadastra_Click(object sender, EventArgs e)
+        private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
             attrHardwareData();
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox3.Text) && comboBox6.SelectedItem != null && pass == true)
@@ -1656,8 +1653,11 @@ namespace HardwareInformation
                 servidor_web = comboBox7.Text;
                 porta = comboBox8.Text;
 
+                var webView2Environment = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync("webview2.runtime", System.IO.Path.GetTempPath());
+                await webView2.EnsureCoreWebView2Async(webView2Environment);
+
                 if (PingHost(servidor_web) == true && porta != "")
-                    webBrowser1.Navigate("http://" + servidor_web + ":" + porta + "/recebeDados.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
+                    webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDados.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
                  "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
                  "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
                  "&hd=" + varHD + "&sistemaOperacional=" + varOS + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
