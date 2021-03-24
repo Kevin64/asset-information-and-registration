@@ -1547,7 +1547,7 @@ namespace HardwareInformation
                 lblMediaOperation.Text += " (Modo de operação incorreto, alterar)";
                 timer2.Enabled = true;
             }
-            if (lblSecBoot.Text.Equals("Desativado") && (!lblGPUInfo.Text.Contains("210") || (!lblGPUInfo.Text.Contains("430"))))
+            if (lblSecBoot.Text.Equals("Desativado") && !lblGPUInfo.Text.Contains("210") && !lblGPUInfo.Text.Contains("430"))
             {
                 pass = false;
                 lblSecBoot.Text += " (Ativar boot seguro)";
