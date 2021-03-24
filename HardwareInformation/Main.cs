@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-static class Program
+public class Program : Form
 {
     /// <summary>
     /// The main entry point for the application.
@@ -10,6 +10,7 @@ static class Program
     [STAThread]
     static void Main()
     {
+        //Runs Form2 (login)
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Application.Run(new Form2());

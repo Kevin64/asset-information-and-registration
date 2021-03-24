@@ -10,6 +10,7 @@ public static class HardwareInfo
 {
     private static string unknown = "Unknown";
 
+    //Fetches the CPU information, including the number of cores/threads
     public static string GetProcessorCores()
     {
         string Id = "", logical = "";
@@ -32,6 +33,7 @@ public static class HardwareInfo
         return Id;
     }
 
+    //Fetches the GPU information
     public static string GetGPUInfo()
     {
         string gpuname = "", gpuramStr;
@@ -55,6 +57,7 @@ public static class HardwareInfo
         return gpuname;
     }
 
+    //Fetches the operation mode that the storage is running (IDE/AHCI/NVMe)
     public static string GetStorageOperation()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_SCSIController");
@@ -70,7 +73,8 @@ public static class HardwareInfo
                 return "AHCI";
         return "IDE/Legacy";
     }
-        
+
+    //Fetches the type of drive the system has (SSD or HDD), and the quantity of each
     public static string GetStorageType()
     {
         int j = 0;
@@ -119,6 +123,7 @@ public static class HardwareInfo
             return "Desconhecido (provavelmente HDD)";
     }
 
+    //Fetches the SSD/HDD total size (sums all drives sizes)
     public static string GetHDSize()
     {
         int i = 0;
@@ -166,6 +171,7 @@ public static class HardwareInfo
 
     }
 
+    //Fetches the primary MAC Address
     public static string GetMACAddress()
     {
         string MACAddress = "";
@@ -184,6 +190,7 @@ public static class HardwareInfo
         return MACAddress;
     }
 
+    //Fetches the primary IP address
     public static string GetIPAddress()
     {
         string[] IPAddress = null;
@@ -201,6 +208,7 @@ public static class HardwareInfo
         return IPAddress[0];
     }
 
+    //Fetches the computer's manufacturer
     public static string GetBoardMaker()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_ComputerSystem");
@@ -218,6 +226,7 @@ public static class HardwareInfo
         return unknown;
     }
 
+    //Fetches the computer's model
     public static string GetModel()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_ComputerSystem");
@@ -235,6 +244,7 @@ public static class HardwareInfo
         return unknown;
     }
 
+    //Fetches the motherboard serial number
     public static string GetBoardProductId()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_BaseBoard");
@@ -252,6 +262,7 @@ public static class HardwareInfo
         return unknown;
     }
 
+    //Fetches the amount of RAM of the system
     public static string GetPhysicalMemory()
     {
         long MemSize = 0;
@@ -271,6 +282,7 @@ public static class HardwareInfo
         return MemSize.ToString() + " GB";
     }
 
+    //Fetches the number of RAM slots on the system
     public static string GetNumRamSlots()
     {
         int MemSlots = 0;
@@ -286,6 +298,7 @@ public static class HardwareInfo
         return MemSlots.ToString();
     }
 
+    //Fetches the number of free RAM slots on the system
     public static int GetNumFreeRamSlots(int num)
     {
         int i = 0;
@@ -307,6 +320,7 @@ public static class HardwareInfo
         return i;
     }
 
+    //Fetches the default gateway of the NIC
     public static string GetDefaultIPGateway()
     {
         string gateway = "";
@@ -325,6 +339,7 @@ public static class HardwareInfo
         return gateway;
     }
 
+    //Fetches the the NT version
     static string getOSInfoAux()
     {
         string operatingSystem = "";
@@ -354,6 +369,7 @@ public static class HardwareInfo
         return operatingSystem;
     }
 
+    //Fetches the operating system information
     public static string GetOSInformation()
     {
         string getOSMajor = getOSInfoAux();
@@ -377,6 +393,7 @@ public static class HardwareInfo
         return unknown;
     }
 
+    //Fetches the computer's hostname
     public static string GetComputerName()
     {
         string info = "";
@@ -389,6 +406,7 @@ public static class HardwareInfo
         return info;
     }
 
+    //Fetches the BIOS version
     public static string GetComputerBIOS()
     {
         string biosVersion = "";
@@ -401,6 +419,7 @@ public static class HardwareInfo
         return biosVersion;
     }
 
+    //Fetches the BIOS type (BIOS or UEFI)
     public static string GetBIOSType()
     {
         try
@@ -419,6 +438,24 @@ public static class HardwareInfo
         }        
     }
 
+    //Fetches the Secure Boot status
+    public static string GetSecureBoot()
+    {        
+        try
+        {
+            string secBoot = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State", "UEFISecureBootEnabled", 0).ToString();
+            if (secBoot.Equals("0"))
+                return "Desativado";
+            else
+                return "Ativado";
+        }
+        catch(NullReferenceException e)
+        {
+            return "Não suportado";
+        }
+    }
+
+    //Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
     public static string countDistinct(string[] array)
     {
         string result = "";

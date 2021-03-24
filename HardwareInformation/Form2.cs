@@ -12,9 +12,10 @@ namespace HardwareInformation
         public Form2()
         {
             InitializeComponent();
-            ThemeInit();
+            ThemeInit();        
         }
 
+        //Sets a light theme for the login form
         public void lightTheme()
         {
             this.label1.ForeColor = SystemColors.ControlText;
@@ -26,8 +27,10 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.ControlLight;
             this.button1.ForeColor = SystemColors.ControlText;
             this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
 
+        //Sets a dark theme for the login form
         public void darkTheme()
         {
             this.label1.ForeColor = SystemColors.ControlLightLight;
@@ -39,8 +42,10 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.WindowFrame;
             this.button1.ForeColor = SystemColors.ControlLightLight;
             this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
+        //Initializes the theme, according to the host theme
         public void ThemeInit()
         {
             try
@@ -65,6 +70,7 @@ namespace HardwareInformation
             }
         }
 
+        //Checks the user/password and shows the main form
         private void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
@@ -74,7 +80,6 @@ namespace HardwareInformation
                     this.Visible = false;
                     Form1 form = new Form1();
                     form.Visible = true;
-                    
                 }
                 else
                     MessageBox.Show("Credenciais inválidas. Tente novamente.", "Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
