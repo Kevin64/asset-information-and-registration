@@ -1538,12 +1538,12 @@ namespace HardwareInformation
                 lblHostname.Text += " (Nome incorreto, alterar)";
                 timer1.Enabled = true;
             }
-            /*if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals("IDE/Legacy"))
+            if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals("IDE/Legacy"))
             {
                 pass = false;
                 lblMediaOperation.Text += " (Modo de operação incorreto, alterar)";
                 timer2.Enabled = true;
-            }*/
+            }
             if (lblSecBoot.Text.Equals("Desativado") && !lblGPUInfo.Text.Contains("210") && !lblGPUInfo.Text.Contains("430"))
             {
                 pass = false;
