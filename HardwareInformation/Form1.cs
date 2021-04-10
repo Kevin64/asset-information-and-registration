@@ -90,6 +90,11 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.formatButton1 = new System.Windows.Forms.RadioButton();
+            this.maintenanceButton2 = new System.Windows.Forms.RadioButton();
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -101,9 +106,11 @@ namespace HardwareInformation
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label28 = new System.Windows.Forms.Label();
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -406,7 +413,7 @@ namespace HardwareInformation
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label16.Location = new System.Drawing.Point(20, 250);
+            this.label16.Location = new System.Drawing.Point(20, 175);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(95, 13);
             this.label16.TabIndex = 16;
@@ -833,6 +840,7 @@ namespace HardwareInformation
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.webView2);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
@@ -867,6 +875,70 @@ namespace HardwareInformation
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.formatButton1);
+            this.groupBox3.Controls.Add(this.maintenanceButton2);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox3.Location = new System.Drawing.Point(6, 191);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(151, 146);
+            this.groupBox3.TabIndex = 72;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo de serviço";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox5.Location = new System.Drawing.Point(18, 34);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(123, 40);
+            this.textBox5.TabIndex = 76;
+            this.textBox5.Text = "Opção para quando o PC passar por manutenção com formatação";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox6.Location = new System.Drawing.Point(17, 96);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(126, 41);
+            this.textBox6.TabIndex = 77;
+            this.textBox6.Text = "Opção para quando o PC passar por manutenção sem formatação";
+            // 
+            // formatButton1
+            // 
+            this.formatButton1.AutoSize = true;
+            this.formatButton1.Checked = true;
+            this.formatButton1.Location = new System.Drawing.Point(18, 19);
+            this.formatButton1.Name = "formatButton1";
+            this.formatButton1.Size = new System.Drawing.Size(81, 17);
+            this.formatButton1.TabIndex = 73;
+            this.formatButton1.TabStop = true;
+            this.formatButton1.Text = "Formatação";
+            this.formatButton1.UseVisualStyleBackColor = true;
+            this.formatButton1.CheckedChanged += new System.EventHandler(this.formatButton1_CheckedChanged);
+            // 
+            // maintenanceButton2
+            // 
+            this.maintenanceButton2.AutoSize = true;
+            this.maintenanceButton2.Location = new System.Drawing.Point(18, 80);
+            this.maintenanceButton2.Name = "maintenanceButton2";
+            this.maintenanceButton2.Size = new System.Drawing.Size(85, 17);
+            this.maintenanceButton2.TabIndex = 74;
+            this.maintenanceButton2.Text = "Manutenção";
+            this.maintenanceButton2.UseVisualStyleBackColor = true;
+            this.maintenanceButton2.CheckedChanged += new System.EventHandler(this.maintenanceButton2_CheckedChanged);
             // 
             // webView2
             // 
@@ -990,6 +1062,8 @@ namespace HardwareInformation
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1060,7 +1134,7 @@ namespace HardwareInformation
         private Label label27;
         private Label lblGPUInfo;
         private Label label29;
-        private Timer timer1, timer2, timer3;
+        private Timer timer1, timer2, timer3, timer4;
         private IContainer components;
         private Label lblMediaOperation;
         private Label label30;
@@ -1070,7 +1144,7 @@ namespace HardwareInformation
         private ComboBox comboBoxTheme;
         private Label label26;
         private string coletando = "Coletando...";
-        private bool pass = true;
+        private bool pass = true, mode = true;
         private ComboBox comboBox8;
         private MonthCalendar monthCalendar1;
         private Button coletaButton;
@@ -1083,6 +1157,11 @@ namespace HardwareInformation
         private Label lblSecBoot;
         private Label label32;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
+        private RadioButton maintenanceButton2;
+        private RadioButton formatButton1;
+        private GroupBox groupBox3;
+        private TextBox textBox5;
+        private TextBox textBox6;
         private Label label22;
 
         //Fetches the program's binary version
@@ -1091,9 +1170,22 @@ namespace HardwareInformation
             return "v" + Application.ProductVersion;
         }
 
+        //Sets service mode to format
+        private void formatButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            mode = true;
+        }
+
+        //Sets service mode to maintenance
+        private void maintenanceButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            mode = false;
+        }
+
         //Sets a light theme for the UI
         private void lightTheme()
         {
+            this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblBM.ForeColor = SystemColors.ControlText;
             this.lblModel.ForeColor = SystemColors.ControlText;
             this.lblSerialNo.ForeColor = SystemColors.ControlText;
@@ -1179,13 +1271,18 @@ namespace HardwareInformation
             this.lblSecBoot.ForeColor = SystemColors.ControlText;
             this.label32.ForeColor = SystemColors.ControlText;
             this.lblGPUInfo.ForeColor = SystemColors.ControlText;
-            this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.groupBox3.ForeColor = SystemColors.ControlText;
+            this.textBox5.ForeColor = SystemColors.ControlText;
+            this.textBox5.BackColor = this.BackColor;
+            this.textBox6.ForeColor = SystemColors.ControlText;
+            this.textBox6.BackColor = this.BackColor;            
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
         }
 
         //Sets a dark theme for the UI
         private void darkTheme()
         {
+            this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblBM.ForeColor = SystemColors.ControlLightLight;
             this.lblModel.ForeColor = SystemColors.ControlLightLight;
             this.lblSerialNo.ForeColor = SystemColors.ControlLightLight;
@@ -1271,7 +1368,11 @@ namespace HardwareInformation
             this.lblSecBoot.ForeColor = SystemColors.ControlLightLight;
             this.label32.ForeColor = SystemColors.ControlLightLight;
             this.lblGPUInfo.ForeColor = SystemColors.ControlLightLight;
-            this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBox3.ForeColor = SystemColors.ControlLightLight;
+            this.textBox5.ForeColor = SystemColors.ControlLightLight;
+            this.textBox5.BackColor = this.BackColor;
+            this.textBox6.ForeColor = SystemColors.ControlLightLight;
+            this.textBox6.BackColor = this.BackColor;
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
         }
 
@@ -1345,9 +1446,11 @@ namespace HardwareInformation
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
             timer3.Tick += new EventHandler(flashTextSecBoot);
+            timer4.Tick += new EventHandler(flashTextBIOSVersion);
             timer1.Interval = 500;
             timer2.Interval = 500;
             timer3.Interval = 500;
+            timer4.Interval = 500;
             comboBox1.SelectedIndex = 4;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 1;
@@ -1406,6 +1509,17 @@ namespace HardwareInformation
                 lblSecBoot.ForeColor = Color.Red;
         }
 
+        //Sets the BIOS Version label to flash in red
+        private void flashTextBIOSVersion(Object myobject, EventArgs myEventArgs)
+        {
+            if (lblBIOS.ForeColor == Color.Red && themeBool == true)
+                lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            else if (lblBIOS.ForeColor == Color.Red && themeBool == false)
+                lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            else
+                lblBIOS.ForeColor = Color.Red;
+        }
+
         //Starts the collection process
         private void collecting()
         {
@@ -1413,17 +1527,20 @@ namespace HardwareInformation
             timer1.Enabled = false;
             timer2.Enabled = false;
             timer3.Enabled = false;
+            timer4.Enabled = false;
             if (lblHostname.ForeColor == Color.Red && themeBool == true)
             {
                 lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
                 lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
                 lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+                lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             }
             else if (lblHostname.ForeColor == Color.Red && themeBool == false)
             {
                 lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
                 lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+                lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             }
 
             //Sets current and maximum values for the progressbar
@@ -1550,6 +1667,14 @@ namespace HardwareInformation
                 lblSecBoot.Text += " (Ativar boot seguro)";
                 timer3.Enabled = true;
             }
+
+            string str = BIOSFileReader.readLine(lblBM.Text, lblModel.Text);
+            if (str != null && !lblBIOS.Text.Contains(str))
+            {
+                pass = false;
+                lblBIOS.Text += " (Atualizar BIOS/UEFI)";
+                timer4.Enabled = true;
+            }
         }
         
         //Triggers when the form opens, and when the user clicks to collect
@@ -1657,12 +1782,20 @@ namespace HardwareInformation
                 await webView2.EnsureCoreWebView2Async(webView2Environment);
 
                 if (PingHost(servidor_web) == true && porta != "")
-                    webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDados.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
-                 "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
-                 "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
-                 "&hd=" + varHD + "&sistemaOperacional=" + varOS + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
-                 "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
-                 "&secBoot=" + varSecBoot);
+                    if(mode)
+                        webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDadosFormatacao.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
+                     "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
+                     "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
+                     "&hd=" + varHD + "&sistemaOperacional=" + varOS + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
+                     "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
+                     "&secBoot=" + varSecBoot);
+                    else
+                        webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDadosManutencao.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
+                     "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
+                     "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
+                     "&hd=" + varHD + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
+                     "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
+                     "&secBoot=" + varSecBoot);
                 else
                     MessageBox.Show("Servidor não encontrado. Selecione um servidor válido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
