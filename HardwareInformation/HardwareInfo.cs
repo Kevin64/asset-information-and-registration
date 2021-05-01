@@ -373,8 +373,9 @@ public static class HardwareInfo
     public static string GetOSInformation()
     {
         string getOSMajor = getOSInfoAux();
-        string releaseId = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
-        
+        string displayVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion", "").ToString();
+        string releaseId = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "releaseId", "").ToString();
+
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
         
         foreach (ManagementObject queryObj in searcher.Get())
@@ -382,7 +383,12 @@ public static class HardwareInfo
             try
             {
                 if (getOSInfoAux().Equals("10"))
-                    return (((string)queryObj["Caption"]).Trim() + ", v" + releaseId + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+                {
+                    if(Convert.ToInt32(releaseId) <= 2004)
+                        return (((string)queryObj["Caption"]).Trim() + ", v" + releaseId + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+                    else
+                        return (((string)queryObj["Caption"]).Trim() + ", v" + displayVersion + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+                }                    
                 else
                     return (((string)queryObj["Caption"]).Trim() + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
             }
