@@ -19,7 +19,8 @@ namespace HardwareInformation
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            this.toolStripStatusLabel2.Text = version();
+            //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
+            this.toolStripStatusLabel2.Text = version("alpha");
         }
 
         private void InitializeComponent()
@@ -79,8 +80,8 @@ namespace HardwareInformation
             this.accessSystemButton = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.lblBIOSType = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.lblSecBoot = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.lblMediaOperation = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@ namespace HardwareInformation
             this.label29 = new System.Windows.Forms.Label();
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -98,21 +100,22 @@ namespace HardwareInformation
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.comboBoxTheme = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.comboBoxTheme = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label28 = new System.Windows.Forms.Label();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBM
@@ -486,10 +489,11 @@ namespace HardwareInformation
             // 
             this.cadastraButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.cadastraButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cadastraButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastraButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cadastraButton.Location = new System.Drawing.Point(575, 553);
+            this.cadastraButton.Location = new System.Drawing.Point(747, 549);
             this.cadastraButton.Name = "cadastraButton";
-            this.cadastraButton.Size = new System.Drawing.Size(167, 32);
+            this.cadastraButton.Size = new System.Drawing.Size(242, 54);
             this.cadastraButton.TabIndex = 50;
             this.cadastraButton.Text = "Cadastrar / Atualizar dados";
             this.cadastraButton.UseVisualStyleBackColor = false;
@@ -575,7 +579,7 @@ namespace HardwareInformation
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label21.Location = new System.Drawing.Point(20, 344);
+            this.label21.Location = new System.Drawing.Point(20, 346);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
             this.label21.TabIndex = 17;
@@ -631,9 +635,9 @@ namespace HardwareInformation
             this.coletaButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.coletaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.coletaButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.coletaButton.Location = new System.Drawing.Point(229, 553);
+            this.coletaButton.Location = new System.Drawing.Point(575, 549);
             this.coletaButton.Name = "coletaButton";
-            this.coletaButton.Size = new System.Drawing.Size(167, 32);
+            this.coletaButton.Size = new System.Drawing.Size(166, 23);
             this.coletaButton.TabIndex = 49;
             this.coletaButton.Text = "Coletar Novamente";
             this.coletaButton.UseVisualStyleBackColor = false;
@@ -674,9 +678,9 @@ namespace HardwareInformation
             this.accessSystemButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.accessSystemButton.Location = new System.Drawing.Point(402, 553);
+            this.accessSystemButton.Location = new System.Drawing.Point(575, 578);
             this.accessSystemButton.Name = "accessSystemButton";
-            this.accessSystemButton.Size = new System.Drawing.Size(167, 32);
+            this.accessSystemButton.Size = new System.Drawing.Size(166, 25);
             this.accessSystemButton.TabIndex = 51;
             this.accessSystemButton.Text = "Acessar sistema de patrimônios";
             this.accessSystemButton.UseVisualStyleBackColor = false;
@@ -702,22 +706,9 @@ namespace HardwareInformation
             this.lblBIOSType.TabIndex = 63;
             this.lblBIOSType.Text = "n";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(-7, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1033, 109);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 64;
-            this.pictureBox1.TabStop = false;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.lblSecBoot);
             this.groupBox1.Controls.Add(this.label32);
             this.groupBox1.Controls.Add(this.lblMediaOperation);
@@ -750,13 +741,25 @@ namespace HardwareInformation
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(32, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 431);
+            this.groupBox1.Size = new System.Drawing.Size(537, 490);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label28.Location = new System.Drawing.Point(255, 428);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(13, 13);
+            this.label28.TabIndex = 70;
+            this.label28.Text = "q";
             // 
             // lblSecBoot
             // 
@@ -837,6 +840,13 @@ namespace HardwareInformation
             this.label27.Size = new System.Drawing.Size(124, 13);
             this.label27.TabIndex = 64;
             this.label27.Text = "Tipo de armazenamento:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(6, 444);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(525, 36);
+            this.progressBar1.TabIndex = 69;
             // 
             // groupBox2
             // 
@@ -964,71 +974,83 @@ namespace HardwareInformation
             this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comboBoxTheme,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 591);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 606);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1026, 24);
             this.statusStrip1.TabIndex = 60;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // comboBoxTheme
+            // 
+            this.comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.comboBoxTheme.Name = "comboBoxTheme";
+            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
+            this.comboBoxTheme.Text = "Tema";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem1.Text = "Automático (Tema do sistema)";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem2.Text = "Claro";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem3.Text = "Escuro";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1007, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(959, 19);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "Sistema desenvolvido pelo servidor Kevin Costa, SIAPE 1971957, para uso no serviç" +
     "o da Unidade de Tecnologia da Informação do CCSH - UFSM";
-            // 
-            // comboBoxTheme
-            // 
-            this.comboBoxTheme.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTheme.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTheme.FormattingEnabled = true;
-            this.comboBoxTheme.Items.AddRange(new object[] {
-            "Automático (Tema do sistema)",
-            "Claro",
-            "Escuro"});
-            this.comboBoxTheme.Location = new System.Drawing.Point(810, 560);
-            this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(179, 21);
-            this.comboBoxTheme.TabIndex = 47;
-            this.comboBoxTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxTheme_SelectedIndexChanged);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label26.Location = new System.Drawing.Point(768, 563);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(37, 13);
-            this.label26.TabIndex = 68;
-            this.label26.Text = "Tema:";
             // 
             // timer1
             // 
             this.timer1.Interval = 500;
             // 
-            // progressBar1
+            // pictureBox1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(32, 563);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(191, 22);
-            this.progressBar1.TabIndex = 69;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label28.Location = new System.Drawing.Point(116, 547);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(13, 13);
-            this.label28.TabIndex = 70;
-            this.label28.Text = "q";
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(-7, -2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1033, 109);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 64;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -1037,11 +1059,7 @@ namespace HardwareInformation
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1026, 615);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.comboBoxTheme);
+            this.ClientSize = new System.Drawing.Size(1026, 630);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -1057,7 +1075,6 @@ namespace HardwareInformation
             this.Text = "Coleta de hardware e cadastro de patrimônio / Unidade de Tecnologia da Informação" +
     " do CCSH - UFSM";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1067,6 +1084,7 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1141,8 +1159,6 @@ namespace HardwareInformation
         private ToolStripStatusLabel toolStripStatusLabel2;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private ComboBox comboBoxTheme;
-        private Label label26;
         private string coletando = "Coletando...";
         private bool pass = true, mode = true;
         private ComboBox comboBox8;
@@ -1162,12 +1178,22 @@ namespace HardwareInformation
         private GroupBox groupBox3;
         private TextBox textBox5;
         private TextBox textBox6;
+        private ToolStripDropDownButton comboBoxTheme;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
         private Label label22;
 
         //Fetches the program's binary version
         private string version()
         {
             return "v" + Application.ProductVersion;
+        }
+
+        //Fetches the program's binary version (for unstable releases)
+        private string version(string testBranch)
+        {
+            return "v" + Application.ProductVersion + "-" + testBranch;
         }
 
         //Sets service mode to format
@@ -1180,6 +1206,55 @@ namespace HardwareInformation
         private void maintenanceButton2_CheckedChanged(object sender, EventArgs e)
         {
             mode = false;
+        }
+
+        //Method for setting the auto theme
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
+                {
+                    if (key != null)
+                    {
+                        Object o = key.GetValue("AppsUseLightTheme");
+                        if (o != null && o.Equals(0))
+                        {
+                            darkTheme();
+                            themeBool = true;
+                        }
+                        else
+                        {
+                            lightTheme();
+                            themeBool = false;
+                        }
+                    }
+                    else
+                    {
+                        lightTheme();
+                        themeBool = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lightTheme();
+                themeBool = false;
+            }
+        }
+
+        //Method for setting the light theme
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            lightTheme();
+            themeBool = false;
+        }
+
+        //Method for setting the dark theme
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            darkTheme();
+            themeBool = true;
         }
 
         //Sets a light theme for the UI
@@ -1261,9 +1336,8 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.ForeColor = SystemColors.ControlText;
             this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.toolStripStatusLabel1.ForeColor = SystemColors.ControlText;
-            this.comboBoxTheme.BackColor = SystemColors.ControlLight;
+            this.comboBoxTheme.BackColor = this.BackColor;
             this.comboBoxTheme.ForeColor = SystemColors.ControlText;
-            this.label26.ForeColor = SystemColors.ControlText;
             this.label27.ForeColor = SystemColors.ControlText;
             this.label29.ForeColor = SystemColors.ControlText;
             this.label28.ForeColor = SystemColors.ControlText;
@@ -1276,6 +1350,12 @@ namespace HardwareInformation
             this.textBox5.BackColor = this.BackColor;
             this.textBox6.ForeColor = SystemColors.ControlText;
             this.textBox6.BackColor = this.BackColor;            
+            this.toolStripMenuItem1.BackgroundImage = null;
+            this.toolStripMenuItem1.ForeColor = SystemColors.ControlText;
+            this.toolStripMenuItem2.BackgroundImage = null;
+            this.toolStripMenuItem2.ForeColor = SystemColors.ControlText;
+            this.toolStripMenuItem3.BackgroundImage = null;
+            this.toolStripMenuItem3.ForeColor = SystemColors.ControlText;
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
         }
 
@@ -1358,9 +1438,8 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.ForeColor = SystemColors.ControlLightLight;
             this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.toolStripStatusLabel1.ForeColor = SystemColors.ControlLightLight;
-            this.comboBoxTheme.BackColor = SystemColors.WindowFrame;
+            this.comboBoxTheme.BackColor = this.BackColor;
             this.comboBoxTheme.ForeColor = SystemColors.ControlLightLight;
-            this.label26.ForeColor = SystemColors.ControlLightLight;
             this.label27.ForeColor = SystemColors.ControlLightLight;
             this.label28.ForeColor = SystemColors.ControlLightLight;
             this.label29.ForeColor = SystemColors.ControlLightLight;
@@ -1373,55 +1452,13 @@ namespace HardwareInformation
             this.textBox5.BackColor = this.BackColor;
             this.textBox6.ForeColor = SystemColors.ControlLightLight;
             this.textBox6.BackColor = this.BackColor;
+            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.ForeColor = SystemColors.ControlLightLight;
+            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.ForeColor = SystemColors.ControlLightLight;
+            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.ForeColor = SystemColors.ControlLightLight;
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-        }
-
-        //Changes the theme when the user toggle the combobox
-        private void comboBoxTheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.comboBoxTheme.SelectedIndex.Equals(0))
-            {
-                try
-                {
-                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
-                    {
-                        if (key != null)
-                        {
-                            Object o = key.GetValue("AppsUseLightTheme");
-                            if (o != null && o.Equals(0))
-                            {
-                                darkTheme();
-                                themeBool = true;
-                            }
-                            else
-                            {
-                                lightTheme();
-                                themeBool = false;
-                            }
-                        }
-                        else
-                        {
-                            lightTheme();
-                            themeBool = false;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    lightTheme();
-                    themeBool = false;
-                }
-            }
-            else if (this.comboBoxTheme.SelectedIndex.Equals(1))
-            {
-                lightTheme();
-                themeBool = false;
-            }
-            else
-            {
-                darkTheme();
-                themeBool = true;
-            }
         }
 
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
@@ -1458,7 +1495,6 @@ namespace HardwareInformation
             comboBox5.SelectedIndex = 0;
             comboBox7.SelectedIndex = 0;
             comboBox8.SelectedIndex = 0;
-            comboBoxTheme.SelectedIndex = 0;
             this.FormClosing += Form1_FormClosing;
             coleta_Click(sender, e);
         }

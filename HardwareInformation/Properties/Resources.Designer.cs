@@ -83,6 +83,16 @@ namespace HardwareInformation.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap darkback {
+            get {
+                object obj = ResourceManager.GetObject("darkback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap uti_logo_dark {
             get {
                 object obj = ResourceManager.GetObject("uti-logo-dark", resourceCulture);
