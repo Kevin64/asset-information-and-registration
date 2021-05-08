@@ -20,7 +20,7 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = version("alpha");
+            this.toolStripStatusLabel2.Text = version("beta");
         }
 
         private void InitializeComponent()
@@ -1257,6 +1257,41 @@ namespace HardwareInformation
             themeBool = true;
         }
 
+        //Initializes the application theme
+        private void comboBoxThemeInit()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
+                {
+                    if (key != null)
+                    {
+                        Object o = key.GetValue("AppsUseLightTheme");
+                        if (o != null && o.Equals(0))
+                        {
+                            darkTheme();
+                            themeBool = true;
+                        }
+                        else
+                        {
+                            lightTheme();
+                            themeBool = false;
+                        }
+                    }
+                    else
+                    {
+                        lightTheme();
+                        themeBool = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lightTheme();
+                themeBool = false;
+            }
+        }
+
         //Sets a light theme for the UI
         private void lightTheme()
         {
@@ -1495,6 +1530,7 @@ namespace HardwareInformation
             comboBox5.SelectedIndex = 0;
             comboBox7.SelectedIndex = 0;
             comboBox8.SelectedIndex = 0;
+            comboBoxThemeInit();
             this.FormClosing += Form1_FormClosing;
             coleta_Click(sender, e);
         }
@@ -1654,9 +1690,6 @@ namespace HardwareInformation
             IP = HardwareInfo.GetIPAddress();
             worker.ReportProgress(progressAuxFunction(i));
             i++;
-            BIOS = HardwareInfo.GetComputerBIOS();
-            worker.ReportProgress(progressAuxFunction(i));
-            i++;
             BIOSType = HardwareInfo.GetBIOSType();
             worker.ReportProgress(progressAuxFunction(i));
             i++;
@@ -1664,11 +1697,15 @@ namespace HardwareInformation
             worker.ReportProgress(progressAuxFunction(i));
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            i++;
+            BIOS = HardwareInfo.GetComputerBIOS();
+            worker.ReportProgress(progressAuxFunction(i));
         }
 
         //Prints the collected data into the form labels, warning the user when the hostname and/or MediaOp string are forbidden
         private void printHardwareData()
         {
+            pass = true;
             lblBM.Text = BM;
             lblModel.Text = Model;
             lblSerialNo.Text = SerialNo;
@@ -1685,6 +1722,7 @@ namespace HardwareInformation
             lblBIOS.Text = BIOS;
             lblBIOSType.Text = BIOSType;
             lblSecBoot.Text = SecBoot;
+            string str = BIOSFileReader.readLine(lblBM.Text, lblModel.Text, comboBox7.Text, comboBox8.Text);
             if (lblHostname.Text.Equals("MUDAR-NOME"))
             {
                 pass = false;
@@ -1703,8 +1741,6 @@ namespace HardwareInformation
                 lblSecBoot.Text += " (Ativar boot seguro)";
                 timer3.Enabled = true;
             }
-
-            string str = BIOSFileReader.readLine(lblBM.Text, lblModel.Text);
             if (str != null && !lblBIOS.Text.Contains(str))
             {
                 pass = false;
