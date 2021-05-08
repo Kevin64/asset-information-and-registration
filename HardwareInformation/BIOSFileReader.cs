@@ -1,33 +1,42 @@
-﻿namespace HardwareInformation
+﻿using Newtonsoft.Json;
+using System;
+using System.Net;
+using System.Windows.Forms;
+
+namespace HardwareInformation
 {
     public static class BIOSFileReader
     {
-        //Reads txt file and parses brand, model and BIOS versions, returning the latter
-        public static string readLine(string brand, string model)
-        {
-            System.IO.StreamReader file = new System.IO.StreamReader(@"BIOSversions.txt");
-            string line;
+        private static string jsonFile, str;
+        private static WebBrowser wb;
 
-            while ((line = file.ReadLine()) != null)
+        //Reads a json file retrieved from the server and parses brand, model and BIOS versions, returning the latter
+        [STAThread]
+        public static string readLine(string brd, string mod)
+        {
+            wb = new WebBrowser();
+            wb.Navigate("http://192.168.76.103:8081/forneceDadosBIOS.php");
+            
+            jsonFile = new WebClient().DownloadString("http://192.168.76.103:8081/bios.json");
+
+            dynamic jsonParse = JsonConvert.DeserializeObject(jsonFile);
+            var brand = jsonParse[0].marca;
+            var model = jsonParse[0].modelo;
+            var version = jsonParse[0].versao;
+
+            foreach (var obj in jsonParse)
             {
-                if ((brand.Contains("Hewlett-Packard") || brand.Contains("Quanta")) && line.Substring(0, line.IndexOf("-")).Equals("HP"))
+                foreach(var obj2 in obj)
                 {
-                    if (model.Contains(line.Substring(line.IndexOf("-") + 1, line.IndexOf("=") - line.IndexOf("-") - 1)))
-                        return line.Substring(line.IndexOf("=") + 1);
-                }
-                else if (brand.Contains("Dell") && line.Substring(0, line.IndexOf("-")).Equals("Dell"))
-                {
-                    if (model.Contains(line.Substring(line.IndexOf("-") + 1, line.IndexOf("=") - line.IndexOf("-") - 1)))
-                        return line.Substring(line.IndexOf("=") + 1);
-                }
-                else if (brand.Contains("Lenovo") && line.Substring(0, line.IndexOf("-")).Equals("Lenovo"))
-                {
-                    if (model.Contains(line.Substring(line.IndexOf("-") + 1, line.IndexOf("=") - line.IndexOf("-") - 1)))
-                        return line.Substring(line.IndexOf("=") + 1);
+                    foreach(var obj3 in obj2)
+                    {
+                        str = Convert.ToString(obj3);
+                        if (mod.Contains(str))
+                            return obj["versao"];
+                    }   
                 }
             }
-            file.Close();
             return null;
-        }        
+        }
     }
 }
