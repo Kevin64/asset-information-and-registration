@@ -20,7 +20,7 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = version("beta");
+            this.toolStripStatusLabel2.Text = version();
         }
 
         private void InitializeComponent()
@@ -489,7 +489,7 @@ namespace HardwareInformation
             // 
             this.cadastraButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.cadastraButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cadastraButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastraButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastraButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.cadastraButton.Location = new System.Drawing.Point(747, 549);
             this.cadastraButton.Name = "cadastraButton";
@@ -977,7 +977,7 @@ namespace HardwareInformation
             this.comboBoxTheme,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 612);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 605);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1023, 24);
             this.statusStrip1.TabIndex = 60;
@@ -1059,7 +1059,7 @@ namespace HardwareInformation
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1023, 636);
+            this.ClientSize = new System.Drawing.Size(1023, 629);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -1722,7 +1722,7 @@ namespace HardwareInformation
             lblBIOS.Text = BIOS;
             lblBIOSType.Text = BIOSType;
             lblSecBoot.Text = SecBoot;
-            string str = BIOSFileReader.readLine(lblBM.Text, lblModel.Text, comboBox7.Text, comboBox8.Text);
+            string str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, comboBox7.Text, comboBox8.Text);
             if (lblHostname.Text.Equals("MUDAR-NOME"))
             {
                 pass = false;
