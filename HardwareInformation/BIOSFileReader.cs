@@ -11,7 +11,7 @@ namespace HardwareInformation
     {
         private static string fileBios = "bios.json", fileBakBios = "bios.bak.json";
         private static string fileSha1 = "bios-checksum.txt", fileBakSha1 = "bios-checksum.bak.txt";
-        private static string jsonFile, str, sha1, aux;
+        private static string jsonFile, str, str2, sha1, aux;
         private static WebClient wc;
         private static StreamReader fileB;
 
@@ -52,7 +52,10 @@ namespace HardwareInformation
                         foreach (var obj3 in obj2)
                         {
                             str = Convert.ToString(obj3);
-                            if (mod.Contains(str))
+                            str2 = Convert.ToString(obj2);
+                            if (str2.Contains("marca"))
+                                break;
+                            if (mod.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0)
                             {
                                 fileB.Close();
                                 return obj["versao"];
