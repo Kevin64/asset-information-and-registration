@@ -1,19 +1,25 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 
 namespace HardwareInformation
 {
+    public class jFile
+    {
+        public string id { get; set; }
+        public string marca { get; set; }
+        public string modelo { get; set; }
+        public string versao { get; set; }
+    }
     public static class BIOSFileReader
     {
         private static string fileBios = "bios.json", fileBakBios = "bios.bak.json";
         private static string fileSha1 = "bios-checksum.txt", fileBakSha1 = "bios-checksum.bak.txt";
-        private static string jsonFile, str, str2, sha1, aux;
+        private static string jsonFile, sha1, aux;
         private static WebClient wc;
-        private static StreamReader fileB;
+        private static StreamReader fileB;      
 
         //Reads a json file retrieved from the server and parses brand, model and BIOS versions, returning the latter
         [STAThread]
@@ -43,25 +49,12 @@ namespace HardwareInformation
             if (GetSha1Hash(aux).Equals(sha1))
             {
                 jsonFile = fileB.ReadToEnd();
-                dynamic jsonParse = JsonConvert.DeserializeObject(jsonFile);
+                jFile[] jsonParse = JsonConvert.DeserializeObject<jFile[]>(@jsonFile);
 
-                foreach (var obj in jsonParse)
+                for(int i = 0; i < jsonParse.Length; i++)
                 {
-                    foreach (var obj2 in obj)
-                    {
-                        foreach (var obj3 in obj2)
-                        {
-                            str = Convert.ToString(obj3);
-                            str2 = Convert.ToString(obj2);
-                            if (str2.Contains("marca"))
-                                break;
-                            if (mod.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0)
-                            {
-                                fileB.Close();
-                                return obj["versao"];
-                            }
-                        }
-                    }
+                    if(mod.Contains(jsonParse[i].modelo) && brd.Contains(jsonParse[i].marca))
+                        return jsonParse[i].versao;
                 }
             }
             fileB.Close();

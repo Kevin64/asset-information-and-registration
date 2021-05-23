@@ -187,25 +187,34 @@ public static class HardwareInfo
                     MACAddress = mo["MacAddress"].ToString();
             mo.Dispose();
         }
-        return MACAddress;
+        if (MACAddress != "")
+            return MACAddress;
+        else
+            return null;
     }
 
     //Fetches the primary IP address
     public static string GetIPAddress()
     {
         string[] IPAddress = null;
-
-        ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-        ManagementObjectCollection moc = mc.GetInstances();
-                
-        foreach (ManagementObject mo in moc)
+        try
         {
-            string[] gat = (string[])mo["DefaultIPGateway"];
-            if ((bool)mo["IPEnabled"] == true && gat != null)
-                IPAddress = (string[])mo["IPAddress"];
-            mo.Dispose();
+            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject mo in moc)
+            {
+                string[] gat = (string[])mo["DefaultIPGateway"];
+                if ((bool)mo["IPEnabled"] == true && gat != null)
+                    IPAddress = (string[])mo["IPAddress"];
+                mo.Dispose();
+            }
+            return IPAddress[0];
         }
-        return IPAddress[0];
+        catch
+        {
+            return null;
+        }
     }
 
     //Fetches the computer's manufacturer

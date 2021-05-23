@@ -109,6 +109,7 @@ namespace HardwareInformation
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1152,7 +1153,7 @@ namespace HardwareInformation
         private Label label27;
         private Label lblGPUInfo;
         private Label label29;
-        private Timer timer1, timer2, timer3, timer4;
+        private Timer timer1, timer2, timer3, timer4, timer5;
         private IContainer components;
         private Label lblMediaOperation;
         private Label label30;
@@ -1519,10 +1520,12 @@ namespace HardwareInformation
             timer2.Tick += new EventHandler(flashTextMediaOp);
             timer3.Tick += new EventHandler(flashTextSecBoot);
             timer4.Tick += new EventHandler(flashTextBIOSVersion);
+            timer5.Tick += new EventHandler(flashTextNetConnectivity);
             timer1.Interval = 500;
             timer2.Interval = 500;
             timer3.Interval = 500;
             timer4.Interval = 500;
+            timer5.Interval = 500;
             comboBox1.SelectedIndex = 4;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 1;
@@ -1592,6 +1595,25 @@ namespace HardwareInformation
                 lblBIOS.ForeColor = Color.Red;
         }
 
+        private void flashTextNetConnectivity(Object myobject, EventArgs myEventArgs)
+        {
+            if (lblMac.ForeColor == Color.Red && themeBool == true)
+            {
+                lblMac.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+                lblIP.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            }
+            else if (lblMac.ForeColor == Color.Red && themeBool == false)
+            {
+                lblMac.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+                lblIP.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            }
+            else
+            {
+                lblMac.ForeColor = Color.Red;
+                lblIP.ForeColor = Color.Red;
+            }
+        }
+
         //Starts the collection process
         private void collecting()
         {
@@ -1600,6 +1622,7 @@ namespace HardwareInformation
             timer2.Enabled = false;
             timer3.Enabled = false;
             timer4.Enabled = false;
+            timer5.Enabled = false;
             if (lblHostname.ForeColor == Color.Red && themeBool == true)
             {
                 lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -1746,6 +1769,13 @@ namespace HardwareInformation
                 pass = false;
                 lblBIOS.Text += " (Atualizar BIOS/UEFI)";
                 timer4.Enabled = true;
+            }
+            if(lblMac.Text == "")
+            {
+                pass = false;
+                lblMac.Text = "Computador sem conexão com a Intranet";
+                lblIP.Text = "Computador sem conexão com a Intranet";
+                timer5.Enabled = true;
             }
         }
         
