@@ -12,18 +12,19 @@ namespace HardwareInformation
         public string marca { get; set; }
         public string modelo { get; set; }
         public string versao { get; set; }
+        public string tipo { get; set; }
     }
     public static class BIOSFileReader
     {
-        private static string fileBios = "bios.json", fileBakBios = "bios.bak.json";
-        private static string fileSha1 = "bios-checksum.txt", fileBakSha1 = "bios-checksum.bak.txt";
+        private static string fileBios = "bios.json";
+        private static string fileSha1 = "bios-checksum.txt";
         private static string jsonFile, sha1, aux;
         private static WebClient wc;
         private static StreamReader fileB;      
 
         //Reads a json file retrieved from the server and parses brand, model and BIOS versions, returning the latter
         [STAThread]
-        public static string fetchInfo(string brd, string mod, string ip, string port)
+        public static string[] fetchInfo(string brd, string mod, string type, string ip, string port)
         {            
             try
             {
@@ -38,28 +39,38 @@ namespace HardwareInformation
                 fileB = new StreamReader(@fileBios);
                 aux = fileBios;
             }
-            catch
+            catch(WebException ex)
             {
-                sha1 = wc.DownloadString(fileBakSha1);
-                sha1 = sha1.ToUpper();
-                fileB = new StreamReader(@fileBakBios);
-                aux = fileBakBios;
+                return null;
             }            
 
             if (GetSha1Hash(aux).Equals(sha1))
             {
+                string[] arr;
                 jsonFile = fileB.ReadToEnd();
                 jFile[] jsonParse = JsonConvert.DeserializeObject<jFile[]>(@jsonFile);
 
                 for(int i = 0; i < jsonParse.Length; i++)
                 {
-                    if(mod.Contains(jsonParse[i].modelo) && brd.Contains(jsonParse[i].marca))
-                        return jsonParse[i].versao;
+                    if (mod.Contains(jsonParse[i].modelo) && brd.Contains(jsonParse[i].marca))
+                    {
+                        
+                        if (!type.Equals(jsonParse[i].tipo))
+                        {
+                            arr = new String[] {jsonParse[i].versao, "false"};
+                            fileB.Close();
+                            return arr;
+                        }
+                        arr = new String[] {jsonParse[i].versao, "true"};
+                        fileB.Close();
+                        return arr;
+                    }
                 }
             }
             fileB.Close();
             return null;
         }
+
         public static string GetSha1Hash(string filePath)
         {
             using (FileStream fs = File.OpenRead(filePath))

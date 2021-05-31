@@ -111,6 +111,8 @@ namespace HardwareInformation
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer6 = new System.Windows.Forms.Timer(this.components);
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -123,9 +125,10 @@ namespace HardwareInformation
             // 
             this.lblBM.AutoSize = true;
             this.lblBM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblBM.Location = new System.Drawing.Point(185, 25);
+            this.lblBM.Location = new System.Drawing.Point(370, 48);
+            this.lblBM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBM.Name = "lblBM";
-            this.lblBM.Size = new System.Drawing.Size(13, 13);
+            this.lblBM.Size = new System.Drawing.Size(24, 25);
             this.lblBM.TabIndex = 7;
             this.lblBM.Text = "a";
             // 
@@ -133,9 +136,10 @@ namespace HardwareInformation
             // 
             this.lblModel.AutoSize = true;
             this.lblModel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblModel.Location = new System.Drawing.Point(185, 50);
+            this.lblModel.Location = new System.Drawing.Point(370, 96);
+            this.lblModel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(13, 13);
+            this.lblModel.Size = new System.Drawing.Size(24, 25);
             this.lblModel.TabIndex = 8;
             this.lblModel.Text = "b";
             // 
@@ -143,9 +147,10 @@ namespace HardwareInformation
             // 
             this.lblSerialNo.AutoSize = true;
             this.lblSerialNo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSerialNo.Location = new System.Drawing.Point(185, 75);
+            this.lblSerialNo.Location = new System.Drawing.Point(370, 144);
+            this.lblSerialNo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSerialNo.Name = "lblSerialNo";
-            this.lblSerialNo.Size = new System.Drawing.Size(13, 13);
+            this.lblSerialNo.Size = new System.Drawing.Size(23, 25);
             this.lblSerialNo.TabIndex = 9;
             this.lblSerialNo.Text = "c";
             // 
@@ -153,9 +158,10 @@ namespace HardwareInformation
             // 
             this.lblProcName.AutoSize = true;
             this.lblProcName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblProcName.Location = new System.Drawing.Point(185, 100);
+            this.lblProcName.Location = new System.Drawing.Point(370, 192);
+            this.lblProcName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblProcName.Name = "lblProcName";
-            this.lblProcName.Size = new System.Drawing.Size(13, 13);
+            this.lblProcName.Size = new System.Drawing.Size(24, 25);
             this.lblProcName.TabIndex = 10;
             this.lblProcName.Text = "d";
             // 
@@ -163,9 +169,10 @@ namespace HardwareInformation
             // 
             this.lblPM.AutoSize = true;
             this.lblPM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPM.Location = new System.Drawing.Point(185, 125);
+            this.lblPM.Location = new System.Drawing.Point(370, 240);
+            this.lblPM.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPM.Name = "lblPM";
-            this.lblPM.Size = new System.Drawing.Size(13, 13);
+            this.lblPM.Size = new System.Drawing.Size(24, 25);
             this.lblPM.TabIndex = 11;
             this.lblPM.Text = "e";
             // 
@@ -173,9 +180,10 @@ namespace HardwareInformation
             // 
             this.lblHDSize.AutoSize = true;
             this.lblHDSize.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHDSize.Location = new System.Drawing.Point(185, 150);
+            this.lblHDSize.Location = new System.Drawing.Point(370, 288);
+            this.lblHDSize.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblHDSize.Name = "lblHDSize";
-            this.lblHDSize.Size = new System.Drawing.Size(10, 13);
+            this.lblHDSize.Size = new System.Drawing.Size(18, 25);
             this.lblHDSize.TabIndex = 12;
             this.lblHDSize.Text = "f";
             // 
@@ -183,9 +191,10 @@ namespace HardwareInformation
             // 
             this.lblOS.AutoSize = true;
             this.lblOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblOS.Location = new System.Drawing.Point(185, 250);
+            this.lblOS.Location = new System.Drawing.Point(370, 481);
+            this.lblOS.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblOS.Name = "lblOS";
-            this.lblOS.Size = new System.Drawing.Size(9, 13);
+            this.lblOS.Size = new System.Drawing.Size(17, 25);
             this.lblOS.TabIndex = 13;
             this.lblOS.Text = "j";
             // 
@@ -193,9 +202,10 @@ namespace HardwareInformation
             // 
             this.lblHostname.AutoSize = true;
             this.lblHostname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblHostname.Location = new System.Drawing.Point(185, 275);
+            this.lblHostname.Location = new System.Drawing.Point(370, 529);
+            this.lblHostname.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblHostname.Name = "lblHostname";
-            this.lblHostname.Size = new System.Drawing.Size(13, 13);
+            this.lblHostname.Size = new System.Drawing.Size(23, 25);
             this.lblHostname.TabIndex = 15;
             this.lblHostname.Text = "k";
             // 
@@ -203,9 +213,10 @@ namespace HardwareInformation
             // 
             this.lblMac.AutoSize = true;
             this.lblMac.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMac.Location = new System.Drawing.Point(185, 300);
+            this.lblMac.Location = new System.Drawing.Point(370, 577);
+            this.lblMac.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMac.Name = "lblMac";
-            this.lblMac.Size = new System.Drawing.Size(9, 13);
+            this.lblMac.Size = new System.Drawing.Size(17, 25);
             this.lblMac.TabIndex = 18;
             this.lblMac.Text = "l";
             // 
@@ -213,9 +224,10 @@ namespace HardwareInformation
             // 
             this.lblIP.AutoSize = true;
             this.lblIP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblIP.Location = new System.Drawing.Point(185, 324);
+            this.lblIP.Location = new System.Drawing.Point(370, 623);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(15, 13);
+            this.lblIP.Size = new System.Drawing.Size(29, 25);
             this.lblIP.TabIndex = 19;
             this.lblIP.Text = "m";
             // 
@@ -223,9 +235,10 @@ namespace HardwareInformation
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(25, 25);
+            this.label1.Location = new System.Drawing.Point(50, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.Size = new System.Drawing.Size(78, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Marca:";
             // 
@@ -233,9 +246,10 @@ namespace HardwareInformation
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(25, 50);
+            this.label2.Location = new System.Drawing.Point(50, 96);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.Size = new System.Drawing.Size(89, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Modelo:";
             // 
@@ -243,9 +257,10 @@ namespace HardwareInformation
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(25, 75);
+            this.label3.Location = new System.Drawing.Point(50, 144);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.Size = new System.Drawing.Size(154, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "Número Serial:";
             // 
@@ -253,9 +268,10 @@ namespace HardwareInformation
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(25, 100);
+            this.label4.Location = new System.Drawing.Point(50, 192);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 13);
+            this.label4.Size = new System.Drawing.Size(294, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Processador e nº de núcleos:";
             // 
@@ -263,9 +279,10 @@ namespace HardwareInformation
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(25, 125);
+            this.label5.Location = new System.Drawing.Point(50, 240);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 13);
+            this.label5.Size = new System.Drawing.Size(279, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Memória RAM e nº de slots:";
             // 
@@ -273,9 +290,10 @@ namespace HardwareInformation
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(25, 150);
+            this.label6.Location = new System.Drawing.Point(50, 288);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 13);
+            this.label6.Size = new System.Drawing.Size(311, 25);
             this.label6.TabIndex = 5;
             this.label6.Text = "Armazenamento (espaço total):";
             // 
@@ -283,9 +301,10 @@ namespace HardwareInformation
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(25, 250);
+            this.label7.Location = new System.Drawing.Point(50, 481);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 13);
+            this.label7.Size = new System.Drawing.Size(217, 25);
             this.label7.TabIndex = 6;
             this.label7.Text = "Sistema Operacional:";
             // 
@@ -293,9 +312,10 @@ namespace HardwareInformation
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(25, 275);
+            this.label8.Location = new System.Drawing.Point(50, 529);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 13);
+            this.label8.Size = new System.Drawing.Size(227, 25);
             this.label8.TabIndex = 7;
             this.label8.Text = "Nome do Computador:";
             // 
@@ -303,9 +323,10 @@ namespace HardwareInformation
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label9.Location = new System.Drawing.Point(25, 300);
+            this.label9.Location = new System.Drawing.Point(50, 577);
+            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(118, 13);
+            this.label9.Size = new System.Drawing.Size(234, 25);
             this.label9.TabIndex = 8;
             this.label9.Text = "Endereço MAC do NIC:";
             // 
@@ -313,9 +334,10 @@ namespace HardwareInformation
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label10.Location = new System.Drawing.Point(25, 324);
+            this.label10.Location = new System.Drawing.Point(50, 623);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(105, 13);
+            this.label10.Size = new System.Drawing.Size(206, 25);
             this.label10.TabIndex = 9;
             this.label10.Text = "Endereço IP do NIC:";
             // 
@@ -323,9 +345,10 @@ namespace HardwareInformation
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(20, 25);
+            this.label11.Location = new System.Drawing.Point(40, 48);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.Size = new System.Drawing.Size(120, 25);
             this.label11.TabIndex = 10;
             this.label11.Text = "Patrimônio:";
             // 
@@ -333,9 +356,10 @@ namespace HardwareInformation
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label12.Location = new System.Drawing.Point(20, 50);
+            this.label12.Location = new System.Drawing.Point(40, 96);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.Size = new System.Drawing.Size(187, 25);
             this.label12.TabIndex = 11;
             this.label12.Text = "Lacre (se houver):";
             // 
@@ -343,9 +367,10 @@ namespace HardwareInformation
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label13.Location = new System.Drawing.Point(20, 100);
+            this.label13.Location = new System.Drawing.Point(40, 192);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.Size = new System.Drawing.Size(80, 25);
             this.label13.TabIndex = 13;
             this.label13.Text = "Prédio:";
             // 
@@ -353,10 +378,11 @@ namespace HardwareInformation
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Location = new System.Drawing.Point(164, 22);
+            this.textBox1.Location = new System.Drawing.Point(328, 42);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 20);
+            this.textBox1.Size = new System.Drawing.Size(450, 31);
             this.textBox1.TabIndex = 34;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -364,10 +390,11 @@ namespace HardwareInformation
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox2.Location = new System.Drawing.Point(164, 47);
+            this.textBox2.Location = new System.Drawing.Point(328, 90);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.MaxLength = 10;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(227, 20);
+            this.textBox2.Size = new System.Drawing.Size(450, 31);
             this.textBox2.TabIndex = 35;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -375,10 +402,11 @@ namespace HardwareInformation
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox3.Location = new System.Drawing.Point(164, 72);
+            this.textBox3.Location = new System.Drawing.Point(328, 138);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox3.MaxLength = 4;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(92, 20);
+            this.textBox3.Size = new System.Drawing.Size(180, 31);
             this.textBox3.TabIndex = 36;
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
@@ -386,10 +414,11 @@ namespace HardwareInformation
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.textBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox4.Location = new System.Drawing.Point(358, 72);
+            this.textBox4.Location = new System.Drawing.Point(716, 138);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox4.MaxLength = 1;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(33, 20);
+            this.textBox4.Size = new System.Drawing.Size(62, 31);
             this.textBox4.TabIndex = 37;
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
@@ -397,9 +426,10 @@ namespace HardwareInformation
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label14.Location = new System.Drawing.Point(20, 75);
+            this.label14.Location = new System.Drawing.Point(40, 144);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(135, 13);
+            this.label14.Size = new System.Drawing.Size(272, 25);
             this.label14.TabIndex = 12;
             this.label14.Text = "Sala (0000 se não houver):";
             // 
@@ -407,9 +437,10 @@ namespace HardwareInformation
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label15.Location = new System.Drawing.Point(20, 125);
+            this.label15.Location = new System.Drawing.Point(40, 240);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(137, 13);
+            this.label15.Size = new System.Drawing.Size(277, 25);
             this.label15.TabIndex = 14;
             this.label15.Text = "Cadastrado no servidor AD:";
             // 
@@ -417,9 +448,10 @@ namespace HardwareInformation
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label16.Location = new System.Drawing.Point(20, 175);
+            this.label16.Location = new System.Drawing.Point(40, 337);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 13);
+            this.label16.Size = new System.Drawing.Size(191, 25);
             this.label16.TabIndex = 16;
             this.label16.Text = "Última formatação:";
             // 
@@ -439,9 +471,10 @@ namespace HardwareInformation
             "ANTIGA REITORIA",
             "APOIO",
             "BIBLIOTECA SETORIAL"});
-            this.comboBox1.Location = new System.Drawing.Point(164, 97);
+            this.comboBox1.Location = new System.Drawing.Point(328, 187);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 21);
+            this.comboBox1.Size = new System.Drawing.Size(180, 33);
             this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 38;
             // 
@@ -455,9 +488,10 @@ namespace HardwareInformation
             this.comboBox2.Items.AddRange(new object[] {
             "NAO",
             "SIM"});
-            this.comboBox2.Location = new System.Drawing.Point(164, 122);
+            this.comboBox2.Location = new System.Drawing.Point(328, 235);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(92, 21);
+            this.comboBox2.Size = new System.Drawing.Size(180, 33);
             this.comboBox2.Sorted = true;
             this.comboBox2.TabIndex = 39;
             // 
@@ -465,9 +499,10 @@ namespace HardwareInformation
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label17.Location = new System.Drawing.Point(20, 150);
+            this.label17.Location = new System.Drawing.Point(40, 288);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 13);
+            this.label17.Size = new System.Drawing.Size(87, 25);
             this.label17.TabIndex = 15;
             this.label17.Text = "Padrão:";
             // 
@@ -481,9 +516,10 @@ namespace HardwareInformation
             this.comboBox3.Items.AddRange(new object[] {
             "AD",
             "PCCLI"});
-            this.comboBox3.Location = new System.Drawing.Point(164, 147);
+            this.comboBox3.Location = new System.Drawing.Point(328, 283);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(92, 21);
+            this.comboBox3.Size = new System.Drawing.Size(180, 33);
             this.comboBox3.TabIndex = 40;
             // 
             // cadastraButton
@@ -492,9 +528,10 @@ namespace HardwareInformation
             this.cadastraButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cadastraButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastraButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cadastraButton.Location = new System.Drawing.Point(747, 549);
+            this.cadastraButton.Location = new System.Drawing.Point(1494, 1056);
+            this.cadastraButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cadastraButton.Name = "cadastraButton";
-            this.cadastraButton.Size = new System.Drawing.Size(242, 54);
+            this.cadastraButton.Size = new System.Drawing.Size(484, 104);
             this.cadastraButton.TabIndex = 50;
             this.cadastraButton.Text = "Cadastrar / Atualizar dados";
             this.cadastraButton.UseVisualStyleBackColor = false;
@@ -504,9 +541,10 @@ namespace HardwareInformation
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label18.Location = new System.Drawing.Point(262, 100);
+            this.label18.Location = new System.Drawing.Point(524, 192);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(45, 13);
+            this.label18.Size = new System.Drawing.Size(90, 25);
             this.label18.TabIndex = 48;
             this.label18.Text = "Em uso:";
             // 
@@ -520,18 +558,20 @@ namespace HardwareInformation
             this.comboBox4.Items.AddRange(new object[] {
             "NAO",
             "SIM"});
-            this.comboBox4.Location = new System.Drawing.Point(313, 97);
+            this.comboBox4.Location = new System.Drawing.Point(626, 187);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(78, 21);
+            this.comboBox4.Size = new System.Drawing.Size(152, 33);
             this.comboBox4.TabIndex = 41;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label19.Location = new System.Drawing.Point(262, 125);
+            this.label19.Location = new System.Drawing.Point(524, 240);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(49, 13);
+            this.label19.Size = new System.Drawing.Size(97, 25);
             this.label19.TabIndex = 50;
             this.label19.Text = "Etiqueta:";
             // 
@@ -545,18 +585,20 @@ namespace HardwareInformation
             this.comboBox5.Items.AddRange(new object[] {
             "NAO",
             "SIM"});
-            this.comboBox5.Location = new System.Drawing.Point(313, 122);
+            this.comboBox5.Location = new System.Drawing.Point(626, 235);
+            this.comboBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(78, 21);
+            this.comboBox5.Size = new System.Drawing.Size(152, 33);
             this.comboBox5.TabIndex = 42;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label20.Location = new System.Drawing.Point(262, 150);
+            this.label20.Location = new System.Drawing.Point(524, 288);
+            this.label20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(31, 13);
+            this.label20.Size = new System.Drawing.Size(60, 25);
             this.label20.TabIndex = 53;
             this.label20.Text = "Tipo:";
             // 
@@ -571,18 +613,20 @@ namespace HardwareInformation
             "DESKTOP",
             "NOTEBOOK",
             "TABLET"});
-            this.comboBox6.Location = new System.Drawing.Point(313, 147);
+            this.comboBox6.Location = new System.Drawing.Point(626, 283);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(78, 21);
+            this.comboBox6.Size = new System.Drawing.Size(152, 33);
             this.comboBox6.TabIndex = 43;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label21.Location = new System.Drawing.Point(20, 346);
+            this.label21.Location = new System.Drawing.Point(40, 665);
+            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 13);
+            this.label21.Size = new System.Drawing.Size(98, 25);
             this.label21.TabIndex = 17;
             this.label21.Text = "Servidor:";
             // 
@@ -594,9 +638,10 @@ namespace HardwareInformation
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Items.AddRange(new object[] {
             "192.168.76.103"});
-            this.comboBox7.Location = new System.Drawing.Point(164, 343);
+            this.comboBox7.Location = new System.Drawing.Point(328, 660);
+            this.comboBox7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(120, 21);
+            this.comboBox7.Size = new System.Drawing.Size(236, 33);
             this.comboBox7.TabIndex = 45;
             // 
             // comboBox8
@@ -607,25 +652,28 @@ namespace HardwareInformation
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Items.AddRange(new object[] {
             "8081"});
-            this.comboBox8.Location = new System.Drawing.Point(331, 343);
+            this.comboBox8.Location = new System.Drawing.Point(662, 660);
+            this.comboBox8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(60, 21);
+            this.comboBox8.Size = new System.Drawing.Size(116, 33);
             this.comboBox8.TabIndex = 46;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label22.Location = new System.Drawing.Point(290, 346);
+            this.label22.Location = new System.Drawing.Point(580, 665);
+            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(35, 13);
+            this.label22.Size = new System.Drawing.Size(69, 25);
             this.label22.TabIndex = 18;
             this.label22.Text = "Porta:";
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.monthCalendar1.Location = new System.Drawing.Point(164, 172);
+            this.monthCalendar1.Location = new System.Drawing.Point(328, 331);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(18, 17, 18, 17);
             this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 44;
@@ -636,9 +684,10 @@ namespace HardwareInformation
             this.coletaButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.coletaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.coletaButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.coletaButton.Location = new System.Drawing.Point(575, 549);
+            this.coletaButton.Location = new System.Drawing.Point(1150, 1056);
+            this.coletaButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.coletaButton.Name = "coletaButton";
-            this.coletaButton.Size = new System.Drawing.Size(166, 23);
+            this.coletaButton.Size = new System.Drawing.Size(332, 44);
             this.coletaButton.TabIndex = 49;
             this.coletaButton.Text = "Coletar Novamente";
             this.coletaButton.UseVisualStyleBackColor = false;
@@ -648,9 +697,10 @@ namespace HardwareInformation
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label23.Location = new System.Drawing.Point(262, 75);
+            this.label23.Location = new System.Drawing.Point(524, 144);
+            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(90, 13);
+            this.label23.Size = new System.Drawing.Size(182, 25);
             this.label23.TabIndex = 55;
             this.label23.Text = "Letra (se houver):";
             // 
@@ -658,9 +708,10 @@ namespace HardwareInformation
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label24.Location = new System.Drawing.Point(25, 374);
+            this.label24.Location = new System.Drawing.Point(50, 719);
+            this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(115, 13);
+            this.label24.Size = new System.Drawing.Size(224, 25);
             this.label24.TabIndex = 56;
             this.label24.Text = "Versão da BIOS/UEFI:";
             // 
@@ -668,9 +719,10 @@ namespace HardwareInformation
             // 
             this.lblBIOS.AutoSize = true;
             this.lblBIOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblBIOS.Location = new System.Drawing.Point(185, 374);
+            this.lblBIOS.Location = new System.Drawing.Point(370, 719);
+            this.lblBIOS.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBIOS.Name = "lblBIOS";
-            this.lblBIOS.Size = new System.Drawing.Size(13, 13);
+            this.lblBIOS.Size = new System.Drawing.Size(24, 25);
             this.lblBIOS.TabIndex = 57;
             this.lblBIOS.Text = "o";
             // 
@@ -679,9 +731,10 @@ namespace HardwareInformation
             this.accessSystemButton.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.accessSystemButton.Location = new System.Drawing.Point(575, 578);
+            this.accessSystemButton.Location = new System.Drawing.Point(1150, 1112);
+            this.accessSystemButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.accessSystemButton.Name = "accessSystemButton";
-            this.accessSystemButton.Size = new System.Drawing.Size(166, 25);
+            this.accessSystemButton.Size = new System.Drawing.Size(332, 48);
             this.accessSystemButton.TabIndex = 51;
             this.accessSystemButton.Text = "Acessar sistema de patrimônios";
             this.accessSystemButton.UseVisualStyleBackColor = false;
@@ -691,9 +744,10 @@ namespace HardwareInformation
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label25.Location = new System.Drawing.Point(25, 349);
+            this.label25.Location = new System.Drawing.Point(50, 671);
+            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(88, 13);
+            this.label25.Size = new System.Drawing.Size(177, 25);
             this.label25.TabIndex = 62;
             this.label25.Text = "Tipo de firmware:";
             // 
@@ -701,9 +755,10 @@ namespace HardwareInformation
             // 
             this.lblBIOSType.AutoSize = true;
             this.lblBIOSType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblBIOSType.Location = new System.Drawing.Point(185, 349);
+            this.lblBIOSType.Location = new System.Drawing.Point(370, 671);
+            this.lblBIOSType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBIOSType.Name = "lblBIOSType";
-            this.lblBIOSType.Size = new System.Drawing.Size(13, 13);
+            this.lblBIOSType.Size = new System.Drawing.Size(24, 25);
             this.lblBIOSType.TabIndex = 63;
             this.lblBIOSType.Text = "n";
             // 
@@ -744,9 +799,11 @@ namespace HardwareInformation
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.progressBar1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(32, 113);
+            this.groupBox1.Location = new System.Drawing.Point(64, 217);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 490);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(1074, 942);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
@@ -756,9 +813,10 @@ namespace HardwareInformation
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label28.Location = new System.Drawing.Point(255, 428);
+            this.label28.Location = new System.Drawing.Point(510, 823);
+            this.label28.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(13, 13);
+            this.label28.Size = new System.Drawing.Size(24, 25);
             this.label28.TabIndex = 70;
             this.label28.Text = "q";
             // 
@@ -766,9 +824,10 @@ namespace HardwareInformation
             // 
             this.lblSecBoot.AutoSize = true;
             this.lblSecBoot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSecBoot.Location = new System.Drawing.Point(185, 399);
+            this.lblSecBoot.Location = new System.Drawing.Point(370, 767);
+            this.lblSecBoot.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSecBoot.Name = "lblSecBoot";
-            this.lblSecBoot.Size = new System.Drawing.Size(13, 13);
+            this.lblSecBoot.Size = new System.Drawing.Size(24, 25);
             this.lblSecBoot.TabIndex = 71;
             this.lblSecBoot.Text = "p";
             // 
@@ -776,9 +835,10 @@ namespace HardwareInformation
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label32.Location = new System.Drawing.Point(25, 399);
+            this.label32.Location = new System.Drawing.Point(50, 767);
+            this.label32.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(69, 13);
+            this.label32.Size = new System.Drawing.Size(136, 25);
             this.label32.TabIndex = 70;
             this.label32.Text = "Secure Boot:";
             // 
@@ -786,9 +846,10 @@ namespace HardwareInformation
             // 
             this.lblMediaOperation.AutoSize = true;
             this.lblMediaOperation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMediaOperation.Location = new System.Drawing.Point(185, 200);
+            this.lblMediaOperation.Location = new System.Drawing.Point(370, 385);
+            this.lblMediaOperation.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMediaOperation.Name = "lblMediaOperation";
-            this.lblMediaOperation.Size = new System.Drawing.Size(13, 13);
+            this.lblMediaOperation.Size = new System.Drawing.Size(24, 25);
             this.lblMediaOperation.TabIndex = 69;
             this.lblMediaOperation.Text = "h";
             // 
@@ -796,9 +857,10 @@ namespace HardwareInformation
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label30.Location = new System.Drawing.Point(25, 200);
+            this.label30.Location = new System.Drawing.Point(50, 385);
+            this.label30.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(154, 13);
+            this.label30.Size = new System.Drawing.Size(301, 25);
             this.label30.TabIndex = 68;
             this.label30.Text = "Modo de operação SATA/M.2:";
             // 
@@ -806,9 +868,10 @@ namespace HardwareInformation
             // 
             this.lblGPUInfo.AutoSize = true;
             this.lblGPUInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblGPUInfo.Location = new System.Drawing.Point(185, 225);
+            this.lblGPUInfo.Location = new System.Drawing.Point(370, 433);
+            this.lblGPUInfo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblGPUInfo.Name = "lblGPUInfo";
-            this.lblGPUInfo.Size = new System.Drawing.Size(9, 13);
+            this.lblGPUInfo.Size = new System.Drawing.Size(17, 25);
             this.lblGPUInfo.TabIndex = 67;
             this.lblGPUInfo.Text = "i";
             // 
@@ -816,9 +879,10 @@ namespace HardwareInformation
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label29.Location = new System.Drawing.Point(25, 225);
+            this.label29.Location = new System.Drawing.Point(50, 433);
+            this.label29.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(84, 13);
+            this.label29.Size = new System.Drawing.Size(163, 25);
             this.label29.TabIndex = 66;
             this.label29.Text = "Placa de Vídeo:";
             // 
@@ -826,9 +890,10 @@ namespace HardwareInformation
             // 
             this.lblMediaType.AutoSize = true;
             this.lblMediaType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMediaType.Location = new System.Drawing.Point(185, 175);
+            this.lblMediaType.Location = new System.Drawing.Point(370, 337);
+            this.lblMediaType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMediaType.Name = "lblMediaType";
-            this.lblMediaType.Size = new System.Drawing.Size(13, 13);
+            this.lblMediaType.Size = new System.Drawing.Size(24, 25);
             this.lblMediaType.TabIndex = 65;
             this.lblMediaType.Text = "g";
             // 
@@ -836,21 +901,24 @@ namespace HardwareInformation
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label27.Location = new System.Drawing.Point(25, 175);
+            this.label27.Location = new System.Drawing.Point(50, 337);
+            this.label27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(124, 13);
+            this.label27.Size = new System.Drawing.Size(250, 25);
             this.label27.TabIndex = 64;
             this.label27.Text = "Tipo de armazenamento:";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 444);
+            this.progressBar1.Location = new System.Drawing.Point(12, 854);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(525, 36);
+            this.progressBar1.Size = new System.Drawing.Size(1050, 69);
             this.progressBar1.TabIndex = 69;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.webView2);
             this.groupBox2.Controls.Add(this.label11);
@@ -880,9 +948,11 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.comboBox4);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(575, 113);
+            this.groupBox2.Location = new System.Drawing.Point(1150, 217);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(414, 431);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Size = new System.Drawing.Size(828, 829);
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
@@ -894,9 +964,11 @@ namespace HardwareInformation
             this.groupBox3.Controls.Add(this.formatButton1);
             this.groupBox3.Controls.Add(this.maintenanceButton2);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox3.Location = new System.Drawing.Point(6, 191);
+            this.groupBox3.Location = new System.Drawing.Point(12, 367);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(151, 146);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Size = new System.Drawing.Size(302, 281);
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo de serviço";
@@ -906,11 +978,12 @@ namespace HardwareInformation
             this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox5.Location = new System.Drawing.Point(18, 34);
+            this.textBox5.Location = new System.Drawing.Point(36, 65);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(123, 40);
+            this.textBox5.Size = new System.Drawing.Size(246, 77);
             this.textBox5.TabIndex = 76;
             this.textBox5.Text = "Opção para quando o PC passar por manutenção com formatação";
             // 
@@ -919,11 +992,12 @@ namespace HardwareInformation
             this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox6.Location = new System.Drawing.Point(17, 96);
+            this.textBox6.Location = new System.Drawing.Point(34, 185);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(126, 41);
+            this.textBox6.Size = new System.Drawing.Size(252, 79);
             this.textBox6.TabIndex = 77;
             this.textBox6.Text = "Opção para quando o PC passar por manutenção sem formatação";
             // 
@@ -931,9 +1005,10 @@ namespace HardwareInformation
             // 
             this.formatButton1.AutoSize = true;
             this.formatButton1.Checked = true;
-            this.formatButton1.Location = new System.Drawing.Point(18, 19);
+            this.formatButton1.Location = new System.Drawing.Point(36, 37);
+            this.formatButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.formatButton1.Name = "formatButton1";
-            this.formatButton1.Size = new System.Drawing.Size(81, 17);
+            this.formatButton1.Size = new System.Drawing.Size(157, 29);
             this.formatButton1.TabIndex = 73;
             this.formatButton1.TabStop = true;
             this.formatButton1.Text = "Formatação";
@@ -943,9 +1018,10 @@ namespace HardwareInformation
             // maintenanceButton2
             // 
             this.maintenanceButton2.AutoSize = true;
-            this.maintenanceButton2.Location = new System.Drawing.Point(18, 80);
+            this.maintenanceButton2.Location = new System.Drawing.Point(36, 154);
+            this.maintenanceButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.maintenanceButton2.Name = "maintenanceButton2";
-            this.maintenanceButton2.Size = new System.Drawing.Size(85, 17);
+            this.maintenanceButton2.Size = new System.Drawing.Size(162, 29);
             this.maintenanceButton2.TabIndex = 74;
             this.maintenanceButton2.Text = "Manutenção";
             this.maintenanceButton2.UseVisualStyleBackColor = true;
@@ -955,9 +1031,10 @@ namespace HardwareInformation
             // 
             this.webView2.CreationProperties = null;
             this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2.Location = new System.Drawing.Point(6, 370);
+            this.webView2.Location = new System.Drawing.Point(12, 712);
+            this.webView2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(402, 52);
+            this.webView2.Size = new System.Drawing.Size(804, 100);
             this.webView2.TabIndex = 72;
             this.webView2.ZoomFactor = 1D;
             // 
@@ -968,7 +1045,7 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 36);
             // 
             // statusStrip1
             // 
@@ -978,9 +1055,10 @@ namespace HardwareInformation
             this.comboBoxTheme,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 605);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 1164);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1023, 24);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 28, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(2046, 46);
             this.statusStrip1.TabIndex = 60;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -994,7 +1072,7 @@ namespace HardwareInformation
             this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
+            this.comboBoxTheme.Size = new System.Drawing.Size(94, 42);
             this.comboBoxTheme.Text = "Tema";
             // 
             // toolStripMenuItem1
@@ -1003,7 +1081,7 @@ namespace HardwareInformation
             this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(472, 44);
             this.toolStripMenuItem1.Text = "Automático (Tema do sistema)";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -1012,7 +1090,7 @@ namespace HardwareInformation
             this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(472, 44);
             this.toolStripMenuItem2.Text = "Claro";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -1021,7 +1099,7 @@ namespace HardwareInformation
             this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(472, 44);
             this.toolStripMenuItem3.Text = "Escuro";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
@@ -1030,7 +1108,7 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Top | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(956, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(1918, 36);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = "Sistema desenvolvido pelo servidor Kevin Costa, SIAPE 1971957, para uso no serviç" +
     "o da Unidade de Tecnologia da Informação do CCSH - UFSM";
@@ -1046,21 +1124,34 @@ namespace HardwareInformation
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(-7, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(-14, -4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1030, 109);
+            this.pictureBox1.Size = new System.Drawing.Size(2060, 210);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 64;
             this.pictureBox1.TabStop = false;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label26.Location = new System.Drawing.Point(136, 665);
+            this.label26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(19, 25);
+            this.label26.TabIndex = 72;
+            this.label26.Text = "r";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1023, 629);
+            this.ClientSize = new System.Drawing.Size(2046, 1210);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -1070,6 +1161,7 @@ namespace HardwareInformation
             this.Controls.Add(this.cadastraButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1153,7 +1245,7 @@ namespace HardwareInformation
         private Label label27;
         private Label lblGPUInfo;
         private Label label29;
-        private Timer timer1, timer2, timer3, timer4, timer5;
+        private Timer timer1, timer2, timer3, timer4, timer5, timer6;
         private IContainer components;
         private Label lblMediaOperation;
         private Label label30;
@@ -1161,6 +1253,9 @@ namespace HardwareInformation
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private string coletando = "Coletando...";
+        private string cadastrando = "Cadastrando, aguarde...";
+        private string coletarNovamente = "Coletar Novamente";
+        private string cadastrarNovamente = "Cadastrar / Atualizar dados";
         private bool pass = true, mode = true;
         private ComboBox comboBox8;
         private MonthCalendar monthCalendar1;
@@ -1183,6 +1278,7 @@ namespace HardwareInformation
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem toolStripMenuItem3;
+        private Label label26;
         private Label label22;
 
         //Fetches the program's binary version
@@ -1521,11 +1617,13 @@ namespace HardwareInformation
             timer3.Tick += new EventHandler(flashTextSecBoot);
             timer4.Tick += new EventHandler(flashTextBIOSVersion);
             timer5.Tick += new EventHandler(flashTextNetConnectivity);
+            timer6.Tick += new EventHandler(flashTextBIOSType);
             timer1.Interval = 500;
             timer2.Interval = 500;
             timer3.Interval = 500;
             timer4.Interval = 500;
             timer5.Interval = 500;
+            timer6.Interval = 500;
             comboBox1.SelectedIndex = 4;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 1;
@@ -1613,16 +1711,40 @@ namespace HardwareInformation
                 lblIP.ForeColor = Color.Red;
             }
         }
+        
+        private void flashTextBIOSType(Object myobject, EventArgs myEventArgs)
+        {
+            if (lblBIOSType.ForeColor == Color.Red && themeBool == true)
+                lblBIOSType.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            else if (lblBIOSType.ForeColor == Color.Red && themeBool == false)
+                lblBIOSType.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            else
+                lblBIOSType.ForeColor = Color.Red;
+        }
 
         //Starts the collection process
         private void collecting()
         {
+            servidor_web = comboBox7.Text;
+            porta = comboBox8.Text;
+            if (PingHost(servidor_web) == true && porta != "")
+            {
+                label26.Text = "(Online)";
+                label26.ForeColor = Color.Lime;
+            }
+            else
+            {
+                label26.Text = "(Offline)";
+                label26.ForeColor = Color.Red;
+            }               
+
             //Stops blinking and resets red color
             timer1.Enabled = false;
             timer2.Enabled = false;
             timer3.Enabled = false;
             timer4.Enabled = false;
             timer5.Enabled = false;
+            timer6.Enabled = false;
             if (lblHostname.ForeColor == Color.Red && themeBool == true)
             {
                 lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -1659,6 +1781,7 @@ namespace HardwareInformation
             lblBIOS.Text = coletando;
             lblBIOSType.Text = coletando;
             lblSecBoot.Text = coletando;
+            coletaButton.Text = coletando;
         }       
         
         //Auxiliary method
@@ -1745,7 +1868,7 @@ namespace HardwareInformation
             lblBIOS.Text = BIOS;
             lblBIOSType.Text = BIOSType;
             lblSecBoot.Text = SecBoot;
-            string str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, comboBox7.Text, comboBox8.Text);
+            string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBox7.Text, comboBox8.Text);
             if (lblHostname.Text.Equals("MUDAR-NOME"))
             {
                 pass = false;
@@ -1764,13 +1887,24 @@ namespace HardwareInformation
                 lblSecBoot.Text += " (Ativar boot seguro)";
                 timer3.Enabled = true;
             }
-            if (str != null && !lblBIOS.Text.Contains(str))
+            if(str == null)
+            {
+                pass = false;
+                MessageBox.Show("Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (str != null && !lblBIOS.Text.Contains(str[0]))
             {
                 pass = false;
                 lblBIOS.Text += " (Atualizar BIOS/UEFI)";
                 timer4.Enabled = true;
             }
-            if(lblMac.Text == "")
+            if (str != null && str[1].Equals("false"))
+            {
+                pass = false;
+                lblBIOSType.Text += " (PC suporta UEFI, fazer a conversão do sistema)";
+                timer6.Enabled = true;
+            }
+            if (lblMac.Text == "")
             {
                 pass = false;
                 lblMac.Text = "Computador sem conexão com a Intranet";
@@ -1816,6 +1950,7 @@ namespace HardwareInformation
             accessSystemButton.Enabled = true;
             cadastraButton.Enabled = true;
             coletaButton.Enabled = true;
+            coletaButton.Text = coletarNovamente;
             printHardwareData();
         }
 
@@ -1861,6 +1996,10 @@ namespace HardwareInformation
         //Runs the registration for the website
         private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
+            cadastraButton.Text = cadastrando;
+            cadastraButton.Enabled = false;
+            accessSystemButton.Enabled = false;
+            coletaButton.Enabled = false;
             attrHardwareData();
             if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox3.Text) && comboBox6.SelectedItem != null && pass == true)
             {
@@ -1884,7 +2023,8 @@ namespace HardwareInformation
                 await webView2.EnsureCoreWebView2Async(webView2Environment);
 
                 if (PingHost(servidor_web) == true && porta != "")
-                    if(mode)
+                {
+                    if (mode)
                         webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDadosFormatacao.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
                      "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
                      "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
@@ -1898,6 +2038,7 @@ namespace HardwareInformation
                      "&hd=" + varHD + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
                      "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
                      "&secBoot=" + varSecBoot);
+                }
                 else
                     MessageBox.Show("Servidor não encontrado. Selecione um servidor válido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -1905,6 +2046,10 @@ namespace HardwareInformation
                 MessageBox.Show("Resolva as pendencias exibidas em vermelho!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 MessageBox.Show("Preencha os campos 'Patrimônio', 'Sala' e 'Tipo'", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            cadastraButton.Text = cadastrarNovamente;
+            cadastraButton.Enabled = true;
+            accessSystemButton.Enabled = true;
+            coletaButton.Enabled = true;
         }
     }
 }
