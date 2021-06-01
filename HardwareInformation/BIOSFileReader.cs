@@ -39,14 +39,14 @@ namespace HardwareInformation
                 fileB = new StreamReader(@fileBios);
                 aux = fileBios;
             }
-            catch(WebException ex)
+            catch
             {
                 return null;
-            }            
+            }
 
+            string[] arr;
             if (GetSha1Hash(aux).Equals(sha1))
             {
-                string[] arr;
                 jsonFile = fileB.ReadToEnd();
                 jFile[] jsonParse = JsonConvert.DeserializeObject<jFile[]>(@jsonFile);
 
@@ -67,8 +67,9 @@ namespace HardwareInformation
                     }
                 }
             }
+            arr = new String[] {"-1", "-1"};
             fileB.Close();
-            return null;
+            return arr;
         }
 
         public static string GetSha1Hash(string filePath)
