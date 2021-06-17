@@ -80,22 +80,22 @@ namespace HardwareInformation
             this.label25 = new System.Windows.Forms.Label();
             this.lblBIOSType = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.configurableQualityPictureBox2 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox17 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox16 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox15 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox14 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox13 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox12 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox11 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox10 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox9 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox8 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox7 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox6 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox5 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox4 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox3 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label28 = new System.Windows.Forms.Label();
             this.lblSecBoot = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -106,19 +106,19 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.configurableQualityPictureBox18 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox19 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox20 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox21 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox22 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox23 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox24 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox25 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox26 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox27 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox28 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox29 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
-            this.pictureBox29 = new System.Windows.Forms.PictureBox();
-            this.pictureBox28 = new System.Windows.Forms.PictureBox();
-            this.pictureBox27 = new System.Windows.Forms.PictureBox();
-            this.pictureBox26 = new System.Windows.Forms.PictureBox();
-            this.pictureBox24 = new System.Windows.Forms.PictureBox();
-            this.pictureBox23 = new System.Windows.Forms.PictureBox();
-            this.pictureBox22 = new System.Windows.Forms.PictureBox();
-            this.pictureBox21 = new System.Windows.Forms.PictureBox();
-            this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -140,41 +140,41 @@ namespace HardwareInformation
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.timer6 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBM
@@ -758,22 +758,22 @@ namespace HardwareInformation
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox17);
-            this.groupBox1.Controls.Add(this.pictureBox16);
-            this.groupBox1.Controls.Add(this.pictureBox15);
-            this.groupBox1.Controls.Add(this.pictureBox14);
-            this.groupBox1.Controls.Add(this.pictureBox13);
-            this.groupBox1.Controls.Add(this.pictureBox12);
-            this.groupBox1.Controls.Add(this.pictureBox11);
-            this.groupBox1.Controls.Add(this.pictureBox10);
-            this.groupBox1.Controls.Add(this.pictureBox9);
-            this.groupBox1.Controls.Add(this.pictureBox8);
-            this.groupBox1.Controls.Add(this.pictureBox7);
-            this.groupBox1.Controls.Add(this.pictureBox6);
-            this.groupBox1.Controls.Add(this.pictureBox5);
-            this.groupBox1.Controls.Add(this.pictureBox4);
-            this.groupBox1.Controls.Add(this.pictureBox3);
-            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox2);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox17);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox16);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox15);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox14);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox13);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox12);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox11);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox10);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox9);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox8);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox7);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox6);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox5);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox4);
+            this.groupBox1.Controls.Add(this.configurableQualityPictureBox3);
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.lblSecBoot);
             this.groupBox1.Controls.Add(this.label32);
@@ -816,165 +816,213 @@ namespace HardwareInformation
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
             // 
-            // pictureBox17
+            // configurableQualityPictureBox2
             // 
-            this.pictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
-            this.pictureBox17.Location = new System.Drawing.Point(7, 422);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox17.TabIndex = 87;
-            this.pictureBox17.TabStop = false;
+            this.configurableQualityPictureBox2.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
+            this.configurableQualityPictureBox2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox2.Location = new System.Drawing.Point(7, 17);
+            this.configurableQualityPictureBox2.Name = "configurableQualityPictureBox2";
+            this.configurableQualityPictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox2.TabIndex = 101;
+            this.configurableQualityPictureBox2.TabStop = false;
             // 
-            // pictureBox16
+            // configurableQualityPictureBox17
             // 
-            this.pictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
-            this.pictureBox16.Location = new System.Drawing.Point(7, 395);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox16.TabIndex = 86;
-            this.pictureBox16.TabStop = false;
+            this.configurableQualityPictureBox17.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
+            this.configurableQualityPictureBox17.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox17.Location = new System.Drawing.Point(7, 422);
+            this.configurableQualityPictureBox17.Name = "configurableQualityPictureBox17";
+            this.configurableQualityPictureBox17.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox17.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox17.TabIndex = 87;
+            this.configurableQualityPictureBox17.TabStop = false;
             // 
-            // pictureBox15
+            // configurableQualityPictureBox16
             // 
-            this.pictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
-            this.pictureBox15.Location = new System.Drawing.Point(7, 368);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox15.TabIndex = 85;
-            this.pictureBox15.TabStop = false;
+            this.configurableQualityPictureBox16.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
+            this.configurableQualityPictureBox16.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox16.Location = new System.Drawing.Point(7, 395);
+            this.configurableQualityPictureBox16.Name = "configurableQualityPictureBox16";
+            this.configurableQualityPictureBox16.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox16.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox16.TabIndex = 86;
+            this.configurableQualityPictureBox16.TabStop = false;
             // 
-            // pictureBox14
+            // configurableQualityPictureBox15
             // 
-            this.pictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
-            this.pictureBox14.Location = new System.Drawing.Point(7, 341);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox14.TabIndex = 84;
-            this.pictureBox14.TabStop = false;
+            this.configurableQualityPictureBox15.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
+            this.configurableQualityPictureBox15.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox15.Location = new System.Drawing.Point(7, 368);
+            this.configurableQualityPictureBox15.Name = "configurableQualityPictureBox15";
+            this.configurableQualityPictureBox15.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox15.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox15.TabIndex = 85;
+            this.configurableQualityPictureBox15.TabStop = false;
             // 
-            // pictureBox13
+            // configurableQualityPictureBox14
             // 
-            this.pictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
-            this.pictureBox13.Location = new System.Drawing.Point(7, 314);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox13.TabIndex = 83;
-            this.pictureBox13.TabStop = false;
+            this.configurableQualityPictureBox14.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
+            this.configurableQualityPictureBox14.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox14.Location = new System.Drawing.Point(7, 341);
+            this.configurableQualityPictureBox14.Name = "configurableQualityPictureBox14";
+            this.configurableQualityPictureBox14.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox14.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox14.TabIndex = 84;
+            this.configurableQualityPictureBox14.TabStop = false;
             // 
-            // pictureBox12
+            // configurableQualityPictureBox13
             // 
-            this.pictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
-            this.pictureBox12.Location = new System.Drawing.Point(7, 287);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 82;
-            this.pictureBox12.TabStop = false;
+            this.configurableQualityPictureBox13.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
+            this.configurableQualityPictureBox13.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox13.Location = new System.Drawing.Point(7, 314);
+            this.configurableQualityPictureBox13.Name = "configurableQualityPictureBox13";
+            this.configurableQualityPictureBox13.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox13.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox13.TabIndex = 83;
+            this.configurableQualityPictureBox13.TabStop = false;
             // 
-            // pictureBox11
+            // configurableQualityPictureBox12
             // 
-            this.pictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
-            this.pictureBox11.Location = new System.Drawing.Point(7, 260);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(25, 26);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 81;
-            this.pictureBox11.TabStop = false;
+            this.configurableQualityPictureBox12.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
+            this.configurableQualityPictureBox12.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox12.Location = new System.Drawing.Point(7, 287);
+            this.configurableQualityPictureBox12.Name = "configurableQualityPictureBox12";
+            this.configurableQualityPictureBox12.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox12.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox12.TabIndex = 82;
+            this.configurableQualityPictureBox12.TabStop = false;
             // 
-            // pictureBox10
+            // configurableQualityPictureBox11
             // 
-            this.pictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
-            this.pictureBox10.Location = new System.Drawing.Point(7, 233);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 80;
-            this.pictureBox10.TabStop = false;
+            this.configurableQualityPictureBox11.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
+            this.configurableQualityPictureBox11.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox11.Location = new System.Drawing.Point(7, 260);
+            this.configurableQualityPictureBox11.Name = "configurableQualityPictureBox11";
+            this.configurableQualityPictureBox11.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox11.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox11.TabIndex = 81;
+            this.configurableQualityPictureBox11.TabStop = false;
             // 
-            // pictureBox9
+            // configurableQualityPictureBox10
             // 
-            this.pictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
-            this.pictureBox9.Location = new System.Drawing.Point(7, 206);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 79;
-            this.pictureBox9.TabStop = false;
+            this.configurableQualityPictureBox10.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
+            this.configurableQualityPictureBox10.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox10.Location = new System.Drawing.Point(7, 233);
+            this.configurableQualityPictureBox10.Name = "configurableQualityPictureBox10";
+            this.configurableQualityPictureBox10.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox10.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox10.TabIndex = 80;
+            this.configurableQualityPictureBox10.TabStop = false;
             // 
-            // pictureBox8
+            // configurableQualityPictureBox9
             // 
-            this.pictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
-            this.pictureBox8.Location = new System.Drawing.Point(7, 179);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 78;
-            this.pictureBox8.TabStop = false;
+            this.configurableQualityPictureBox9.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
+            this.configurableQualityPictureBox9.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox9.Location = new System.Drawing.Point(7, 206);
+            this.configurableQualityPictureBox9.Name = "configurableQualityPictureBox9";
+            this.configurableQualityPictureBox9.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox9.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox9.TabIndex = 79;
+            this.configurableQualityPictureBox9.TabStop = false;
             // 
-            // pictureBox7
+            // configurableQualityPictureBox8
             // 
-            this.pictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
-            this.pictureBox7.Location = new System.Drawing.Point(7, 152);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 77;
-            this.pictureBox7.TabStop = false;
+            this.configurableQualityPictureBox8.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
+            this.configurableQualityPictureBox8.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox8.Location = new System.Drawing.Point(7, 179);
+            this.configurableQualityPictureBox8.Name = "configurableQualityPictureBox8";
+            this.configurableQualityPictureBox8.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox8.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox8.TabIndex = 78;
+            this.configurableQualityPictureBox8.TabStop = false;
             // 
-            // pictureBox6
+            // configurableQualityPictureBox7
             // 
-            this.pictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
-            this.pictureBox6.Location = new System.Drawing.Point(7, 125);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 76;
-            this.pictureBox6.TabStop = false;
+            this.configurableQualityPictureBox7.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
+            this.configurableQualityPictureBox7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox7.Location = new System.Drawing.Point(7, 152);
+            this.configurableQualityPictureBox7.Name = "configurableQualityPictureBox7";
+            this.configurableQualityPictureBox7.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox7.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox7.TabIndex = 77;
+            this.configurableQualityPictureBox7.TabStop = false;
             // 
-            // pictureBox5
+            // configurableQualityPictureBox6
             // 
-            this.pictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 98);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 75;
-            this.pictureBox5.TabStop = false;
+            this.configurableQualityPictureBox6.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
+            this.configurableQualityPictureBox6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox6.Location = new System.Drawing.Point(7, 125);
+            this.configurableQualityPictureBox6.Name = "configurableQualityPictureBox6";
+            this.configurableQualityPictureBox6.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox6.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox6.TabIndex = 76;
+            this.configurableQualityPictureBox6.TabStop = false;
             // 
-            // pictureBox4
+            // configurableQualityPictureBox5
             // 
-            this.pictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
-            this.pictureBox4.Location = new System.Drawing.Point(7, 71);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 74;
-            this.pictureBox4.TabStop = false;
+            this.configurableQualityPictureBox5.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
+            this.configurableQualityPictureBox5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox5.Location = new System.Drawing.Point(7, 98);
+            this.configurableQualityPictureBox5.Name = "configurableQualityPictureBox5";
+            this.configurableQualityPictureBox5.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox5.TabIndex = 75;
+            this.configurableQualityPictureBox5.TabStop = false;
             // 
-            // pictureBox3
+            // configurableQualityPictureBox4
             // 
-            this.pictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
-            this.pictureBox3.Location = new System.Drawing.Point(7, 44);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 73;
-            this.pictureBox3.TabStop = false;
+            this.configurableQualityPictureBox4.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
+            this.configurableQualityPictureBox4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox4.Location = new System.Drawing.Point(7, 71);
+            this.configurableQualityPictureBox4.Name = "configurableQualityPictureBox4";
+            this.configurableQualityPictureBox4.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox4.TabIndex = 74;
+            this.configurableQualityPictureBox4.TabStop = false;
             // 
-            // pictureBox2
+            // configurableQualityPictureBox3
             // 
-            this.pictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
-            this.pictureBox2.Location = new System.Drawing.Point(7, 17);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 72;
-            this.pictureBox2.TabStop = false;
+            this.configurableQualityPictureBox3.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
+            this.configurableQualityPictureBox3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox3.Location = new System.Drawing.Point(7, 44);
+            this.configurableQualityPictureBox3.Name = "configurableQualityPictureBox3";
+            this.configurableQualityPictureBox3.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox3.TabIndex = 73;
+            this.configurableQualityPictureBox3.TabStop = false;
             // 
             // label28
             // 
@@ -1074,20 +1122,176 @@ namespace HardwareInformation
             this.progressBar1.Size = new System.Drawing.Size(525, 36);
             this.progressBar1.TabIndex = 69;
             // 
+            // configurableQualityPictureBox18
+            // 
+            this.configurableQualityPictureBox18.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
+            this.configurableQualityPictureBox18.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox18.Location = new System.Drawing.Point(6, 17);
+            this.configurableQualityPictureBox18.Name = "configurableQualityPictureBox18";
+            this.configurableQualityPictureBox18.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox18.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox18.TabIndex = 88;
+            this.configurableQualityPictureBox18.TabStop = false;
+            // 
+            // configurableQualityPictureBox19
+            // 
+            this.configurableQualityPictureBox19.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
+            this.configurableQualityPictureBox19.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox19.Location = new System.Drawing.Point(6, 44);
+            this.configurableQualityPictureBox19.Name = "configurableQualityPictureBox19";
+            this.configurableQualityPictureBox19.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.configurableQualityPictureBox19.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox19.TabIndex = 89;
+            this.configurableQualityPictureBox19.TabStop = false;
+            // 
+            // configurableQualityPictureBox20
+            // 
+            this.configurableQualityPictureBox20.CompositingQuality = null;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
+            this.configurableQualityPictureBox20.InterpolationMode = null;
+            this.configurableQualityPictureBox20.Location = new System.Drawing.Point(6, 71);
+            this.configurableQualityPictureBox20.Name = "configurableQualityPictureBox20";
+            this.configurableQualityPictureBox20.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox20.SmoothingMode = null;
+            this.configurableQualityPictureBox20.TabIndex = 90;
+            this.configurableQualityPictureBox20.TabStop = false;
+            // 
+            // configurableQualityPictureBox21
+            // 
+            this.configurableQualityPictureBox21.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
+            this.configurableQualityPictureBox21.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox21.Location = new System.Drawing.Point(6, 98);
+            this.configurableQualityPictureBox21.Name = "configurableQualityPictureBox21";
+            this.configurableQualityPictureBox21.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox21.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox21.TabIndex = 91;
+            this.configurableQualityPictureBox21.TabStop = false;
+            // 
+            // configurableQualityPictureBox22
+            // 
+            this.configurableQualityPictureBox22.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox22.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox22.Location = new System.Drawing.Point(6, 125);
+            this.configurableQualityPictureBox22.Name = "configurableQualityPictureBox22";
+            this.configurableQualityPictureBox22.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox22.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox22.TabIndex = 92;
+            this.configurableQualityPictureBox22.TabStop = false;
+            // 
+            // configurableQualityPictureBox23
+            // 
+            this.configurableQualityPictureBox23.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
+            this.configurableQualityPictureBox23.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox23.Location = new System.Drawing.Point(6, 152);
+            this.configurableQualityPictureBox23.Name = "configurableQualityPictureBox23";
+            this.configurableQualityPictureBox23.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox23.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox23.TabIndex = 93;
+            this.configurableQualityPictureBox23.TabStop = false;
+            // 
+            // configurableQualityPictureBox24
+            // 
+            this.configurableQualityPictureBox24.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
+            this.configurableQualityPictureBox24.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox24.Location = new System.Drawing.Point(6, 179);
+            this.configurableQualityPictureBox24.Name = "configurableQualityPictureBox24";
+            this.configurableQualityPictureBox24.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox24.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox24.TabIndex = 94;
+            this.configurableQualityPictureBox24.TabStop = false;
+            // 
+            // configurableQualityPictureBox25
+            // 
+            this.configurableQualityPictureBox25.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
+            this.configurableQualityPictureBox25.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox25.Location = new System.Drawing.Point(275, 71);
+            this.configurableQualityPictureBox25.Name = "configurableQualityPictureBox25";
+            this.configurableQualityPictureBox25.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox25.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox25.TabIndex = 100;
+            this.configurableQualityPictureBox25.TabStop = false;
+            // 
+            // configurableQualityPictureBox26
+            // 
+            this.configurableQualityPictureBox26.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
+            this.configurableQualityPictureBox26.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox26.Location = new System.Drawing.Point(275, 98);
+            this.configurableQualityPictureBox26.Name = "configurableQualityPictureBox26";
+            this.configurableQualityPictureBox26.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox26.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox26.TabIndex = 96;
+            this.configurableQualityPictureBox26.TabStop = false;
+            // 
+            // configurableQualityPictureBox27
+            // 
+            this.configurableQualityPictureBox27.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
+            this.configurableQualityPictureBox27.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox27.Location = new System.Drawing.Point(275, 125);
+            this.configurableQualityPictureBox27.Name = "configurableQualityPictureBox27";
+            this.configurableQualityPictureBox27.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox27.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox27.TabIndex = 97;
+            this.configurableQualityPictureBox27.TabStop = false;
+            // 
+            // configurableQualityPictureBox28
+            // 
+            this.configurableQualityPictureBox28.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
+            this.configurableQualityPictureBox28.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox28.Location = new System.Drawing.Point(275, 152);
+            this.configurableQualityPictureBox28.Name = "configurableQualityPictureBox28";
+            this.configurableQualityPictureBox28.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox28.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox28.TabIndex = 98;
+            this.configurableQualityPictureBox28.TabStop = false;
+            // 
+            // configurableQualityPictureBox29
+            // 
+            this.configurableQualityPictureBox29.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox29.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox29.Location = new System.Drawing.Point(6, 368);
+            this.configurableQualityPictureBox29.Name = "configurableQualityPictureBox29";
+            this.configurableQualityPictureBox29.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox29.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox29.TabIndex = 99;
+            this.configurableQualityPictureBox29.TabStop = false;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox25);
-            this.groupBox2.Controls.Add(this.pictureBox29);
-            this.groupBox2.Controls.Add(this.pictureBox28);
-            this.groupBox2.Controls.Add(this.pictureBox27);
-            this.groupBox2.Controls.Add(this.pictureBox26);
-            this.groupBox2.Controls.Add(this.pictureBox24);
-            this.groupBox2.Controls.Add(this.pictureBox23);
-            this.groupBox2.Controls.Add(this.pictureBox22);
-            this.groupBox2.Controls.Add(this.pictureBox21);
-            this.groupBox2.Controls.Add(this.pictureBox20);
-            this.groupBox2.Controls.Add(this.pictureBox19);
-            this.groupBox2.Controls.Add(this.pictureBox18);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox25);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox29);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox28);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox27);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox26);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox24);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox23);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox22);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox21);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox20);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox19);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox18);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.groupBox3);
@@ -1124,126 +1328,6 @@ namespace HardwareInformation
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
-            // 
-            // pictureBox25
-            // 
-            this.pictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
-            this.pictureBox25.Location = new System.Drawing.Point(275, 71);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox25.TabIndex = 100;
-            this.pictureBox25.TabStop = false;
-            // 
-            // pictureBox29
-            // 
-            this.pictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.pictureBox29.Location = new System.Drawing.Point(6, 368);
-            this.pictureBox29.Name = "pictureBox29";
-            this.pictureBox29.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox29.TabIndex = 99;
-            this.pictureBox29.TabStop = false;
-            // 
-            // pictureBox28
-            // 
-            this.pictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
-            this.pictureBox28.Location = new System.Drawing.Point(275, 152);
-            this.pictureBox28.Name = "pictureBox28";
-            this.pictureBox28.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox28.TabIndex = 98;
-            this.pictureBox28.TabStop = false;
-            // 
-            // pictureBox27
-            // 
-            this.pictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
-            this.pictureBox27.Location = new System.Drawing.Point(275, 125);
-            this.pictureBox27.Name = "pictureBox27";
-            this.pictureBox27.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox27.TabIndex = 97;
-            this.pictureBox27.TabStop = false;
-            // 
-            // pictureBox26
-            // 
-            this.pictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
-            this.pictureBox26.Location = new System.Drawing.Point(275, 98);
-            this.pictureBox26.Name = "pictureBox26";
-            this.pictureBox26.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox26.TabIndex = 96;
-            this.pictureBox26.TabStop = false;
-            // 
-            // pictureBox24
-            // 
-            this.pictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
-            this.pictureBox24.Location = new System.Drawing.Point(6, 179);
-            this.pictureBox24.Name = "pictureBox24";
-            this.pictureBox24.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox24.TabIndex = 94;
-            this.pictureBox24.TabStop = false;
-            // 
-            // pictureBox23
-            // 
-            this.pictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
-            this.pictureBox23.Location = new System.Drawing.Point(6, 152);
-            this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox23.TabIndex = 93;
-            this.pictureBox23.TabStop = false;
-            // 
-            // pictureBox22
-            // 
-            this.pictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.pictureBox22.Location = new System.Drawing.Point(6, 125);
-            this.pictureBox22.Name = "pictureBox22";
-            this.pictureBox22.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox22.TabIndex = 92;
-            this.pictureBox22.TabStop = false;
-            // 
-            // pictureBox21
-            // 
-            this.pictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
-            this.pictureBox21.Location = new System.Drawing.Point(6, 98);
-            this.pictureBox21.Name = "pictureBox21";
-            this.pictureBox21.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox21.TabIndex = 91;
-            this.pictureBox21.TabStop = false;
-            // 
-            // pictureBox20
-            // 
-            this.pictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
-            this.pictureBox20.Location = new System.Drawing.Point(6, 71);
-            this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox20.TabIndex = 90;
-            this.pictureBox20.TabStop = false;
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
-            this.pictureBox19.Location = new System.Drawing.Point(6, 44);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox19.TabIndex = 89;
-            this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
-            this.pictureBox18.Location = new System.Drawing.Point(6, 17);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox18.TabIndex = 88;
-            this.pictureBox18.TabStop = false;
             // 
             // dateTimePicker1
             // 
@@ -1416,19 +1500,22 @@ namespace HardwareInformation
             // 
             this.timer1.Interval = 500;
             // 
-            // pictureBox1
+            // configurableQualityPictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(-5, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1063, 109);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 64;
-            this.pictureBox1.TabStop = false;
+            this.configurableQualityPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.configurableQualityPictureBox1.CompositingQuality = null;
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
+            this.configurableQualityPictureBox1.InitialImage = null;
+            this.configurableQualityPictureBox1.InterpolationMode = null;
+            this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
+            this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
+            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1063, 109);
+            this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox1.SmoothingMode = null;
+            this.configurableQualityPictureBox1.TabIndex = 64;
+            this.configurableQualityPictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -1440,7 +1527,7 @@ namespace HardwareInformation
             this.ClientSize = new System.Drawing.Size(1058, 655);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.configurableQualityPictureBox1);
             this.Controls.Add(this.accessSystemButton);
             this.Controls.Add(this.coletaButton);
             this.Controls.Add(this.statusStrip1);
@@ -1455,42 +1542,42 @@ namespace HardwareInformation
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1551,7 +1638,6 @@ namespace HardwareInformation
         private int i = 0;
         private Label label25;
         private Label lblBIOSType;
-        private PictureBox pictureBox1;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private Label lblMediaType;
@@ -1591,35 +1677,36 @@ namespace HardwareInformation
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem toolStripMenuItem3;
         private Label label26;
-        private PictureBox pictureBox17;
-        private PictureBox pictureBox16;
-        private PictureBox pictureBox15;
-        private PictureBox pictureBox14;
-        private PictureBox pictureBox13;
-        private PictureBox pictureBox12;
-        private PictureBox pictureBox11;
-        private PictureBox pictureBox10;
-        private PictureBox pictureBox9;
-        private PictureBox pictureBox8;
-        private PictureBox pictureBox7;
-        private PictureBox pictureBox6;
-        private PictureBox pictureBox5;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
         private DateTimePicker dateTimePicker1;
-        private PictureBox pictureBox29;
-        private PictureBox pictureBox28;
-        private PictureBox pictureBox27;
-        private PictureBox pictureBox26;
-        private PictureBox pictureBox24;
-        private PictureBox pictureBox23;
-        private PictureBox pictureBox22;
-        private PictureBox pictureBox21;
-        private PictureBox pictureBox20;
-        private PictureBox pictureBox19;
-        private PictureBox pictureBox18;
-        private PictureBox pictureBox25;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox1;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox2;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox3;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox4;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox5;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox6;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox7;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox8;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox9;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox10;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox11;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox12;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox13;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox14;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox15;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox16;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox17;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox18;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox19;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox20;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox21;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox22;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox23;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox24;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox25;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox26;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox27;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox28;
+        private ConfigurableQualityPictureBox configurableQualityPictureBox29;
         private Label label22;
 
         //Fetches the program's binary version
@@ -1829,35 +1916,35 @@ namespace HardwareInformation
             this.toolStripMenuItem2.ForeColor = SystemColors.ControlText;
             this.toolStripMenuItem3.BackgroundImage = null;
             this.toolStripMenuItem3.ForeColor = SystemColors.ControlText;
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
-            this.pictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
-            this.pictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
-            this.pictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_black;
-            this.pictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_black;
-            this.pictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_black;
-            this.pictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_black;
-            this.pictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_black;
-            this.pictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_black;
-            this.pictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_black;
-            this.pictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_black;
-            this.pictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_black;
-            this.pictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_black;
-            this.pictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_black;
-            this.pictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_black;
-            this.pictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_black;
-            this.pictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_black;
-            this.pictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_black;
-            this.pictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_black;
-            this.pictureBox20.Image = global::HardwareInformation.Properties.Resources.room_black;
-            this.pictureBox21.Image = global::HardwareInformation.Properties.Resources.building_black;
-            this.pictureBox22.Image = global::HardwareInformation.Properties.Resources.server_black;
-            this.pictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_black;
-            this.pictureBox24.Image = global::HardwareInformation.Properties.Resources.service_black;
-            this.pictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_black;
-            this.pictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_black;
-            this.pictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_black;
-            this.pictureBox28.Image = global::HardwareInformation.Properties.Resources.type_black;
-            this.pictureBox29.Image = global::HardwareInformation.Properties.Resources.server_black;
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
+            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
+            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
+            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_black;
+            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_black;
+            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_black;
+            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_black;
+            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_black;
+            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_black;
+            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_black;
+            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_black;
+            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_black;
+            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_black;
+            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_black;
+            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_black;
+            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_black;
+            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_black;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_black;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_black;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_black;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_black;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_black;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_black;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_black;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_black;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_black;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_black;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_black;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_black;
         }
 
         //Sets a dark theme for the UI
@@ -1959,35 +2046,35 @@ namespace HardwareInformation
             this.toolStripMenuItem2.ForeColor = SystemColors.ControlLightLight;
             this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem3.ForeColor = SystemColors.ControlLightLight;
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-            this.pictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
-            this.pictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
-            this.pictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
-            this.pictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
-            this.pictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
-            this.pictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
-            this.pictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
-            this.pictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
-            this.pictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
-            this.pictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
-            this.pictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
-            this.pictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
-            this.pictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
-            this.pictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
-            this.pictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
-            this.pictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
-            this.pictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
-            this.pictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
-            this.pictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
-            this.pictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
-            this.pictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.pictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
-            this.pictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
-            this.pictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
-            this.pictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
-            this.pictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
-            this.pictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
-            this.pictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
+            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
+            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
+            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
+            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
+            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
+            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
+            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
+            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
+            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
+            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
+            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
+            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
+            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
+            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
+            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
+            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
         }
 
         //Opens the selected webpage, according to the IP and port specified in the comboboxes

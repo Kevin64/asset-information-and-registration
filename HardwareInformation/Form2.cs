@@ -27,7 +27,7 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.ControlLight;
             this.button1.ForeColor = SystemColors.ControlText;
             this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
 
         //Sets a dark theme for the login form
@@ -42,7 +42,7 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.WindowFrame;
             this.button1.ForeColor = SystemColors.ControlLightLight;
             this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
         //Initializes the theme, according to the host theme
