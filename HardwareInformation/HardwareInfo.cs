@@ -470,6 +470,17 @@ public static class HardwareInfo
         }
     }
 
+    public static string GetVirtualizationTechnology()
+    {
+        ManagementClass mc = new ManagementClass("win32_processor");
+        ManagementObjectCollection moc = mc.GetInstances();
+
+        foreach (ManagementObject queryObj in moc)
+            if(queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
+                return "Ativado";
+        return "Desativado";
+    }
+
     //Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
     public static string countDistinct(string[] array)
     {

@@ -12,7 +12,7 @@ namespace HardwareInformation
         public Form2()
         {
             InitializeComponent();
-            ThemeInit();        
+            ThemeInit();
         }
 
         //Sets a light theme for the login form
