@@ -12,7 +12,8 @@ namespace HardwareInformation
         public Form2()
         {
             InitializeComponent();
-            ThemeInit();        
+            ThemeInit();
+            this.toolStripStatusLabel2.Text = version();
         }
 
         //Sets a light theme for the login form
@@ -27,6 +28,9 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.ControlLight;
             this.button1.ForeColor = SystemColors.ControlText;
             this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.toolStripStatusLabel1.ForeColor = SystemColors.ControlText;
+            this.toolStripStatusLabel2.ForeColor = SystemColors.ControlText;
             this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
 
@@ -42,6 +46,9 @@ namespace HardwareInformation
             this.button1.BackColor = SystemColors.WindowFrame;
             this.button1.ForeColor = SystemColors.ControlLightLight;
             this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.toolStripStatusLabel1.ForeColor = SystemColors.ControlLightLight;
+            this.toolStripStatusLabel2.ForeColor = SystemColors.ControlLightLight;
             this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
@@ -68,6 +75,18 @@ namespace HardwareInformation
             {
                 lightTheme();
             }
+        }
+
+        //Fetches the program's binary version
+        private string version()
+        {
+            return "v" + Application.ProductVersion;
+        }
+
+        //Fetches the program's binary version (for unstable releases)
+        private string version(string testBranch)
+        {
+            return "v" + Application.ProductVersion + "-" + testBranch;
         }
 
         //Checks the user/password and shows the main form

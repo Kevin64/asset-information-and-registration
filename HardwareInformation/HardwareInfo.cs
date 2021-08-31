@@ -18,7 +18,7 @@ public static class HardwareInfo
         ManagementClass mc = new ManagementClass("win32_processor");
         ManagementObjectCollection moc = mc.GetInstances();
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_ComputerSystem");
-        
+
         foreach (var item in searcher.Get())
             logical = item["NumberOfLogicalProcessors"].ToString();
         foreach (ManagementObject queryObj in moc)
@@ -27,7 +27,7 @@ public static class HardwareInfo
                + " " + "MHz" + " (" + queryObj.Properties["NumberOfCores"].Value.ToString() + "C/" + logical + "T)";
             break;
         }
-        Id = Id.Replace("(R)","");
+        Id = Id.Replace("(R)", "");
         Id = Id.Replace("(TM)", "");
         Id = Id.Replace("(tm)", "");
         return Id;
@@ -41,9 +41,9 @@ public static class HardwareInfo
 
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_VideoController");
 
-        foreach(ManagementObject queryObj in searcher.Get())
-        {      
-            if(queryObj["DeviceID"].ToString().Equals("VideoController1"))
+        foreach (ManagementObject queryObj in searcher.Get())
+        {
+            if (queryObj["DeviceID"].ToString().Equals("VideoController1"))
             {
                 gpuram = Convert.ToInt64(queryObj["AdapterRAM"]);
                 gpuram = Math.Round(gpuram / 1048576, 0);
@@ -52,7 +52,7 @@ public static class HardwareInfo
                 else
                     gpuramStr = gpuram + " MB";
                 gpuname = queryObj["Caption"].ToString() + " (" + gpuramStr + ")";
-            }            
+            }
         }
         return gpuname;
     }
@@ -64,10 +64,10 @@ public static class HardwareInfo
 
         foreach (ManagementObject queryObj in searcher.Get())
             if (queryObj["Name"].ToString().Contains("NVM"))
-                return "NVMe";    
-        
+                return "NVMe";
+
         searcher = new ManagementObjectSearcher("select * from Win32_IDEController");
-        
+
         foreach (ManagementObject queryObj in searcher.Get())
             if (queryObj["Name"].ToString().Contains("AHCI"))
                 return "AHCI";
@@ -109,7 +109,7 @@ public static class HardwareInfo
                     }
                 }
             }
-            if(j == 0)
+            if (j == 0)
             {
                 type[i] = "HDD";
                 i++;
@@ -144,10 +144,10 @@ public static class HardwareInfo
                     dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
                     i++;
                 }
-            }           
-            if(i == 0)
+            }
+            if (i == 0)
                 foreach (ManagementObject queryObj in searcher.Get())
-                    dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());                    
+                    dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
         }
         else
         {
@@ -158,7 +158,7 @@ public static class HardwareInfo
                     dresult += d.TotalSize;
         }
         dresult = Math.Round(dresult / 1000000000, 0);
-        if(Math.Ceiling(Math.Log10(dresult)) > 3)
+        if (Math.Ceiling(Math.Log10(dresult)) > 3)
         {
             dresultStr = Convert.ToString(Math.Round(dresult / 1000, 1)) + " TB";
             return dresultStr;
@@ -178,7 +178,7 @@ public static class HardwareInfo
 
         ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
         ManagementObjectCollection moc = mc.GetInstances();
-                
+
         foreach (ManagementObject mo in moc)
         {
             string[] gat = (string[])mo["DefaultIPGateway"];
@@ -221,7 +221,7 @@ public static class HardwareInfo
     public static string GetBoardMaker()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_ComputerSystem");
-        
+
         foreach (ManagementObject queryObj in searcher.Get())
         {
             try
@@ -239,7 +239,7 @@ public static class HardwareInfo
     public static string GetModel()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_ComputerSystem");
-        
+
         foreach (ManagementObject queryObj in searcher.Get())
         {
             try
@@ -257,7 +257,7 @@ public static class HardwareInfo
     public static string GetBoardProductId()
     {
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_BaseBoard");
-        
+
         foreach (ManagementObject queryObj in searcher.Get())
         {
             try
@@ -302,7 +302,7 @@ public static class HardwareInfo
         ManagementObjectCollection moc = searcher.Get();
 
         foreach (ManagementObject queryObj in moc)
-            if(Convert.ToString(queryObj["Tag"]).Equals("Physical Memory Array 0"))
+            if (Convert.ToString(queryObj["Tag"]).Equals("Physical Memory Array 0"))
                 MemSlots = Convert.ToInt32(queryObj["MemoryDevices"]);
         return MemSlots.ToString();
     }
@@ -320,12 +320,12 @@ public static class HardwareInfo
 
         foreach (ManagementObject queryObj in moc)
         {
-            if(!Convert.ToString(queryObj["DeviceLocator"]).Contains("SYSTEM ROM"))
+            if (!Convert.ToString(queryObj["DeviceLocator"]).Contains("SYSTEM ROM"))
             {
                 MemSlotsUsed[i] = Convert.ToString(queryObj["DeviceLocator"]);
                 i++;
-            }            
-        }        
+            }
+        }
         return i;
     }
 
@@ -335,7 +335,7 @@ public static class HardwareInfo
         string gateway = "";
 
         ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-        ManagementObjectCollection moc = mc.GetInstances();        
+        ManagementObjectCollection moc = mc.GetInstances();
 
         foreach (ManagementObject queryObj in moc)
         {
@@ -348,13 +348,23 @@ public static class HardwareInfo
         return gateway;
     }
 
-    //Fetches the the NT version
+    //Fetches the OS architecture
+    static string getOSArch()
+    {
+        bool is64bit = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432"));
+        if (is64bit)
+            return "64";
+        else
+            return "32";
+    }
+
+    //Fetches the NT version
     static string getOSInfoAux()
     {
         string operatingSystem = "";
 
         OperatingSystem os = Environment.OSVersion;
-        Version vs = os.Version;        
+        Version vs = os.Version;
 
         if (os.Platform == PlatformID.Win32NT)
         {
@@ -381,23 +391,22 @@ public static class HardwareInfo
     //Fetches the operating system information
     public static string GetOSInformation()
     {
-        string getOSMajor = getOSInfoAux();
         string displayVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion", "").ToString();
         string releaseId = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "releaseId", "").ToString();
 
         ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
-        
+
         foreach (ManagementObject queryObj in searcher.Get())
         {
             try
             {
                 if (getOSInfoAux().Equals("10"))
                 {
-                    if(Convert.ToInt32(releaseId) <= 2004)
+                    if (Convert.ToInt32(releaseId) <= 2004)
                         return (((string)queryObj["Caption"]).Trim() + ", v" + releaseId + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
                     else
                         return (((string)queryObj["Caption"]).Trim() + ", v" + displayVersion + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
-                }                    
+                }
                 else
                     return (((string)queryObj["Caption"]).Trim() + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
             }
@@ -415,7 +424,7 @@ public static class HardwareInfo
 
         ManagementClass mc = new ManagementClass("Win32_ComputerSystem");
         ManagementObjectCollection moc = mc.GetInstances();
-        
+
         foreach (ManagementObject queryObj in moc)
             info = (string)queryObj["Name"];
         return info;
@@ -439,8 +448,8 @@ public static class HardwareInfo
     {
         try
         {
-            PowerShell PowerShellInst = PowerShell.Create();        
-            PowerShellInst.AddScript("Confirm-SecureBootUEFI");        
+            PowerShell PowerShellInst = PowerShell.Create();
+            PowerShellInst.AddScript("Confirm-SecureBootUEFI");
             Collection<PSObject> PSOutput = PowerShellInst.Invoke();
 
             foreach (PSObject queryObj in PSOutput)
@@ -450,12 +459,12 @@ public static class HardwareInfo
         catch
         {
             return "BIOS";
-        }        
+        }
     }
 
     //Fetches the Secure Boot status
     public static string GetSecureBoot()
-    {        
+    {
         try
         {
             string secBoot = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\State", "UEFISecureBootEnabled", 0).ToString();
@@ -464,17 +473,35 @@ public static class HardwareInfo
             else
                 return "Ativado";
         }
-        catch(NullReferenceException e)
+        catch (NullReferenceException e)
         {
             return "Não suportado";
         }
+    }
+
+    //Fetches the Virtualization Technology status
+    public static string GetVirtualizationTechnology()
+    {
+        if (GetBIOSType() == "UEFI")
+        {
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject queryObj in moc)
+                if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
+                    return "Ativado";
+            return "Desativado";
+        }
+        else
+            return "Não suportado";
+
     }
 
     //Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
     public static string countDistinct(string[] array)
     {
         string result = "";
-        char[] comma = { ',' , ' ' };
+        char[] comma = { ',', ' ' };
         var groups = array.GroupBy(z => z);
 
         foreach (var group in groups)
