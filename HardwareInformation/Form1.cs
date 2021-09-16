@@ -1337,10 +1337,10 @@ namespace HardwareInformation
             this.employeeButton1.AutoSize = true;
             this.employeeButton1.Location = new System.Drawing.Point(192, 187);
             this.employeeButton1.Name = "employeeButton1";
-            this.employeeButton1.Size = new System.Drawing.Size(250, 17);
+            this.employeeButton1.Size = new System.Drawing.Size(242, 17);
             this.employeeButton1.TabIndex = 103;
             this.employeeButton1.TabStop = true;
-            this.employeeButton1.Text = "Funcionário/Professor (computador de trabalho)";
+            this.employeeButton1.Text = "Funcionário/Bolsista (computador de trabalho)";
             this.employeeButton1.UseVisualStyleBackColor = true;
             this.employeeButton1.CheckedChanged += new System.EventHandler(this.employeeButton1_CheckedChanged);
             // 
@@ -1598,12 +1598,10 @@ namespace HardwareInformation
             // formatButton1
             // 
             this.formatButton1.AutoSize = true;
-            this.formatButton1.Checked = true;
             this.formatButton1.Location = new System.Drawing.Point(18, 19);
             this.formatButton1.Name = "formatButton1";
             this.formatButton1.Size = new System.Drawing.Size(81, 17);
             this.formatButton1.TabIndex = 73;
-            this.formatButton1.TabStop = true;
             this.formatButton1.Text = "Formatação";
             this.formatButton1.UseVisualStyleBackColor = true;
             this.formatButton1.CheckedChanged += new System.EventHandler(this.formatButton1_CheckedChanged);
@@ -1695,7 +1693,7 @@ namespace HardwareInformation
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
@@ -1710,7 +1708,7 @@ namespace HardwareInformation
             // 
             // configurableQualityPictureBox1
             // 
-            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.configurableQualityPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.configurableQualityPictureBox1.CompositingQuality = null;
