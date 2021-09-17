@@ -71,7 +71,7 @@ public static class HardwareInfo
         foreach (ManagementObject queryObj in searcher.Get())
             if (queryObj["Name"].ToString().Contains("AHCI"))
                 return "AHCI";
-        return "IDE/Legacy";
+        return "IDE/Legacy ou RAID";
     }
 
     //Fetches the type of drive the system has (SSD or HDD), and the quantity of each
@@ -120,7 +120,7 @@ public static class HardwareInfo
             return concat;
         }
         else
-            return "Desconhecido (provavelmente HDD)";
+            return StorageDetail.HasNominalMediaRotationRate("\\\\.\\PhysicalDrive0");
     }
 
     //Fetches the SSD/HDD total size (sums all drives sizes)
@@ -349,7 +349,7 @@ public static class HardwareInfo
     }
 
     //Fetches the OS architecture
-    static string getOSArch()
+    public static string getOSArch()
     {
         bool is64bit = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("PROCESSOR_ARCHITEW6432"));
         if (is64bit)
@@ -359,7 +359,7 @@ public static class HardwareInfo
     }
 
     //Fetches the NT version
-    static string getOSInfoAux()
+    public static string getOSInfoAux()
     {
         string operatingSystem = "";
 
@@ -408,7 +408,7 @@ public static class HardwareInfo
                         return (((string)queryObj["Caption"]).Trim() + ", v" + displayVersion + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
                 }
                 else
-                    return (((string)queryObj["Caption"]).Trim() + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+                    return (((string)queryObj["Caption"]).Trim() + " " + (string)queryObj["CSDVersion"] + ", build " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
             }
             catch
             {
