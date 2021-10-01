@@ -73,8 +73,9 @@ public static class HardwareInfo
 		searcher = new ManagementObjectSearcher("select * from Win32_IDEController");
 
 		foreach (ManagementObject queryObj in searcher.Get())
-			if (queryObj["Name"].ToString().Contains("AHCI"))
+			if ((queryObj["Name"].ToString().Contains("AHCI") || queryObj["Name"].ToString().Contains("SATA")) && !queryObj["Name"].ToString().Contains("RAID"))
 				return "AHCI";
+
 		return "IDE/Legacy ou RAID";
 	}
 
