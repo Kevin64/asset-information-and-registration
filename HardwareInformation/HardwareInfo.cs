@@ -446,7 +446,7 @@ public static class HardwareInfo
 		return biosVersion;
 	}
 
-	//Fetches the BIOS type (BIOS or UEFI)
+	//Fetches the BIOS type (BIOS or UEFI) on Windows 7
 	public const int ERROR_INVALID_FUNCTION = 1;
 	[DllImport("kernel32.dll",
 		EntryPoint = "GetFirmwareEnvironmentVariableW",
@@ -455,7 +455,7 @@ public static class HardwareInfo
 		ExactSpelling = true,
 		CallingConvention = CallingConvention.StdCall)]
 	public static extern int GetFirmwareType(string lpName, string lpGUID, IntPtr pBuffer, uint size);
-	public static string GetBIOSType()
+	public static string GetBIOSType7()
 	{
 		GetFirmwareType("", "{00000000-0000-0000-0000-000000000000}", IntPtr.Zero, 0);
 
@@ -463,6 +463,27 @@ public static class HardwareInfo
 			return "BIOS";
 		else
 			return "UEFI";
+	}
+
+	//Fetches the BIOS type (BIOS or UEFI) on Windows 8 and later
+	[DllImport("kernel32.dll")]
+	static extern bool GetFirmwareType(ref uint FirmwareType);
+	public static string GetBIOSType()
+	{
+		if(getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
+        {
+			uint firmwaretype = 0;
+			if (GetFirmwareType(ref firmwaretype))
+			{
+				if (firmwaretype == 1)
+					return "BIOS";
+				else if (firmwaretype == 2)
+					return "UEFI";
+			}
+			return "Não determinado";
+		}
+        else
+			return GetBIOSType7();		
 	}
 
 	//Fetches the Secure Boot status (alternative method)
@@ -506,17 +527,22 @@ public static class HardwareInfo
 	{
 		if (GetBIOSType() == "UEFI")
 		{
-			ManagementClass mc = new ManagementClass("win32_processor");
-			ManagementObjectCollection moc = mc.GetInstances();
-
-			foreach (ManagementObject queryObj in moc)
+			if (!getOSInfoAux().Equals("7"))
 			{
-				if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
-					return "Ativado";
-				else if(GetHyperVStatus())
-					return "Ativado";
+				ManagementClass mc = new ManagementClass("win32_processor");
+				ManagementObjectCollection moc = mc.GetInstances();
+
+				foreach (ManagementObject queryObj in moc)
+				{
+					if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
+						return "Ativado";
+					else if (GetHyperVStatus())
+						return "Ativado";
+				}
+				return "Desativado";
 			}
-			return "Desativado";
+            else
+				return "Não suportado";
 		}
 		else
 			return "Não suportado";
