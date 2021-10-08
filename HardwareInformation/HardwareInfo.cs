@@ -546,7 +546,26 @@ public static class HardwareInfo
 				return "Não suportado";
 		}
 		else
-			return "Não suportado";
+        {
+			if(getOSArch() == "64")
+            {
+				if (!getOSInfoAux().Equals("7"))
+				{
+					ManagementClass mc = new ManagementClass("win32_processor");
+					ManagementObjectCollection moc = mc.GetInstances();
+
+					foreach (ManagementObject queryObj in moc)
+					{
+						if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
+							return "Ativado";
+						else if (GetHyperVStatus())
+							return "Ativado";
+					}
+					return "Não suportado";
+				}
+			}
+        }
+		return "Não suportado";
 
 	}
 
@@ -567,6 +586,17 @@ public static class HardwareInfo
 				return true;			
 		}
 		return false;
+	}
+
+	public static string GetSMARTStatus()
+    {
+		ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * from Win32_DiskDrive");
+		ManagementObjectCollection moc = searcher.Get();
+		foreach (ManagementObject queryObj in moc)
+		{
+			return queryObj.Properties["Status"].Value.ToString();
+		}
+		return "";
 	}
 
 	//Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
