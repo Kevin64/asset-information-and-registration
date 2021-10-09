@@ -590,13 +590,17 @@ public static class HardwareInfo
 
 	public static string GetSMARTStatus()
     {
+		string statusCaption, statusValue;
 		ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * from Win32_DiskDrive");
 		ManagementObjectCollection moc = searcher.Get();
 		foreach (ManagementObject queryObj in moc)
 		{
-			return queryObj.Properties["Status"].Value.ToString();
+			statusCaption = (string)queryObj.Properties["Caption"].Value;
+			statusValue = (string)queryObj.Properties["Status"].Value;
+			if(statusValue == "Pred Fail")
+				return statusCaption + " - " + statusValue;
 		}
-		return "";
+		return "OK";
 	}
 
 	//Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
