@@ -598,7 +598,7 @@ public static class HardwareInfo
 			statusCaption = (string)queryObj.Properties["Caption"].Value;
 			statusValue = (string)queryObj.Properties["Status"].Value;
 			if(statusValue == "Pred Fail")
-				return statusCaption + " - " + statusValue;
+				return statusCaption;
 		}
 		return "OK";
 	}

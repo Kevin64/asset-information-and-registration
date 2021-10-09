@@ -80,6 +80,9 @@ namespace HardwareInformation
             this.label25 = new System.Windows.Forms.Label();
             this.lblBIOSType = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.configurableQualityPictureBox32 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.lblSmart = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             this.configurableQualityPictureBox30 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.lblVT = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -157,12 +160,10 @@ namespace HardwareInformation
             this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.timer7 = new System.Windows.Forms.Timer(this.components);
-            this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox32 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.lblSmart = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox17)).BeginInit();
@@ -198,7 +199,6 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
             this.SuspendLayout();
             // 
             // lblBM
@@ -845,6 +845,39 @@ namespace HardwareInformation
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
+            // 
+            // configurableQualityPictureBox32
+            // 
+            this.configurableQualityPictureBox32.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.hdd_white;
+            this.configurableQualityPictureBox32.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox32.Location = new System.Drawing.Point(7, 179);
+            this.configurableQualityPictureBox32.Name = "configurableQualityPictureBox32";
+            this.configurableQualityPictureBox32.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox32.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox32.TabIndex = 107;
+            this.configurableQualityPictureBox32.TabStop = false;
+            // 
+            // lblSmart
+            // 
+            this.lblSmart.AutoSize = true;
+            this.lblSmart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSmart.Location = new System.Drawing.Point(197, 187);
+            this.lblSmart.Name = "lblSmart";
+            this.lblSmart.Size = new System.Drawing.Size(24, 13);
+            this.lblSmart.TabIndex = 106;
+            this.lblSmart.Text = "text";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label44.Location = new System.Drawing.Point(37, 187);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(96, 13);
+            this.label44.TabIndex = 105;
+            this.label44.Text = "Status S.M.A.R.T.:";
             // 
             // configurableQualityPictureBox30
             // 
@@ -1731,39 +1764,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.TabIndex = 64;
             this.configurableQualityPictureBox1.TabStop = false;
             // 
-            // configurableQualityPictureBox32
-            // 
-            this.configurableQualityPictureBox32.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.hdd_white;
-            this.configurableQualityPictureBox32.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox32.Location = new System.Drawing.Point(7, 179);
-            this.configurableQualityPictureBox32.Name = "configurableQualityPictureBox32";
-            this.configurableQualityPictureBox32.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox32.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox32.TabIndex = 107;
-            this.configurableQualityPictureBox32.TabStop = false;
-            // 
-            // lblSmart
-            // 
-            this.lblSmart.AutoSize = true;
-            this.lblSmart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSmart.Location = new System.Drawing.Point(197, 187);
-            this.lblSmart.Name = "lblSmart";
-            this.lblSmart.Size = new System.Drawing.Size(24, 13);
-            this.lblSmart.TabIndex = 106;
-            this.lblSmart.Text = "text";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label44.Location = new System.Drawing.Point(37, 187);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(96, 13);
-            this.label44.TabIndex = 105;
-            this.label44.Text = "Status S.M.A.R.T.:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1789,6 +1789,7 @@ namespace HardwareInformation
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox17)).EndInit();
@@ -1827,7 +1828,6 @@ namespace HardwareInformation
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1885,7 +1885,7 @@ namespace HardwareInformation
 		   varCalend, varUso, varTag, varTipo, varBIOS, varBIOSType, varSecBoot, varVT, varSmart;
 		private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
 		   MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart;
-		private int i = 0;
+        private int i = 0;
 		private Label label25;
 		private Label lblBIOSType;
 		private GroupBox groupBox1;
@@ -1901,12 +1901,8 @@ namespace HardwareInformation
 		private ToolStripStatusLabel toolStripStatusLabel2;
 		private StatusStrip statusStrip1;
 		private ToolStripStatusLabel toolStripStatusLabel1;
-		private string coletando = "Coletando...";
-		private string cadastrando = "Cadastrando, aguarde...";
-		private string coletarNovamente = "Coletar Novamente";
-		private string cadastrarNovamente = "Cadastrar / Atualizar dados";
 		private bool pass = true, mode = true;
-		private ComboBox comboBox8;
+        private ComboBox comboBox8;
 		private Button coletaButton;
 		private Label label23;
 		private Label label24;
@@ -1966,7 +1962,7 @@ namespace HardwareInformation
 		private RadioButton employeeButton1;
 		private Label label42;
 		private Label label41;
-		private Label label40;
+        private Label label40;
 		private Label label39;
 		private Label label38;
 		private Label label37;
@@ -1980,8 +1976,47 @@ namespace HardwareInformation
         private Timer timer8;
         private Label label22;
 
-		//Fetches the program's binary version
-		private string version()
+        private const int TIMER_INTERVAL = 1000;
+        private Color LIGHT_FORECOLOR = SystemColors.ControlText;
+        private Color LIGHT_BACKCOLOR = SystemColors.ControlLight;
+        private Color LIGHT_ASTERISKCOLOR = Color.Red;
+        private Color ALERT_COLOR = Color.Red;
+        private Color OFFLINE_ALERT = Color.Red;
+        private Color ONLINE_ALERT = Color.Lime;
+        private Color DARK_FORECOLOR = SystemColors.ControlLightLight;
+        private Color DARK_BACKCOLOR = SystemColors.WindowFrame;
+        private Color DARK_ASTERISKCOLOR = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+        private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+        private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+        private const string SMART_FAIL = "(Drive com falha iminente)";
+        private const string ONLINE = "(Online)";
+        private const string OFFLINE = "(Offline)";
+        private const string FETCHING = "Coletando...";
+        private const string REGISTERING = "REGISTERING, aguarde...";
+        private const string FETCH_AGAIN = "Coletar Novamente";
+        private const string REGISTER_AGAIN = "Cadastrar / Atualizar dados";
+        private const string SERVER_PORT_ERROR = "Para acessar, selecione o servidor e a porta!";
+        private const string ERROR_WINDOWTITLE = "Erro";
+        private const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+        private const string THEME_REG_KEY = "AppsUseLightTheme";
+        private const string DEFAULT_HOSTNAME = "MUDAR-NOME";
+        private const string HOSTNAME_ALERT = " (Nome incorreto, alterar)";
+        private const string MEDIA_OPERATION_NVME = "NVMe";
+        private const string MEDIA_OPERATION_IDE_RAID = "IDE/Legacy ou RAID";
+        private const string MEDIA_OPERATION_ALERT = " (Modo de operação incorreto, alterar)";
+        private const string SECURE_BOOT_ALERT = " (Ativar boot seguro)";
+        private const string DATABASE_REACH_ERROR = "Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!";
+        private const string BIOS_VERSION_ALERT = " (Atualizar BIOS/UEFI)";
+        private const string FIRMWARE_TYPE_ALERT = " (PC suporta UEFI, fazer a conversão do sistema)";
+        private const string NETWORK_ERROR = "Computador sem conexão com a Intranet";
+        private const string VT_ALERT = " (Ativar Tecnologia de Virtualização na BIOS/UEFI)";
+        private const string WEBVIEW2_PATH = "runtimes\\win-x86";
+        private const string SERVER_NOT_FOUND_ERROR = "Servidor não encontrado. Selecione um servidor válido!";
+        private const string PENDENCY_ERROR = "Resolva as pendencias exibidas em vermelho!";
+        private const string MANDATORY_FIELD = "Preencha os campos obrigatórios";
+
+        //Fetches the program's binary version
+        private string version()
 		{
 			return "v" + Application.ProductVersion;
 		}
@@ -1992,8 +2027,8 @@ namespace HardwareInformation
 			return "v" + Application.ProductVersion + "-" + testBranch;
 		}
 
-		//Sets service mode to format
-		private void formatButton1_CheckedChanged(object sender, EventArgs e)
+        //Sets service mode to format
+        private void formatButton1_CheckedChanged(object sender, EventArgs e)
 		{
 			mode = true;
 		}
@@ -2023,11 +2058,11 @@ namespace HardwareInformation
 		{
 			try
 			{
-				using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
+				using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
 				{
 					if (key != null)
 					{
-						Object o = key.GetValue("AppsUseLightTheme");
+						Object o = key.GetValue(THEME_REG_KEY);
 						if (o != null && o.Equals(0))
 						{
 							darkTheme();
@@ -2072,11 +2107,11 @@ namespace HardwareInformation
 		{
 			try
 			{
-				using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
+				using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
 				{
 					if (key != null)
 					{
-						Object o = key.GetValue("AppsUseLightTheme");
+						Object o = key.GetValue(THEME_REG_KEY);
 						if (o != null && o.Equals(0))
 						{
 							darkTheme();
@@ -2105,115 +2140,116 @@ namespace HardwareInformation
 		//Sets a light theme for the UI
 		private void lightTheme()
 		{
-			this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.lblBM.ForeColor = SystemColors.ControlText;
-			this.lblModel.ForeColor = SystemColors.ControlText;
-			this.lblSerialNo.ForeColor = SystemColors.ControlText;
-			this.lblProcName.ForeColor = SystemColors.ControlText;
-			this.lblPM.ForeColor = SystemColors.ControlText;
-			this.lblHDSize.ForeColor = SystemColors.ControlText;
-			this.lblMediaType.ForeColor = SystemColors.ControlText;
-			this.lblMediaOperation.ForeColor = SystemColors.ControlText;
-			this.lblOS.ForeColor = SystemColors.ControlText;
-			this.lblHostname.ForeColor = SystemColors.ControlText;
-			this.lblMac.ForeColor = SystemColors.ControlText;
-			this.lblIP.ForeColor = SystemColors.ControlText;
-			this.label1.ForeColor = SystemColors.ControlText;
-			this.label2.ForeColor = SystemColors.ControlText;
-			this.label3.ForeColor = SystemColors.ControlText;
-			this.label4.ForeColor = SystemColors.ControlText;
-			this.label5.ForeColor = SystemColors.ControlText;
-			this.label6.ForeColor = SystemColors.ControlText;
-			this.label7.ForeColor = SystemColors.ControlText;
-			this.label8.ForeColor = SystemColors.ControlText;
-			this.label9.ForeColor = SystemColors.ControlText;
-			this.label10.ForeColor = SystemColors.ControlText;
-			this.label11.ForeColor = SystemColors.ControlText;
-			this.label12.ForeColor = SystemColors.ControlText;
-			this.label13.ForeColor = SystemColors.ControlText;
-			this.textBox1.BackColor = SystemColors.Control;
-			this.textBox1.ForeColor = SystemColors.ControlText;
-			this.textBox2.BackColor = SystemColors.Control;
-			this.textBox2.ForeColor = SystemColors.ControlText;
-			this.textBox3.BackColor = SystemColors.Control;
-			this.textBox3.ForeColor = SystemColors.ControlText;
-			this.textBox4.BackColor = SystemColors.Control;
-			this.textBox4.ForeColor = SystemColors.ControlText;
-			this.label14.ForeColor = SystemColors.ControlText;
-			this.label15.ForeColor = SystemColors.ControlText;
-			this.label16.ForeColor = SystemColors.ControlText;
-			this.comboBox1.BackColor = SystemColors.ControlLight;
-			this.comboBox1.ForeColor = SystemColors.ControlText;
-			this.comboBox2.BackColor = SystemColors.ControlLight;
-			this.comboBox2.ForeColor = SystemColors.ControlText;
-			this.label17.ForeColor = SystemColors.ControlText;
-			this.comboBox3.BackColor = SystemColors.ControlLight;
-			this.comboBox3.ForeColor = SystemColors.ControlText;
-			this.cadastraButton.BackColor = SystemColors.ControlLight;
-			this.cadastraButton.ForeColor = SystemColors.ControlText;
-			this.label18.ForeColor = SystemColors.ControlText;
-			this.comboBox4.BackColor = SystemColors.ControlLight;
-			this.comboBox4.ForeColor = SystemColors.ControlText;
-			this.label19.ForeColor = SystemColors.ControlText;
-			this.comboBox5.BackColor = SystemColors.ControlLight;
-			this.comboBox5.ForeColor = SystemColors.ControlText;
-			this.label20.ForeColor = SystemColors.ControlText;
-			this.comboBox6.BackColor = SystemColors.ControlLight;
-			this.comboBox6.ForeColor = SystemColors.ControlText;
-			this.label21.ForeColor = SystemColors.ControlText;
-			this.comboBox7.BackColor = SystemColors.ControlLight;
-			this.comboBox7.ForeColor = SystemColors.ControlText;
-			this.comboBox8.BackColor = SystemColors.ControlLight;
-			this.comboBox8.ForeColor = SystemColors.ControlText;
-			this.label22.ForeColor = SystemColors.ControlText;
-			//this.monthCalendar1.BackColor = SystemColors.ControlLight;
-			this.coletaButton.BackColor = SystemColors.ControlLight;
-			this.coletaButton.ForeColor = SystemColors.ControlText;
-			this.label23.ForeColor = SystemColors.ControlText;
-			this.label24.ForeColor = SystemColors.ControlText;
-			this.lblBIOS.ForeColor = SystemColors.ControlText;
-			this.accessSystemButton.BackColor = SystemColors.ControlLight;
-			this.accessSystemButton.ForeColor = SystemColors.ControlText;
-			this.label25.ForeColor = SystemColors.ControlText;
-			this.lblBIOSType.ForeColor = SystemColors.ControlText;
-			this.groupBox1.ForeColor = SystemColors.ControlText;
-			this.groupBox2.ForeColor = SystemColors.ControlText;
-			this.toolStripStatusLabel2.ForeColor = SystemColors.ControlText;
-			this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.toolStripStatusLabel1.ForeColor = SystemColors.ControlText;
-			this.comboBoxTheme.BackColor = this.BackColor;
-			this.comboBoxTheme.ForeColor = SystemColors.ControlText;
-			this.label27.ForeColor = SystemColors.ControlText;
-			this.label29.ForeColor = SystemColors.ControlText;
-			this.label28.ForeColor = SystemColors.ControlText;
-			this.label30.ForeColor = SystemColors.ControlText;
-			this.lblVT.ForeColor = SystemColors.ControlText;
-			this.lblSecBoot.ForeColor = SystemColors.ControlText;
-			this.label32.ForeColor = SystemColors.ControlText;
-			this.label33.ForeColor = SystemColors.ControlText;
-			this.label34.ForeColor = SystemColors.ControlText;
-			this.label35.ForeColor = Color.Red;
-			this.label36.ForeColor = Color.Red;
-			this.label37.ForeColor = Color.Red;
-			this.label38.ForeColor = Color.Red;
-			this.label39.ForeColor = Color.Red;
-			this.label40.ForeColor = Color.Red;
-			this.label41.ForeColor = Color.Red;
-			this.label42.ForeColor = Color.Red;
-			this.label43.ForeColor = Color.Red;
-			this.lblGPUInfo.ForeColor = SystemColors.ControlText;
-			this.lblVT.ForeColor = SystemColors.ControlText;
-			this.groupBox3.ForeColor = SystemColors.ControlText;
-			this.textBox5.ForeColor = SystemColors.ControlText;
-			this.textBox5.BackColor = this.BackColor;
-			this.textBox6.ForeColor = SystemColors.ControlText;
-			this.textBox6.BackColor = this.BackColor;
+			this.BackColor = LIGHT_BACKGROUND;
+			this.lblBM.ForeColor = LIGHT_FORECOLOR;
+			this.lblModel.ForeColor = LIGHT_FORECOLOR;
+			this.lblSerialNo.ForeColor = LIGHT_FORECOLOR;
+			this.lblProcName.ForeColor = LIGHT_FORECOLOR;
+			this.lblPM.ForeColor = LIGHT_FORECOLOR;
+			this.lblHDSize.ForeColor = LIGHT_FORECOLOR;
+			this.lblMediaType.ForeColor = LIGHT_FORECOLOR;
+			this.lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
+			this.lblOS.ForeColor = LIGHT_FORECOLOR;
+			this.lblHostname.ForeColor = LIGHT_FORECOLOR;
+			this.lblMac.ForeColor = LIGHT_FORECOLOR;
+			this.lblIP.ForeColor = LIGHT_FORECOLOR;
+			this.label1.ForeColor = LIGHT_FORECOLOR;
+			this.label2.ForeColor = LIGHT_FORECOLOR;
+			this.label3.ForeColor = LIGHT_FORECOLOR;
+			this.label4.ForeColor = LIGHT_FORECOLOR;
+			this.label5.ForeColor = LIGHT_FORECOLOR;
+			this.label6.ForeColor = LIGHT_FORECOLOR;
+			this.label7.ForeColor = LIGHT_FORECOLOR;
+			this.label8.ForeColor = LIGHT_FORECOLOR;
+			this.label9.ForeColor = LIGHT_FORECOLOR;
+			this.label10.ForeColor = LIGHT_FORECOLOR;
+			this.label11.ForeColor = LIGHT_FORECOLOR;
+			this.label12.ForeColor = LIGHT_FORECOLOR;
+			this.label13.ForeColor = LIGHT_FORECOLOR;
+			this.textBox1.BackColor = LIGHT_BACKCOLOR;
+			this.textBox1.ForeColor = LIGHT_FORECOLOR;
+			this.textBox2.BackColor = LIGHT_BACKCOLOR;
+			this.textBox2.ForeColor = LIGHT_FORECOLOR;
+            this.textBox3.BackColor = LIGHT_BACKCOLOR;
+			this.textBox3.ForeColor = LIGHT_FORECOLOR;
+			this.textBox4.BackColor = LIGHT_BACKCOLOR;
+			this.textBox4.ForeColor = LIGHT_FORECOLOR;
+			this.label14.ForeColor = LIGHT_FORECOLOR;
+			this.label15.ForeColor = LIGHT_FORECOLOR;
+			this.label16.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox1.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox1.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox2.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox2.ForeColor = LIGHT_FORECOLOR;
+			this.label17.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox3.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox3.ForeColor = LIGHT_FORECOLOR;
+			this.cadastraButton.BackColor = LIGHT_BACKCOLOR;
+			this.cadastraButton.ForeColor = LIGHT_FORECOLOR;
+			this.label18.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox4.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox4.ForeColor = LIGHT_FORECOLOR;
+			this.label19.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox5.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox5.ForeColor = LIGHT_FORECOLOR;
+			this.label20.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox6.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox6.ForeColor = LIGHT_FORECOLOR;
+			this.label21.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox7.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox7.ForeColor = LIGHT_FORECOLOR;
+			this.comboBox8.BackColor = LIGHT_BACKCOLOR;
+			this.comboBox8.ForeColor = LIGHT_FORECOLOR;
+			this.label22.ForeColor = LIGHT_FORECOLOR;
+			this.coletaButton.BackColor = LIGHT_BACKCOLOR;
+			this.coletaButton.ForeColor = LIGHT_FORECOLOR;
+			this.label23.ForeColor = LIGHT_FORECOLOR;
+			this.label24.ForeColor = LIGHT_FORECOLOR;
+			this.lblBIOS.ForeColor = LIGHT_FORECOLOR;
+			this.accessSystemButton.BackColor = LIGHT_BACKCOLOR;
+			this.accessSystemButton.ForeColor = LIGHT_FORECOLOR;
+			this.label25.ForeColor = LIGHT_FORECOLOR;
+			this.lblBIOSType.ForeColor = LIGHT_FORECOLOR;
+			this.groupBox1.ForeColor = LIGHT_FORECOLOR;
+			this.groupBox2.ForeColor = LIGHT_FORECOLOR;
+			this.toolStripStatusLabel2.ForeColor = LIGHT_FORECOLOR;
+			this.statusStrip1.BackColor = LIGHT_BACKGROUND;
+			this.toolStripStatusLabel1.ForeColor = LIGHT_FORECOLOR;
+			this.comboBoxTheme.BackColor = LIGHT_BACKGROUND;
+			this.comboBoxTheme.ForeColor = LIGHT_FORECOLOR;
+			this.label27.ForeColor = LIGHT_FORECOLOR;
+			this.label29.ForeColor = LIGHT_FORECOLOR;
+			this.label28.ForeColor = LIGHT_FORECOLOR;
+			this.label30.ForeColor = LIGHT_FORECOLOR;
+			this.lblVT.ForeColor = LIGHT_FORECOLOR;
+			this.lblSecBoot.ForeColor = LIGHT_FORECOLOR;
+			this.label32.ForeColor = LIGHT_FORECOLOR;
+			this.label33.ForeColor = LIGHT_FORECOLOR;
+			this.label34.ForeColor = LIGHT_FORECOLOR;
+			this.label35.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label36.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label37.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label38.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label39.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label40.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label41.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label42.ForeColor = LIGHT_ASTERISKCOLOR;
+			this.label43.ForeColor = LIGHT_ASTERISKCOLOR;
+            this.label44.ForeColor = LIGHT_FORECOLOR;
+            this.lblGPUInfo.ForeColor = LIGHT_FORECOLOR;
+			this.lblVT.ForeColor = LIGHT_FORECOLOR;
+            this.lblSmart.ForeColor = LIGHT_FORECOLOR;
+            this.groupBox3.ForeColor = LIGHT_FORECOLOR;
+			this.textBox5.ForeColor = LIGHT_FORECOLOR;
+			this.textBox5.BackColor = LIGHT_BACKGROUND;
+			this.textBox6.ForeColor = LIGHT_FORECOLOR;
+			this.textBox6.BackColor = LIGHT_BACKGROUND;
 			this.toolStripMenuItem1.BackgroundImage = null;
-			this.toolStripMenuItem1.ForeColor = SystemColors.ControlText;
+			this.toolStripMenuItem1.ForeColor = LIGHT_FORECOLOR;
 			this.toolStripMenuItem2.BackgroundImage = null;
-			this.toolStripMenuItem2.ForeColor = SystemColors.ControlText;
+			this.toolStripMenuItem2.ForeColor = LIGHT_FORECOLOR;
 			this.toolStripMenuItem3.BackgroundImage = null;
-			this.toolStripMenuItem3.ForeColor = SystemColors.ControlText;
+			this.toolStripMenuItem3.ForeColor = LIGHT_FORECOLOR;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
 			this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
 			this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
@@ -2250,115 +2286,116 @@ namespace HardwareInformation
 		//Sets a dark theme for the UI
 		private void darkTheme()
 		{
-			this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.lblBM.ForeColor = SystemColors.ControlLightLight;
-			this.lblModel.ForeColor = SystemColors.ControlLightLight;
-			this.lblSerialNo.ForeColor = SystemColors.ControlLightLight;
-			this.lblProcName.ForeColor = SystemColors.ControlLightLight;
-			this.lblPM.ForeColor = SystemColors.ControlLightLight;
-			this.lblHDSize.ForeColor = SystemColors.ControlLightLight;
-			this.lblMediaType.ForeColor = SystemColors.ControlLightLight;
-			this.lblMediaOperation.ForeColor = SystemColors.ControlLightLight;
-			this.lblOS.ForeColor = SystemColors.ControlLightLight;
-			this.lblHostname.ForeColor = SystemColors.ControlLightLight;
-			this.lblMac.ForeColor = SystemColors.ControlLightLight;
-			this.lblIP.ForeColor = SystemColors.ControlLightLight;
-			this.label1.ForeColor = SystemColors.ControlLightLight;
-			this.label2.ForeColor = SystemColors.ControlLightLight;
-			this.label3.ForeColor = SystemColors.ControlLightLight;
-			this.label4.ForeColor = SystemColors.ControlLightLight;
-			this.label5.ForeColor = SystemColors.ControlLightLight;
-			this.label6.ForeColor = SystemColors.ControlLightLight;
-			this.label7.ForeColor = SystemColors.ControlLightLight;
-			this.label8.ForeColor = SystemColors.ControlLightLight;
-			this.label9.ForeColor = SystemColors.ControlLightLight;
-			this.label10.ForeColor = SystemColors.ControlLightLight;
-			this.label11.ForeColor = SystemColors.ControlLightLight;
-			this.label12.ForeColor = SystemColors.ControlLightLight;
-			this.label13.ForeColor = SystemColors.ControlLightLight;
-			this.textBox1.BackColor = SystemColors.WindowFrame;
-			this.textBox1.ForeColor = SystemColors.ControlLightLight;
-			this.textBox2.BackColor = SystemColors.WindowFrame;
-			this.textBox2.ForeColor = SystemColors.ControlLightLight;
-			this.textBox3.BackColor = SystemColors.WindowFrame;
-			this.textBox3.ForeColor = SystemColors.ControlLightLight;
-			this.textBox4.BackColor = SystemColors.WindowFrame;
-			this.textBox4.ForeColor = SystemColors.ControlLightLight;
-			this.label14.ForeColor = SystemColors.ControlLightLight;
-			this.label15.ForeColor = SystemColors.ControlLightLight;
-			this.label16.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox1.BackColor = SystemColors.WindowFrame;
-			this.comboBox1.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox2.BackColor = SystemColors.WindowFrame;
-			this.comboBox2.ForeColor = SystemColors.ControlLightLight;
-			this.label17.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox3.BackColor = SystemColors.WindowFrame;
-			this.comboBox3.ForeColor = SystemColors.ControlLightLight;
-			this.cadastraButton.BackColor = SystemColors.WindowFrame;
-			this.cadastraButton.ForeColor = SystemColors.ControlLightLight;
-			this.label18.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox4.BackColor = SystemColors.WindowFrame;
-			this.comboBox4.ForeColor = SystemColors.ControlLightLight;
-			this.label19.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox5.BackColor = SystemColors.WindowFrame;
-			this.comboBox5.ForeColor = SystemColors.ControlLightLight;
-			this.label20.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox6.BackColor = SystemColors.WindowFrame;
-			this.comboBox6.ForeColor = SystemColors.ControlLightLight;
-			this.label21.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox7.BackColor = SystemColors.WindowFrame;
-			this.comboBox7.ForeColor = SystemColors.ControlLightLight;
-			this.comboBox8.BackColor = SystemColors.WindowFrame;
-			this.comboBox8.ForeColor = SystemColors.ControlLightLight;
-			this.label22.ForeColor = SystemColors.ControlLightLight;
-			//this.monthCalendar1.BackColor = SystemColors.WindowFrame;
-			this.coletaButton.BackColor = SystemColors.WindowFrame;
-			this.coletaButton.ForeColor = SystemColors.ControlLightLight;
-			this.label23.ForeColor = SystemColors.ControlLightLight;
-			this.label24.ForeColor = SystemColors.ControlLightLight;
-			this.lblBIOS.ForeColor = SystemColors.ControlLightLight;
-			this.accessSystemButton.BackColor = SystemColors.WindowFrame;
-			this.accessSystemButton.ForeColor = SystemColors.ControlLightLight;
-			this.label25.ForeColor = SystemColors.ControlLightLight;
-			this.lblBIOSType.ForeColor = SystemColors.ControlLightLight;
-			this.groupBox1.ForeColor = SystemColors.ControlLightLight;
-			this.groupBox2.ForeColor = SystemColors.ControlLightLight;
-			this.toolStripStatusLabel2.ForeColor = SystemColors.ControlLightLight;
-			this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.toolStripStatusLabel1.ForeColor = SystemColors.ControlLightLight;
-			this.comboBoxTheme.BackColor = this.BackColor;
-			this.comboBoxTheme.ForeColor = SystemColors.ControlLightLight;
-			this.label27.ForeColor = SystemColors.ControlLightLight;
-			this.label28.ForeColor = SystemColors.ControlLightLight;
-			this.label29.ForeColor = SystemColors.ControlLightLight;
-			this.label30.ForeColor = SystemColors.ControlLightLight;
-			this.lblVT.ForeColor = SystemColors.ControlLightLight;
-			this.lblSecBoot.ForeColor = SystemColors.ControlLightLight;
-			this.label32.ForeColor = SystemColors.ControlLightLight;
-			this.label33.ForeColor = SystemColors.ControlLightLight;
-			this.label34.ForeColor = SystemColors.ControlLightLight;
-			this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-			this.lblGPUInfo.ForeColor = SystemColors.ControlLightLight;
-			this.lblVT.ForeColor = SystemColors.ControlLightLight;
-			this.groupBox3.ForeColor = SystemColors.ControlLightLight;
-			this.textBox5.ForeColor = SystemColors.ControlLightLight;
-			this.textBox5.BackColor = this.BackColor;
-			this.textBox6.ForeColor = SystemColors.ControlLightLight;
-			this.textBox6.BackColor = this.BackColor;
+			this.BackColor = DARK_BACKGROUND;
+			this.lblBM.ForeColor = DARK_FORECOLOR;
+			this.lblModel.ForeColor = DARK_FORECOLOR;
+			this.lblSerialNo.ForeColor = DARK_FORECOLOR;
+			this.lblProcName.ForeColor = DARK_FORECOLOR;
+			this.lblPM.ForeColor = DARK_FORECOLOR;
+			this.lblHDSize.ForeColor = DARK_FORECOLOR;
+			this.lblMediaType.ForeColor = DARK_FORECOLOR;
+			this.lblMediaOperation.ForeColor = DARK_FORECOLOR;
+			this.lblOS.ForeColor = DARK_FORECOLOR;
+			this.lblHostname.ForeColor = DARK_FORECOLOR;
+			this.lblMac.ForeColor = DARK_FORECOLOR;
+			this.lblIP.ForeColor = DARK_FORECOLOR;
+			this.label1.ForeColor = DARK_FORECOLOR;
+			this.label2.ForeColor = DARK_FORECOLOR;
+			this.label3.ForeColor = DARK_FORECOLOR;
+			this.label4.ForeColor = DARK_FORECOLOR;
+			this.label5.ForeColor = DARK_FORECOLOR;
+			this.label6.ForeColor = DARK_FORECOLOR;
+			this.label7.ForeColor = DARK_FORECOLOR;
+			this.label8.ForeColor = DARK_FORECOLOR;
+			this.label9.ForeColor = DARK_FORECOLOR;
+			this.label10.ForeColor = DARK_FORECOLOR;
+			this.label11.ForeColor = DARK_FORECOLOR;
+			this.label12.ForeColor = DARK_FORECOLOR;
+			this.label13.ForeColor = DARK_FORECOLOR;
+			this.textBox1.BackColor = DARK_BACKCOLOR;
+			this.textBox1.ForeColor = DARK_FORECOLOR;
+			this.textBox2.BackColor = DARK_BACKCOLOR;
+			this.textBox2.ForeColor = DARK_FORECOLOR;
+			this.textBox3.BackColor = DARK_BACKCOLOR;
+			this.textBox3.ForeColor = DARK_FORECOLOR;
+			this.textBox4.BackColor = DARK_BACKCOLOR;
+			this.textBox4.ForeColor = DARK_FORECOLOR;
+			this.label14.ForeColor = DARK_FORECOLOR;
+			this.label15.ForeColor = DARK_FORECOLOR;
+			this.label16.ForeColor = DARK_FORECOLOR;
+			this.comboBox1.BackColor = DARK_BACKCOLOR;
+			this.comboBox1.ForeColor = DARK_FORECOLOR;
+			this.comboBox2.BackColor = DARK_BACKCOLOR;
+			this.comboBox2.ForeColor = DARK_FORECOLOR;
+			this.label17.ForeColor = DARK_FORECOLOR;
+			this.comboBox3.BackColor = DARK_BACKCOLOR;
+			this.comboBox3.ForeColor = DARK_FORECOLOR;
+			this.cadastraButton.BackColor = DARK_BACKCOLOR;
+			this.cadastraButton.ForeColor = DARK_FORECOLOR;
+			this.label18.ForeColor = DARK_FORECOLOR;
+			this.comboBox4.BackColor = DARK_BACKCOLOR;
+			this.comboBox4.ForeColor = DARK_FORECOLOR;
+			this.label19.ForeColor = DARK_FORECOLOR;
+			this.comboBox5.BackColor = DARK_BACKCOLOR;
+			this.comboBox5.ForeColor = DARK_FORECOLOR;
+			this.label20.ForeColor = DARK_FORECOLOR;
+			this.comboBox6.BackColor = DARK_BACKCOLOR;
+			this.comboBox6.ForeColor = DARK_FORECOLOR;
+			this.label21.ForeColor = DARK_FORECOLOR;
+			this.comboBox7.BackColor = DARK_BACKCOLOR;
+			this.comboBox7.ForeColor = DARK_FORECOLOR;
+			this.comboBox8.BackColor = DARK_BACKCOLOR;
+			this.comboBox8.ForeColor = DARK_FORECOLOR;
+			this.label22.ForeColor = DARK_FORECOLOR;
+			this.coletaButton.BackColor = DARK_BACKCOLOR;
+			this.coletaButton.ForeColor = DARK_FORECOLOR;
+			this.label23.ForeColor = DARK_FORECOLOR;
+			this.label24.ForeColor = DARK_FORECOLOR;
+			this.lblBIOS.ForeColor = DARK_FORECOLOR;
+			this.accessSystemButton.BackColor = DARK_BACKCOLOR;
+			this.accessSystemButton.ForeColor = DARK_FORECOLOR;
+			this.label25.ForeColor = DARK_FORECOLOR;
+			this.lblBIOSType.ForeColor = DARK_FORECOLOR;
+			this.groupBox1.ForeColor = DARK_FORECOLOR;
+			this.groupBox2.ForeColor = DARK_FORECOLOR;
+			this.toolStripStatusLabel2.ForeColor = DARK_FORECOLOR;
+			this.statusStrip1.BackColor = DARK_BACKGROUND;
+			this.toolStripStatusLabel1.ForeColor = DARK_FORECOLOR;
+			this.comboBoxTheme.BackColor = DARK_BACKGROUND;
+			this.comboBoxTheme.ForeColor = DARK_FORECOLOR;
+			this.label27.ForeColor = DARK_FORECOLOR;
+			this.label28.ForeColor = DARK_FORECOLOR;
+			this.label29.ForeColor = DARK_FORECOLOR;
+			this.label30.ForeColor = DARK_FORECOLOR;
+			this.lblVT.ForeColor = DARK_FORECOLOR;
+			this.lblSecBoot.ForeColor = DARK_FORECOLOR;
+			this.label32.ForeColor = DARK_FORECOLOR;
+			this.label33.ForeColor = DARK_FORECOLOR;
+			this.label34.ForeColor = DARK_FORECOLOR;
+			this.label35.ForeColor = DARK_ASTERISKCOLOR;
+			this.label36.ForeColor = DARK_ASTERISKCOLOR;
+			this.label37.ForeColor = DARK_ASTERISKCOLOR;
+			this.label38.ForeColor = DARK_ASTERISKCOLOR;
+			this.label39.ForeColor = DARK_ASTERISKCOLOR;
+			this.label40.ForeColor = DARK_ASTERISKCOLOR;
+			this.label41.ForeColor = DARK_ASTERISKCOLOR;
+			this.label42.ForeColor = DARK_ASTERISKCOLOR;
+			this.label43.ForeColor = DARK_ASTERISKCOLOR;
+            this.label44.ForeColor = DARK_FORECOLOR;
+			this.lblGPUInfo.ForeColor = DARK_FORECOLOR;
+			this.lblVT.ForeColor = DARK_FORECOLOR;
+            this.lblSmart.ForeColor = DARK_FORECOLOR;
+            this.groupBox3.ForeColor = DARK_FORECOLOR;
+			this.textBox5.ForeColor = DARK_FORECOLOR;
+			this.textBox5.BackColor = DARK_BACKGROUND;
+			this.textBox6.ForeColor = DARK_FORECOLOR;
+			this.textBox6.BackColor = DARK_BACKGROUND;
 			this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-			this.toolStripMenuItem1.ForeColor = SystemColors.ControlLightLight;
+			this.toolStripMenuItem1.ForeColor = DARK_FORECOLOR;
 			this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-			this.toolStripMenuItem2.ForeColor = SystemColors.ControlLightLight;
+			this.toolStripMenuItem2.ForeColor = DARK_FORECOLOR;
 			this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-			this.toolStripMenuItem3.ForeColor = SystemColors.ControlLightLight;
+			this.toolStripMenuItem3.ForeColor = DARK_FORECOLOR;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
 			this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
 			this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
@@ -2398,7 +2435,7 @@ namespace HardwareInformation
 			if (!string.IsNullOrWhiteSpace(comboBox7.Text) && !string.IsNullOrWhiteSpace(comboBox8.Text))
 				System.Diagnostics.Process.Start("http://" + comboBox7.Text + ":" + comboBox8.Text);
 			else
-				MessageBox.Show("Para acessar, selecione o servidor e a porta!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(SERVER_PORT_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 		}
 
@@ -2408,7 +2445,7 @@ namespace HardwareInformation
 			Application.Exit();
 		}
 
-		//Loads the form, sets some combobox values, create two timers (500 ms cadence), and triggers a hardware collection
+		//Loads the form, sets some combobox values, create two timers (1000 ms cadence), and triggers a hardware collection
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			timer1.Tick += new EventHandler(flashTextHostname);
@@ -2419,20 +2456,22 @@ namespace HardwareInformation
 			timer6.Tick += new EventHandler(flashTextBIOSType);
 			timer7.Tick += new EventHandler(flashTextVT);
             timer8.Tick += new EventHandler(flashTextSmart);
-            timer1.Interval = 500;
-			timer2.Interval = 500;
-			timer3.Interval = 500;
-			timer4.Interval = 500;
-			timer5.Interval = 500;
-			timer6.Interval = 500;
-			timer7.Interval = 500;
-            timer8.Interval = 500;
+            timer1.Interval = TIMER_INTERVAL;
+			timer2.Interval = TIMER_INTERVAL;
+			timer3.Interval = TIMER_INTERVAL;
+			timer4.Interval = TIMER_INTERVAL;
+			timer5.Interval = TIMER_INTERVAL;
+			timer6.Interval = TIMER_INTERVAL;
+			timer7.Interval = TIMER_INTERVAL;
+            timer8.Interval = TIMER_INTERVAL;
             comboBox7.SelectedIndex = 0;
 			comboBox8.SelectedIndex = 0;
-			comboBoxThemeInit();
+            comboBoxThemeInit();
 			this.FormClosing += Form1_FormClosing;
 			coleta_Click(sender, e);
-		}
+        }
+
+        
 
 		//Restricts textbox4 only with chars
 		private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
@@ -2450,98 +2489,107 @@ namespace HardwareInformation
 		//Sets the Hostname label to flash in red
 		private void flashTextHostname(Object myObject, EventArgs myEventArgs)
 		{
-			if (lblHostname.ForeColor == Color.Red && themeBool == true)
-				lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblHostname.ForeColor == Color.Red && themeBool == false)
-				lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblHostname.ForeColor == ALERT_COLOR && themeBool == true)
+				lblHostname.ForeColor = DARK_FORECOLOR;
+			else if (lblHostname.ForeColor == ALERT_COLOR && themeBool == false)
+				lblHostname.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblHostname.ForeColor = Color.Red;
+				lblHostname.ForeColor = ALERT_COLOR;
 		}
 
 		//Sets the MediaOperations label to flash in red
 		private void flashTextMediaOp(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblMediaOperation.ForeColor == Color.Red && themeBool == true)
-				lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblMediaOperation.ForeColor == Color.Red && themeBool == false)
-				lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblMediaOperation.ForeColor == ALERT_COLOR && themeBool == true)
+				lblMediaOperation.ForeColor = DARK_FORECOLOR;
+			else if (lblMediaOperation.ForeColor == ALERT_COLOR && themeBool == false)
+				lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblMediaOperation.ForeColor = Color.Red;
+				lblMediaOperation.ForeColor = ALERT_COLOR;
 		}
 
 		//Sets the Secure Boot label to flash in red
 		private void flashTextSecBoot(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblSecBoot.ForeColor == Color.Red && themeBool == true)
-				lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblSecBoot.ForeColor == Color.Red && themeBool == false)
-				lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblSecBoot.ForeColor == ALERT_COLOR && themeBool == true)
+				lblSecBoot.ForeColor = DARK_FORECOLOR;
+			else if (lblSecBoot.ForeColor == ALERT_COLOR && themeBool == false)
+				lblSecBoot.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblSecBoot.ForeColor = Color.Red;
+				lblSecBoot.ForeColor = ALERT_COLOR;
 		}
 
 		//Sets the VT label to flash in red
 		private void flashTextVT(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblVT.ForeColor == Color.Red && themeBool == true)
-				lblVT.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblVT.ForeColor == Color.Red && themeBool == false)
-				lblVT.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblVT.ForeColor == ALERT_COLOR && themeBool == true)
+				lblVT.ForeColor = DARK_FORECOLOR;
+			else if (lblVT.ForeColor == ALERT_COLOR && themeBool == false)
+				lblVT.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblVT.ForeColor = Color.Red;
+				lblVT.ForeColor = ALERT_COLOR;
 		}
 
         //Sets the SMART label to flash in red
         private void flashTextSmart(Object myobject, EventArgs myEventArgs)
         {
-            if (lblSmart.ForeColor == Color.Red && themeBool == true)
-                lblSmart.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            else if (lblVT.ForeColor == Color.Red && themeBool == false)
-                lblSmart.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            if (lblSmart.ForeColor == ALERT_COLOR && themeBool == true)
+            {
+                lblSmart.ForeColor = DARK_FORECOLOR;
+                lblSmart.Text = Smart;
+            }                
+            else if (lblSmart.ForeColor == ALERT_COLOR && themeBool == false)
+            {
+                lblSmart.ForeColor = LIGHT_FORECOLOR;
+                lblSmart.Text = Smart;
+            }                
             else
-                lblSmart.ForeColor = Color.Red;
+            {
+                lblSmart.ForeColor = ALERT_COLOR;
+                lblSmart.Text = SMART_FAIL;
+            }                
         }
 
         //Sets the BIOS Version label to flash in red
         private void flashTextBIOSVersion(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblBIOS.ForeColor == Color.Red && themeBool == true)
-				lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblBIOS.ForeColor == Color.Red && themeBool == false)
-				lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblBIOS.ForeColor == ALERT_COLOR && themeBool == true)
+				lblBIOS.ForeColor = DARK_FORECOLOR;
+			else if (lblBIOS.ForeColor == ALERT_COLOR && themeBool == false)
+				lblBIOS.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblBIOS.ForeColor = Color.Red;
+				lblBIOS.ForeColor = ALERT_COLOR;
 		}
 
 		//Sets the Mac and IP labels to flash in red
 		private void flashTextNetConnectivity(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblMac.ForeColor == Color.Red && themeBool == true)
+			if (lblMac.ForeColor == ALERT_COLOR && themeBool == true)
 			{
-				lblMac.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-				lblIP.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+				lblMac.ForeColor = DARK_FORECOLOR;
+				lblIP.ForeColor = DARK_FORECOLOR;
 			}
-			else if (lblMac.ForeColor == Color.Red && themeBool == false)
+			else if (lblMac.ForeColor == ALERT_COLOR && themeBool == false)
 			{
-				lblMac.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-				lblIP.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+				lblMac.ForeColor = LIGHT_FORECOLOR;
+				lblIP.ForeColor = LIGHT_FORECOLOR;
 			}
 			else
 			{
-				lblMac.ForeColor = Color.Red;
-				lblIP.ForeColor = Color.Red;
+				lblMac.ForeColor = ALERT_COLOR;
+				lblIP.ForeColor = ALERT_COLOR;
 			}
 		}
 
 		//Sets the BIOS Firmware Type label to flash in red
 		private void flashTextBIOSType(Object myobject, EventArgs myEventArgs)
 		{
-			if (lblBIOSType.ForeColor == Color.Red && themeBool == true)
-				lblBIOSType.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			else if (lblBIOSType.ForeColor == Color.Red && themeBool == false)
-				lblBIOSType.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+			if (lblBIOSType.ForeColor == ALERT_COLOR && themeBool == true)
+				lblBIOSType.ForeColor = DARK_FORECOLOR;
+			else if (lblBIOSType.ForeColor == ALERT_COLOR && themeBool == false)
+				lblBIOSType.ForeColor = LIGHT_FORECOLOR;
 			else
-				lblBIOSType.ForeColor = Color.Red;
+				lblBIOSType.ForeColor = ALERT_COLOR;
 		}
 
 		//Starts the collection process
@@ -2551,13 +2599,13 @@ namespace HardwareInformation
 			porta = comboBox8.Text;
 			if (PingHost(servidor_web) == true && porta != "")
 			{
-				label26.Text = "(Online)";
-				label26.ForeColor = Color.Lime;
+				label26.Text = ONLINE;
+				label26.ForeColor = ONLINE_ALERT;
 			}
 			else
 			{
-				label26.Text = "(Offline)";
-				label26.ForeColor = Color.Red;
+				label26.Text = OFFLINE;
+				label26.ForeColor = OFFLINE_ALERT;
 			}
 
 			//Stops blinking and resets red color
@@ -2569,49 +2617,52 @@ namespace HardwareInformation
 			timer6.Enabled = false;
 			timer7.Enabled = false;
             timer8.Enabled = false;
-            if (lblHostname.ForeColor == Color.Red && themeBool == true)
+            if (lblHostname.ForeColor == ALERT_COLOR || lblMediaOperation.ForeColor == ALERT_COLOR || lblSecBoot.ForeColor == ALERT_COLOR || lblBIOS.ForeColor == ALERT_COLOR || lblVT.ForeColor == ALERT_COLOR || lblSmart.ForeColor == ALERT_COLOR)
 			{
-				lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-				lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-				lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-				lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-				lblVT.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-                lblSmart.ForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            }
-			else if (lblHostname.ForeColor == Color.Red && themeBool == false)
-			{
-				lblHostname.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-				lblMediaOperation.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-				lblSecBoot.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-				lblBIOS.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-				lblVT.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-                lblSmart.ForeColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+                if(themeBool)
+                {
+                    lblHostname.ForeColor = DARK_FORECOLOR;
+                    lblMediaOperation.ForeColor = DARK_FORECOLOR;
+                    lblSecBoot.ForeColor = DARK_FORECOLOR;
+                    lblBIOS.ForeColor = DARK_FORECOLOR;
+                    lblVT.ForeColor = DARK_FORECOLOR;
+                    lblSmart.ForeColor = DARK_FORECOLOR;
+                }
+                else
+                {
+                    lblHostname.ForeColor = LIGHT_FORECOLOR;
+                    lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
+                    lblSecBoot.ForeColor = LIGHT_FORECOLOR;
+                    lblBIOS.ForeColor = LIGHT_FORECOLOR;
+                    lblVT.ForeColor = LIGHT_FORECOLOR;
+                    lblSmart.ForeColor = LIGHT_FORECOLOR;
+                }				
             }
 
 			//Sets current and maximum values for the progressbar
 			progressBar1.Maximum = 18;
 			progressBar1.Value = 0;
 
-			//Writes 'coletando...' in the labels, while collects data
-			lblBM.Text = coletando;
-			lblModel.Text = coletando;
-			lblSerialNo.Text = coletando;
-			lblProcName.Text = coletando;
-			lblPM.Text = coletando;
-			lblHDSize.Text = coletando;
-            lblSmart.Text = coletando;
-			lblMediaType.Text = coletando;
-			lblMediaOperation.Text = coletando;
-			lblGPUInfo.Text = coletando;
-			lblOS.Text = coletando;
-			lblHostname.Text = coletando;
-			lblMac.Text = coletando;
-			lblIP.Text = coletando;
-			lblBIOS.Text = coletando;
-			lblBIOSType.Text = coletando;
-			lblSecBoot.Text = coletando;
-			lblVT.Text = coletando;
-			coletaButton.Text = coletando;
+			//Writes 'Coletando...' in the labels, while collects data
+			lblBM.Text = FETCHING;
+			lblModel.Text = FETCHING;
+			lblSerialNo.Text = FETCHING;
+			lblProcName.Text = FETCHING;
+			lblPM.Text = FETCHING;
+			lblHDSize.Text = FETCHING;
+            lblSmart.Text = FETCHING;
+			lblMediaType.Text = FETCHING;
+			lblMediaOperation.Text = FETCHING;
+			lblGPUInfo.Text = FETCHING;
+			lblOS.Text = FETCHING;
+			lblHostname.Text = FETCHING;
+			lblMac.Text = FETCHING;
+			lblIP.Text = FETCHING;
+			lblBIOS.Text = FETCHING;
+			lblBIOSType.Text = FETCHING;
+			lblSecBoot.Text = FETCHING;
+			lblVT.Text = FETCHING;
+			coletaButton.Text = FETCHING;
 		}
 
 		//Auxiliary method
@@ -2706,69 +2757,69 @@ namespace HardwareInformation
 			lblBIOSType.Text = BIOSType;
 			lblSecBoot.Text = SecBoot;
 			lblVT.Text = VT;
+
 			string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBox7.Text, comboBox8.Text);
-			if (lblHostname.Text.Equals("MUDAR-NOME"))
+			if (lblHostname.Text.Equals(DEFAULT_HOSTNAME))
 			{
 				pass = false;
-				lblHostname.Text += " (Nome incorreto, alterar)";
+				lblHostname.Text += HOSTNAME_ALERT;
 				timer1.Enabled = true;
 			}
-			if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals("IDE/Legacy ou RAID"))
+			if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
 			{
 				if (lblModel.Text.Contains("A315-56"))
 				{
-					lblMediaOperation.Text = "NVMe";
+					lblMediaOperation.Text = MEDIA_OPERATION_NVME;
 				}
                 else
                 {
 					pass = false;
-					lblMediaOperation.Text += " (Modo de operação incorreto, alterar)";
+					lblMediaOperation.Text += MEDIA_OPERATION_ALERT;
 					timer2.Enabled = true;
 				}				
 			}
 			if (lblSecBoot.Text.Equals("Desativado") && !lblGPUInfo.Text.Contains("210") && !lblGPUInfo.Text.Contains("430"))
 			{
 				pass = false;
-				lblSecBoot.Text += " (Ativar boot seguro)";
+				lblSecBoot.Text += SECURE_BOOT_ALERT;
 				timer3.Enabled = true;
 			}
 			if (str == null)
 			{
 				pass = false;
-				MessageBox.Show("Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(DATABASE_REACH_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			if (str != null && !lblBIOS.Text.Contains(str[0]))
 			{
 				if (!str[0].Equals("-1"))
 				{
 					pass = false;
-					lblBIOS.Text += " (Atualizar BIOS/UEFI)";
+					lblBIOS.Text += BIOS_VERSION_ALERT;
 					timer4.Enabled = true;
 				}
 			}
 			if (str != null && str[1].Equals("false"))
 			{
 				pass = false;
-				lblBIOSType.Text += " (PC suporta UEFI, fazer a conversão do sistema)";
+				lblBIOSType.Text += FIRMWARE_TYPE_ALERT;
 				timer6.Enabled = true;
 			}
 			if (lblMac.Text == "")
 			{
 				pass = false;
-				lblMac.Text = "Computador sem conexão com a Intranet";
-				lblIP.Text = "Computador sem conexão com a Intranet";
+				lblMac.Text = NETWORK_ERROR;
+				lblIP.Text = NETWORK_ERROR;
 				timer5.Enabled = true;
 			}
 			if (lblVT.Text == "Desativado")
 			{
 				pass = false;
-				lblVT.Text += " (Ativar Tecnologia de Virtualização na BIOS/UEFI)";
+				lblVT.Text += VT_ALERT;
 				timer7.Enabled = true;
 			}
-            if (lblSmart.Text.Contains("Pred Fail"))
+            if (!lblSmart.Text.Contains("Pred Fail"))
             {
                 pass = false;
-                lblSmart.Text += " (Dispositivo de armazenamento com falha iminente)";
                 timer8.Enabled = true;
             }
         }
@@ -2810,7 +2861,7 @@ namespace HardwareInformation
 			accessSystemButton.Enabled = true;
 			cadastraButton.Enabled = true;
 			coletaButton.Enabled = true;
-			coletaButton.Text = coletarNovamente;
+			coletaButton.Text = FETCH_AGAIN;
 			printHardwareData();
 		}
 
@@ -2858,7 +2909,7 @@ namespace HardwareInformation
 		//Runs the registration for the website
 		private async void cadastra_ClickAsync(object sender, EventArgs e)
 		{
-			cadastraButton.Text = cadastrando;
+			cadastraButton.Text = REGISTERING;
 			cadastraButton.Enabled = false;
 			accessSystemButton.Enabled = false;
 			coletaButton.Enabled = false;
@@ -2881,7 +2932,7 @@ namespace HardwareInformation
 				servidor_web = comboBox7.Text;
 				porta = comboBox8.Text;
 
-				var webView2Environment = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync("runtimes\\win-x86", System.IO.Path.GetTempPath());
+				var webView2Environment = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync(WEBVIEW2_PATH, System.IO.Path.GetTempPath());
 				await webView2.EnsureCoreWebView2Async(webView2Environment);
 
 				if (PingHost(servidor_web) == true && porta != "")
@@ -2902,13 +2953,13 @@ namespace HardwareInformation
 					 "&secBoot=" + varSecBoot + "&vt=" + varVT);
 				}
 				else
-					MessageBox.Show("Servidor não encontrado. Selecione um servidor válido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show(SERVER_NOT_FOUND_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else if (!pass)
-				MessageBox.Show("Resolva as pendencias exibidas em vermelho!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(PENDENCY_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			else
-				MessageBox.Show("Preencha os campos obrigatórios", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			cadastraButton.Text = cadastrarNovamente;
+				MessageBox.Show(MANDATORY_FIELD, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			cadastraButton.Text = REGISTER_AGAIN;
 			cadastraButton.Enabled = true;
 			accessSystemButton.Enabled = true;
 			coletaButton.Enabled = true;
