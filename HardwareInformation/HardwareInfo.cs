@@ -603,6 +603,26 @@ public static class HardwareInfo
 		return "OK";
 	}
 
+	public static string GetTPMStatus()
+	{
+		string isActivated = "", isEnabled = "", specVersion = "";
+		ManagementScope scope = new ManagementScope(@"\\.\root\cimv2\Security\MicrosoftTPM");
+		ObjectQuery query = new ObjectQuery("select * from Win32_Tpm");
+		ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, query);
+
+		foreach (ManagementObject queryObj in searcher.Get())
+		{
+			isActivated = queryObj.Properties["IsActivated_InitialValue"].Value.ToString();
+			isEnabled = queryObj.Properties["IsEnabled_InitialValue"].Value.ToString();
+			specVersion = queryObj.Properties["SpecVersion"].Value.ToString();
+		}
+		if (specVersion != "")
+			specVersion = specVersion.Substring(0, 3);
+		else
+			specVersion = "Não existente";		
+		return specVersion;		
+	}
+
 	//Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
 	public static string countDistinct(string[] array)
 	{

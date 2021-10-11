@@ -9,6 +9,18 @@ namespace HardwareInformation
 	{
 		private Authentication classA = new Authentication();
 
+		private Color LIGHT_FORECOLOR = SystemColors.ControlText;
+		private Color LIGHT_BACKCOLOR = SystemColors.ControlLight;
+		private Color DARK_FORECOLOR = SystemColors.ControlLightLight;
+		private Color DARK_BACKCOLOR = SystemColors.WindowFrame;
+		private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+		private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+		private const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+		private const string THEME_REG_KEY = "AppsUseLightTheme";
+		private const string AUTH_INVALID = "Credenciais inválidas. Tente novamente.";
+		private const string NO_AUTH = "Preencha suas credenciais.";
+		private const string ERROR_WINDOWTITLE = "Erro";
+
 		public Form2()
 		{
 			InitializeComponent();
@@ -19,36 +31,36 @@ namespace HardwareInformation
 		//Sets a light theme for the login form
 		public void lightTheme()
 		{
-			this.label1.ForeColor = SystemColors.ControlText;
-			this.label2.ForeColor = SystemColors.ControlText;
-			this.textBox1.BackColor = SystemColors.Control;
-			this.textBox1.ForeColor = SystemColors.ControlText;
-			this.textBox2.BackColor = SystemColors.Control;
-			this.textBox2.ForeColor = SystemColors.ControlText;
-			this.button1.BackColor = SystemColors.ControlLight;
-			this.button1.ForeColor = SystemColors.ControlText;
-			this.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.toolStripStatusLabel1.ForeColor = SystemColors.ControlText;
-			this.toolStripStatusLabel2.ForeColor = SystemColors.ControlText;
+			this.label1.ForeColor = LIGHT_FORECOLOR;
+			this.label2.ForeColor = LIGHT_FORECOLOR;
+			this.textBox1.BackColor = LIGHT_BACKCOLOR;
+			this.textBox1.ForeColor = LIGHT_FORECOLOR;
+			this.textBox2.BackColor = LIGHT_BACKCOLOR;
+			this.textBox2.ForeColor = LIGHT_FORECOLOR;
+			this.button1.BackColor = LIGHT_BACKCOLOR;
+			this.button1.ForeColor = LIGHT_FORECOLOR;
+			this.BackColor = LIGHT_BACKGROUND;
+			this.statusStrip1.BackColor = LIGHT_BACKGROUND;
+			this.toolStripStatusLabel1.ForeColor = LIGHT_FORECOLOR;
+			this.toolStripStatusLabel2.ForeColor = LIGHT_FORECOLOR;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
 		}
 
 		//Sets a dark theme for the login form
 		public void darkTheme()
 		{
-			this.label1.ForeColor = SystemColors.ControlLightLight;
-			this.label2.ForeColor = SystemColors.ControlLightLight;
-			this.textBox1.BackColor = SystemColors.WindowFrame;
-			this.textBox1.ForeColor = SystemColors.ControlLightLight;
-			this.textBox2.BackColor = SystemColors.WindowFrame;
-			this.textBox2.ForeColor = SystemColors.ControlLightLight;
-			this.button1.BackColor = SystemColors.WindowFrame;
-			this.button1.ForeColor = SystemColors.ControlLightLight;
-			this.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.statusStrip1.BackColor = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-			this.toolStripStatusLabel1.ForeColor = SystemColors.ControlLightLight;
-			this.toolStripStatusLabel2.ForeColor = SystemColors.ControlLightLight;
+			this.label1.ForeColor = DARK_FORECOLOR;
+			this.label2.ForeColor = DARK_FORECOLOR;
+			this.textBox1.BackColor = DARK_BACKCOLOR;
+			this.textBox1.ForeColor = DARK_FORECOLOR;
+			this.textBox2.BackColor = DARK_BACKCOLOR;
+			this.textBox2.ForeColor = DARK_FORECOLOR;
+			this.button1.BackColor = DARK_BACKCOLOR;
+			this.button1.ForeColor = DARK_FORECOLOR;
+			this.BackColor = DARK_BACKGROUND;
+			this.statusStrip1.BackColor = DARK_BACKGROUND;
+			this.toolStripStatusLabel1.ForeColor = DARK_FORECOLOR;
+			this.toolStripStatusLabel2.ForeColor = DARK_FORECOLOR;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
 		}
 
@@ -57,11 +69,11 @@ namespace HardwareInformation
 		{
 			try
 			{
-				using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"))
+				using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
 				{
 					if (key != null)
 					{
-						Object o = key.GetValue("AppsUseLightTheme");
+						Object o = key.GetValue(THEME_REG_KEY);
 						if (o != null && o.Equals(0))
 							darkTheme();
 						else
@@ -101,13 +113,13 @@ namespace HardwareInformation
 					form.Visible = true;
 				}
 				else
-					MessageBox.Show("Credenciais inválidas. Tente novamente.", "Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					MessageBox.Show(AUTH_INVALID, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				textBox2.SelectAll();
 				textBox2.Focus();
 			}
 			else
 			{
-				MessageBox.Show("Preencha suas credenciais.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(NO_AUTH, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				textBox2.SelectAll();
 				textBox2.Focus();
 			}

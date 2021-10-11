@@ -783,6 +783,26 @@ namespace HardwareInformation.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap smart_black {
+            get {
+                object obj = ResourceManager.GetObject("smart-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smart_white {
+            get {
+                object obj = ResourceManager.GetObject("smart-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap standard_black {
             get {
                 object obj = ResourceManager.GetObject("standard-black", resourceCulture);
@@ -836,6 +856,26 @@ namespace HardwareInformation.Properties {
         internal static System.Drawing.Bitmap sticker_white {
             get {
                 object obj = ResourceManager.GetObject("sticker-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tpm_black {
+            get {
+                object obj = ResourceManager.GetObject("tpm-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tpm_white {
+            get {
+                object obj = ResourceManager.GetObject("tpm-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

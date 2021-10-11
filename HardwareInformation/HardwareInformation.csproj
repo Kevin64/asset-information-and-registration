@@ -239,12 +239,16 @@
     <Content Include="Resources\icons\service-black.png" />
     <Content Include="Resources\icons\service-final.png" />
     <Content Include="Resources\icons\service-white.png" />
+    <None Include="Resources\icons\smart-black.png" />
+    <None Include="Resources\icons\smart-white.png" />
     <Content Include="Resources\icons\standard-black.png" />
     <Content Include="Resources\icons\standard-final.png" />
     <Content Include="Resources\icons\standard-white.png" />
     <Content Include="Resources\icons\sticker-black.png" />
     <Content Include="Resources\icons\sticker-final.png" />
     <Content Include="Resources\icons\sticker-white.png" />
+    <None Include="Resources\icons\tpm-white.png" />
+    <None Include="Resources\icons\tpm-black.png" />
     <Content Include="Resources\icons\type-black.png" />
     <Content Include="Resources\icons\type-final.png" />
     <Content Include="Resources\icons\type-white.png" />
