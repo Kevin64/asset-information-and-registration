@@ -526,47 +526,35 @@ public static class HardwareInfo
 	//Fetches the Virtualization Technology status
 	public static string GetVirtualizationTechnology()
 	{
-		if (GetBIOSType() == "UEFI")
+		int flag = 0;
+
+		if (!getOSInfoAux().Equals("7"))
 		{
-			if (!getOSInfoAux().Equals("7"))
+			ManagementClass mc = new ManagementClass("win32_processor");
+			ManagementObjectCollection moc = mc.GetInstances();
+
+			foreach (ManagementObject queryObj in moc)
 			{
-				ManagementClass mc = new ManagementClass("win32_processor");
-				ManagementObjectCollection moc = mc.GetInstances();
-
-				foreach (ManagementObject queryObj in moc)
-				{
-					if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
-						return "Ativado";
-					else if (GetHyperVStatus())
-						return "Ativado";
-				}
-				return "Desativado";
+				if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
+					flag = 2;
+				else if (GetHyperVStatus())
+					flag = 2;
 			}
-            else
-				return "Não suportado";
-		}
-		else
-        {
-			if(getOSArch() == "64")
+			if (flag != 2)
             {
-				if (!getOSInfoAux().Equals("7"))
-				{
-					ManagementClass mc = new ManagementClass("win32_processor");
-					ManagementObjectCollection moc = mc.GetInstances();
-
-					foreach (ManagementObject queryObj in moc)
-					{
-						if (queryObj["VirtualizationFirmwareEnabled"].ToString().Equals("True"))
-							return "Ativado";
-						else if (GetHyperVStatus())
-							return "Ativado";
-					}
-					return "Não suportado";
-				}
+				if (GetBIOSType() == "UEFI")
+					flag = 1;
+				else
+					flag = 0;
 			}
-        }
-		return "Não suportado";
-
+		}
+		
+		if (flag == 2)
+			return "Ativado";
+		else if (flag == 1)
+			return "Desativado";
+		else
+			return "Não suportado";
 	}
 
 	//Fetches the Hyper-V installation status

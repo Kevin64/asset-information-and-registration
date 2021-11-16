@@ -1940,11 +1940,11 @@ namespace HardwareInformation
 		private ComboBox comboBox7;
 		private Label label21;
 		private bool themeBool;
-		private string servidor_web, porta;
+		private string servidor_web, porta, modeURL;
 		private string varPatrimonio, varLacre, varSala, varBoard, varModel,
 		   varSerial, varProc, varRAM, varHD, varHDType, varHDOperation, varGPUInfo,
 		   varOS, varHostname, varMac, varIP, varPredio, varCadastrado, varPadrao,
-		   varCalend, varUso, varTag, varTipo, varBIOS, varBIOSType, varSecBoot, varVT, varSmart, varTPM;
+		   varCalend, varUso, varTag, varTipo, varBIOS, varBIOSType, varSecBoot, varVT, varTPM;
 		private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
 		   MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM;
         private int i = 0;
@@ -1963,7 +1963,7 @@ namespace HardwareInformation
 		private ToolStripStatusLabel toolStripStatusLabel2;
 		private StatusStrip statusStrip1;
 		private ToolStripStatusLabel toolStripStatusLabel1;
-		private bool pass = true, mode = true;
+        private bool pass = true;
         private ComboBox comboBox8;
 		private Button coletaButton;
 		private Label label23;
@@ -2060,7 +2060,7 @@ namespace HardwareInformation
         private const string ONLINE = "(Online)";
         private const string OFFLINE = "(Offline)";
         private const string FETCHING = "Coletando...";
-        private const string REGISTERING = "Cadastrando/Atualizando, aguarde...";
+        private const string REGISTERING = "Cadastrando / Atualizando, aguarde...";
         private const string FETCH_AGAIN = "Coletar Novamente";
         private const string REGISTER_AGAIN = "Cadastrar / Atualizar dados";
         private const string SERVER_PORT_ERROR = "Para acessar, selecione o servidor e a porta!";
@@ -2102,14 +2102,14 @@ namespace HardwareInformation
         //Sets service mode to format
         private void formatButton1_CheckedChanged(object sender, EventArgs e)
 		{
-			mode = true;
-		}
+            modeURL = "recebeDadosFormatacao";
+        }
 
 		//Sets service mode to maintenance
 		private void maintenanceButton2_CheckedChanged(object sender, EventArgs e)
 		{
-			mode = false;
-		}
+            modeURL = "recebeDadosManutencao";
+        }
 
 		//Sets service to employee
 		private void employeeButton1_CheckedChanged(object sender, EventArgs e)
@@ -2986,7 +2986,6 @@ namespace HardwareInformation
 			varProc = lblProcName.Text;
 			varRAM = lblPM.Text;
 			varHD = lblHDSize.Text;
-            varSmart = lblSmart.Text;
             varHDType = lblMediaType.Text;
 			varHDOperation = lblMediaOperation.Text;
 			varGPUInfo = lblGPUInfo.Text;
@@ -3032,18 +3031,10 @@ namespace HardwareInformation
 
 				if (PingHost(servidor_web) == true && porta != "")
 				{
-					if (mode)
-						webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDadosFormatacao.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
+					webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/" + modeURL + ".php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
 					 "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
 					 "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
 					 "&hd=" + varHD + "&sistemaOperacional=" + varOS + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
-					 "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
-					 "&secBoot=" + varSecBoot + "&vt=" + varVT + "&tpm=" + varTPM);
-					else
-						webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/recebeDadosManutencao.php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
-					 "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
-					 "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
-					 "&hd=" + varHD + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
 					 "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
 					 "&secBoot=" + varSecBoot + "&vt=" + varVT + "&tpm=" + varTPM);
 				}
