@@ -233,6 +233,26 @@ namespace HardwareInformation.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cmos_battery_black {
+            get {
+                object obj = ResourceManager.GetObject("cmos-battery-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cmos_battery_white {
+            get {
+                object obj = ResourceManager.GetObject("cmos-battery-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cpu_black {
             get {
                 object obj = ResourceManager.GetObject("cpu-black", resourceCulture);
@@ -856,6 +876,26 @@ namespace HardwareInformation.Properties {
         internal static System.Drawing.Bitmap sticker_white {
             get {
                 object obj = ResourceManager.GetObject("sticker-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticket_black {
+            get {
+                object obj = ResourceManager.GetObject("ticket-black", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticket_white {
+            get {
+                object obj = ResourceManager.GetObject("ticket-white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
