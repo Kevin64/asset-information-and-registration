@@ -2999,7 +2999,7 @@ namespace HardwareInformation
                 lblHostname.Text += HOSTNAME_ALERT;
                 timer1.Enabled = true;
             }
-            if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
+            if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && Environment.Is64BitOperatingSystem && lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
             {
                 if (lblModel.Text.Contains("A315-56"))
                 {

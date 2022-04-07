@@ -44,16 +44,19 @@ public static class HardwareInfo
 
 		foreach (ManagementObject queryObj in searcher.Get())
 		{
-			if (queryObj["DeviceID"].ToString().Equals("VideoController1"))
-			{
-				gpuram = Convert.ToInt64(queryObj["AdapterRAM"]);
-				gpuram = Math.Round(gpuram / 1048576, 0);
-				if (Math.Ceiling(Math.Log10(gpuram)) > 3)
-					gpuramStr = Convert.ToString(Math.Round(gpuram / 1024, 1)) + " GB";
-				else
-					gpuramStr = gpuram + " MB";
-				gpuname = queryObj["Caption"].ToString() + " (" + gpuramStr + ")";
-			}
+			if(!queryObj["Caption"].ToString().Equals("Microsoft Remote Display Adapter"))
+            {
+				if (queryObj["MaxRefreshRate"] != null)
+				{
+					gpuram = Convert.ToInt64(queryObj["AdapterRAM"]);
+					gpuram = Math.Round(gpuram / 1048576, 0);
+					if (Math.Ceiling(Math.Log10(gpuram)) > 3)
+						gpuramStr = Convert.ToString(Math.Round(gpuram / 1024, 1)) + " GB";
+					else
+						gpuramStr = gpuram + " MB";
+					gpuname = queryObj["Caption"].ToString() + " (" + gpuramStr + ")";
+				}				
+            }			
 		}
 		gpuname = gpuname.Replace("(R)", "");
 		gpuname = gpuname.Replace("(TM)", "");
