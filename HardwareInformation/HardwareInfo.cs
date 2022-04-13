@@ -1,10 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using System.Management;
 using System.Management.Automation;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.InteropServices;
 
 public static class HardwareInfo
@@ -86,12 +87,16 @@ public static class HardwareInfo
 	public static string GetStorageType()
 	{
 		int j = 0;
+		double dresult = 0;
+		string dresultStr = "";
 
 		if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
 		{
 			int size = 10, i = 0;
 			string[] type = new string[size];
-			string concat, msftName = "Msft Virtual Disk";
+			string[] bytesHDD = new string[size];
+			string[] bytesSSD = new string[size];
+			string concat = "", msftName = "Msft Virtual Disk";
 
 			ManagementScope scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");
 			ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from MSFT_PhysicalDisk");
@@ -102,33 +107,117 @@ public static class HardwareInfo
 			{
 				if (!Convert.ToString(queryObj["FriendlyName"]).Equals(msftName))
 				{
-					switch (Convert.ToInt16(queryObj["MediaType"]))
+					if (Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4))
 					{
-						case 3:
-							type[i] = "HDD";
-							i++;
-							j++;
-							break;
-						case 4:
-							type[i] = "SSD";
-							i++;
-							j++;
-							break;
-					}
+						dresult = Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
+						dresult = Math.Round(dresult / 1000000000, 0);
+
+						if (Math.Log10(dresult) > 2.9999)
+							dresultStr = Convert.ToString(Math.Round(dresult / 1000, 1)) + " TB";
+						else
+							dresultStr = dresult + " GB";
+						
+						switch (Convert.ToInt16(queryObj["MediaType"]))
+						{
+							case 3:
+								type[i] = "HDD";
+								bytesHDD[i] = dresultStr;
+								i++;
+								j++;
+								break;
+							case 4:
+								type[i] = "SSD";
+								bytesSSD[i] = dresultStr;
+								i++;
+								j++;
+								break;
+						}						
+					}					
 				}
 			}
-			if (j == 0)
-			{
-				type[i] = "HDD";
-				i++;
-			}
-			var typeSliced = type.Take(i);
+
+            var typeSliced = type.Take(i);
+			var typeSlicedHDD = bytesHDD.Take(i);
+			var typeSlicedSSD = bytesSSD.Take(i);
 			searcher.Dispose();
-			concat = countDistinct(typeSliced.ToArray());
+			concat = countDistinct(typeSliced.ToArray(), typeSlicedHDD.ToArray(), typeSlicedSSD.ToArray());
+			
 			return concat;
 		}
 		else
-			return StorageDetail.HasNominalMediaRotationRate("\\\\.\\PhysicalDrive0");
+        {
+			int size = 10, i = 0;
+			string[] type = new string[size];
+			string[] bytesHDD = new string[size];
+			string concat = "";
+
+			ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_DiskDrive");
+
+			foreach (ManagementObject queryObj in searcher.Get())
+			{
+				dresult = Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
+				dresult = Math.Round(dresult / 1000000000, 0);
+
+				if (Math.Log10(dresult) > 2.9999)
+					dresultStr = Convert.ToString(Math.Round(dresult / 1000, 1)) + " TB";
+				else
+					dresultStr = dresult + " GB";
+				type[i] = "HDD";
+				bytesHDD[i] = dresultStr;
+				i++;
+			}
+			var typeSliced = type.Take(i);
+			var typeSlicedHDD = bytesHDD.Take(i);
+			searcher.Dispose();
+			concat = countDistinct(typeSliced.ToArray(), typeSlicedHDD.ToArray(), typeSlicedHDD.ToArray());
+
+			return concat;
+		}
+		//return StorageDetail.HasNominalMediaRotationRate("\\\\.\\PhysicalDrive0");
+	}
+
+	//Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
+	public static string countDistinct(string[] array, string[] array2, string[] array3)
+	{
+		string result = "";
+		int j = 0;
+		List<string> sizesHDD = new List<string>();
+		List<string> sizesSSD = new List<string>();
+		char[] comma = { ',', ' ' };
+		var groups = array.GroupBy(z => z);
+
+		foreach (var group in groups)
+		{
+			j = 0;
+			result += group.Count() + "x " + group.Key;
+			for (int i = 0; i < array.Length; i++)
+			{
+				if (array[i] == group.Key)
+				{
+					array[i] = "";
+					if (group.Key == "HDD")
+					{
+						sizesHDD.Add(array2[i]);
+						j++;
+					}
+					else
+					{
+						sizesSSD.Add(array3[i]);
+						j++;
+					}
+					if (group.Count() == j)
+					{
+						if(group.Key == "HDD")
+							result += " (" + string.Join(", ", sizesHDD) + ")" + ", ";
+						else
+							result += " (" + string.Join(", ", sizesSSD) + ")" + ", ";
+						break;
+					}
+				}
+			}
+		}
+
+		return result.TrimEnd(comma);
 	}
 
 	//Fetches the SSD/HDD total size (sums all drives sizes)
@@ -159,14 +248,15 @@ public static class HardwareInfo
 		}
 		else
 		{
-			DriveInfo[] allDrives = DriveInfo.GetDrives();
+			ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_DiskDrive");
 
-			foreach (DriveInfo d in allDrives)
-				if (d.IsReady == true && d.DriveType != DriveType.Network)
-					dresult += d.TotalSize;
+			foreach (ManagementObject queryObj in searcher.Get())
+			{
+				dresult += Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());			
+			}
 		}
 		dresult = Math.Round(dresult / 1000000000, 0);
-		if (Math.Ceiling(Math.Log10(dresult)) > 3)
+		if (Math.Log10(dresult) > 2.9999)
 		{
 			dresultStr = Convert.ToString(Math.Round(dresult / 1000, 1)) + " TB";
 			return dresultStr;
@@ -283,6 +373,7 @@ public static class HardwareInfo
 	{
 		long MemSize = 0;
 		long mCap;
+		string mType = "", mSpeed = "";
 
 		ManagementScope scope = new ManagementScope();
 		ObjectQuery objQuery = new ObjectQuery("select * from Win32_PhysicalMemory");
@@ -293,9 +384,50 @@ public static class HardwareInfo
 		{
 			mCap = Convert.ToInt64(queryObj["Capacity"]);
 			MemSize += mCap;
+			if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
+			{
+				if (queryObj["SMBIOSMemoryType"].ToString().Equals("26"))
+				{
+					mType = "DDR4";
+					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+				}
+				else if (queryObj["SMBIOSMemoryType"].ToString().Equals("24"))
+				{
+					mType = "DDR3";
+					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+				}
+				else if (queryObj["SMBIOSMemoryType"].ToString().Equals("3"))
+				{
+					mType = "";
+					mSpeed = "";
+				}
+				else
+				{
+					mType = "DDR2";
+					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+				}				
+			}
+            else
+            {
+				if (queryObj["MemoryType"].ToString().Equals("24"))
+				{
+					mType = "DDR3";
+					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+				}
+				else if (queryObj["MemoryType"].ToString().Equals("2"))
+				{
+					mType = "";
+					mSpeed = "";
+				}
+				else
+				{
+					mType = "DDR2";
+					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+				}
+            }
 		}
 		MemSize = (MemSize / 1024) / 1024 / 1024;
-		return MemSize.ToString() + " GB";
+		return MemSize.ToString() + " GB " + mType + mSpeed;
 	}
 
 	//Fetches the number of RAM slots on the system
@@ -614,15 +746,5 @@ public static class HardwareInfo
 		return specVersion;		
 	}
 
-	//Auxiliary method for GetStorageType method, that groups the same objects in a list and counts them
-	public static string countDistinct(string[] array)
-	{
-		string result = "";
-		char[] comma = { ',', ' ' };
-		var groups = array.GroupBy(z => z);
-
-		foreach (var group in groups)
-			result += group.Count() + "x " + group.Key + ", ";
-		return result.TrimEnd(comma);
-	}
+	
 }
