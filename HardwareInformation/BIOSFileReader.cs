@@ -20,12 +20,10 @@ namespace HardwareInformation
 		private static string fileSha1 = "bios-checksum.txt";
 		private static string jsonFile, sha1, aux;
 		private static WebClient wc;
-		private static StreamReader fileB;      
+		private static StreamReader fileB;
 
-		//Reads a json file retrieved from the server and parses brand, model and BIOS versions, returning the latter
-		[STAThread]
-		public static string[] fetchInfo(string brd, string mod, string type, string ip, string port)
-		{            
+		public static bool checkHost(string ip, string port)
+        {
 			try
 			{
 				wc = new WebClient();
@@ -38,13 +36,24 @@ namespace HardwareInformation
 				sha1 = sha1.ToUpper();
 				fileB = new StreamReader(@fileBios);
 				aux = fileBios;
+				fileB.Close();
 			}
 			catch
 			{
-				return null;
+				return false;
 			}
+			return true;
+		}
+
+		//Reads a json file retrieved from the server and parses brand, model and BIOS versions, returning the latter
+		[STAThread]
+		public static string[] fetchInfo(string brd, string mod, string type, string ip, string port)
+		{
+			if (!checkHost(ip, port))
+				return null;
 
 			string[] arr;
+			fileB = new StreamReader(@fileBios);
 			if (GetSha1Hash(aux).Equals(sha1))
 			{
 				jsonFile = fileB.ReadToEnd();

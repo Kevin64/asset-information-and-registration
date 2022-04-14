@@ -2051,7 +2051,7 @@ namespace HardwareInformation
         private ComboBox comboBox6;
         private ComboBox comboBox7;
         private Label label21;
-        private bool themeBool;
+        private bool themeBool, serverOnline;
         private string servidor_web, porta, modeURL;
         private string varPatrimonio, varLacre, varSala, varBoard, varModel,
            varSerial, varProc, varRAM, varHD, varHDType, varHDOperation, varGPUInfo,
@@ -2170,8 +2170,8 @@ namespace HardwareInformation
         private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
         private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
         private const string SMART_FAIL = " (Drive com falha iminente)";
-        private const string ONLINE = "(Online)";
-        private const string OFFLINE = "(Offline)";
+        private const string ONLINE = "ONLINE";
+        private const string OFFLINE = "OFFLINE";
         private const string FETCHING = "Coletando...";
         private const string REGISTERING = "Cadastrando / Atualizando, aguarde...";
         private const string FETCH_AGAIN = "Coletar Novamente";
@@ -2809,7 +2809,8 @@ namespace HardwareInformation
         {
             servidor_web = comboBox7.Text;
             porta = comboBox8.Text;
-            if (PingHost(servidor_web) == true && porta != "")
+            serverOnline = BIOSFileReader.checkHost(servidor_web, porta);
+            if (serverOnline && porta != "")
             {
                 label26.Text = ONLINE;
                 label26.ForeColor = ONLINE_ALERT;
@@ -3100,24 +3101,6 @@ namespace HardwareInformation
             printHardwareData();
         }
 
-        //Pings the IP:port selected to know if it's reachable
-        private static bool PingHost(string servidor_web)
-        {
-            bool pingable = false;
-            Ping pinger = new Ping();
-            if (servidor_web == "")
-                return false;
-            try
-            {
-                PingReply reply = pinger.Send(servidor_web);
-                pingable = reply.Status == IPStatus.Success;
-            }
-            catch (PingException)
-            {
-            }
-            return pingable;
-        }
-
         //Attributes the data collected previously to the variables which will inside the URL for registration
         private void attrHardwareData()
         {
@@ -3172,7 +3155,7 @@ namespace HardwareInformation
                 var webView2Environment = await Microsoft.Web.WebView2.Core.CoreWebView2Environment.CreateAsync(WEBVIEW2_PATH, System.IO.Path.GetTempPath());
                 await webView2.EnsureCoreWebView2Async(webView2Environment);
 
-                if (PingHost(servidor_web) == true && porta != "")
+                if (serverOnline && porta != "")
                 {
                     webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/" + modeURL + ".php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
                      "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
