@@ -1,13 +1,13 @@
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
 namespace HardwareInformation
 {
-	public partial class Form1 : Form
+    public partial class Form1 : Form
 	{
 		private BackgroundWorker backgroundWorker1;
 		public Form1()
@@ -97,6 +97,7 @@ namespace HardwareInformation
             this.label27 = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -117,6 +118,8 @@ namespace HardwareInformation
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblMaintenanceSince = new System.Windows.Forms.Label();
+            this.lblInstallSince = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -1031,6 +1034,7 @@ namespace HardwareInformation
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label49);
             this.groupBox2.Controls.Add(this.label48);
             this.groupBox2.Controls.Add(this.label47);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox35);
@@ -1098,6 +1102,16 @@ namespace HardwareInformation
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label49.Location = new System.Drawing.Point(166, 422);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(20, 13);
+            this.label49.TabIndex = 119;
+            this.label49.Text = "IP:";
             // 
             // label48
             // 
@@ -1300,6 +1314,8 @@ namespace HardwareInformation
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblMaintenanceSince);
+            this.groupBox3.Controls.Add(this.lblInstallSince);
             this.groupBox3.Controls.Add(this.label43);
             this.groupBox3.Controls.Add(this.textBox5);
             this.groupBox3.Controls.Add(this.textBox6);
@@ -1312,6 +1328,26 @@ namespace HardwareInformation
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo de serviço";
+            // 
+            // lblMaintenanceSince
+            // 
+            this.lblMaintenanceSince.AutoSize = true;
+            this.lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblMaintenanceSince.Location = new System.Drawing.Point(104, 64);
+            this.lblMaintenanceSince.Name = "lblMaintenanceSince";
+            this.lblMaintenanceSince.Size = new System.Drawing.Size(24, 13);
+            this.lblMaintenanceSince.TabIndex = 121;
+            this.lblMaintenanceSince.Text = "text";
+            // 
+            // lblInstallSince
+            // 
+            this.lblInstallSince.AutoSize = true;
+            this.lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblInstallSince.Location = new System.Drawing.Point(104, 25);
+            this.lblInstallSince.Name = "lblInstallSince";
+            this.lblInstallSince.Size = new System.Drawing.Size(24, 13);
+            this.lblInstallSince.TabIndex = 120;
+            this.lblInstallSince.Text = "text";
             // 
             // label43
             // 
@@ -2052,6 +2088,7 @@ namespace HardwareInformation
         private ComboBox comboBox7;
         private Label label21;
         private bool themeBool, serverOnline;
+        private List<string> date;
         private string servidor_web, porta, modeURL;
         private string varPatrimonio, varLacre, varSala, varBoard, varModel,
            varSerial, varProc, varRAM, varHD, varHDType, varHDOperation, varGPUInfo,
@@ -2059,7 +2096,8 @@ namespace HardwareInformation
            varCalend, varUso, varTag, varTipo, varBIOS, varBIOSType, varSecBoot, varVT,
            varTPM, varCMOSBatt, varTicketNum;
         private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
-           MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM;
+           MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM,
+            InstallLabel, MaintenanceLabel;
         private int i = 0;
         private Label label25;
         private Label lblBIOSType;
@@ -2169,6 +2207,7 @@ namespace HardwareInformation
         private Color DARK_ASTERISKCOLOR = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
         private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
         private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+        private Color BLUE_FOREGROUND = SystemColors.Highlight;
         private const string SMART_FAIL = " (Drive com falha iminente)";
         private const string ONLINE = "ONLINE";
         private const string OFFLINE = "OFFLINE";
@@ -2197,6 +2236,11 @@ namespace HardwareInformation
         private const string MANDATORY_FIELD = "Preencha os campos obrigatórios";
         private const string FIX_MESSAGE = "Resolva as pendências!";
         private const string FIX_FIELD_MESSAGE = "Preencha os campos obrigatórios!";
+        private const string DAYS_PASSED_TEXT = " dias desde a última ";
+        private const string FORMAT_TEXT = "formatação)";
+        private const string MAINTENANCE_TEXT = "manutenção)";
+        private const string SINCE_UNKNOWN = "(Não foi possível determinar a data do último serviço)";
+        private const string ALREADY_REGISTERED_TODAY = "Serviço já registrado para esta dia. Caso seja necessário outro registro, escolha outra data.";
         private GroupBox groupBox4;
         private ComboBox comboBox9;
         private ConfigurableQualityPictureBox configurableQualityPictureBox34;
@@ -2206,6 +2250,9 @@ namespace HardwareInformation
         private TextBox textBox7;
         private Label label48;
         private Label label47;
+        private Label label49;
+        private Label lblMaintenanceSince;
+        private Label lblInstallSince;
         private const string PASS_MESSAGE = "Pronto para cadastro!";
 
         //Fetches the program's binary version
@@ -2437,6 +2484,8 @@ namespace HardwareInformation
             this.label46.ForeColor = LIGHT_FORECOLOR;
             this.label47.ForeColor = LIGHT_ASTERISKCOLOR;
             this.label48.ForeColor = LIGHT_ASTERISKCOLOR;
+            this.lblInstallSince.ForeColor = BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = BLUE_FOREGROUND;
             this.lblGPUInfo.ForeColor = LIGHT_FORECOLOR;
             this.lblVT.ForeColor = LIGHT_FORECOLOR;
             this.lblSmart.ForeColor = LIGHT_FORECOLOR;
@@ -2598,6 +2647,8 @@ namespace HardwareInformation
             this.label46.ForeColor = DARK_FORECOLOR;
             this.label47.ForeColor = DARK_ASTERISKCOLOR;
             this.label48.ForeColor = DARK_ASTERISKCOLOR;
+            this.lblInstallSince.ForeColor = BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = BLUE_FOREGROUND;
             this.lblGPUInfo.ForeColor = DARK_FORECOLOR;
             this.lblVT.ForeColor = DARK_FORECOLOR;
             this.lblSmart.ForeColor = DARK_FORECOLOR;
@@ -2689,7 +2740,9 @@ namespace HardwareInformation
             timer8.Interval = TIMER_INTERVAL;
             comboBox7.SelectedIndex = 0;
             comboBox8.SelectedIndex = 0;
+            dateTimePicker1.MaxDate = DateTime.Today;
             comboBoxThemeInit();
+            date = new List<string>();
             this.FormClosing += Form1_FormClosing;
             coleta_Click(sender, e);
         }
@@ -2857,6 +2910,8 @@ namespace HardwareInformation
             progressBar1.Value = 0;
 
             //Writes 'Coletando...' in the labels, while collects data
+            lblInstallSince.Text = FETCHING;
+            lblMaintenanceSince.Text = FETCHING;
             lblBM.Text = FETCHING;
             lblModel.Text = FETCHING;
             lblSerialNo.Text = FETCHING;
@@ -2969,7 +3024,7 @@ namespace HardwareInformation
             worker.ReportProgress(progressAuxFunction(i));
         }
 
-        //Prints the collected data into the form labels, warning the user when the hostname and/or MediaOp string are forbidden
+        //Prints the collected data into the form labels, warning the user when there are forbidden modes
         private void printHardwareData()
         {
             pass = true;
@@ -2992,6 +3047,8 @@ namespace HardwareInformation
             lblSecBoot.Text = SecBoot;
             lblVT.Text = VT;
             lblTPM.Text = TPM;
+            sinceLabelUpdate(true);
+            sinceLabelUpdate(false);
 
             string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBox7.Text, comboBox8.Text);
             if (lblHostname.Text.Equals(DEFAULT_HOSTNAME))
@@ -3000,7 +3057,12 @@ namespace HardwareInformation
                 lblHostname.Text += HOSTNAME_ALERT;
                 timer1.Enabled = true;
             }
-            if (!lblModel.Text.Contains("7057") && !lblModel.Text.Contains("8814") && !lblModel.Text.Contains("6078") && Environment.Is64BitOperatingSystem && lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
+            if (!lblModel.Text.Contains("7057") &&
+                !lblModel.Text.Contains("8814") &&
+                !lblModel.Text.Contains("6078") &&
+                !lblModel.Text.Contains("560S") &&
+                Environment.Is64BitOperatingSystem &&
+                lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
             {
                 if (lblModel.Text.Contains("A315-56"))
                 {
@@ -3013,7 +3075,9 @@ namespace HardwareInformation
                     timer2.Enabled = true;
                 }
             }
-            if (lblSecBoot.Text.Equals("Desativado") && !lblGPUInfo.Text.Contains("210") && !lblGPUInfo.Text.Contains("430"))
+            if (lblSecBoot.Text.Equals("Desativado") &&
+                !lblGPUInfo.Text.Contains("210") &&
+                !lblGPUInfo.Text.Contains("430"))
             {
                 pass = false;
                 lblSecBoot.Text += SECURE_BOOT_ALERT;
@@ -3124,6 +3188,61 @@ namespace HardwareInformation
             varTPM = lblTPM.Text;
         }
 
+        //Updates the 'last installed' or 'last maintenance' labels
+        private void sinceLabelUpdate(bool mode)
+        {
+            if (mode)
+            {
+                InstallLabel = regCheck(mode).ToString();
+                if (!InstallLabel.Equals("-1"))
+                    lblInstallSince.Text = "(" + InstallLabel + DAYS_PASSED_TEXT + FORMAT_TEXT;
+                else
+                    lblInstallSince.Text = SINCE_UNKNOWN;
+            }
+            else
+            {
+                MaintenanceLabel = regCheck(mode).ToString();
+                if(!MaintenanceLabel.Equals("-1"))
+                    lblMaintenanceSince.Text = "(" + MaintenanceLabel + DAYS_PASSED_TEXT + MAINTENANCE_TEXT;
+                else
+                    lblMaintenanceSince.Text = SINCE_UNKNOWN;
+            }
+
+        }
+
+        //Check the registry for a installation/maintenance date
+        private double regCheck(bool mode)
+        {
+            try
+            {
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"Software\HardwareInformation");
+                DateTime li = Convert.ToDateTime(rk.GetValue("LastInstallation").ToString());
+                DateTime lm = Convert.ToDateTime(rk.GetValue("LastMaintenance").ToString());
+                if (mode)
+                    return (DateTime.Today - li).TotalDays;
+                else
+                    return (DateTime.Today - lm).TotalDays;
+            }
+            catch
+            {
+                return -1;
+            }            
+        }
+
+        //Creates a registry key when a register operation is made
+        private void regCreate(bool mode)
+        {
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(@"Software\HardwareInformation", true);
+            if (mode)
+            {
+                rk.SetValue("LastInstallation", dateTimePicker1.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue("LastMaintenance", dateTimePicker1.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+            }
+            else
+                rk.SetValue("LastMaintenance", dateTimePicker1.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+            
+        }
+
         //Runs the registration for the website
         private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
@@ -3157,12 +3276,30 @@ namespace HardwareInformation
 
                 if (serverOnline && porta != "")
                 {
-                    webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/" + modeURL + ".php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
+                    if (!date.Contains(varCalend))
+                    {
+                        webView2.CoreWebView2.Navigate("http://" + servidor_web + ":" + porta + "/" + modeURL + ".php?patrimonio=" + varPatrimonio + "&lacre=" + varLacre +
                      "&sala=" + varSala + "&predio=" + varPredio + "&ad=" + varCadastrado + "&padrao=" + varPadrao + "&formatacao=" + varCalend + "&formatacoesAnteriores=" + varCalend +
                      "&marca=" + varBoard + "&modelo=" + varModel + "&numeroSerial=" + varSerial + "&processador=" + varProc + "&memoria=" + varRAM +
                      "&hd=" + varHD + "&sistemaOperacional=" + varOS + "&nomeDoComputador=" + varHostname + "&bios=" + varBIOS + "&mac=" + varMac + "&ip=" + varIP + "&emUso=" + varUso +
                      "&etiqueta=" + varTag + "&tipo=" + varTipo + "&tipoFW=" + varBIOSType + "&tipoArmaz=" + varHDType + "&gpu=" + varGPUInfo + "&modoArmaz=" + varHDOperation +
                      "&secBoot=" + varSecBoot + "&vt=" + varVT + "&tpm=" + varTPM + "&trocaPilha=" + varCMOSBatt + "&ticketNum=" + varTicketNum);
+                        date.Add(varCalend);
+                        if(formatButton1.Checked)
+                        {
+                            regCreate(true);
+                            sinceLabelUpdate(true);
+                            sinceLabelUpdate(false);
+                        }
+                        else if (maintenanceButton2.Checked)
+                        {
+                            regCreate(false);
+                            sinceLabelUpdate(false);
+                        }
+                        
+                    }
+                    else
+                        MessageBox.Show(ALREADY_REGISTERED_TODAY, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                     MessageBox.Show(SERVER_NOT_FOUND_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
