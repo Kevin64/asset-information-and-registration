@@ -3060,7 +3060,7 @@ namespace HardwareInformation
             if (!lblModel.Text.Contains("7057") &&
                 !lblModel.Text.Contains("8814") &&
                 !lblModel.Text.Contains("6078") &&
-                !lblModel.Text.Contains("560S") &&
+                !lblModel.Text.Contains("560s") &&
                 Environment.Is64BitOperatingSystem &&
                 lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
             {
