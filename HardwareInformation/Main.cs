@@ -8,11 +8,18 @@ public class Program : Form
 	/// The main entry point for the application.
 	/// </summary>
 	[STAThread]
-	static void Main()
+	static void Main(string[] args)
 	{
-		//Runs Form2 (login)
-		Application.EnableVisualStyles();
-		Application.SetCompatibleTextRenderingDefault(false);
-		Application.Run(new Form2());
+		if (args.Length == 0)
+		{
+			//Runs Form2 (login)
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new Form2());
+		}
+		else
+        {
+			Application.Run(new Form2(args));
+        }
 	}
 }

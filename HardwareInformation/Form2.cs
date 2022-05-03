@@ -28,6 +28,23 @@ namespace HardwareInformation
 			this.toolStripStatusLabel2.Text = version();
 		}
 
+		public Form2(string[] args)
+        {
+			ActiveForm.Enabled = false;
+			if (args[0].Contains("/h"))
+            {				
+				Console.WriteLine("Show help");
+			}
+			else if(classA.Authenticate(args[33], args[34]))
+            {
+				Form1 form = new Form1(args);
+			}
+			else
+            {
+				Console.WriteLine("Erro de autenticação! Saindo do programa...");
+            }
+		}
+
 		//Sets a light theme for the login form
 		public void lightTheme()
 		{
