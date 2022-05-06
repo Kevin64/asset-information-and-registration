@@ -107,7 +107,7 @@ public static class HardwareInfo
 			{
 				if (!Convert.ToString(queryObj["FriendlyName"]).Equals(msftName))
 				{
-					if (Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4))
+					if (Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4) || Convert.ToInt16(queryObj["MediaType"]).Equals(0))
 					{
 						dresult = Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
 						dresult = Math.Round(dresult / 1000000000, 0);
@@ -123,13 +123,16 @@ public static class HardwareInfo
 								type[i] = "HDD";
 								bytesHDD[i] = dresultStr;
 								i++;
-								j++;
 								break;
 							case 4:
 								type[i] = "SSD";
 								bytesSSD[i] = dresultStr;
 								i++;
-								j++;
+								break;
+							default:
+								type[i] = "HDD";
+								bytesHDD[i] = dresultStr;
+								i++;
 								break;
 						}						
 					}					
@@ -382,49 +385,52 @@ public static class HardwareInfo
 
 		foreach (ManagementObject queryObj in moc)
 		{
-			mCap = Convert.ToInt64(queryObj["Capacity"]);
-			MemSize += mCap;
-			if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
+			if (!Convert.ToString(queryObj["DeviceLocator"]).Contains("SYSTEM ROM"))
 			{
-				if (queryObj["SMBIOSMemoryType"].ToString().Equals("26"))
+				mCap = Convert.ToInt64(queryObj["Capacity"]);
+				MemSize += mCap;
+				if (getOSInfoAux().Equals("10") || getOSInfoAux().Equals("8.1") || getOSInfoAux().Equals("8"))
 				{
-					mType = "DDR4";
-					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
-				}
-				else if (queryObj["SMBIOSMemoryType"].ToString().Equals("24"))
-				{
-					mType = "DDR3";
-					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
-				}
-				else if (queryObj["SMBIOSMemoryType"].ToString().Equals("3"))
-				{
-					mType = "";
-					mSpeed = "";
+					if (queryObj["SMBIOSMemoryType"].ToString().Equals("26"))
+					{
+						mType = "DDR4";
+						mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+					}
+					else if (queryObj["SMBIOSMemoryType"].ToString().Equals("24"))
+					{
+						mType = "DDR3";
+						mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+					}
+					else if (queryObj["SMBIOSMemoryType"].ToString().Equals("3"))
+					{
+						mType = "";
+						mSpeed = "";
+					}
+					else
+					{
+						mType = "DDR2";
+						mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+					}
 				}
 				else
 				{
-					mType = "DDR2";
-					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
-				}				
+					if (queryObj["MemoryType"].ToString().Equals("24"))
+					{
+						mType = "DDR3";
+						mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+					}
+					else if (queryObj["MemoryType"].ToString().Equals("2"))
+					{
+						mType = "";
+						mSpeed = "";
+					}
+					else
+					{
+						mType = "DDR2";
+						mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
+					}
+				}
 			}
-            else
-            {
-				if (queryObj["MemoryType"].ToString().Equals("24"))
-				{
-					mType = "DDR3";
-					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
-				}
-				else if (queryObj["MemoryType"].ToString().Equals("2"))
-				{
-					mType = "";
-					mSpeed = "";
-				}
-				else
-				{
-					mType = "DDR2";
-					mSpeed = " " + queryObj["Speed"].ToString() + "MHz";
-				}
-            }
 		}
 		MemSize = (MemSize / 1024) / 1024 / 1024;
 		return MemSize.ToString() + " GB " + mType + mSpeed;
