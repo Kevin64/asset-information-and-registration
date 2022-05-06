@@ -1,9 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HardwareInformation
@@ -41,6 +37,14 @@ namespace HardwareInformation
             else
                 rk.SetValue("LastMaintenance", dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
 
+        }
+
+        //Authenticates the user
+        public static bool Authenticate(string userName, string password)
+        {
+            if (userName == "lab74c" && password == "admccshlab74cadm")
+                return true;
+            return false;
         }
     }
 }

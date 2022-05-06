@@ -7,8 +7,6 @@ namespace HardwareInformation
 {
 	public partial class Form2 : Form
 	{
-		private Authentication classA = new Authentication();
-
 		private Color LIGHT_FORECOLOR = SystemColors.ControlText;
 		private Color LIGHT_BACKCOLOR = SystemColors.ControlLight;
 		private Color DARK_FORECOLOR = SystemColors.ControlLightLight;
@@ -26,23 +24,6 @@ namespace HardwareInformation
 			InitializeComponent();
 			ThemeInit();
 			this.toolStripStatusLabel2.Text = version();
-		}
-
-		public Form2(string[] args)
-        {
-			ActiveForm.Enabled = false;
-			if (args[0].Contains("/h"))
-            {				
-				Console.WriteLine("Show help");
-			}
-			else if(classA.Authenticate(args[33], args[34]))
-            {
-				Form1 form = new Form1(args);
-			}
-			else
-            {
-				Console.WriteLine("Erro de autenticação! Saindo do programa...");
-            }
 		}
 
 		//Sets a light theme for the login form
@@ -123,7 +104,7 @@ namespace HardwareInformation
 		{
 			if (!string.IsNullOrWhiteSpace(textBox1.Text) && !string.IsNullOrWhiteSpace(textBox2.Text))
 			{
-				if (classA.Authenticate(textBox1.Text, textBox2.Text))
+				if (MiscMethods.Authenticate(textBox1.Text, textBox2.Text))
 				{
 					this.Visible = false;
 					Form1 form = new Form1();

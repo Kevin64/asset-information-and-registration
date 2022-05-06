@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Unidade de Tecnologia da Informação / CCSH - UFSM")]
 [assembly: AssemblyProduct("Análise e Cadastro de Máquinas do CCSH")]
-[assembly: AssemblyCopyright("Copyright UFSM © 2021")]
+[assembly: AssemblyCopyright("Copyright UFSM © 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.10.0.2204")]
-[assembly: AssemblyFileVersion("3.10.0.2204")]
+[assembly: AssemblyVersion("3.10.0.2205")]
+[assembly: AssemblyFileVersion("3.10.0.2205")]
