@@ -107,7 +107,7 @@ public static class HardwareInfo
 			{
 				if (!Convert.ToString(queryObj["FriendlyName"]).Equals(msftName))
 				{
-					if (Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4) || Convert.ToInt16(queryObj["MediaType"]).Equals(0))
+					if ((Convert.ToInt16(queryObj["MediaType"]).Equals(3) || Convert.ToInt16(queryObj["MediaType"]).Equals(4) || Convert.ToInt16(queryObj["MediaType"]).Equals(0)) && !Convert.ToInt16(queryObj["BusType"]).Equals(7))
 					{
 						dresult = Convert.ToInt64(queryObj.Properties["Size"].Value.ToString());
 						dresult = Math.Round(dresult / 1000000000, 0);
@@ -129,7 +129,7 @@ public static class HardwareInfo
 								bytesSSD[i] = dresultStr;
 								i++;
 								break;
-							default:
+							case 0:
 								type[i] = "HDD";
 								bytesHDD[i] = dresultStr;
 								i++;
