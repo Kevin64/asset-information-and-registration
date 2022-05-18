@@ -20,7 +20,9 @@ namespace HardwareInformation
 		{
             InitializeComponent();
 
+            themeBool = MiscMethods.ThemeInit();
             offlineMode = noConnection;
+
             comboBoxPredio.Items.Add("21");
             comboBoxPredio.Items.Add("67");
             comboBoxPredio.Items.Add("74A");
@@ -2216,8 +2218,6 @@ namespace HardwareInformation
         private const string REGISTER_AGAIN = "Cadastrar / Atualizar dados";
         private const string SERVER_PORT_ERROR = "Para acessar, selecione o servidor e a porta!";
         private const string ERROR_WINDOWTITLE = "Erro";
-        private const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
-        private const string THEME_REG_KEY = "AppsUseLightTheme";
         private const string DEFAULT_HOSTNAME = "MUDAR-NOME";
         private const string HOSTNAME_ALERT = " (Nome incorreto, alterar)";
         private const string MEDIA_OPERATION_NVME = "NVMe";
@@ -2290,39 +2290,19 @@ namespace HardwareInformation
             comboBoxPadrao.SelectedIndex = 0;
         }
 
+        private void comboBoxThemeInit()
+        {
+            themeBool = MiscMethods.ThemeInit();
+            if (themeBool)
+                darkTheme();
+            else
+                lightTheme();
+        }
+
         //Method for setting the auto theme
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
-                {
-                    if (key != null)
-                    {
-                        Object o = key.GetValue(THEME_REG_KEY);
-                        if (o != null && o.Equals(0))
-                        {
-                            darkTheme();
-                            themeBool = true;
-                        }
-                        else
-                        {
-                            lightTheme();
-                            themeBool = false;
-                        }
-                    }
-                    else
-                    {
-                        lightTheme();
-                        themeBool = false;
-                    }
-                }
-            }
-            catch
-            {
-                lightTheme();
-                themeBool = false;
-            }
+            comboBoxThemeInit();
         }
 
         //Method for setting the light theme
@@ -2337,41 +2317,6 @@ namespace HardwareInformation
         {
             darkTheme();
             themeBool = true;
-        }
-
-        //Initializes the application theme
-        private void comboBoxThemeInit()
-        {
-            try
-            {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
-                {
-                    if (key != null)
-                    {
-                        Object o = key.GetValue(THEME_REG_KEY);
-                        if (o != null && o.Equals(0))
-                        {
-                            darkTheme();
-                            themeBool = true;
-                        }
-                        else
-                        {
-                            lightTheme();
-                            themeBool = false;
-                        }
-                    }
-                    else
-                    {
-                        lightTheme();
-                        themeBool = false;
-                    }
-                }
-            }
-            catch
-            {
-                lightTheme();
-                themeBool = false;
-            }
         }
 
         //Sets a light theme for the UI
@@ -2721,7 +2666,8 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create two timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
-            if(!offlineMode)
+            comboBoxThemeInit();
+            if (!offlineMode)
             {
                 bw = new BusyWindow();
                 bw.Visible = true;
@@ -2747,7 +2693,6 @@ namespace HardwareInformation
             comboBoxServer.SelectedIndex = 0;
             comboBoxPorta.SelectedIndex = 0;
             dateTimePicker1.MaxDate = DateTime.Today;
-            comboBoxThemeInit();
             date = new List<string>();
             FormClosing += Form1_FormClosing;
             coleta_Click(sender, e);            

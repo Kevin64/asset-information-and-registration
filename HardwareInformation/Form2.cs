@@ -13,17 +13,20 @@ namespace HardwareInformation
 		private Color DARK_BACKCOLOR = SystemColors.WindowFrame;
 		private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 		private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-		private const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
-		private const string THEME_REG_KEY = "AppsUseLightTheme";
 		private const string AUTH_INVALID = "Credenciais inválidas. Tente novamente.";
 		private const string INTRANET_REQUIRED = "É necessário conexão com a intranet.";
 		private const string NO_AUTH = "Preencha suas credenciais.";
 		private const string ERROR_WINDOWTITLE = "Erro";
+		private bool themeDark;
 
 		public Form2()
 		{
 			InitializeComponent();
-			ThemeInit();
+			themeDark = MiscMethods.ThemeInit();
+			if (themeDark)
+				darkTheme();
+			else
+				lightTheme();
 			comboBoxServer.Items.Add("192.168.76.103");
 			comboBoxPorta.Items.Add("8081");
 			comboBoxServer.SelectedIndex = 0;
@@ -77,31 +80,6 @@ namespace HardwareInformation
 			this.toolStripStatusLabel1.ForeColor = DARK_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = DARK_FORECOLOR;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
-		}
-
-		//Initializes the theme, according to the host theme
-		public void ThemeInit()
-		{
-			try
-			{
-				using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
-				{
-					if (key != null)
-					{
-						Object o = key.GetValue(THEME_REG_KEY);
-						if (o != null && o.Equals(0))
-							darkTheme();
-						else
-							lightTheme();
-					}
-					else
-						lightTheme();
-				}
-			}
-			catch
-			{
-				lightTheme();
-			}
 		}
 
 		//Fetches the program's binary version

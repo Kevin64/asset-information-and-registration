@@ -85,7 +85,7 @@ public static class HardwareInfo
 	//Fetches the type of drive the system has (SSD or HDD), and the quantity of each
 	public static string GetStorageType()
 	{
-		int j = 0;
+		//int j = 0;
 		double dresult = 0;
 		string dresultStr = "";
 

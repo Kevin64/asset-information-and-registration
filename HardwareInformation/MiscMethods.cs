@@ -9,6 +9,8 @@ namespace HardwareInformation
 {
     internal static class MiscMethods
     {
+        private const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
+        private const string THEME_REG_KEY = "AppsUseLightTheme";
         //Check the registry for a installation/maintenance date
         public static double regCheck(bool mode)
         {
@@ -73,6 +75,31 @@ namespace HardwareInformation
             if (userName == "test" && password == "test")
                 return true;
             return false;
+        }
+
+        //Initializes the theme, according to the host theme
+        public static bool ThemeInit()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(THEME_REG_PATH))
+                {
+                    if (key != null)
+                    {
+                        Object o = key.GetValue(THEME_REG_KEY);
+                        if (o != null && o.Equals(0))
+                            return true;
+                        else
+                            return false;
+                    }
+                    else
+                        return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

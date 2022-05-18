@@ -170,7 +170,7 @@
             this.comboBoxServer.Location = new System.Drawing.Point(187, 66);
             this.comboBoxServer.Name = "comboBoxServer";
             this.comboBoxServer.Size = new System.Drawing.Size(111, 21);
-            this.comboBoxServer.TabIndex = 11;
+            this.comboBoxServer.TabIndex = 2;
             // 
             // comboBoxPorta
             // 
@@ -181,7 +181,7 @@
             this.comboBoxPorta.Location = new System.Drawing.Point(345, 66);
             this.comboBoxPorta.Name = "comboBoxPorta";
             this.comboBoxPorta.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxPorta.TabIndex = 12;
+            this.comboBoxPorta.TabIndex = 3;
             // 
             // Form2
             // 
