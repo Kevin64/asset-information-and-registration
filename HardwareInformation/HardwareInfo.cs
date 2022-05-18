@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Management;
 using System.Management.Automation;
@@ -10,7 +9,7 @@ using System.Runtime.InteropServices;
 
 public static class HardwareInfo
 {
-	private static string unknown = "Unknown";
+	private static string unknown = "Desconhecido";
 
 	//Fetches the CPU information, including the number of cores/threads
 	public static string GetProcessorCores()

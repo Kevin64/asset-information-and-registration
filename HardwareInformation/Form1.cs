@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,10 +16,11 @@ namespace HardwareInformation
     public partial class Form1 : Form
 	{
 		private BackgroundWorker backgroundWorker1;
-		public Form1()
+		public Form1(bool noConnection)
 		{
             InitializeComponent();
 
+            offlineMode = noConnection;
             comboBoxPredio.Items.Add("21");
             comboBoxPredio.Items.Add("67");
             comboBoxPredio.Items.Add("74A");
@@ -2085,13 +2087,15 @@ namespace HardwareInformation
         private ComboBox comboBoxTipo;
         private ComboBox comboBoxServer;
         private Label label21;
-        private bool themeBool, serverOnline;
+        private bool themeBool, serverOnline, offlineMode;
         private List<string> date;
         private string servidor_web, porta, modeURL;
         private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
            MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM,
             InstallLabel, MaintenanceLabel;
         private string[] sArgs = new string[33];
+        private string fileBios = "bios.json";
+        private string fileLogin = "login.json";
         private int i = 0;
         private Label label25;
         private Label lblBIOSType;
@@ -2233,6 +2237,7 @@ namespace HardwareInformation
         private const string MAINTENANCE_TEXT = "manutenção)";
         private const string SINCE_UNKNOWN = "(Não foi possível determinar a data do último serviço)";
         private const string ALREADY_REGISTERED_TODAY = "Serviço já registrado para esta dia. Caso seja necessário outro registro, escolha outra data.";
+        private const string OFFLINE_MODE_ACTIVATED = "Modo OFFLINE!";
         private GroupBox groupBox4;
         private ComboBox comboBoxPilha;
         private ConfigurableQualityPictureBox configurableQualityPictureBox34;
@@ -2707,6 +2712,8 @@ namespace HardwareInformation
         //Handles the closing of the current form
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            File.Delete(@fileBios);
+            File.Delete(@fileLogin);
             webView2.Dispose();
             Application.Exit();
         }
@@ -2714,9 +2721,13 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create two timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
-            bw = new BusyWindow();
-            bw.Visible = true;
-            await loadWebView2();
+            if(!offlineMode)
+            {
+                bw = new BusyWindow();
+                bw.Visible = true;
+                await loadWebView2();
+                bw.Visible = false;
+            }            
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
             timer3.Tick += new EventHandler(flashTextSecBoot);
@@ -2739,8 +2750,7 @@ namespace HardwareInformation
             comboBoxThemeInit();
             date = new List<string>();
             FormClosing += Form1_FormClosing;
-            coleta_Click(sender, e);
-            bw.Visible = false;
+            coleta_Click(sender, e);            
         }
 
         //Restricts textbox4 only with chars
@@ -2857,17 +2867,27 @@ namespace HardwareInformation
         //Starts the collection process
         private void collecting()
         {
-            servidor_web = comboBoxServer.Text;
-            porta = comboBoxPorta.Text;
-            serverOnline = BIOSFileReader.checkHost(servidor_web, porta);
-            if (serverOnline && porta != "")
+            if (!offlineMode)
             {
-                label26.Text = ONLINE;
-                label26.ForeColor = ONLINE_ALERT;
+                servidor_web = comboBoxServer.Text;
+                porta = comboBoxPorta.Text;
+                serverOnline = BIOSFileReader.checkHost(servidor_web, porta);
+                if (serverOnline && porta != "")
+                {
+                    label26.Text = ONLINE;
+                    label26.ForeColor = ONLINE_ALERT;
+                }
+                else
+                {
+                    label26.Text = OFFLINE;
+                    label26.ForeColor = OFFLINE_ALERT;
+                }
             }
             else
             {
-                label26.Text = OFFLINE;
+                comboBoxServer.Enabled = false;
+                comboBoxPorta.Enabled = false;
+                label26.Text = OFFLINE_MODE_ACTIVATED;
                 label26.ForeColor = OFFLINE_ALERT;
             }
 
@@ -3048,6 +3068,7 @@ namespace HardwareInformation
             sinceLabelUpdate(false);
 
             string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBoxServer.Text, comboBoxPorta.Text);
+
             if (lblHostname.Text.Equals(DEFAULT_HOSTNAME))
             {
                 pass = false;
@@ -3084,8 +3105,11 @@ namespace HardwareInformation
             }
             if (str == null)
             {
-                pass = false;
-                MessageBox.Show(DATABASE_REACH_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(!offlineMode)
+                {
+                    pass = false;
+                    MessageBox.Show(DATABASE_REACH_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
             }
             if (str != null && !lblBIOS.Text.Contains(str[0]))
             {
@@ -3104,10 +3128,19 @@ namespace HardwareInformation
             }
             if (lblMac.Text == "")
             {
-                pass = false;
-                lblMac.Text = NETWORK_ERROR;
-                lblIP.Text = NETWORK_ERROR;
-                timer5.Enabled = true;
+                if(!offlineMode)
+                {
+                    pass = false;
+                    lblMac.Text = NETWORK_ERROR;
+                    lblIP.Text = NETWORK_ERROR;
+                    timer5.Enabled = true;
+                }
+                else
+                {
+                    lblMac.Text = OFFLINE_MODE_ACTIVATED;
+                    lblIP.Text = OFFLINE_MODE_ACTIVATED;
+                }
+                
             }
             if (lblVT.Text == "Desativado")
             {
@@ -3158,8 +3191,11 @@ namespace HardwareInformation
         //Runs when the collection ends, ending the thread
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            accessSystemButton.Enabled = true;
-            cadastraButton.Enabled = true;
+            if (!offlineMode)
+            {
+                accessSystemButton.Enabled = true;
+                cadastraButton.Enabled = true;
+            }
             coletaButton.Enabled = true;
             coletaButton.Text = FETCH_AGAIN;
             printHardwareData();

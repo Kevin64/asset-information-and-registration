@@ -28,11 +28,11 @@ namespace HardwareInformation
 			{
 				wc = new WebClient();
 				wc.DownloadString("http://" + ip + ":" + port + "/forneceDadosBIOS.php");
-				System.Threading.Thread.Sleep(1000);
+				System.Threading.Thread.Sleep(300);
 				wc.DownloadFile("http://" + ip + ":" + port + "/" + fileBios, fileBios);
-				System.Threading.Thread.Sleep(1000);
+				System.Threading.Thread.Sleep(300);
 				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + fileSha1);
-				System.Threading.Thread.Sleep(1000);
+				System.Threading.Thread.Sleep(300);
 				sha1 = sha1.ToUpper();
 				fileB = new StreamReader(@fileBios);
 				aux = fileBios;

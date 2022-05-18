@@ -11,9 +11,11 @@ namespace HardwareInformation
     {
         public const int MAX_SIZE = 100;
         public const string WEBVIEW2_PATH = "runtimes\\win-x86";
+        public string[] strArgs;
         public WebView2 webView2;
-        public List<string> listPredio, listAD, listPadrao, listUso, listEtiq, listTipo, listPilha, listServer, listPorta;
+        public List<string> listPredio, listModo, listAD, listPadrao, listUso, listEtiq, listTipo, listPilha, listServer, listPorta;
 
+        //Basic form for WebView2
         private void InitializeComponent()
         {
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
@@ -27,27 +29,55 @@ namespace HardwareInformation
             this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView2.Location = new System.Drawing.Point(12, 12);
             this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(96, 25);
+            this.webView2.Size = new System.Drawing.Size(134, 29);
             this.webView2.TabIndex = 0;
             this.webView2.ZoomFactor = 1D;
             // 
             // CLIRegister
             // 
-            this.ClientSize = new System.Drawing.Size(120, 49);
+            this.ClientSize = new System.Drawing.Size(158, 53);
             this.Controls.Add(this.webView2);
             this.Name = "CLIRegister";
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.ResumeLayout(false);
+
         }
 
-        public string[] strArgs;
-
-        public CLIRegister(string[] args)
+        //Constructor
+        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo)
         {
             InitializeComponent();
+            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo);
+        }
+
+        //When form closes
+        public void CLIRegister_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            webView2.Dispose();
+            Application.Exit();
+        }
+
+        //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
+        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo)
+        {
             strArgs = new string[35];
-            args.CopyTo(strArgs, 0);
+            strArgs[0] = servidor;
+            strArgs[1] = porta;
+            strArgs[2] = modo;
+            strArgs[3] = patrimonio;
+            strArgs[4] = lacre;
+            strArgs[5] = sala;
+            strArgs[6] = predio;
+            strArgs[7] = ad;
+            strArgs[8] = padrao;
+            strArgs[9] = data;
+            strArgs[10] = pilha;
+            strArgs[11] = ticket;
+            strArgs[12] = uso;
+            strArgs[13] = etiqueta;
+            strArgs[14] = tipo;
             listPredio = new List<string>();
+            listModo = new List<string>();
             listAD = new List<string>();
             listPadrao = new List<string>();
             listUso = new List<string>();
@@ -57,17 +87,7 @@ namespace HardwareInformation
             listServer = new List<string>();
             listPorta = new List<string>();
             webView2 = new WebView2();
-            initProc();            
-        }
 
-        private void CLIRegister_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            webView2.Dispose();
-            Application.Exit();
-        }
-
-        public async void initProc()
-        {            
             listPredio.Add("21");
             listPredio.Add("67");
             listPredio.Add("74A");
@@ -75,6 +95,10 @@ namespace HardwareInformation
             listPredio.Add("74C");
             listPredio.Add("74D");
             listPredio.Add("AR");
+            listModo.Add("f");
+            listModo.Add("F");
+            listModo.Add("m");
+            listModo.Add("M");
             listAD.Add("Não");
             listAD.Add("Sim");
             listPadrao.Add("Aluno");
@@ -94,7 +118,7 @@ namespace HardwareInformation
 
             if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 &&
                 strArgs[1].Length <= 5 &&
-                (strArgs[2].Equals("f") || strArgs[2].Equals("F") || strArgs[2].Equals("m")) || strArgs[2].Equals("M") &&
+                listModo.Contains(strArgs[2]) &&
                 strArgs[3].Length <= 6 && strArgs[3].Length > 0 &&
                 strArgs[4].Length <= 10 &&
                 strArgs[5].Length <= 4 && strArgs[5].Length > 0 &&
@@ -102,7 +126,7 @@ namespace HardwareInformation
                 listAD.Contains(strArgs[7]) &&
                 listPadrao.Contains(strArgs[8]) &&
                 (strArgs[9].Length == 10 || strArgs[9].Equals("hoje")) &&
-                strArgs[10].Length <= MAX_SIZE &&
+                listPilha.Contains(strArgs[10]) &&
                 strArgs[11].Length <= 6 &&
                 listUso.Contains(strArgs[12]) &&
                 listEtiq.Contains(strArgs[13]) &&
@@ -112,9 +136,14 @@ namespace HardwareInformation
                     strArgs[2] = "recebeDadosFormatacao";
                 else if(strArgs[2].Equals("m") || strArgs[2].Equals("M"))
                     strArgs[2] = "recebeDadosManutencao";
-                
+
                 if (strArgs[9].Equals("hoje"))
+                {
+                    MiscMethods.regCreate(true, DateTime.Today.ToString());
                     strArgs[9] = DateTime.Today.ToString().Substring(0, 10);
+                }
+                else
+                    MiscMethods.regCreate(true, strArgs[9]);
                 collectThread();
                 serverSendInfo(strArgs);
                 webView2.NavigationCompleted += webView2_NavigationCompleted;
@@ -125,20 +154,21 @@ namespace HardwareInformation
                 webView2.Dispose();
                 Application.Exit();
             }
-        }        
+        }
 
-        private void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        //Allocates WebView2 runtime
+        public void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if(e.IsSuccess)
             {
                 webView2.Dispose();
                 Application.Exit();
-            }            
+            }
         }
 
         //Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables,
         // while reporting the progress to the progressbar
-        private void collectThread()
+        public void collectThread()
         {
             strArgs[17] = HardwareInfo.GetBoardMaker();
 

@@ -1,5 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace HardwareInformation
@@ -25,7 +28,7 @@ namespace HardwareInformation
             }
         }
 
-        //Creates a registry key when a register operation is made
+        //Creates a registry key when a register operation is made in GUI mode
         public static void regCreate(bool mode, DateTimePicker dateTimePicker)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(@"Software\HardwareInformation", true);
@@ -39,10 +42,35 @@ namespace HardwareInformation
 
         }
 
-        //Authenticates the user
-        public static bool Authenticate(string userName, string password)
+        //Creates a registry key when a register operation is made in CLI mode
+        public static void regCreate(bool mode, string dateTime)
         {
-            if (userName == "lab74c" && password == "admccshlab74cadm")
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(@"Software\HardwareInformation", true);
+            if (mode)
+            {
+                rk.SetValue("LastInstallation", dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue("LastMaintenance", dateTime.Substring(0, 10), RegistryValueKind.String);
+            }
+            else
+                rk.SetValue("LastMaintenance", dateTime.Substring(0, 10), RegistryValueKind.String);
+        }
+
+        public static string HashMd5Generator(string input)
+        {
+            MD5 md5Hash = MD5.Create();
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
+        }
+
+        //Authenticates the user
+        public static bool offlineLogin(string userName, string password)
+        {
+            if (userName == "test" && password == "test")
                 return true;
             return false;
         }
