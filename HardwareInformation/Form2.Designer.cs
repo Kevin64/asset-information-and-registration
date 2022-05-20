@@ -29,41 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AuthButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxServer = new System.Windows.Forms.ComboBox();
-            this.comboBoxPorta = new System.Windows.Forms.ComboBox();
+            this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
+            this.comboBoxServerPort = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxUser
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.Location = new System.Drawing.Point(187, 14);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxUser.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxUser.Location = new System.Drawing.Point(187, 14);
+            this.textBoxUser.Name = "textBoxUser";
+            this.textBoxUser.Size = new System.Drawing.Size(111, 20);
+            this.textBoxUser.TabIndex = 0;
             // 
-            // textBox2
+            // textBoxPassword
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox2.Location = new System.Drawing.Point(187, 40);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(111, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.textBoxPassword.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxPassword.Location = new System.Drawing.Point(187, 40);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(111, 20);
+            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -85,19 +85,19 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Senha:";
             // 
-            // button1
+            // AuthButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(307, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 46);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Autenticar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.AuthButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.AuthButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AuthButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuthButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AuthButton.Location = new System.Drawing.Point(307, 14);
+            this.AuthButton.Name = "AuthButton";
+            this.AuthButton.Size = new System.Drawing.Size(138, 46);
+            this.AuthButton.TabIndex = 4;
+            this.AuthButton.Text = "Autenticar";
+            this.AuthButton.UseVisualStyleBackColor = false;
+            this.AuthButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // statusStrip1
             // 
@@ -161,46 +161,46 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Servidor:";
             // 
-            // comboBoxServer
+            // comboBoxServerIP
             // 
-            this.comboBoxServer.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxServer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServer.FormattingEnabled = true;
-            this.comboBoxServer.Location = new System.Drawing.Point(187, 66);
-            this.comboBoxServer.Name = "comboBoxServer";
-            this.comboBoxServer.Size = new System.Drawing.Size(111, 21);
-            this.comboBoxServer.TabIndex = 2;
+            this.comboBoxServerIP.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxServerIP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxServerIP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerIP.FormattingEnabled = true;
+            this.comboBoxServerIP.Location = new System.Drawing.Point(187, 66);
+            this.comboBoxServerIP.Name = "comboBoxServerIP";
+            this.comboBoxServerIP.Size = new System.Drawing.Size(111, 21);
+            this.comboBoxServerIP.TabIndex = 2;
             // 
-            // comboBoxPorta
+            // comboBoxServerPort
             // 
-            this.comboBoxPorta.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxPorta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxPorta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxPorta.FormattingEnabled = true;
-            this.comboBoxPorta.Location = new System.Drawing.Point(345, 66);
-            this.comboBoxPorta.Name = "comboBoxPorta";
-            this.comboBoxPorta.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxPorta.TabIndex = 3;
+            this.comboBoxServerPort.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxServerPort.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxServerPort.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerPort.FormattingEnabled = true;
+            this.comboBoxServerPort.Location = new System.Drawing.Point(345, 66);
+            this.comboBoxServerPort.Name = "comboBoxServerPort";
+            this.comboBoxServerPort.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxServerPort.TabIndex = 3;
             // 
             // Form2
             // 
-            this.AcceptButton = this.button1;
+            this.AcceptButton = this.AuthButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(457, 124);
-            this.Controls.Add(this.comboBoxPorta);
-            this.Controls.Add(this.comboBoxServer);
+            this.Controls.Add(this.comboBoxServerPort);
+            this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.configurableQualityPictureBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AuthButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -217,18 +217,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AuthButton;
         private ConfigurableQualityPictureBox configurableQualityPictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBoxServer;
-        private System.Windows.Forms.ComboBox comboBoxPorta;
+        private System.Windows.Forms.ComboBox comboBoxServerIP;
+        private System.Windows.Forms.ComboBox comboBoxServerPort;
     }
 }

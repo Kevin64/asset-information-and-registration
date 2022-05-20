@@ -1,13 +1,10 @@
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,28 +20,15 @@ namespace HardwareInformation
             themeBool = MiscMethods.ThemeInit();
             offlineMode = noConnection;
 
-            comboBoxPredio.Items.Add("21");
-            comboBoxPredio.Items.Add("67");
-            comboBoxPredio.Items.Add("74A");
-            comboBoxPredio.Items.Add("74B");
-            comboBoxPredio.Items.Add("74C");
-            comboBoxPredio.Items.Add("74D");
-            comboBoxPredio.Items.Add("AR");
-            comboBoxAD.Items.Add("Não");
-            comboBoxAD.Items.Add("Sim");
-            comboBoxPadrao.Items.Add("Aluno");
-            comboBoxPadrao.Items.Add("Funcionário");
-            comboBoxUso.Items.Add("Não");
-            comboBoxUso.Items.Add("Sim");
-            comboBoxEtiq.Items.Add("Não");
-            comboBoxEtiq.Items.Add("Sim");
-            comboBoxTipo.Items.Add("Desktop");
-            comboBoxTipo.Items.Add("Notebook");
-            comboBoxTipo.Items.Add("Tablet");
-            comboBoxPilha.Items.Add("C/ troca de pilha");
-            comboBoxPilha.Items.Add("S/ troca de pilha");
-            comboBoxServer.Items.Add("192.168.76.103");
-            comboBoxPorta.Items.Add("8081");
+            comboBoxBuilding.Items.AddRange(StringsAndConstants.listBuilding.ToArray());
+            comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectory.ToArray());
+            comboBoxStandard.Items.AddRange(StringsAndConstants.listStandard.ToArray());
+            comboBoxInUse.Items.AddRange(StringsAndConstants.listInUse.ToArray());
+            comboBoxTag.Items.AddRange(StringsAndConstants.listTag.ToArray());
+            comboBoxType.Items.AddRange(StringsAndConstants.listType.ToArray());
+            comboBoxBattery.Items.AddRange(StringsAndConstants.listBattery.ToArray());
+            comboBoxServerIP.Items.AddRange(StringsAndConstants.defaultServerIP.ToArray());
+            comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker1_ProgressChanged);
@@ -53,7 +37,7 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = version();
+            this.toolStripStatusLabel2.Text = MiscMethods.version();
         }
 
 		private void InitializeComponent()
@@ -83,29 +67,29 @@ namespace HardwareInformation
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBoxPatri = new System.Windows.Forms.TextBox();
-            this.textBoxLacre = new System.Windows.Forms.TextBox();
-            this.textBoxSala = new System.Windows.Forms.TextBox();
-            this.textBoxLetra = new System.Windows.Forms.TextBox();
+            this.textBoxPatrimony = new System.Windows.Forms.TextBox();
+            this.textBoxSeal = new System.Windows.Forms.TextBox();
+            this.textBoxRoom = new System.Windows.Forms.TextBox();
+            this.textBoxLetter = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBoxPredio = new System.Windows.Forms.ComboBox();
-            this.comboBoxAD = new System.Windows.Forms.ComboBox();
+            this.comboBoxBuilding = new System.Windows.Forms.ComboBox();
+            this.comboBoxActiveDirectory = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.comboBoxPadrao = new System.Windows.Forms.ComboBox();
-            this.cadastraButton = new System.Windows.Forms.Button();
+            this.comboBoxStandard = new System.Windows.Forms.ComboBox();
+            this.registerButton = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.comboBoxUso = new System.Windows.Forms.ComboBox();
+            this.comboBoxInUse = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBoxEtiq = new System.Windows.Forms.ComboBox();
+            this.comboBoxTag = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBoxTipo = new System.Windows.Forms.ComboBox();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.comboBoxServer = new System.Windows.Forms.ComboBox();
-            this.comboBoxPorta = new System.Windows.Forms.ComboBox();
+            this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
+            this.comboBoxServerPort = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.coletaButton = new System.Windows.Forms.Button();
+            this.collectButton = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lblBIOS = new System.Windows.Forms.Label();
@@ -113,12 +97,31 @@ namespace HardwareInformation
             this.label25 = new System.Windows.Forms.Label();
             this.lblBIOSType = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.configurableQualityPictureBox33 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox32 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.lblSmart = new System.Windows.Forms.Label();
             this.lblTPM = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
+            this.configurableQualityPictureBox30 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label45 = new System.Windows.Forms.Label();
             this.lblVT = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
+            this.configurableQualityPictureBox2 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox17 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox16 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox15 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox14 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox13 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox12 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox11 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox10 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox9 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox8 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox7 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox6 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox5 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox4 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox3 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label28 = new System.Windows.Forms.Label();
             this.lblSecBoot = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -133,9 +136,11 @@ namespace HardwareInformation
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
+            this.configurableQualityPictureBox35 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.textBoxChamado = new System.Windows.Forms.TextBox();
-            this.comboBoxPilha = new System.Windows.Forms.ComboBox();
+            this.textBoxTicket = new System.Windows.Forms.TextBox();
+            this.comboBoxBattery = new System.Windows.Forms.ComboBox();
+            this.configurableQualityPictureBox34 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
@@ -145,9 +150,22 @@ namespace HardwareInformation
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.studentButton = new System.Windows.Forms.RadioButton();
-            this.employeeButton = new System.Windows.Forms.RadioButton();
+            this.studentRadioButton = new System.Windows.Forms.RadioButton();
+            this.employeeRadioButton = new System.Windows.Forms.RadioButton();
+            this.configurableQualityPictureBox31 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.configurableQualityPictureBox25 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox29 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox28 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox27 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox26 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox24 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox23 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox22 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox21 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox20 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox19 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox18 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -175,62 +193,8 @@ namespace HardwareInformation
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.timer8 = new System.Windows.Forms.Timer(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.configurableQualityPictureBox35 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox34 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox31 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox25 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox29 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox28 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox27 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox26 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox24 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox23 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox22 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox21 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox20 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox19 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox18 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox33 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox32 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox30 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox2 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox17 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox16 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox15 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox14 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox13 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox12 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox11 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox10 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox9 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox8 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox7 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox6 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox5 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox4 = new HardwareInformation.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox3 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox30)).BeginInit();
@@ -250,6 +214,26 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,7 +243,7 @@ namespace HardwareInformation
             this.lblBM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblBM.Location = new System.Drawing.Point(197, 25);
             this.lblBM.Name = "lblBM";
-            this.lblBM.Size = new System.Drawing.Size(24, 13);
+            this.lblBM.Size = new System.Drawing.Size(10, 13);
             this.lblBM.TabIndex = 7;
             this.lblBM.Text = "-";
             // 
@@ -269,7 +253,7 @@ namespace HardwareInformation
             this.lblModel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblModel.Location = new System.Drawing.Point(197, 52);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(24, 13);
+            this.lblModel.Size = new System.Drawing.Size(10, 13);
             this.lblModel.TabIndex = 8;
             this.lblModel.Text = "-";
             // 
@@ -279,7 +263,7 @@ namespace HardwareInformation
             this.lblSerialNo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblSerialNo.Location = new System.Drawing.Point(197, 79);
             this.lblSerialNo.Name = "lblSerialNo";
-            this.lblSerialNo.Size = new System.Drawing.Size(24, 13);
+            this.lblSerialNo.Size = new System.Drawing.Size(10, 13);
             this.lblSerialNo.TabIndex = 9;
             this.lblSerialNo.Text = "-";
             // 
@@ -289,7 +273,7 @@ namespace HardwareInformation
             this.lblProcName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblProcName.Location = new System.Drawing.Point(197, 106);
             this.lblProcName.Name = "lblProcName";
-            this.lblProcName.Size = new System.Drawing.Size(24, 13);
+            this.lblProcName.Size = new System.Drawing.Size(10, 13);
             this.lblProcName.TabIndex = 10;
             this.lblProcName.Text = "-";
             // 
@@ -299,7 +283,7 @@ namespace HardwareInformation
             this.lblPM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPM.Location = new System.Drawing.Point(197, 133);
             this.lblPM.Name = "lblPM";
-            this.lblPM.Size = new System.Drawing.Size(24, 13);
+            this.lblPM.Size = new System.Drawing.Size(10, 13);
             this.lblPM.TabIndex = 11;
             this.lblPM.Text = "-";
             // 
@@ -309,7 +293,7 @@ namespace HardwareInformation
             this.lblHDSize.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblHDSize.Location = new System.Drawing.Point(197, 160);
             this.lblHDSize.Name = "lblHDSize";
-            this.lblHDSize.Size = new System.Drawing.Size(24, 13);
+            this.lblHDSize.Size = new System.Drawing.Size(10, 13);
             this.lblHDSize.TabIndex = 12;
             this.lblHDSize.Text = "-";
             // 
@@ -319,7 +303,7 @@ namespace HardwareInformation
             this.lblOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblOS.Location = new System.Drawing.Point(197, 295);
             this.lblOS.Name = "lblOS";
-            this.lblOS.Size = new System.Drawing.Size(24, 13);
+            this.lblOS.Size = new System.Drawing.Size(10, 13);
             this.lblOS.TabIndex = 13;
             this.lblOS.Text = "-";
             // 
@@ -329,7 +313,7 @@ namespace HardwareInformation
             this.lblHostname.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblHostname.Location = new System.Drawing.Point(197, 322);
             this.lblHostname.Name = "lblHostname";
-            this.lblHostname.Size = new System.Drawing.Size(24, 13);
+            this.lblHostname.Size = new System.Drawing.Size(10, 13);
             this.lblHostname.TabIndex = 15;
             this.lblHostname.Text = "-";
             // 
@@ -339,7 +323,7 @@ namespace HardwareInformation
             this.lblMac.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblMac.Location = new System.Drawing.Point(197, 349);
             this.lblMac.Name = "lblMac";
-            this.lblMac.Size = new System.Drawing.Size(24, 13);
+            this.lblMac.Size = new System.Drawing.Size(10, 13);
             this.lblMac.TabIndex = 18;
             this.lblMac.Text = "-";
             // 
@@ -349,7 +333,7 @@ namespace HardwareInformation
             this.lblIP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblIP.Location = new System.Drawing.Point(197, 376);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(24, 13);
+            this.lblIP.Size = new System.Drawing.Size(10, 13);
             this.lblIP.TabIndex = 19;
             this.lblIP.Text = "-";
             // 
@@ -483,49 +467,49 @@ namespace HardwareInformation
             this.label13.TabIndex = 13;
             this.label13.Text = "Prédio:";
             // 
-            // textBoxPatri
+            // textBoxPatrimony
             // 
-            this.textBoxPatri.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxPatri.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxPatri.Location = new System.Drawing.Point(185, 22);
-            this.textBoxPatri.MaxLength = 6;
-            this.textBoxPatri.Name = "textBoxPatri";
-            this.textBoxPatri.Size = new System.Drawing.Size(259, 20);
-            this.textBoxPatri.TabIndex = 34;
-            this.textBoxPatri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
+            this.textBoxPatrimony.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxPatrimony.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxPatrimony.Location = new System.Drawing.Point(185, 22);
+            this.textBoxPatrimony.MaxLength = 6;
+            this.textBoxPatrimony.Name = "textBoxPatrimony";
+            this.textBoxPatrimony.Size = new System.Drawing.Size(259, 20);
+            this.textBoxPatrimony.TabIndex = 34;
+            this.textBoxPatrimony.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
             // 
-            // textBoxLacre
+            // textBoxSeal
             // 
-            this.textBoxLacre.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxLacre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxLacre.Location = new System.Drawing.Point(185, 49);
-            this.textBoxLacre.MaxLength = 10;
-            this.textBoxLacre.Name = "textBoxLacre";
-            this.textBoxLacre.Size = new System.Drawing.Size(259, 20);
-            this.textBoxLacre.TabIndex = 35;
-            this.textBoxLacre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
+            this.textBoxSeal.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxSeal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxSeal.Location = new System.Drawing.Point(185, 49);
+            this.textBoxSeal.MaxLength = 10;
+            this.textBoxSeal.Name = "textBoxSeal";
+            this.textBoxSeal.Size = new System.Drawing.Size(259, 20);
+            this.textBoxSeal.TabIndex = 35;
+            this.textBoxSeal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
             // 
-            // textBoxSala
+            // textBoxRoom
             // 
-            this.textBoxSala.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxSala.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxSala.Location = new System.Drawing.Point(185, 76);
-            this.textBoxSala.MaxLength = 4;
-            this.textBoxSala.Name = "textBoxSala";
-            this.textBoxSala.Size = new System.Drawing.Size(101, 20);
-            this.textBoxSala.TabIndex = 36;
-            this.textBoxSala.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
+            this.textBoxRoom.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxRoom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxRoom.Location = new System.Drawing.Point(185, 76);
+            this.textBoxRoom.MaxLength = 4;
+            this.textBoxRoom.Name = "textBoxRoom";
+            this.textBoxRoom.Size = new System.Drawing.Size(101, 20);
+            this.textBoxRoom.TabIndex = 36;
+            this.textBoxRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
             // 
-            // textBoxLetra
+            // textBoxLetter
             // 
-            this.textBoxLetra.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxLetra.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxLetra.Location = new System.Drawing.Point(419, 76);
-            this.textBoxLetra.MaxLength = 1;
-            this.textBoxLetra.Name = "textBoxLetra";
-            this.textBoxLetra.Size = new System.Drawing.Size(25, 20);
-            this.textBoxLetra.TabIndex = 37;
-            this.textBoxLetra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCharsOnly_KeyPress);
+            this.textBoxLetter.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxLetter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxLetter.Location = new System.Drawing.Point(419, 76);
+            this.textBoxLetter.MaxLength = 1;
+            this.textBoxLetter.Name = "textBoxLetter";
+            this.textBoxLetter.Size = new System.Drawing.Size(25, 20);
+            this.textBoxLetter.TabIndex = 37;
+            this.textBoxLetter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCharsOnly_KeyPress);
             // 
             // label14
             // 
@@ -557,31 +541,31 @@ namespace HardwareInformation
             this.label16.TabIndex = 16;
             this.label16.Text = "Data do último serviço:";
             // 
-            // comboBoxPredio
+            // comboBoxBuilding
             // 
-            this.comboBoxPredio.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxPredio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPredio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxPredio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxPredio.FormattingEnabled = true;
-            this.comboBoxPredio.Location = new System.Drawing.Point(185, 103);
-            this.comboBoxPredio.Name = "comboBoxPredio";
-            this.comboBoxPredio.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxPredio.Sorted = true;
-            this.comboBoxPredio.TabIndex = 38;
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxBuilding.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 103);
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxBuilding.Sorted = true;
+            this.comboBoxBuilding.TabIndex = 38;
             // 
-            // comboBoxAD
+            // comboBoxActiveDirectory
             // 
-            this.comboBoxAD.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxAD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxAD.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxAD.FormattingEnabled = true;
-            this.comboBoxAD.Location = new System.Drawing.Point(185, 233);
-            this.comboBoxAD.Name = "comboBoxAD";
-            this.comboBoxAD.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxAD.Sorted = true;
-            this.comboBoxAD.TabIndex = 45;
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxActiveDirectory.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 233);
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxActiveDirectory.Sorted = true;
+            this.comboBoxActiveDirectory.TabIndex = 45;
             // 
             // label17
             // 
@@ -593,32 +577,32 @@ namespace HardwareInformation
             this.label17.TabIndex = 15;
             this.label17.Text = "Padrão:";
             // 
-            // comboBoxPadrao
+            // comboBoxStandard
             // 
-            this.comboBoxPadrao.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxPadrao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPadrao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxPadrao.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxPadrao.FormattingEnabled = true;
-            this.comboBoxPadrao.Location = new System.Drawing.Point(384, 233);
-            this.comboBoxPadrao.Name = "comboBoxPadrao";
-            this.comboBoxPadrao.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxPadrao.Sorted = true;
-            this.comboBoxPadrao.TabIndex = 46;
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxStandard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Location = new System.Drawing.Point(384, 233);
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            this.comboBoxStandard.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxStandard.Sorted = true;
+            this.comboBoxStandard.TabIndex = 46;
             // 
-            // cadastraButton
+            // registerButton
             // 
-            this.cadastraButton.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.cadastraButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cadastraButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cadastraButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cadastraButton.Location = new System.Drawing.Point(767, 643);
-            this.cadastraButton.Name = "cadastraButton";
-            this.cadastraButton.Size = new System.Drawing.Size(258, 56);
-            this.cadastraButton.TabIndex = 53;
-            this.cadastraButton.Text = "Cadastrar / Atualizar dados";
-            this.cadastraButton.UseVisualStyleBackColor = false;
-            this.cadastraButton.Click += new System.EventHandler(this.cadastra_ClickAsync);
+            this.registerButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.registerButton.Location = new System.Drawing.Point(767, 643);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(258, 56);
+            this.registerButton.TabIndex = 53;
+            this.registerButton.Text = "Cadastrar / Atualizar dados";
+            this.registerButton.UseVisualStyleBackColor = false;
+            this.registerButton.Click += new System.EventHandler(this.cadastra_ClickAsync);
             // 
             // label18
             // 
@@ -630,18 +614,18 @@ namespace HardwareInformation
             this.label18.TabIndex = 48;
             this.label18.Text = "Em uso:";
             // 
-            // comboBoxUso
+            // comboBoxInUse
             // 
-            this.comboBoxUso.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxUso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUso.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxUso.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxUso.FormattingEnabled = true;
-            this.comboBoxUso.Location = new System.Drawing.Point(384, 103);
-            this.comboBoxUso.Name = "comboBoxUso";
-            this.comboBoxUso.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxUso.Sorted = true;
-            this.comboBoxUso.TabIndex = 39;
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxInUse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Location = new System.Drawing.Point(384, 103);
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxInUse.Sorted = true;
+            this.comboBoxInUse.TabIndex = 39;
             // 
             // label19
             // 
@@ -653,18 +637,18 @@ namespace HardwareInformation
             this.label19.TabIndex = 50;
             this.label19.Text = "Etiqueta:";
             // 
-            // comboBoxEtiq
+            // comboBoxTag
             // 
-            this.comboBoxEtiq.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxEtiq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEtiq.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxEtiq.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxEtiq.FormattingEnabled = true;
-            this.comboBoxEtiq.Location = new System.Drawing.Point(384, 130);
-            this.comboBoxEtiq.Name = "comboBoxEtiq";
-            this.comboBoxEtiq.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxEtiq.Sorted = true;
-            this.comboBoxEtiq.TabIndex = 41;
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxTag.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Location = new System.Drawing.Point(384, 130);
+            this.comboBoxTag.Name = "comboBoxTag";
+            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxTag.Sorted = true;
+            this.comboBoxTag.TabIndex = 41;
             // 
             // label20
             // 
@@ -676,18 +660,18 @@ namespace HardwareInformation
             this.label20.TabIndex = 53;
             this.label20.Text = "Tipo:";
             // 
-            // comboBoxTipo
+            // comboBoxType
             // 
-            this.comboBoxTipo.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxTipo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTipo.FormattingEnabled = true;
-            this.comboBoxTipo.Location = new System.Drawing.Point(185, 130);
-            this.comboBoxTipo.Name = "comboBoxTipo";
-            this.comboBoxTipo.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxTipo.Sorted = true;
-            this.comboBoxTipo.TabIndex = 40;
+            this.comboBoxType.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(185, 130);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxType.Sorted = true;
+            this.comboBoxType.TabIndex = 40;
             // 
             // label21
             // 
@@ -699,29 +683,29 @@ namespace HardwareInformation
             this.label21.TabIndex = 17;
             this.label21.Text = "Servidor:";
             // 
-            // comboBoxServer
+            // comboBoxServerIP
             // 
-            this.comboBoxServer.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxServer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServer.FormattingEnabled = true;
-            this.comboBoxServer.Location = new System.Drawing.Point(192, 419);
-            this.comboBoxServer.Name = "comboBoxServer";
-            this.comboBoxServer.Size = new System.Drawing.Size(108, 21);
-            this.comboBoxServer.Sorted = true;
-            this.comboBoxServer.TabIndex = 49;
+            this.comboBoxServerIP.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxServerIP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxServerIP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerIP.FormattingEnabled = true;
+            this.comboBoxServerIP.Location = new System.Drawing.Point(192, 419);
+            this.comboBoxServerIP.Name = "comboBoxServerIP";
+            this.comboBoxServerIP.Size = new System.Drawing.Size(108, 21);
+            this.comboBoxServerIP.Sorted = true;
+            this.comboBoxServerIP.TabIndex = 49;
             // 
-            // comboBoxPorta
+            // comboBoxServerPort
             // 
-            this.comboBoxPorta.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxPorta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxPorta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxPorta.FormattingEnabled = true;
-            this.comboBoxPorta.Location = new System.Drawing.Point(350, 419);
-            this.comboBoxPorta.Name = "comboBoxPorta";
-            this.comboBoxPorta.Size = new System.Drawing.Size(94, 21);
-            this.comboBoxPorta.Sorted = true;
-            this.comboBoxPorta.TabIndex = 50;
+            this.comboBoxServerPort.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxServerPort.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxServerPort.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerPort.FormattingEnabled = true;
+            this.comboBoxServerPort.Location = new System.Drawing.Point(350, 419);
+            this.comboBoxServerPort.Name = "comboBoxServerPort";
+            this.comboBoxServerPort.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxServerPort.Sorted = true;
+            this.comboBoxServerPort.TabIndex = 50;
             // 
             // label22
             // 
@@ -733,18 +717,18 @@ namespace HardwareInformation
             this.label22.TabIndex = 18;
             this.label22.Text = "Porta:";
             // 
-            // coletaButton
+            // collectButton
             // 
-            this.coletaButton.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.coletaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.coletaButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.coletaButton.Location = new System.Drawing.Point(575, 643);
-            this.coletaButton.Name = "coletaButton";
-            this.coletaButton.Size = new System.Drawing.Size(186, 25);
-            this.coletaButton.TabIndex = 51;
-            this.coletaButton.Text = "Coletar Novamente";
-            this.coletaButton.UseVisualStyleBackColor = false;
-            this.coletaButton.Click += new System.EventHandler(this.coleta_Click);
+            this.collectButton.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.collectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.collectButton.Location = new System.Drawing.Point(575, 643);
+            this.collectButton.Name = "collectButton";
+            this.collectButton.Size = new System.Drawing.Size(186, 25);
+            this.collectButton.TabIndex = 51;
+            this.collectButton.Text = "Coletar Novamente";
+            this.collectButton.UseVisualStyleBackColor = false;
+            this.collectButton.Click += new System.EventHandler(this.coleta_Click);
             // 
             // label23
             // 
@@ -772,7 +756,7 @@ namespace HardwareInformation
             this.lblBIOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblBIOS.Location = new System.Drawing.Point(197, 430);
             this.lblBIOS.Name = "lblBIOS";
-            this.lblBIOS.Size = new System.Drawing.Size(24, 13);
+            this.lblBIOS.Size = new System.Drawing.Size(10, 13);
             this.lblBIOS.TabIndex = 57;
             this.lblBIOS.Text = "-";
             // 
@@ -805,7 +789,7 @@ namespace HardwareInformation
             this.lblBIOSType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblBIOSType.Location = new System.Drawing.Point(197, 403);
             this.lblBIOSType.Name = "lblBIOSType";
-            this.lblBIOSType.Size = new System.Drawing.Size(24, 13);
+            this.lblBIOSType.Size = new System.Drawing.Size(10, 13);
             this.lblBIOSType.TabIndex = 63;
             this.lblBIOSType.Text = "-";
             // 
@@ -878,835 +862,6 @@ namespace HardwareInformation
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
             // 
-            // lblSmart
-            // 
-            this.lblSmart.AutoSize = true;
-            this.lblSmart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSmart.Location = new System.Drawing.Point(197, 187);
-            this.lblSmart.Name = "lblSmart";
-            this.lblSmart.Size = new System.Drawing.Size(24, 13);
-            this.lblSmart.TabIndex = 106;
-            this.lblSmart.Text = "-";
-            // 
-            // lblTPM
-            // 
-            this.lblTPM.AutoSize = true;
-            this.lblTPM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblTPM.Location = new System.Drawing.Point(197, 511);
-            this.lblTPM.Name = "lblTPM";
-            this.lblTPM.Size = new System.Drawing.Size(24, 13);
-            this.lblTPM.TabIndex = 109;
-            this.lblTPM.Text = "-";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label44.Location = new System.Drawing.Point(37, 187);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(96, 13);
-            this.label44.TabIndex = 105;
-            this.label44.Text = "Status S.M.A.R.T.:";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label45.Location = new System.Drawing.Point(37, 511);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(121, 13);
-            this.label45.TabIndex = 108;
-            this.label45.Text = "Versão do módulo TPM:";
-            // 
-            // lblVT
-            // 
-            this.lblVT.AutoSize = true;
-            this.lblVT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblVT.Location = new System.Drawing.Point(197, 484);
-            this.lblVT.Name = "lblVT";
-            this.lblVT.Size = new System.Drawing.Size(24, 13);
-            this.lblVT.TabIndex = 103;
-            this.lblVT.Text = "-";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label33.Location = new System.Drawing.Point(37, 484);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(141, 13);
-            this.label33.TabIndex = 102;
-            this.label33.Text = "Tecnologia de Virtualização:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label28.Location = new System.Drawing.Point(255, 528);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(24, 13);
-            this.label28.TabIndex = 70;
-            this.label28.Text = "-";
-            // 
-            // lblSecBoot
-            // 
-            this.lblSecBoot.AutoSize = true;
-            this.lblSecBoot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSecBoot.Location = new System.Drawing.Point(197, 457);
-            this.lblSecBoot.Name = "lblSecBoot";
-            this.lblSecBoot.Size = new System.Drawing.Size(24, 13);
-            this.lblSecBoot.TabIndex = 71;
-            this.lblSecBoot.Text = "-";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label32.Location = new System.Drawing.Point(37, 457);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(69, 13);
-            this.label32.TabIndex = 70;
-            this.label32.Text = "Secure Boot:";
-            // 
-            // lblMediaOperation
-            // 
-            this.lblMediaOperation.AutoSize = true;
-            this.lblMediaOperation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMediaOperation.Location = new System.Drawing.Point(197, 241);
-            this.lblMediaOperation.Name = "lblMediaOperation";
-            this.lblMediaOperation.Size = new System.Drawing.Size(24, 13);
-            this.lblMediaOperation.TabIndex = 69;
-            this.lblMediaOperation.Text = "-";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label30.Location = new System.Drawing.Point(37, 241);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(154, 13);
-            this.label30.TabIndex = 68;
-            this.label30.Text = "Modo de operação SATA/M.2:";
-            // 
-            // lblGPUInfo
-            // 
-            this.lblGPUInfo.AutoSize = true;
-            this.lblGPUInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblGPUInfo.Location = new System.Drawing.Point(197, 268);
-            this.lblGPUInfo.Name = "lblGPUInfo";
-            this.lblGPUInfo.Size = new System.Drawing.Size(24, 13);
-            this.lblGPUInfo.TabIndex = 67;
-            this.lblGPUInfo.Text = "-";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label29.Location = new System.Drawing.Point(37, 268);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(84, 13);
-            this.label29.TabIndex = 66;
-            this.label29.Text = "Placa de Vídeo:";
-            // 
-            // lblMediaType
-            // 
-            this.lblMediaType.AutoSize = true;
-            this.lblMediaType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblMediaType.Location = new System.Drawing.Point(197, 214);
-            this.lblMediaType.Name = "lblMediaType";
-            this.lblMediaType.Size = new System.Drawing.Size(24, 13);
-            this.lblMediaType.TabIndex = 65;
-            this.lblMediaType.Text = "-";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label27.Location = new System.Drawing.Point(37, 214);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(124, 13);
-            this.label27.TabIndex = 64;
-            this.label27.Text = "Tipo de armazenamento:";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 544);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(525, 36);
-            this.progressBar1.TabIndex = 69;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label49);
-            this.groupBox2.Controls.Add(this.label48);
-            this.groupBox2.Controls.Add(this.label47);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox35);
-            this.groupBox2.Controls.Add(this.label31);
-            this.groupBox2.Controls.Add(this.textBoxChamado);
-            this.groupBox2.Controls.Add(this.comboBoxPilha);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox34);
-            this.groupBox2.Controls.Add(this.label42);
-            this.groupBox2.Controls.Add(this.label41);
-            this.groupBox2.Controls.Add(this.label46);
-            this.groupBox2.Controls.Add(this.label40);
-            this.groupBox2.Controls.Add(this.label39);
-            this.groupBox2.Controls.Add(this.label38);
-            this.groupBox2.Controls.Add(this.label37);
-            this.groupBox2.Controls.Add(this.label36);
-            this.groupBox2.Controls.Add(this.label35);
-            this.groupBox2.Controls.Add(this.studentButton);
-            this.groupBox2.Controls.Add(this.employeeButton);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox31);
-            this.groupBox2.Controls.Add(this.label34);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox25);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox29);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox28);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox27);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox26);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox24);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox23);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox22);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox21);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox20);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox19);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox18);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBoxPatri);
-            this.groupBox2.Controls.Add(this.textBoxLacre);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.textBoxSala);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.comboBoxPorta);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.comboBoxServer);
-            this.groupBox2.Controls.Add(this.comboBoxPredio);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.comboBoxAD);
-            this.groupBox2.Controls.Add(this.comboBoxTipo);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.textBoxLetra);
-            this.groupBox2.Controls.Add(this.comboBoxPadrao);
-            this.groupBox2.Controls.Add(this.comboBoxEtiq);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.comboBoxUso);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox2.Location = new System.Drawing.Point(575, 113);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 447);
-            this.groupBox2.TabIndex = 66;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label49.Location = new System.Drawing.Point(166, 422);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(20, 13);
-            this.label49.TabIndex = 119;
-            this.label49.Text = "IP:";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label48.Location = new System.Drawing.Point(367, 264);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(17, 13);
-            this.label48.TabIndex = 118;
-            this.label48.Text = "✱";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label47.Location = new System.Drawing.Point(143, 264);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(17, 13);
-            this.label47.TabIndex = 114;
-            this.label47.Text = "✱";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label31.Location = new System.Drawing.Point(303, 263);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(69, 13);
-            this.label31.TabIndex = 116;
-            this.label31.Text = "Nº chamado:";
-            // 
-            // textBoxChamado
-            // 
-            this.textBoxChamado.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxChamado.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxChamado.Location = new System.Drawing.Point(384, 261);
-            this.textBoxChamado.MaxLength = 6;
-            this.textBoxChamado.Name = "textBoxChamado";
-            this.textBoxChamado.Size = new System.Drawing.Size(60, 20);
-            this.textBoxChamado.TabIndex = 115;
-            // 
-            // comboBoxPilha
-            // 
-            this.comboBoxPilha.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.comboBoxPilha.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPilha.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxPilha.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxPilha.FormattingEnabled = true;
-            this.comboBoxPilha.Location = new System.Drawing.Point(185, 260);
-            this.comboBoxPilha.Name = "comboBoxPilha";
-            this.comboBoxPilha.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxPilha.Sorted = true;
-            this.comboBoxPilha.TabIndex = 114;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label42.Location = new System.Drawing.Point(103, 187);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(17, 13);
-            this.label42.TabIndex = 112;
-            this.label42.Text = "✱";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label41.Location = new System.Drawing.Point(367, 133);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(17, 13);
-            this.label41.TabIndex = 111;
-            this.label41.Text = "✱";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label46.Location = new System.Drawing.Point(35, 263);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(112, 13);
-            this.label46.TabIndex = 111;
-            this.label46.Text = "Houve troca de pilha?";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label40.Location = new System.Drawing.Point(64, 133);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(17, 13);
-            this.label40.TabIndex = 110;
-            this.label40.Text = "✱";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label39.Location = new System.Drawing.Point(363, 106);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(17, 13);
-            this.label39.TabIndex = 109;
-            this.label39.Text = "✱";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label38.Location = new System.Drawing.Point(73, 106);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(17, 13);
-            this.label38.TabIndex = 108;
-            this.label38.Text = "✱";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label37.Location = new System.Drawing.Point(168, 79);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(17, 13);
-            this.label37.TabIndex = 107;
-            this.label37.Text = "✱";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label36.Location = new System.Drawing.Point(92, 25);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(17, 13);
-            this.label36.TabIndex = 106;
-            this.label36.Text = "✱";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label35.Location = new System.Drawing.Point(253, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(152, 13);
-            this.label35.TabIndex = 105;
-            this.label35.Text = "✱ = Preenchimento obrigatório";
-            // 
-            // studentButton
-            // 
-            this.studentButton.AutoSize = true;
-            this.studentButton.Location = new System.Drawing.Point(185, 203);
-            this.studentButton.Name = "studentButton";
-            this.studentButton.Size = new System.Drawing.Size(246, 17);
-            this.studentButton.TabIndex = 44;
-            this.studentButton.TabStop = true;
-            this.studentButton.Text = "Aluno (computador de laboratório/sala de aula)";
-            this.studentButton.UseVisualStyleBackColor = true;
-            this.studentButton.CheckedChanged += new System.EventHandler(this.studentButton2_CheckedChanged);
-            // 
-            // employeeButton
-            // 
-            this.employeeButton.AutoSize = true;
-            this.employeeButton.Location = new System.Drawing.Point(185, 185);
-            this.employeeButton.Name = "employeeButton";
-            this.employeeButton.Size = new System.Drawing.Size(242, 17);
-            this.employeeButton.TabIndex = 43;
-            this.employeeButton.TabStop = true;
-            this.employeeButton.Text = "Funcionário/Bolsista (computador de trabalho)";
-            this.employeeButton.UseVisualStyleBackColor = true;
-            this.employeeButton.CheckedChanged += new System.EventHandler(this.employeeButton1_CheckedChanged);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label34.Location = new System.Drawing.Point(35, 187);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(70, 13);
-            this.label34.TabIndex = 101;
-            this.label34.Text = "Quem usará?";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker1.Location = new System.Drawing.Point(185, 157);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 20);
-            this.dateTimePicker1.TabIndex = 42;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label26.Location = new System.Drawing.Point(84, 422);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(24, 13);
-            this.label26.TabIndex = 72;
-            this.label26.Text = "-";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lblMaintenanceSince);
-            this.groupBox3.Controls.Add(this.lblInstallSince);
-            this.groupBox3.Controls.Add(this.label43);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.formatButton);
-            this.groupBox3.Controls.Add(this.maintenanceButton);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox3.Location = new System.Drawing.Point(6, 287);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(438, 126);
-            this.groupBox3.TabIndex = 72;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo de serviço";
-            // 
-            // lblMaintenanceSince
-            // 
-            this.lblMaintenanceSince.AutoSize = true;
-            this.lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblMaintenanceSince.Location = new System.Drawing.Point(104, 64);
-            this.lblMaintenanceSince.Name = "lblMaintenanceSince";
-            this.lblMaintenanceSince.Size = new System.Drawing.Size(24, 13);
-            this.lblMaintenanceSince.TabIndex = 121;
-            this.lblMaintenanceSince.Text = "-";
-            // 
-            // lblInstallSince
-            // 
-            this.lblInstallSince.AutoSize = true;
-            this.lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblInstallSince.Location = new System.Drawing.Point(104, 25);
-            this.lblInstallSince.Name = "lblInstallSince";
-            this.lblInstallSince.Size = new System.Drawing.Size(24, 13);
-            this.lblInstallSince.TabIndex = 120;
-            this.lblInstallSince.Text = "-";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-            this.label43.Location = new System.Drawing.Point(82, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(17, 13);
-            this.label43.TabIndex = 113;
-            this.label43.Text = "✱";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Enabled = false;
-            this.textBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox5.Location = new System.Drawing.Point(32, 41);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(391, 19);
-            this.textBox5.TabIndex = 76;
-            this.textBox5.Text = "Opção para quando o PC passar por formatação ou reset";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Enabled = false;
-            this.textBox6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox6.Location = new System.Drawing.Point(32, 81);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(391, 25);
-            this.textBox6.TabIndex = 77;
-            this.textBox6.Text = "Opção para quando o PC passar por manutenção preventiva, sem a necessidade de for" +
-    "matação";
-            // 
-            // formatButton
-            // 
-            this.formatButton.AutoSize = true;
-            this.formatButton.Location = new System.Drawing.Point(13, 23);
-            this.formatButton.Name = "formatButton";
-            this.formatButton.Size = new System.Drawing.Size(81, 17);
-            this.formatButton.TabIndex = 47;
-            this.formatButton.Text = "Formatação";
-            this.formatButton.UseVisualStyleBackColor = true;
-            this.formatButton.CheckedChanged += new System.EventHandler(this.formatButton1_CheckedChanged);
-            // 
-            // maintenanceButton
-            // 
-            this.maintenanceButton.AutoSize = true;
-            this.maintenanceButton.Location = new System.Drawing.Point(13, 62);
-            this.maintenanceButton.Name = "maintenanceButton";
-            this.maintenanceButton.Size = new System.Drawing.Size(85, 17);
-            this.maintenanceButton.TabIndex = 48;
-            this.maintenanceButton.Text = "Manutenção";
-            this.maintenanceButton.UseVisualStyleBackColor = true;
-            this.maintenanceButton.CheckedChanged += new System.EventHandler(this.maintenanceButton2_CheckedChanged);
-            // 
-            // webView2
-            // 
-            this.webView2.AllowExternalDrop = true;
-            this.webView2.CreationProperties = null;
-            this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2.Location = new System.Drawing.Point(1, 15);
-            this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(448, 60);
-            this.webView2.TabIndex = 72;
-            this.webView2.ZoomFactor = 1D;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)));
-            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comboBoxTheme,
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 701);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
-            this.statusStrip1.TabIndex = 60;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // comboBoxTheme
-            // 
-            this.comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
-            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
-            this.comboBoxTheme.Text = "Tema";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
-            this.toolStripMenuItem1.Text = "Automático (Tema do sistema)";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
-            this.toolStripMenuItem2.Text = "Claro";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
-            this.toolStripMenuItem3.Text = "Escuro";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(989, 19);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "Sistema desenvolvido pelo servidor Kevin Costa, SIAPE 1971957, para uso no serviç" +
-    "o da Unidade de Tecnologia da Informação do CCSH - UFSM";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 500;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.webView2);
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox4.Location = new System.Drawing.Point(575, 562);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(450, 77);
-            this.groupBox4.TabIndex = 73;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Status do cadastro";
-            // 
-            // configurableQualityPictureBox35
-            // 
-            this.configurableQualityPictureBox35.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
-            this.configurableQualityPictureBox35.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox35.Location = new System.Drawing.Point(274, 256);
-            this.configurableQualityPictureBox35.Name = "configurableQualityPictureBox35";
-            this.configurableQualityPictureBox35.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox35.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox35.TabIndex = 117;
-            this.configurableQualityPictureBox35.TabStop = false;
-            // 
-            // configurableQualityPictureBox34
-            // 
-            this.configurableQualityPictureBox34.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
-            this.configurableQualityPictureBox34.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox34.Location = new System.Drawing.Point(6, 256);
-            this.configurableQualityPictureBox34.Name = "configurableQualityPictureBox34";
-            this.configurableQualityPictureBox34.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox34.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox34.TabIndex = 113;
-            this.configurableQualityPictureBox34.TabStop = false;
-            // 
-            // configurableQualityPictureBox31
-            // 
-            this.configurableQualityPictureBox31.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
-            this.configurableQualityPictureBox31.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox31.Location = new System.Drawing.Point(6, 179);
-            this.configurableQualityPictureBox31.Name = "configurableQualityPictureBox31";
-            this.configurableQualityPictureBox31.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox31.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox31.TabIndex = 102;
-            this.configurableQualityPictureBox31.TabStop = false;
-            // 
-            // configurableQualityPictureBox25
-            // 
-            this.configurableQualityPictureBox25.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
-            this.configurableQualityPictureBox25.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox25.Location = new System.Drawing.Point(292, 71);
-            this.configurableQualityPictureBox25.Name = "configurableQualityPictureBox25";
-            this.configurableQualityPictureBox25.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox25.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox25.TabIndex = 100;
-            this.configurableQualityPictureBox25.TabStop = false;
-            // 
-            // configurableQualityPictureBox29
-            // 
-            this.configurableQualityPictureBox29.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.configurableQualityPictureBox29.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox29.Location = new System.Drawing.Point(6, 414);
-            this.configurableQualityPictureBox29.Name = "configurableQualityPictureBox29";
-            this.configurableQualityPictureBox29.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox29.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox29.TabIndex = 99;
-            this.configurableQualityPictureBox29.TabStop = false;
-            // 
-            // configurableQualityPictureBox28
-            // 
-            this.configurableQualityPictureBox28.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
-            this.configurableQualityPictureBox28.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox28.Location = new System.Drawing.Point(6, 125);
-            this.configurableQualityPictureBox28.Name = "configurableQualityPictureBox28";
-            this.configurableQualityPictureBox28.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox28.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox28.TabIndex = 98;
-            this.configurableQualityPictureBox28.TabStop = false;
-            // 
-            // configurableQualityPictureBox27
-            // 
-            this.configurableQualityPictureBox27.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
-            this.configurableQualityPictureBox27.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox27.Location = new System.Drawing.Point(292, 125);
-            this.configurableQualityPictureBox27.Name = "configurableQualityPictureBox27";
-            this.configurableQualityPictureBox27.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox27.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox27.TabIndex = 97;
-            this.configurableQualityPictureBox27.TabStop = false;
-            // 
-            // configurableQualityPictureBox26
-            // 
-            this.configurableQualityPictureBox26.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
-            this.configurableQualityPictureBox26.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox26.Location = new System.Drawing.Point(292, 98);
-            this.configurableQualityPictureBox26.Name = "configurableQualityPictureBox26";
-            this.configurableQualityPictureBox26.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox26.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox26.TabIndex = 96;
-            this.configurableQualityPictureBox26.TabStop = false;
-            // 
-            // configurableQualityPictureBox24
-            // 
-            this.configurableQualityPictureBox24.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
-            this.configurableQualityPictureBox24.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox24.Location = new System.Drawing.Point(6, 152);
-            this.configurableQualityPictureBox24.Name = "configurableQualityPictureBox24";
-            this.configurableQualityPictureBox24.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox24.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox24.TabIndex = 94;
-            this.configurableQualityPictureBox24.TabStop = false;
-            // 
-            // configurableQualityPictureBox23
-            // 
-            this.configurableQualityPictureBox23.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
-            this.configurableQualityPictureBox23.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox23.Location = new System.Drawing.Point(274, 228);
-            this.configurableQualityPictureBox23.Name = "configurableQualityPictureBox23";
-            this.configurableQualityPictureBox23.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox23.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox23.TabIndex = 93;
-            this.configurableQualityPictureBox23.TabStop = false;
-            // 
-            // configurableQualityPictureBox22
-            // 
-            this.configurableQualityPictureBox22.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.configurableQualityPictureBox22.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox22.Location = new System.Drawing.Point(6, 228);
-            this.configurableQualityPictureBox22.Name = "configurableQualityPictureBox22";
-            this.configurableQualityPictureBox22.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox22.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox22.TabIndex = 92;
-            this.configurableQualityPictureBox22.TabStop = false;
-            // 
-            // configurableQualityPictureBox21
-            // 
-            this.configurableQualityPictureBox21.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
-            this.configurableQualityPictureBox21.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox21.Location = new System.Drawing.Point(6, 98);
-            this.configurableQualityPictureBox21.Name = "configurableQualityPictureBox21";
-            this.configurableQualityPictureBox21.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox21.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox21.TabIndex = 91;
-            this.configurableQualityPictureBox21.TabStop = false;
-            // 
-            // configurableQualityPictureBox20
-            // 
-            this.configurableQualityPictureBox20.CompositingQuality = null;
-            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
-            this.configurableQualityPictureBox20.InterpolationMode = null;
-            this.configurableQualityPictureBox20.Location = new System.Drawing.Point(6, 71);
-            this.configurableQualityPictureBox20.Name = "configurableQualityPictureBox20";
-            this.configurableQualityPictureBox20.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox20.SmoothingMode = null;
-            this.configurableQualityPictureBox20.TabIndex = 90;
-            this.configurableQualityPictureBox20.TabStop = false;
-            // 
-            // configurableQualityPictureBox19
-            // 
-            this.configurableQualityPictureBox19.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
-            this.configurableQualityPictureBox19.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox19.Location = new System.Drawing.Point(6, 44);
-            this.configurableQualityPictureBox19.Name = "configurableQualityPictureBox19";
-            this.configurableQualityPictureBox19.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.configurableQualityPictureBox19.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox19.TabIndex = 89;
-            this.configurableQualityPictureBox19.TabStop = false;
-            // 
-            // configurableQualityPictureBox18
-            // 
-            this.configurableQualityPictureBox18.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
-            this.configurableQualityPictureBox18.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox18.Location = new System.Drawing.Point(6, 17);
-            this.configurableQualityPictureBox18.Name = "configurableQualityPictureBox18";
-            this.configurableQualityPictureBox18.Size = new System.Drawing.Size(25, 25);
-            this.configurableQualityPictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox18.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox18.TabIndex = 88;
-            this.configurableQualityPictureBox18.TabStop = false;
-            // 
             // configurableQualityPictureBox33
             // 
             this.configurableQualityPictureBox33.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -1733,6 +888,36 @@ namespace HardwareInformation
             this.configurableQualityPictureBox32.TabIndex = 107;
             this.configurableQualityPictureBox32.TabStop = false;
             // 
+            // lblSmart
+            // 
+            this.lblSmart.AutoSize = true;
+            this.lblSmart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSmart.Location = new System.Drawing.Point(197, 187);
+            this.lblSmart.Name = "lblSmart";
+            this.lblSmart.Size = new System.Drawing.Size(10, 13);
+            this.lblSmart.TabIndex = 106;
+            this.lblSmart.Text = "-";
+            // 
+            // lblTPM
+            // 
+            this.lblTPM.AutoSize = true;
+            this.lblTPM.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblTPM.Location = new System.Drawing.Point(197, 511);
+            this.lblTPM.Name = "lblTPM";
+            this.lblTPM.Size = new System.Drawing.Size(10, 13);
+            this.lblTPM.TabIndex = 109;
+            this.lblTPM.Text = "-";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label44.Location = new System.Drawing.Point(37, 187);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(96, 13);
+            this.label44.TabIndex = 105;
+            this.label44.Text = "Status S.M.A.R.T.:";
+            // 
             // configurableQualityPictureBox30
             // 
             this.configurableQualityPictureBox30.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -1745,6 +930,36 @@ namespace HardwareInformation
             this.configurableQualityPictureBox30.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.configurableQualityPictureBox30.TabIndex = 104;
             this.configurableQualityPictureBox30.TabStop = false;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label45.Location = new System.Drawing.Point(37, 511);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(121, 13);
+            this.label45.TabIndex = 108;
+            this.label45.Text = "Versão do módulo TPM:";
+            // 
+            // lblVT
+            // 
+            this.lblVT.AutoSize = true;
+            this.lblVT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblVT.Location = new System.Drawing.Point(197, 484);
+            this.lblVT.Name = "lblVT";
+            this.lblVT.Size = new System.Drawing.Size(10, 13);
+            this.lblVT.TabIndex = 103;
+            this.lblVT.Text = "-";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label33.Location = new System.Drawing.Point(37, 484);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(141, 13);
+            this.label33.TabIndex = 102;
+            this.label33.Text = "Tecnologia de Virtualização:";
             // 
             // configurableQualityPictureBox2
             // 
@@ -1954,6 +1169,775 @@ namespace HardwareInformation
             this.configurableQualityPictureBox3.TabIndex = 73;
             this.configurableQualityPictureBox3.TabStop = false;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label28.Location = new System.Drawing.Point(255, 528);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(10, 13);
+            this.label28.TabIndex = 70;
+            this.label28.Text = "-";
+            // 
+            // lblSecBoot
+            // 
+            this.lblSecBoot.AutoSize = true;
+            this.lblSecBoot.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSecBoot.Location = new System.Drawing.Point(197, 457);
+            this.lblSecBoot.Name = "lblSecBoot";
+            this.lblSecBoot.Size = new System.Drawing.Size(10, 13);
+            this.lblSecBoot.TabIndex = 71;
+            this.lblSecBoot.Text = "-";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label32.Location = new System.Drawing.Point(37, 457);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(69, 13);
+            this.label32.TabIndex = 70;
+            this.label32.Text = "Secure Boot:";
+            // 
+            // lblMediaOperation
+            // 
+            this.lblMediaOperation.AutoSize = true;
+            this.lblMediaOperation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblMediaOperation.Location = new System.Drawing.Point(197, 241);
+            this.lblMediaOperation.Name = "lblMediaOperation";
+            this.lblMediaOperation.Size = new System.Drawing.Size(10, 13);
+            this.lblMediaOperation.TabIndex = 69;
+            this.lblMediaOperation.Text = "-";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label30.Location = new System.Drawing.Point(37, 241);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(154, 13);
+            this.label30.TabIndex = 68;
+            this.label30.Text = "Modo de operação SATA/M.2:";
+            // 
+            // lblGPUInfo
+            // 
+            this.lblGPUInfo.AutoSize = true;
+            this.lblGPUInfo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblGPUInfo.Location = new System.Drawing.Point(197, 268);
+            this.lblGPUInfo.Name = "lblGPUInfo";
+            this.lblGPUInfo.Size = new System.Drawing.Size(10, 13);
+            this.lblGPUInfo.TabIndex = 67;
+            this.lblGPUInfo.Text = "-";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label29.Location = new System.Drawing.Point(37, 268);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(84, 13);
+            this.label29.TabIndex = 66;
+            this.label29.Text = "Placa de Vídeo:";
+            // 
+            // lblMediaType
+            // 
+            this.lblMediaType.AutoSize = true;
+            this.lblMediaType.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblMediaType.Location = new System.Drawing.Point(197, 214);
+            this.lblMediaType.Name = "lblMediaType";
+            this.lblMediaType.Size = new System.Drawing.Size(10, 13);
+            this.lblMediaType.TabIndex = 65;
+            this.lblMediaType.Text = "-";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.Location = new System.Drawing.Point(37, 214);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(124, 13);
+            this.label27.TabIndex = 64;
+            this.label27.Text = "Tipo de armazenamento:";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(6, 544);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(525, 36);
+            this.progressBar1.TabIndex = 69;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label49);
+            this.groupBox2.Controls.Add(this.label48);
+            this.groupBox2.Controls.Add(this.label47);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox35);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.textBoxTicket);
+            this.groupBox2.Controls.Add(this.comboBoxBattery);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox34);
+            this.groupBox2.Controls.Add(this.label42);
+            this.groupBox2.Controls.Add(this.label41);
+            this.groupBox2.Controls.Add(this.label46);
+            this.groupBox2.Controls.Add(this.label40);
+            this.groupBox2.Controls.Add(this.label39);
+            this.groupBox2.Controls.Add(this.label38);
+            this.groupBox2.Controls.Add(this.label37);
+            this.groupBox2.Controls.Add(this.label36);
+            this.groupBox2.Controls.Add(this.label35);
+            this.groupBox2.Controls.Add(this.studentRadioButton);
+            this.groupBox2.Controls.Add(this.employeeRadioButton);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox31);
+            this.groupBox2.Controls.Add(this.label34);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox25);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox29);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox28);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox27);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox26);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox24);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox23);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox22);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox21);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox20);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox19);
+            this.groupBox2.Controls.Add(this.configurableQualityPictureBox18);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.textBoxPatrimony);
+            this.groupBox2.Controls.Add(this.textBoxSeal);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.textBoxRoom);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.comboBoxServerPort);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.comboBoxServerIP);
+            this.groupBox2.Controls.Add(this.comboBoxBuilding);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.comboBoxActiveDirectory);
+            this.groupBox2.Controls.Add(this.comboBoxType);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.textBoxLetter);
+            this.groupBox2.Controls.Add(this.comboBoxStandard);
+            this.groupBox2.Controls.Add(this.comboBoxTag);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.comboBoxInUse);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox2.Location = new System.Drawing.Point(575, 113);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(450, 447);
+            this.groupBox2.TabIndex = 66;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label49.Location = new System.Drawing.Point(166, 422);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(20, 13);
+            this.label49.TabIndex = 119;
+            this.label49.Text = "IP:";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label48.Location = new System.Drawing.Point(367, 264);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(17, 13);
+            this.label48.TabIndex = 118;
+            this.label48.Text = "✱";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label47.Location = new System.Drawing.Point(143, 264);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(17, 13);
+            this.label47.TabIndex = 114;
+            this.label47.Text = "✱";
+            // 
+            // configurableQualityPictureBox35
+            // 
+            this.configurableQualityPictureBox35.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
+            this.configurableQualityPictureBox35.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox35.Location = new System.Drawing.Point(274, 256);
+            this.configurableQualityPictureBox35.Name = "configurableQualityPictureBox35";
+            this.configurableQualityPictureBox35.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox35.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox35.TabIndex = 117;
+            this.configurableQualityPictureBox35.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.Location = new System.Drawing.Point(303, 263);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(69, 13);
+            this.label31.TabIndex = 116;
+            this.label31.Text = "Nº chamado:";
+            // 
+            // textBoxTicket
+            // 
+            this.textBoxTicket.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxTicket.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTicket.Location = new System.Drawing.Point(384, 261);
+            this.textBoxTicket.MaxLength = 6;
+            this.textBoxTicket.Name = "textBoxTicket";
+            this.textBoxTicket.Size = new System.Drawing.Size(60, 20);
+            this.textBoxTicket.TabIndex = 115;
+            // 
+            // comboBoxBattery
+            // 
+            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxBattery.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Location = new System.Drawing.Point(185, 260);
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxBattery.Sorted = true;
+            this.comboBoxBattery.TabIndex = 114;
+            // 
+            // configurableQualityPictureBox34
+            // 
+            this.configurableQualityPictureBox34.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
+            this.configurableQualityPictureBox34.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox34.Location = new System.Drawing.Point(6, 256);
+            this.configurableQualityPictureBox34.Name = "configurableQualityPictureBox34";
+            this.configurableQualityPictureBox34.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox34.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox34.TabIndex = 113;
+            this.configurableQualityPictureBox34.TabStop = false;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label42.Location = new System.Drawing.Point(103, 187);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(17, 13);
+            this.label42.TabIndex = 112;
+            this.label42.Text = "✱";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label41.Location = new System.Drawing.Point(367, 133);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(17, 13);
+            this.label41.TabIndex = 111;
+            this.label41.Text = "✱";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label46.Location = new System.Drawing.Point(35, 263);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(112, 13);
+            this.label46.TabIndex = 111;
+            this.label46.Text = "Houve troca de pilha?";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label40.Location = new System.Drawing.Point(64, 133);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(17, 13);
+            this.label40.TabIndex = 110;
+            this.label40.Text = "✱";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label39.Location = new System.Drawing.Point(363, 106);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(17, 13);
+            this.label39.TabIndex = 109;
+            this.label39.Text = "✱";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label38.Location = new System.Drawing.Point(73, 106);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(17, 13);
+            this.label38.TabIndex = 108;
+            this.label38.Text = "✱";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label37.Location = new System.Drawing.Point(168, 79);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(17, 13);
+            this.label37.TabIndex = 107;
+            this.label37.Text = "✱";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label36.Location = new System.Drawing.Point(92, 25);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(17, 13);
+            this.label36.TabIndex = 106;
+            this.label36.Text = "✱";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label35.Location = new System.Drawing.Point(253, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(152, 13);
+            this.label35.TabIndex = 105;
+            this.label35.Text = "✱ = Preenchimento obrigatório";
+            // 
+            // studentRadioButton
+            // 
+            this.studentRadioButton.AutoSize = true;
+            this.studentRadioButton.Location = new System.Drawing.Point(185, 203);
+            this.studentRadioButton.Name = "studentRadioButton";
+            this.studentRadioButton.Size = new System.Drawing.Size(246, 17);
+            this.studentRadioButton.TabIndex = 44;
+            this.studentRadioButton.TabStop = true;
+            this.studentRadioButton.Text = "Aluno (computador de laboratório/sala de aula)";
+            this.studentRadioButton.UseVisualStyleBackColor = true;
+            this.studentRadioButton.CheckedChanged += new System.EventHandler(this.studentButton2_CheckedChanged);
+            // 
+            // employeeRadioButton
+            // 
+            this.employeeRadioButton.AutoSize = true;
+            this.employeeRadioButton.Location = new System.Drawing.Point(185, 185);
+            this.employeeRadioButton.Name = "employeeRadioButton";
+            this.employeeRadioButton.Size = new System.Drawing.Size(242, 17);
+            this.employeeRadioButton.TabIndex = 43;
+            this.employeeRadioButton.TabStop = true;
+            this.employeeRadioButton.Text = "Funcionário/Bolsista (computador de trabalho)";
+            this.employeeRadioButton.UseVisualStyleBackColor = true;
+            this.employeeRadioButton.CheckedChanged += new System.EventHandler(this.employeeButton1_CheckedChanged);
+            // 
+            // configurableQualityPictureBox31
+            // 
+            this.configurableQualityPictureBox31.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
+            this.configurableQualityPictureBox31.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox31.Location = new System.Drawing.Point(6, 179);
+            this.configurableQualityPictureBox31.Name = "configurableQualityPictureBox31";
+            this.configurableQualityPictureBox31.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox31.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox31.TabIndex = 102;
+            this.configurableQualityPictureBox31.TabStop = false;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label34.Location = new System.Drawing.Point(35, 187);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(70, 13);
+            this.label34.TabIndex = 101;
+            this.label34.Text = "Quem usará?";
+            // 
+            // configurableQualityPictureBox25
+            // 
+            this.configurableQualityPictureBox25.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
+            this.configurableQualityPictureBox25.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox25.Location = new System.Drawing.Point(292, 71);
+            this.configurableQualityPictureBox25.Name = "configurableQualityPictureBox25";
+            this.configurableQualityPictureBox25.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox25.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox25.TabIndex = 100;
+            this.configurableQualityPictureBox25.TabStop = false;
+            // 
+            // configurableQualityPictureBox29
+            // 
+            this.configurableQualityPictureBox29.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox29.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox29.Location = new System.Drawing.Point(6, 414);
+            this.configurableQualityPictureBox29.Name = "configurableQualityPictureBox29";
+            this.configurableQualityPictureBox29.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox29.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox29.TabIndex = 99;
+            this.configurableQualityPictureBox29.TabStop = false;
+            // 
+            // configurableQualityPictureBox28
+            // 
+            this.configurableQualityPictureBox28.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
+            this.configurableQualityPictureBox28.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox28.Location = new System.Drawing.Point(6, 125);
+            this.configurableQualityPictureBox28.Name = "configurableQualityPictureBox28";
+            this.configurableQualityPictureBox28.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox28.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox28.TabIndex = 98;
+            this.configurableQualityPictureBox28.TabStop = false;
+            // 
+            // configurableQualityPictureBox27
+            // 
+            this.configurableQualityPictureBox27.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
+            this.configurableQualityPictureBox27.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox27.Location = new System.Drawing.Point(292, 125);
+            this.configurableQualityPictureBox27.Name = "configurableQualityPictureBox27";
+            this.configurableQualityPictureBox27.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox27.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox27.TabIndex = 97;
+            this.configurableQualityPictureBox27.TabStop = false;
+            // 
+            // configurableQualityPictureBox26
+            // 
+            this.configurableQualityPictureBox26.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
+            this.configurableQualityPictureBox26.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox26.Location = new System.Drawing.Point(292, 98);
+            this.configurableQualityPictureBox26.Name = "configurableQualityPictureBox26";
+            this.configurableQualityPictureBox26.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox26.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox26.TabIndex = 96;
+            this.configurableQualityPictureBox26.TabStop = false;
+            // 
+            // configurableQualityPictureBox24
+            // 
+            this.configurableQualityPictureBox24.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
+            this.configurableQualityPictureBox24.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox24.Location = new System.Drawing.Point(6, 152);
+            this.configurableQualityPictureBox24.Name = "configurableQualityPictureBox24";
+            this.configurableQualityPictureBox24.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox24.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox24.TabIndex = 94;
+            this.configurableQualityPictureBox24.TabStop = false;
+            // 
+            // configurableQualityPictureBox23
+            // 
+            this.configurableQualityPictureBox23.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
+            this.configurableQualityPictureBox23.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox23.Location = new System.Drawing.Point(274, 228);
+            this.configurableQualityPictureBox23.Name = "configurableQualityPictureBox23";
+            this.configurableQualityPictureBox23.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox23.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox23.TabIndex = 93;
+            this.configurableQualityPictureBox23.TabStop = false;
+            // 
+            // configurableQualityPictureBox22
+            // 
+            this.configurableQualityPictureBox22.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox22.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox22.Location = new System.Drawing.Point(6, 228);
+            this.configurableQualityPictureBox22.Name = "configurableQualityPictureBox22";
+            this.configurableQualityPictureBox22.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox22.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox22.TabIndex = 92;
+            this.configurableQualityPictureBox22.TabStop = false;
+            // 
+            // configurableQualityPictureBox21
+            // 
+            this.configurableQualityPictureBox21.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
+            this.configurableQualityPictureBox21.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox21.Location = new System.Drawing.Point(6, 98);
+            this.configurableQualityPictureBox21.Name = "configurableQualityPictureBox21";
+            this.configurableQualityPictureBox21.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox21.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox21.TabIndex = 91;
+            this.configurableQualityPictureBox21.TabStop = false;
+            // 
+            // configurableQualityPictureBox20
+            // 
+            this.configurableQualityPictureBox20.CompositingQuality = null;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
+            this.configurableQualityPictureBox20.InterpolationMode = null;
+            this.configurableQualityPictureBox20.Location = new System.Drawing.Point(6, 71);
+            this.configurableQualityPictureBox20.Name = "configurableQualityPictureBox20";
+            this.configurableQualityPictureBox20.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox20.SmoothingMode = null;
+            this.configurableQualityPictureBox20.TabIndex = 90;
+            this.configurableQualityPictureBox20.TabStop = false;
+            // 
+            // configurableQualityPictureBox19
+            // 
+            this.configurableQualityPictureBox19.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
+            this.configurableQualityPictureBox19.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox19.Location = new System.Drawing.Point(6, 44);
+            this.configurableQualityPictureBox19.Name = "configurableQualityPictureBox19";
+            this.configurableQualityPictureBox19.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.configurableQualityPictureBox19.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox19.TabIndex = 89;
+            this.configurableQualityPictureBox19.TabStop = false;
+            // 
+            // configurableQualityPictureBox18
+            // 
+            this.configurableQualityPictureBox18.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
+            this.configurableQualityPictureBox18.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox18.Location = new System.Drawing.Point(6, 17);
+            this.configurableQualityPictureBox18.Name = "configurableQualityPictureBox18";
+            this.configurableQualityPictureBox18.Size = new System.Drawing.Size(25, 25);
+            this.configurableQualityPictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configurableQualityPictureBox18.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox18.TabIndex = 88;
+            this.configurableQualityPictureBox18.TabStop = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dateTimePicker1.Location = new System.Drawing.Point(185, 157);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(259, 20);
+            this.dateTimePicker1.TabIndex = 42;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label26.Location = new System.Drawing.Point(84, 422);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(10, 13);
+            this.label26.TabIndex = 72;
+            this.label26.Text = "-";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lblMaintenanceSince);
+            this.groupBox3.Controls.Add(this.lblInstallSince);
+            this.groupBox3.Controls.Add(this.label43);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.formatButton);
+            this.groupBox3.Controls.Add(this.maintenanceButton);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox3.Location = new System.Drawing.Point(6, 287);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(438, 126);
+            this.groupBox3.TabIndex = 72;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tipo de serviço";
+            // 
+            // lblMaintenanceSince
+            // 
+            this.lblMaintenanceSince.AutoSize = true;
+            this.lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblMaintenanceSince.Location = new System.Drawing.Point(104, 64);
+            this.lblMaintenanceSince.Name = "lblMaintenanceSince";
+            this.lblMaintenanceSince.Size = new System.Drawing.Size(10, 13);
+            this.lblMaintenanceSince.TabIndex = 121;
+            this.lblMaintenanceSince.Text = "-";
+            // 
+            // lblInstallSince
+            // 
+            this.lblInstallSince.AutoSize = true;
+            this.lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblInstallSince.Location = new System.Drawing.Point(104, 25);
+            this.lblInstallSince.Name = "lblInstallSince";
+            this.lblInstallSince.Size = new System.Drawing.Size(10, 13);
+            this.lblInstallSince.TabIndex = 120;
+            this.lblInstallSince.Text = "-";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label43.Location = new System.Drawing.Point(82, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(17, 13);
+            this.label43.TabIndex = 113;
+            this.label43.Text = "✱";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Enabled = false;
+            this.textBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox5.Location = new System.Drawing.Point(32, 41);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(391, 19);
+            this.textBox5.TabIndex = 76;
+            this.textBox5.Text = "Opção para quando o PC passar por formatação ou reset";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Enabled = false;
+            this.textBox6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox6.Location = new System.Drawing.Point(32, 81);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(391, 25);
+            this.textBox6.TabIndex = 77;
+            this.textBox6.Text = "Opção para quando o PC passar por manutenção preventiva, sem a necessidade de for" +
+    "matação";
+            // 
+            // formatButton
+            // 
+            this.formatButton.AutoSize = true;
+            this.formatButton.Location = new System.Drawing.Point(13, 23);
+            this.formatButton.Name = "formatButton";
+            this.formatButton.Size = new System.Drawing.Size(81, 17);
+            this.formatButton.TabIndex = 47;
+            this.formatButton.Text = "Formatação";
+            this.formatButton.UseVisualStyleBackColor = true;
+            this.formatButton.CheckedChanged += new System.EventHandler(this.formatButton1_CheckedChanged);
+            // 
+            // maintenanceButton
+            // 
+            this.maintenanceButton.AutoSize = true;
+            this.maintenanceButton.Location = new System.Drawing.Point(13, 62);
+            this.maintenanceButton.Name = "maintenanceButton";
+            this.maintenanceButton.Size = new System.Drawing.Size(85, 17);
+            this.maintenanceButton.TabIndex = 48;
+            this.maintenanceButton.Text = "Manutenção";
+            this.maintenanceButton.UseVisualStyleBackColor = true;
+            this.maintenanceButton.CheckedChanged += new System.EventHandler(this.maintenanceButton2_CheckedChanged);
+            // 
+            // webView2
+            // 
+            this.webView2.AllowExternalDrop = true;
+            this.webView2.CreationProperties = null;
+            this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView2.Location = new System.Drawing.Point(1, 15);
+            this.webView2.Name = "webView2";
+            this.webView2.Size = new System.Drawing.Size(448, 60);
+            this.webView2.TabIndex = 72;
+            this.webView2.ZoomFactor = 1D;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)));
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comboBoxTheme,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 701);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
+            this.statusStrip1.TabIndex = 60;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // comboBoxTheme
+            // 
+            this.comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.comboBoxTheme.Name = "comboBoxTheme";
+            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
+            this.comboBoxTheme.Text = "Tema";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem1.Text = "Automático (Tema do sistema)";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem2.Text = "Claro";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
+            this.toolStripMenuItem3.Text = "Escuro";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(989, 19);
+            this.toolStripStatusLabel1.Spring = true;
+            this.toolStripStatusLabel1.Text = "Sistema desenvolvido pelo servidor Kevin Costa, SIAPE 1971957, para uso no serviç" +
+    "o da Unidade de Tecnologia da Informação do CCSH - UFSM";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.webView2);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox4.Location = new System.Drawing.Point(575, 562);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(450, 77);
+            this.groupBox4.TabIndex = 73;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Status do cadastro";
+            // 
             // configurableQualityPictureBox1
             // 
             this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1984,9 +1968,9 @@ namespace HardwareInformation
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.configurableQualityPictureBox1);
             this.Controls.Add(this.accessSystemButton);
-            this.Controls.Add(this.coletaButton);
+            this.Controls.Add(this.collectButton);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.cadastraButton);
+            this.Controls.Add(this.registerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -1997,29 +1981,6 @@ namespace HardwareInformation
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox30)).EndInit();
@@ -2039,6 +2000,29 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox18)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -2068,37 +2052,27 @@ namespace HardwareInformation
         private Label label11;
         private Label label12;
         private Label label13;
-        private TextBox textBoxPatri;
-        private TextBox textBoxLacre;
-        private TextBox textBoxSala;
-        private TextBox textBoxLetra;
+        private TextBox textBoxPatrimony;
+        private TextBox textBoxSeal;
+        private TextBox textBoxRoom;
+        private TextBox textBoxLetter;
         private Label label14;
         private Label label15;
         private Label label16;
-        private ComboBox comboBoxPredio;
-        private ComboBox comboBoxAD;
+        private ComboBox comboBoxBuilding;
+        private ComboBox comboBoxActiveDirectory;
         private Label lblOS;
         private Label label17;
-        private ComboBox comboBoxPadrao;
+        private ComboBox comboBoxStandard;
         private Label label18;
-        private ComboBox comboBoxUso;
+        private ComboBox comboBoxInUse;
         private Label label19;
-        private ComboBox comboBoxEtiq;
-        private Button cadastraButton;
+        private ComboBox comboBoxTag;
+        private Button registerButton;
         private Label label20;
-        private ComboBox comboBoxTipo;
-        private ComboBox comboBoxServer;
+        private ComboBox comboBoxType;
+        private ComboBox comboBoxServerIP;
         private Label label21;
-        private bool themeBool, serverOnline, offlineMode;
-        private List<string> date;
-        private string servidor_web, porta, modeURL;
-        private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
-           MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM,
-            InstallLabel, MaintenanceLabel;
-        private string[] sArgs = new string[33];
-        private string fileBios = "bios.json";
-        private string fileLogin = "login.json";
-        private int i = 0;
         private Label label25;
         private Label lblBIOSType;
         private GroupBox groupBox1;
@@ -2114,9 +2088,8 @@ namespace HardwareInformation
         private ToolStripStatusLabel toolStripStatusLabel2;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private bool pass = true;
-        private ComboBox comboBoxPorta;
-        private Button coletaButton;
+        private ComboBox comboBoxServerPort;
+        private Button collectButton;
         private Label label23;
         private Label label24;
         private Label lblBIOS;
@@ -2125,7 +2098,7 @@ namespace HardwareInformation
         private Label label28;
         private Label lblSecBoot;
         private Label label32;
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
+        private WebView2 webView2;
         private RadioButton maintenanceButton;
         private RadioButton formatButton;
         private GroupBox groupBox3;
@@ -2171,8 +2144,8 @@ namespace HardwareInformation
         private Label label33;
         private ConfigurableQualityPictureBox configurableQualityPictureBox31;
         private Label label34;
-        private RadioButton studentButton;
-        private RadioButton employeeButton;
+        private RadioButton studentRadioButton;
+        private RadioButton employeeRadioButton;
         private Label label42;
         private Label label41;
         private Label label40;
@@ -2191,60 +2164,13 @@ namespace HardwareInformation
         private ConfigurableQualityPictureBox configurableQualityPictureBox33;
         private Label lblTPM;
         private Label label45;
-
-
-
-
-        private const int TIMER_INTERVAL = 1000;
-        private Color LIGHT_FORECOLOR = SystemColors.ControlText;
-        private Color LIGHT_BACKCOLOR = SystemColors.ControlLight;
-        private Color LIGHT_ASTERISKCOLOR = Color.Red;
-        private Color ALERT_COLOR = Color.Red;
-        private Color OFFLINE_ALERT = Color.Red;
-        private Color ONLINE_ALERT = Color.Lime;
-        private Color DARK_FORECOLOR = SystemColors.ControlLightLight;
-        private Color DARK_BACKCOLOR = SystemColors.WindowFrame;
-        private Color DARK_ASTERISKCOLOR = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
-        private Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-        private Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-        private Color BLUE_FOREGROUND = SystemColors.Highlight;
-        private const string SMART_FAIL = " (Drive com falha iminente)";
-        private const string WEBVIEW2_PATH = "runtimes\\win-x86";
-        private const string ONLINE = "ONLINE";
-        private const string OFFLINE = "OFFLINE";
-        private const string FETCHING = "Coletando...";
-        private const string REGISTERING = "Cadastrando / Atualizando, aguarde...";
-        private const string FETCH_AGAIN = "Coletar Novamente";
-        private const string REGISTER_AGAIN = "Cadastrar / Atualizar dados";
-        private const string SERVER_PORT_ERROR = "Para acessar, selecione o servidor e a porta!";
-        private const string ERROR_WINDOWTITLE = "Erro";
-        private const string DEFAULT_HOSTNAME = "MUDAR-NOME";
-        private const string HOSTNAME_ALERT = " (Nome incorreto, alterar)";
-        private const string MEDIA_OPERATION_NVME = "NVMe";
-        private const string MEDIA_OPERATION_IDE_RAID = "IDE/Legacy ou RAID";
-        private const string MEDIA_OPERATION_ALERT = " (Modo de operação incorreto, alterar)";
-        private const string SECURE_BOOT_ALERT = " (Ativar boot seguro)";
-        private const string DATABASE_REACH_ERROR = "Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!";
-        private const string BIOS_VERSION_ALERT = " (Atualizar BIOS/UEFI)";
-        private const string FIRMWARE_TYPE_ALERT = " (PC suporta UEFI, fazer a conversão do sistema)";
-        private const string NETWORK_ERROR = "Computador sem conexão com a Intranet";
-        private const string VT_ALERT = " (Ativar Tecnologia de Virtualização na BIOS/UEFI)";
-        private const string SERVER_NOT_FOUND_ERROR = "Servidor não encontrado. Selecione um servidor válido!";
-        private const string PENDENCY_ERROR = "Resolva as pendencias exibidas em vermelho!";
-        private const string MANDATORY_FIELD = "Preencha os campos obrigatórios";
-        private const string DAYS_PASSED_TEXT = " dias desde a última ";
-        private const string FORMAT_TEXT = "formatação)";
-        private const string MAINTENANCE_TEXT = "manutenção)";
-        private const string SINCE_UNKNOWN = "(Não foi possível determinar a data do último serviço)";
-        private const string ALREADY_REGISTERED_TODAY = "Serviço já registrado para esta dia. Caso seja necessário outro registro, escolha outra data.";
-        private const string OFFLINE_MODE_ACTIVATED = "Modo OFFLINE!";
         private GroupBox groupBox4;
-        private ComboBox comboBoxPilha;
+        private ComboBox comboBoxBattery;
         private ConfigurableQualityPictureBox configurableQualityPictureBox34;
         private Label label46;
         private ConfigurableQualityPictureBox configurableQualityPictureBox35;
         private Label label31;
-        private TextBox textBoxChamado;
+        private TextBox textBoxTicket;
         private Label label48;
         private Label label47;
         private Label label49;
@@ -2252,42 +2178,40 @@ namespace HardwareInformation
         private Label lblInstallSince;
         private BusyWindow bw;
 
-        //Fetches the program's binary version
-        private string version()
-        {
-            return "v" + Application.ProductVersion;
-        }
-
-        //Fetches the program's binary version (for unstable releases)
-        private string version(string testBranch)
-        {
-            return "v" + Application.ProductVersion + "-" + testBranch;
-        }
+        private bool pass = true;
+        private bool themeBool, serverOnline, offlineMode;
+        private List<string> date;
+        private string servidor_web, porta, modeURL;
+        private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
+           MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM,
+            InstallLabel, MaintenanceLabel;
+        private string[] sArgs = new string[33];
+        private int i = 0;
 
         //Sets service mode to format
         private void formatButton1_CheckedChanged(object sender, EventArgs e)
         {
-            modeURL = "recebeDadosFormatacao";
+            modeURL = StringsAndConstants.formatURL;
         }
 
         //Sets service mode to maintenance
         private void maintenanceButton2_CheckedChanged(object sender, EventArgs e)
         {
-            modeURL = "recebeDadosManutencao";
+            modeURL = StringsAndConstants.maintenanceURL;
         }
 
         //Sets service to employee
         private void employeeButton1_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxAD.SelectedIndex = 0;
-            comboBoxPadrao.SelectedIndex = 1;
+            comboBoxActiveDirectory.SelectedIndex = 0;
+            comboBoxStandard.SelectedIndex = 1;
         }
 
         //Sets service to student
         private void studentButton2_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxAD.SelectedIndex = 1;
-            comboBoxPadrao.SelectedIndex = 0;
+            comboBoxActiveDirectory.SelectedIndex = 1;
+            comboBoxStandard.SelectedIndex = 0;
         }
 
         private void comboBoxThemeInit()
@@ -2322,129 +2246,129 @@ namespace HardwareInformation
         //Sets a light theme for the UI
         private void lightTheme()
         {
-            this.BackColor = LIGHT_BACKGROUND;
-            this.lblBM.ForeColor = LIGHT_FORECOLOR;
-            this.lblModel.ForeColor = LIGHT_FORECOLOR;
-            this.lblSerialNo.ForeColor = LIGHT_FORECOLOR;
-            this.lblProcName.ForeColor = LIGHT_FORECOLOR;
-            this.lblPM.ForeColor = LIGHT_FORECOLOR;
-            this.lblHDSize.ForeColor = LIGHT_FORECOLOR;
-            this.lblMediaType.ForeColor = LIGHT_FORECOLOR;
-            this.lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
-            this.lblOS.ForeColor = LIGHT_FORECOLOR;
-            this.lblHostname.ForeColor = LIGHT_FORECOLOR;
-            this.lblMac.ForeColor = LIGHT_FORECOLOR;
-            this.lblIP.ForeColor = LIGHT_FORECOLOR;
-            this.label1.ForeColor = LIGHT_FORECOLOR;
-            this.label2.ForeColor = LIGHT_FORECOLOR;
-            this.label3.ForeColor = LIGHT_FORECOLOR;
-            this.label4.ForeColor = LIGHT_FORECOLOR;
-            this.label5.ForeColor = LIGHT_FORECOLOR;
-            this.label6.ForeColor = LIGHT_FORECOLOR;
-            this.label7.ForeColor = LIGHT_FORECOLOR;
-            this.label8.ForeColor = LIGHT_FORECOLOR;
-            this.label9.ForeColor = LIGHT_FORECOLOR;
-            this.label10.ForeColor = LIGHT_FORECOLOR;
-            this.label11.ForeColor = LIGHT_FORECOLOR;
-            this.label12.ForeColor = LIGHT_FORECOLOR;
-            this.label13.ForeColor = LIGHT_FORECOLOR;
-            this.textBoxPatri.BackColor = LIGHT_BACKCOLOR;
-            this.textBoxPatri.ForeColor = LIGHT_FORECOLOR;
-            this.textBoxLacre.BackColor = LIGHT_BACKCOLOR;
-            this.textBoxLacre.ForeColor = LIGHT_FORECOLOR;
-            this.textBoxSala.BackColor = LIGHT_BACKCOLOR;
-            this.textBoxSala.ForeColor = LIGHT_FORECOLOR;
-            this.textBoxLetra.BackColor = LIGHT_BACKCOLOR;
-            this.textBoxLetra.ForeColor = LIGHT_FORECOLOR;
-            this.label14.ForeColor = LIGHT_FORECOLOR;
-            this.label15.ForeColor = LIGHT_FORECOLOR;
-            this.label16.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxPredio.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxPredio.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxAD.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxAD.ForeColor = LIGHT_FORECOLOR;
-            this.label17.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxPadrao.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxPadrao.ForeColor = LIGHT_FORECOLOR;
-            this.cadastraButton.BackColor = LIGHT_BACKCOLOR;
-            this.cadastraButton.ForeColor = LIGHT_FORECOLOR;
-            this.label18.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxUso.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxUso.ForeColor = LIGHT_FORECOLOR;
-            this.label19.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxEtiq.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxEtiq.ForeColor = LIGHT_FORECOLOR;
-            this.label20.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxTipo.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxTipo.ForeColor = LIGHT_FORECOLOR;
-            this.label21.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxServer.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxServer.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxPorta.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxPorta.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxPilha.BackColor = LIGHT_BACKCOLOR;
-            this.comboBoxPilha.ForeColor = LIGHT_FORECOLOR;
-            this.label22.ForeColor = LIGHT_FORECOLOR;
-            this.coletaButton.BackColor = LIGHT_BACKCOLOR;
-            this.coletaButton.ForeColor = LIGHT_FORECOLOR;
-            this.label23.ForeColor = LIGHT_FORECOLOR;
-            this.label24.ForeColor = LIGHT_FORECOLOR;
-            this.lblBIOS.ForeColor = LIGHT_FORECOLOR;
-            this.accessSystemButton.BackColor = LIGHT_BACKCOLOR;
-            this.accessSystemButton.ForeColor = LIGHT_FORECOLOR;
-            this.label25.ForeColor = LIGHT_FORECOLOR;
-            this.lblBIOSType.ForeColor = LIGHT_FORECOLOR;
-            this.groupBox1.ForeColor = LIGHT_FORECOLOR;
-            this.groupBox2.ForeColor = LIGHT_FORECOLOR;
-            this.toolStripStatusLabel2.ForeColor = LIGHT_FORECOLOR;
-            this.statusStrip1.BackColor = LIGHT_BACKGROUND;
-            this.toolStripStatusLabel1.ForeColor = LIGHT_FORECOLOR;
-            this.comboBoxTheme.BackColor = LIGHT_BACKGROUND;
-            this.comboBoxTheme.ForeColor = LIGHT_FORECOLOR;
-            this.label27.ForeColor = LIGHT_FORECOLOR;
-            this.label29.ForeColor = LIGHT_FORECOLOR;
-            this.label28.ForeColor = LIGHT_FORECOLOR;
-            this.label30.ForeColor = LIGHT_FORECOLOR;
-            this.lblTPM.ForeColor = LIGHT_FORECOLOR;
-            this.lblVT.ForeColor = LIGHT_FORECOLOR;
-            this.lblSecBoot.ForeColor = LIGHT_FORECOLOR;
-            this.label31.ForeColor = LIGHT_FORECOLOR;
-            this.label32.ForeColor = LIGHT_FORECOLOR;
-            this.label33.ForeColor = LIGHT_FORECOLOR;
-            this.label34.ForeColor = LIGHT_FORECOLOR;
-            this.label35.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label36.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label37.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label38.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label39.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label40.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label41.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label42.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label43.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label44.ForeColor = LIGHT_FORECOLOR;
-            this.label45.ForeColor = LIGHT_FORECOLOR;
-            this.label46.ForeColor = LIGHT_FORECOLOR;
-            this.label47.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.label48.ForeColor = LIGHT_ASTERISKCOLOR;
-            this.lblInstallSince.ForeColor = BLUE_FOREGROUND;
-            this.lblMaintenanceSince.ForeColor = BLUE_FOREGROUND;
-            this.lblGPUInfo.ForeColor = LIGHT_FORECOLOR;
-            this.lblVT.ForeColor = LIGHT_FORECOLOR;
-            this.lblSmart.ForeColor = LIGHT_FORECOLOR;
-            this.groupBox3.ForeColor = LIGHT_FORECOLOR;
-            this.groupBox4.ForeColor = LIGHT_FORECOLOR;
-            this.textBox5.ForeColor = LIGHT_FORECOLOR;
-            this.textBox5.BackColor = LIGHT_BACKGROUND;
-            this.textBox6.ForeColor = LIGHT_FORECOLOR;
-            this.textBox6.BackColor = LIGHT_BACKGROUND;
-            this.textBoxChamado.ForeColor = LIGHT_FORECOLOR;
-            this.textBoxChamado.BackColor = LIGHT_BACKCOLOR;
+            this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.lblBM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblModel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblSerialNo.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblProcName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblHDSize.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblMediaType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblOS.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblHostname.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblMac.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label7.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label8.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label9.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label10.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label11.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label12.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label13.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxPatrimony.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxPatrimony.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxSeal.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxSeal.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxRoom.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxRoom.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxLetter.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxLetter.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label14.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label15.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label16.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBuilding.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBuilding.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxActiveDirectory.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label17.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxStandard.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxStandard.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.registerButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.registerButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label18.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxInUse.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxInUse.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label19.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxTag.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxTag.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label20.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxType.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label21.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxServerIP.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBattery.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBattery.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label22.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.collectButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.collectButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label23.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label24.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblBIOS.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.accessSystemButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.accessSystemButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label25.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblBIOSType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxTheme.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.comboBoxTheme.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label27.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label29.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label28.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label30.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblTPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblSecBoot.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label31.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label32.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label33.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label34.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label35.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label36.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label37.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label38.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label39.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label40.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label41.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label42.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label43.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label44.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label45.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label46.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label47.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label48.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblGPUInfo.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.lblSmart.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox5.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.textBox6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox6.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.textBoxTicket.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxTicket.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.toolStripMenuItem1.BackgroundImage = null;
-            this.toolStripMenuItem1.ForeColor = LIGHT_FORECOLOR;
+            this.toolStripMenuItem1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripMenuItem2.BackgroundImage = null;
-            this.toolStripMenuItem2.ForeColor = LIGHT_FORECOLOR;
+            this.toolStripMenuItem2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripMenuItem3.BackgroundImage = null;
-            this.toolStripMenuItem3.ForeColor = LIGHT_FORECOLOR;
+            this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
             this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
             this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
@@ -2485,129 +2409,129 @@ namespace HardwareInformation
         //Sets a dark theme for the UI
         private void darkTheme()
         {
-            this.BackColor = DARK_BACKGROUND;
-            this.lblBM.ForeColor = DARK_FORECOLOR;
-            this.lblModel.ForeColor = DARK_FORECOLOR;
-            this.lblSerialNo.ForeColor = DARK_FORECOLOR;
-            this.lblProcName.ForeColor = DARK_FORECOLOR;
-            this.lblPM.ForeColor = DARK_FORECOLOR;
-            this.lblHDSize.ForeColor = DARK_FORECOLOR;
-            this.lblMediaType.ForeColor = DARK_FORECOLOR;
-            this.lblMediaOperation.ForeColor = DARK_FORECOLOR;
-            this.lblOS.ForeColor = DARK_FORECOLOR;
-            this.lblHostname.ForeColor = DARK_FORECOLOR;
-            this.lblMac.ForeColor = DARK_FORECOLOR;
-            this.lblIP.ForeColor = DARK_FORECOLOR;
-            this.label1.ForeColor = DARK_FORECOLOR;
-            this.label2.ForeColor = DARK_FORECOLOR;
-            this.label3.ForeColor = DARK_FORECOLOR;
-            this.label4.ForeColor = DARK_FORECOLOR;
-            this.label5.ForeColor = DARK_FORECOLOR;
-            this.label6.ForeColor = DARK_FORECOLOR;
-            this.label7.ForeColor = DARK_FORECOLOR;
-            this.label8.ForeColor = DARK_FORECOLOR;
-            this.label9.ForeColor = DARK_FORECOLOR;
-            this.label10.ForeColor = DARK_FORECOLOR;
-            this.label11.ForeColor = DARK_FORECOLOR;
-            this.label12.ForeColor = DARK_FORECOLOR;
-            this.label13.ForeColor = DARK_FORECOLOR;
-            this.textBoxPatri.BackColor = DARK_BACKCOLOR;
-            this.textBoxPatri.ForeColor = DARK_FORECOLOR;
-            this.textBoxLacre.BackColor = DARK_BACKCOLOR;
-            this.textBoxLacre.ForeColor = DARK_FORECOLOR;
-            this.textBoxSala.BackColor = DARK_BACKCOLOR;
-            this.textBoxSala.ForeColor = DARK_FORECOLOR;
-            this.textBoxLetra.BackColor = DARK_BACKCOLOR;
-            this.textBoxLetra.ForeColor = DARK_FORECOLOR;
-            this.label14.ForeColor = DARK_FORECOLOR;
-            this.label15.ForeColor = DARK_FORECOLOR;
-            this.label16.ForeColor = DARK_FORECOLOR;
-            this.comboBoxPredio.BackColor = DARK_BACKCOLOR;
-            this.comboBoxPredio.ForeColor = DARK_FORECOLOR;
-            this.comboBoxAD.BackColor = DARK_BACKCOLOR;
-            this.comboBoxAD.ForeColor = DARK_FORECOLOR;
-            this.label17.ForeColor = DARK_FORECOLOR;
-            this.comboBoxPadrao.BackColor = DARK_BACKCOLOR;
-            this.comboBoxPadrao.ForeColor = DARK_FORECOLOR;
-            this.cadastraButton.BackColor = DARK_BACKCOLOR;
-            this.cadastraButton.ForeColor = DARK_FORECOLOR;
-            this.label18.ForeColor = DARK_FORECOLOR;
-            this.comboBoxUso.BackColor = DARK_BACKCOLOR;
-            this.comboBoxUso.ForeColor = DARK_FORECOLOR;
-            this.label19.ForeColor = DARK_FORECOLOR;
-            this.comboBoxEtiq.BackColor = DARK_BACKCOLOR;
-            this.comboBoxEtiq.ForeColor = DARK_FORECOLOR;
-            this.label20.ForeColor = DARK_FORECOLOR;
-            this.comboBoxTipo.BackColor = DARK_BACKCOLOR;
-            this.comboBoxTipo.ForeColor = DARK_FORECOLOR;
-            this.label21.ForeColor = DARK_FORECOLOR;
-            this.comboBoxServer.BackColor = DARK_BACKCOLOR;
-            this.comboBoxServer.ForeColor = DARK_FORECOLOR;
-            this.comboBoxPorta.BackColor = DARK_BACKCOLOR;
-            this.comboBoxPorta.ForeColor = DARK_FORECOLOR;
-            this.comboBoxPilha.BackColor = DARK_BACKCOLOR;
-            this.comboBoxPilha.ForeColor = DARK_FORECOLOR;
-            this.label22.ForeColor = DARK_FORECOLOR;
-            this.coletaButton.BackColor = DARK_BACKCOLOR;
-            this.coletaButton.ForeColor = DARK_FORECOLOR;
-            this.label23.ForeColor = DARK_FORECOLOR;
-            this.label24.ForeColor = DARK_FORECOLOR;
-            this.lblBIOS.ForeColor = DARK_FORECOLOR;
-            this.accessSystemButton.BackColor = DARK_BACKCOLOR;
-            this.accessSystemButton.ForeColor = DARK_FORECOLOR;
-            this.label25.ForeColor = DARK_FORECOLOR;
-            this.lblBIOSType.ForeColor = DARK_FORECOLOR;
-            this.groupBox1.ForeColor = DARK_FORECOLOR;
-            this.groupBox2.ForeColor = DARK_FORECOLOR;
-            this.toolStripStatusLabel2.ForeColor = DARK_FORECOLOR;
-            this.statusStrip1.BackColor = DARK_BACKGROUND;
-            this.toolStripStatusLabel1.ForeColor = DARK_FORECOLOR;
-            this.comboBoxTheme.BackColor = DARK_BACKGROUND;
-            this.comboBoxTheme.ForeColor = DARK_FORECOLOR;
-            this.label27.ForeColor = DARK_FORECOLOR;
-            this.label28.ForeColor = DARK_FORECOLOR;
-            this.label29.ForeColor = DARK_FORECOLOR;
-            this.label30.ForeColor = DARK_FORECOLOR;
-            this.lblTPM.ForeColor = DARK_FORECOLOR;
-            this.lblVT.ForeColor = DARK_FORECOLOR;
-            this.lblSecBoot.ForeColor = DARK_FORECOLOR;
-            this.label31.ForeColor = DARK_FORECOLOR;
-            this.label32.ForeColor = DARK_FORECOLOR;
-            this.label33.ForeColor = DARK_FORECOLOR;
-            this.label34.ForeColor = DARK_FORECOLOR;
-            this.label35.ForeColor = DARK_ASTERISKCOLOR;
-            this.label36.ForeColor = DARK_ASTERISKCOLOR;
-            this.label37.ForeColor = DARK_ASTERISKCOLOR;
-            this.label38.ForeColor = DARK_ASTERISKCOLOR;
-            this.label39.ForeColor = DARK_ASTERISKCOLOR;
-            this.label40.ForeColor = DARK_ASTERISKCOLOR;
-            this.label41.ForeColor = DARK_ASTERISKCOLOR;
-            this.label42.ForeColor = DARK_ASTERISKCOLOR;
-            this.label43.ForeColor = DARK_ASTERISKCOLOR;
-            this.label44.ForeColor = DARK_FORECOLOR;
-            this.label45.ForeColor = DARK_FORECOLOR;
-            this.label46.ForeColor = DARK_FORECOLOR;
-            this.label47.ForeColor = DARK_ASTERISKCOLOR;
-            this.label48.ForeColor = DARK_ASTERISKCOLOR;
-            this.lblInstallSince.ForeColor = BLUE_FOREGROUND;
-            this.lblMaintenanceSince.ForeColor = BLUE_FOREGROUND;
-            this.lblGPUInfo.ForeColor = DARK_FORECOLOR;
-            this.lblVT.ForeColor = DARK_FORECOLOR;
-            this.lblSmart.ForeColor = DARK_FORECOLOR;
-            this.groupBox3.ForeColor = DARK_FORECOLOR;
-            this.groupBox4.ForeColor = DARK_FORECOLOR;
-            this.textBox5.ForeColor = DARK_FORECOLOR;
-            this.textBox5.BackColor = DARK_BACKGROUND;
-            this.textBox6.ForeColor = DARK_FORECOLOR;
-            this.textBox6.BackColor = DARK_BACKGROUND;
-            this.textBoxChamado.ForeColor = DARK_FORECOLOR;
-            this.textBoxChamado.BackColor = DARK_BACKCOLOR;
+            this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.lblBM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblModel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblSerialNo.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblProcName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblHDSize.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblMediaType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblMediaOperation.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblOS.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblHostname.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblMac.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label7.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label8.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label9.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label10.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label11.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label12.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label13.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxPatrimony.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxPatrimony.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxSeal.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxSeal.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxRoom.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxRoom.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxLetter.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxLetter.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label14.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label15.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label16.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBuilding.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBuilding.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxActiveDirectory.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label17.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxStandard.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxStandard.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.registerButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.registerButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label18.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxInUse.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxInUse.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label19.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxTag.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxTag.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label20.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxType.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label21.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxServerIP.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxServerPort.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBattery.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBattery.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label22.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.collectButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.collectButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label23.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label24.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblBIOS.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.accessSystemButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.accessSystemButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label25.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblBIOSType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxTheme.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.comboBoxTheme.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label27.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label28.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label29.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label30.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblTPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblSecBoot.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label31.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label32.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label33.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label34.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label35.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label36.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label37.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label38.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label39.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label40.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label41.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label42.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label43.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label44.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label45.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label46.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label47.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label48.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblGPUInfo.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.lblSmart.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox5.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.textBox6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox6.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.textBoxTicket.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxTicket.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem1.ForeColor = DARK_FORECOLOR;
+            this.toolStripMenuItem1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem2.ForeColor = DARK_FORECOLOR;
+            this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-            this.toolStripMenuItem3.ForeColor = DARK_FORECOLOR;
+            this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
             this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
             this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
@@ -2648,17 +2572,17 @@ namespace HardwareInformation
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
         private void accessButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(comboBoxServer.Text) && !string.IsNullOrWhiteSpace(comboBoxPorta.Text))
-                System.Diagnostics.Process.Start("http://" + comboBoxServer.Text + ":" + comboBoxPorta.Text);
+            if (!string.IsNullOrWhiteSpace(comboBoxServerIP.Text) && !string.IsNullOrWhiteSpace(comboBoxServerPort.Text))
+                System.Diagnostics.Process.Start("http://" + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text);
             else
-                MessageBox.Show(SERVER_PORT_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringsAndConstants.SERVER_PORT_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Handles the closing of the current form
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            File.Delete(@fileBios);
-            File.Delete(@fileLogin);
+            File.Delete(StringsAndConstants.fileBios);
+            File.Delete(StringsAndConstants.fileLogin);
             webView2.Dispose();
             Application.Exit();
         }
@@ -2682,16 +2606,16 @@ namespace HardwareInformation
             timer6.Tick += new EventHandler(flashTextBIOSType);
             timer7.Tick += new EventHandler(flashTextVT);
             timer8.Tick += new EventHandler(flashTextSmart);
-            timer1.Interval = TIMER_INTERVAL;
-            timer2.Interval = TIMER_INTERVAL;
-            timer3.Interval = TIMER_INTERVAL;
-            timer4.Interval = TIMER_INTERVAL;
-            timer5.Interval = TIMER_INTERVAL;
-            timer6.Interval = TIMER_INTERVAL;
-            timer7.Interval = TIMER_INTERVAL;
-            timer8.Interval = TIMER_INTERVAL;
-            comboBoxServer.SelectedIndex = 0;
-            comboBoxPorta.SelectedIndex = 0;
+            timer1.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer2.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer3.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer4.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer5.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer6.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer7.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer8.Interval = StringsAndConstants.TIMER_INTERVAL;
+            comboBoxServerIP.SelectedIndex = 0;
+            comboBoxServerPort.SelectedIndex = 0;
             dateTimePicker1.MaxDate = DateTime.Today;
             date = new List<string>();
             FormClosing += Form1_FormClosing;
@@ -2715,98 +2639,98 @@ namespace HardwareInformation
         //Sets the Hostname label to flash in red
         private void flashTextHostname(Object myObject, EventArgs myEventArgs)
         {
-            if (lblHostname.ForeColor == ALERT_COLOR && themeBool == true)
-                lblHostname.ForeColor = DARK_FORECOLOR;
-            else if (lblHostname.ForeColor == ALERT_COLOR && themeBool == false)
-                lblHostname.ForeColor = LIGHT_FORECOLOR;
+            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblHostname.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblHostname.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblHostname.ForeColor = ALERT_COLOR;
+                lblHostname.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the MediaOperations label to flash in red
         private void flashTextMediaOp(Object myobject, EventArgs myEventArgs)
         {
-            if (lblMediaOperation.ForeColor == ALERT_COLOR && themeBool == true)
-                lblMediaOperation.ForeColor = DARK_FORECOLOR;
-            else if (lblMediaOperation.ForeColor == ALERT_COLOR && themeBool == false)
-                lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
+            if (lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblMediaOperation.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblMediaOperation.ForeColor = ALERT_COLOR;
+                lblMediaOperation.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the Secure Boot label to flash in red
         private void flashTextSecBoot(Object myobject, EventArgs myEventArgs)
         {
-            if (lblSecBoot.ForeColor == ALERT_COLOR && themeBool == true)
-                lblSecBoot.ForeColor = DARK_FORECOLOR;
-            else if (lblSecBoot.ForeColor == ALERT_COLOR && themeBool == false)
-                lblSecBoot.ForeColor = LIGHT_FORECOLOR;
+            if (lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblSecBoot.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblSecBoot.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblSecBoot.ForeColor = ALERT_COLOR;
+                lblSecBoot.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the VT label to flash in red
         private void flashTextVT(Object myobject, EventArgs myEventArgs)
         {
-            if (lblVT.ForeColor == ALERT_COLOR && themeBool == true)
-                lblVT.ForeColor = DARK_FORECOLOR;
-            else if (lblVT.ForeColor == ALERT_COLOR && themeBool == false)
-                lblVT.ForeColor = LIGHT_FORECOLOR;
+            if (lblVT.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblVT.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblVT.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblVT.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblVT.ForeColor = ALERT_COLOR;
+                lblVT.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the SMART label to flash in red
         private void flashTextSmart(Object myobject, EventArgs myEventArgs)
         {
-            if (lblSmart.ForeColor == ALERT_COLOR && themeBool == true)
-                lblSmart.ForeColor = DARK_FORECOLOR;
-            else if (lblSmart.ForeColor == ALERT_COLOR && themeBool == false)
-                lblSmart.ForeColor = LIGHT_FORECOLOR;
+            if (lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblSmart.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblSmart.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblSmart.ForeColor = ALERT_COLOR;
+                lblSmart.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the BIOS Version label to flash in red
         private void flashTextBIOSVersion(Object myobject, EventArgs myEventArgs)
         {
-            if (lblBIOS.ForeColor == ALERT_COLOR && themeBool == true)
-                lblBIOS.ForeColor = DARK_FORECOLOR;
-            else if (lblBIOS.ForeColor == ALERT_COLOR && themeBool == false)
-                lblBIOS.ForeColor = LIGHT_FORECOLOR;
+            if (lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblBIOS.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblBIOS.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblBIOS.ForeColor = ALERT_COLOR;
+                lblBIOS.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Sets the Mac and IP labels to flash in red
         private void flashTextNetConnectivity(Object myobject, EventArgs myEventArgs)
         {
-            if (lblMac.ForeColor == ALERT_COLOR && themeBool == true)
+            if (lblMac.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
             {
-                lblMac.ForeColor = DARK_FORECOLOR;
-                lblIP.ForeColor = DARK_FORECOLOR;
+                lblMac.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                lblIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             }
-            else if (lblMac.ForeColor == ALERT_COLOR && themeBool == false)
+            else if (lblMac.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
             {
-                lblMac.ForeColor = LIGHT_FORECOLOR;
-                lblIP.ForeColor = LIGHT_FORECOLOR;
+                lblMac.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                lblIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             }
             else
             {
-                lblMac.ForeColor = ALERT_COLOR;
-                lblIP.ForeColor = ALERT_COLOR;
+                lblMac.ForeColor = StringsAndConstants.ALERT_COLOR;
+                lblIP.ForeColor = StringsAndConstants.ALERT_COLOR;
             }
         }
 
         //Sets the BIOS Firmware Type label to flash in red
         private void flashTextBIOSType(Object myobject, EventArgs myEventArgs)
         {
-            if (lblBIOSType.ForeColor == ALERT_COLOR && themeBool == true)
-                lblBIOSType.ForeColor = DARK_FORECOLOR;
-            else if (lblBIOSType.ForeColor == ALERT_COLOR && themeBool == false)
-                lblBIOSType.ForeColor = LIGHT_FORECOLOR;
+            if (lblBIOSType.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblBIOSType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblBIOSType.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblBIOSType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             else
-                lblBIOSType.ForeColor = ALERT_COLOR;
+                lblBIOSType.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
         //Starts the collection process
@@ -2814,26 +2738,26 @@ namespace HardwareInformation
         {
             if (!offlineMode)
             {
-                servidor_web = comboBoxServer.Text;
-                porta = comboBoxPorta.Text;
+                servidor_web = comboBoxServerIP.Text;
+                porta = comboBoxServerPort.Text;
                 serverOnline = BIOSFileReader.checkHost(servidor_web, porta);
                 if (serverOnline && porta != "")
                 {
-                    label26.Text = ONLINE;
-                    label26.ForeColor = ONLINE_ALERT;
+                    label26.Text = StringsAndConstants.ONLINE;
+                    label26.ForeColor = StringsAndConstants.ONLINE_ALERT;
                 }
                 else
                 {
-                    label26.Text = OFFLINE;
-                    label26.ForeColor = OFFLINE_ALERT;
+                    label26.Text = StringsAndConstants.OFFLINE;
+                    label26.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 }
             }
             else
             {
-                comboBoxServer.Enabled = false;
-                comboBoxPorta.Enabled = false;
-                label26.Text = OFFLINE_MODE_ACTIVATED;
-                label26.ForeColor = OFFLINE_ALERT;
+                comboBoxServerIP.Enabled = false;
+                comboBoxServerPort.Enabled = false;
+                label26.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                label26.ForeColor = StringsAndConstants.OFFLINE_ALERT;
             }
 
             //Stops blinking and resets red color
@@ -2845,25 +2769,25 @@ namespace HardwareInformation
             timer6.Enabled = false;
             timer7.Enabled = false;
             timer8.Enabled = false;
-            if (lblHostname.ForeColor == ALERT_COLOR || lblMediaOperation.ForeColor == ALERT_COLOR || lblSecBoot.ForeColor == ALERT_COLOR || lblBIOS.ForeColor == ALERT_COLOR || lblVT.ForeColor == ALERT_COLOR || lblSmart.ForeColor == ALERT_COLOR)
+            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR)
             {
                 if (themeBool)
                 {
-                    lblHostname.ForeColor = DARK_FORECOLOR;
-                    lblMediaOperation.ForeColor = DARK_FORECOLOR;
-                    lblSecBoot.ForeColor = DARK_FORECOLOR;
-                    lblBIOS.ForeColor = DARK_FORECOLOR;
-                    lblVT.ForeColor = DARK_FORECOLOR;
-                    lblSmart.ForeColor = DARK_FORECOLOR;
+                    lblHostname.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblMediaOperation.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblSecBoot.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblBIOS.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblVT.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblSmart.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 }
                 else
                 {
-                    lblHostname.ForeColor = LIGHT_FORECOLOR;
-                    lblMediaOperation.ForeColor = LIGHT_FORECOLOR;
-                    lblSecBoot.ForeColor = LIGHT_FORECOLOR;
-                    lblBIOS.ForeColor = LIGHT_FORECOLOR;
-                    lblVT.ForeColor = LIGHT_FORECOLOR;
-                    lblSmart.ForeColor = LIGHT_FORECOLOR;
+                    lblHostname.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblSecBoot.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblBIOS.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblVT.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblSmart.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                 }
             }
 
@@ -2872,28 +2796,28 @@ namespace HardwareInformation
             progressBar1.Value = 0;
 
             //Writes 'Coletando...' in the labels, while collects data
-            lblInstallSince.Text = FETCHING;
-            lblMaintenanceSince.Text = FETCHING;
-            lblBM.Text = FETCHING;
-            lblModel.Text = FETCHING;
-            lblSerialNo.Text = FETCHING;
-            lblProcName.Text = FETCHING;
-            lblPM.Text = FETCHING;
-            lblHDSize.Text = FETCHING;
-            lblSmart.Text = FETCHING;
-            lblMediaType.Text = FETCHING;
-            lblMediaOperation.Text = FETCHING;
-            lblGPUInfo.Text = FETCHING;
-            lblOS.Text = FETCHING;
-            lblHostname.Text = FETCHING;
-            lblMac.Text = FETCHING;
-            lblIP.Text = FETCHING;
-            lblBIOS.Text = FETCHING;
-            lblBIOSType.Text = FETCHING;
-            lblSecBoot.Text = FETCHING;
-            lblVT.Text = FETCHING;
-            lblTPM.Text = FETCHING;
-            coletaButton.Text = FETCHING;
+            lblInstallSince.Text = StringsAndConstants.FETCHING;
+            lblMaintenanceSince.Text = StringsAndConstants.FETCHING;
+            lblBM.Text = StringsAndConstants.FETCHING;
+            lblModel.Text = StringsAndConstants.FETCHING;
+            lblSerialNo.Text = StringsAndConstants.FETCHING;
+            lblProcName.Text = StringsAndConstants.FETCHING;
+            lblPM.Text = StringsAndConstants.FETCHING;
+            lblHDSize.Text = StringsAndConstants.FETCHING;
+            lblSmart.Text = StringsAndConstants.FETCHING;
+            lblMediaType.Text = StringsAndConstants.FETCHING;
+            lblMediaOperation.Text = StringsAndConstants.FETCHING;
+            lblGPUInfo.Text = StringsAndConstants.FETCHING;
+            lblOS.Text = StringsAndConstants.FETCHING;
+            lblHostname.Text = StringsAndConstants.FETCHING;
+            lblMac.Text = StringsAndConstants.FETCHING;
+            lblIP.Text = StringsAndConstants.FETCHING;
+            lblBIOS.Text = StringsAndConstants.FETCHING;
+            lblBIOSType.Text = StringsAndConstants.FETCHING;
+            lblSecBoot.Text = StringsAndConstants.FETCHING;
+            lblVT.Text = StringsAndConstants.FETCHING;
+            lblTPM.Text = StringsAndConstants.FETCHING;
+            collectButton.Text = StringsAndConstants.FETCHING;
         }
 
         //Auxiliary method
@@ -3012,40 +2936,40 @@ namespace HardwareInformation
             sinceLabelUpdate(true);
             sinceLabelUpdate(false);
 
-            string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBoxServer.Text, comboBoxPorta.Text);
+            string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
 
-            if (lblHostname.Text.Equals(DEFAULT_HOSTNAME))
+            if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {
                 pass = false;
-                lblHostname.Text += HOSTNAME_ALERT;
+                lblHostname.Text += StringsAndConstants.HOSTNAME_ALERT;
                 timer1.Enabled = true;
             }
             //The section below contains the exception cases for AHCI enforcement
-            if (!lblModel.Text.Contains("7057") &&
-                !lblModel.Text.Contains("8814") &&
-                !lblModel.Text.Contains("6078") &&
-                !lblModel.Text.Contains("560s") &&
+            if (!lblModel.Text.Contains(StringsAndConstants.nonAHCImodel1) &&
+                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel2) &&
+                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel3) &&
+                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel4) &&
                 Environment.Is64BitOperatingSystem &&
-                lblMediaOperation.Text.Equals(MEDIA_OPERATION_IDE_RAID))
+                lblMediaOperation.Text.Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {
-                if (lblModel.Text.Contains("A315-56"))
+                if (lblModel.Text.Contains(StringsAndConstants.nvmeModel1))
                 {
-                    lblMediaOperation.Text = MEDIA_OPERATION_NVME;
+                    lblMediaOperation.Text = StringsAndConstants.MEDIA_OPERATION_NVME;
                 }
                 else
                 {
                     pass = false;
-                    lblMediaOperation.Text += MEDIA_OPERATION_ALERT;
+                    lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
                     timer2.Enabled = true;
                 }
             }
             //The section below contains the exception cases for Secure Boot enforcement
-            if (lblSecBoot.Text.Equals("Desativado") &&
-                !lblGPUInfo.Text.Contains("210") &&
-                !lblGPUInfo.Text.Contains("430"))
+            if (lblSecBoot.Text.Equals(StringsAndConstants.deactivated) &&
+                !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU1) &&
+                !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU2))
             {
                 pass = false;
-                lblSecBoot.Text += SECURE_BOOT_ALERT;
+                lblSecBoot.Text += StringsAndConstants.SECURE_BOOT_ALERT;
                 timer3.Enabled = true;
             }
             if (str == null)
@@ -3053,7 +2977,7 @@ namespace HardwareInformation
                 if(!offlineMode)
                 {
                     pass = false;
-                    MessageBox.Show(DATABASE_REACH_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }                
             }
             if (str != null && !lblBIOS.Text.Contains(str[0]))
@@ -3061,14 +2985,14 @@ namespace HardwareInformation
                 if (!str[0].Equals("-1"))
                 {
                     pass = false;
-                    lblBIOS.Text += BIOS_VERSION_ALERT;
+                    lblBIOS.Text += StringsAndConstants.BIOS_VERSION_ALERT;
                     timer4.Enabled = true;
                 }
             }
             if (str != null && str[1].Equals("false"))
             {
                 pass = false;
-                lblBIOSType.Text += FIRMWARE_TYPE_ALERT;
+                lblBIOSType.Text += StringsAndConstants.FIRMWARE_TYPE_ALERT;
                 timer6.Enabled = true;
             }
             if (lblMac.Text == "")
@@ -3076,27 +3000,27 @@ namespace HardwareInformation
                 if(!offlineMode)
                 {
                     pass = false;
-                    lblMac.Text = NETWORK_ERROR;
-                    lblIP.Text = NETWORK_ERROR;
+                    lblMac.Text = StringsAndConstants.NETWORK_ERROR;
+                    lblIP.Text = StringsAndConstants.NETWORK_ERROR;
                     timer5.Enabled = true;
                 }
                 else
                 {
-                    lblMac.Text = OFFLINE_MODE_ACTIVATED;
-                    lblIP.Text = OFFLINE_MODE_ACTIVATED;
+                    lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                    lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
                 }
                 
             }
-            if (lblVT.Text == "Desativado")
+            if (lblVT.Text == StringsAndConstants.deactivated)
             {
                 pass = false;
-                lblVT.Text += VT_ALERT;
+                lblVT.Text += StringsAndConstants.VT_ALERT;
                 timer7.Enabled = true;
             }
-            if (!lblSmart.Text.Contains("OK"))
+            if (!lblSmart.Text.Contains(StringsAndConstants.ok))
             {
                 pass = false;
-                lblSmart.Text += SMART_FAIL;
+                lblSmart.Text += StringsAndConstants.SMART_FAIL;
                 timer8.Enabled = true;
             }
         }
@@ -3107,8 +3031,8 @@ namespace HardwareInformation
             webView2.Visible = false;
             collecting();
             accessSystemButton.Enabled = false;
-            cadastraButton.Enabled = false;
-            coletaButton.Enabled = false;
+            registerButton.Enabled = false;
+            collectButton.Enabled = false;
             startAsync(sender, e);
         }
 
@@ -3139,10 +3063,10 @@ namespace HardwareInformation
             if (!offlineMode)
             {
                 accessSystemButton.Enabled = true;
-                cadastraButton.Enabled = true;
+                registerButton.Enabled = true;
             }
-            coletaButton.Enabled = true;
-            coletaButton.Text = FETCH_AGAIN;
+            collectButton.Enabled = true;
+            collectButton.Text = StringsAndConstants.FETCH_AGAIN;
             printHardwareData();
         }
 
@@ -3176,24 +3100,24 @@ namespace HardwareInformation
             {
                 InstallLabel = MiscMethods.regCheck(mode).ToString();
                 if (!InstallLabel.Equals("-1"))
-                    lblInstallSince.Text = "(" + InstallLabel + DAYS_PASSED_TEXT + FORMAT_TEXT;
+                    lblInstallSince.Text = "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")";
                 else
-                    lblInstallSince.Text = SINCE_UNKNOWN;
+                    lblInstallSince.Text = StringsAndConstants.SINCE_UNKNOWN;
             }
             else
             {
                 MaintenanceLabel = MiscMethods.regCheck(mode).ToString();
                 if (!MaintenanceLabel.Equals("-1"))
-                    lblMaintenanceSince.Text = "(" + MaintenanceLabel + DAYS_PASSED_TEXT + MAINTENANCE_TEXT;
+                    lblMaintenanceSince.Text = "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")";
                 else
-                    lblMaintenanceSince.Text = SINCE_UNKNOWN;
+                    lblMaintenanceSince.Text = StringsAndConstants.SINCE_UNKNOWN;
             }
         }
 
         //Loads webView2 component
         public async Task loadWebView2()
         {
-            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(WEBVIEW2_PATH, System.IO.Path.GetTempPath());
+            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_PATH, Path.GetTempPath());
             webView2.DefaultBackgroundColor = Color.FromArgb(64, 64, 64);
             await webView2.EnsureCoreWebView2Async(webView2Environment);
         }
@@ -3207,31 +3131,31 @@ namespace HardwareInformation
         //Runs the registration for the website
         private void cadastra_ClickAsync(object sender, EventArgs e)
         {
-            cadastraButton.Text = REGISTERING;
-            cadastraButton.Enabled = false;
+            registerButton.Text = StringsAndConstants.REGISTERING;
+            registerButton.Enabled = false;
             accessSystemButton.Enabled = false;
-            coletaButton.Enabled = false;
+            collectButton.Enabled = false;
             attrHardwareData();
-            if (!string.IsNullOrWhiteSpace(textBoxPatri.Text) && !string.IsNullOrWhiteSpace(textBoxSala.Text) && !string.IsNullOrWhiteSpace(textBoxChamado.Text) && comboBoxTipo.SelectedItem != null && comboBoxPredio.SelectedItem != null && comboBoxUso.SelectedItem != null && comboBoxEtiq.SelectedItem != null && comboBoxPilha.SelectedItem != null && (employeeButton.Checked || studentButton.Checked) && (formatButton.Checked || maintenanceButton.Checked) && pass == true)
+            if (!string.IsNullOrWhiteSpace(textBoxPatrimony.Text) && !string.IsNullOrWhiteSpace(textBoxRoom.Text) && !string.IsNullOrWhiteSpace(textBoxTicket.Text) && comboBoxType.SelectedItem != null && comboBoxBuilding.SelectedItem != null && comboBoxInUse.SelectedItem != null && comboBoxTag.SelectedItem != null && comboBoxBattery.SelectedItem != null && (employeeRadioButton.Checked || studentRadioButton.Checked) && (formatButton.Checked || maintenanceButton.Checked) && pass == true)
             {
-                sArgs[0] = comboBoxServer.Text;
-                sArgs[1] = comboBoxPorta.Text;
+                sArgs[0] = comboBoxServerIP.Text;
+                sArgs[1] = comboBoxServerPort.Text;
                 sArgs[2] = modeURL;
-                sArgs[3] = textBoxPatri.Text;
-                sArgs[4] = textBoxLacre.Text;
-                if (textBoxLetra.Text != "")
-                    sArgs[5] = textBoxSala.Text + textBoxLetra.Text;
+                sArgs[3] = textBoxPatrimony.Text;
+                sArgs[4] = textBoxSeal.Text;
+                if (textBoxLetter.Text != "")
+                    sArgs[5] = textBoxRoom.Text + textBoxLetter.Text;
                 else
-                    sArgs[5] = textBoxSala.Text;
-                sArgs[6] = comboBoxPredio.SelectedItem.ToString();
-                sArgs[7] = comboBoxAD.SelectedItem.ToString();
-                sArgs[8] = comboBoxPadrao.SelectedItem.ToString();
+                    sArgs[5] = textBoxRoom.Text;
+                sArgs[6] = comboBoxBuilding.SelectedItem.ToString();
+                sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString();
+                sArgs[8] = comboBoxStandard.SelectedItem.ToString();
                 sArgs[9] = dateTimePicker1.Value.ToString();
-                sArgs[21] = comboBoxUso.SelectedItem.ToString();
-                sArgs[22] = comboBoxEtiq.SelectedItem.ToString();
-                sArgs[23] = comboBoxTipo.SelectedItem.ToString();
-                sArgs[31] = comboBoxPilha.SelectedItem.ToString();
-                sArgs[32] = textBoxChamado.Text;
+                sArgs[21] = comboBoxInUse.SelectedItem.ToString();
+                sArgs[22] = comboBoxTag.SelectedItem.ToString();
+                sArgs[23] = comboBoxType.SelectedItem.ToString();
+                sArgs[31] = comboBoxBattery.SelectedItem.ToString();
+                sArgs[32] = textBoxTicket.Text;
 
                 if (serverOnline && porta != "")
                 {
@@ -3253,19 +3177,19 @@ namespace HardwareInformation
                         }
                     }
                     else
-                        MessageBox.Show(ALREADY_REGISTERED_TODAY, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show(SERVER_NOT_FOUND_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!pass)
-                MessageBox.Show(PENDENCY_ERROR, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
-                MessageBox.Show(MANDATORY_FIELD, ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            cadastraButton.Text = REGISTER_AGAIN;
-            cadastraButton.Enabled = true;
+                MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            registerButton.Text = StringsAndConstants.REGISTER_AGAIN;
+            registerButton.Enabled = true;
             accessSystemButton.Enabled = true;
-            coletaButton.Enabled = true;
+            collectButton.Enabled = true;
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using CommandLine;
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -11,39 +10,39 @@ namespace HardwareInformation
         //Command line switch options specification
         public class Options
         {
-            [Option("servidor", Required = false, HelpText = "Servidor do sistema de patrimônio", Default = "192.168.76.103")]
+            [Option("servidor", Required = false, HelpText = StringsAndConstants.cliHelpTextServer, Default = "192.168.76.103")]
             public string Servidor { get; set; }
-            [Option("porta", Required = false, HelpText = "Porta do sistema de patrimônio", Default = "8081")]
+            [Option("porta", Required = false, HelpText = StringsAndConstants.cliHelpTextPort, Default = "8081")]
             public string Porta { get; set; }
-            [Option("modo", Required = false, HelpText = "Tipo de serviço realizado", Default = "m")]
+            [Option("modo", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
             public string TipoDeServico { get; set; }
-            [Option("patrimonio", Required = true, HelpText = "Patrimônio do equipamento")]
+            [Option("patrimonio", Required = true, HelpText = StringsAndConstants.cliHelpTextPatrimony)]
             public string Patrimonio { get; set; }
-            [Option("lacre", Required = false, HelpText = "Lacre do equipamento (se houver)", Default = "")]
+            [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "")]
             public string Lacre { get; set; }
-            [Option("sala", Required = true, HelpText = "Sala onde o equipamento estará")]
+            [Option("sala", Required = true, HelpText = StringsAndConstants.cliHelpTextRoom)]
             public string Sala { get; set; }
-            [Option("predio", Required = true, HelpText = "Prédio onde o equipamento estará")]
+            [Option("predio", Required = true, HelpText = StringsAndConstants.cliHelpTextBuilding)]
             public string Predio { get; set; }
-            [Option("ad", Required = false, HelpText = "Cadastrado no Active Directory", Default = "Sim")]
+            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "Sim")]
             public string AD { get; set; }
-            [Option("padrao", Required = false, HelpText = "Padrão da imagem implantado no equipamento", Default = "Aluno")]
+            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "Aluno")]
             public string Padrao { get; set; }
-            [Option("data", Required = false, HelpText = "Data do serviço realizado", Default = "hoje")]
+            [Option("data", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "hoje")]
             public string Data { get; set; }
-            [Option("pilha", Required = true, HelpText = "Realizada troca de pilha?")]
+            [Option("pilha", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
             public string Pilha { get; set; }
-            [Option("ticket", Required = true, HelpText = "Número do chamado aberto")]
+            [Option("ticket", Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
             public string Ticket { get; set; }
-            [Option("uso", Required = false, HelpText = "Equipamento em uso?", Default = "Sim")]
+            [Option("uso", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "Sim")]
             public string Uso { get; set; }
-            [Option("etiqueta", Required = true, HelpText = "Equipamento possui etiqueta?")]
+            [Option("etiqueta", Required = true, HelpText = StringsAndConstants.cliHelpTextTag)]
             public string Etiqueta { get; set; }
-            [Option("tipo", Required = false, HelpText = "Categoria do equipamento", Default = "Desktop")]
+            [Option("tipo", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "Desktop")]
             public string TipoHardware { get; set; }
-            [Option("usuario", Required = true, HelpText = "Usuário de login")]
+            [Option("usuario", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
             public string Usuario { get; set; }
-            [Option("senha", Required = true, HelpText = "Senha de login")]
+            [Option("senha", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
             public string Senha { get; set; }
         }
 
@@ -55,7 +54,7 @@ namespace HardwareInformation
                 Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware));
             else
             {
-                Console.WriteLine("Erro de autenticação! Saindo do programa...");
+                Console.WriteLine(StringsAndConstants.AUTH_ERROR);
                 Application.Exit();
             }
         }

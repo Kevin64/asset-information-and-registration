@@ -15,9 +15,7 @@ namespace HardwareInformation
 		public string status { get; set; }
 	}
 	public static class LoginFileReader
-	{
-		private static string fileLogin = "login.json";
-		private static string fileSha1 = "login-checksum.txt";
+	{		
 		private static string jsonFile, sha1, aux;
 		private static WebClient wc;
 		private static StreamReader fileL;
@@ -29,13 +27,13 @@ namespace HardwareInformation
 				wc = new WebClient();
 				wc.DownloadString("http://" + ip + ":" + port + "/forneceDadosUsuario.php");
 				System.Threading.Thread.Sleep(300);
-				wc.DownloadFile("http://" + ip + ":" + port + "/" + fileLogin, fileLogin);
+				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileLogin, StringsAndConstants.fileLogin);
 				System.Threading.Thread.Sleep(300);
-				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + fileSha1);
+				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.fileShaLogin);
 				System.Threading.Thread.Sleep(300);
 				sha1 = sha1.ToUpper();
-				fileL = new StreamReader(@fileLogin);
-				aux = fileLogin;
+				fileL = new StreamReader(StringsAndConstants.fileLogin);
+				aux = StringsAndConstants.fileLogin;
 				fileL.Close();
 			}
 			catch
@@ -53,7 +51,7 @@ namespace HardwareInformation
 				return null;
 
 			string[] arr;
-			fileL = new StreamReader(@fileLogin);
+			fileL = new StreamReader(StringsAndConstants.fileLogin);
 			if (GetSha1Hash(aux).Equals(sha1))
 			{
 				jsonFile = fileL.ReadToEnd();

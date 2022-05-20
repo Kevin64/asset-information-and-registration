@@ -1,7 +1,6 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,26 +9,10 @@ namespace HardwareInformation
 {
     public class CLIRegister : Form
     {
-        private string fileBios = "bios.json";
-        private string fileLogin = "login.json";
         public bool pass;
-        public const int MAX_SIZE = 100;
-        public const string WEBVIEW2_PATH = "runtimes\\win-x86";
-        private const string DEFAULT_HOSTNAME = "MUDAR-NOME";
-        private const string HOSTNAME_ALERT = " (Nome incorreto, alterar)";
-        private const string MEDIA_OPERATION_NVME = "NVMe";
-        private const string MEDIA_OPERATION_IDE_RAID = "IDE/Legacy ou RAID";
-        private const string MEDIA_OPERATION_ALERT = " (Modo de operação incorreto, alterar)";
-        private const string SECURE_BOOT_ALERT = " (Ativar boot seguro)";
-        private const string DATABASE_REACH_ERROR = "Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!";
-        private const string BIOS_VERSION_ALERT = " (Atualizar BIOS/UEFI)";
-        private const string FIRMWARE_TYPE_ALERT = " (PC suporta UEFI, fazer a conversão do sistema)";
-        private const string NETWORK_ERROR = "Computador sem conexão com a Intranet";
-        private const string VT_ALERT = " (Ativar Tecnologia de Virtualização na BIOS/UEFI)";
-        public string[] strArgs, strAlert;
-        public bool[] strAlertBool;
-        public WebView2 webView2;
-        public List<string> listPredio, listModo, listAD, listPadrao, listUso, listEtiq, listTipo, listPilha, listServer, listPorta;
+        private bool[] strAlertBool;
+        private string[] strArgs, strAlert;        
+        private WebView2 webView2;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -115,68 +98,42 @@ namespace HardwareInformation
             strAlert[7] = "Endereço MAC: ";
             strAlert[8] = "Tecnologia de Virtualização: ";
 
-            listPredio = new List<string>();
-            listModo = new List<string>();
-            listAD = new List<string>();
-            listPadrao = new List<string>();
-            listUso = new List<string>();
-            listEtiq = new List<string>();
-            listTipo = new List<string>();
-            listPilha = new List<string>();
-            listServer = new List<string>();
-            listPorta = new List<string>();
             webView2 = new WebView2();
 
-            listPredio.Add("21");
-            listPredio.Add("67");
-            listPredio.Add("74A");
-            listPredio.Add("74B");
-            listPredio.Add("74C");
-            listPredio.Add("74D");
-            listPredio.Add("AR");
-            listModo.Add("f");
-            listModo.Add("F");
-            listModo.Add("m");
-            listModo.Add("M");
-            listAD.Add("Não");
-            listAD.Add("Sim");
-            listPadrao.Add("Aluno");
-            listPadrao.Add("Funcionário");
-            listUso.Add("Não");
-            listUso.Add("Sim");
-            listEtiq.Add("Não");
-            listEtiq.Add("Sim");
-            listTipo.Add("Desktop");
-            listTipo.Add("Notebook");
-            listTipo.Add("Tablet");
-            listPilha.Add("C/ troca de pilha");
-            listPilha.Add("S/ troca de pilha");
-            listServer.Add("192.168.76.103");
-            listPorta.Add("8081");
             await loadWebView2();
 
             if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 &&
                 strArgs[1].Length <= 5 &&
-                listModo.Contains(strArgs[2]) &&
+                StringsAndConstants.listMode.Contains(strArgs[2]) &&
                 strArgs[3].Length <= 6 && strArgs[3].Length > 0 &&
                 strArgs[4].Length <= 10 &&
                 strArgs[5].Length <= 4 && strArgs[5].Length > 0 &&
-                listPredio.Contains(strArgs[6]) &&
-                listAD.Contains(strArgs[7]) &&
-                listPadrao.Contains(strArgs[8]) &&
-                (strArgs[9].Length == 10 || strArgs[9].Equals("hoje")) &&
-                listPilha.Contains(strArgs[10]) &&
+                StringsAndConstants.listBuilding.Contains(strArgs[6]) &&
+                StringsAndConstants.listActiveDirectory.Contains(strArgs[7]) &&
+                StringsAndConstants.listStandard.Contains(strArgs[8]) &&
+                (strArgs[9].Length == 10 || strArgs[9].Equals(StringsAndConstants.today)) &&
+                StringsAndConstants.listBattery.Contains(strArgs[10]) &&
                 strArgs[11].Length <= 6 &&
-                listUso.Contains(strArgs[12]) &&
-                listEtiq.Contains(strArgs[13]) &&
-                listTipo.Contains(strArgs[14]))
+                StringsAndConstants.listInUse.Contains(strArgs[12]) &&
+                StringsAndConstants.listTag.Contains(strArgs[13]) &&
+                StringsAndConstants.listType.Contains(strArgs[14]))
             {
                 if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
-                    strArgs[2] = "recebeDadosFormatacao";
+                    strArgs[2] = StringsAndConstants.formatURL;
                 else if(strArgs[2].Equals("m") || strArgs[2].Equals("M"))
-                    strArgs[2] = "recebeDadosManutencao";
+                    strArgs[2] = StringsAndConstants.maintenanceURL;
+                
+                if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                    strArgs[8] = StringsAndConstants.employee;
+                else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                    strArgs[8] = StringsAndConstants.student;
 
-                if (strArgs[9].Equals("hoje"))
+                if (strArgs[10].Equals("Sim"))
+                    strArgs[10] = StringsAndConstants.replacedBattery;
+                else
+                    strArgs[10] = StringsAndConstants.sameBattery;
+
+                if (strArgs[9].Equals(StringsAndConstants.today))
                 {
                     MiscMethods.regCreate(true, DateTime.Today.ToString());
                     strArgs[9] = DateTime.Today.ToString().Substring(0, 10);
@@ -192,7 +149,7 @@ namespace HardwareInformation
                 }
                 else
                 {
-                    Console.WriteLine("Corrija o problemas a seguir antes de prosseguir:");
+                    Console.WriteLine(StringsAndConstants.FIX_PROBLEMS);
                     for (int i = 0; i < strAlert.Length; i++)
                     {
                         if (strAlertBool[i])
@@ -202,15 +159,15 @@ namespace HardwareInformation
                             Console.ResetColor();
                         }
                     }
-                    File.Delete(@fileBios);
-                    File.Delete(@fileLogin);
+                    File.Delete(StringsAndConstants.@fileBios);
+                    File.Delete(StringsAndConstants.@fileLogin);
                     webView2.Dispose();
                     Application.Exit();
                 }
             }
             else
             {
-                Console.WriteLine("Um ou mais argumentos contém erros! Saindo do programa...");
+                Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                 webView2.Dispose();
                 Application.Exit();
             }
@@ -221,8 +178,8 @@ namespace HardwareInformation
         {
             if(e.IsSuccess)
             {
-                File.Delete(@fileBios);
-                File.Delete(@fileLogin);
+                File.Delete(StringsAndConstants.@fileBios);
+                File.Delete(StringsAndConstants.@fileLogin);
                 webView2.Dispose();
                 Application.Exit();
             }
@@ -234,44 +191,44 @@ namespace HardwareInformation
             pass = true;
             string[] str = BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[0], strArgs[1]);
 
-            if (strArgs[24].Equals(DEFAULT_HOSTNAME))
+            if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {
                 pass = false;
-                strAlert[0] += strArgs[24] + HOSTNAME_ALERT;
+                strAlert[0] += strArgs[24] + StringsAndConstants.HOSTNAME_ALERT;
                 strAlertBool[0] = true;
             }
             //The section below contains the exception cases for AHCI enforcement
-            if (!strArgs[18].Contains("7057") &&
-                !strArgs[18].Contains("8814") &&
-                !strArgs[18].Contains("6078") &&
-                !strArgs[18].Contains("560s") &&
+            if (!strArgs[18].Contains(StringsAndConstants.nonAHCImodel1) &&
+                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel2) &&
+                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel3) &&
+                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel4) &&
                 Environment.Is64BitOperatingSystem &&
-                strArgs[31].Equals(MEDIA_OPERATION_IDE_RAID))
+                strArgs[31].Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {
-                if (strArgs[18].Contains("A315-56"))
+                if (strArgs[18].Contains(StringsAndConstants.nvmeModel1))
                 {
-                    strArgs[31] = MEDIA_OPERATION_NVME;
+                    strArgs[31] = StringsAndConstants.MEDIA_OPERATION_NVME;
                 }
                 else
                 {
                     pass = false;
-                    strAlert[1] += strArgs[31] + MEDIA_OPERATION_ALERT;
+                    strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
                     strAlertBool[1] = true;
                 }
             }
             //The section below contains the exception cases for Secure Boot enforcement
-            if (strArgs[32].Equals("Desativado") &&
-                !strArgs[30].Contains("210") &&
-                !strArgs[30].Contains("430"))
+            if (strArgs[32].Equals(StringsAndConstants.deactivated) &&
+                !strArgs[30].Contains(StringsAndConstants.nonSecBootGPU1) &&
+                !strArgs[30].Contains(StringsAndConstants.nonSecBootGPU2))
             {
                 pass = false;
-                strAlert[2] += strArgs[32] + SECURE_BOOT_ALERT;
+                strAlert[2] += strArgs[32] + StringsAndConstants.SECURE_BOOT_ALERT;
                 strAlertBool[2] = true;
             }
             if (str == null)
             {
                 pass = false;
-                strAlert[3] += DATABASE_REACH_ERROR;
+                strAlert[3] += StringsAndConstants.DATABASE_REACH_ERROR;
                 strAlertBool[3] = true;
             }
             if (str != null && !strArgs[25].Contains(str[0]))
@@ -279,28 +236,28 @@ namespace HardwareInformation
                 if (!str[0].Equals("-1"))
                 {
                     pass = false;
-                    strAlert[4] += strArgs[25] + BIOS_VERSION_ALERT;
+                    strAlert[4] += strArgs[25] + StringsAndConstants.BIOS_VERSION_ALERT;
                     strAlertBool[4] = true;
                 }
             }
             if (str != null && str[1].Equals("false"))
             {
                 pass = false;
-                strAlert[5] += strArgs[28] + FIRMWARE_TYPE_ALERT;
+                strAlert[5] += strArgs[28] + StringsAndConstants.FIRMWARE_TYPE_ALERT;
                 strAlertBool[5] = true;
             }
             if (strArgs[26] == "")
             {
                 pass = false;
-                strAlert[6] += strArgs[26] + NETWORK_ERROR;
-                strAlert[7] += strArgs[27] + NETWORK_ERROR;
+                strAlert[6] += strArgs[26] + StringsAndConstants.NETWORK_ERROR;
+                strAlert[7] += strArgs[27] + StringsAndConstants.NETWORK_ERROR;
                 strAlertBool[6] = true;
                 strAlertBool[7] = true;
             }
-            if (strArgs[33] == "Desativado")
+            if (strArgs[33] == StringsAndConstants.deactivated)
             {
                 pass = false;
-                strAlert[8] += strArgs[33] + VT_ALERT;
+                strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
                 strAlertBool[8] = true;
             }
         }
@@ -350,7 +307,7 @@ namespace HardwareInformation
         //Loads webView2 component
         public async Task loadWebView2()
         {
-            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(WEBVIEW2_PATH, System.IO.Path.GetTempPath());
+            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_PATH, Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
         }
 

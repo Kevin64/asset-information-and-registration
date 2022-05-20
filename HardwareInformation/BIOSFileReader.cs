@@ -16,8 +16,6 @@ namespace HardwareInformation
 	}
 	public static class BIOSFileReader
 	{
-		private static string fileBios = "bios.json";
-		private static string fileSha1 = "bios-checksum.txt";
 		private static string jsonFile, sha1, aux;
 		private static WebClient wc;
 		private static StreamReader fileB;
@@ -29,13 +27,13 @@ namespace HardwareInformation
 				wc = new WebClient();
 				wc.DownloadString("http://" + ip + ":" + port + "/forneceDadosBIOS.php");
 				System.Threading.Thread.Sleep(300);
-				wc.DownloadFile("http://" + ip + ":" + port + "/" + fileBios, fileBios);
+				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileBios, StringsAndConstants.fileBios);
 				System.Threading.Thread.Sleep(300);
-				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + fileSha1);
+				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.fileShaBios);
 				System.Threading.Thread.Sleep(300);
 				sha1 = sha1.ToUpper();
-				fileB = new StreamReader(@fileBios);
-				aux = fileBios;
+				fileB = new StreamReader(StringsAndConstants.fileBios);
+				aux = StringsAndConstants.fileBios;
 				fileB.Close();
 			}
 			catch
@@ -53,7 +51,7 @@ namespace HardwareInformation
 				return null;
 
 			string[] arr;
-			fileB = new StreamReader(@fileBios);
+			fileB = new StreamReader(StringsAndConstants.fileBios);
 			if (GetSha1Hash(aux).Equals(sha1))
 			{
 				jsonFile = fileB.ReadToEnd();
