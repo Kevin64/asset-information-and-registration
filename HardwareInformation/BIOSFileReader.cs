@@ -25,7 +25,7 @@ namespace HardwareInformation
 			try
 			{
 				wc = new WebClient();
-				wc.DownloadString("http://" + ip + ":" + port + "/forneceDadosBIOS.php");
+				wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.supplyBiosData);
 				System.Threading.Thread.Sleep(300);
 				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileBios, StringsAndConstants.fileBios);
 				System.Threading.Thread.Sleep(300);

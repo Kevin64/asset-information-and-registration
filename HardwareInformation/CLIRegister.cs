@@ -11,7 +11,7 @@ namespace HardwareInformation
     {
         public bool pass;
         private bool[] strAlertBool;
-        private string[] strArgs, strAlert;        
+        private string[] strArgs, strAlert;
         private WebView2 webView2;
 
         //Basic form for WebView2
@@ -88,15 +88,15 @@ namespace HardwareInformation
 
             strAlert = new string[9];
             strAlertBool = new bool[9];
-            strAlert[0] = "Hostname: ";
-            strAlert[1] = "Modo de operação SATA/M.2: ";
-            strAlert[2] = "Secure Boot: ";
-            strAlert[3] = "Conectividade com o banco de dados: ";
-            strAlert[4] = "Versão da BIOS/UEFI: ";
-            strAlert[5] = "Tipo de firmware: ";
-            strAlert[6] = "Endereço IP: ";
-            strAlert[7] = "Endereço MAC: ";
-            strAlert[8] = "Tecnologia de Virtualização: ";
+            strAlert[0] = StringsAndConstants.CLI_HOSTNAME_ALERT;
+            strAlert[1] = StringsAndConstants.CLI_MEDIA_OPERATION_ALERT;
+            strAlert[2] = StringsAndConstants.CLI_SECURE_BOOT_ALERT;
+            strAlert[3] = StringsAndConstants.CLI_DATABASE_REACH_ERROR;
+            strAlert[4] = StringsAndConstants.CLI_BIOS_VERSION_ALERT;
+            strAlert[5] = StringsAndConstants.CLI_FIRMWARE_TYPE_ALERT;
+            strAlert[6] = StringsAndConstants.CLI_NETWORK_IP_ERROR;
+            strAlert[7] = StringsAndConstants.CLI_NETWORK_MAC_ERROR;
+            strAlert[8] = StringsAndConstants.CLI_VT_ALERT;
 
             webView2 = new WebView2();
 
@@ -202,6 +202,7 @@ namespace HardwareInformation
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel2) &&
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel3) &&
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel4) &&
+                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel5) &&
                 Environment.Is64BitOperatingSystem &&
                 strArgs[31].Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {

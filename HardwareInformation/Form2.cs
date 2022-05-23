@@ -16,7 +16,10 @@ namespace HardwareInformation
 			comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 			comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
-			this.toolStripStatusLabel2.Text = MiscMethods.version();
+			//Change this for alpha, beta and final releases - use alpha, beta and blank respectively
+			//this.toolStripStatusLabel2.Text = MiscMethods.version();
+			this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
+			//this.toolStripStatusLabel2.Text = MiscMethods.version("alpha");
 		}
 
 		//Sets a light theme for the login form

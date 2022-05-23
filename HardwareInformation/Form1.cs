@@ -37,7 +37,9 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = MiscMethods.version();
+            //this.toolStripStatusLabel2.Text = MiscMethods.version();
+            this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
+            //this.toolStripStatusLabel2.Text = MiscMethods.version("alpha");
         }
 
 		private void InitializeComponent()
@@ -2949,6 +2951,7 @@ namespace HardwareInformation
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel2) &&
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel3) &&
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel4) &&
+                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel5) &&
                 Environment.Is64BitOperatingSystem &&
                 lblMediaOperation.Text.Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {
@@ -3154,7 +3157,10 @@ namespace HardwareInformation
                 sArgs[21] = comboBoxInUse.SelectedItem.ToString();
                 sArgs[22] = comboBoxTag.SelectedItem.ToString();
                 sArgs[23] = comboBoxType.SelectedItem.ToString();
-                sArgs[31] = comboBoxBattery.SelectedItem.ToString();
+                if(comboBoxBattery.SelectedItem.ToString().Equals("Sim"))
+                    sArgs[31] = StringsAndConstants.replacedBattery;
+                else
+                    sArgs[31] = StringsAndConstants.sameBattery;
                 sArgs[32] = textBoxTicket.Text;
 
                 if (serverOnline && porta != "")

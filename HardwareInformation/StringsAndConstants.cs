@@ -61,8 +61,8 @@ namespace HardwareInformation
         internal const string lastInstall = "LastInstallation", lastMaintenance = "LastMaintenance";
         internal const string fileBios = "bios.json", fileLogin = "login.json";
         internal const string fileShaBios = "bios-checksum.txt", fileShaLogin = "login-checksum.txt";
-        internal const string formatURL = "recebeDadosFormatacao", maintenanceURL = "recebeDadosManutencao";
-        internal const string nonAHCImodel1 = "7057", nonAHCImodel2 = "8814", nonAHCImodel3 = "6078", nonAHCImodel4 = "560s";
+        internal const string formatURL = "recebeDadosFormatacao", maintenanceURL = "recebeDadosManutencao", supplyLoginData = "forneceDadosUsuario.php", supplyBiosData = "forneceDadosBIOS.php";
+        internal const string nonAHCImodel1 = "7057", nonAHCImodel2 = "8814", nonAHCImodel3 = "6078", nonAHCImodel4 = "560s", nonAHCImodel5 = "945GCM-S2C";
         internal const string nvmeModel1 = "A315-56";
         internal const string nonSecBootGPU1 = "210", nonSecBootGPU2 = "430";
 
@@ -77,15 +77,24 @@ namespace HardwareInformation
         internal const string SERVER_PORT_ERROR = "Para acessar, selecione o servidor e a porta!";
         internal const string ERROR_WINDOWTITLE = "Erro";
         internal const string DEFAULT_HOSTNAME = "MUDAR-NOME";
+        internal const string CLI_HOSTNAME_ALERT = "Hostname: ";
         internal const string HOSTNAME_ALERT = " (Nome incorreto, alterar)";
         internal const string MEDIA_OPERATION_NVME = "NVMe";
         internal const string MEDIA_OPERATION_IDE_RAID = "IDE/Legacy ou RAID";
+        internal const string CLI_MEDIA_OPERATION_ALERT = "Modo de operação SATA/M.2: ";
         internal const string MEDIA_OPERATION_ALERT = " (Modo de operação incorreto, alterar)";
+        internal const string CLI_SECURE_BOOT_ALERT = "Secure Boot: ";
         internal const string SECURE_BOOT_ALERT = " (Ativar boot seguro)";
+        internal const string CLI_DATABASE_REACH_ERROR = "Conectividade com o banco de dados: ";
         internal const string DATABASE_REACH_ERROR = "Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!";
+        internal const string CLI_BIOS_VERSION_ALERT = "Versão da BIOS/UEFI: ";
         internal const string BIOS_VERSION_ALERT = " (Atualizar BIOS/UEFI)";
+        internal const string CLI_FIRMWARE_TYPE_ALERT = "Tipo de firmware: ";
         internal const string FIRMWARE_TYPE_ALERT = " (PC suporta UEFI, fazer a conversão do sistema)";
+        internal const string CLI_NETWORK_IP_ERROR = "Endereço IP: ";
+        internal const string CLI_NETWORK_MAC_ERROR = "Endereço MAC: ";
         internal const string NETWORK_ERROR = "Computador sem conexão com a Intranet";
+        internal const string CLI_VT_ALERT = "Tecnologia de Virtualização: ";
         internal const string VT_ALERT = " (Ativar Tecnologia de Virtualização na BIOS/UEFI)";
         internal const string SERVER_NOT_FOUND_ERROR = "Servidor não encontrado. Selecione um servidor válido!";
         internal const string PENDENCY_ERROR = "Resolva as pendencias exibidas em vermelho!";

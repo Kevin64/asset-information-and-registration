@@ -25,7 +25,7 @@ namespace HardwareInformation
 			try
 			{
 				wc = new WebClient();
-				wc.DownloadString("http://" + ip + ":" + port + "/forneceDadosUsuario.php");
+				wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.supplyLoginData);
 				System.Threading.Thread.Sleep(300);
 				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileLogin, StringsAndConstants.fileLogin);
 				System.Threading.Thread.Sleep(300);
