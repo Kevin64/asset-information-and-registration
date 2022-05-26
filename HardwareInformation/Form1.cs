@@ -37,8 +37,8 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            //this.toolStripStatusLabel2.Text = MiscMethods.version();
-            this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
+            this.toolStripStatusLabel2.Text = MiscMethods.version();
+            //this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
             //this.toolStripStatusLabel2.Text = MiscMethods.version("alpha");
         }
 
@@ -1402,6 +1402,7 @@ namespace HardwareInformation
             this.textBoxTicket.Name = "textBoxTicket";
             this.textBoxTicket.Size = new System.Drawing.Size(60, 20);
             this.textBoxTicket.TabIndex = 115;
+            this.textBoxTicket.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumbersOnly_KeyPress);
             // 
             // comboBoxBattery
             // 
@@ -2631,7 +2632,7 @@ namespace HardwareInformation
                 e.Handled = true;
         }
 
-        //Restricts textbox1 only with numbers
+        //Restricts textbox only with numbers
         private void textBoxNumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))

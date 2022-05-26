@@ -547,12 +547,12 @@ namespace HardwareInformation
 					if (getOSInfoAux().Equals(StringsAndConstants.windows10))
 					{
 						if (Convert.ToInt32(releaseId) <= 2004)
-							return (((string)queryObj["Caption"]).Trim() + ", v" + releaseId + ", " + StringsAndConstants.build + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+							return (((string)queryObj["Caption"]).Trim() + ", v" + releaseId + ", " + StringsAndConstants.build + " " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
 						else
-							return (((string)queryObj["Caption"]).Trim() + ", v" + displayVersion + ", " + StringsAndConstants.build + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+							return (((string)queryObj["Caption"]).Trim() + ", v" + displayVersion + ", " + StringsAndConstants.build + " " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
 					}
 					else
-						return (((string)queryObj["Caption"]).Trim() + " " + (string)queryObj["CSDVersion"] + ", " + StringsAndConstants.build + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
+						return (((string)queryObj["Caption"]).Trim() + " " + (string)queryObj["CSDVersion"] + ", " + StringsAndConstants.build + " " + (string)queryObj["Version"] + ", " + (string)queryObj["OSArchitecture"]).Substring(10);
 				}
 				catch
 				{

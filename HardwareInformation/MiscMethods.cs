@@ -55,6 +55,7 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
         }
 
+        //Generates a MD5 hash from an input
         public static string HashMd5Generator(string input)
         {
             MD5 md5Hash = MD5.Create();
