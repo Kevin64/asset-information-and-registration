@@ -52,10 +52,10 @@ namespace HardwareInformation
         }
 
         //Constructor
-        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo)
+        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
         {
             InitializeComponent();
-            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo);
+            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario);
         }
 
         //When form closes
@@ -66,9 +66,9 @@ namespace HardwareInformation
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo)
+        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
         {
-            strArgs = new string[35];
+            strArgs = new string[36];
             
             strArgs[0] = servidor;
             strArgs[1] = porta;
@@ -85,6 +85,7 @@ namespace HardwareInformation
             strArgs[12] = uso;
             strArgs[13] = etiqueta;
             strArgs[14] = tipo;
+            strArgs[35] = usuario;
 
             strAlert = new string[9];
             strAlertBool = new bool[9];
@@ -159,8 +160,8 @@ namespace HardwareInformation
                             Console.ResetColor();
                         }
                     }
-                    File.Delete(StringsAndConstants.@fileBios);
-                    File.Delete(StringsAndConstants.@fileLogin);
+                    File.Delete(StringsAndConstants.biosPath);
+                    File.Delete(StringsAndConstants.loginPath);
                     webView2.Dispose();
                     Application.Exit();
                 }
@@ -178,8 +179,8 @@ namespace HardwareInformation
         {
             if(e.IsSuccess)
             {
-                File.Delete(StringsAndConstants.@fileBios);
-                File.Delete(StringsAndConstants.@fileLogin);
+                File.Delete(StringsAndConstants.biosPath);
+                File.Delete(StringsAndConstants.loginPath);
                 webView2.Dispose();
                 Application.Exit();
             }
@@ -315,7 +316,7 @@ namespace HardwareInformation
         //Sends hardware info to the specified server
         public void serverSendInfo(string[] serverArgs)
         {
-            webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11]);
+            webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);
         }
     }
 }

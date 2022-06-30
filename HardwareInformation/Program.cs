@@ -51,7 +51,7 @@ namespace HardwareInformation
         {
             string[] str = LoginFileReader.fetchInfo(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             if (str[0] == "true")
-                Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware));
+                Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario));
             else
             {
                 Console.WriteLine(StringsAndConstants.AUTH_ERROR);

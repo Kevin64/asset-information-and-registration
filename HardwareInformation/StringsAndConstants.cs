@@ -5,7 +5,7 @@ namespace HardwareInformation
 {
     internal static class StringsAndConstants
     {
-        internal const string cliHelpTextServer = "Servidor do sistema de patrimônio (Ex.: 192.168.76.103)";
+        internal const string cliHelpTextServer = "Servidor do sistema de patrimônio (Ex.: 192.168.76.103, localhost)";
         internal const string cliHelpTextPort = "Porta do sistema de patrimônio (Ex.: 8081)";
         internal const string cliHelpTextMode = "Tipo de serviço realizado (Valores possíveis: F/f para formatação, M/m para manutenção)";
         internal const string cliHelpTextPatrimony = "Patrimônio do equipamento (Ex.: 123456)";
@@ -43,8 +43,8 @@ namespace HardwareInformation
         internal const string student = "Aluno";
         internal const string replacedBattery = "C/ troca de pilha";
         internal const string sameBattery = "S/ troca de pilha";
-        internal static readonly List<string> defaultServerIP = new List<string>() { "192.168.76.103" };
-        internal static readonly List<string> defaultServerPort = new List<string>() { "8081" };
+        internal static readonly List<string> defaultServerIP = new List<string>() { "192.168.76.103", "localhost" };
+        internal static readonly List<string> defaultServerPort = new List<string>() { "8081", "80" };
         internal static readonly List<string> listBuilding = new List<string>() { "21", "67", "74A", "74B", "74C", "74D", "AR" };
         internal static readonly List<string> listMode = new List<string>() { "F", "f", "M", "m" };
         internal static readonly List<string> listActiveDirectory = new List<string>() { "Sim", "Não" };
@@ -54,6 +54,8 @@ namespace HardwareInformation
         internal static readonly List<string> listType = new List<string>() { "Desktop", "Notebook", "Tablet" };
         internal static readonly List<string> listBattery = new List<string>() { "Sim", "Não" };
 
+        internal static string loginPath = System.IO.Path.GetTempPath() + fileLogin;
+        internal static string biosPath = System.IO.Path.GetTempPath() + fileBios;
         internal const string THEME_REG_PATH = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize";
         internal const string HWINFO_REG_PATH = @"Software\HardwareInformation";
         internal const string THEME_REG_KEY = "AppsUseLightTheme";
@@ -118,14 +120,16 @@ namespace HardwareInformation
         internal static Color LIGHT_FORECOLOR = SystemColors.ControlText;
         internal static Color LIGHT_BACKCOLOR = SystemColors.ControlLight;
         internal static Color LIGHT_ASTERISKCOLOR = Color.Red;
+        internal static Color LIGHT_AGENT = Color.DarkCyan;
         internal static Color ALERT_COLOR = Color.Red;
         internal static Color OFFLINE_ALERT = Color.Red;
         internal static Color ONLINE_ALERT = Color.Lime;
         internal static Color DARK_FORECOLOR = SystemColors.ControlLightLight;
-        internal static Color DARK_BACKCOLOR = SystemColors.WindowFrame;
+        internal static Color DARK_BACKCOLOR = Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
         internal static Color DARK_ASTERISKCOLOR = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+        internal static Color DARK_AGENT = Color.DarkCyan;
         internal static Color LIGHT_BACKGROUND = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-        internal static Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+        internal static Color DARK_BACKGROUND = Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
         internal static Color BLUE_FOREGROUND = SystemColors.Highlight;
     }
 }

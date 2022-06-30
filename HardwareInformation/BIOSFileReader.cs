@@ -27,13 +27,13 @@ namespace HardwareInformation
 				wc = new WebClient();
 				wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.supplyBiosData);
 				System.Threading.Thread.Sleep(300);
-				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileBios, StringsAndConstants.fileBios);
+				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileBios, StringsAndConstants.biosPath);
 				System.Threading.Thread.Sleep(300);
 				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.fileShaBios);
 				System.Threading.Thread.Sleep(300);
 				sha1 = sha1.ToUpper();
-				fileB = new StreamReader(StringsAndConstants.fileBios);
-				aux = StringsAndConstants.fileBios;
+				fileB = new StreamReader(StringsAndConstants.biosPath);
+				aux = StringsAndConstants.biosPath;
 				fileB.Close();
 			}
 			catch
@@ -51,7 +51,7 @@ namespace HardwareInformation
 				return null;
 
 			string[] arr;
-			fileB = new StreamReader(StringsAndConstants.fileBios);
+			fileB = new StreamReader(StringsAndConstants.biosPath);
 			if (GetSha1Hash(aux).Equals(sha1))
 			{
 				jsonFile = fileB.ReadToEnd();

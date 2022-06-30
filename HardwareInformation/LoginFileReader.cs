@@ -27,13 +27,13 @@ namespace HardwareInformation
 				wc = new WebClient();
 				wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.supplyLoginData);
 				System.Threading.Thread.Sleep(300);
-				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileLogin, StringsAndConstants.fileLogin);
+				wc.DownloadFile("http://" + ip + ":" + port + "/" + StringsAndConstants.fileLogin, StringsAndConstants.loginPath);
 				System.Threading.Thread.Sleep(300);
 				sha1 = wc.DownloadString("http://" + ip + ":" + port + "/" + StringsAndConstants.fileShaLogin);
 				System.Threading.Thread.Sleep(300);
 				sha1 = sha1.ToUpper();
-				fileL = new StreamReader(StringsAndConstants.fileLogin);
-				aux = StringsAndConstants.fileLogin;
+				fileL = new StreamReader(StringsAndConstants.loginPath);
+				aux = StringsAndConstants.loginPath;
 				fileL.Close();
 			}
 			catch
@@ -51,7 +51,7 @@ namespace HardwareInformation
 				return null;
 
 			string[] arr;
-			fileL = new StreamReader(StringsAndConstants.fileLogin);
+			fileL = new StreamReader(StringsAndConstants.loginPath);
 			if (GetSha1Hash(aux).Equals(sha1))
 			{
 				jsonFile = fileL.ReadToEnd();
@@ -61,7 +61,7 @@ namespace HardwareInformation
 				{
 					if (nome.Equals(jsonParse[i].usuario) && MiscMethods.HashMd5Generator(senha).Equals(jsonParse[i].senha))
 					{
-						arr = new string[] { "true" };
+						arr = new string[] { "true", jsonParse[i].usuario};
 						fileL.Close();
 						return arr;
 					}

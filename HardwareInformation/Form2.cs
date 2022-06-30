@@ -43,6 +43,8 @@ namespace HardwareInformation
 			this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+			this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+			this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
 		}
 
@@ -67,44 +69,68 @@ namespace HardwareInformation
 			this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+			this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+			this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
 			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
 		}
 
 		//Checks the user/password and shows the main form
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
+			if (checkBox1.Checked)
 			{
-				if(MiscMethods.offlineLogin(textBoxUser.Text, textBoxPassword.Text))
-                {
-					this.Visible = false;
-					Form1 form = new Form1(true);
-					form.Visible = true;
-				}
-                else
-                {
+				Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null);
+				this.Hide();
+				form.ShowDialog();
+				form.Close();
+				this.Show();
+			}
+			else
+			{
+				if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
+				{
 					string[] str = LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
 
-					if(str == null)
+					if (str == null)
 						MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					else if (str[0] == "false")
 						MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					else
 					{
-						this.Visible = false;
-						Form1 form = new Form1(false);
-						form.Visible = true;
+						Form1 form = new Form1(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text);
+						this.Hide();
+						form.ShowDialog();
+						form.Close();
+						this.Show();
 					}
 					textBoxPassword.SelectAll();
 					textBoxPassword.Focus();
 				}
-			}
-			else
-			{
-				MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				textBoxPassword.SelectAll();
-				textBoxPassword.Focus();
+				else
+				{
+					MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					textBoxPassword.SelectAll();
+					textBoxPassword.Focus();
+				}
 			}
 		}
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+			if(checkBox1.Checked)
+            {
+				textBoxUser.Enabled = false;
+				textBoxPassword.Enabled = false;
+				comboBoxServerIP.Enabled = false;
+				comboBoxServerPort.Enabled = false;
+			}
+			else
+            {
+				textBoxUser.Enabled = true;
+				textBoxPassword.Enabled = true;
+				comboBoxServerIP.Enabled = true;
+				comboBoxServerPort.Enabled = true;
+			}
+        }
     }
 }

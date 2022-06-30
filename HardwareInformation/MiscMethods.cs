@@ -68,14 +68,6 @@ namespace HardwareInformation
             return sBuilder.ToString();
         }
 
-        //Authenticates the user
-        public static bool offlineLogin(string userName, string password)
-        {
-            if (userName == StringsAndConstants.offlineModeUser && password == StringsAndConstants.offlineModePassword)
-                return true;
-            return false;
-        }
-
         //Initializes the theme, according to the host theme
         public static bool ThemeInit()
         {

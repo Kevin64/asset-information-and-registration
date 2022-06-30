@@ -503,6 +503,16 @@ namespace HardwareInformation.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lightback {
+            get {
+                object obj = ResourceManager.GetObject("lightback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mac_black {
             get {
                 object obj = ResourceManager.GetObject("mac-black", resourceCulture);

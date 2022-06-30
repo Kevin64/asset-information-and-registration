@@ -136,6 +136,9 @@
   <data name="hdd-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\hdd-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="room-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\room-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ram-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\ram-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -175,26 +178,29 @@
   <data name="banner-dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\banner-dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tpm-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\tpm-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="model-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\model-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="seal-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\seal-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hostname-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\hostname-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="uti-logo-dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\uti-logo-dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ahci-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\ahci-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="secure-boot-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\secure-boot-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letter-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\letter-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bios-version-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\bios-version-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gpu-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\gpu-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sticker-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\sticker-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hostname-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\hostname-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,14 +235,17 @@
   <data name="banner-light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\banner-light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="in-use-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\in-use-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="who-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\who-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="standard-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\standard-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="model-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\model-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ticket-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\ticket-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ram-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\ram-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,9 +262,6 @@
   <data name="serial-no-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\serial-no-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="building-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\building-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ahci-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\ahci-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -271,8 +277,8 @@
   <data name="hdd-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\hdd-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ip-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\ip-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hostname-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\hostname-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="service-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\service-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,20 +343,20 @@
   <data name="windows-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\windows-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="uti-logo-light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uti-logo-light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ticket-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\ticket-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="disk-size-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\disk-size-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="secure-boot-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\secure-boot-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="building-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\building-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tpm-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\tpm-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gpu-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\gpu-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ahci-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\ahci-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bios-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\bios-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,8 +373,8 @@
   <data name="secure-boot-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\secure-boot-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="in-use-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\in-use-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="standard-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\standard-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seal-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\seal-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -376,17 +382,14 @@
   <data name="ip-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\ip-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="room-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\room-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gpu-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\gpu-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ip-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\ip-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hostname-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\hostname-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="model-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\model-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sticker-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons\sticker-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="server-final" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\server-final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -406,10 +409,10 @@
   <data name="cpu-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons\cpu-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="letter-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\letter-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="uti-logo-light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uti-logo-light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ticket-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons\ticket-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lightback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lightback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
