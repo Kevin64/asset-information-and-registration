@@ -5,8 +5,8 @@ namespace HardwareInformation
 {
     internal static class StringsAndConstants
     {
-        internal const string cliHelpTextServer = "Servidor do sistema de patrimônio (Ex.: 192.168.76.103, localhost)";
-        internal const string cliHelpTextPort = "Porta do sistema de patrimônio (Ex.: 8081)";
+        internal const string cliHelpTextServer = "Servidor do sistema de patrimônio (Ex.: 192.168.76.103, localhost, etc)";
+        internal const string cliHelpTextPort = "Porta do sistema de patrimônio (Ex.: 8081, 80, etc)";
         internal const string cliHelpTextMode = "Tipo de serviço realizado (Valores possíveis: F/f para formatação, M/m para manutenção)";
         internal const string cliHelpTextPatrimony = "Patrimônio do equipamento (Ex.: 123456)";
         internal const string cliHelpTextSeal = "Lacre do equipamento (se houver) (Ex.: 12345678)";
