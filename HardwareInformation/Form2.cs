@@ -41,6 +41,8 @@ namespace HardwareInformation
 			this.AuthButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 			this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+			this.checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+			this.checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -67,6 +69,8 @@ namespace HardwareInformation
 			this.AuthButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.BackColor = StringsAndConstants.DARK_BACKGROUND;
 			this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+			this.checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
+			this.checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -77,7 +81,7 @@ namespace HardwareInformation
 		//Checks the user/password and shows the main form
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (checkBox1.Checked)
+			if (checkBoxOfflineMode.Checked)
 			{
 				Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null);
 				this.Hide();
@@ -117,7 +121,7 @@ namespace HardwareInformation
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-			if(checkBox1.Checked)
+			if(checkBoxOfflineMode.Checked)
             {
 				textBoxUser.Enabled = false;
 				textBoxPassword.Enabled = false;

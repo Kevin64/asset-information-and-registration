@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
             this.comboBoxServerPort = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -185,17 +185,17 @@
             this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
             this.comboBoxServerPort.TabIndex = 3;
             // 
-            // checkBox1
+            // checkBoxOfflineMode
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkBox1.Location = new System.Drawing.Point(64, 247);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(86, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Modo Offline";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxOfflineMode.AutoSize = true;
+            this.checkBoxOfflineMode.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.checkBoxOfflineMode.Location = new System.Drawing.Point(64, 247);
+            this.checkBoxOfflineMode.Name = "checkBoxOfflineMode";
+            this.checkBoxOfflineMode.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxOfflineMode.TabIndex = 4;
+            this.checkBoxOfflineMode.Text = "Modo Offline";
+            this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
+            this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form2
             // 
@@ -204,7 +204,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(219, 352);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkBoxOfflineMode);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.label3);
@@ -245,6 +245,6 @@
         private System.Windows.Forms.ComboBox comboBoxServerIP;
         private System.Windows.Forms.ComboBox comboBoxServerPort;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxOfflineMode;
     }
 }
