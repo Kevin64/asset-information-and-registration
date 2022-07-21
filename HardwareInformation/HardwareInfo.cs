@@ -408,7 +408,15 @@ namespace HardwareInformation
 						else
 						{
 							mType = StringsAndConstants.ddr2;
-							mSpeed = " " + queryObj["Speed"].ToString() + StringsAndConstants.frequency;
+							try
+                            {
+								mSpeed = " " + queryObj["Speed"].ToString() + StringsAndConstants.frequency;
+							}
+							catch
+                            {
+								mSpeed = "";
+							}
+							
 						}
 					}
 					else
@@ -426,7 +434,15 @@ namespace HardwareInformation
 						else
 						{
 							mType = StringsAndConstants.ddr2;
-							mSpeed = " " + queryObj["Speed"].ToString() + StringsAndConstants.frequency;
+                            try
+                            {
+								mSpeed = " " + queryObj["Speed"].ToString() + StringsAndConstants.frequency;
+							}
+							catch
+                            {
+								mSpeed = "";
+							}
+							
 						}
 					}
 				}
