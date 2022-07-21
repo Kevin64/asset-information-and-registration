@@ -334,6 +334,24 @@ namespace HardwareInformation
 			return StringsAndConstants.unknown;
 		}
 
+		//Fetches the computer's manufacturer (alternative method)
+		public static string GetBoardMakerAlt()
+        {
+			ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_BaseBoard");
+
+			foreach (ManagementObject queryObj in searcher.Get())
+			{
+				try
+				{
+					return queryObj.GetPropertyValue("Manufacturer").ToString();
+				}
+				catch
+				{
+				}
+			}
+			return StringsAndConstants.unknown;
+		}
+
 		//Fetches the computer's model
 		public static string GetModel()
 		{
@@ -344,6 +362,24 @@ namespace HardwareInformation
 				try
 				{
 					return queryObj.GetPropertyValue("Model").ToString();
+				}
+				catch
+				{
+				}
+			}
+			return StringsAndConstants.unknown;
+		}
+
+		//Fetches the computer's model (alternative method)
+		public static string GetModelAlt()
+		{
+			ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "select * from Win32_BaseBoard");
+
+			foreach (ManagementObject queryObj in searcher.Get())
+			{
+				try
+				{
+					return queryObj.GetPropertyValue("Product").ToString();
 				}
 				catch
 				{

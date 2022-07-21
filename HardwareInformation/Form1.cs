@@ -2659,9 +2659,11 @@ namespace HardwareInformation
             if (!offlineMode)
             {
                 bw = new BusyWindow();
+                logoutLabel.Enabled = false;
                 bw.Visible = true;
                 await loadWebView2();
                 bw.Visible = false;
+                logoutLabel.Enabled = true;
             }            
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
@@ -2897,10 +2899,14 @@ namespace HardwareInformation
             i = 0;
 
             BM = HardwareInfo.GetBoardMaker();
+            if (BM == StringsAndConstants.ToBeFilledByOEM)
+                BM = HardwareInfo.GetBoardMakerAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
 
             Model = HardwareInfo.GetModel();
+            if (Model == StringsAndConstants.ToBeFilledByOEM)
+                Model = HardwareInfo.GetModelAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
 
@@ -3014,6 +3020,7 @@ namespace HardwareInformation
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel3) &&
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel4) &&
                 !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel5) &&
+                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel6) &&
                 Environment.Is64BitOperatingSystem &&
                 lblMediaOperation.Text.Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {

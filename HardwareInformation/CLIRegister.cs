@@ -204,6 +204,7 @@ namespace HardwareInformation
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel3) &&
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel4) &&
                 !strArgs[18].Contains(StringsAndConstants.nonAHCImodel5) &&
+                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel6) &&
                 Environment.Is64BitOperatingSystem &&
                 strArgs[31].Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
             {

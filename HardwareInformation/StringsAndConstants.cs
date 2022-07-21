@@ -64,9 +64,10 @@ namespace HardwareInformation
         internal const string fileBios = "bios.json", fileLogin = "login.json";
         internal const string fileShaBios = "bios-checksum.txt", fileShaLogin = "login-checksum.txt";
         internal const string formatURL = "recebeDadosFormatacao", maintenanceURL = "recebeDadosManutencao", supplyLoginData = "forneceDadosUsuario.php", supplyBiosData = "forneceDadosBIOS.php";
-        internal const string nonAHCImodel1 = "7057", nonAHCImodel2 = "8814", nonAHCImodel3 = "6078", nonAHCImodel4 = "560s", nonAHCImodel5 = "945GCM-S2C";
+        internal const string nonAHCImodel1 = "7057", nonAHCImodel2 = "8814", nonAHCImodel3 = "6078", nonAHCImodel4 = "560s", nonAHCImodel5 = "945GCM-S2C", nonAHCImodel6 = "G41M-VS3";
         internal const string nvmeModel1 = "A315-56";
         internal const string nonSecBootGPU1 = "210", nonSecBootGPU2 = "430";
+        internal const string ToBeFilledByOEM = "To Be Filled By O.E.M.";
 
         internal const string WEBVIEW2_PATH = "runtimes\\win-x86";
         internal const string SMART_FAIL = " (Drive com falha iminente)";
