@@ -2899,13 +2899,13 @@ namespace HardwareInformation
             i = 0;
 
             BM = HardwareInfo.GetBoardMaker();
-            if (BM == StringsAndConstants.ToBeFilledByOEM)
+            if (BM == StringsAndConstants.ToBeFilledByOEM || BM == "")
                 BM = HardwareInfo.GetBoardMakerAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
 
             Model = HardwareInfo.GetModel();
-            if (Model == StringsAndConstants.ToBeFilledByOEM)
+            if (Model == StringsAndConstants.ToBeFilledByOEM || Model == "")
                 Model = HardwareInfo.GetModelAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));

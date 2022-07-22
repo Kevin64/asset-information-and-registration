@@ -270,8 +270,12 @@ namespace HardwareInformation
         public void collectThread()
         {
             strArgs[17] = HardwareInfo.GetBoardMaker();
+            if (strArgs[17] == StringsAndConstants.ToBeFilledByOEM || strArgs[17] == "")
+                strArgs[17] = HardwareInfo.GetBoardMakerAlt();
 
             strArgs[18] = HardwareInfo.GetModel();
+            if (strArgs[18] == StringsAndConstants.ToBeFilledByOEM || strArgs[18] == "")
+                strArgs[18] = HardwareInfo.GetModelAlt();
 
             strArgs[19] = HardwareInfo.GetBoardProductId();
 
