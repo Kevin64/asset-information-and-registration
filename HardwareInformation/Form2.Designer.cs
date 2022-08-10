@@ -37,7 +37,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.configurableQualityPictureBox1 = new HardwareInformation.ConfigurableQualityPictureBox();
+            this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
@@ -237,7 +237,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button AuthButton;
-        private ConfigurableQualityPictureBox configurableQualityPictureBox1;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label3;

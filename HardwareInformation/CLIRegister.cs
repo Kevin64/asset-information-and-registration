@@ -4,6 +4,9 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HardwareInfoDLL;
+using ConstantsDLL;
+using JsonFileReaderDLL;
 
 namespace HardwareInformation
 {

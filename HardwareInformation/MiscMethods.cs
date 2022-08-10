@@ -1,14 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
+using ConstantsDLL;
 
 namespace HardwareInformation
 {
     internal static class MiscMethods
     {
-        
         //Check the registry for a installation/maintenance date
         public static double regCheck(bool mode)
         {
@@ -53,19 +51,6 @@ namespace HardwareInformation
             }
             else
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
-        }
-
-        //Generates a MD5 hash from an input
-        public static string HashMd5Generator(string input)
-        {
-            MD5 md5Hash = MD5.Create();
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-            return sBuilder.ToString();
         }
 
         //Initializes the theme, according to the host theme

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using ConstantsDLL;
+using JsonFileReaderDLL;
 
 namespace HardwareInformation
 {
