@@ -71,6 +71,44 @@ namespace HardwareInformation
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
         public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
         {
+           /** !!Labels!!
+            * strArgs[0](servidor)
+            * strArgs[1](porta)
+            * strArgs[2](modo)
+            * strArgs[3](patrimonio)
+            * strArgs[4](lacre)
+            * strArgs[5](sala)
+            * strArgs[6](predio)
+            * strArgs[7](ad)
+            * strArgs[8](padrao)
+            * strArgs[9](data)
+            * strArgs[10](pilha)
+            * strArgs[11](ticket)
+            * strArgs[12](uso)
+            * strArgs[13](etiqueta)
+            * strArgs[14](tipo)
+            * strArgs[15]()
+            * strArgs[16]()
+            * strArgs[17](BM)
+            * strArgs[18](Model)
+            * strArgs[19](SerialNo)
+            * strArgs[20](ProcName)
+            * strArgs[21](PM)
+            * strArgs[22](HDSize)
+            * strArgs[23](OS)
+            * strArgs[24](Hostname)
+            * strArgs[25](BIOS)
+            * strArgs[26](Mac)
+            * strArgs[27](IP)
+            * strArgs[28](BIOSType)
+            * strArgs[29](MediaType)
+            * strArgs[30](GPUInfo)
+            * strArgs[31](MediaOperation)
+            * strArgs[32](SecBoot)
+            * strArgs[33](VT)
+            * strArgs[34](TPM)
+            * strArgs[35](usuario)
+            */
             strArgs = new string[36];
             
             strArgs[0] = servidor;
@@ -90,8 +128,8 @@ namespace HardwareInformation
             strArgs[14] = tipo;
             strArgs[35] = usuario;
 
-            strAlert = new string[9];
-            strAlertBool = new bool[9];
+            strAlert = new string[11];
+            strAlertBool = new bool[11];
             strAlert[0] = StringsAndConstants.CLI_HOSTNAME_ALERT;
             strAlert[1] = StringsAndConstants.CLI_MEDIA_OPERATION_ALERT;
             strAlert[2] = StringsAndConstants.CLI_SECURE_BOOT_ALERT;
@@ -101,6 +139,8 @@ namespace HardwareInformation
             strAlert[6] = StringsAndConstants.CLI_NETWORK_IP_ERROR;
             strAlert[7] = StringsAndConstants.CLI_NETWORK_MAC_ERROR;
             strAlert[8] = StringsAndConstants.CLI_VT_ALERT;
+            strAlert[9] = StringsAndConstants.CLI_TPM_ALERT;
+            strAlert[10] = StringsAndConstants.CLI_MEMORY_ALERT;
 
             webView2 = new WebView2();
 
@@ -193,7 +233,7 @@ namespace HardwareInformation
         private void printHardwareData()
         {
             pass = true;
-            string[] str = BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[0], strArgs[1]);
+            string[] str = BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
             if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {
@@ -202,25 +242,11 @@ namespace HardwareInformation
                 strAlertBool[0] = true;
             }
             //The section below contains the exception cases for AHCI enforcement
-            if (!strArgs[18].Contains(StringsAndConstants.nonAHCImodel1) &&
-                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel2) &&
-                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel3) &&
-                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel4) &&
-                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel5) &&
-                !strArgs[18].Contains(StringsAndConstants.nonAHCImodel6) &&
-                Environment.Is64BitOperatingSystem &&
-                strArgs[31].Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
+            if (str != null && str[3].Equals("false"))
             {
-                if (strArgs[18].Contains(StringsAndConstants.nvmeModel1))
-                {
-                    strArgs[31] = StringsAndConstants.MEDIA_OPERATION_NVME;
-                }
-                else
-                {
-                    pass = false;
-                    strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
-                    strAlertBool[1] = true;
-                }
+                pass = false;
+                strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
+                strAlertBool[1] = true;
             }
             //The section below contains the exception cases for Secure Boot enforcement
             if (strArgs[32].Equals(StringsAndConstants.deactivated) &&
@@ -265,6 +291,24 @@ namespace HardwareInformation
                 pass = false;
                 strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
                 strAlertBool[8] = true;
+            }
+            if (str != null && str[2].Equals("false"))
+            {
+                pass = false;
+                strAlert[9] += strArgs[34] + StringsAndConstants.TPM_ERROR;
+                strAlertBool[9] = true;
+            }
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) < 4 && Environment.Is64BitOperatingSystem)
+            {
+                pass = false;
+                strAlert[10] += strArgs[21] + StringsAndConstants.NOT_ENOUGH_MEMORY;
+                strAlertBool[10] = true;
+            }
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) > 4 && !Environment.Is64BitOperatingSystem)
+            {
+                pass = false;
+                strAlert[10] += strArgs[21] + StringsAndConstants.TOO_MUCH_MEMORY;
+                strAlertBool[10] = true;
             }
         }
 

@@ -10,6 +10,7 @@ using HardwareInfoDLL;
 using ConstantsDLL;
 using JsonFileReaderDLL;
 using ConfigurableQualityPictureBoxDLL;
+using System.Linq;
 
 namespace HardwareInformation
 {
@@ -203,6 +204,8 @@ namespace HardwareInformation
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.timer9 = new System.Windows.Forms.Timer(this.components);
+            this.timer10 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -2015,8 +2018,8 @@ namespace HardwareInformation
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Coleta de hardware e cadastro de patrimônio / Unidade de Tecnologia da Informação" +
-    " do CCSH - UFSM";
+            this.Text = "Coleta de hardware e cadastro de patrimônio / Subdivisão de Tecnologia da Informa" +
+    "ção do CCSH - UFSM";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2228,6 +2231,8 @@ namespace HardwareInformation
         private Label label52;
         private Label label53;
         private ToolStripStatusLabel logoutLabel;
+        private Timer timer9;
+        private Timer timer10;
         private int i = 0;
 
         //Sets service mode to format
@@ -2677,6 +2682,8 @@ namespace HardwareInformation
             timer6.Tick += new EventHandler(flashTextBIOSType);
             timer7.Tick += new EventHandler(flashTextVT);
             timer8.Tick += new EventHandler(flashTextSmart);
+            timer9.Tick += new EventHandler(flashTextTPM);
+            timer10.Tick += new EventHandler(flashTextRAM);
             timer1.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer2.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer3.Interval = StringsAndConstants.TIMER_INTERVAL;
@@ -2685,6 +2692,8 @@ namespace HardwareInformation
             timer6.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer7.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer8.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer9.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer10.Interval = StringsAndConstants.TIMER_INTERVAL;
             label50.Text = ip;
             label51.Text = port;
             label52.Text = this.user.ToUpper();
@@ -2805,6 +2814,28 @@ namespace HardwareInformation
                 lblBIOSType.ForeColor = StringsAndConstants.ALERT_COLOR;
         }
 
+        //Sets the Physical Memory label to flash in red
+        private void flashTextRAM(Object myobject, EventArgs myEventArgs)
+        {
+            if (lblPM.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblPM.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                lblPM.ForeColor = StringsAndConstants.ALERT_COLOR;
+        }
+
+        //Sets the TPM label to flash in red
+        private void flashTextTPM(Object myobject, EventArgs myEventArgs)
+        {
+            if (lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
+                lblTPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            else if (lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false)
+                lblTPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                lblTPM.ForeColor = StringsAndConstants.ALERT_COLOR;
+        }
+
         //Starts the collection process
         private void collecting()
         {
@@ -2839,7 +2870,9 @@ namespace HardwareInformation
             timer6.Enabled = false;
             timer7.Enabled = false;
             timer8.Enabled = false;
-            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR)
+            timer9.Enabled = false;
+            timer10.Enabled = false;
+            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR || lblPM.ForeColor == StringsAndConstants.ALERT_COLOR || lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR)
             {
                 if (themeBool)
                 {
@@ -2849,6 +2882,8 @@ namespace HardwareInformation
                     lblBIOS.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                     lblVT.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                     lblSmart.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                    lblTPM.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 }
                 else
                 {
@@ -2858,6 +2893,8 @@ namespace HardwareInformation
                     lblBIOS.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                     lblVT.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                     lblSmart.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    lblTPM.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                 }
             }
 
@@ -3010,8 +3047,9 @@ namespace HardwareInformation
             sinceLabelUpdate(true);
             sinceLabelUpdate(false);
 
-            string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, ip, port);
+            string[] str = BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
+            //Scan if hostname is the default one
             if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {
                 pass = false;
@@ -3019,25 +3057,11 @@ namespace HardwareInformation
                 timer1.Enabled = true;
             }
             //The section below contains the exception cases for AHCI enforcement
-            if (!lblModel.Text.Contains(StringsAndConstants.nonAHCImodel1) &&
-                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel2) &&
-                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel3) &&
-                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel4) &&
-                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel5) &&
-                !lblModel.Text.Contains(StringsAndConstants.nonAHCImodel6) &&
-                Environment.Is64BitOperatingSystem &&
-                lblMediaOperation.Text.Equals(StringsAndConstants.MEDIA_OPERATION_IDE_RAID))
+            if (str != null && str[3].Equals("false"))
             {
-                if (lblModel.Text.Contains(StringsAndConstants.nvmeModel1))
-                {
-                    lblMediaOperation.Text = StringsAndConstants.MEDIA_OPERATION_NVME;
-                }
-                else
-                {
-                    pass = false;
-                    lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
-                    timer2.Enabled = true;
-                }
+                pass = false;
+                lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
+                timer2.Enabled = true;
             }
             //The section below contains the exception cases for Secure Boot enforcement
             if (lblSecBoot.Text.Equals(StringsAndConstants.deactivated) &&
@@ -3098,6 +3122,24 @@ namespace HardwareInformation
                 pass = false;
                 lblSmart.Text += StringsAndConstants.SMART_FAIL;
                 timer8.Enabled = true;
+            }
+            if(str != null && str[2].Equals("false"))
+            {
+                pass = false;
+                lblTPM.Text += StringsAndConstants.TPM_ERROR;
+                timer9.Enabled = true;
+            }
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) < 4 && Environment.Is64BitOperatingSystem)
+            {
+                pass = false;
+                lblPM.Text += StringsAndConstants.NOT_ENOUGH_MEMORY;
+                timer10.Enabled = true;
+            }
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) > 4 && !Environment.Is64BitOperatingSystem)
+            {
+                pass = false;
+                lblPM.Text += StringsAndConstants.TOO_MUCH_MEMORY;
+                timer10.Enabled = true;
             }
         }
 
