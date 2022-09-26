@@ -18,6 +18,7 @@ namespace HardwareInformation
 			comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 			comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
+			this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
 			//Change this for alpha, beta and final releases - uncomment the appropriate line
 			this.toolStripStatusLabel2.Text = MiscMethods.version();
 			//this.toolStripStatusLabel2.Text = MiscMethods.version("beta");

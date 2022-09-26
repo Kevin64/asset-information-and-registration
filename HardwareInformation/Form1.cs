@@ -41,8 +41,10 @@ namespace HardwareInformation
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
+            this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm1;
+            this.Text = StringsAndConstants.formTitlebarText;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = MiscMethods.version();
+            this.toolStripStatusLabel2.Text = MiscMethods.version();            
             //this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
             //this.toolStripStatusLabel2.Text = MiscMethods.version("alpha");
         }
@@ -691,9 +693,9 @@ namespace HardwareInformation
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label21.Location = new System.Drawing.Point(225, 403);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 13);
+            this.label21.Size = new System.Drawing.Size(95, 13);
             this.label21.TabIndex = 17;
-            this.label21.Text = "Servidor:";
+            this.label21.Text = "Status do servidor:";
             // 
             // label22
             // 
@@ -1224,9 +1226,9 @@ namespace HardwareInformation
             this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label29.Location = new System.Drawing.Point(37, 268);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(84, 13);
+            this.label29.Size = new System.Drawing.Size(126, 13);
             this.label29.TabIndex = 66;
-            this.label29.Text = "Placa de Vídeo:";
+            this.label29.Text = "Placa de Vídeo e vRAM:";
             // 
             // lblMediaType
             // 
@@ -1332,7 +1334,7 @@ namespace HardwareInformation
             // 
             this.label52.AutoSize = true;
             this.label52.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label52.Location = new System.Drawing.Point(275, 422);
+            this.label52.Location = new System.Drawing.Point(335, 422);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(10, 13);
             this.label52.TabIndex = 123;
@@ -1344,9 +1346,9 @@ namespace HardwareInformation
             this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label53.Location = new System.Drawing.Point(225, 422);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(44, 13);
+            this.label53.Size = new System.Drawing.Size(104, 13);
             this.label53.TabIndex = 122;
-            this.label53.Text = "Agente:";
+            this.label53.Text = "Agente responsável:";
             // 
             // label51
             // 
@@ -1764,7 +1766,7 @@ namespace HardwareInformation
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label26.Location = new System.Drawing.Point(275, 403);
+            this.label26.Location = new System.Drawing.Point(335, 403);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(10, 13);
             this.label26.TabIndex = 72;
@@ -1875,7 +1877,7 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 17);
             // 
             // statusStrip1
             // 
@@ -1886,9 +1888,9 @@ namespace HardwareInformation
             this.logoutLabel,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 701);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 703);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(1056, 22);
             this.statusStrip1.TabIndex = 60;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1903,7 +1905,7 @@ namespace HardwareInformation
             this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
+            this.comboBoxTheme.Size = new System.Drawing.Size(48, 20);
             this.comboBoxTheme.Text = "Tema";
             // 
             // toolStripMenuItem1
@@ -1938,7 +1940,7 @@ namespace HardwareInformation
             // 
             this.logoutLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.logoutLabel.Name = "logoutLabel";
-            this.logoutLabel.Size = new System.Drawing.Size(45, 19);
+            this.logoutLabel.Size = new System.Drawing.Size(45, 17);
             this.logoutLabel.Text = "Logout";
             this.logoutLabel.Click += new System.EventHandler(this.logoutLabel_Click);
             // 
@@ -1949,10 +1951,8 @@ namespace HardwareInformation
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(944, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(944, 17);
             this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "Sistema desenvolvido pelo servidor Kevin Costa, SIAPE 1971957, para uso no serviç" +
-    "o da Subdivisão de Tecnologia da Informação do CCSH - UFSM";
             // 
             // timer1
             // 
@@ -2018,8 +2018,6 @@ namespace HardwareInformation
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Coleta de hardware e cadastro de patrimônio / Subdivisão de Tecnologia da Informa" +
-    "ção do CCSH - UFSM";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

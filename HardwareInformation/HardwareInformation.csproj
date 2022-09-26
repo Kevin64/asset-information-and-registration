@@ -156,7 +156,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="MiscMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageDetail.cs" />
     <EmbeddedResource Include="BusyWindow.resx">
       <DependentUpon>BusyWindow.cs</DependentUpon>
     </EmbeddedResource>
