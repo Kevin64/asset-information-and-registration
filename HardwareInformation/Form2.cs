@@ -28,57 +28,82 @@ namespace HardwareInformation
 		//Sets a light theme for the login form
 		public void lightTheme()
 		{
-			this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+
+            this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+
 			this.textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 			this.textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 			this.textBoxPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+
 			this.comboBoxServerIP.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 			this.comboBoxServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-			this.comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxServerIP.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 			this.comboBoxServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-			this.AuthButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxServerPort.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+
+            this.AuthButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 			this.AuthButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-			this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-			this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-			this.checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.AuthButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.AuthButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+
+            this.checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 			this.checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 			this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 			this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
+            this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
 		}
 
 		//Sets a dark theme for the login form
 		public void darkTheme()
 		{
-			this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+
 			this.textBoxUser.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 			this.textBoxUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 			this.textBoxPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+
 			this.comboBoxServerIP.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 			this.comboBoxServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-			this.comboBoxServerPort.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxServerIP.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxServerIP.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxServerPort.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 			this.comboBoxServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-			this.AuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxServerPort.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxServerPort.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+
+            this.AuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 			this.AuthButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-			this.BackColor = StringsAndConstants.DARK_BACKGROUND;
-			this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.AuthButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+			
 			this.checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
 			this.checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+			
 			this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 			this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 			this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
-			this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
+            this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
 		}
 
 		//Checks the user/password and shows the main form

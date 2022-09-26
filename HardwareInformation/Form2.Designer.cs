@@ -40,9 +40,9 @@
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxServerIP = new System.Windows.Forms.ComboBox();
-            this.comboBoxServerPort = new System.Windows.Forms.ComboBox();
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
+            this.comboBoxServerIP = new CustomFlatComboBox();
+            this.comboBoxServerPort = new CustomFlatComboBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +119,7 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(169, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(200, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabel2
@@ -162,28 +162,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Servidor:";
             // 
-            // comboBoxServerIP
-            // 
-            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerIP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxServerIP.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServerIP.FormattingEnabled = true;
-            this.comboBoxServerIP.Location = new System.Drawing.Point(64, 191);
-            this.comboBoxServerIP.Name = "comboBoxServerIP";
-            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxServerIP.TabIndex = 2;
-            // 
-            // comboBoxServerPort
-            // 
-            this.comboBoxServerPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerPort.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxServerPort.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServerPort.FormattingEnabled = true;
-            this.comboBoxServerPort.Location = new System.Drawing.Point(64, 217);
-            this.comboBoxServerPort.Name = "comboBoxServerPort";
-            this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxServerPort.TabIndex = 3;
-            // 
             // checkBoxOfflineMode
             // 
             this.checkBoxOfflineMode.AutoSize = true;
@@ -196,6 +174,28 @@
             this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
             this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // comboBoxServerIP
+            // 
+            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerIP.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.FormattingEnabled = true;
+            this.comboBoxServerIP.Location = new System.Drawing.Point(64, 190);
+            this.comboBoxServerIP.Name = "comboBoxServerIP";
+            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxServerIP.TabIndex = 2;
+            // 
+            // comboBoxServerPort
+            // 
+            this.comboBoxServerPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerPort.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerPort.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerPort.FormattingEnabled = true;
+            this.comboBoxServerPort.Location = new System.Drawing.Point(64, 217);
+            this.comboBoxServerPort.Name = "comboBoxServerPort";
+            this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxServerPort.TabIndex = 3;
+            // 
             // Form2
             // 
             this.AcceptButton = this.AuthButton;
@@ -203,9 +203,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(219, 352);
-            this.Controls.Add(this.checkBoxOfflineMode);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
+            this.Controls.Add(this.checkBoxOfflineMode);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.statusStrip1);
@@ -241,9 +241,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBoxServerIP;
-        private System.Windows.Forms.ComboBox comboBoxServerPort;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.CheckBox checkBoxOfflineMode;
+        private CustomFlatComboBox comboBoxServerIP;
+        private CustomFlatComboBox comboBoxServerPort;
     }
 }

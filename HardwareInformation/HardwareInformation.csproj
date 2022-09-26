@@ -141,6 +141,10 @@
     <Compile Include="BusyWindow.Designer.cs">
       <DependentUpon>BusyWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomGroupBox.cs" />
+    <Compile Include="CustomFlatCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CLIRegister.cs">
       <SubType>Form</SubType>
     </Compile>
