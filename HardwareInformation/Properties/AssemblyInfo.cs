@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Subdivisão de Tecnologia da Informação / CCSH - UFSM")]
+[assembly: AssemblyCompany("Universidade Federal de Santa Maria")]
 [assembly: AssemblyProduct("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyCopyright("Copyright UFSM © 2022")]
 [assembly: AssemblyTrademark("")]
