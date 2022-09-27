@@ -3223,13 +3223,13 @@ namespace HardwareInformation
                 lblTPM.Text += StringsAndConstants.TPM_ERROR;
                 timer9.Enabled = true;
             }
-            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) < 4 && Environment.Is64BitOperatingSystem)
+            if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) < 4.0 && Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 lblPM.Text += StringsAndConstants.NOT_ENOUGH_MEMORY;
                 timer10.Enabled = true;
             }
-            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) > 4 && !Environment.Is64BitOperatingSystem)
+            if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) > 4.0 && !Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 lblPM.Text += StringsAndConstants.TOO_MUCH_MEMORY;
