@@ -2276,15 +2276,15 @@ namespace HardwareInformation
         //Sets service to employee
         private void employeeButton1_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxActiveDirectory.SelectedIndex = 0;
-            comboBoxStandard.SelectedIndex = 1;
+            comboBoxActiveDirectory.SelectedIndex = 1;
+            comboBoxStandard.SelectedIndex = 0;
         }
 
         //Sets service to student
         private void studentButton2_CheckedChanged(object sender, EventArgs e)
         {
-            comboBoxActiveDirectory.SelectedIndex = 1;
-            comboBoxStandard.SelectedIndex = 0;
+            comboBoxActiveDirectory.SelectedIndex = 0;
+            comboBoxStandard.SelectedIndex = 1;
         }
 
         private void comboBoxThemeInit()
