@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HardwareInformation</RootNamespace>
-    <AssemblyName>CadastroPatrimonial-v3.15.0.2209</AssemblyName>
+    <AssemblyName>CadastroPatrimonial-v3.15.1.2209</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
