@@ -359,8 +359,16 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>del /F /Q $(TargetName)-v@(VersionNumber)-SNAPSHOT$(TargetExt)
-ren $(TargetFileName) $(TargetName)-v@(VersionNumber)-SNAPSHOT$(TargetExt)</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Debug del /F /Q $(TargetName)-SNAPSHOT$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-SNAPSHOT$(TargetExt)
+if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt)
+del /F /Q Newtonsoft.Json.xml
+del /F /Q Microsoft.Web.WebView2.Wpf.xml
+del /F /Q Microsoft.Web.WebView2.WinForms.xml
+del /F /Q Microsoft.Web.WebView2.Core.xml
+del /F /Q CommandLine.xml
+del /F /Q ..\$(TargetName)-v@(VersionNumber).7z
+
+7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
