@@ -46,9 +46,8 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm1;
             this.Text = StringsAndConstants.formTitlebarText;
             //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            this.toolStripStatusLabel2.Text = MiscMethods.version();            
-            //this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
-            //this.toolStripStatusLabel2.Text = MiscMethods.version("alpha");
+            //this.toolStripStatusLabel2.Text = MiscMethods.version();            
+            this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
         }
 
 		private void InitializeComponent()
@@ -3329,7 +3328,7 @@ namespace HardwareInformation
         //Loads webView2 component
         public async Task loadWebView2()
         {
-            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_PATH, Path.GetTempPath());
+            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH + MiscMethods.getWebView2Version(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
         }
 

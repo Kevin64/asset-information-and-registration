@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using ConstantsDLL;
+using System.Windows.Input;
 
 namespace HardwareInformation
 {
@@ -51,6 +52,20 @@ namespace HardwareInformation
             }
             else
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+        }
+
+        public static string getWebView2Version()
+        {
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH, true);
+            if(rk != null)
+            {
+                Object o = rk.GetValue("pv");
+                if (o != null)
+                    return o.ToString();
+                else return "";
+            }
+            else
+                return "";
         }
 
         //Initializes the theme, according to the host theme

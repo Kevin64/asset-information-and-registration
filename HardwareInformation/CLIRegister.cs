@@ -361,7 +361,7 @@ namespace HardwareInformation
         //Loads webView2 component
         public async Task loadWebView2()
         {
-            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_PATH, Path.GetTempPath());
+            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH + MiscMethods.getWebView2Version(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
         }
 
