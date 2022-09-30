@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Universidade Federal de Santa Maria")]
 [assembly: AssemblyProduct("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyCopyright("Copyright UFSM © 2022")]
@@ -34,3 +33,9 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("3.16.0.0")]
 [assembly: AssemblyFileVersion("3.16.0.0")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif

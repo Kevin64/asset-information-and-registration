@@ -8,7 +8,9 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HardwareInformation</RootNamespace>
-    <AssemblyName>CadastroPatrimonial</AssemblyName>
+    <!-- <AssemblyName>CadastroPatrimonial</AssemblyName> -->
+    <AssemblyName Condition="'$(Configuration)'=='Debug'">CadastroPatrimonial-SNAPSHOT</AssemblyName>
+    <AssemblyName Condition="'$(Configuration)'=='Release'">CadastroPatrimonial</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -359,16 +361,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>if $(ConfigurationName) == Debug del /F /Q $(TargetName)-SNAPSHOT$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-SNAPSHOT$(TargetExt)
-if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt)
-del /F /Q Newtonsoft.Json.xml
-del /F /Q Microsoft.Web.WebView2.Wpf.xml
-del /F /Q Microsoft.Web.WebView2.WinForms.xml
-del /F /Q Microsoft.Web.WebView2.Core.xml
-del /F /Q CommandLine.xml
-del /F /Q ..\$(TargetName)-v@(VersionNumber).7z
-
-7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; del /F /Q *.xml &amp; del /F /Q ..\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
