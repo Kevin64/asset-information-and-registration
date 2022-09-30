@@ -10,9 +10,7 @@ using HardwareInfoDLL;
 using ConstantsDLL;
 using JsonFileReaderDLL;
 using ConfigurableQualityPictureBoxDLL;
-using System.Linq;
-using System.Drawing;
-using System.Runtime.CompilerServices;
+using MRG.Controls.UI;
 
 namespace HardwareInformation
 {
@@ -204,6 +202,27 @@ namespace HardwareInformation
             this.timer9 = new System.Windows.Forms.Timer(this.components);
             this.timer10 = new System.Windows.Forms.Timer(this.components);
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle2 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle3 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle4 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle5 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle6 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle7 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle8 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle9 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle10 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle11 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle12 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle13 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle14 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle15 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle16 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle17 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle18 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle19 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle20 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle21 = new MRG.Controls.UI.LoadingCircle();
             this.comboBoxBattery = new CustomFlatComboBox();
             this.comboBoxStandard = new CustomFlatComboBox();
             this.comboBoxActiveDirectory = new CustomFlatComboBox();
@@ -211,6 +230,8 @@ namespace HardwareInformation
             this.comboBoxInUse = new CustomFlatComboBox();
             this.comboBoxType = new CustomFlatComboBox();
             this.comboBoxBuilding = new CustomFlatComboBox();
+            this.loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
+            this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -258,7 +279,7 @@ namespace HardwareInformation
             // 
             this.lblBM.AutoSize = true;
             this.lblBM.ForeColor = System.Drawing.Color.Silver;
-            this.lblBM.Location = new System.Drawing.Point(197, 20);
+            this.lblBM.Location = new System.Drawing.Point(195, 20);
             this.lblBM.Name = "lblBM";
             this.lblBM.Size = new System.Drawing.Size(10, 13);
             this.lblBM.TabIndex = 7;
@@ -268,7 +289,7 @@ namespace HardwareInformation
             // 
             this.lblModel.AutoSize = true;
             this.lblModel.ForeColor = System.Drawing.Color.Silver;
-            this.lblModel.Location = new System.Drawing.Point(197, 46);
+            this.lblModel.Location = new System.Drawing.Point(195, 46);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(10, 13);
             this.lblModel.TabIndex = 8;
@@ -278,7 +299,7 @@ namespace HardwareInformation
             // 
             this.lblSerialNo.AutoSize = true;
             this.lblSerialNo.ForeColor = System.Drawing.Color.Silver;
-            this.lblSerialNo.Location = new System.Drawing.Point(197, 72);
+            this.lblSerialNo.Location = new System.Drawing.Point(195, 72);
             this.lblSerialNo.Name = "lblSerialNo";
             this.lblSerialNo.Size = new System.Drawing.Size(10, 13);
             this.lblSerialNo.TabIndex = 9;
@@ -288,7 +309,7 @@ namespace HardwareInformation
             // 
             this.lblProcName.AutoSize = true;
             this.lblProcName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProcName.Location = new System.Drawing.Point(197, 98);
+            this.lblProcName.Location = new System.Drawing.Point(195, 98);
             this.lblProcName.Name = "lblProcName";
             this.lblProcName.Size = new System.Drawing.Size(10, 13);
             this.lblProcName.TabIndex = 10;
@@ -298,7 +319,7 @@ namespace HardwareInformation
             // 
             this.lblPM.AutoSize = true;
             this.lblPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblPM.Location = new System.Drawing.Point(197, 124);
+            this.lblPM.Location = new System.Drawing.Point(195, 124);
             this.lblPM.Name = "lblPM";
             this.lblPM.Size = new System.Drawing.Size(10, 13);
             this.lblPM.TabIndex = 11;
@@ -308,7 +329,7 @@ namespace HardwareInformation
             // 
             this.lblHDSize.AutoSize = true;
             this.lblHDSize.ForeColor = System.Drawing.Color.Silver;
-            this.lblHDSize.Location = new System.Drawing.Point(197, 150);
+            this.lblHDSize.Location = new System.Drawing.Point(195, 150);
             this.lblHDSize.Name = "lblHDSize";
             this.lblHDSize.Size = new System.Drawing.Size(10, 13);
             this.lblHDSize.TabIndex = 12;
@@ -318,7 +339,7 @@ namespace HardwareInformation
             // 
             this.lblOS.AutoSize = true;
             this.lblOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblOS.Location = new System.Drawing.Point(197, 280);
+            this.lblOS.Location = new System.Drawing.Point(195, 280);
             this.lblOS.Name = "lblOS";
             this.lblOS.Size = new System.Drawing.Size(10, 13);
             this.lblOS.TabIndex = 13;
@@ -328,7 +349,7 @@ namespace HardwareInformation
             // 
             this.lblHostname.AutoSize = true;
             this.lblHostname.ForeColor = System.Drawing.Color.Silver;
-            this.lblHostname.Location = new System.Drawing.Point(197, 306);
+            this.lblHostname.Location = new System.Drawing.Point(195, 306);
             this.lblHostname.Name = "lblHostname";
             this.lblHostname.Size = new System.Drawing.Size(10, 13);
             this.lblHostname.TabIndex = 15;
@@ -338,7 +359,7 @@ namespace HardwareInformation
             // 
             this.lblMac.AutoSize = true;
             this.lblMac.ForeColor = System.Drawing.Color.Silver;
-            this.lblMac.Location = new System.Drawing.Point(197, 332);
+            this.lblMac.Location = new System.Drawing.Point(195, 332);
             this.lblMac.Name = "lblMac";
             this.lblMac.Size = new System.Drawing.Size(10, 13);
             this.lblMac.TabIndex = 18;
@@ -348,7 +369,7 @@ namespace HardwareInformation
             // 
             this.lblIP.AutoSize = true;
             this.lblIP.ForeColor = System.Drawing.Color.Silver;
-            this.lblIP.Location = new System.Drawing.Point(197, 358);
+            this.lblIP.Location = new System.Drawing.Point(195, 358);
             this.lblIP.Name = "lblIP";
             this.lblIP.Size = new System.Drawing.Size(10, 13);
             this.lblIP.TabIndex = 19;
@@ -554,9 +575,9 @@ namespace HardwareInformation
             this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registerButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.registerButton.Location = new System.Drawing.Point(767, 633);
+            this.registerButton.Location = new System.Drawing.Point(760, 633);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(258, 56);
+            this.registerButton.Size = new System.Drawing.Size(265, 56);
             this.registerButton.TabIndex = 53;
             this.registerButton.Text = "Cadastrar / Atualizar dados";
             this.registerButton.UseVisualStyleBackColor = false;
@@ -619,9 +640,9 @@ namespace HardwareInformation
             this.collectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.collectButton.Location = new System.Drawing.Point(575, 633);
             this.collectButton.Name = "collectButton";
-            this.collectButton.Size = new System.Drawing.Size(186, 25);
+            this.collectButton.Size = new System.Drawing.Size(180, 25);
             this.collectButton.TabIndex = 51;
-            this.collectButton.Text = "Coletar Novamente";
+            this.collectButton.Text = "Coletar novamente";
             this.collectButton.UseVisualStyleBackColor = false;
             this.collectButton.Click += new System.EventHandler(this.coleta_Click);
             // 
@@ -649,7 +670,7 @@ namespace HardwareInformation
             // 
             this.lblBIOS.AutoSize = true;
             this.lblBIOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOS.Location = new System.Drawing.Point(197, 410);
+            this.lblBIOS.Location = new System.Drawing.Point(195, 410);
             this.lblBIOS.Name = "lblBIOS";
             this.lblBIOS.Size = new System.Drawing.Size(10, 13);
             this.lblBIOS.TabIndex = 57;
@@ -662,7 +683,7 @@ namespace HardwareInformation
             this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.accessSystemButton.Location = new System.Drawing.Point(575, 664);
             this.accessSystemButton.Name = "accessSystemButton";
-            this.accessSystemButton.Size = new System.Drawing.Size(186, 25);
+            this.accessSystemButton.Size = new System.Drawing.Size(180, 25);
             this.accessSystemButton.TabIndex = 52;
             this.accessSystemButton.Text = "Acessar sistema de patrimônios";
             this.accessSystemButton.UseVisualStyleBackColor = false;
@@ -682,7 +703,7 @@ namespace HardwareInformation
             // 
             this.lblBIOSType.AutoSize = true;
             this.lblBIOSType.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOSType.Location = new System.Drawing.Point(197, 384);
+            this.lblBIOSType.Location = new System.Drawing.Point(195, 384);
             this.lblBIOSType.Name = "lblBIOSType";
             this.lblBIOSType.Size = new System.Drawing.Size(10, 13);
             this.lblBIOSType.TabIndex = 63;
@@ -690,6 +711,25 @@ namespace HardwareInformation
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.loadingCircle19);
+            this.groupBox1.Controls.Add(this.loadingCircle18);
+            this.groupBox1.Controls.Add(this.loadingCircle17);
+            this.groupBox1.Controls.Add(this.loadingCircle16);
+            this.groupBox1.Controls.Add(this.loadingCircle15);
+            this.groupBox1.Controls.Add(this.loadingCircle14);
+            this.groupBox1.Controls.Add(this.loadingCircle13);
+            this.groupBox1.Controls.Add(this.loadingCircle12);
+            this.groupBox1.Controls.Add(this.loadingCircle11);
+            this.groupBox1.Controls.Add(this.loadingCircle10);
+            this.groupBox1.Controls.Add(this.loadingCircle9);
+            this.groupBox1.Controls.Add(this.loadingCircle8);
+            this.groupBox1.Controls.Add(this.loadingCircle7);
+            this.groupBox1.Controls.Add(this.loadingCircle6);
+            this.groupBox1.Controls.Add(this.loadingCircle5);
+            this.groupBox1.Controls.Add(this.loadingCircle4);
+            this.groupBox1.Controls.Add(this.loadingCircle3);
+            this.groupBox1.Controls.Add(this.loadingCircle2);
+            this.groupBox1.Controls.Add(this.loadingCircle1);
             this.groupBox1.Controls.Add(this.separatorH);
             this.groupBox1.Controls.Add(this.separatorV);
             this.groupBox1.Controls.Add(this.configurableQualityPictureBox33);
@@ -807,7 +847,7 @@ namespace HardwareInformation
             // 
             this.lblSmart.AutoSize = true;
             this.lblSmart.ForeColor = System.Drawing.Color.Silver;
-            this.lblSmart.Location = new System.Drawing.Point(197, 176);
+            this.lblSmart.Location = new System.Drawing.Point(195, 176);
             this.lblSmart.Name = "lblSmart";
             this.lblSmart.Size = new System.Drawing.Size(10, 13);
             this.lblSmart.TabIndex = 106;
@@ -817,7 +857,7 @@ namespace HardwareInformation
             // 
             this.lblTPM.AutoSize = true;
             this.lblTPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblTPM.Location = new System.Drawing.Point(197, 488);
+            this.lblTPM.Location = new System.Drawing.Point(195, 488);
             this.lblTPM.Name = "lblTPM";
             this.lblTPM.Size = new System.Drawing.Size(10, 13);
             this.lblTPM.TabIndex = 109;
@@ -878,7 +918,7 @@ namespace HardwareInformation
             // 
             this.lblVT.AutoSize = true;
             this.lblVT.ForeColor = System.Drawing.Color.Silver;
-            this.lblVT.Location = new System.Drawing.Point(197, 462);
+            this.lblVT.Location = new System.Drawing.Point(195, 462);
             this.lblVT.Name = "lblVT";
             this.lblVT.Size = new System.Drawing.Size(10, 13);
             this.lblVT.TabIndex = 103;
@@ -1106,7 +1146,7 @@ namespace HardwareInformation
             // 
             this.lblSecBoot.AutoSize = true;
             this.lblSecBoot.ForeColor = System.Drawing.Color.Silver;
-            this.lblSecBoot.Location = new System.Drawing.Point(197, 436);
+            this.lblSecBoot.Location = new System.Drawing.Point(195, 436);
             this.lblSecBoot.Name = "lblSecBoot";
             this.lblSecBoot.Size = new System.Drawing.Size(10, 13);
             this.lblSecBoot.TabIndex = 71;
@@ -1126,7 +1166,7 @@ namespace HardwareInformation
             // 
             this.lblMediaOperation.AutoSize = true;
             this.lblMediaOperation.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaOperation.Location = new System.Drawing.Point(197, 228);
+            this.lblMediaOperation.Location = new System.Drawing.Point(195, 228);
             this.lblMediaOperation.Name = "lblMediaOperation";
             this.lblMediaOperation.Size = new System.Drawing.Size(10, 13);
             this.lblMediaOperation.TabIndex = 69;
@@ -1146,7 +1186,7 @@ namespace HardwareInformation
             // 
             this.lblGPUInfo.AutoSize = true;
             this.lblGPUInfo.ForeColor = System.Drawing.Color.Silver;
-            this.lblGPUInfo.Location = new System.Drawing.Point(197, 254);
+            this.lblGPUInfo.Location = new System.Drawing.Point(195, 254);
             this.lblGPUInfo.Name = "lblGPUInfo";
             this.lblGPUInfo.Size = new System.Drawing.Size(10, 13);
             this.lblGPUInfo.TabIndex = 67;
@@ -1166,7 +1206,7 @@ namespace HardwareInformation
             // 
             this.lblMediaType.AutoSize = true;
             this.lblMediaType.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaType.Location = new System.Drawing.Point(197, 202);
+            this.lblMediaType.Location = new System.Drawing.Point(195, 202);
             this.lblMediaType.Name = "lblMediaType";
             this.lblMediaType.Size = new System.Drawing.Size(10, 13);
             this.lblMediaType.TabIndex = 65;
@@ -1686,6 +1726,8 @@ namespace HardwareInformation
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.loadingCircle21);
+            this.groupBox3.Controls.Add(this.loadingCircle20);
             this.groupBox3.Controls.Add(this.lblMaintenanceSince);
             this.groupBox3.Controls.Add(this.lblInstallSince);
             this.groupBox3.Controls.Add(this.label43);
@@ -1908,7 +1950,7 @@ namespace HardwareInformation
             this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView2.Location = new System.Drawing.Point(1, 13);
             this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(448, 50);
+            this.webView2.Size = new System.Drawing.Size(448, 51);
             this.webView2.TabIndex = 0;
             this.webView2.ZoomFactor = 1D;
             // 
@@ -1923,11 +1965,347 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.InterpolationMode = null;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
-            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1085, 109);
+            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1061, 109);
             this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.configurableQualityPictureBox1.SmoothingMode = null;
             this.configurableQualityPictureBox1.TabIndex = 64;
             this.configurableQualityPictureBox1.TabStop = false;
+            // 
+            // loadingCircle1
+            // 
+            this.loadingCircle1.Active = false;
+            this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.Location = new System.Drawing.Point(194, 14);
+            this.loadingCircle1.Name = "loadingCircle1";
+            this.loadingCircle1.NumberSpoke = 24;
+            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.RotationSpeed = 20;
+            this.loadingCircle1.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle1.TabIndex = 113;
+            this.loadingCircle1.Text = "loadingCircle1";
+            // 
+            // loadingCircle2
+            // 
+            this.loadingCircle2.Active = false;
+            this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle2.InnerCircleRadius = 8;
+            this.loadingCircle2.Location = new System.Drawing.Point(194, 40);
+            this.loadingCircle2.Name = "loadingCircle2";
+            this.loadingCircle2.NumberSpoke = 24;
+            this.loadingCircle2.OuterCircleRadius = 9;
+            this.loadingCircle2.RotationSpeed = 20;
+            this.loadingCircle2.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle2.SpokeThickness = 4;
+            this.loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle2.TabIndex = 114;
+            this.loadingCircle2.Text = "loadingCircle2";
+            // 
+            // loadingCircle3
+            // 
+            this.loadingCircle3.Active = false;
+            this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle3.InnerCircleRadius = 8;
+            this.loadingCircle3.Location = new System.Drawing.Point(194, 66);
+            this.loadingCircle3.Name = "loadingCircle3";
+            this.loadingCircle3.NumberSpoke = 24;
+            this.loadingCircle3.OuterCircleRadius = 9;
+            this.loadingCircle3.RotationSpeed = 20;
+            this.loadingCircle3.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle3.SpokeThickness = 4;
+            this.loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle3.TabIndex = 115;
+            this.loadingCircle3.Text = "loadingCircle3";
+            // 
+            // loadingCircle4
+            // 
+            this.loadingCircle4.Active = false;
+            this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle4.InnerCircleRadius = 8;
+            this.loadingCircle4.Location = new System.Drawing.Point(194, 92);
+            this.loadingCircle4.Name = "loadingCircle4";
+            this.loadingCircle4.NumberSpoke = 24;
+            this.loadingCircle4.OuterCircleRadius = 9;
+            this.loadingCircle4.RotationSpeed = 20;
+            this.loadingCircle4.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle4.SpokeThickness = 4;
+            this.loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle4.TabIndex = 116;
+            this.loadingCircle4.Text = "loadingCircle4";
+            // 
+            // loadingCircle5
+            // 
+            this.loadingCircle5.Active = false;
+            this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle5.InnerCircleRadius = 8;
+            this.loadingCircle5.Location = new System.Drawing.Point(194, 118);
+            this.loadingCircle5.Name = "loadingCircle5";
+            this.loadingCircle5.NumberSpoke = 24;
+            this.loadingCircle5.OuterCircleRadius = 9;
+            this.loadingCircle5.RotationSpeed = 20;
+            this.loadingCircle5.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle5.SpokeThickness = 4;
+            this.loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle5.TabIndex = 117;
+            this.loadingCircle5.Text = "loadingCircle5";
+            // 
+            // loadingCircle6
+            // 
+            this.loadingCircle6.Active = false;
+            this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle6.InnerCircleRadius = 8;
+            this.loadingCircle6.Location = new System.Drawing.Point(194, 144);
+            this.loadingCircle6.Name = "loadingCircle6";
+            this.loadingCircle6.NumberSpoke = 24;
+            this.loadingCircle6.OuterCircleRadius = 9;
+            this.loadingCircle6.RotationSpeed = 20;
+            this.loadingCircle6.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle6.SpokeThickness = 4;
+            this.loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle6.TabIndex = 118;
+            this.loadingCircle6.Text = "loadingCircle6";
+            // 
+            // loadingCircle7
+            // 
+            this.loadingCircle7.Active = false;
+            this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle7.InnerCircleRadius = 8;
+            this.loadingCircle7.Location = new System.Drawing.Point(194, 170);
+            this.loadingCircle7.Name = "loadingCircle7";
+            this.loadingCircle7.NumberSpoke = 24;
+            this.loadingCircle7.OuterCircleRadius = 9;
+            this.loadingCircle7.RotationSpeed = 20;
+            this.loadingCircle7.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle7.SpokeThickness = 4;
+            this.loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle7.TabIndex = 119;
+            this.loadingCircle7.Text = "loadingCircle7";
+            // 
+            // loadingCircle8
+            // 
+            this.loadingCircle8.Active = false;
+            this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle8.InnerCircleRadius = 8;
+            this.loadingCircle8.Location = new System.Drawing.Point(194, 196);
+            this.loadingCircle8.Name = "loadingCircle8";
+            this.loadingCircle8.NumberSpoke = 24;
+            this.loadingCircle8.OuterCircleRadius = 9;
+            this.loadingCircle8.RotationSpeed = 20;
+            this.loadingCircle8.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle8.SpokeThickness = 4;
+            this.loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle8.TabIndex = 120;
+            this.loadingCircle8.Text = "loadingCircle8";
+            // 
+            // loadingCircle9
+            // 
+            this.loadingCircle9.Active = false;
+            this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle9.InnerCircleRadius = 8;
+            this.loadingCircle9.Location = new System.Drawing.Point(194, 222);
+            this.loadingCircle9.Name = "loadingCircle9";
+            this.loadingCircle9.NumberSpoke = 24;
+            this.loadingCircle9.OuterCircleRadius = 9;
+            this.loadingCircle9.RotationSpeed = 20;
+            this.loadingCircle9.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle9.SpokeThickness = 4;
+            this.loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle9.TabIndex = 121;
+            this.loadingCircle9.Text = "loadingCircle9";
+            // 
+            // loadingCircle10
+            // 
+            this.loadingCircle10.Active = false;
+            this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle10.InnerCircleRadius = 8;
+            this.loadingCircle10.Location = new System.Drawing.Point(194, 248);
+            this.loadingCircle10.Name = "loadingCircle10";
+            this.loadingCircle10.NumberSpoke = 24;
+            this.loadingCircle10.OuterCircleRadius = 9;
+            this.loadingCircle10.RotationSpeed = 20;
+            this.loadingCircle10.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle10.SpokeThickness = 4;
+            this.loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle10.TabIndex = 122;
+            this.loadingCircle10.Text = "loadingCircle10";
+            // 
+            // loadingCircle11
+            // 
+            this.loadingCircle11.Active = false;
+            this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle11.InnerCircleRadius = 8;
+            this.loadingCircle11.Location = new System.Drawing.Point(194, 274);
+            this.loadingCircle11.Name = "loadingCircle11";
+            this.loadingCircle11.NumberSpoke = 24;
+            this.loadingCircle11.OuterCircleRadius = 9;
+            this.loadingCircle11.RotationSpeed = 20;
+            this.loadingCircle11.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle11.SpokeThickness = 4;
+            this.loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle11.TabIndex = 123;
+            this.loadingCircle11.Text = "loadingCircle11";
+            // 
+            // loadingCircle12
+            // 
+            this.loadingCircle12.Active = false;
+            this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle12.InnerCircleRadius = 8;
+            this.loadingCircle12.Location = new System.Drawing.Point(194, 300);
+            this.loadingCircle12.Name = "loadingCircle12";
+            this.loadingCircle12.NumberSpoke = 24;
+            this.loadingCircle12.OuterCircleRadius = 9;
+            this.loadingCircle12.RotationSpeed = 20;
+            this.loadingCircle12.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle12.SpokeThickness = 4;
+            this.loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle12.TabIndex = 124;
+            this.loadingCircle12.Text = "loadingCircle12";
+            // 
+            // loadingCircle13
+            // 
+            this.loadingCircle13.Active = false;
+            this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle13.InnerCircleRadius = 8;
+            this.loadingCircle13.Location = new System.Drawing.Point(194, 326);
+            this.loadingCircle13.Name = "loadingCircle13";
+            this.loadingCircle13.NumberSpoke = 24;
+            this.loadingCircle13.OuterCircleRadius = 9;
+            this.loadingCircle13.RotationSpeed = 20;
+            this.loadingCircle13.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle13.SpokeThickness = 4;
+            this.loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle13.TabIndex = 125;
+            this.loadingCircle13.Text = "loadingCircle13";
+            // 
+            // loadingCircle14
+            // 
+            this.loadingCircle14.Active = false;
+            this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle14.InnerCircleRadius = 8;
+            this.loadingCircle14.Location = new System.Drawing.Point(194, 352);
+            this.loadingCircle14.Name = "loadingCircle14";
+            this.loadingCircle14.NumberSpoke = 24;
+            this.loadingCircle14.OuterCircleRadius = 9;
+            this.loadingCircle14.RotationSpeed = 20;
+            this.loadingCircle14.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle14.SpokeThickness = 4;
+            this.loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle14.TabIndex = 126;
+            this.loadingCircle14.Text = "loadingCircle14";
+            // 
+            // loadingCircle15
+            // 
+            this.loadingCircle15.Active = false;
+            this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle15.InnerCircleRadius = 8;
+            this.loadingCircle15.Location = new System.Drawing.Point(194, 378);
+            this.loadingCircle15.Name = "loadingCircle15";
+            this.loadingCircle15.NumberSpoke = 24;
+            this.loadingCircle15.OuterCircleRadius = 9;
+            this.loadingCircle15.RotationSpeed = 20;
+            this.loadingCircle15.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle15.SpokeThickness = 4;
+            this.loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle15.TabIndex = 127;
+            this.loadingCircle15.Text = "loadingCircle15";
+            // 
+            // loadingCircle16
+            // 
+            this.loadingCircle16.Active = false;
+            this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle16.InnerCircleRadius = 8;
+            this.loadingCircle16.Location = new System.Drawing.Point(194, 404);
+            this.loadingCircle16.Name = "loadingCircle16";
+            this.loadingCircle16.NumberSpoke = 24;
+            this.loadingCircle16.OuterCircleRadius = 9;
+            this.loadingCircle16.RotationSpeed = 20;
+            this.loadingCircle16.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle16.SpokeThickness = 4;
+            this.loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle16.TabIndex = 128;
+            this.loadingCircle16.Text = "loadingCircle16";
+            // 
+            // loadingCircle17
+            // 
+            this.loadingCircle17.Active = false;
+            this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle17.InnerCircleRadius = 8;
+            this.loadingCircle17.Location = new System.Drawing.Point(194, 430);
+            this.loadingCircle17.Name = "loadingCircle17";
+            this.loadingCircle17.NumberSpoke = 24;
+            this.loadingCircle17.OuterCircleRadius = 9;
+            this.loadingCircle17.RotationSpeed = 20;
+            this.loadingCircle17.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle17.SpokeThickness = 4;
+            this.loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle17.TabIndex = 129;
+            this.loadingCircle17.Text = "loadingCircle17";
+            // 
+            // loadingCircle18
+            // 
+            this.loadingCircle18.Active = false;
+            this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle18.InnerCircleRadius = 8;
+            this.loadingCircle18.Location = new System.Drawing.Point(194, 456);
+            this.loadingCircle18.Name = "loadingCircle18";
+            this.loadingCircle18.NumberSpoke = 24;
+            this.loadingCircle18.OuterCircleRadius = 9;
+            this.loadingCircle18.RotationSpeed = 20;
+            this.loadingCircle18.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle18.SpokeThickness = 4;
+            this.loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle18.TabIndex = 130;
+            this.loadingCircle18.Text = "loadingCircle18";
+            // 
+            // loadingCircle19
+            // 
+            this.loadingCircle19.Active = false;
+            this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle19.InnerCircleRadius = 8;
+            this.loadingCircle19.Location = new System.Drawing.Point(194, 482);
+            this.loadingCircle19.Name = "loadingCircle19";
+            this.loadingCircle19.NumberSpoke = 24;
+            this.loadingCircle19.OuterCircleRadius = 9;
+            this.loadingCircle19.RotationSpeed = 20;
+            this.loadingCircle19.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle19.SpokeThickness = 4;
+            this.loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle19.TabIndex = 131;
+            this.loadingCircle19.Text = "loadingCircle19";
+            // 
+            // loadingCircle20
+            // 
+            this.loadingCircle20.Active = false;
+            this.loadingCircle20.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle20.InnerCircleRadius = 8;
+            this.loadingCircle20.Location = new System.Drawing.Point(89, 16);
+            this.loadingCircle20.Name = "loadingCircle20";
+            this.loadingCircle20.NumberSpoke = 24;
+            this.loadingCircle20.OuterCircleRadius = 9;
+            this.loadingCircle20.RotationSpeed = 20;
+            this.loadingCircle20.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle20.SpokeThickness = 4;
+            this.loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle20.TabIndex = 132;
+            this.loadingCircle20.Text = "loadingCircle20";
+            // 
+            // loadingCircle21
+            // 
+            this.loadingCircle21.Active = false;
+            this.loadingCircle21.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle21.InnerCircleRadius = 8;
+            this.loadingCircle21.Location = new System.Drawing.Point(89, 57);
+            this.loadingCircle21.Name = "loadingCircle21";
+            this.loadingCircle21.NumberSpoke = 24;
+            this.loadingCircle21.OuterCircleRadius = 9;
+            this.loadingCircle21.RotationSpeed = 20;
+            this.loadingCircle21.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle21.SpokeThickness = 4;
+            this.loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle21.TabIndex = 133;
+            this.loadingCircle21.Text = "loadingCircle21";
             // 
             // comboBoxBattery
             // 
@@ -2022,6 +2400,41 @@ namespace HardwareInformation
             this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
             this.comboBoxBuilding.TabIndex = 38;
             // 
+            // loadingCircle22
+            // 
+            this.loadingCircle22.Active = false;
+            this.loadingCircle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle22.InnerCircleRadius = 8;
+            this.loadingCircle22.Location = new System.Drawing.Point(576, 634);
+            this.loadingCircle22.Name = "loadingCircle22";
+            this.loadingCircle22.NumberSpoke = 24;
+            this.loadingCircle22.OuterCircleRadius = 9;
+            this.loadingCircle22.RotationSpeed = 20;
+            this.loadingCircle22.Size = new System.Drawing.Size(178, 23);
+            this.loadingCircle22.SpokeThickness = 4;
+            this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle22.TabIndex = 134;
+            this.loadingCircle22.Text = "loadingCircle22";
+            // 
+            // loadingCircle23
+            // 
+            this.loadingCircle23.Active = false;
+            this.loadingCircle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle23.InnerCircleRadius = 8;
+            this.loadingCircle23.Location = new System.Drawing.Point(761, 634);
+            this.loadingCircle23.Name = "loadingCircle23";
+            this.loadingCircle23.NumberSpoke = 24;
+            this.loadingCircle23.OuterCircleRadius = 9;
+            this.loadingCircle23.RotationSpeed = 20;
+            this.loadingCircle23.Size = new System.Drawing.Size(263, 54);
+            this.loadingCircle23.SpokeThickness = 4;
+            this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle23.TabIndex = 134;
+            this.loadingCircle23.Text = "loadingCircle23";
+            this.loadingCircle23.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2030,6 +2443,8 @@ namespace HardwareInformation
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1056, 715);
+            this.Controls.Add(this.loadingCircle23);
+            this.Controls.Add(this.loadingCircle22);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -2258,6 +2673,29 @@ namespace HardwareInformation
         private CustomFlatComboBox comboBoxInUse;
         private CustomFlatComboBox comboBoxType;
         private CustomFlatComboBox comboBoxBattery;
+        private LoadingCircle loadingCircle19;
+        private LoadingCircle loadingCircle18;
+        private LoadingCircle loadingCircle17;
+        private LoadingCircle loadingCircle16;
+        private LoadingCircle loadingCircle15;
+        private LoadingCircle loadingCircle14;
+        private LoadingCircle loadingCircle13;
+        private LoadingCircle loadingCircle12;
+        private LoadingCircle loadingCircle11;
+        private LoadingCircle loadingCircle10;
+        private LoadingCircle loadingCircle9;
+        private LoadingCircle loadingCircle8;
+        private LoadingCircle loadingCircle7;
+        private LoadingCircle loadingCircle6;
+        private LoadingCircle loadingCircle5;
+        private LoadingCircle loadingCircle4;
+        private LoadingCircle loadingCircle3;
+        private LoadingCircle loadingCircle2;
+        private LoadingCircle loadingCircle1;
+        private LoadingCircle loadingCircle21;
+        private LoadingCircle loadingCircle20;
+        private LoadingCircle loadingCircle22;
+        private LoadingCircle loadingCircle23;
         private int i = 0;
 
         //Sets service mode to format
@@ -2406,6 +2844,8 @@ namespace HardwareInformation
                 this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
             }
+            this.loadingCircle22.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
+            this.loadingCircle23.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
             this.textBoxPatrimony.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.textBoxPatrimony.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
@@ -2614,6 +3054,8 @@ namespace HardwareInformation
                 this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
             }
+            this.loadingCircle22.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.loadingCircle23.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
             this.textBoxPatrimony.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             this.textBoxPatrimony.ForeColor = StringsAndConstants.DARK_FORECOLOR;
@@ -2996,28 +3438,74 @@ namespace HardwareInformation
             progressBar1.Value = 0;
 
             //Writes 'Coletando...' in the labels, while collects data
-            lblInstallSince.Text = StringsAndConstants.FETCHING;
-            lblMaintenanceSince.Text = StringsAndConstants.FETCHING;
-            lblBM.Text = StringsAndConstants.FETCHING;
-            lblModel.Text = StringsAndConstants.FETCHING;
-            lblSerialNo.Text = StringsAndConstants.FETCHING;
-            lblProcName.Text = StringsAndConstants.FETCHING;
-            lblPM.Text = StringsAndConstants.FETCHING;
-            lblHDSize.Text = StringsAndConstants.FETCHING;
-            lblSmart.Text = StringsAndConstants.FETCHING;
-            lblMediaType.Text = StringsAndConstants.FETCHING;
-            lblMediaOperation.Text = StringsAndConstants.FETCHING;
-            lblGPUInfo.Text = StringsAndConstants.FETCHING;
-            lblOS.Text = StringsAndConstants.FETCHING;
-            lblHostname.Text = StringsAndConstants.FETCHING;
-            lblMac.Text = StringsAndConstants.FETCHING;
-            lblIP.Text = StringsAndConstants.FETCHING;
-            lblBIOS.Text = StringsAndConstants.FETCHING;
-            lblBIOSType.Text = StringsAndConstants.FETCHING;
-            lblSecBoot.Text = StringsAndConstants.FETCHING;
-            lblVT.Text = StringsAndConstants.FETCHING;
-            lblTPM.Text = StringsAndConstants.FETCHING;
-            collectButton.Text = StringsAndConstants.FETCHING;
+            lblInstallSince.Text = StringsAndConstants.DASH;
+            lblMaintenanceSince.Text = StringsAndConstants.DASH;
+            lblBM.Text = StringsAndConstants.DASH;
+            lblModel.Text = StringsAndConstants.DASH;
+            lblSerialNo.Text = StringsAndConstants.DASH;
+            lblProcName.Text = StringsAndConstants.DASH;
+            lblPM.Text = StringsAndConstants.DASH;
+            lblHDSize.Text = StringsAndConstants.DASH;
+            lblSmart.Text = StringsAndConstants.DASH;
+            lblMediaType.Text = StringsAndConstants.DASH;
+            lblMediaOperation.Text = StringsAndConstants.DASH;
+            lblGPUInfo.Text = StringsAndConstants.DASH;
+            lblOS.Text = StringsAndConstants.DASH;
+            lblHostname.Text = StringsAndConstants.DASH;
+            lblMac.Text = StringsAndConstants.DASH;
+            lblIP.Text = StringsAndConstants.DASH;
+            lblBIOS.Text = StringsAndConstants.DASH;
+            lblBIOSType.Text = StringsAndConstants.DASH;
+            lblSecBoot.Text = StringsAndConstants.DASH;
+            lblVT.Text = StringsAndConstants.DASH;
+            lblTPM.Text = StringsAndConstants.DASH;
+            collectButton.Text = StringsAndConstants.DASH;
+
+            loadingCircle1.Visible = true;
+            loadingCircle2.Visible = true;
+            loadingCircle3.Visible = true;
+            loadingCircle4.Visible = true;
+            loadingCircle5.Visible = true;
+            loadingCircle6.Visible = true;
+            loadingCircle7.Visible = true;
+            loadingCircle8.Visible = true;
+            loadingCircle9.Visible = true;
+            loadingCircle10.Visible = true;
+            loadingCircle11.Visible = true;
+            loadingCircle12.Visible = true;
+            loadingCircle13.Visible = true;
+            loadingCircle14.Visible = true;
+            loadingCircle15.Visible = true;
+            loadingCircle16.Visible = true;
+            loadingCircle17.Visible = true;
+            loadingCircle18.Visible = true;
+            loadingCircle19.Visible = true;
+            loadingCircle20.Visible = true;
+            loadingCircle21.Visible = true;
+            loadingCircle22.Visible = true;
+
+            loadingCircle1.Active = true;
+            loadingCircle2.Active = true;
+            loadingCircle3.Active = true;
+            loadingCircle4.Active = true;
+            loadingCircle5.Active = true;
+            loadingCircle6.Active = true;
+            loadingCircle7.Active = true;
+            loadingCircle8.Active = true;
+            loadingCircle9.Active = true;
+            loadingCircle10.Active = true;
+            loadingCircle11.Active = true;
+            loadingCircle12.Active = true;
+            loadingCircle13.Active = true;
+            loadingCircle14.Active = true;
+            loadingCircle15.Active = true;
+            loadingCircle16.Active = true;
+            loadingCircle17.Active = true;
+            loadingCircle18.Active = true;
+            loadingCircle19.Active = true;
+            loadingCircle20.Active = true;
+            loadingCircle21.Active = true;
+            loadingCircle22.Active = true;
         }
 
         //Auxiliary method
@@ -3117,6 +3605,52 @@ namespace HardwareInformation
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
         private void printHardwareData()
         {
+            loadingCircle1.Visible = false;
+            loadingCircle2.Visible = false;
+            loadingCircle3.Visible = false;
+            loadingCircle4.Visible = false;
+            loadingCircle5.Visible = false;
+            loadingCircle6.Visible = false;
+            loadingCircle7.Visible = false;
+            loadingCircle8.Visible = false;
+            loadingCircle9.Visible = false;
+            loadingCircle10.Visible = false;
+            loadingCircle11.Visible = false;
+            loadingCircle12.Visible = false;
+            loadingCircle13.Visible = false;
+            loadingCircle14.Visible = false;
+            loadingCircle15.Visible = false;
+            loadingCircle16.Visible = false;
+            loadingCircle17.Visible = false;
+            loadingCircle18.Visible = false;
+            loadingCircle19.Visible = false;
+            loadingCircle20.Visible = false;
+            loadingCircle21.Visible = false;
+            loadingCircle22.Visible = false;
+
+            loadingCircle1.Active = false;
+            loadingCircle2.Active = false;
+            loadingCircle3.Active = false;
+            loadingCircle4.Active = false;
+            loadingCircle5.Active = false;
+            loadingCircle6.Active = false;
+            loadingCircle7.Active = false;
+            loadingCircle8.Active = false;
+            loadingCircle9.Active = false;
+            loadingCircle10.Active = false;
+            loadingCircle11.Active = false;
+            loadingCircle12.Active = false;
+            loadingCircle13.Active = false;
+            loadingCircle14.Active = false;
+            loadingCircle15.Active = false;
+            loadingCircle16.Active = false;
+            loadingCircle17.Active = false;
+            loadingCircle18.Active = false;
+            loadingCircle19.Active = false;
+            loadingCircle20.Active = false;
+            loadingCircle21.Active = false;
+            loadingCircle22.Active = false;
+
             pass = true;
             lblBM.Text = BM;
             lblModel.Text = Model;
@@ -3341,7 +3875,9 @@ namespace HardwareInformation
         //Runs the registration for the website
         private void cadastra_ClickAsync(object sender, EventArgs e)
         {
-            registerButton.Text = StringsAndConstants.REGISTERING;
+            loadingCircle23.Visible = true;
+            loadingCircle23.Active = true;
+            registerButton.Text = StringsAndConstants.DASH;
             registerButton.Enabled = false;
             accessSystemButton.Enabled = false;
             collectButton.Enabled = false;
@@ -3400,6 +3936,8 @@ namespace HardwareInformation
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            loadingCircle23.Visible = false;
+            loadingCircle23.Active = false;
             registerButton.Text = StringsAndConstants.REGISTER_AGAIN;
             registerButton.Enabled = true;
             accessSystemButton.Enabled = true;

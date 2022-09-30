@@ -39,6 +39,8 @@ namespace HardwareInformation
             this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
+            this.loadingCircle1.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+
             this.textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
@@ -80,6 +82,8 @@ namespace HardwareInformation
             this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
+            this.loadingCircle1.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+
             this.textBoxUser.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             this.textBoxUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;
@@ -113,6 +117,8 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private void button1_Click(object sender, EventArgs e)
         {
+            loadingCircle1.Visible = true;
+            loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
                 Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null);
@@ -149,6 +155,8 @@ namespace HardwareInformation
                     textBoxPassword.Focus();
                 }
             }
+            loadingCircle1.Visible = false;
+            loadingCircle1.Active = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

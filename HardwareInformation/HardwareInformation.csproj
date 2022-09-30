@@ -40,7 +40,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>true</Prefer32Bit>
@@ -335,6 +335,10 @@
     <ProjectReference Include="..\..\Dependencies\JsonFileReaderDLL\JsonFileReaderDLL.csproj">
       <Project>{a325c892-1ffe-4102-bd42-e8f299af2710}</Project>
       <Name>JsonFileReaderDLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Third-party\LoadingCircle\MRG.Controls.UI\MRG.Controls.UI.csproj">
+      <Project>{48e18b56-4c37-4d69-aba7-429c42b45aac}</Project>
+      <Name>MRG.Controls.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

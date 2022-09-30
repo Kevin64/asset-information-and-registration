@@ -43,6 +43,7 @@
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
             this.comboBoxServerIP = new CustomFlatComboBox();
             this.comboBoxServerPort = new CustomFlatComboBox();
+            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -196,6 +197,24 @@
             this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
             this.comboBoxServerPort.TabIndex = 3;
             // 
+            // loadingCircle1
+            // 
+            this.loadingCircle1.Active = false;
+            this.loadingCircle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.Location = new System.Drawing.Point(16, 274);
+            this.loadingCircle1.Name = "loadingCircle1";
+            this.loadingCircle1.NumberSpoke = 24;
+            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.RotationSpeed = 20;
+            this.loadingCircle1.Size = new System.Drawing.Size(187, 46);
+            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle1.TabIndex = 135;
+            this.loadingCircle1.Text = "loadingCircle23";
+            this.loadingCircle1.Visible = false;
+            // 
             // Form2
             // 
             this.AcceptButton = this.AuthButton;
@@ -203,6 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(219, 352);
+            this.Controls.Add(this.loadingCircle1);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.checkBoxOfflineMode);
@@ -245,5 +265,6 @@
         private System.Windows.Forms.CheckBox checkBoxOfflineMode;
         private CustomFlatComboBox comboBoxServerIP;
         private CustomFlatComboBox comboBoxServerPort;
+        private MRG.Controls.UI.LoadingCircle loadingCircle1;
     }
 }
