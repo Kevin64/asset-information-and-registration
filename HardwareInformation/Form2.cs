@@ -1,12 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using ConstantsDLL;
 using JsonFileReaderDLL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HardwareInformation
 {
     public partial class Form2 : Form
     {
+        private BackgroundWorker backgroundWorker1;
+        private string[] str = { };
         public Form2()
         {
             InitializeComponent();
@@ -23,6 +28,9 @@ namespace HardwareInformation
             comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
 #endif
+            backgroundWorker1 = new BackgroundWorker();
+            backgroundWorker1.WorkerSupportsCancellation = true;
+
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
             //Change this for alpha, beta and final releases - uncomment the appropriate line
             //this.toolStripStatusLabel2.Text = MiscMethods.version();
@@ -129,10 +137,9 @@ namespace HardwareInformation
             }
             else
             {
+                startAsync(sender, e);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
-                    string[] str = LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
-
                     if (str == null)
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else if (str[0] == "false")
@@ -175,6 +182,20 @@ namespace HardwareInformation
                 comboBoxServerIP.Enabled = true;
                 comboBoxServerPort.Enabled = true;
             }
+        }
+
+        //Starts the worker for threading
+        private void startAsync(object sender, EventArgs e)
+        {
+            if (backgroundWorker1.IsBusy != true)
+                backgroundWorker1.RunWorkerAsync();
+        }
+
+        //Runs the collectThread method in a separate thread
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            str = LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text, worker, e);
         }
     }
 }
