@@ -49,9 +49,9 @@ namespace HardwareInformation
         }
 
         //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
-        public static void RunOptions(Options opts)
+        public static async void RunOptions(Options opts)
         {
-            string[] str = LoginFileReader.fetchInfo(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
+            string[] str = await LoginFileReader.fetchInfo(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             if (str[0] == "true")
                 Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario));
             else

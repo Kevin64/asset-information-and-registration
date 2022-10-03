@@ -54,6 +54,7 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
         }
 
+        //Fetches the WebView2 systemwide version
         public static string getWebView2Version()
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH, true);

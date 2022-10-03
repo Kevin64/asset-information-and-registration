@@ -230,10 +230,10 @@ namespace HardwareInformation
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
-        private void printHardwareData()
+        private async void printHardwareData()
         {
             pass = true;
-            string[] str = BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
+            string[] str = await BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
             if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {

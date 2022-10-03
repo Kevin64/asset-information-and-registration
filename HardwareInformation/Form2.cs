@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reflection.Emit;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConstantsDLL;
 using JsonFileReaderDLL;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HardwareInformation
 {
@@ -123,7 +122,7 @@ namespace HardwareInformation
         }
 
         //Checks the user/password and shows the main form
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
@@ -137,7 +136,7 @@ namespace HardwareInformation
             }
             else
             {
-                startAsync(sender, e);
+                str = await LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     if (str == null)
@@ -182,20 +181,6 @@ namespace HardwareInformation
                 comboBoxServerIP.Enabled = true;
                 comboBoxServerPort.Enabled = true;
             }
-        }
-
-        //Starts the worker for threading
-        private void startAsync(object sender, EventArgs e)
-        {
-            if (backgroundWorker1.IsBusy != true)
-                backgroundWorker1.RunWorkerAsync();
-        }
-
-        //Runs the collectThread method in a separate thread
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            str = LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text, worker, e);
         }
     }
 }
