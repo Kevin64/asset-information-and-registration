@@ -11,18 +11,32 @@ using ConstantsDLL;
 using JsonFileReaderDLL;
 using ConfigurableQualityPictureBoxDLL;
 using MRG.Controls.UI;
+using LogGeneratorDLL;
 
 namespace HardwareInformation
 {
     public partial class Form1 : Form
-	{
-		private BackgroundWorker backgroundWorker1;
-		public Form1(bool noConnection, string user, string ip, string port)
-		{
+    {
+        private BackgroundWorker backgroundWorker1;
+
+        LogGenerator log;
+        public Form1(bool noConnection, string user, string ip, string port)
+        {
             InitializeComponent();
+
+            //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
+            //this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.ALPHA_VERSION);
+            this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.BETA_VERSION);
+            //this.toolStripStatusLabel2.Text = MiscMethods.version();
+
+            log = new LogGenerator(Application.ProductName + " - " + this.toolStripStatusLabel2.Text, StringsAndConstants.LOG_FILENAME_CP + "-" + this.toolStripStatusLabel2.Text + StringsAndConstants.LOG_FILE_EXT);
 
             themeBool = MiscMethods.ThemeInit();
             offlineMode = noConnection;
+
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString());
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_MODE, offlineMode.ToString());
+
             this.user = user;
             this.ip = ip;
             this.port = port;
@@ -43,13 +57,10 @@ namespace HardwareInformation
             backgroundWorker1.WorkerSupportsCancellation = true;
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm1;
             this.Text = StringsAndConstants.formTitlebarText;
-            //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
-            //this.toolStripStatusLabel2.Text = MiscMethods.version();            
-            this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
         }
 
-		private void InitializeComponent()
-		{
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblBM = new System.Windows.Forms.Label();
@@ -1921,7 +1932,7 @@ namespace HardwareInformation
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
@@ -1956,7 +1967,7 @@ namespace HardwareInformation
             // 
             // configurableQualityPictureBox1
             // 
-            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.configurableQualityPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.configurableQualityPictureBox1.CompositingQuality = null;
@@ -2507,7 +2518,7 @@ namespace HardwareInformation
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
 
         //Variables being declared
         private Label lblBM;
@@ -2724,29 +2735,32 @@ namespace HardwareInformation
             comboBoxStandard.SelectedIndex = 1;
         }
 
-        private async void comboBoxThemeInit()
+        private void comboBoxThemeInit()
         {
             themeBool = MiscMethods.ThemeInit();
             if (themeBool)
-                await darkTheme();
+                darkTheme();
             else
-                await lightTheme();
+                lightTheme();
         }
 
         private void logoutLabel_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGOUT, string.Empty);
             this.DialogResult = DialogResult.OK;
         }
 
         //Method for setting the auto theme
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_AUTOTHEME_CHANGE, string.Empty);
             comboBoxThemeInit();
         }
 
         //Method for setting the light theme
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LIGHTMODE_CHANGE, string.Empty);
             lightTheme();
             themeBool = false;
         }
@@ -2754,452 +2768,447 @@ namespace HardwareInformation
         //Method for setting the dark theme
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DARKMODE_CHANGE, string.Empty);
             darkTheme();
             themeBool = true;
         }
 
         //Sets a light theme for the UI
-        private Task lightTheme()
+        private void lightTheme()
         {
-            return Task.Run(() =>
+            this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+
+            this.lblBM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblModel.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblSerialNo.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblProcName.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblHDSize.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblMediaType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblMediaOperation.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblHostname.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblMac.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblIP.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblBIOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblBIOSType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblTPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblSecBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblGPUInfo.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblSmart.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblIPServer.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblPortServer.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.lblAgentName.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+
+            this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label7.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label8.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label9.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label10.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label11.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label12.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label13.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label14.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label15.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label16.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label17.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label18.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label19.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label20.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label21.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label22.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label23.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label24.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label25.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label27.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label29.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label28.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label30.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label31.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label32.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label33.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label34.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label35.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label36.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label37.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label38.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label39.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label40.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label41.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label42.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label43.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label44.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label45.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label46.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label47.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label48.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+            this.label49.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.label53.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            if (offlineMode)
             {
-                this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                this.lblIPServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+            }
+            this.loadingCircle22.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
+            this.loadingCircle23.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
-                this.lblBM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblModel.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblSerialNo.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblProcName.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblHDSize.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblMediaType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblMediaOperation.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblHostname.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblMac.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblIP.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblBIOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblBIOSType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblTPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblSecBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblGPUInfo.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblSmart.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblIPServer.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblPortServer.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                this.lblAgentName.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            this.textBoxPatrimony.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxPatrimony.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxSeal.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxSeal.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxRoom.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxRoom.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxLetter.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.textBoxLetter.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox5.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.textBox6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBox6.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.textBoxTicket.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.textBoxTicket.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
 
-                this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label7.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label8.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label9.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label10.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label11.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label12.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label13.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label14.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label15.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label16.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label17.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label18.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label19.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label20.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label21.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label22.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label23.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label24.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label25.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label27.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label29.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label28.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label30.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label31.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label32.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label33.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label34.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label35.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label36.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label37.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label38.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label39.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label40.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label41.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label42.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label43.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label44.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label45.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label46.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label47.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label48.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                this.label49.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.label53.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                if (offlineMode)
-                {
-                    this.lblIPServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                    this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                    this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                }
-                this.loadingCircle22.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
-                this.loadingCircle23.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
+            this.comboBoxBuilding.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBuilding.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBuilding.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBuilding.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxActiveDirectory.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxActiveDirectory.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxStandard.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxStandard.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxStandard.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxStandard.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxInUse.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxInUse.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxInUse.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxInUse.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxTag.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxTag.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxTag.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxTag.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxType.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxType.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxType.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBattery.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBattery.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBattery.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.comboBoxBattery.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxTheme.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.comboBoxTheme.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-                this.textBoxPatrimony.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.textBoxPatrimony.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBoxSeal.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.textBoxSeal.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBoxRoom.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.textBoxRoom.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBoxLetter.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.textBoxLetter.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBox5.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBox5.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.textBox6.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBox6.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.textBoxTicket.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.textBoxTicket.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.registerButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.registerButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.collectButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.collectButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.collectButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.accessSystemButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.accessSystemButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.accessSystemButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 
-                this.comboBoxBuilding.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxBuilding.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxBuilding.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxBuilding.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxActiveDirectory.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxActiveDirectory.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxStandard.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxStandard.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxStandard.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxStandard.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxInUse.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxInUse.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxInUse.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxInUse.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxTag.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxTag.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxTag.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxTag.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxType.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxType.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxType.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxBattery.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxBattery.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxBattery.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.comboBoxBattery.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.comboBoxTheme.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.comboBoxTheme.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.groupBox1.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.groupBox2.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.groupBox3.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.groupBox4.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.separatorH.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
+            this.separatorV.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
 
-                this.registerButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.registerButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-                this.collectButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.collectButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.collectButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-                this.accessSystemButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                this.accessSystemButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.accessSystemButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.logoutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.logoutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-                this.groupBox1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.groupBox2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.groupBox3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.groupBox4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.groupBox1.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-                this.groupBox2.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-                this.groupBox3.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-                this.groupBox4.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-                this.separatorH.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-                this.separatorV.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-
-                this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
-                this.toolStripMenuItem1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
-                this.toolStripMenuItem2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
-                this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.logoutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.logoutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-
-                this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
-                this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
-                this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
-                this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_black;
-                this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_black;
-                this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_black;
-                this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_black;
-                this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_black;
-                this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_black;
-                this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_black;
-                this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_black;
-                this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_black;
-                this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_black;
-                this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_black;
-                this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_black;
-                this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_black;
-                this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_black;
-                this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_black;
-                this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_black;
-                this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_black;
-                this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_black;
-                this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_black;
-                this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_black;
-                this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_black;
-                this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_black;
-                this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_black;
-                this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_black;
-                this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_black;
-                this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_black;
-                this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_black;
-                this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_black;
-                this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_black;
-                this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_black;
-                this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_black;
-                this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_black;
-            });
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
+            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
+            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
+            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_black;
+            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_black;
+            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_black;
+            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_black;
+            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_black;
+            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_black;
+            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_black;
+            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_black;
+            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_black;
+            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_black;
+            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_black;
+            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_black;
+            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_black;
+            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_black;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_black;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_black;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_black;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_black;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_black;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_black;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_black;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_black;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_black;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_black;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_black;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_black;
+            this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_black;
+            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_black;
+            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_black;
+            this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_black;
+            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_black;
+            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_black;
         }
 
         //Sets a dark theme for the UI
-        private Task darkTheme()
+        private void darkTheme()
         {
-            return Task.Run(() =>
+            this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            this.lblBM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblModel.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblSerialNo.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblProcName.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblHDSize.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblMediaType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblHostname.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblMac.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblIP.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblBIOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblBIOSType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblTPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblSecBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblGPUInfo.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblSmart.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblIPServer.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblPortServer.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.lblAgentName.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+
+            this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+            this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label7.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label8.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label9.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label10.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label11.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label12.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label13.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label14.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label15.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label16.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label17.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label18.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label19.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label20.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label21.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label22.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label23.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label24.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label25.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label27.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label28.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label29.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label30.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label31.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label32.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label33.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label34.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label35.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label36.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label37.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label38.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label39.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label40.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label41.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label42.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label43.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label44.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label45.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label46.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label47.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label48.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+            this.label49.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.label53.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            if (offlineMode)
             {
-                this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                this.lblIPServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+            }
+            this.loadingCircle22.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.loadingCircle23.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
-                this.lblBM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblModel.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblSerialNo.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblProcName.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblHDSize.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblMediaType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblHostname.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblMac.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblIP.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblBIOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblBIOSType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblTPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblSecBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblGPUInfo.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblSmart.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblIPServer.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblPortServer.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                this.lblAgentName.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            this.textBoxPatrimony.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxPatrimony.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxSeal.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxSeal.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxRoom.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxRoom.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxLetter.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.textBoxLetter.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox5.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.textBox6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBox6.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.textBoxTicket.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.textBoxTicket.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
-                this.lblInstallSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                this.lblMaintenanceSince.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label7.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label8.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label9.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label10.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label11.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label12.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label13.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label14.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label15.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label16.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label17.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label18.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label19.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label20.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label21.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label22.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label23.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label24.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label25.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label27.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label28.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label29.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label30.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label31.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label32.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label33.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label34.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label35.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label36.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label37.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label38.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label39.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label40.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label41.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label42.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label43.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label44.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label45.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label46.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label47.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label48.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                this.label49.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.label53.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                if (offlineMode)
-                {
-                    this.lblIPServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                    this.lblPortServer.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                    this.lblAgentName.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                }
-                this.loadingCircle22.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.loadingCircle23.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBuilding.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBuilding.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBuilding.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBuilding.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxActiveDirectory.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxActiveDirectory.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxStandard.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxStandard.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxStandard.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxStandard.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxInUse.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxInUse.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxInUse.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxInUse.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxTag.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxTag.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxTag.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxTag.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxType.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxType.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxType.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBattery.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxBattery.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBattery.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            this.comboBoxBattery.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.comboBoxTheme.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.comboBoxTheme.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-                this.textBoxPatrimony.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.textBoxPatrimony.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBoxSeal.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.textBoxSeal.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBoxRoom.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.textBoxRoom.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBoxLetter.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.textBoxLetter.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBox5.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBox5.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.textBox6.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBox6.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.textBoxTicket.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.textBoxTicket.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.registerButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.registerButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.collectButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.collectButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.collectButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.accessSystemButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            this.accessSystemButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.accessSystemButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 
-                this.comboBoxBuilding.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxBuilding.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxBuilding.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxBuilding.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxActiveDirectory.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxActiveDirectory.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxStandard.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxStandard.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxStandard.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxStandard.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxInUse.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxInUse.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxInUse.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxInUse.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxTag.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxTag.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxTag.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxTag.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxType.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxType.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxType.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxType.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxBattery.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxBattery.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxBattery.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                this.comboBoxBattery.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.comboBoxTheme.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.comboBoxTheme.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.groupBox1.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.groupBox2.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.groupBox3.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.groupBox4.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.separatorH.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
+            this.separatorV.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
 
-                this.registerButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.registerButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                this.collectButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.collectButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.collectButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                this.accessSystemButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                this.accessSystemButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.accessSystemButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.logoutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.logoutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-                this.groupBox1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.groupBox2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.groupBox3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.groupBox4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.groupBox1.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-                this.groupBox2.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-                this.groupBox3.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-                this.groupBox4.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-                this.separatorH.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-                this.separatorV.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-
-                this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-                this.toolStripMenuItem1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-                this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
-                this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.logoutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.logoutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
-
-                this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-                this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
-                this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
-                this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
-                this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
-                this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
-                this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
-                this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
-                this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
-                this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
-                this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
-                this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
-                this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
-                this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
-                this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
-                this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
-                this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
-                this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
-                this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
-                this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
-                this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
-                this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
-                this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
-                this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
-                this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
-                this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
-                this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
-                this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
-                this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
-                this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_white;
-                this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
-                this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_white;
-                this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_white;
-                this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
-                this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
-            });
+            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
+            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
+            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
+            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
+            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
+            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
+            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
+            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
+            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
+            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
+            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
+            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
+            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
+            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
+            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
+            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
+            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
+            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
+            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
+            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
+            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
+            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
+            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
+            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
+            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
+            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
+            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
+            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
+            this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_white;
+            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
+            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_white;
+            this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_white;
+            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
+            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
         }
 
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
         private void accessButton_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LIGHTMODE_CHANGE, string.Empty);
             System.Diagnostics.Process.Start("http://" + ip + ":" + port);
         }
 
         //Handles the closing of the current form
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_FORM, string.Empty);
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             webView2.Dispose();
             if (e.CloseReason == CloseReason.UserClosing)
-            {
                 Application.Exit();
-            }
         }
 
         //Loads the form, sets some combobox values, create two timers (1000 ms cadence), and triggers a hardware collection
@@ -3214,7 +3223,7 @@ namespace HardwareInformation
                 await loadWebView2();
                 bw.Visible = false;
                 logoutLabel.Enabled = true;
-            }            
+            }
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
             timer3.Tick += new EventHandler(flashTextSecBoot);
@@ -3247,7 +3256,7 @@ namespace HardwareInformation
         //Restricts textbox4 only with chars
         private void textBoxCharsOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back))
+            if (!(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back))
                 e.Handled = true;
         }
 
@@ -3524,6 +3533,8 @@ namespace HardwareInformation
         // while reporting the progress to the progressbar
         private void collectThread(BackgroundWorker worker, DoWorkEventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_COLLECTING, string.Empty);
+
             i = 0;
 
             BM = HardwareInfo.GetBoardMaker();
@@ -3531,81 +3542,102 @@ namespace HardwareInformation
                 BM = HardwareInfo.GetBoardMakerAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, BM);
 
             Model = HardwareInfo.GetModel();
             if (Model == StringsAndConstants.ToBeFilledByOEM || Model == "")
                 Model = HardwareInfo.GetModelAlt();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, Model);
 
             SerialNo = HardwareInfo.GetBoardProductId();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERIALNO, SerialNo);
 
             ProcName = HardwareInfo.GetProcessorCores();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PROCNAME, ProcName);
 
             PM = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, PM);
 
             HDSize = HardwareInfo.GetHDSize();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, HDSize);
 
             Smart = HardwareInfo.GetSMARTStatus();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SMART, Smart);
 
             MediaType = HardwareInfo.GetStorageType();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIATYPE, MediaType);
 
             MediaOperation = HardwareInfo.GetStorageOperation();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIAOP, MediaOperation);
 
             GPUInfo = HardwareInfo.GetGPUInfo();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GPUINFO, GPUInfo);
 
             OS = HardwareInfo.GetOSInformation();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OS, OS);
 
             Hostname = HardwareInfo.GetComputerName();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HOSTNAME, Hostname);
 
             Mac = HardwareInfo.GetMACAddress();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MAC, Mac);
 
             IP = HardwareInfo.GetIPAddress();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_IP, IP);
 
             BIOSType = HardwareInfo.GetBIOSType();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOSTYPE, BIOSType);
 
             SecBoot = HardwareInfo.GetSecureBoot();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SECBOOT, SecBoot);
 
             BIOS = HardwareInfo.GetComputerBIOS();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOS, BIOS);
 
             VT = HardwareInfo.GetVirtualizationTechnology();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VT, VT);
 
             TPM = HardwareInfo.GetTPMStatus();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_TPM, TPM);
+
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_COLLECTING, string.Empty);
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
@@ -3688,6 +3720,7 @@ namespace HardwareInformation
                 pass = false;
                 lblHostname.Text += StringsAndConstants.HOSTNAME_ALERT;
                 timer1.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty);
             }
             //The section below contains the exception cases for AHCI enforcement
             if (str != null && str[3].Equals("false"))
@@ -3695,6 +3728,7 @@ namespace HardwareInformation
                 pass = false;
                 lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
                 timer2.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEDIAOP_ERROR, string.Empty);
             }
             //The section below contains the exception cases for Secure Boot enforcement
             if (lblSecBoot.Text.Equals(StringsAndConstants.deactivated) &&
@@ -3704,14 +3738,16 @@ namespace HardwareInformation
                 pass = false;
                 lblSecBoot.Text += StringsAndConstants.SECURE_BOOT_ALERT;
                 timer3.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty);
             }
             if (str == null)
             {
-                if(!offlineMode)
+                if (!offlineMode)
                 {
                     pass = false;
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_ERROR, string.Empty);
                     MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }                
+                }
             }
             if (str != null && !lblBIOS.Text.Contains(str[0]))
             {
@@ -3720,6 +3756,7 @@ namespace HardwareInformation
                     pass = false;
                     lblBIOS.Text += StringsAndConstants.BIOS_VERSION_ALERT;
                     timer4.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty);
                 }
             }
             if (str != null && str[1].Equals("false"))
@@ -3727,52 +3764,59 @@ namespace HardwareInformation
                 pass = false;
                 lblBIOSType.Text += StringsAndConstants.FIRMWARE_TYPE_ALERT;
                 timer6.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty);
             }
             if (lblMac.Text == "")
             {
-                if(!offlineMode)
+                if (!offlineMode)
                 {
                     pass = false;
                     lblMac.Text = StringsAndConstants.NETWORK_ERROR;
                     lblIP.Text = StringsAndConstants.NETWORK_ERROR;
                     timer5.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty);
                 }
                 else
                 {
                     lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
                     lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
                 }
-                
+
             }
             if (lblVT.Text == StringsAndConstants.deactivated)
             {
                 pass = false;
                 lblVT.Text += StringsAndConstants.VT_ALERT;
                 timer7.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty);
             }
             if (!lblSmart.Text.Contains(StringsAndConstants.ok))
             {
                 pass = false;
                 lblSmart.Text += StringsAndConstants.SMART_FAIL;
                 timer8.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty);
             }
-            if(str != null && str[2].Equals("false"))
+            if (str != null && str[2].Equals("false"))
             {
                 pass = false;
                 lblTPM.Text += StringsAndConstants.TPM_ERROR;
                 timer9.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty);
             }
             if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) < 4.0 && Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 lblPM.Text += StringsAndConstants.NOT_ENOUGH_MEMORY;
                 timer10.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty);
             }
             if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) > 4.0 && !Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 lblPM.Text += StringsAndConstants.TOO_MUCH_MEMORY;
                 timer10.Enabled = true;
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty);
             }
         }
 
@@ -3784,6 +3828,7 @@ namespace HardwareInformation
             accessSystemButton.Enabled = false;
             registerButton.Enabled = false;
             collectButton.Enabled = false;
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_THREAD, string.Empty);
             startAsync(sender, e);
         }
 
@@ -3863,18 +3908,23 @@ namespace HardwareInformation
                 else
                     lblMaintenanceSince.Text = StringsAndConstants.SINCE_UNKNOWN;
             }
+            log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty);
         }
 
         //Loads webView2 component
         public async Task loadWebView2()
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty);
             CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH + MiscMethods.getWebView2Version(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty);
         }
 
         //Sends hardware info to the specified server
         public void serverSendInfo(string[] serverArgs)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[10] + "&modelo=" + serverArgs[11] + "&numeroSerial=" + serverArgs[12] + "&processador=" + serverArgs[13] + "&memoria=" + serverArgs[14] + "&hd=" + serverArgs[15] + "&sistemaOperacional=" + serverArgs[16] + "&nomeDoComputador=" + serverArgs[17] + "&bios=" + serverArgs[18] + "&mac=" + serverArgs[19] + "&ip=" + serverArgs[20] + "&emUso=" + serverArgs[21] + "&etiqueta=" + serverArgs[22] + "&tipo=" + serverArgs[23] + "&tipoFW=" + serverArgs[24] + "&tipoArmaz=" + serverArgs[25] + "&gpu=" + serverArgs[26] + "&modoArmaz=" + serverArgs[27] + "&secBoot=" + serverArgs[28] + "&vt=" + serverArgs[29] + "&tpm=" + serverArgs[30] + "&trocaPilha=" + serverArgs[31] + "&ticketNum=" + serverArgs[32] + "&agent=" + serverArgs[33]);
         }
 
@@ -3906,7 +3956,7 @@ namespace HardwareInformation
                 sArgs[21] = comboBoxInUse.SelectedItem.ToString();
                 sArgs[22] = comboBoxTag.SelectedItem.ToString();
                 sArgs[23] = comboBoxType.SelectedItem.ToString();
-                if(comboBoxBattery.SelectedItem.ToString().Equals("Sim"))
+                if (comboBoxBattery.SelectedItem.ToString().Equals("Sim"))
                     sArgs[31] = StringsAndConstants.replacedBattery;
                 else
                     sArgs[31] = StringsAndConstants.sameBattery;
@@ -3920,7 +3970,7 @@ namespace HardwareInformation
                         webView2.Visible = true;
                         serverSendInfo(sArgs);
                         date.Add(sArgs[9]);
-                        if(formatButton.Checked)
+                        if (formatButton.Checked)
                         {
                             MiscMethods.regCreate(true, dateTimePicker1);
                             sinceLabelUpdate(true);

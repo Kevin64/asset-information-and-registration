@@ -21,9 +21,11 @@ namespace HardwareInformation
             comboBoxServerIP.Items.AddRange(StringsAndConstants.defaultServerIP.ToArray());
             comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 #if DEBUG
+            //log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
+            //log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty);
             comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
 #endif
@@ -33,7 +35,7 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
             //Change this for alpha, beta and final releases - uncomment the appropriate line
             //this.toolStripStatusLabel2.Text = MiscMethods.version();
-            this.toolStripStatusLabel2.Text = MiscMethods.version("beta");
+            this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.BETA_VERSION);
         }
 
         //Sets a light theme for the login form
