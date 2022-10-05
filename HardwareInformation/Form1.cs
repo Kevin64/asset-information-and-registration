@@ -18,23 +18,21 @@ namespace HardwareInformation
     public partial class Form1 : Form
     {
         private BackgroundWorker backgroundWorker1;
+        private LogGenerator log;
 
-        LogGenerator log;
-        public Form1(bool noConnection, string user, string ip, string port)
+        public Form1(bool noConnection, string user, string ip, string port, LogGenerator l)
         {
             InitializeComponent();
 
-            //Change this for alpha, beta and final releases - use alpha, beta and blank respectively
+            //Comment/Uncomment this for alpha, beta and final releases
             //this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.ALPHA_VERSION);
             this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.BETA_VERSION);
             //this.toolStripStatusLabel2.Text = MiscMethods.version();
 
-            log = new LogGenerator(Application.ProductName + " - " + this.toolStripStatusLabel2.Text, StringsAndConstants.LOG_FILENAME_CP + "-" + this.toolStripStatusLabel2.Text + StringsAndConstants.LOG_FILE_EXT);
-
+            log = l;
             themeBool = MiscMethods.ThemeInit();
             offlineMode = noConnection;
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString());
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_MODE, offlineMode.ToString());
 
             this.user = user;
@@ -3196,14 +3194,14 @@ namespace HardwareInformation
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
         private void accessButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LIGHTMODE_CHANGE, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VIEW_SERVER, string.Empty);
             System.Diagnostics.Process.Start("http://" + ip + ":" + port);
         }
 
         //Handles the closing of the current form
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_FORM, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_MAINFORM, string.Empty);
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             webView2.Dispose();
@@ -3211,7 +3209,7 @@ namespace HardwareInformation
                 Application.Exit();
         }
 
-        //Loads the form, sets some combobox values, create two timers (1000 ms cadence), and triggers a hardware collection
+        //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
             comboBoxThemeInit();
@@ -3463,6 +3461,7 @@ namespace HardwareInformation
             {
                 servidor_web = ip;
                 porta = port;
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty);
                 serverOnline = await BIOSFileReader.checkHost(servidor_web, porta);
                 if (serverOnline && porta != "")
                 {
@@ -3711,7 +3710,11 @@ namespace HardwareInformation
             lblTPM.Text = TPM;
             sinceLabelUpdate(true);
             sinceLabelUpdate(false);
+            log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty);
 
+            if(!offlineMode)
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty);
             string[] str = await BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
             //Scan if hostname is the default one
@@ -3818,6 +3821,8 @@ namespace HardwareInformation
                 timer10.Enabled = true;
                 log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty);
             }
+            if(pass && !offlineMode)
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty);
         }
 
         //Triggers when the form opens, and when the user clicks to collect
@@ -3908,8 +3913,6 @@ namespace HardwareInformation
                 else
                     lblMaintenanceSince.Text = StringsAndConstants.SINCE_UNKNOWN;
             }
-            log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty);
-            log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty);
         }
 
         //Loads webView2 component
@@ -3925,12 +3928,14 @@ namespace HardwareInformation
         public void serverSendInfo(string[] serverArgs)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[10] + "&modelo=" + serverArgs[11] + "&numeroSerial=" + serverArgs[12] + "&processador=" + serverArgs[13] + "&memoria=" + serverArgs[14] + "&hd=" + serverArgs[15] + "&sistemaOperacional=" + serverArgs[16] + "&nomeDoComputador=" + serverArgs[17] + "&bios=" + serverArgs[18] + "&mac=" + serverArgs[19] + "&ip=" + serverArgs[20] + "&emUso=" + serverArgs[21] + "&etiqueta=" + serverArgs[22] + "&tipo=" + serverArgs[23] + "&tipoFW=" + serverArgs[24] + "&tipoArmaz=" + serverArgs[25] + "&gpu=" + serverArgs[26] + "&modoArmaz=" + serverArgs[27] + "&secBoot=" + serverArgs[28] + "&vt=" + serverArgs[29] + "&tpm=" + serverArgs[30] + "&trocaPilha=" + serverArgs[31] + "&ticketNum=" + serverArgs[32] + "&agent=" + serverArgs[33]);
         }
 
         //Runs the registration for the website
         private void cadastra_ClickAsync(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty);
             loadingCircle23.Visible = true;
             loadingCircle23.Active = true;
             registerButton.Text = StringsAndConstants.DASH;
@@ -3969,29 +3974,49 @@ namespace HardwareInformation
                     {
                         webView2.Visible = true;
                         serverSendInfo(sArgs);
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty);
                         date.Add(sArgs[9]);
                         if (formatButton.Checked)
                         {
                             MiscMethods.regCreate(true, dateTimePicker1);
                             sinceLabelUpdate(true);
                             sinceLabelUpdate(false);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty);
+                            date.Add(sArgs[9]);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty);
+                            date.Add(sArgs[9]);
                         }
                         else if (maintenanceButton.Checked)
                         {
                             MiscMethods.regCreate(false, dateTimePicker1);
                             sinceLabelUpdate(false);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty);
+                            date.Add(sArgs[9]);
                         }
                     }
                     else
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty);
                         MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
+                {
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty);
                     MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (!pass)
+            {
+                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty);
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
+            {
+                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty);
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             loadingCircle23.Visible = false;
             loadingCircle23.Active = false;
             registerButton.Text = StringsAndConstants.REGISTER_AGAIN;

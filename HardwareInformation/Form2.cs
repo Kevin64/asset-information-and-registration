@@ -1,41 +1,53 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ConstantsDLL;
 using JsonFileReaderDLL;
+using LogGeneratorDLL;
 
 namespace HardwareInformation
 {
     public partial class Form2 : Form
     {
+        private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
         private string[] str = { };
+        bool themeBool;
+
         public Form2()
         {
             InitializeComponent();
-            if (MiscMethods.ThemeInit())
+
+            this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
+            //Comment/Uncomment this for alpha, beta and final releases
+            //this.toolStripStatusLabel2.Text = MiscMethods.version();
+            this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.BETA_VERSION);
+
+            log = new LogGenerator(Application.ProductName + " - " + this.toolStripStatusLabel2.Text, StringsAndConstants.LOG_FILENAME_CP + "-" + this.toolStripStatusLabel2.Text + StringsAndConstants.LOG_FILE_EXT);
+
+            themeBool = MiscMethods.ThemeInit();
+            if (themeBool)
                 darkTheme();
             else
                 lightTheme();
+
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString());
+
             comboBoxServerIP.Items.AddRange(StringsAndConstants.defaultServerIP.ToArray());
             comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 #if DEBUG
-            //log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
-            //log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty);
             comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
 #endif
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.WorkerSupportsCancellation = true;
-
-            this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
-            //Change this for alpha, beta and final releases - uncomment the appropriate line
-            //this.toolStripStatusLabel2.Text = MiscMethods.version();
-            this.toolStripStatusLabel2.Text = MiscMethods.version(StringsAndConstants.BETA_VERSION);
         }
 
         //Sets a light theme for the login form
@@ -123,14 +135,31 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
+        //Loads the form, sets some combobox values
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            FormClosing += Form2_FormClosing;
+        }
+
+        //Handles the closing of the current form
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_LOGINFORM, string.Empty);
+            File.Delete(StringsAndConstants.biosPath);
+            File.Delete(StringsAndConstants.loginPath);
+            if (e.CloseReason == CloseReason.UserClosing)
+                Application.Exit();
+        }
+
         //Checks the user/password and shows the main form
         private async void button1_Click(object sender, EventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, textBoxUser.Text);
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
-                Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null);
+                Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
                 this.Hide();
                 form.ShowDialog();
                 form.Close();
@@ -142,12 +171,19 @@ namespace HardwareInformation
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     if (str == null)
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty);
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     else if (str[0] == "false")
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty);
                         MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     else
                     {
-                        Form1 form = new Form1(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text);
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty);
+                        Form1 form = new Form1(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log);
                         this.Hide();
                         form.ShowDialog();
                         form.Close();
@@ -158,6 +194,7 @@ namespace HardwareInformation
                 }
                 else
                 {
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty);
                     MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBoxPassword.SelectAll();
                     textBoxPassword.Focus();
