@@ -7,15 +7,18 @@ using System.Windows.Forms;
 using HardwareInfoDLL;
 using ConstantsDLL;
 using JsonFileReaderDLL;
+using LogGeneratorDLL;
+using System.Reflection.Emit;
 
 namespace HardwareInformation
 {
     public class CLIRegister : Form
     {
-        public bool pass;
+        public bool pass, serverOnline;
         private bool[] strAlertBool;
         private string[] strArgs, strAlert;
         private WebView2 webView2;
+        private LogGenerator log;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -51,66 +54,75 @@ namespace HardwareInformation
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.ResumeLayout(false);
-
+            this.Load += new System.EventHandler(this.CLIRegister_Load);
         }
 
         //Constructor
-        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
+        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l)
         {
             InitializeComponent();
+            log = l;
             initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario);
+        }
+
+        //When window loads
+        private void CLIRegister_Load(object sender, EventArgs e)
+        {
+            FormClosing += CLIRegister_FormClosing;
         }
 
         //When form closes
         public void CLIRegister_FormClosing(object sender, FormClosingEventArgs e)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
             webView2.Dispose();
-            Application.Exit();
+            Environment.Exit(0);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
         public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
         {
-           /** !!Labels!!
-            * strArgs[0](servidor)
-            * strArgs[1](porta)
-            * strArgs[2](modo)
-            * strArgs[3](patrimonio)
-            * strArgs[4](lacre)
-            * strArgs[5](sala)
-            * strArgs[6](predio)
-            * strArgs[7](ad)
-            * strArgs[8](padrao)
-            * strArgs[9](data)
-            * strArgs[10](pilha)
-            * strArgs[11](ticket)
-            * strArgs[12](uso)
-            * strArgs[13](etiqueta)
-            * strArgs[14](tipo)
-            * strArgs[15]()
-            * strArgs[16]()
-            * strArgs[17](BM)
-            * strArgs[18](Model)
-            * strArgs[19](SerialNo)
-            * strArgs[20](ProcName)
-            * strArgs[21](PM)
-            * strArgs[22](HDSize)
-            * strArgs[23](OS)
-            * strArgs[24](Hostname)
-            * strArgs[25](BIOS)
-            * strArgs[26](Mac)
-            * strArgs[27](IP)
-            * strArgs[28](BIOSType)
-            * strArgs[29](MediaType)
-            * strArgs[30](GPUInfo)
-            * strArgs[31](MediaOperation)
-            * strArgs[32](SecBoot)
-            * strArgs[33](VT)
-            * strArgs[34](TPM)
-            * strArgs[35](usuario)
-            */
+            /** !!Labels!!
+             * strArgs[0](servidor)
+             * strArgs[1](porta)
+             * strArgs[2](modo)
+             * strArgs[3](patrimonio)
+             * strArgs[4](lacre)
+             * strArgs[5](sala)
+             * strArgs[6](predio)
+             * strArgs[7](ad)
+             * strArgs[8](padrao)
+             * strArgs[9](data)
+             * strArgs[10](pilha)
+             * strArgs[11](ticket)
+             * strArgs[12](uso)
+             * strArgs[13](etiqueta)
+             * strArgs[14](tipo)
+             * strArgs[15]()
+             * strArgs[16]()
+             * strArgs[17](BM)
+             * strArgs[18](Model)
+             * strArgs[19](SerialNo)
+             * strArgs[20](ProcName)
+             * strArgs[21](PM)
+             * strArgs[22](HDSize)
+             * strArgs[23](OS)
+             * strArgs[24](Hostname)
+             * strArgs[25](BIOS)
+             * strArgs[26](Mac)
+             * strArgs[27](IP)
+             * strArgs[28](BIOSType)
+             * strArgs[29](MediaType)
+             * strArgs[30](GPUInfo)
+             * strArgs[31](MediaOperation)
+             * strArgs[32](SecBoot)
+             * strArgs[33](VT)
+             * strArgs[34](TPM)
+             * strArgs[35](usuario)
+             */
             strArgs = new string[36];
-            
+
             strArgs[0] = servidor;
             strArgs[1] = porta;
             strArgs[2] = modo;
@@ -162,84 +174,125 @@ namespace HardwareInformation
                 StringsAndConstants.listTag.Contains(strArgs[13]) &&
                 StringsAndConstants.listType.Contains(strArgs[14]))
             {
-                if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
-                    strArgs[2] = StringsAndConstants.formatURL;
-                else if(strArgs[2].Equals("m") || strArgs[2].Equals("M"))
-                    strArgs[2] = StringsAndConstants.maintenanceURL;
-                
-                if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
-                    strArgs[8] = StringsAndConstants.employee;
-                else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
-                    strArgs[8] = StringsAndConstants.student;
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                serverOnline = await BIOSFileReader.checkHost(strArgs[0], strArgs[1]);
+                if (serverOnline && strArgs[1] != "")
+                {
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
 
-                if (strArgs[10].Equals("Sim"))
-                    strArgs[10] = StringsAndConstants.replacedBattery;
-                else
-                    strArgs[10] = StringsAndConstants.sameBattery;
+                    collectThread();
 
-                if (strArgs[9].Equals(StringsAndConstants.today))
-                {
-                    MiscMethods.regCreate(true, DateTime.Today.ToString());
-                    strArgs[9] = DateTime.Today.ToString().Substring(0, 10);
-                }
-                else
-                    MiscMethods.regCreate(true, strArgs[9]);
-                collectThread();
-                printHardwareData();
-                if (pass)
-                {
-                    serverSendInfo(strArgs);
-                    webView2.NavigationCompleted += webView2_NavigationCompleted;
-                }
-                else
-                {
-                    Console.WriteLine(StringsAndConstants.FIX_PROBLEMS);
-                    for (int i = 0; i < strAlert.Length; i++)
+                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
+
+                    if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
+                        strArgs[2] = StringsAndConstants.formatURL;
+                    else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
+                        strArgs[2] = StringsAndConstants.maintenanceURL;
+
+                    if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                        strArgs[8] = StringsAndConstants.employee;
+                    else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                        strArgs[8] = StringsAndConstants.student;
+
+                    if (strArgs[10].Equals("Sim"))
+                        strArgs[10] = StringsAndConstants.replacedBattery;
+                    else
+                        strArgs[10] = StringsAndConstants.sameBattery;
+
+                    printHardwareData();
+
+                    if (pass)
                     {
-                        if (strAlertBool[i])
+                        if (strArgs[9].Equals(StringsAndConstants.today))
                         {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine(strAlert[i]);
-                            Console.ResetColor();
+                            strArgs[9] = DateTime.Today.ToString().Substring(0, 10);
+
+                            if (modo == "f" || modo == "F")
+                                MiscMethods.regCreate(true, DateTime.Today.ToString());
+                            if (modo == "m" || modo == "M")
+                                MiscMethods.regCreate(false, DateTime.Today.ToString());
                         }
+                        else
+                        {
+                            if (modo == "f" || modo == "F")
+                                MiscMethods.regCreate(true, strArgs[9]);
+                            if (modo == "m" || modo == "M")
+                                MiscMethods.regCreate(false, strArgs[9]);
+                        }
+
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                        serverSendInfo(strArgs);
+                        webView2.NavigationCompleted += webView2_NavigationCompleted;
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
                     }
-                    File.Delete(StringsAndConstants.biosPath);
-                    File.Delete(StringsAndConstants.loginPath);
+                    else
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.FIX_PROBLEMS, string.Empty, StringsAndConstants.consoleOutCLI);
+                        for (int i = 0; i < strAlert.Length; i++)
+                        {
+                            if (strAlertBool[i])
+                                log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
+                        }
+                        Console.ResetColor();
+                        File.Delete(StringsAndConstants.biosPath);
+                        File.Delete(StringsAndConstants.loginPath);
+                        webView2.Dispose();
+                        Environment.Exit(0);
+                    }
+
+                    if (modo == "f" || modo == "F")
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                    }
+                    else
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                }
+                else
+                {
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                     webView2.Dispose();
-                    Application.Exit();
+                    Environment.Exit(0);
                 }
             }
             else
             {
+                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                 Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                 webView2.Dispose();
-                Application.Exit();
+                Environment.Exit(0);
             }
         }
 
         //Allocates WebView2 runtime
         public void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
-            if(e.IsSuccess)
+            if (e.IsSuccess)
             {
                 File.Delete(StringsAndConstants.biosPath);
                 File.Delete(StringsAndConstants.loginPath);
                 webView2.Dispose();
-                Application.Exit();
+                Environment.Exit(0);
             }
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
-        private async void printHardwareData()
+        private void printHardwareData()
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutCLI);
+
             pass = true;
-            string[] str = await BIOSFileReader.fetchInfo(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
+            string[] str = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
             if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
             {
                 pass = false;
                 strAlert[0] += strArgs[24] + StringsAndConstants.HOSTNAME_ALERT;
                 strAlertBool[0] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             //The section below contains the exception cases for AHCI enforcement
             if (str != null && str[3].Equals("false"))
@@ -247,6 +300,7 @@ namespace HardwareInformation
                 pass = false;
                 strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
                 strAlertBool[1] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEDIAOP_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             //The section below contains the exception cases for Secure Boot enforcement
             if (strArgs[32].Equals(StringsAndConstants.deactivated) &&
@@ -256,10 +310,12 @@ namespace HardwareInformation
                 pass = false;
                 strAlert[2] += strArgs[32] + StringsAndConstants.SECURE_BOOT_ALERT;
                 strAlertBool[2] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             if (str == null)
             {
                 pass = false;
+                //log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                 strAlert[3] += StringsAndConstants.DATABASE_REACH_ERROR;
                 strAlertBool[3] = true;
             }
@@ -270,6 +326,7 @@ namespace HardwareInformation
                     pass = false;
                     strAlert[4] += strArgs[25] + StringsAndConstants.BIOS_VERSION_ALERT;
                     strAlertBool[4] = true;
+                    //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
             }
             if (str != null && str[1].Equals("false"))
@@ -277,6 +334,7 @@ namespace HardwareInformation
                 pass = false;
                 strAlert[5] += strArgs[28] + StringsAndConstants.FIRMWARE_TYPE_ALERT;
                 strAlertBool[5] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             if (strArgs[26] == "")
             {
@@ -285,89 +343,121 @@ namespace HardwareInformation
                 strAlert[7] += strArgs[27] + StringsAndConstants.NETWORK_ERROR;
                 strAlertBool[6] = true;
                 strAlertBool[7] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             if (strArgs[33] == StringsAndConstants.deactivated)
             {
                 pass = false;
                 strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
                 strAlertBool[8] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
             if (str != null && str[2].Equals("false"))
             {
                 pass = false;
                 strAlert[9] += strArgs[34] + StringsAndConstants.TPM_ERROR;
                 strAlertBool[9] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
-            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) < 4 && Environment.Is64BitOperatingSystem)
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) < 4.0 && Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 strAlert[10] += strArgs[21] + StringsAndConstants.NOT_ENOUGH_MEMORY;
                 strAlertBool[10] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
-            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) > 4 && !Environment.Is64BitOperatingSystem)
+            if (Convert.ToInt32(HardwareInfo.GetPhysicalMemoryAlt()) > 4.0 && !Environment.Is64BitOperatingSystem)
             {
                 pass = false;
                 strAlert[10] += strArgs[21] + StringsAndConstants.TOO_MUCH_MEMORY;
                 strAlertBool[10] = true;
+                //log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
             }
+            if (pass)
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
         }
 
         //Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables,
         // while reporting the progress to the progressbar
         public void collectThread()
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
+
             strArgs[17] = HardwareInfo.GetBoardMaker();
             if (strArgs[17] == StringsAndConstants.ToBeFilledByOEM || strArgs[17] == "")
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, strArgs[17], true);
 
             strArgs[18] = HardwareInfo.GetModel();
             if (strArgs[18] == StringsAndConstants.ToBeFilledByOEM || strArgs[18] == "")
                 strArgs[18] = HardwareInfo.GetModelAlt();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, strArgs[18], true);
 
             strArgs[19] = HardwareInfo.GetBoardProductId();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERIALNO, strArgs[19], true);
 
             strArgs[20] = HardwareInfo.GetProcessorCores();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PROCNAME, strArgs[20], true);
 
             strArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, strArgs[21], true);
 
             strArgs[22] = HardwareInfo.GetHDSize();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, strArgs[22], true);
 
             strArgs[29] = HardwareInfo.GetStorageType();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIATYPE, strArgs[29], true);
 
             strArgs[31] = HardwareInfo.GetStorageOperation();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIAOP, strArgs[31], true);
 
             strArgs[30] = HardwareInfo.GetGPUInfo();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GPUINFO, strArgs[30], true);
 
             strArgs[23] = HardwareInfo.GetOSInformation();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OS, strArgs[23], true);
 
             strArgs[24] = HardwareInfo.GetComputerName();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HOSTNAME, strArgs[24], true);
 
             strArgs[26] = HardwareInfo.GetMACAddress();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MAC, strArgs[26], true);
 
             strArgs[27] = HardwareInfo.GetIPAddress();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_IP, strArgs[27], true);
 
             strArgs[28] = HardwareInfo.GetBIOSType();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOSTYPE, strArgs[28], true);
 
             strArgs[32] = HardwareInfo.GetSecureBoot();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SECBOOT, strArgs[32], true);
 
             strArgs[25] = HardwareInfo.GetComputerBIOS();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOS, strArgs[25], true);
 
             strArgs[33] = HardwareInfo.GetVirtualizationTechnology();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VT, strArgs[33], true);
 
             strArgs[34] = HardwareInfo.GetTPMStatus();
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_TPM, strArgs[34], true);
+
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
         }
 
         //Loads webView2 component
         public async Task loadWebView2()
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
             CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH + MiscMethods.getWebView2Version(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
         }
 
         //Sends hardware info to the specified server
         public void serverSendInfo(string[] serverArgs)
         {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutCLI);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);
         }
     }

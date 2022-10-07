@@ -4,11 +4,15 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ConstantsDLL;
 using JsonFileReaderDLL;
+using LogGeneratorDLL;
+using System.Linq;
+using HardwareInformation.Properties;
 
 namespace HardwareInformation
 {
 	public class Program
     {
+        private static LogGenerator log;
         //Command line switch options specification
         public class Options
         {
@@ -49,11 +53,15 @@ namespace HardwareInformation
         }
 
         //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
-        public static async void RunOptions(Options opts)
+        public static void RunOptions(Options opts)
         {
-            string[] str = await LoginFileReader.fetchInfo(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
+            string[] str = LoginFileReader.fetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             if (str[0] == "true")
-                Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario));
+            {
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
+                Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log));
+            }
             else
             {
                 Console.WriteLine(StringsAndConstants.AUTH_ERROR);
@@ -70,15 +78,31 @@ namespace HardwareInformation
         [STAThread]
 		static void Main(string[] args)
 		{
-			Application.EnableVisualStyles();
+            string[] argsLog = new string[args.Length];
+
+            Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
+
+#if DEBUG
+            log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+#else
+            log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);            
+#endif
+
             if (args.Length == 0)
             {
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                 FreeConsole();
-                Application.Run(new Form2()); //If given no args, runs Form2 (login)
+                Application.Run(new Form2(log)); //If given no args, runs Form2 (login)
             }
             else
             {
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
+                args.CopyTo(argsLog, 0);
+                int index = Array.IndexOf(argsLog, "--senha");                
+                argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), true);
                 //If given args, parses them
                 Parser.Default.ParseArguments<Options>(args)
                    .WithParsed(RunOptions);

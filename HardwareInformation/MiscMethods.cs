@@ -2,7 +2,6 @@
 using System;
 using System.Windows.Forms;
 using ConstantsDLL;
-using System.Windows.Input;
 
 namespace HardwareInformation
 {
@@ -38,7 +37,6 @@ namespace HardwareInformation
             }
             else
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-
         }
 
         //Creates a registry key when a register operation is made in CLI mode
@@ -91,6 +89,28 @@ namespace HardwareInformation
             catch
             {
                 return false;
+            }
+        }
+
+        //Updates the 'last installed' or 'last maintenance' labels
+        public static string sinceLabelUpdate(bool mode)
+        {
+            string InstallLabel, MaintenanceLabel;
+            if (mode)
+            {
+                InstallLabel = regCheck(mode).ToString();
+                if (!InstallLabel.Equals("-1"))
+                    return "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")";
+                else
+                    return StringsAndConstants.SINCE_UNKNOWN;
+            }
+            else
+            {
+                MaintenanceLabel = regCheck(mode).ToString();
+                if (!MaintenanceLabel.Equals("-1"))
+                    return "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")";
+                else
+                    return StringsAndConstants.SINCE_UNKNOWN;
             }
         }
 

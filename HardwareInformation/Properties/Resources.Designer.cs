@@ -291,6 +291,15 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a beta.
+        /// </summary>
+        internal static string dev_status {
+            get {
+                return ResourceManager.GetString("dev-status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap disk_size_black {
