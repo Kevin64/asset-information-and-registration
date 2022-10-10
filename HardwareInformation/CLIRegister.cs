@@ -54,7 +54,6 @@ namespace HardwareInformation
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.CLIRegister_Load);
         }
 
         //Constructor
@@ -63,21 +62,6 @@ namespace HardwareInformation
             InitializeComponent();
             log = l;
             initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario);
-        }
-
-        //When window loads
-        private void CLIRegister_Load(object sender, EventArgs e)
-        {
-            FormClosing += CLIRegister_FormClosing;
-        }
-
-        //When form closes
-        public void CLIRegister_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
-            webView2.Dispose();
-            Environment.Exit(0);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
@@ -235,11 +219,8 @@ namespace HardwareInformation
                             if (strAlertBool[i])
                                 log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
                         }
-                        Console.ResetColor();
-                        File.Delete(StringsAndConstants.biosPath);
-                        File.Delete(StringsAndConstants.loginPath);
                         webView2.Dispose();
-                        Environment.Exit(0);
+                        Environment.Exit(1);
                     }
 
                     if (modo == "f" || modo == "F")
@@ -252,10 +233,10 @@ namespace HardwareInformation
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Console.WriteLine(StringsAndConstants.ARGS_ERROR);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    Console.WriteLine(StringsAndConstants.LOG_OFFLINE_SERVER);
                     webView2.Dispose();
-                    Environment.Exit(0);
+                    Environment.Exit(2);
                 }
             }
             else
@@ -263,8 +244,14 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                 Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                 webView2.Dispose();
-                Environment.Exit(0);
+                Environment.Exit(2);
             }
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
+            File.Delete(StringsAndConstants.biosPath);
+            File.Delete(StringsAndConstants.loginPath);
+            webView2.Dispose();
+            Environment.Exit(0);
         }
 
         //Allocates WebView2 runtime
@@ -272,8 +259,6 @@ namespace HardwareInformation
         {
             if (e.IsSuccess)
             {
-                File.Delete(StringsAndConstants.biosPath);
-                File.Delete(StringsAndConstants.loginPath);
                 webView2.Dispose();
                 Environment.Exit(0);
             }

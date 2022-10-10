@@ -57,16 +57,25 @@ namespace HardwareInformation
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
             string[] str = LoginFileReader.fetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
-            if (str[0] == "true")
+            try
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
-                Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log));
+                if (str[0] == "true")
+                {
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log));
+                }
+                else
+                {
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.AUTH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
+                    Environment.Exit(2);
+                }
             }
-            else
+            catch
             {
-                Console.WriteLine(StringsAndConstants.AUTH_ERROR);
-                Application.Exit();
+                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.INTRANET_REQUIRED, string.Empty, StringsAndConstants.consoleOutCLI);
+                Environment.Exit(2);
             }
+            
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -85,24 +94,24 @@ namespace HardwareInformation
 
 #if DEBUG
             log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
 #else
-            log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);            
+            log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
 #endif
 
             if (args.Length == 0)
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                 FreeConsole();
                 Application.Run(new Form2(log)); //If given no args, runs Form2 (login)
             }
             else
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
                 args.CopyTo(argsLog, 0);
                 int index = Array.IndexOf(argsLog, "--senha");                
                 argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), true);
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
                 //If given args, parses them
                 Parser.Default.ParseArguments<Options>(args)
                    .WithParsed(RunOptions);
