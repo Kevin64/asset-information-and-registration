@@ -52,11 +52,26 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
         }
 
-        //Fetches the WebView2 systemwide version
-        public static string getWebView2Version()
+        //Fetches the WebView2 systemwide version (x64)
+        public static string getWebView2Version64()
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH, true);
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true);
             if(rk != null)
+            {
+                Object o = rk.GetValue("pv");
+                if (o != null)
+                    return o.ToString();
+                else return "";
+            }
+            else
+                return "";
+        }
+
+        //Fetches the WebView2 systemwide version (x86)
+        public static string getWebView2Version32()
+        {
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
+            if (rk != null)
             {
                 Object o = rk.GetValue("pv");
                 if (o != null)

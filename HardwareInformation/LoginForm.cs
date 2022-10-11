@@ -9,14 +9,14 @@ using LogGeneratorDLL;
 
 namespace HardwareInformation
 {
-    public partial class Form2 : Form
+    public partial class LoginForm : Form
     {
         private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
         private string[] str = { };
         bool themeBool;
 
-        public Form2(LogGenerator l)
+        public LoginForm(LogGenerator l)
         {
             InitializeComponent();
 
@@ -156,7 +156,7 @@ namespace HardwareInformation
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
-                Form1 form = new Form1(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
+                MainForm form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
                 this.Hide();
                 form.ShowDialog();
                 form.Close();
@@ -181,7 +181,7 @@ namespace HardwareInformation
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
-                        Form1 form = new Form1(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log);
+                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log);
                         this.Hide();
                         form.ShowDialog();
                         form.Close();

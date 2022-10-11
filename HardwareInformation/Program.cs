@@ -5,8 +5,8 @@ using System.Windows.Forms;
 using ConstantsDLL;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
-using System.Linq;
 using HardwareInformation.Properties;
+using System.IO;
 
 namespace HardwareInformation
 {
@@ -100,16 +100,28 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #endif
 
+            //Installs WebView2 Runtime if not found
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+            if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version64())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version32())))
+            {
+                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                WebView2Installer.install();
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+            }
+            else
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+
             if (args.Length == 0)
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                 FreeConsole();
-                Application.Run(new Form2(log)); //If given no args, runs Form2 (login)
+                Application.Run(new LoginForm(log)); //If given no args, runs LoginForm
             }
             else
             {
                 args.CopyTo(argsLog, 0);
-                int index = Array.IndexOf(argsLog, "--senha");                
+                int index = Array.IndexOf(argsLog, "--senha");
                 argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
                 //If given args, parses them

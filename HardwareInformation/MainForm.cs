@@ -13,16 +13,17 @@ using ConfigurableQualityPictureBoxDLL;
 using MRG.Controls.UI;
 using LogGeneratorDLL;
 using HardwareInformation.Properties;
+using System.Globalization;
 
 namespace HardwareInformation
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private BackgroundWorker backgroundWorker1;
         private ToolStripStatusLabel logLabel;
         private LogGenerator log;
 
-        public Form1(bool noConnection, string user, string ip, string port, LogGenerator l)
+        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l)
         {
             InitializeComponent();
 
@@ -60,7 +61,7 @@ namespace HardwareInformation
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblBM = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.lblSerialNo = new System.Windows.Forms.Label();
@@ -2662,7 +2663,7 @@ namespace HardwareInformation
         private Label label49;
         private Label lblMaintenanceSince;
         private Label lblInstallSince;
-        private BusyWindow bw;
+        private BusyForm bw;
 
         private bool pass = true;
         private bool themeBool, serverOnline, offlineMode;
@@ -3237,7 +3238,7 @@ namespace HardwareInformation
             comboBoxThemeInit();
             if (!offlineMode)
             {
-                bw = new BusyWindow();
+                bw = new BusyForm();
                 logoutLabel.Enabled = false;
                 bw.Visible = true;
                 await loadWebView2();
@@ -3739,114 +3740,122 @@ namespace HardwareInformation
 
             if(!offlineMode)
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
-            string[] str = await BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
+            try
+            {
+                string[] str = await BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
-            //Scan if hostname is the default one
-            if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
-            {
-                pass = false;
-                lblHostname.Text += StringsAndConstants.HOSTNAME_ALERT;
-                timer1.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            //The section below contains the exception cases for AHCI enforcement
-            if (str != null && str[3].Equals("false"))
-            {
-                pass = false;
-                lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
-                timer2.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEDIAOP_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            //The section below contains the exception cases for Secure Boot enforcement
-            if (lblSecBoot.Text.Equals(StringsAndConstants.deactivated) &&
-                !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU1) &&
-                !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU2))
-            {
-                pass = false;
-                lblSecBoot.Text += StringsAndConstants.SECURE_BOOT_ALERT;
-                timer3.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if (str == null)
-            {
-                if (!offlineMode)
+                //Scan if hostname is the default one
+                if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
                 {
                     pass = false;
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-                    MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblHostname.Text += StringsAndConstants.HOSTNAME_ALERT;
+                    timer1.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-            }
-            if (str != null && !lblBIOS.Text.Contains(str[0]))
-            {
-                if (!str[0].Equals("-1"))
+                //The section below contains the exception cases for AHCI enforcement
+                if (str != null && str[3].Equals("false"))
                 {
                     pass = false;
-                    lblBIOS.Text += StringsAndConstants.BIOS_VERSION_ALERT;
-                    timer4.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
+                    timer2.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEDIAOP_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-            }
-            if (str != null && str[1].Equals("false"))
-            {
-                pass = false;
-                lblBIOSType.Text += StringsAndConstants.FIRMWARE_TYPE_ALERT;
-                timer6.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if (lblMac.Text == "")
-            {
-                if (!offlineMode)
+                //The section below contains the exception cases for Secure Boot enforcement
+                if (lblSecBoot.Text.Equals(StringsAndConstants.deactivated) &&
+                    !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU1) &&
+                    !lblGPUInfo.Text.Contains(StringsAndConstants.nonSecBootGPU2))
                 {
                     pass = false;
-                    lblMac.Text = StringsAndConstants.NETWORK_ERROR;
-                    lblIP.Text = StringsAndConstants.NETWORK_ERROR;
-                    timer5.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    lblSecBoot.Text += StringsAndConstants.SECURE_BOOT_ALERT;
+                    timer3.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-                else
+                if (str == null)
                 {
-                    lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
-                    lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                    if (!offlineMode)
+                    {
+                        pass = false;
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                        MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+                if (str != null && !lblBIOS.Text.Contains(str[0]))
+                {
+                    if (!str[0].Equals("-1"))
+                    {
+                        pass = false;
+                        lblBIOS.Text += StringsAndConstants.BIOS_VERSION_ALERT;
+                        timer4.Enabled = true;
+                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    }
+                }
+                if (str != null && str[1].Equals("false"))
+                {
+                    pass = false;
+                    lblBIOSType.Text += StringsAndConstants.FIRMWARE_TYPE_ALERT;
+                    timer6.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                if (lblMac.Text == "")
+                {
+                    if (!offlineMode)
+                    {
+                        pass = false;
+                        lblMac.Text = StringsAndConstants.NETWORK_ERROR;
+                        lblIP.Text = StringsAndConstants.NETWORK_ERROR;
+                        timer5.Enabled = true;
+                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    }
+                    else
+                    {
+                        lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                        lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                    }
 
+                }
+                if (lblVT.Text == StringsAndConstants.deactivated)
+                {
+                    pass = false;
+                    lblVT.Text += StringsAndConstants.VT_ALERT;
+                    timer7.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                if (!lblSmart.Text.Contains(StringsAndConstants.ok))
+                {
+                    pass = false;
+                    lblSmart.Text += StringsAndConstants.SMART_FAIL;
+                    timer8.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                if (str != null && str[2].Equals("false"))
+                {
+                    pass = false;
+                    lblTPM.Text += StringsAndConstants.TPM_ERROR;
+                    timer9.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                if (d < 4.0 && Environment.Is64BitOperatingSystem)
+                {
+                    pass = false;
+                    lblPM.Text += StringsAndConstants.NOT_ENOUGH_MEMORY;
+                    timer10.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                if (d > 4.0 && !Environment.Is64BitOperatingSystem)
+                {
+                    pass = false;
+                    lblPM.Text += StringsAndConstants.TOO_MUCH_MEMORY;
+                    timer10.Enabled = true;
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                }
+                if (pass && !offlineMode)
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
             }
-            if (lblVT.Text == StringsAndConstants.deactivated)
+            catch(Exception e)
             {
-                pass = false;
-                lblVT.Text += StringsAndConstants.VT_ALERT;
-                timer7.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutGUI);
             }
-            if (!lblSmart.Text.Contains(StringsAndConstants.ok))
-            {
-                pass = false;
-                lblSmart.Text += StringsAndConstants.SMART_FAIL;
-                timer8.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if (str != null && str[2].Equals("false"))
-            {
-                pass = false;
-                lblTPM.Text += StringsAndConstants.TPM_ERROR;
-                timer9.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) < 4.0 && Environment.Is64BitOperatingSystem)
-            {
-                pass = false;
-                lblPM.Text += StringsAndConstants.NOT_ENOUGH_MEMORY;
-                timer10.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if (Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt()) > 4.0 && !Environment.Is64BitOperatingSystem)
-            {
-                pass = false;
-                lblPM.Text += StringsAndConstants.TOO_MUCH_MEMORY;
-                timer10.Enabled = true;
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-            }
-            if(pass && !offlineMode)
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
         }
 
         //Triggers when the form opens, and when the user clicks to collect
@@ -3922,7 +3931,11 @@ namespace HardwareInformation
         public async Task loadWebView2()
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutGUI);
-            CoreWebView2Environment webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH + MiscMethods.getWebView2Version(), Path.GetTempPath());
+            CoreWebView2Environment webView2Environment;
+            if (Environment.Is64BitOperatingSystem)
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version64(), Path.GetTempPath());
+            else
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version32(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutGUI);
         }
