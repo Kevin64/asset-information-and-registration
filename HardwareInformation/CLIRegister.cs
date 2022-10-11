@@ -272,8 +272,8 @@ namespace HardwareInformation
 
             pass = true;
 
-            //try
-            //{
+            try
+            {
                 string[] str = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
                 if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
@@ -339,7 +339,6 @@ namespace HardwareInformation
                     strAlertBool[9] = true;
                 }
                 double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
-                Console.WriteLine(d);
                 if (d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
@@ -354,11 +353,11 @@ namespace HardwareInformation
                 }
                 if (pass)
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
-            //}
-            //catch(Exception e)
-            //{
-            //    //log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutCLI);
-            //}
+            }
+            catch (Exception e)
+            {
+                log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutCLI);
+            }
         }
 
         //Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables,
@@ -435,9 +434,9 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
             CoreWebView2Environment webView2Environment;
             if (Environment.Is64BitOperatingSystem)
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version64(), Path.GetTempPath());
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version(), Path.GetTempPath());
             else
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version32(), Path.GetTempPath());
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version(), Path.GetTempPath());
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
         }

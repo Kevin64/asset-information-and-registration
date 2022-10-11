@@ -2,6 +2,8 @@
 using System;
 using System.Windows.Forms;
 using ConstantsDLL;
+using System.IO;
+using static System.Environment;
 
 namespace HardwareInformation
 {
@@ -52,11 +54,15 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
         }
 
-        //Fetches the WebView2 systemwide version (x64)
-        public static string getWebView2Version64()
+        //Fetches the WebView2 systemwide version
+        public static string getWebView2Version()
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true);
-            if(rk != null)
+            RegistryKey rk;
+            if (Environment.Is64BitOperatingSystem)
+                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true);
+            else
+                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
+            if (rk != null)
             {
                 Object o = rk.GetValue("pv");
                 if (o != null)
@@ -67,19 +73,14 @@ namespace HardwareInformation
                 return "";
         }
 
-        //Fetches the WebView2 systemwide version (x86)
-        public static string getWebView2Version32()
+        public static bool checkProgramData()
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
-            if (rk != null)
+            if(!Directory.Exists(StringsAndConstants.PROGRAMDATA_FOLDERNAME))
             {
-                Object o = rk.GetValue("pv");
-                if (o != null)
-                    return o.ToString();
-                else return "";
+                Directory.CreateDirectory(StringsAndConstants.LOGFILE_LOCATION);
+                return true;
             }
-            else
-                return "";
+            return false;
         }
 
         //Initializes the theme, according to the host theme
