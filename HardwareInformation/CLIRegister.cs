@@ -8,7 +8,6 @@ using HardwareInfoDLL;
 using ConstantsDLL;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
-using System.Reflection.Emit;
 using System.Globalization;
 
 namespace HardwareInformation
@@ -221,7 +220,7 @@ namespace HardwareInformation
                                 log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
                         }
                         webView2.Dispose();
-                        Environment.Exit(1);
+                        Environment.Exit(StringsAndConstants.RETURN_WARNING);
                     }
 
                     if (modo == "f" || modo == "F")
@@ -237,7 +236,7 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                     Console.WriteLine(StringsAndConstants.LOG_OFFLINE_SERVER);
                     webView2.Dispose();
-                    Environment.Exit(2);
+                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
             }
             else
@@ -245,14 +244,14 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                 Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                 webView2.Dispose();
-                Environment.Exit(2);
+                Environment.Exit(StringsAndConstants.RETURN_ERROR);
             }
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             webView2.Dispose();
-            Environment.Exit(0);
+            Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
         }
 
         //Allocates WebView2 runtime
@@ -261,7 +260,7 @@ namespace HardwareInformation
             if (e.IsSuccess)
             {
                 webView2.Dispose();
-                Environment.Exit(0);
+                Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
             }
         }
 

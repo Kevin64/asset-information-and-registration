@@ -67,13 +67,13 @@ namespace HardwareInformation
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.AUTH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Environment.Exit(2);
+                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
             }
             catch
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.INTRANET_REQUIRED, string.Empty, StringsAndConstants.consoleOutCLI);
-                Environment.Exit(2);
+                Environment.Exit(StringsAndConstants.RETURN_ERROR);
             }
             
         }
@@ -92,8 +92,8 @@ namespace HardwareInformation
             Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-            if (MiscMethods.checkProgramData())
-            {
+            bool fileExists = bool.Parse(MiscMethods.checkIfLogExists());
+
 #if DEBUG
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
@@ -101,7 +101,10 @@ namespace HardwareInformation
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #endif
-            }
+            if (!fileExists)
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+            else
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
 
             //Installs WebView2 Runtime if not found
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
@@ -113,7 +116,7 @@ namespace HardwareInformation
                 if (returnCode != 0)
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Environment.Exit(2);
+                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
             }

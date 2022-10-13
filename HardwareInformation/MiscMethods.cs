@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using ConstantsDLL;
 using System.IO;
-using static System.Environment;
+using HardwareInformation.Properties;
 
 namespace HardwareInformation
 {
@@ -73,14 +73,29 @@ namespace HardwareInformation
                 return "";
         }
 
-        public static bool checkProgramData()
+        public static string checkIfLogExists()
         {
-            if(!Directory.Exists(StringsAndConstants.PROGRAMDATA_FOLDERNAME))
+            bool b;
+            try
             {
-                Directory.CreateDirectory(StringsAndConstants.LOGFILE_LOCATION);
-                return true;
+#if DEBUG
+                b = File.Exists(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+#else
+                b = File.Exists(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+#endif
+                if (!b)
+                {
+                    Directory.CreateDirectory(StringsAndConstants.LOGFILE_LOCATION);
+                    return "false";
+                }
+
+                return "true";
             }
-            return false;
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            
         }
 
         //Initializes the theme, according to the host theme

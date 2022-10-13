@@ -2786,7 +2786,7 @@ namespace HardwareInformation
         private void logLabel_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OPENING_LOG, string.Empty, StringsAndConstants.consoleOutGUI);
-            System.Diagnostics.Process.Start(StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
         }
 
         //Sets a light theme for the UI
