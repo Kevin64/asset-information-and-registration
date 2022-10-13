@@ -28,7 +28,11 @@ namespace HardwareInformation
             InitializeComponent();
 
             //Program version
+#if DEBUG
             this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
+#else
+            this.toolStripStatusLabel2.Text = MiscMethods.version();
+#endif
 
             log = l;
             themeBool = MiscMethods.ThemeInit();
