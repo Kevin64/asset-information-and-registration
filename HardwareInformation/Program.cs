@@ -112,10 +112,11 @@ namespace HardwareInformation
             {
                 log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                int returnCode = WebView2Installer.install();
-                if (returnCode != 0)
+                var returnCode = WebView2Installer.install();
+                int returnCodeInt;
+                if (!int.TryParse(returnCode, out returnCodeInt))
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
                     Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
