@@ -6,6 +6,7 @@ using ConstantsDLL;
 using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace HardwareInformation
 {
@@ -13,6 +14,7 @@ namespace HardwareInformation
     {
         private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
+        private TaskbarManager tbProg;
         private string[] str = { };
         bool themeBool;
 
@@ -21,13 +23,6 @@ namespace HardwareInformation
             InitializeComponent();
 
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
-
-            //Program version
-#if DEBUG            
-            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
-#else
-            this.toolStripStatusLabel2.Text = MiscMethods.version();
-#endif
 
             log = l;
             themeBool = MiscMethods.ThemeInit();
@@ -41,9 +36,15 @@ namespace HardwareInformation
             comboBoxServerIP.Items.AddRange(StringsAndConstants.defaultServerIP.ToArray());
             comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
 #if DEBUG
+            //Program version
+            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
+            
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
+            //Program version
+            this.toolStripStatusLabel2.Text = MiscMethods.version();
+            
             comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
 #endif
@@ -156,11 +157,13 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private async void button1_Click(object sender, EventArgs e)
         {
+            tbProg = TaskbarManager.Instance;
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, textBoxUser.Text, StringsAndConstants.consoleOutGUI);
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
+                tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 MainForm form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
                 this.Hide();
                 form.ShowDialog();
@@ -169,6 +172,7 @@ namespace HardwareInformation
             }
             else
             {
+                tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
                 str = await LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
@@ -177,11 +181,13 @@ namespace HardwareInformation
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else if (str[0] == "false")
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else
                     {
@@ -199,6 +205,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     textBoxPassword.SelectAll();
                     textBoxPassword.Focus();
                 }

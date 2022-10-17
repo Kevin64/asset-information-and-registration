@@ -14,6 +14,7 @@ using MRG.Controls.UI;
 using LogGeneratorDLL;
 using HardwareInformation.Properties;
 using System.Globalization;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace HardwareInformation
 {
@@ -22,6 +23,8 @@ namespace HardwareInformation
         private BackgroundWorker backgroundWorker1;
         private ToolStripStatusLabel logLabel;
         private LogGenerator log;
+        private TaskbarManager tbProg;
+        private int percent;
 
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l)
         {
@@ -3418,6 +3421,9 @@ namespace HardwareInformation
         //Starts the collection process
         private async void collecting()
         {
+            tbProg = TaskbarManager.Instance;
+            tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
+
             //Writes a dash in the labels, while collects data
             lblInstallSince.Text = StringsAndConstants.DASH;
             lblMaintenanceSince.Text = StringsAndConstants.DASH;
@@ -3859,6 +3865,8 @@ namespace HardwareInformation
                 }
                 if (pass && !offlineMode)
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
+                if (!pass)
+                    tbProg.SetProgressState(TaskbarProgressBarState.Error, Handle);
             }
             catch(Exception e)
             {
@@ -3895,7 +3903,9 @@ namespace HardwareInformation
         //Draws the collection progress on the screen
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            progressBar1.Value = (e.ProgressPercentage * progressBar1.Maximum) / 100;
+            percent = e.ProgressPercentage * progressBar1.Maximum / 100;
+            tbProg.SetProgressValue(percent, progressBar1.Maximum);
+            progressBar1.Value = percent;
             label28.Text = (e.ProgressPercentage.ToString() + "%");
         }
 
@@ -3956,8 +3966,9 @@ namespace HardwareInformation
         }
 
         //Runs the registration for the website
-        private void cadastra_ClickAsync(object sender, EventArgs e)
+        private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
+            tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutGUI);
             loadingCircle23.Visible = true;
             loadingCircle23.Active = true;
@@ -4016,29 +4027,38 @@ namespace HardwareInformation
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
                             date.Add(sArgs[9]);
                         }
+                        await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProg.SetProgressValue(percent, progressBar1.Maximum);
+                        tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                     }
-
                 }
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbProg.SetProgressValue(percent, progressBar1.Maximum);
+                    tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                 }
             }
             else if (!pass)
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProg.SetProgressValue(percent, progressBar1.Maximum);
+                tbProg.SetProgressState(TaskbarProgressBarState.Error, Handle);
             }
             else
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProg.SetProgressValue(percent, progressBar1.Maximum);
+                tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             }
             loadingCircle23.Visible = false;
             loadingCircle23.Active = false;
