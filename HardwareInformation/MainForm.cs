@@ -23,7 +23,7 @@ namespace HardwareInformation
         private BackgroundWorker backgroundWorker1;
         private ToolStripStatusLabel logLabel;
         private LogGenerator log;
-        private TaskbarManager tbProg;
+        private TaskbarManager tbProgMain;
         private int percent;
 
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l)
@@ -169,6 +169,13 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
             this.lblAgentName = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.lblPortServer = new System.Windows.Forms.Label();
@@ -225,7 +232,7 @@ namespace HardwareInformation
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.logLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -242,14 +249,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
-            this.logLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -1617,6 +1616,99 @@ namespace HardwareInformation
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
             // 
+            // comboBoxBattery
+            // 
+            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxBattery.TabIndex = 47;
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.Enabled = false;
+            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxStandard.TabIndex = 46;
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.Enabled = false;
+            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxActiveDirectory.TabIndex = 45;
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
+            this.comboBoxTag.Name = "comboBoxTag";
+            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxTag.TabIndex = 41;
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxInUse.TabIndex = 39;
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxType.TabIndex = 40;
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxBuilding.TabIndex = 38;
+            // 
             // lblAgentName
             // 
             this.lblAgentName.AutoSize = true;
@@ -2213,7 +2305,6 @@ namespace HardwareInformation
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comboBoxTheme,
-            this.logoutLabel,
             this.logLabel,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
@@ -2265,13 +2356,13 @@ namespace HardwareInformation
             this.toolStripMenuItem3.Text = "Escuro";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
-            // logoutLabel
+            // logLabel
             // 
-            this.logoutLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.logoutLabel.Name = "logoutLabel";
-            this.logoutLabel.Size = new System.Drawing.Size(26, 17);
-            this.logoutLabel.Text = "Sair";
-            this.logoutLabel.Click += new System.EventHandler(this.logoutLabel_Click);
+            this.logLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.logLabel.Name = "logLabel";
+            this.logLabel.Size = new System.Drawing.Size(27, 17);
+            this.logLabel.Text = "Log";
+            this.logLabel.Click += new System.EventHandler(this.logLabel_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -2280,7 +2371,7 @@ namespace HardwareInformation
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(905, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(931, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2361,108 +2452,7 @@ namespace HardwareInformation
             this.loadingCircle23.Text = "loadingCircle23";
             this.loadingCircle23.Visible = false;
             // 
-            // logLabel
-            // 
-            this.logLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(27, 17);
-            this.logLabel.Text = "Log";
-            this.logLabel.Click += new System.EventHandler(this.logLabel_Click);
-            // 
-            // comboBoxBattery
-            // 
-            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxBattery.TabIndex = 47;
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.Enabled = false;
-            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxStandard.TabIndex = 46;
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.Enabled = false;
-            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxActiveDirectory.TabIndex = 45;
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
-            this.comboBoxTag.Name = "comboBoxTag";
-            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxTag.TabIndex = 41;
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxInUse.TabIndex = 39;
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxType.TabIndex = 40;
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxBuilding.TabIndex = 38;
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2483,7 +2473,7 @@ namespace HardwareInformation
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -2683,7 +2673,6 @@ namespace HardwareInformation
         private Label lblIPServer;
         private Label lblAgentName;
         private Label label53;
-        private ToolStripStatusLabel logoutLabel;
         private Timer timer9;
         private Timer timer10;
         private ConfigurableQualityPictureBox configurableQualityPictureBox23;
@@ -2969,8 +2958,6 @@ namespace HardwareInformation
             this.toolStripMenuItem2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.logoutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.logoutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -3181,8 +3168,6 @@ namespace HardwareInformation
             this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.logoutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.logoutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -3250,11 +3235,9 @@ namespace HardwareInformation
             if (!offlineMode)
             {
                 bw = new BusyForm();
-                logoutLabel.Enabled = false;
                 bw.Visible = true;
                 await loadWebView2();
                 bw.Visible = false;
-                logoutLabel.Enabled = true;
             }
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
@@ -3282,7 +3265,7 @@ namespace HardwareInformation
             dateTimePicker1.MaxDate = DateTime.Today;
             date = new List<string>();
             FormClosing += Form1_FormClosing;
-            tbProg = TaskbarManager.Instance;
+            tbProgMain = TaskbarManager.Instance;
             coleta_Click(sender, e);
         }
 
@@ -3422,8 +3405,6 @@ namespace HardwareInformation
         //Starts the collection process
         private async void collecting()
         {
-            tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
-
             //Writes a dash in the labels, while collects data
             lblInstallSince.Text = StringsAndConstants.DASH;
             lblMaintenanceSince.Text = StringsAndConstants.DASH;
@@ -3866,7 +3847,7 @@ namespace HardwareInformation
                 if (pass && !offlineMode)
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
                 if (!pass)
-                    tbProg.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
             }
             catch(Exception e)
             {
@@ -3877,6 +3858,7 @@ namespace HardwareInformation
         //Triggers when the form opens, and when the user clicks to collect
         private void coleta_Click(object sender, EventArgs e)
         {
+            tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
             webView2.Visible = false;
             collecting();
             accessSystemButton.Enabled = false;
@@ -3904,7 +3886,7 @@ namespace HardwareInformation
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             percent = e.ProgressPercentage * progressBar1.Maximum / 100;
-            tbProg.SetProgressValue(percent, progressBar1.Maximum);
+            tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
             progressBar1.Value = percent;
             label28.Text = (e.ProgressPercentage.ToString() + "%");
         }
@@ -3968,7 +3950,7 @@ namespace HardwareInformation
         //Runs the registration for the website
         private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
-            tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
+            tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutGUI);
             loadingCircle23.Visible = true;
             loadingCircle23.Active = true;
@@ -4028,37 +4010,37 @@ namespace HardwareInformation
                             date.Add(sArgs[9]);
                         }
                         await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                        tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                        tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                     }
                 }
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                    tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                    tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                 }
             }
             else if (!pass)
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                tbProg.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
+                tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
             }
             else
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
             }
             loadingCircle23.Visible = false;
             loadingCircle23.Active = false;

@@ -14,7 +14,8 @@ namespace HardwareInformation
     {
         private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
-        private TaskbarManager tbProg;
+        private TaskbarManager tbProgLogin;
+        private MainForm form;
         private string[] str = { };
         bool themeBool;
 
@@ -141,7 +142,7 @@ namespace HardwareInformation
         private void Form2_Load(object sender, EventArgs e)
         {
             FormClosing += Form2_FormClosing;
-            tbProg = TaskbarManager.Instance;
+            tbProgLogin = TaskbarManager.Instance;
         }
 
         //this.Handles the closing of the current form
@@ -163,8 +164,8 @@ namespace HardwareInformation
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
-                tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                MainForm form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
                 this.Hide();
                 textBoxUser.Text = null;
                 textBoxPassword.Text = null;
@@ -181,7 +182,7 @@ namespace HardwareInformation
                 comboBoxServerIP.Enabled = false;
                 comboBoxServerPort.Enabled = false;
                 checkBoxOfflineMode.Enabled = false;
-                tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
                 str = await LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
@@ -190,13 +191,13 @@ namespace HardwareInformation
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else if (str[0] == "false")
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else
                     {
@@ -216,7 +217,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                    tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                 }
             }
             loadingCircle1.Visible = false;
@@ -228,6 +229,7 @@ namespace HardwareInformation
             comboBoxServerIP.Enabled = true;
             comboBoxServerPort.Enabled = true;
             checkBoxOfflineMode.Enabled = true;
+            checkBoxOfflineMode.Checked = false;
         }
 
         //this.Handles the offline mode toggle 
