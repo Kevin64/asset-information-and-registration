@@ -141,9 +141,10 @@ namespace HardwareInformation
         private void Form2_Load(object sender, EventArgs e)
         {
             FormClosing += Form2_FormClosing;
+            tbProg = TaskbarManager.Instance;
         }
 
-        //Handles the closing of the current form
+        //this.Handles the closing of the current form
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_LOGINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -155,24 +156,32 @@ namespace HardwareInformation
         }
 
         //Checks the user/password and shows the main form
-        private async void button1_Click(object sender, EventArgs e)
+        private async void authButton_Click(object sender, EventArgs e)
         {
-            tbProg = TaskbarManager.Instance;
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, textBoxUser.Text, StringsAndConstants.consoleOutGUI);
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
-                tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                 MainForm form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
                 this.Hide();
+                textBoxUser.Text = null;
+                textBoxPassword.Text = null;
+                textBoxUser.Select();
                 form.ShowDialog();
                 form.Close();
+                form.Dispose();
                 this.Show();
             }
             else
             {
-                tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
+                textBoxUser.Enabled = false;
+                textBoxPassword.Enabled = false;
+                comboBoxServerIP.Enabled = false;
+                comboBoxServerPort.Enabled = false;
+                checkBoxOfflineMode.Enabled = false;
+                tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
                 str = await LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
@@ -181,40 +190,47 @@ namespace HardwareInformation
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else if (str[0] == "false")
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
                         MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log);
                         this.Hide();
+                        textBoxUser.Text = null;
+                        textBoxPassword.Text = null;
+                        textBoxUser.Select();
                         form.ShowDialog();
                         form.Close();
+                        form.Dispose();
                         this.Show();
                     }
-                    textBoxPassword.SelectAll();
-                    textBoxPassword.Focus();
                 }
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                    textBoxPassword.SelectAll();
-                    textBoxPassword.Focus();
+                    tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                 }
             }
             loadingCircle1.Visible = false;
             loadingCircle1.Active = false;
+            
+            textBoxUser.Enabled = true;
+            textBoxUser.Focus();
+            textBoxPassword.Enabled = true;
+            comboBoxServerIP.Enabled = true;
+            comboBoxServerPort.Enabled = true;
+            checkBoxOfflineMode.Enabled = true;
         }
 
-        //Handles the offline mode toggle 
+        //this.Handles the offline mode toggle 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOfflineMode.Checked)

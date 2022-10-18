@@ -3282,6 +3282,7 @@ namespace HardwareInformation
             dateTimePicker1.MaxDate = DateTime.Today;
             date = new List<string>();
             FormClosing += Form1_FormClosing;
+            tbProg = TaskbarManager.Instance;
             coleta_Click(sender, e);
         }
 
@@ -3421,8 +3422,7 @@ namespace HardwareInformation
         //Starts the collection process
         private async void collecting()
         {
-            tbProg = TaskbarManager.Instance;
-            tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
+            tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
 
             //Writes a dash in the labels, while collects data
             lblInstallSince.Text = StringsAndConstants.DASH;
@@ -3866,7 +3866,7 @@ namespace HardwareInformation
                 if (pass && !offlineMode)
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
                 if (!pass)
-                    tbProg.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                    tbProg.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
             }
             catch(Exception e)
             {
@@ -3968,7 +3968,7 @@ namespace HardwareInformation
         //Runs the registration for the website
         private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
-            tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
+            tbProg.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutGUI);
             loadingCircle23.Visible = true;
             loadingCircle23.Active = true;
@@ -4028,14 +4028,14 @@ namespace HardwareInformation
                             date.Add(sArgs[9]);
                         }
                         await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
-                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                        tbProg.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                        tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
+                        tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                     }
                 }
                 else
@@ -4043,7 +4043,7 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                    tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
+                    tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                 }
             }
             else if (!pass)
@@ -4051,14 +4051,14 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                tbProg.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                tbProg.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
             }
             else
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProg.SetProgressValue(percent, progressBar1.Maximum);
-                tbProg.SetProgressState(TaskbarProgressBarState.Normal, Handle);
+                tbProg.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
             }
             loadingCircle23.Visible = false;
             loadingCircle23.Active = false;
