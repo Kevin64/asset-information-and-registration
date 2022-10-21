@@ -7,6 +7,9 @@ using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using HardwareInformation.Properties;
 using System.IO;
+using System.Linq;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace HardwareInformation
 {
@@ -75,7 +78,6 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.INTRANET_REQUIRED, string.Empty, StringsAndConstants.consoleOutCLI);
                 Environment.Exit(StringsAndConstants.RETURN_ERROR);
             }
-            
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -87,6 +89,13 @@ namespace HardwareInformation
         [STAThread]
 		static void Main(string[] args)
 		{
+            //Check if application is running
+            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
+            {
+                MessageBox.Show(StringsAndConstants.ALREADY_RUNNING, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Process.GetCurrentProcess().Kill();
+            }
+
             string[] argsLog = new string[args.Length];
 
             Application.EnableVisualStyles();
