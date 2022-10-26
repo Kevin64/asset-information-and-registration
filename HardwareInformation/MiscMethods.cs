@@ -73,29 +73,31 @@ namespace HardwareInformation
                 return "";
         }
 
-        public static string checkIfLogExists()
+        public static string checkIfLogExists(string path)
         {
             bool b;
             try
             {
 #if DEBUG
-                b = File.Exists(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+                //Checks if log directory exists
+                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_OOBE + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
 #else
-                b = File.Exists(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+                //Checks if log file exists
+                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_OOBE + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
 #endif
+                //If not, creates a new directory
                 if (!b)
                 {
-                    Directory.CreateDirectory(StringsAndConstants.LOGFILE_LOCATION);
+                    Directory.CreateDirectory(path);
                     return "false";
                 }
-
                 return "true";
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-            
+
         }
 
         //Initializes the theme, according to the host theme

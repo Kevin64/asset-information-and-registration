@@ -10,6 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Diagnostics;
 using System.Reflection;
+using IniParser.Model;
+using IniParser;
+using IniParser.Exceptions;
 
 namespace HardwareInformation
 {
@@ -101,53 +104,78 @@ namespace HardwareInformation
             Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-            bool fileExists = bool.Parse(MiscMethods.checkIfLogExists());
+            try
+            {
+                IniData def = null;
+                var parser = new FileIniDataParser();
+                //Parses the INI file
+                def = parser.ReadFile(StringsAndConstants.defFile);
+                //Reads the INI file section
+                var logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
 
+                bool fileExists = bool.Parse(MiscMethods.checkIfLogExists(logLocationStr));
 #if DEBUG
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
+                //Create a new log file (or append to a existing one)
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #else
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
+                //Create a new log file (or append to a existing one)
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #endif
-            if (!fileExists)
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
-            else
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                if (!fileExists)
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                else
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
 
-            //Installs WebView2 Runtime if not found
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-            if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version())))
-            {
-                log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                var returnCode = WebView2Installer.install();
-                int returnCodeInt;
-                if (!int.TryParse(returnCode, out returnCodeInt))
+                //Installs WebView2 Runtime if not found
+                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version())))
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
-                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                    var returnCode = WebView2Installer.install();
+                    int returnCodeInt;
+                    if (!int.TryParse(returnCode, out returnCodeInt))
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
+                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    }
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
-            }
-            else
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                else
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
 
-            if (args.Length == 0)
-            {
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
-                FreeConsole();
-                Application.Run(new LoginForm(log)); //If given no args, runs LoginForm
+                if (args.Length == 0)
+                {
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
+                    FreeConsole();
+                    Application.Run(new LoginForm(log)); //If given no args, runs LoginForm
+                }
+                else
+                {
+                    args.CopyTo(argsLog, 0);
+                    int index = Array.IndexOf(argsLog, "--senha");
+                    argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
+                    //If given args, parses them
+                    Parser.Default.ParseArguments<Options>(args)
+                       .WithParsed(RunOptions);
+                }
             }
-            else
+            catch (ParsingException e) //If definition file was not found
             {
-                args.CopyTo(argsLog, 0);
-                int index = Array.IndexOf(argsLog, "--senha");
-                argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
-                //If given args, parses them
-                Parser.Default.ParseArguments<Options>(args)
-                   .WithParsed(RunOptions);
+                Console.WriteLine(StringsAndConstants.LOG_DEFFILE_NOT_FOUND + ": " + e.Message);
+                Console.WriteLine(StringsAndConstants.KEY_FINISH);
+                Console.ReadLine();
+                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+            }
+            catch (FormatException e) //If definition file was malformed, but the logfile is not created (log path is undefined)
+            {
+                Console.WriteLine(StringsAndConstants.PARAMETER_ERROR + ": " + e.Message);
+                Console.WriteLine(StringsAndConstants.KEY_FINISH);
+                Console.ReadLine();
+                Environment.Exit(StringsAndConstants.RETURN_ERROR);
             }
         }
     }
