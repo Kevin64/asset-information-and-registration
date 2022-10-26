@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Universidade Federal de Santa Maria")]
 [assembly: AssemblyProduct("Coleta, Análise e Cadastro de Máquinas do CCSH")]
 [assembly: AssemblyCopyright("Copyright UFSM © 2022")]
@@ -32,5 +31,11 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.15.1.2209")]
-[assembly: AssemblyFileVersion("3.15.1.2209")]
+[assembly: AssemblyVersion("3.16.0.2210")]
+[assembly: AssemblyFileVersion("3.16.0.2210")]
+
+#if DEBUG
+[assembly: AssemblyConfiguration("Debug")]
+#else
+[assembly: AssemblyConfiguration("Release")]
+#endif

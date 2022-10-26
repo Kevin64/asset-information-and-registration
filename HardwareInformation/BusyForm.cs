@@ -3,9 +3,9 @@ using ConstantsDLL;
 
 namespace HardwareInformation
 {
-    public partial class BusyWindow : Form
+    public partial class BusyForm : Form
     {
-		public BusyWindow()
+		public BusyForm()
         {
             InitializeComponent();
 			if(MiscMethods.ThemeInit())

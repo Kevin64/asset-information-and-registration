@@ -2,6 +2,8 @@
 using System;
 using System.Windows.Forms;
 using ConstantsDLL;
+using System.IO;
+using HardwareInformation.Properties;
 
 namespace HardwareInformation
 {
@@ -37,7 +39,6 @@ namespace HardwareInformation
             }
             else
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-
         }
 
         //Creates a registry key when a register operation is made in CLI mode
@@ -51,6 +52,52 @@ namespace HardwareInformation
             }
             else
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+        }
+
+        //Fetches the WebView2 systemwide version
+        public static string getWebView2Version()
+        {
+            RegistryKey rk;
+            if (Environment.Is64BitOperatingSystem)
+                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true);
+            else
+                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
+            if (rk != null)
+            {
+                Object o = rk.GetValue("pv");
+                if (o != null)
+                    return o.ToString();
+                else return "";
+            }
+            else
+                return "";
+        }
+
+        public static string checkIfLogExists(string path)
+        {
+            bool b;
+            try
+            {
+#if DEBUG
+                //Checks if log directory exists
+                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_OOBE + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+#else
+                //Checks if log file exists
+                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_OOBE + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+#endif
+                //If not, creates a new directory
+                if (!b)
+                {
+                    Directory.CreateDirectory(path);
+                    return "false";
+                }
+                return "true";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
         }
 
         //Initializes the theme, according to the host theme
@@ -75,6 +122,28 @@ namespace HardwareInformation
             catch
             {
                 return false;
+            }
+        }
+
+        //Updates the 'last installed' or 'last maintenance' labels
+        public static string sinceLabelUpdate(bool mode)
+        {
+            string InstallLabel, MaintenanceLabel;
+            if (mode)
+            {
+                InstallLabel = regCheck(mode).ToString();
+                if (!InstallLabel.Equals("-1"))
+                    return "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")";
+                else
+                    return StringsAndConstants.SINCE_UNKNOWN;
+            }
+            else
+            {
+                MaintenanceLabel = regCheck(mode).ToString();
+                if (!MaintenanceLabel.Equals("-1"))
+                    return "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")";
+                else
+                    return StringsAndConstants.SINCE_UNKNOWN;
             }
         }
 

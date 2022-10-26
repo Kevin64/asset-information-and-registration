@@ -1,6 +1,6 @@
 ﻿namespace HardwareInformation
 {
-    partial class Form2
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,8 +41,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
-            this.comboBoxServerIP = new CustomFlatComboBox();
+            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.comboBoxServerPort = new CustomFlatComboBox();
+            this.comboBoxServerIP = new CustomFlatComboBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +99,7 @@
             this.AuthButton.TabIndex = 5;
             this.AuthButton.Text = "Autenticar";
             this.AuthButton.UseVisualStyleBackColor = false;
-            this.AuthButton.Click += new System.EventHandler(this.button1_Click);
+            this.AuthButton.Click += new System.EventHandler(this.authButton_Click);
             // 
             // statusStrip1
             // 
@@ -174,16 +175,23 @@
             this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
             this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // comboBoxServerIP
+            // loadingCircle1
             // 
-            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServerIP.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerIP.FormattingEnabled = true;
-            this.comboBoxServerIP.Location = new System.Drawing.Point(64, 190);
-            this.comboBoxServerIP.Name = "comboBoxServerIP";
-            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxServerIP.TabIndex = 2;
+            this.loadingCircle1.Active = false;
+            this.loadingCircle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.Location = new System.Drawing.Point(16, 274);
+            this.loadingCircle1.Name = "loadingCircle1";
+            this.loadingCircle1.NumberSpoke = 24;
+            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.RotationSpeed = 20;
+            this.loadingCircle1.Size = new System.Drawing.Size(187, 46);
+            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
+            this.loadingCircle1.TabIndex = 135;
+            this.loadingCircle1.Text = "loadingCircle23";
+            this.loadingCircle1.Visible = false;
             // 
             // comboBoxServerPort
             // 
@@ -196,13 +204,25 @@
             this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
             this.comboBoxServerPort.TabIndex = 3;
             // 
-            // Form2
+            // comboBoxServerIP
+            // 
+            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerIP.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.FormattingEnabled = true;
+            this.comboBoxServerIP.Location = new System.Drawing.Point(64, 190);
+            this.comboBoxServerIP.Name = "comboBoxServerIP";
+            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxServerIP.TabIndex = 2;
+            // 
+            // LoginForm
             // 
             this.AcceptButton = this.AuthButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(219, 352);
+            this.Controls.Add(this.loadingCircle1);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.checkBoxOfflineMode);
@@ -218,9 +238,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form2";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
@@ -245,5 +266,6 @@
         private System.Windows.Forms.CheckBox checkBoxOfflineMode;
         private CustomFlatComboBox comboBoxServerIP;
         private CustomFlatComboBox comboBoxServerPort;
+        private MRG.Controls.UI.LoadingCircle loadingCircle1;
     }
 }
