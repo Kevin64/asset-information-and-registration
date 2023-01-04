@@ -159,7 +159,7 @@ namespace HardwareInformation
                 StringsAndConstants.listType.Contains(strArgs[14]))
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
-                serverOnline = await BIOSFileReader.checkHost(strArgs[0], strArgs[1]);
+                serverOnline = await BIOSFileReader.checkHostMT(strArgs[0], strArgs[1]);
                 if (serverOnline && strArgs[1] != "")
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("Universidade Federal de Santa Maria")]
 [assembly: AssemblyProduct("Coleta, Análise e Cadastro de Máquinas do CCSH")]
-[assembly: AssemblyCopyright("Copyright UFSM © 2022")]
+[assembly: AssemblyCopyright("Copyright UFSM © 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,8 +31,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("3.16.0.2210")]
-[assembly: AssemblyFileVersion("3.16.0.2210")]
+[assembly: AssemblyVersion("3.17.0.2301")]
+[assembly: AssemblyFileVersion("3.17.0.2301")]
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]

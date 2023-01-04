@@ -3480,7 +3480,7 @@ namespace HardwareInformation
                 servidor_web = ip;
                 porta = port;
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
-                serverOnline = await BIOSFileReader.checkHost(servidor_web, porta);
+                serverOnline = await BIOSFileReader.checkHostMT(servidor_web, porta);
                 if (serverOnline && porta != "")
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -3737,7 +3737,7 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
             try
             {
-                string[] str = await BIOSFileReader.fetchInfo(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
+                string[] str = await BIOSFileReader.fetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
                 //Scan if hostname is the default one
                 if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
