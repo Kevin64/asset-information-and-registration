@@ -377,7 +377,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; del /F /Q *.xml &amp; del /F /Q ..\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)\..\definitions.ini" "$(TargetDir)" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; del /F /Q *.xml &amp; del /F /Q ..\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
