@@ -38,7 +38,7 @@ namespace HardwareInformation
             public string Predio { get; set; }
             [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "Sim")]
             public string AD { get; set; }
-            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "Aluno")]
+            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "a")]
             public string Padrao { get; set; }
             [Option("data", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "hoje")]
             public string Data { get; set; }
@@ -156,7 +156,14 @@ namespace HardwareInformation
                 {
                     args.CopyTo(argsLog, 0);
                     int index = Array.IndexOf(argsLog, "--senha");
-                    argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                    if (index == -1)
+                    {
+                        index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
+                        argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                    }
+                    else
+                        argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                    
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
                     //If given args, parses them
                     Parser.Default.ParseArguments<Options>(args)
