@@ -30,7 +30,7 @@ namespace HardwareInformation
             public string TipoDeServico { get; set; }
             [Option("patrimonio", Required = true, HelpText = StringsAndConstants.cliHelpTextPatrimony)]
             public string Patrimonio { get; set; }
-            [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "")]
+            [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "mesmo")]
             public string Lacre { get; set; }
             [Option("sala", Required = true, HelpText = StringsAndConstants.cliHelpTextRoom)]
             public string Sala { get; set; }

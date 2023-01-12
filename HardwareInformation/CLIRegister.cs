@@ -9,6 +9,7 @@ using ConstantsDLL;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using System.Globalization;
+using System.Linq;
 
 namespace HardwareInformation
 {
@@ -142,21 +143,24 @@ namespace HardwareInformation
 
             await loadWebView2();
 
+            string[] dateFormat = new string[] { "dd/MM/yyyy" };
+            DateTime datetime;
+
             if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 &&
-                strArgs[1].Length <= 5 &&
+                strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) &&
                 StringsAndConstants.listMode.Contains(strArgs[2]) &&
-                strArgs[3].Length <= 6 && strArgs[3].Length > 0 &&
-                strArgs[4].Length <= 10 &&
-                strArgs[5].Length <= 4 && strArgs[5].Length > 0 &&
+                strArgs[3].Length <= 6 && strArgs[3].Length > 0 && strArgs[3].All(char.IsDigit) &&
+                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || (strArgs[4].Equals(StringsAndConstants.sameSeal)) &&
+                strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit) &&
                 StringsAndConstants.listBuilding.Contains(strArgs[6]) &&
                 StringsAndConstants.listActiveDirectory.Contains(strArgs[7]) &&
                 StringsAndConstants.listStandard.Contains(strArgs[8]) &&
-                (strArgs[9].Length == 10 || strArgs[9].Equals(StringsAndConstants.today)) &&
+                (strArgs[9].Length == 10 || strArgs[9].Equals(StringsAndConstants.today)) && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime) &&
                 StringsAndConstants.listBattery.Contains(strArgs[10]) &&
-                strArgs[11].Length <= 6 &&
+                strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) &&
                 StringsAndConstants.listInUse.Contains(strArgs[12]) &&
                 StringsAndConstants.listTag.Contains(strArgs[13]) &&
-                StringsAndConstants.listType.Contains(strArgs[14]))
+                StringsAndConstants.listType.Contains(strArgs[14])))
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.checkHostMT(strArgs[0], strArgs[1]);
@@ -175,9 +179,9 @@ namespace HardwareInformation
                     else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
                         strArgs[2] = StringsAndConstants.maintenanceURL;
 
-                    if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                    if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
                         strArgs[8] = StringsAndConstants.employee;
-                    else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                    else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
                         strArgs[8] = StringsAndConstants.student;
 
                     if (strArgs[10].Equals("Sim"))
