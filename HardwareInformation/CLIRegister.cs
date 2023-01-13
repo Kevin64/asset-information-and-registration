@@ -174,6 +174,14 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
                     log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
 
+                    if (strArgs[7].Equals(StringsAndConstants.ANSI_NO))
+                        strArgs[7] = StringsAndConstants.UTF8_NO;
+                    if (strArgs[10].Equals(StringsAndConstants.ANSI_NO))
+                        strArgs[10] = StringsAndConstants.UTF8_NO;
+                    if (strArgs[12].Equals(StringsAndConstants.ANSI_NO))
+                        strArgs[12] = StringsAndConstants.UTF8_NO;
+                    if (strArgs[13].Equals(StringsAndConstants.ANSI_NO))
+                        strArgs[13] = StringsAndConstants.UTF8_NO;
                     if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
                         strArgs[2] = StringsAndConstants.formatURL;
                     else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
