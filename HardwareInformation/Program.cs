@@ -168,6 +168,8 @@ namespace HardwareInformation
                     //If given args, parses them
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
+                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
             }
             catch (ParsingException e) //If definition file was not found
