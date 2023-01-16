@@ -159,7 +159,8 @@ namespace HardwareInformation
                     if (index == -1)
                     {
                         index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
-                        argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                        if(index != -1)
+                            argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
                     }
                     else
                         argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
@@ -168,8 +169,16 @@ namespace HardwareInformation
                     //If given args, parses them
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    if (args.Length == 1 && args.Contains("--help"))
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SHOWING_HELP, string.Empty, StringsAndConstants.consoleOutCLI);
+                        Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
+                    }
+                    else
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
+                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    }
                 }
             }
             catch (ParsingException e) //If definition file was not found
