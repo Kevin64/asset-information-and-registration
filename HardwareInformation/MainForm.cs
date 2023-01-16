@@ -49,7 +49,7 @@ namespace HardwareInformation
 
             comboBoxBuilding.Items.AddRange(StringsAndConstants.listBuilding.ToArray());
             comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectory.ToArray());
-            comboBoxStandard.Items.AddRange(StringsAndConstants.listStandard.ToArray());
+            comboBoxStandard.Items.AddRange(StringsAndConstants.listStandardGUI.ToArray());
             comboBoxInUse.Items.AddRange(StringsAndConstants.listInUse.ToArray());
             comboBoxTag.Items.AddRange(StringsAndConstants.listTag.ToArray());
             comboBoxType.Items.AddRange(StringsAndConstants.listType.ToArray());

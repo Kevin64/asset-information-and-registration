@@ -154,7 +154,7 @@ namespace HardwareInformation
                 strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit) &&
                 StringsAndConstants.listBuilding.Contains(strArgs[6]) &&
                 StringsAndConstants.listActiveDirectory.Contains(strArgs[7]) &&
-                StringsAndConstants.listStandard.Contains(strArgs[8]) &&
+                StringsAndConstants.listStandardCLI.Contains(strArgs[8]) &&
                 ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) &&
                 StringsAndConstants.listBattery.Contains(strArgs[10]) &&
                 strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) &&
