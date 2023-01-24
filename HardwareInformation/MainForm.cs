@@ -24,9 +24,10 @@ namespace HardwareInformation
         private ToolStripStatusLabel logLabel;
         private LogGenerator log;
         private TaskbarManager tbProgMain;
+        private List<string[]> defList;
         private int percent;
 
-        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l)
+        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList)
         {
             InitializeComponent();
 
@@ -40,6 +41,7 @@ namespace HardwareInformation
             log = l;
             themeBool = MiscMethods.ThemeInit();
             offlineMode = noConnection;
+            defList = definitionList;
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_MODE, offlineMode.ToString(), StringsAndConstants.consoleOutGUI);
 
@@ -47,13 +49,14 @@ namespace HardwareInformation
             this.ip = ip;
             this.port = port;
 
-            comboBoxBuilding.Items.AddRange(StringsAndConstants.listBuilding.ToArray());
-            comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectory.ToArray());
+            comboBoxBuilding.Items.AddRange(defList[2]);
+            comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectoryGUI.ToArray());
             comboBoxStandard.Items.AddRange(StringsAndConstants.listStandardGUI.ToArray());
-            comboBoxInUse.Items.AddRange(StringsAndConstants.listInUse.ToArray());
-            comboBoxTag.Items.AddRange(StringsAndConstants.listTag.ToArray());
-            comboBoxType.Items.AddRange(StringsAndConstants.listType.ToArray());
-            comboBoxBattery.Items.AddRange(StringsAndConstants.listBattery.ToArray());
+            comboBoxInUse.Items.AddRange(StringsAndConstants.listInUseGUI.ToArray());
+            comboBoxTag.Items.AddRange(StringsAndConstants.listTagGUI.ToArray());
+            comboBoxType.Items.AddRange(defList[3]);
+            comboBoxBattery.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
+            textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(3);
 
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker1_ProgressChanged);
@@ -2783,9 +2786,9 @@ namespace HardwareInformation
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OPENING_LOG, string.Empty, StringsAndConstants.consoleOutGUI);
 #if DEBUG
-            System.Diagnostics.Process.Start(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
 #else
-            System.Diagnostics.Process.Start(StringsAndConstants.LOGFILE_LOCATION + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
 #endif
         }
 
@@ -3737,7 +3740,7 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
             try
             {
-                string[] str = await BIOSFileReader.fetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
+                string[] biosJsonStr = await BIOSFileReader.fetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
                 //Scan if hostname is the default one
                 if (lblHostname.Text.Equals(StringsAndConstants.DEFAULT_HOSTNAME))
@@ -3748,7 +3751,7 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
                 //The section below contains the exception cases for AHCI enforcement
-                if (str != null && str[3].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
                 {
                     pass = false;
                     lblMediaOperation.Text += StringsAndConstants.MEDIA_OPERATION_ALERT;
@@ -3765,7 +3768,7 @@ namespace HardwareInformation
                     timer3.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-                if (str == null)
+                if (biosJsonStr == null)
                 {
                     if (!offlineMode)
                     {
@@ -3774,9 +3777,9 @@ namespace HardwareInformation
                         MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                if (str != null && !lblBIOS.Text.Contains(str[0]))
+                if (biosJsonStr != null && !lblBIOS.Text.Contains(biosJsonStr[0]))
                 {
-                    if (!str[0].Equals("-1"))
+                    if (!biosJsonStr[0].Equals("-1"))
                     {
                         pass = false;
                         lblBIOS.Text += StringsAndConstants.BIOS_VERSION_ALERT;
@@ -3784,7 +3787,7 @@ namespace HardwareInformation
                         log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                     }
                 }
-                if (str != null && str[1].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
                 {
                     pass = false;
                     lblBIOSType.Text += StringsAndConstants.FIRMWARE_TYPE_ALERT;
@@ -3822,7 +3825,7 @@ namespace HardwareInformation
                     timer8.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-                if (str != null && str[2].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
                 {
                     pass = false;
                     lblTPM.Text += StringsAndConstants.TPM_ERROR;

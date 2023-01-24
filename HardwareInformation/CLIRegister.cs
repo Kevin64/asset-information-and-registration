@@ -10,6 +10,7 @@ using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using System.Globalization;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace HardwareInformation
 {
@@ -58,15 +59,15 @@ namespace HardwareInformation
         }
 
         //Constructor
-        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l)
+        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l, List<string[]> paramList)
         {
             InitializeComponent();
             log = l;
-            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario);
+            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, paramList);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario)
+        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> paramList)
         {
             /** !!Labels!!
              * strArgs[0](servidor)
@@ -146,21 +147,21 @@ namespace HardwareInformation
             string[] dateFormat = new string[] { "dd/MM/yyyy" };
             DateTime datetime;
 
-            if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 &&
-                strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) &&
-                StringsAndConstants.listMode.Contains(strArgs[2]) &&
-                strArgs[3].Length <= 6 && strArgs[3].Length > 0 && strArgs[3].All(char.IsDigit) &&
-                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || (strArgs[4].Equals(StringsAndConstants.sameSeal))) &&
-                strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit) &&
-                StringsAndConstants.listBuilding.Contains(strArgs[6]) &&
-                StringsAndConstants.listActiveDirectory.Contains(strArgs[7]) &&
-                StringsAndConstants.listStandardCLI.Contains(strArgs[8]) &&
-                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) &&
-                StringsAndConstants.listBattery.Contains(strArgs[10]) &&
-                strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) &&
-                StringsAndConstants.listInUse.Contains(strArgs[12]) &&
-                StringsAndConstants.listTag.Contains(strArgs[13]) &&
-                StringsAndConstants.listType.Contains(strArgs[14]))
+            if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 && //Servidor
+                strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) && //Porta
+                StringsAndConstants.listModeCLI.Contains(strArgs[2]) && //Modo
+                (strArgs[3].Length <= 6 && strArgs[3].Length >= 0 && strArgs[3].All(char.IsDigit)) && //Patrimonio
+                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || (strArgs[4].Equals(StringsAndConstants.sameWord))) && //Lacre
+                ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || (strArgs[5].Equals(StringsAndConstants.sameWord))) && //Sala
+                (paramList[2].Contains(strArgs[6]) || (strArgs[6].Equals(StringsAndConstants.sameWord))) && //Predio
+                (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || (strArgs[7].Equals(StringsAndConstants.sameWord))) && //AD
+                (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || (strArgs[8].Equals(StringsAndConstants.sameWord))) && //Padrao
+                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) && //Data
+                StringsAndConstants.listBatteryCLI.Contains(strArgs[10]) && //Pilha
+                strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) && //Ticket
+                (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || (strArgs[12].Equals(StringsAndConstants.sameWord))) && //Uso
+                (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || (strArgs[13].Equals(StringsAndConstants.sameWord))) && //Etiqueta
+                (paramList[3].Contains(strArgs[14]) || (strArgs[14].Equals(StringsAndConstants.sameWord)))) //Tipo
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.checkHostMT(strArgs[0], strArgs[1]);
@@ -173,30 +174,71 @@ namespace HardwareInformation
 
                     log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
                     log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
+                    //Patrimonio
+                    if (strArgs[3].Equals(string.Empty))
+                        strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
 
-                    if (strArgs[7].Equals(StringsAndConstants.ANSI_NO))
-                        strArgs[7] = StringsAndConstants.UTF8_NO;
-                    if (strArgs[10].Equals(StringsAndConstants.ANSI_NO))
-                        strArgs[10] = StringsAndConstants.UTF8_NO;
-                    if (strArgs[12].Equals(StringsAndConstants.ANSI_NO))
-                        strArgs[12] = StringsAndConstants.UTF8_NO;
-                    if (strArgs[13].Equals(StringsAndConstants.ANSI_NO))
-                        strArgs[13] = StringsAndConstants.UTF8_NO;
-                    if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
-                        strArgs[2] = StringsAndConstants.formatURL;
-                    else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
-                        strArgs[2] = StringsAndConstants.maintenanceURL;
-
-                    if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
-                        strArgs[8] = StringsAndConstants.employee;
-                    else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
-                        strArgs[8] = StringsAndConstants.student;
-
-                    if (strArgs[10].Equals("Sim"))
-                        strArgs[10] = StringsAndConstants.replacedBattery;
+                    string[] pcJsonStr = PCFileReader.fetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
+                    if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                        Console.WriteLine(StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY);
+                        webView2.Dispose();
+                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    }
                     else
-                        strArgs[10] = StringsAndConstants.sameBattery;
-
+                    {
+                        //Modo
+                        if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
+                            strArgs[2] = StringsAndConstants.formatURL;
+                        else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
+                            strArgs[2] = StringsAndConstants.maintenanceURL;
+                        //Lacre
+                        if (strArgs[4].Equals(StringsAndConstants.sameWord))
+                            strArgs[4] = pcJsonStr[6];
+                        //Sala
+                        if (strArgs[5].Equals(StringsAndConstants.sameWord))
+                            strArgs[5] = pcJsonStr[2];
+                        //Predio
+                        if (strArgs[6].Equals(StringsAndConstants.sameWord))
+                            strArgs[6] = pcJsonStr[1];
+                        //AD
+                        if (strArgs[7].Equals(StringsAndConstants.sameWord))
+                            strArgs[7] = pcJsonStr[4];
+                        else if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
+                            strArgs[7] = StringsAndConstants.UTF8_NO;
+                        else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
+                            strArgs[7] = StringsAndConstants.YES;
+                        //Padrao
+                        if (strArgs[8].Equals(StringsAndConstants.sameWord))
+                            strArgs[8] = pcJsonStr[3];
+                        else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                            strArgs[8] = StringsAndConstants.employee;
+                        else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                            strArgs[8] = StringsAndConstants.student;
+                        //Pilha
+                        if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
+                            strArgs[10] = StringsAndConstants.sameBattery;
+                        else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
+                            strArgs[10] = StringsAndConstants.replacedBattery;
+                        //Uso
+                        if (strArgs[12].Equals(StringsAndConstants.sameWord))
+                            strArgs[12] = pcJsonStr[5];
+                        else if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
+                            strArgs[12] = StringsAndConstants.UTF8_NO;
+                        else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
+                            strArgs[12] = StringsAndConstants.YES;
+                        //Etiqueta
+                        if (strArgs[13].Equals(StringsAndConstants.sameWord))
+                            strArgs[13] = pcJsonStr[7];
+                        else if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
+                            strArgs[13] = StringsAndConstants.UTF8_NO;
+                        else if(strArgs[13].Equals("S") || strArgs[13].Equals("s"))
+                            strArgs[13] = StringsAndConstants.YES;
+                        //Tipo
+                        if (strArgs[14].Equals(StringsAndConstants.sameWord))
+                            strArgs[14] = pcJsonStr[8];
+                    }
                     printHardwareData();
 
                     if (pass)
@@ -262,6 +304,7 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
+            File.Delete(StringsAndConstants.pcPath);
             webView2.Dispose();
             Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
         }
@@ -285,7 +328,7 @@ namespace HardwareInformation
 
             try
             {
-                string[] str = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
+                string[] biosJsonStr = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
                 if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
                 {
@@ -293,7 +336,7 @@ namespace HardwareInformation
                     strAlert[0] += strArgs[24] + StringsAndConstants.HOSTNAME_ALERT;
                     strAlertBool[0] = true;
                 }
-                if (str != null && str[3].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
                 {
                     pass = false;
                     strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
@@ -308,22 +351,22 @@ namespace HardwareInformation
                     strAlert[2] += strArgs[32] + StringsAndConstants.SECURE_BOOT_ALERT;
                     strAlertBool[2] = true;
                 }
-                if (str == null)
+                if (biosJsonStr == null)
                 {
                     pass = false;
                     strAlert[3] += StringsAndConstants.DATABASE_REACH_ERROR;
                     strAlertBool[3] = true;
                 }
-                if (str != null && !strArgs[25].Contains(str[0]))
+                if (biosJsonStr != null && !strArgs[25].Contains(biosJsonStr[0]))
                 {
-                    if (!str[0].Equals("-1"))
+                    if (!biosJsonStr[0].Equals("-1"))
                     {
                         pass = false;
                         strAlert[4] += strArgs[25] + StringsAndConstants.BIOS_VERSION_ALERT;
                         strAlertBool[4] = true;
                     }
                 }
-                if (str != null && str[1].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
                 {
                     pass = false;
                     strAlert[5] += strArgs[28] + StringsAndConstants.FIRMWARE_TYPE_ALERT;
@@ -343,7 +386,7 @@ namespace HardwareInformation
                     strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
                     strAlertBool[8] = true;
                 }
-                if (str != null && str[2].Equals("false"))
+                if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
                 {
                     pass = false;
                     strAlert[9] += strArgs[34] + StringsAndConstants.TPM_ERROR;

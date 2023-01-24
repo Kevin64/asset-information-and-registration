@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -16,12 +17,14 @@ namespace HardwareInformation
         private BackgroundWorker backgroundWorker1;
         private TaskbarManager tbProgLogin;
         private MainForm form;
+        private List<string[]> definitionList;
         private string[] str = { };
         bool themeBool;
 
-        public LoginForm(LogGenerator l)
+        public LoginForm(LogGenerator l, List<string[]> definitionListSection)
         {
             InitializeComponent();
+            definitionList = definitionListSection;
 
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
 
@@ -34,8 +37,8 @@ namespace HardwareInformation
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
 
-            comboBoxServerIP.Items.AddRange(StringsAndConstants.defaultServerIP.ToArray());
-            comboBoxServerPort.Items.AddRange(StringsAndConstants.defaultServerPort.ToArray());
+            comboBoxServerIP.Items.AddRange(definitionList[0]);
+            comboBoxServerPort.Items.AddRange(definitionList[1]);
 #if DEBUG
             //Program version
             this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
@@ -165,7 +168,7 @@ namespace HardwareInformation
             if (checkBoxOfflineMode.Checked)
             {
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log);
+                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList);
                 this.Hide();
                 textBoxUser.Text = null;
                 textBoxPassword.Text = null;
@@ -184,7 +187,7 @@ namespace HardwareInformation
                 checkBoxOfflineMode.Enabled = false;
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
-                str = await LoginFileReader.fetchInfo(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                str = await LoginFileReader.fetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     if (str == null)
@@ -202,7 +205,7 @@ namespace HardwareInformation
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log);
+                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList);
                         this.Hide();
                         textBoxUser.Text = null;
                         textBoxPassword.Text = null;

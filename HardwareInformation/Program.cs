@@ -13,47 +13,67 @@ using System.Reflection;
 using IniParser.Model;
 using IniParser;
 using IniParser.Exceptions;
+using System.Collections.Generic;
 
 namespace HardwareInformation
 {
 	public class Program
     {
+        private static List<string[]> definitionListSection;
         private static LogGenerator log;
+        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr;
+        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection;
         //Command line switch options specification
         public class Options
         {
-            [Option("servidor", Required = false, HelpText = StringsAndConstants.cliHelpTextServer, Default = "192.168.76.103")]
+            [Option("servidor", Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
             public string Servidor { get; set; }
-            [Option("porta", Required = false, HelpText = StringsAndConstants.cliHelpTextPort, Default = "8081")]
+
+            [Option("porta", Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
             public string Porta { get; set; }
+            
             [Option("modo", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
             public string TipoDeServico { get; set; }
-            [Option("patrimonio", Required = true, HelpText = StringsAndConstants.cliHelpTextPatrimony)]
+            
+            [Option("patrimonio", Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
             public string Patrimonio { get; set; }
+            
             [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "mesmo")]
             public string Lacre { get; set; }
-            [Option("sala", Required = true, HelpText = StringsAndConstants.cliHelpTextRoom)]
+            
+            [Option("sala", Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = "mesmo")]
             public string Sala { get; set; }
-            [Option("predio", Required = true, HelpText = StringsAndConstants.cliHelpTextBuilding)]
+            
+            [Option("predio", Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = "mesmo")]
             public string Predio { get; set; }
-            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "Sim")]
+            
+            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "mesmo")]
             public string AD { get; set; }
-            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "a")]
+            
+            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "mesmo")]
             public string Padrao { get; set; }
+            
             [Option("data", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "hoje")]
             public string Data { get; set; }
+            
             [Option("pilha", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
             public string Pilha { get; set; }
+            
             [Option("ticket", Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
             public string Ticket { get; set; }
-            [Option("uso", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "Sim")]
+            
+            [Option("uso", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "mesmo")]
             public string Uso { get; set; }
-            [Option("etiqueta", Required = true, HelpText = StringsAndConstants.cliHelpTextTag)]
+            
+            [Option("etiqueta", Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = "mesmo")]
             public string Etiqueta { get; set; }
-            [Option("tipo", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "Desktop")]
+            
+            [Option("tipo", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "mesmo")]
             public string TipoHardware { get; set; }
+            
             [Option("usuario", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
             public string Usuario { get; set; }
+            
             [Option("senha", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
             public string Senha { get; set; }
         }
@@ -61,6 +81,10 @@ namespace HardwareInformation
         //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         public static void RunOptions(Options opts)
         {
+            if(opts.Servidor == null)
+                opts.Servidor = serverListSection[0];
+            if (opts.Porta == null)
+                opts.Porta = portListSection[0];
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
             string[] str = LoginFileReader.fetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
@@ -68,7 +92,7 @@ namespace HardwareInformation
                 if (str[0] == "true")
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log));
+                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log, definitionListSection));
                 }
                 else
                 {
@@ -110,8 +134,26 @@ namespace HardwareInformation
                 var parser = new FileIniDataParser();
                 //Parses the INI file
                 def = parser.ReadFile(StringsAndConstants.defFile);
-                //Reads the INI file section
-                var logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
+                
+                //Reads the INI file Definition section
+                logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
+                serverIPStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_11];
+                serverPortStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_12];
+                roomListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_13];
+                hwTypeListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_14];
+                logLocationSection = logLocationStr.Split().ToArray();
+                serverListSection = serverIPStr.Split(',').ToArray();
+                portListSection = serverPortStr.Split(',').ToArray();
+                roomListSection = roomListStr.Split(',').ToArray();
+                hwTypeListSection = hwTypeListStr.Split(',').ToArray();
+                definitionListSection = new List<string[]>
+                {
+                    serverListSection,
+                    portListSection,
+                    roomListSection,
+                    hwTypeListSection,
+                    logLocationSection
+                };
 
                 bool fileExists = bool.Parse(MiscMethods.checkIfLogExists(logLocationStr));
 #if DEBUG
@@ -150,7 +192,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                     FreeConsole();
-                    Application.Run(new LoginForm(log)); //If given no args, runs LoginForm
+                    Application.Run(new LoginForm(log, definitionListSection)); //If given no args, runs LoginForm
                 }
                 else
                 {
