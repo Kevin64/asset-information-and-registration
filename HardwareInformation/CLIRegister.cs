@@ -262,7 +262,7 @@ namespace HardwareInformation
 
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
                         serverSendInfo(strArgs);
-                        webView2.NavigationCompleted += webView2_NavigationCompleted;
+                        //webView2.NavigationCompleted += webView2_NavigationCompleted;
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
                     }
                     else
@@ -305,7 +305,8 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
-            webView2.Dispose();
+            webView2.NavigationCompleted += webView2_NavigationCompleted;
+            //webView2.Dispose();
             Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
         }
 
