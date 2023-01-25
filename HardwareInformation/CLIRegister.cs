@@ -59,15 +59,15 @@ namespace HardwareInformation
         }
 
         //Constructor
-        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l, List<string[]> paramList)
+        public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l, List<string[]> definitionList)
         {
             InitializeComponent();
             log = l;
-            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, paramList);
+            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, definitionList);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> paramList)
+        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> definitionList)
         {
             /** !!Labels!!
              * strArgs[0](servidor)
@@ -153,7 +153,7 @@ namespace HardwareInformation
                 (strArgs[3].Length <= 6 && strArgs[3].Length >= 0 && strArgs[3].All(char.IsDigit)) && //Patrimonio
                 ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || (strArgs[4].Equals(StringsAndConstants.sameWord))) && //Lacre
                 ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || (strArgs[5].Equals(StringsAndConstants.sameWord))) && //Sala
-                (paramList[2].Contains(strArgs[6]) || (strArgs[6].Equals(StringsAndConstants.sameWord))) && //Predio
+                (definitionList[2].Contains(strArgs[6]) || (strArgs[6].Equals(StringsAndConstants.sameWord))) && //Predio
                 (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || (strArgs[7].Equals(StringsAndConstants.sameWord))) && //AD
                 (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || (strArgs[8].Equals(StringsAndConstants.sameWord))) && //Padrao
                 ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) && //Data
@@ -161,7 +161,7 @@ namespace HardwareInformation
                 strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) && //Ticket
                 (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || (strArgs[12].Equals(StringsAndConstants.sameWord))) && //Uso
                 (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || (strArgs[13].Equals(StringsAndConstants.sameWord))) && //Etiqueta
-                (paramList[3].Contains(strArgs[14]) || (strArgs[14].Equals(StringsAndConstants.sameWord)))) //Tipo
+                (definitionList[3].Contains(strArgs[14]) || (strArgs[14].Equals(StringsAndConstants.sameWord)))) //Tipo
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.checkHostMT(strArgs[0], strArgs[1]);
