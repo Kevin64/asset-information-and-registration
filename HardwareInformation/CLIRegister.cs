@@ -188,6 +188,13 @@ namespace HardwareInformation
                     }
                     else
                     {
+                        if (pcJsonStr[9] == "1")
+                        {
+                            log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutCLI);
+                            Console.WriteLine(StringsAndConstants.LOG_PC_DROPPED);
+                            webView2.Dispose();
+                            Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                        }
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
                             strArgs[2] = StringsAndConstants.formatURL;

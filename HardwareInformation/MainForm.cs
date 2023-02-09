@@ -3226,6 +3226,7 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
+            File.Delete(StringsAndConstants.pcPath);
             webView2.Dispose();
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
@@ -4000,48 +4001,60 @@ namespace HardwareInformation
                 sArgs[32] = textBoxTicket.Text;
                 sArgs[33] = this.user;
 
-                if (serverOnline && porta != "")
+                string[] pcJsonStr = await PCFileReader.fetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
+                if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1")
                 {
-                    if (!date.Contains(sArgs[9]))
-                    {
-                        webView2.Visible = true;
-                        serverSendInfo(sArgs);
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
-                        date.Add(sArgs[9]);
-                        if (formatButton.Checked)
-                        {
-                            MiscMethods.regCreate(true, dateTimePicker1);
-                            lblInstallSince.Text = MiscMethods.sinceLabelUpdate(true);
-                            lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                            date.Add(sArgs[9]);
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                            date.Add(sArgs[9]);
-                        }
-                        else if (maintenanceButton.Checked)
-                        {
-                            MiscMethods.regCreate(false, dateTimePicker1);
-                            lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                            date.Add(sArgs[9]);
-                        }
-                        await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
-                        tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                    }
-                    else
-                    {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
-                        tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
-                    }
+                    tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutGUI);
+                    MessageBox.Show(StringsAndConstants.PC_DROPPED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
-                    MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
-                    tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                    if (serverOnline && porta != "")
+                    {
+                        if (!date.Contains(sArgs[9]))
+                        {
+                            webView2.Visible = true;
+                            serverSendInfo(sArgs);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
+                            date.Add(sArgs[9]);
+                            if (formatButton.Checked)
+                            {
+                                MiscMethods.regCreate(true, dateTimePicker1);
+                                lblInstallSince.Text = MiscMethods.sinceLabelUpdate(true);
+                                lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                date.Add(sArgs[9]);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                date.Add(sArgs[9]);
+                            }
+                            else if (maintenanceButton.Checked)
+                            {
+                                MiscMethods.regCreate(false, dateTimePicker1);
+                                lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                date.Add(sArgs[9]);
+                            }
+                            await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        }
+                        else
+                        {
+                            log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
+                            MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                        }
+                    }
+                    else
+                    {
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
+                        MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                    }
                 }
             }
             else if (!pass)
