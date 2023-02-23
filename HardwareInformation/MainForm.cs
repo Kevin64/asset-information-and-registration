@@ -56,7 +56,10 @@ namespace HardwareInformation
             comboBoxTag.Items.AddRange(StringsAndConstants.listTagGUI.ToArray());
             comboBoxType.Items.AddRange(defList[3]);
             comboBoxBattery.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
-            textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(3);
+            if (System.Net.Dns.GetHostName().Substring(0, 3).ToUpper().Equals(StringsAndConstants.HOSTNAME_PATTERN))
+                textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(3);
+            else
+                textBoxPatrimony.Text = "";
 
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker1_ProgressChanged);
