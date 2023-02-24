@@ -15,6 +15,8 @@ using LogGeneratorDLL;
 using HardwareInformation.Properties;
 using System.Globalization;
 using Microsoft.WindowsAPICodePack.Taskbar;
+using System.Reflection;
+using System.Drawing;
 
 namespace HardwareInformation
 {
@@ -1147,7 +1149,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox33
             // 
             this.configurableQualityPictureBox33.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_white;
             this.configurableQualityPictureBox33.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox33.Location = new System.Drawing.Point(7, 482);
             this.configurableQualityPictureBox33.Name = "configurableQualityPictureBox33";
@@ -1160,7 +1161,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox32
             // 
             this.configurableQualityPictureBox32.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_white;
             this.configurableQualityPictureBox32.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox32.Location = new System.Drawing.Point(7, 170);
             this.configurableQualityPictureBox32.Name = "configurableQualityPictureBox32";
@@ -1203,7 +1203,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox30
             // 
             this.configurableQualityPictureBox30.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_white;
             this.configurableQualityPictureBox30.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox30.Location = new System.Drawing.Point(7, 456);
             this.configurableQualityPictureBox30.Name = "configurableQualityPictureBox30";
@@ -1264,7 +1263,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox2
             // 
             this.configurableQualityPictureBox2.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
             this.configurableQualityPictureBox2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox2.Location = new System.Drawing.Point(7, 14);
             this.configurableQualityPictureBox2.Name = "configurableQualityPictureBox2";
@@ -1277,7 +1275,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox17
             // 
             this.configurableQualityPictureBox17.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
             this.configurableQualityPictureBox17.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox17.Location = new System.Drawing.Point(7, 430);
             this.configurableQualityPictureBox17.Name = "configurableQualityPictureBox17";
@@ -1290,7 +1287,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox16
             // 
             this.configurableQualityPictureBox16.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
             this.configurableQualityPictureBox16.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox16.Location = new System.Drawing.Point(7, 404);
             this.configurableQualityPictureBox16.Name = "configurableQualityPictureBox16";
@@ -1303,7 +1299,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox15
             // 
             this.configurableQualityPictureBox15.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
             this.configurableQualityPictureBox15.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox15.Location = new System.Drawing.Point(7, 378);
             this.configurableQualityPictureBox15.Name = "configurableQualityPictureBox15";
@@ -1316,7 +1311,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox14
             // 
             this.configurableQualityPictureBox14.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
             this.configurableQualityPictureBox14.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox14.Location = new System.Drawing.Point(7, 352);
             this.configurableQualityPictureBox14.Name = "configurableQualityPictureBox14";
@@ -1329,7 +1323,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox13
             // 
             this.configurableQualityPictureBox13.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
             this.configurableQualityPictureBox13.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox13.Location = new System.Drawing.Point(7, 326);
             this.configurableQualityPictureBox13.Name = "configurableQualityPictureBox13";
@@ -1342,7 +1335,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox12
             // 
             this.configurableQualityPictureBox12.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
             this.configurableQualityPictureBox12.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox12.Location = new System.Drawing.Point(7, 300);
             this.configurableQualityPictureBox12.Name = "configurableQualityPictureBox12";
@@ -1355,7 +1347,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox11
             // 
             this.configurableQualityPictureBox11.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
             this.configurableQualityPictureBox11.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox11.Location = new System.Drawing.Point(7, 274);
             this.configurableQualityPictureBox11.Name = "configurableQualityPictureBox11";
@@ -1368,7 +1359,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox10
             // 
             this.configurableQualityPictureBox10.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
             this.configurableQualityPictureBox10.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox10.Location = new System.Drawing.Point(7, 248);
             this.configurableQualityPictureBox10.Name = "configurableQualityPictureBox10";
@@ -1381,7 +1371,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox9
             // 
             this.configurableQualityPictureBox9.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
             this.configurableQualityPictureBox9.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox9.Location = new System.Drawing.Point(7, 222);
             this.configurableQualityPictureBox9.Name = "configurableQualityPictureBox9";
@@ -1394,7 +1383,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox8
             // 
             this.configurableQualityPictureBox8.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
             this.configurableQualityPictureBox8.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox8.Location = new System.Drawing.Point(7, 196);
             this.configurableQualityPictureBox8.Name = "configurableQualityPictureBox8";
@@ -1407,7 +1395,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox7
             // 
             this.configurableQualityPictureBox7.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
             this.configurableQualityPictureBox7.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox7.Location = new System.Drawing.Point(7, 144);
             this.configurableQualityPictureBox7.Name = "configurableQualityPictureBox7";
@@ -1420,7 +1407,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox6
             // 
             this.configurableQualityPictureBox6.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
             this.configurableQualityPictureBox6.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox6.Location = new System.Drawing.Point(7, 118);
             this.configurableQualityPictureBox6.Name = "configurableQualityPictureBox6";
@@ -1433,7 +1419,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox5
             // 
             this.configurableQualityPictureBox5.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
             this.configurableQualityPictureBox5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox5.Location = new System.Drawing.Point(7, 92);
             this.configurableQualityPictureBox5.Name = "configurableQualityPictureBox5";
@@ -1446,7 +1431,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox4
             // 
             this.configurableQualityPictureBox4.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
             this.configurableQualityPictureBox4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox4.Location = new System.Drawing.Point(7, 66);
             this.configurableQualityPictureBox4.Name = "configurableQualityPictureBox4";
@@ -1459,7 +1443,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox3
             // 
             this.configurableQualityPictureBox3.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
             this.configurableQualityPictureBox3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox3.Location = new System.Drawing.Point(7, 40);
             this.configurableQualityPictureBox3.Name = "configurableQualityPictureBox3";
@@ -1788,7 +1771,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox35
             // 
             this.configurableQualityPictureBox35.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
             this.configurableQualityPictureBox35.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox35.Location = new System.Drawing.Point(273, 238);
             this.configurableQualityPictureBox35.Name = "configurableQualityPictureBox35";
@@ -1822,7 +1804,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox34
             // 
             this.configurableQualityPictureBox34.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
             this.configurableQualityPictureBox34.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox34.Location = new System.Drawing.Point(7, 238);
             this.configurableQualityPictureBox34.Name = "configurableQualityPictureBox34";
@@ -1949,7 +1930,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox31
             // 
             this.configurableQualityPictureBox31.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
             this.configurableQualityPictureBox31.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox31.Location = new System.Drawing.Point(7, 170);
             this.configurableQualityPictureBox31.Name = "configurableQualityPictureBox31";
@@ -1972,7 +1952,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox25
             // 
             this.configurableQualityPictureBox25.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
             this.configurableQualityPictureBox25.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox25.Location = new System.Drawing.Point(292, 66);
             this.configurableQualityPictureBox25.Name = "configurableQualityPictureBox25";
@@ -1985,7 +1964,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox29
             // 
             this.configurableQualityPictureBox29.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
             this.configurableQualityPictureBox29.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox29.Location = new System.Drawing.Point(7, 399);
             this.configurableQualityPictureBox29.Name = "configurableQualityPictureBox29";
@@ -1998,7 +1976,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox28
             // 
             this.configurableQualityPictureBox28.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
             this.configurableQualityPictureBox28.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox28.Location = new System.Drawing.Point(7, 118);
             this.configurableQualityPictureBox28.Name = "configurableQualityPictureBox28";
@@ -2011,7 +1988,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox27
             // 
             this.configurableQualityPictureBox27.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
             this.configurableQualityPictureBox27.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox27.Location = new System.Drawing.Point(292, 118);
             this.configurableQualityPictureBox27.Name = "configurableQualityPictureBox27";
@@ -2024,7 +2000,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox26
             // 
             this.configurableQualityPictureBox26.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
             this.configurableQualityPictureBox26.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox26.Location = new System.Drawing.Point(292, 92);
             this.configurableQualityPictureBox26.Name = "configurableQualityPictureBox26";
@@ -2037,7 +2012,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox24
             // 
             this.configurableQualityPictureBox24.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
             this.configurableQualityPictureBox24.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox24.Location = new System.Drawing.Point(7, 144);
             this.configurableQualityPictureBox24.Name = "configurableQualityPictureBox24";
@@ -2050,7 +2024,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox23
             // 
             this.configurableQualityPictureBox23.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
             this.configurableQualityPictureBox23.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox23.Location = new System.Drawing.Point(273, 212);
             this.configurableQualityPictureBox23.Name = "configurableQualityPictureBox23";
@@ -2063,7 +2036,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox22
             // 
             this.configurableQualityPictureBox22.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
             this.configurableQualityPictureBox22.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox22.Location = new System.Drawing.Point(7, 212);
             this.configurableQualityPictureBox22.Name = "configurableQualityPictureBox22";
@@ -2076,7 +2048,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox21
             // 
             this.configurableQualityPictureBox21.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
             this.configurableQualityPictureBox21.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox21.Location = new System.Drawing.Point(7, 92);
             this.configurableQualityPictureBox21.Name = "configurableQualityPictureBox21";
@@ -2089,7 +2060,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox20
             // 
             this.configurableQualityPictureBox20.CompositingQuality = null;
-            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
             this.configurableQualityPictureBox20.InterpolationMode = null;
             this.configurableQualityPictureBox20.Location = new System.Drawing.Point(7, 66);
             this.configurableQualityPictureBox20.Name = "configurableQualityPictureBox20";
@@ -2102,7 +2072,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox19
             // 
             this.configurableQualityPictureBox19.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
             this.configurableQualityPictureBox19.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox19.Location = new System.Drawing.Point(7, 40);
             this.configurableQualityPictureBox19.Name = "configurableQualityPictureBox19";
@@ -2115,7 +2084,6 @@ namespace HardwareInformation
             // configurableQualityPictureBox18
             // 
             this.configurableQualityPictureBox18.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
             this.configurableQualityPictureBox18.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox18.Location = new System.Drawing.Point(7, 14);
             this.configurableQualityPictureBox18.Name = "configurableQualityPictureBox18";
@@ -2337,7 +2305,6 @@ namespace HardwareInformation
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
@@ -2346,7 +2313,6 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
@@ -2355,7 +2321,6 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
             this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
@@ -2377,7 +2342,7 @@ namespace HardwareInformation
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(931, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(962, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2412,7 +2377,6 @@ namespace HardwareInformation
             | System.Windows.Forms.AnchorStyles.Right)));
             this.configurableQualityPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.configurableQualityPictureBox1.CompositingQuality = null;
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
             this.configurableQualityPictureBox1.InitialImage = null;
             this.configurableQualityPictureBox1.InterpolationMode = null;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
@@ -2968,41 +2932,41 @@ namespace HardwareInformation
             this.logLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_light;
-            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_black;
-            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_black;
-            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_black;
-            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_black;
-            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_black;
-            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_black;
-            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_black;
-            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_black;
-            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_black;
-            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_black;
-            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_black;
-            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_black;
-            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_black;
-            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_black;
-            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_black;
-            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_black;
-            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_black;
-            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_black;
-            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_black;
-            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_black;
-            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_black;
-            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_black;
-            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_black;
-            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_black;
-            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_black;
-            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_black;
-            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_black;
-            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_black;
-            this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_black;
-            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_black;
-            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_black;
-            this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_black;
-            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_black;
-            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_black;
+            this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_light_path));
+            this.configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_light_path));
+            this.configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_model_light_path));
+            this.configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_serial_no_light_path));
+            this.configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cpu_light_path));
+            this.configurableQualityPictureBox6.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ram_light_path));
+            this.configurableQualityPictureBox7.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_disk_size_light_path));
+            this.configurableQualityPictureBox8.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hdd_light_path));
+            this.configurableQualityPictureBox9.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ahci_light_path));
+            this.configurableQualityPictureBox10.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_gpu_light_path));
+            this.configurableQualityPictureBox11.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_windows_light_path));
+            this.configurableQualityPictureBox12.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hostname_light_path));
+            this.configurableQualityPictureBox13.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_mac_light_path));
+            this.configurableQualityPictureBox14.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ip_light_path));
+            this.configurableQualityPictureBox15.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_light_path));
+            this.configurableQualityPictureBox16.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_version_light_path));
+            this.configurableQualityPictureBox17.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_secure_boot_light_path));
+            this.configurableQualityPictureBox18.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_patr_light_path));
+            this.configurableQualityPictureBox19.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_seal_light_path));
+            this.configurableQualityPictureBox20.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_room_light_path));
+            this.configurableQualityPictureBox21.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_building_light_path));
+            this.configurableQualityPictureBox22.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
+            this.configurableQualityPictureBox23.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_standard_light_path));
+            this.configurableQualityPictureBox24.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_service_light_path));
+            this.configurableQualityPictureBox25.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_letter_light_path));
+            this.configurableQualityPictureBox26.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_light_path));
+            this.configurableQualityPictureBox27.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_light_path));
+            this.configurableQualityPictureBox28.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_light_path));
+            this.configurableQualityPictureBox29.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
+            this.configurableQualityPictureBox30.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_light_path));
+            this.configurableQualityPictureBox31.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_light_path));
+            this.configurableQualityPictureBox32.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_light_path));
+            this.configurableQualityPictureBox33.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_tpm_light_path));
+            this.configurableQualityPictureBox34.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cmos_battery_light_path));
+            this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_light_path));
         }
 
         //Sets a dark theme for the UI
@@ -3178,41 +3142,41 @@ namespace HardwareInformation
             this.logLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.banner_dark;
-            this.configurableQualityPictureBox2.Image = global::HardwareInformation.Properties.Resources.brand_white;
-            this.configurableQualityPictureBox3.Image = global::HardwareInformation.Properties.Resources.model_white;
-            this.configurableQualityPictureBox4.Image = global::HardwareInformation.Properties.Resources.serial_no_white;
-            this.configurableQualityPictureBox5.Image = global::HardwareInformation.Properties.Resources.cpu_white;
-            this.configurableQualityPictureBox6.Image = global::HardwareInformation.Properties.Resources.ram_white;
-            this.configurableQualityPictureBox7.Image = global::HardwareInformation.Properties.Resources.disk_size_white;
-            this.configurableQualityPictureBox8.Image = global::HardwareInformation.Properties.Resources.hdd_white;
-            this.configurableQualityPictureBox9.Image = global::HardwareInformation.Properties.Resources.ahci_white;
-            this.configurableQualityPictureBox10.Image = global::HardwareInformation.Properties.Resources.gpu_white;
-            this.configurableQualityPictureBox11.Image = global::HardwareInformation.Properties.Resources.windows_white;
-            this.configurableQualityPictureBox12.Image = global::HardwareInformation.Properties.Resources.hostname_white;
-            this.configurableQualityPictureBox13.Image = global::HardwareInformation.Properties.Resources.mac_white;
-            this.configurableQualityPictureBox14.Image = global::HardwareInformation.Properties.Resources.ip_white;
-            this.configurableQualityPictureBox15.Image = global::HardwareInformation.Properties.Resources.bios_white;
-            this.configurableQualityPictureBox16.Image = global::HardwareInformation.Properties.Resources.bios_version_white;
-            this.configurableQualityPictureBox17.Image = global::HardwareInformation.Properties.Resources.secure_boot_white;
-            this.configurableQualityPictureBox18.Image = global::HardwareInformation.Properties.Resources.patr_white;
-            this.configurableQualityPictureBox19.Image = global::HardwareInformation.Properties.Resources.seal_white;
-            this.configurableQualityPictureBox20.Image = global::HardwareInformation.Properties.Resources.room_white;
-            this.configurableQualityPictureBox21.Image = global::HardwareInformation.Properties.Resources.building_white;
-            this.configurableQualityPictureBox22.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.configurableQualityPictureBox23.Image = global::HardwareInformation.Properties.Resources.standard_white;
-            this.configurableQualityPictureBox24.Image = global::HardwareInformation.Properties.Resources.service_white;
-            this.configurableQualityPictureBox25.Image = global::HardwareInformation.Properties.Resources.letter_white;
-            this.configurableQualityPictureBox26.Image = global::HardwareInformation.Properties.Resources.in_use_white;
-            this.configurableQualityPictureBox27.Image = global::HardwareInformation.Properties.Resources.sticker_white;
-            this.configurableQualityPictureBox28.Image = global::HardwareInformation.Properties.Resources.type_white;
-            this.configurableQualityPictureBox29.Image = global::HardwareInformation.Properties.Resources.server_white;
-            this.configurableQualityPictureBox30.Image = global::HardwareInformation.Properties.Resources.VT_x_white;
-            this.configurableQualityPictureBox31.Image = global::HardwareInformation.Properties.Resources.who_white;
-            this.configurableQualityPictureBox32.Image = global::HardwareInformation.Properties.Resources.smart_white;
-            this.configurableQualityPictureBox33.Image = global::HardwareInformation.Properties.Resources.tpm_white;
-            this.configurableQualityPictureBox34.Image = global::HardwareInformation.Properties.Resources.cmos_battery_white;
-            this.configurableQualityPictureBox35.Image = global::HardwareInformation.Properties.Resources.ticket_white;
+            this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_dark_path));
+            this.configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_dark_path));
+            this.configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_model_dark_path));
+            this.configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_serial_no_dark_path));
+            this.configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cpu_dark_path));
+            this.configurableQualityPictureBox6.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ram_dark_path));
+            this.configurableQualityPictureBox7.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_disk_size_dark_path));
+            this.configurableQualityPictureBox8.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hdd_dark_path));
+            this.configurableQualityPictureBox9.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ahci_dark_path));
+            this.configurableQualityPictureBox10.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_gpu_dark_path));
+            this.configurableQualityPictureBox11.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_windows_dark_path));
+            this.configurableQualityPictureBox12.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hostname_dark_path));
+            this.configurableQualityPictureBox13.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_mac_dark_path));
+            this.configurableQualityPictureBox14.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ip_dark_path));
+            this.configurableQualityPictureBox15.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_dark_path));
+            this.configurableQualityPictureBox16.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_version_dark_path));
+            this.configurableQualityPictureBox17.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_secure_boot_dark_path));
+            this.configurableQualityPictureBox18.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_patr_dark_path));
+            this.configurableQualityPictureBox19.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_seal_dark_path));
+            this.configurableQualityPictureBox20.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_room_dark_path));
+            this.configurableQualityPictureBox21.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_building_dark_path));
+            this.configurableQualityPictureBox22.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
+            this.configurableQualityPictureBox23.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_standard_dark_path));
+            this.configurableQualityPictureBox24.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_service_dark_path));
+            this.configurableQualityPictureBox25.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_letter_dark_path));
+            this.configurableQualityPictureBox26.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_dark_path));
+            this.configurableQualityPictureBox27.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_dark_path));
+            this.configurableQualityPictureBox28.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_dark_path));
+            this.configurableQualityPictureBox29.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
+            this.configurableQualityPictureBox30.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_dark_path));
+            this.configurableQualityPictureBox31.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_dark_path));
+            this.configurableQualityPictureBox32.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_dark_path));
+            this.configurableQualityPictureBox33.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_tpm_dark_path));
+            this.configurableQualityPictureBox34.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cmos_battery_dark_path));
+            this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_dark_path));
         }
 
         //Opens the selected webpage, according to the IP and port specified in the comboboxes

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using ConstantsDLL;
 using HardwareInformation.Properties;
@@ -96,7 +98,9 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
+            configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
+
+            //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
 
         //Sets a dark theme for the login form
@@ -138,7 +142,9 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
+            configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
+
+            //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
         //Loads the form, sets some combobox values

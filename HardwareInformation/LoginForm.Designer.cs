@@ -133,7 +133,6 @@
             // configurableQualityPictureBox1
             // 
             this.configurableQualityPictureBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
             this.configurableQualityPictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(0, -1);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
