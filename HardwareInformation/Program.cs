@@ -21,8 +21,8 @@ namespace HardwareInformation
     {
         private static List<string[]> definitionListSection;
         private static LogGenerator log;
-        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr;
-        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection;
+        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr, themeStr;
+        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
         //Command line switch options specification
         public class Options
         {
@@ -141,18 +141,21 @@ namespace HardwareInformation
                 serverPortStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_12];
                 roomListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_13];
                 hwTypeListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_14];
+                themeStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_15];
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
                 portListSection = serverPortStr.Split(',').ToArray();
                 roomListSection = roomListStr.Split(',').ToArray();
                 hwTypeListSection = hwTypeListStr.Split(',').ToArray();
+                themeSection = themeStr.Split().ToArray();
                 definitionListSection = new List<string[]>
                 {
                     serverListSection,
                     portListSection,
                     roomListSection,
                     hwTypeListSection,
-                    logLocationSection
+                    logLocationSection,
+                    themeSection
                 };
 
                 bool fileExists = bool.Parse(MiscMethods.checkIfLogExists(logLocationStr));

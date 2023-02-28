@@ -31,11 +31,19 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
 
             log = l;
-            themeBool = MiscMethods.ThemeInit();
-            if (themeBool)
-                darkTheme();
-            else
+
+            if (StringsAndConstants.themeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[0]))
+            {
+                themeBool = MiscMethods.ThemeInit();
+                if (themeBool)
+                    darkTheme();
+                else
+                    lightTheme();
+            }
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[1]))
                 lightTheme();
+            else if(definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[2]))
+                darkTheme();
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
 

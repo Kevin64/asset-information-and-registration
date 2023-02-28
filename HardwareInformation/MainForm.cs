@@ -27,6 +27,7 @@ namespace HardwareInformation
         private LogGenerator log;
         private TaskbarManager tbProgMain;
         private List<string[]> defList;
+        private ToolStripStatusLabel aboutLabel;
         private int percent;
 
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList)
@@ -41,7 +42,26 @@ namespace HardwareInformation
 #endif
 
             log = l;
-            themeBool = MiscMethods.ThemeInit();
+
+            if (StringsAndConstants.themeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[0]))
+            {
+                themeBool = MiscMethods.ThemeInit();
+                if (themeBool)
+                    darkTheme();
+                else
+                    lightTheme();
+            }
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[1]))
+            {
+                comboBoxTheme.Enabled = false;
+                lightTheme();
+            }
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[2]))
+            {
+                comboBoxTheme.Enabled = false;
+                darkTheme();
+            }
+
             offlineMode = noConnection;
             defList = definitionList;
 
@@ -241,6 +261,7 @@ namespace HardwareInformation
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.logLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.aboutLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
@@ -2280,6 +2301,7 @@ namespace HardwareInformation
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comboBoxTheme,
             this.logLabel,
+            this.aboutLabel,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 693);
@@ -2335,6 +2357,14 @@ namespace HardwareInformation
             this.logLabel.Text = "Log";
             this.logLabel.Click += new System.EventHandler(this.logLabel_Click);
             // 
+            // aboutLabel
+            // 
+            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.aboutLabel.Name = "aboutLabel";
+            this.aboutLabel.Size = new System.Drawing.Size(37, 17);
+            this.aboutLabel.Text = "Sobre";
+            this.aboutLabel.Click += new System.EventHandler(this.about_Click);
+            // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -2342,7 +2372,7 @@ namespace HardwareInformation
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(962, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(894, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2930,6 +2960,8 @@ namespace HardwareInformation
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            this.aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
             this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_light_path));
@@ -2967,6 +2999,12 @@ namespace HardwareInformation
             this.configurableQualityPictureBox33.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_tpm_light_path));
             this.configurableQualityPictureBox34.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cmos_battery_light_path));
             this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_light_path));
+        }
+
+        private void about_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox(defList, themeBool);
+            about.ShowDialog();
         }
 
         //Sets a dark theme for the UI
@@ -3140,6 +3178,8 @@ namespace HardwareInformation
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            this.aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
             this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_dark_path));
@@ -3202,7 +3242,7 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
-            comboBoxThemeInit();
+            //comboBoxThemeInit();
             if (!offlineMode)
             {
                 bw = new BusyForm();
