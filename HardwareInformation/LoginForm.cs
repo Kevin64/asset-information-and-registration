@@ -20,15 +20,17 @@ namespace HardwareInformation
         private TaskbarManager tbProgLogin;
         private MainForm form;
         private List<string[]> definitionList;
+        private List<string> orgList;
         private string[] str = { };
         bool themeBool;
 
-        public LoginForm(LogGenerator l, List<string[]> definitionListSection)
+        public LoginForm(LogGenerator l, List<string[]> definitionListSection, List<string> orgDataListSection)
         {
             InitializeComponent();
             definitionList = definitionListSection;
+            orgList = orgDataListSection;
 
-            this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm2;
+            this.toolStripStatusLabel1.Text = orgList[3].ToString() + " - " + orgList[1].ToString();
 
             log = l;
 
@@ -182,7 +184,7 @@ namespace HardwareInformation
             if (checkBoxOfflineMode.Checked)
             {
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList);
+                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList, orgList);
                 this.Hide();
                 textBoxUser.Text = null;
                 textBoxPassword.Text = null;
@@ -219,7 +221,7 @@ namespace HardwareInformation
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList);
+                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList, orgList);
                         this.Hide();
                         textBoxUser.Text = null;
                         textBoxPassword.Text = null;

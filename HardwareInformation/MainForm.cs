@@ -27,10 +27,12 @@ namespace HardwareInformation
         private LogGenerator log;
         private TaskbarManager tbProgMain;
         private List<string[]> defList;
+        private List<string> orgList;
         private ToolStripStatusLabel aboutLabel;
+        private GroupBox groupBox5;
         private int percent;
 
-        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList)
+        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
         {
             InitializeComponent();
 
@@ -64,6 +66,7 @@ namespace HardwareInformation
 
             offlineMode = noConnection;
             defList = definitionList;
+            orgList = orgDataList;
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_MODE, offlineMode.ToString(), StringsAndConstants.consoleOutGUI);
 
@@ -89,8 +92,8 @@ namespace HardwareInformation
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            this.toolStripStatusLabel1.Text = StringsAndConstants.statusBarTextForm1;
-            this.Text = StringsAndConstants.formTitlebarText;
+            this.toolStripStatusLabel1.Text = orgList[4].ToString() + " - " + orgList[2].ToString() + " - " + orgList[0].ToString();
+            this.Text = Application.ProductName + " - " + orgList[5].ToString() + " / " + orgList[3].ToString() + " / " + orgList[1].ToString();
         }
 
         private void InitializeComponent()
@@ -197,13 +200,6 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.lblAgentName = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.lblPortServer = new System.Windows.Forms.Label();
@@ -229,7 +225,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox31 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.label34 = new System.Windows.Forms.Label();
             this.configurableQualityPictureBox25 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox29 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox28 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox27 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox26 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -278,6 +273,14 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -303,7 +306,6 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).BeginInit();
@@ -319,6 +321,7 @@ namespace HardwareInformation
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblBM
@@ -663,17 +666,17 @@ namespace HardwareInformation
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label21.Location = new System.Drawing.Point(225, 403);
+            this.label21.Location = new System.Drawing.Point(187, 16);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(95, 13);
+            this.label21.Size = new System.Drawing.Size(40, 13);
             this.label21.TabIndex = 17;
-            this.label21.Text = "Status do servidor:";
+            this.label21.Text = "Status:";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label22.Location = new System.Drawing.Point(64, 422);
+            this.label22.Location = new System.Drawing.Point(7, 35);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(35, 13);
             this.label22.TabIndex = 18;
@@ -708,9 +711,9 @@ namespace HardwareInformation
             this.label24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label24.Location = new System.Drawing.Point(37, 410);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(115, 13);
+            this.label24.Size = new System.Drawing.Size(100, 13);
             this.label24.TabIndex = 56;
-            this.label24.Text = "Versão da BIOS/UEFI:";
+            this.label24.Text = "Versão do firmware:";
             // 
             // lblBIOS
             // 
@@ -1562,11 +1565,6 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.comboBoxInUse);
             this.groupBox2.Controls.Add(this.comboBoxType);
             this.groupBox2.Controls.Add(this.comboBoxBuilding);
-            this.groupBox2.Controls.Add(this.lblAgentName);
-            this.groupBox2.Controls.Add(this.label53);
-            this.groupBox2.Controls.Add(this.lblPortServer);
-            this.groupBox2.Controls.Add(this.lblIPServer);
-            this.groupBox2.Controls.Add(this.label49);
             this.groupBox2.Controls.Add(this.label48);
             this.groupBox2.Controls.Add(this.label47);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox35);
@@ -1587,7 +1585,6 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox31);
             this.groupBox2.Controls.Add(this.label34);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox25);
-            this.groupBox2.Controls.Add(this.configurableQualityPictureBox29);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox28);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox27);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox26);
@@ -1599,7 +1596,6 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox19);
             this.groupBox2.Controls.Add(this.configurableQualityPictureBox18);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
@@ -1609,10 +1605,8 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.textBoxRoom);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.textBoxLetter);
@@ -1621,109 +1615,16 @@ namespace HardwareInformation
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox2.Location = new System.Drawing.Point(575, 113);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(450, 447);
+            this.groupBox2.Size = new System.Drawing.Size(450, 390);
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
-            // 
-            // comboBoxBattery
-            // 
-            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxBattery.TabIndex = 47;
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.Enabled = false;
-            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxStandard.TabIndex = 46;
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.Enabled = false;
-            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxActiveDirectory.TabIndex = 45;
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
-            this.comboBoxTag.Name = "comboBoxTag";
-            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxTag.TabIndex = 41;
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxInUse.TabIndex = 39;
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxType.TabIndex = 40;
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxBuilding.TabIndex = 38;
             // 
             // lblAgentName
             // 
             this.lblAgentName.AutoSize = true;
             this.lblAgentName.ForeColor = System.Drawing.Color.Silver;
-            this.lblAgentName.Location = new System.Drawing.Point(335, 422);
+            this.lblAgentName.Location = new System.Drawing.Point(291, 35);
             this.lblAgentName.Name = "lblAgentName";
             this.lblAgentName.Size = new System.Drawing.Size(10, 13);
             this.lblAgentName.TabIndex = 123;
@@ -1733,7 +1634,7 @@ namespace HardwareInformation
             // 
             this.label53.AutoSize = true;
             this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label53.Location = new System.Drawing.Point(225, 422);
+            this.label53.Location = new System.Drawing.Point(187, 35);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(104, 13);
             this.label53.TabIndex = 122;
@@ -1743,7 +1644,7 @@ namespace HardwareInformation
             // 
             this.lblPortServer.AutoSize = true;
             this.lblPortServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblPortServer.Location = new System.Drawing.Point(99, 422);
+            this.lblPortServer.Location = new System.Drawing.Point(46, 35);
             this.lblPortServer.Name = "lblPortServer";
             this.lblPortServer.Size = new System.Drawing.Size(10, 13);
             this.lblPortServer.TabIndex = 121;
@@ -1753,7 +1654,7 @@ namespace HardwareInformation
             // 
             this.lblIPServer.AutoSize = true;
             this.lblIPServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblIPServer.Location = new System.Drawing.Point(99, 403);
+            this.lblIPServer.Location = new System.Drawing.Point(46, 16);
             this.lblIPServer.Name = "lblIPServer";
             this.lblIPServer.Size = new System.Drawing.Size(10, 13);
             this.lblIPServer.TabIndex = 120;
@@ -1763,7 +1664,7 @@ namespace HardwareInformation
             // 
             this.label49.AutoSize = true;
             this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label49.Location = new System.Drawing.Point(64, 403);
+            this.label49.Location = new System.Drawing.Point(7, 16);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(20, 13);
             this.label49.TabIndex = 119;
@@ -1982,18 +1883,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox25.TabIndex = 100;
             this.configurableQualityPictureBox25.TabStop = false;
             // 
-            // configurableQualityPictureBox29
-            // 
-            this.configurableQualityPictureBox29.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox29.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox29.Location = new System.Drawing.Point(7, 399);
-            this.configurableQualityPictureBox29.Name = "configurableQualityPictureBox29";
-            this.configurableQualityPictureBox29.Size = new System.Drawing.Size(43, 40);
-            this.configurableQualityPictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox29.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox29.TabIndex = 99;
-            this.configurableQualityPictureBox29.TabStop = false;
-            // 
             // configurableQualityPictureBox28
             // 
             this.configurableQualityPictureBox28.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
@@ -2127,7 +2016,7 @@ namespace HardwareInformation
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.ForeColor = System.Drawing.Color.Silver;
-            this.label26.Location = new System.Drawing.Point(335, 403);
+            this.label26.Location = new System.Drawing.Point(291, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(10, 13);
             this.label26.TabIndex = 72;
@@ -2147,7 +2036,7 @@ namespace HardwareInformation
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox3.Location = new System.Drawing.Point(6, 269);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(438, 124);
+            this.groupBox3.Size = new System.Drawing.Size(438, 115);
             this.groupBox3.TabIndex = 72;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tipo de serviço";
@@ -2372,7 +2261,7 @@ namespace HardwareInformation
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(894, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(925, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2452,6 +2341,117 @@ namespace HardwareInformation
             this.loadingCircle23.Text = "loadingCircle23";
             this.loadingCircle23.Visible = false;
             // 
+            // comboBoxBattery
+            // 
+            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxBattery.TabIndex = 47;
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.Enabled = false;
+            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxStandard.TabIndex = 46;
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.Enabled = false;
+            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxActiveDirectory.TabIndex = 45;
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
+            this.comboBoxTag.Name = "comboBoxTag";
+            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxTag.TabIndex = 41;
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxInUse.TabIndex = 39;
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxType.TabIndex = 40;
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxBuilding.TabIndex = 38;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label49);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Controls.Add(this.lblIPServer);
+            this.groupBox5.Controls.Add(this.lblPortServer);
+            this.groupBox5.Controls.Add(this.label53);
+            this.groupBox5.Controls.Add(this.lblAgentName);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox5.Location = new System.Drawing.Point(575, 504);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(450, 56);
+            this.groupBox5.TabIndex = 132;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Servidor SCPD";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2460,6 +2460,7 @@ namespace HardwareInformation
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(1056, 715);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.loadingCircle23);
             this.Controls.Add(this.loadingCircle22);
             this.Controls.Add(this.groupBox4);
@@ -2503,7 +2504,6 @@ namespace HardwareInformation
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox26)).EndInit();
@@ -2521,6 +2521,8 @@ namespace HardwareInformation
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2623,7 +2625,6 @@ namespace HardwareInformation
         private ConfigurableQualityPictureBox configurableQualityPictureBox26;
         private ConfigurableQualityPictureBox configurableQualityPictureBox27;
         private ConfigurableQualityPictureBox configurableQualityPictureBox28;
-        private ConfigurableQualityPictureBox configurableQualityPictureBox29;
         private ConfigurableQualityPictureBox configurableQualityPictureBox30;
         private Label lblVT;
         private Label label33;
@@ -2945,6 +2946,7 @@ namespace HardwareInformation
             this.groupBox2.Paint += CustomGroupBox.groupBox_PaintLightTheme;
             this.groupBox3.Paint += CustomGroupBox.groupBox_PaintLightTheme;
             this.groupBox4.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.groupBox5.Paint += CustomGroupBox.groupBox_PaintLightTheme;
             this.separatorH.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
             this.separatorV.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
 
@@ -2992,7 +2994,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox26.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_light_path));
             this.configurableQualityPictureBox27.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_light_path));
             this.configurableQualityPictureBox28.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_light_path));
-            this.configurableQualityPictureBox29.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
             this.configurableQualityPictureBox30.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_light_path));
             this.configurableQualityPictureBox31.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_light_path));
             this.configurableQualityPictureBox32.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_light_path));
@@ -3163,6 +3164,7 @@ namespace HardwareInformation
             this.groupBox2.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
             this.groupBox3.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
             this.groupBox4.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.groupBox5.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
             this.separatorH.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
             this.separatorV.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
 
@@ -3210,7 +3212,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox26.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_dark_path));
             this.configurableQualityPictureBox27.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_dark_path));
             this.configurableQualityPictureBox28.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_dark_path));
-            this.configurableQualityPictureBox29.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
             this.configurableQualityPictureBox30.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_dark_path));
             this.configurableQualityPictureBox31.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_dark_path));
             this.configurableQualityPictureBox32.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_dark_path));
@@ -3242,6 +3243,9 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
+            //Sets current and maximum values for the progressbar
+            progressBar1.Maximum = 19;
+            progressBar1.Value = 0;
             //comboBoxThemeInit();
             if (!offlineMode)
             {
@@ -3547,10 +3551,6 @@ namespace HardwareInformation
                     lblTPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 }
             }
-
-            //Sets current and maximum values for the progressbar
-            progressBar1.Maximum = 19;
-            progressBar1.Value = 0;
         }
 
         //Auxiliary method
@@ -3858,7 +3858,10 @@ namespace HardwareInformation
                 if (pass && !offlineMode)
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
                 if (!pass)
+                {
+                    progressBar1.SetState(2);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
+                }
             }
             catch(Exception e)
             {
@@ -3869,6 +3872,7 @@ namespace HardwareInformation
         //Triggers when the form opens, and when the user clicks to collect
         private void coleta_Click(object sender, EventArgs e)
         {
+            progressBar1.SetState(1);
             tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
             webView2.Visible = false;
             collecting();

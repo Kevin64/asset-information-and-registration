@@ -14,15 +14,21 @@ using IniParser.Model;
 using IniParser;
 using IniParser.Exceptions;
 using System.Collections.Generic;
+using System.Text;
 
 namespace HardwareInformation
 {
 	public class Program
     {
         private static List<string[]> definitionListSection;
+        private static List<string> orgDataListSection;
         private static LogGenerator log;
         private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr, themeStr;
         private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
+
+        private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
+        private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
+        
         //Command line switch options specification
         public class Options
         {
@@ -133,7 +139,7 @@ namespace HardwareInformation
                 IniData def = null;
                 var parser = new FileIniDataParser();
                 //Parses the INI file
-                def = parser.ReadFile(StringsAndConstants.defFile);
+                def = parser.ReadFile(StringsAndConstants.defFile, Encoding.UTF8);
                 
                 //Reads the INI file Definition section
                 logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
@@ -142,12 +148,28 @@ namespace HardwareInformation
                 roomListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_13];
                 hwTypeListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_14];
                 themeStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_15];
+
+                orgFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_1];
+                orgAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_2];
+                depFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_3];
+                depAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_4];
+                subDepFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_5];
+                subDepAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_6];
+
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
                 portListSection = serverPortStr.Split(',').ToArray();
                 roomListSection = roomListStr.Split(',').ToArray();
                 hwTypeListSection = hwTypeListStr.Split(',').ToArray();
                 themeSection = themeStr.Split().ToArray();
+                    
+                orgFullNameSection = orgFullNameStr;
+                orgAcronymSection = orgAcronymStr;
+                depFullNameSection = depFullNameStr;
+                depAcronymSection = depAcronymStr;
+                subDepFullNameSection = subDepFullNameStr;
+                subDepAcronymSection = subDepAcronymStr;
+
                 definitionListSection = new List<string[]>
                 {
                     serverListSection,
@@ -156,6 +178,16 @@ namespace HardwareInformation
                     hwTypeListSection,
                     logLocationSection,
                     themeSection
+                };
+
+                orgDataListSection = new List<string>
+                {
+                    orgFullNameSection,
+                    orgAcronymSection,
+                    depFullNameSection,
+                    depAcronymSection,
+                    subDepFullNameSection,
+                    subDepAcronymSection
                 };
 
                 bool fileExists = bool.Parse(MiscMethods.checkIfLogExists(logLocationStr));
@@ -195,7 +227,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                     FreeConsole();
-                    Application.Run(new LoginForm(log, definitionListSection)); //If given no args, runs LoginForm
+                    Application.Run(new LoginForm(log, definitionListSection, orgDataListSection)); //If given no args, runs LoginForm
                 }
                 else
                 {
