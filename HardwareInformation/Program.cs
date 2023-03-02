@@ -162,8 +162,13 @@ namespace HardwareInformation
                 roomListSection = roomListStr.Split(',').ToArray();
                 hwTypeListSection = hwTypeListStr.Split(',').ToArray();
                 themeSection = themeStr.Split().ToArray();
-                    
-                orgFullNameSection = orgFullNameStr;
+
+                if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
+                {
+                    throw new FormatException();
+                }
+
+                    orgFullNameSection = orgFullNameStr;
                 orgAcronymSection = orgAcronymStr;
                 depFullNameSection = depFullNameStr;
                 depAcronymSection = depAcronymStr;

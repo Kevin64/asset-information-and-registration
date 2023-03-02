@@ -10,6 +10,7 @@ using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
+using MRG.Controls.UI;
 
 namespace HardwareInformation
 {
@@ -34,7 +35,7 @@ namespace HardwareInformation
 
             log = l;
 
-            if (StringsAndConstants.themeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -42,9 +43,9 @@ namespace HardwareInformation
                 else
                     lightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[1]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
                 lightTheme();
-            else if(definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[2]))
+            else if(definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
                 darkTheme();
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
@@ -109,6 +110,10 @@ namespace HardwareInformation
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
+            configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
+            configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
+            configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
+            configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_light_path));
 
             //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
@@ -153,6 +158,10 @@ namespace HardwareInformation
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
+            configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));
+            configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_dark_path));
+            configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
+            configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_dark_path));
 
             //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
@@ -160,6 +169,14 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values
         private void Form2_Load(object sender, EventArgs e)
         {
+            //Init loading circles parameters
+            loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
+
             FormClosing += Form2_FormClosing;
             tbProgLogin = TaskbarManager.Instance;
         }

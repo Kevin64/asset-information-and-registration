@@ -30,6 +30,7 @@ namespace HardwareInformation
         private List<string> orgList;
         private ToolStripStatusLabel aboutLabel;
         private GroupBox groupBox5;
+        private LoadingCircle loadingCircle24;
         private int percent;
 
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
@@ -42,10 +43,8 @@ namespace HardwareInformation
 #else
             this.toolStripStatusLabel2.Text = MiscMethods.version();
 #endif
-
-            log = l;
-
-            if (StringsAndConstants.themeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[0]))
+            //Define theming according to ini file provided info
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -53,17 +52,18 @@ namespace HardwareInformation
                 else
                     lightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[1]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 comboBoxTheme.Enabled = false;
                 lightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[2]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 comboBoxTheme.Enabled = false;
                 darkTheme();
             }
 
+            log = l;
             offlineMode = noConnection;
             defList = definitionList;
             orgList = orgDataList;
@@ -74,6 +74,7 @@ namespace HardwareInformation
             this.ip = ip;
             this.port = port;
 
+            //Fills controls with provided info from ini file and constants dll
             comboBoxBuilding.Items.AddRange(defList[2]);
             comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectoryGUI.ToArray());
             comboBoxStandard.Items.AddRange(StringsAndConstants.listStandardGUI.ToArray());
@@ -86,6 +87,7 @@ namespace HardwareInformation
             else
                 textBoxPatrimony.Text = "";
 
+            //Inits thread worker for parallelism
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(BackgroundWorker1_ProgressChanged);
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
@@ -200,11 +202,13 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblAgentName = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.lblPortServer = new System.Windows.Forms.Label();
-            this.lblIPServer = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.configurableQualityPictureBox35 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -236,7 +240,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox19 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox18 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label26 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.loadingCircle21 = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircle20 = new MRG.Controls.UI.LoadingCircle();
@@ -249,6 +252,12 @@ namespace HardwareInformation
             this.maintenanceButton = new System.Windows.Forms.RadioButton();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.lblAgentName = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.lblPortServer = new System.Windows.Forms.Label();
+            this.lblIPServer = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.comboBoxTheme = new System.Windows.Forms.ToolStripDropDownButton();
@@ -273,14 +282,8 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -668,9 +671,9 @@ namespace HardwareInformation
             this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label21.Location = new System.Drawing.Point(187, 16);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(40, 13);
+            this.label21.Size = new System.Drawing.Size(98, 13);
             this.label21.TabIndex = 17;
-            this.label21.Text = "Status:";
+            this.label21.Text = "Status operacional:";
             // 
             // label22
             // 
@@ -855,12 +858,11 @@ namespace HardwareInformation
             this.loadingCircle19.InnerCircleRadius = 8;
             this.loadingCircle19.Location = new System.Drawing.Point(194, 482);
             this.loadingCircle19.Name = "loadingCircle19";
-            this.loadingCircle19.NumberSpoke = 24;
+            this.loadingCircle19.NumberSpoke = 28;
             this.loadingCircle19.OuterCircleRadius = 9;
-            this.loadingCircle19.RotationSpeed = 20;
+            this.loadingCircle19.RotationSpeed = 1;
             this.loadingCircle19.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle19.SpokeThickness = 4;
-            this.loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle19.TabIndex = 131;
             this.loadingCircle19.Text = "loadingCircle19";
             // 
@@ -871,12 +873,11 @@ namespace HardwareInformation
             this.loadingCircle18.InnerCircleRadius = 8;
             this.loadingCircle18.Location = new System.Drawing.Point(194, 456);
             this.loadingCircle18.Name = "loadingCircle18";
-            this.loadingCircle18.NumberSpoke = 24;
+            this.loadingCircle18.NumberSpoke = 28;
             this.loadingCircle18.OuterCircleRadius = 9;
-            this.loadingCircle18.RotationSpeed = 20;
+            this.loadingCircle18.RotationSpeed = 1;
             this.loadingCircle18.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle18.SpokeThickness = 4;
-            this.loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle18.TabIndex = 130;
             this.loadingCircle18.Text = "loadingCircle18";
             // 
@@ -887,12 +888,11 @@ namespace HardwareInformation
             this.loadingCircle17.InnerCircleRadius = 8;
             this.loadingCircle17.Location = new System.Drawing.Point(194, 430);
             this.loadingCircle17.Name = "loadingCircle17";
-            this.loadingCircle17.NumberSpoke = 24;
+            this.loadingCircle17.NumberSpoke = 28;
             this.loadingCircle17.OuterCircleRadius = 9;
-            this.loadingCircle17.RotationSpeed = 20;
+            this.loadingCircle17.RotationSpeed = 1;
             this.loadingCircle17.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle17.SpokeThickness = 4;
-            this.loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle17.TabIndex = 129;
             this.loadingCircle17.Text = "loadingCircle17";
             // 
@@ -903,12 +903,11 @@ namespace HardwareInformation
             this.loadingCircle16.InnerCircleRadius = 8;
             this.loadingCircle16.Location = new System.Drawing.Point(194, 404);
             this.loadingCircle16.Name = "loadingCircle16";
-            this.loadingCircle16.NumberSpoke = 24;
+            this.loadingCircle16.NumberSpoke = 28;
             this.loadingCircle16.OuterCircleRadius = 9;
-            this.loadingCircle16.RotationSpeed = 20;
+            this.loadingCircle16.RotationSpeed = 1;
             this.loadingCircle16.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle16.SpokeThickness = 4;
-            this.loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle16.TabIndex = 128;
             this.loadingCircle16.Text = "loadingCircle16";
             // 
@@ -919,12 +918,11 @@ namespace HardwareInformation
             this.loadingCircle15.InnerCircleRadius = 8;
             this.loadingCircle15.Location = new System.Drawing.Point(194, 378);
             this.loadingCircle15.Name = "loadingCircle15";
-            this.loadingCircle15.NumberSpoke = 24;
+            this.loadingCircle15.NumberSpoke = 28;
             this.loadingCircle15.OuterCircleRadius = 9;
-            this.loadingCircle15.RotationSpeed = 20;
+            this.loadingCircle15.RotationSpeed = 1;
             this.loadingCircle15.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle15.SpokeThickness = 4;
-            this.loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle15.TabIndex = 127;
             this.loadingCircle15.Text = "loadingCircle15";
             // 
@@ -935,12 +933,11 @@ namespace HardwareInformation
             this.loadingCircle14.InnerCircleRadius = 8;
             this.loadingCircle14.Location = new System.Drawing.Point(194, 352);
             this.loadingCircle14.Name = "loadingCircle14";
-            this.loadingCircle14.NumberSpoke = 24;
+            this.loadingCircle14.NumberSpoke = 28;
             this.loadingCircle14.OuterCircleRadius = 9;
-            this.loadingCircle14.RotationSpeed = 20;
+            this.loadingCircle14.RotationSpeed = 1;
             this.loadingCircle14.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle14.SpokeThickness = 4;
-            this.loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle14.TabIndex = 126;
             this.loadingCircle14.Text = "loadingCircle14";
             // 
@@ -951,12 +948,11 @@ namespace HardwareInformation
             this.loadingCircle13.InnerCircleRadius = 8;
             this.loadingCircle13.Location = new System.Drawing.Point(194, 326);
             this.loadingCircle13.Name = "loadingCircle13";
-            this.loadingCircle13.NumberSpoke = 24;
+            this.loadingCircle13.NumberSpoke = 28;
             this.loadingCircle13.OuterCircleRadius = 9;
-            this.loadingCircle13.RotationSpeed = 20;
+            this.loadingCircle13.RotationSpeed = 1;
             this.loadingCircle13.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle13.SpokeThickness = 4;
-            this.loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle13.TabIndex = 125;
             this.loadingCircle13.Text = "loadingCircle13";
             // 
@@ -967,12 +963,11 @@ namespace HardwareInformation
             this.loadingCircle12.InnerCircleRadius = 8;
             this.loadingCircle12.Location = new System.Drawing.Point(194, 300);
             this.loadingCircle12.Name = "loadingCircle12";
-            this.loadingCircle12.NumberSpoke = 24;
+            this.loadingCircle12.NumberSpoke = 28;
             this.loadingCircle12.OuterCircleRadius = 9;
-            this.loadingCircle12.RotationSpeed = 20;
+            this.loadingCircle12.RotationSpeed = 1;
             this.loadingCircle12.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle12.SpokeThickness = 4;
-            this.loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle12.TabIndex = 124;
             this.loadingCircle12.Text = "loadingCircle12";
             // 
@@ -983,12 +978,11 @@ namespace HardwareInformation
             this.loadingCircle11.InnerCircleRadius = 8;
             this.loadingCircle11.Location = new System.Drawing.Point(194, 274);
             this.loadingCircle11.Name = "loadingCircle11";
-            this.loadingCircle11.NumberSpoke = 24;
+            this.loadingCircle11.NumberSpoke = 28;
             this.loadingCircle11.OuterCircleRadius = 9;
-            this.loadingCircle11.RotationSpeed = 20;
+            this.loadingCircle11.RotationSpeed = 1;
             this.loadingCircle11.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle11.SpokeThickness = 4;
-            this.loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle11.TabIndex = 123;
             this.loadingCircle11.Text = "loadingCircle11";
             // 
@@ -999,12 +993,11 @@ namespace HardwareInformation
             this.loadingCircle10.InnerCircleRadius = 8;
             this.loadingCircle10.Location = new System.Drawing.Point(194, 248);
             this.loadingCircle10.Name = "loadingCircle10";
-            this.loadingCircle10.NumberSpoke = 24;
+            this.loadingCircle10.NumberSpoke = 28;
             this.loadingCircle10.OuterCircleRadius = 9;
-            this.loadingCircle10.RotationSpeed = 20;
+            this.loadingCircle10.RotationSpeed = 1;
             this.loadingCircle10.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle10.SpokeThickness = 4;
-            this.loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle10.TabIndex = 122;
             this.loadingCircle10.Text = "loadingCircle10";
             // 
@@ -1015,12 +1008,11 @@ namespace HardwareInformation
             this.loadingCircle9.InnerCircleRadius = 8;
             this.loadingCircle9.Location = new System.Drawing.Point(194, 222);
             this.loadingCircle9.Name = "loadingCircle9";
-            this.loadingCircle9.NumberSpoke = 24;
+            this.loadingCircle9.NumberSpoke = 28;
             this.loadingCircle9.OuterCircleRadius = 9;
-            this.loadingCircle9.RotationSpeed = 20;
+            this.loadingCircle9.RotationSpeed = 1;
             this.loadingCircle9.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle9.SpokeThickness = 4;
-            this.loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle9.TabIndex = 121;
             this.loadingCircle9.Text = "loadingCircle9";
             // 
@@ -1031,12 +1023,11 @@ namespace HardwareInformation
             this.loadingCircle8.InnerCircleRadius = 8;
             this.loadingCircle8.Location = new System.Drawing.Point(194, 196);
             this.loadingCircle8.Name = "loadingCircle8";
-            this.loadingCircle8.NumberSpoke = 24;
+            this.loadingCircle8.NumberSpoke = 28;
             this.loadingCircle8.OuterCircleRadius = 9;
-            this.loadingCircle8.RotationSpeed = 20;
+            this.loadingCircle8.RotationSpeed = 1;
             this.loadingCircle8.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle8.SpokeThickness = 4;
-            this.loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle8.TabIndex = 120;
             this.loadingCircle8.Text = "loadingCircle8";
             // 
@@ -1047,12 +1038,11 @@ namespace HardwareInformation
             this.loadingCircle7.InnerCircleRadius = 8;
             this.loadingCircle7.Location = new System.Drawing.Point(194, 170);
             this.loadingCircle7.Name = "loadingCircle7";
-            this.loadingCircle7.NumberSpoke = 24;
+            this.loadingCircle7.NumberSpoke = 28;
             this.loadingCircle7.OuterCircleRadius = 9;
-            this.loadingCircle7.RotationSpeed = 20;
+            this.loadingCircle7.RotationSpeed = 1;
             this.loadingCircle7.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle7.SpokeThickness = 4;
-            this.loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle7.TabIndex = 119;
             this.loadingCircle7.Text = "loadingCircle7";
             // 
@@ -1063,12 +1053,11 @@ namespace HardwareInformation
             this.loadingCircle6.InnerCircleRadius = 8;
             this.loadingCircle6.Location = new System.Drawing.Point(194, 144);
             this.loadingCircle6.Name = "loadingCircle6";
-            this.loadingCircle6.NumberSpoke = 24;
+            this.loadingCircle6.NumberSpoke = 28;
             this.loadingCircle6.OuterCircleRadius = 9;
-            this.loadingCircle6.RotationSpeed = 20;
+            this.loadingCircle6.RotationSpeed = 1;
             this.loadingCircle6.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle6.SpokeThickness = 4;
-            this.loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle6.TabIndex = 118;
             this.loadingCircle6.Text = "loadingCircle6";
             // 
@@ -1079,12 +1068,11 @@ namespace HardwareInformation
             this.loadingCircle5.InnerCircleRadius = 8;
             this.loadingCircle5.Location = new System.Drawing.Point(194, 118);
             this.loadingCircle5.Name = "loadingCircle5";
-            this.loadingCircle5.NumberSpoke = 24;
+            this.loadingCircle5.NumberSpoke = 28;
             this.loadingCircle5.OuterCircleRadius = 9;
-            this.loadingCircle5.RotationSpeed = 20;
+            this.loadingCircle5.RotationSpeed = 1;
             this.loadingCircle5.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle5.SpokeThickness = 4;
-            this.loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle5.TabIndex = 117;
             this.loadingCircle5.Text = "loadingCircle5";
             // 
@@ -1095,12 +1083,11 @@ namespace HardwareInformation
             this.loadingCircle4.InnerCircleRadius = 8;
             this.loadingCircle4.Location = new System.Drawing.Point(194, 92);
             this.loadingCircle4.Name = "loadingCircle4";
-            this.loadingCircle4.NumberSpoke = 24;
+            this.loadingCircle4.NumberSpoke = 28;
             this.loadingCircle4.OuterCircleRadius = 9;
-            this.loadingCircle4.RotationSpeed = 20;
+            this.loadingCircle4.RotationSpeed = 1;
             this.loadingCircle4.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle4.SpokeThickness = 4;
-            this.loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle4.TabIndex = 116;
             this.loadingCircle4.Text = "loadingCircle4";
             // 
@@ -1111,12 +1098,11 @@ namespace HardwareInformation
             this.loadingCircle3.InnerCircleRadius = 8;
             this.loadingCircle3.Location = new System.Drawing.Point(194, 66);
             this.loadingCircle3.Name = "loadingCircle3";
-            this.loadingCircle3.NumberSpoke = 24;
+            this.loadingCircle3.NumberSpoke = 28;
             this.loadingCircle3.OuterCircleRadius = 9;
-            this.loadingCircle3.RotationSpeed = 20;
+            this.loadingCircle3.RotationSpeed = 1;
             this.loadingCircle3.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle3.SpokeThickness = 4;
-            this.loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle3.TabIndex = 115;
             this.loadingCircle3.Text = "loadingCircle3";
             // 
@@ -1127,12 +1113,11 @@ namespace HardwareInformation
             this.loadingCircle2.InnerCircleRadius = 8;
             this.loadingCircle2.Location = new System.Drawing.Point(194, 40);
             this.loadingCircle2.Name = "loadingCircle2";
-            this.loadingCircle2.NumberSpoke = 24;
+            this.loadingCircle2.NumberSpoke = 28;
             this.loadingCircle2.OuterCircleRadius = 9;
-            this.loadingCircle2.RotationSpeed = 20;
+            this.loadingCircle2.RotationSpeed = 1;
             this.loadingCircle2.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle2.SpokeThickness = 4;
-            this.loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle2.TabIndex = 114;
             this.loadingCircle2.Text = "loadingCircle2";
             // 
@@ -1143,12 +1128,11 @@ namespace HardwareInformation
             this.loadingCircle1.InnerCircleRadius = 8;
             this.loadingCircle1.Location = new System.Drawing.Point(194, 14);
             this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 24;
+            this.loadingCircle1.NumberSpoke = 28;
             this.loadingCircle1.OuterCircleRadius = 9;
-            this.loadingCircle1.RotationSpeed = 20;
+            this.loadingCircle1.RotationSpeed = 1;
             this.loadingCircle1.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle1.SpokeThickness = 4;
-            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle1.TabIndex = 113;
             this.loadingCircle1.Text = "loadingCircle1";
             // 
@@ -1620,55 +1604,98 @@ namespace HardwareInformation
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
             // 
-            // lblAgentName
+            // comboBoxBattery
             // 
-            this.lblAgentName.AutoSize = true;
-            this.lblAgentName.ForeColor = System.Drawing.Color.Silver;
-            this.lblAgentName.Location = new System.Drawing.Point(291, 35);
-            this.lblAgentName.Name = "lblAgentName";
-            this.lblAgentName.Size = new System.Drawing.Size(10, 13);
-            this.lblAgentName.TabIndex = 123;
-            this.lblAgentName.Text = "-";
+            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxBattery.TabIndex = 47;
             // 
-            // label53
+            // comboBoxStandard
             // 
-            this.label53.AutoSize = true;
-            this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label53.Location = new System.Drawing.Point(187, 35);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(104, 13);
-            this.label53.TabIndex = 122;
-            this.label53.Text = "Agente responsável:";
+            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.Enabled = false;
+            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxStandard.TabIndex = 46;
             // 
-            // lblPortServer
+            // comboBoxActiveDirectory
             // 
-            this.lblPortServer.AutoSize = true;
-            this.lblPortServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblPortServer.Location = new System.Drawing.Point(46, 35);
-            this.lblPortServer.Name = "lblPortServer";
-            this.lblPortServer.Size = new System.Drawing.Size(10, 13);
-            this.lblPortServer.TabIndex = 121;
-            this.lblPortServer.Text = "-";
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.Enabled = false;
+            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxActiveDirectory.TabIndex = 45;
             // 
-            // lblIPServer
+            // comboBoxTag
             // 
-            this.lblIPServer.AutoSize = true;
-            this.lblIPServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblIPServer.Location = new System.Drawing.Point(46, 16);
-            this.lblIPServer.Name = "lblIPServer";
-            this.lblIPServer.Size = new System.Drawing.Size(10, 13);
-            this.lblIPServer.TabIndex = 120;
-            this.lblIPServer.Text = "-";
+            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
+            this.comboBoxTag.Name = "comboBoxTag";
+            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxTag.TabIndex = 41;
             // 
-            // label49
+            // comboBoxInUse
             // 
-            this.label49.AutoSize = true;
-            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label49.Location = new System.Drawing.Point(7, 16);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(20, 13);
-            this.label49.TabIndex = 119;
-            this.label49.Text = "IP:";
+            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxInUse.TabIndex = 39;
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxType.TabIndex = 40;
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxBuilding.TabIndex = 38;
             // 
             // label48
             // 
@@ -2011,17 +2038,6 @@ namespace HardwareInformation
             this.dateTimePicker1.Size = new System.Drawing.Size(259, 20);
             this.dateTimePicker1.TabIndex = 42;
             // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.ForeColor = System.Drawing.Color.Silver;
-            this.label26.Location = new System.Drawing.Point(291, 16);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(10, 13);
-            this.label26.TabIndex = 72;
-            this.label26.Text = "-";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.loadingCircle21);
@@ -2048,12 +2064,11 @@ namespace HardwareInformation
             this.loadingCircle21.InnerCircleRadius = 8;
             this.loadingCircle21.Location = new System.Drawing.Point(89, 57);
             this.loadingCircle21.Name = "loadingCircle21";
-            this.loadingCircle21.NumberSpoke = 24;
+            this.loadingCircle21.NumberSpoke = 28;
             this.loadingCircle21.OuterCircleRadius = 9;
-            this.loadingCircle21.RotationSpeed = 20;
+            this.loadingCircle21.RotationSpeed = 1;
             this.loadingCircle21.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle21.SpokeThickness = 4;
-            this.loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle21.TabIndex = 133;
             this.loadingCircle21.Text = "loadingCircle21";
             // 
@@ -2064,12 +2079,11 @@ namespace HardwareInformation
             this.loadingCircle20.InnerCircleRadius = 8;
             this.loadingCircle20.Location = new System.Drawing.Point(89, 16);
             this.loadingCircle20.Name = "loadingCircle20";
-            this.loadingCircle20.NumberSpoke = 24;
+            this.loadingCircle20.NumberSpoke = 28;
             this.loadingCircle20.OuterCircleRadius = 9;
-            this.loadingCircle20.RotationSpeed = 20;
+            this.loadingCircle20.RotationSpeed = 1;
             this.loadingCircle20.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle20.SpokeThickness = 4;
-            this.loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle20.TabIndex = 132;
             this.loadingCircle20.Text = "loadingCircle20";
             // 
@@ -2173,6 +2187,67 @@ namespace HardwareInformation
             this.label17.Size = new System.Drawing.Size(44, 13);
             this.label17.TabIndex = 15;
             this.label17.Text = "Padrão:";
+            // 
+            // lblAgentName
+            // 
+            this.lblAgentName.AutoSize = true;
+            this.lblAgentName.ForeColor = System.Drawing.Color.Silver;
+            this.lblAgentName.Location = new System.Drawing.Point(291, 35);
+            this.lblAgentName.Name = "lblAgentName";
+            this.lblAgentName.Size = new System.Drawing.Size(10, 13);
+            this.lblAgentName.TabIndex = 123;
+            this.lblAgentName.Text = "-";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label53.Location = new System.Drawing.Point(187, 35);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(104, 13);
+            this.label53.TabIndex = 122;
+            this.label53.Text = "Agente responsável:";
+            // 
+            // lblPortServer
+            // 
+            this.lblPortServer.AutoSize = true;
+            this.lblPortServer.ForeColor = System.Drawing.Color.Silver;
+            this.lblPortServer.Location = new System.Drawing.Point(42, 35);
+            this.lblPortServer.Name = "lblPortServer";
+            this.lblPortServer.Size = new System.Drawing.Size(10, 13);
+            this.lblPortServer.TabIndex = 121;
+            this.lblPortServer.Text = "-";
+            // 
+            // lblIPServer
+            // 
+            this.lblIPServer.AutoSize = true;
+            this.lblIPServer.ForeColor = System.Drawing.Color.Silver;
+            this.lblIPServer.Location = new System.Drawing.Point(42, 16);
+            this.lblIPServer.Name = "lblIPServer";
+            this.lblIPServer.Size = new System.Drawing.Size(10, 13);
+            this.lblIPServer.TabIndex = 120;
+            this.lblIPServer.Text = "-";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label49.Location = new System.Drawing.Point(7, 16);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(20, 13);
+            this.label49.TabIndex = 119;
+            this.label49.Text = "IP:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.ForeColor = System.Drawing.Color.Silver;
+            this.label26.Location = new System.Drawing.Point(291, 16);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(10, 13);
+            this.label26.TabIndex = 72;
+            this.label26.Text = "-";
             // 
             // toolStripStatusLabel2
             // 
@@ -2314,12 +2389,11 @@ namespace HardwareInformation
             this.loadingCircle22.InnerCircleRadius = 8;
             this.loadingCircle22.Location = new System.Drawing.Point(576, 634);
             this.loadingCircle22.Name = "loadingCircle22";
-            this.loadingCircle22.NumberSpoke = 24;
+            this.loadingCircle22.NumberSpoke = 28;
             this.loadingCircle22.OuterCircleRadius = 9;
-            this.loadingCircle22.RotationSpeed = 20;
+            this.loadingCircle22.RotationSpeed = 1;
             this.loadingCircle22.Size = new System.Drawing.Size(178, 23);
             this.loadingCircle22.SpokeThickness = 4;
-            this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle22.TabIndex = 134;
             this.loadingCircle22.Text = "loadingCircle22";
             // 
@@ -2331,111 +2405,18 @@ namespace HardwareInformation
             this.loadingCircle23.InnerCircleRadius = 8;
             this.loadingCircle23.Location = new System.Drawing.Point(761, 634);
             this.loadingCircle23.Name = "loadingCircle23";
-            this.loadingCircle23.NumberSpoke = 24;
+            this.loadingCircle23.NumberSpoke = 28;
             this.loadingCircle23.OuterCircleRadius = 9;
-            this.loadingCircle23.RotationSpeed = 20;
+            this.loadingCircle23.RotationSpeed = 1;
             this.loadingCircle23.Size = new System.Drawing.Size(263, 54);
             this.loadingCircle23.SpokeThickness = 4;
-            this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.IE7;
             this.loadingCircle23.TabIndex = 134;
             this.loadingCircle23.Text = "loadingCircle23";
             this.loadingCircle23.Visible = false;
             // 
-            // comboBoxBattery
-            // 
-            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxBattery.TabIndex = 47;
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.Enabled = false;
-            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxStandard.TabIndex = 46;
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.Enabled = false;
-            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxActiveDirectory.TabIndex = 45;
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
-            this.comboBoxTag.Name = "comboBoxTag";
-            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxTag.TabIndex = 41;
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxInUse.TabIndex = 39;
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxType.TabIndex = 40;
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxBuilding.TabIndex = 38;
-            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.loadingCircle24);
             this.groupBox5.Controls.Add(this.label49);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.label22);
@@ -2451,6 +2432,21 @@ namespace HardwareInformation
             this.groupBox5.TabIndex = 132;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Servidor SCPD";
+            // 
+            // loadingCircle24
+            // 
+            this.loadingCircle24.Active = false;
+            this.loadingCircle24.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle24.InnerCircleRadius = 8;
+            this.loadingCircle24.Location = new System.Drawing.Point(285, 9);
+            this.loadingCircle24.Name = "loadingCircle24";
+            this.loadingCircle24.NumberSpoke = 28;
+            this.loadingCircle24.OuterCircleRadius = 9;
+            this.loadingCircle24.RotationSpeed = 1;
+            this.loadingCircle24.Size = new System.Drawing.Size(37, 25);
+            this.loadingCircle24.SpokeThickness = 4;
+            this.loadingCircle24.TabIndex = 134;
+            this.loadingCircle24.Text = "loadingCircle24";
             // 
             // MainForm
             // 
@@ -3243,6 +3239,157 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
+            //Init loading circles parameters
+            loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+
+            loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+            loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
+
+            loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+            loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
+
+            loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+
+            loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle2.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle3.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle4.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle5.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle6.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle7.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle8.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle9.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle10.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle11.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle12.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle13.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle14.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle15.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle16.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle17.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle18.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle19.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle20.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle21.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle22.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle23.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle24.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+
+            loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle2.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle3.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle4.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle5.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle6.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle7.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle8.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle9.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle10.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle11.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle12.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle13.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle14.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle15.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle16.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle17.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle18.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle19.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle20.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle21.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle22.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle23.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircle24.Color = StringsAndConstants.rotatingCircleColor;
+
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 19;
             progressBar1.Value = 0;
@@ -3443,6 +3590,7 @@ namespace HardwareInformation
             lblVT.Text = StringsAndConstants.DASH;
             lblTPM.Text = StringsAndConstants.DASH;
             collectButton.Text = StringsAndConstants.DASH;
+            label26.Text = StringsAndConstants.DASH;
 
             loadingCircle1.Visible = true;
             loadingCircle2.Visible = true;
@@ -3492,18 +3640,22 @@ namespace HardwareInformation
 
             if (!offlineMode)
             {
+                loadingCircle24.Visible = true;
+                loadingCircle24.Active = true;
                 servidor_web = ip;
                 porta = port;
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
                 serverOnline = await BIOSFileReader.checkHostMT(servidor_web, porta);
                 if (serverOnline && porta != "")
                 {
+                    loadingCircle24.Visible = false;
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
                     label26.Text = StringsAndConstants.ONLINE;
                     label26.ForeColor = StringsAndConstants.ONLINE_ALERT;
                 }
                 else
                 {
+                    loadingCircle24.Visible = false;
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
                     label26.Text = StringsAndConstants.OFFLINE;
                     label26.ForeColor = StringsAndConstants.OFFLINE_ALERT;
@@ -3511,6 +3663,8 @@ namespace HardwareInformation
             }
             else
             {
+                loadingCircle24.Visible = false;
+                loadingCircle24.Active = false;
                 lblIPServer.Text = lblPortServer.Text = lblAgentName.Text = label26.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
                 lblIPServer.ForeColor = lblPortServer.ForeColor = lblAgentName.ForeColor = label26.ForeColor = StringsAndConstants.OFFLINE_ALERT;
             }
@@ -3671,7 +3825,7 @@ namespace HardwareInformation
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
-        private async void printHardwareData()
+        private async Task printHardwareData()
         {
             loadingCircle1.Visible = false;
             loadingCircle2.Visible = false;
@@ -3694,7 +3848,6 @@ namespace HardwareInformation
             loadingCircle19.Visible = false;
             loadingCircle20.Visible = false;
             loadingCircle21.Visible = false;
-            loadingCircle22.Visible = false;
 
             loadingCircle1.Active = false;
             loadingCircle2.Active = false;
@@ -3717,8 +3870,7 @@ namespace HardwareInformation
             loadingCircle19.Active = false;
             loadingCircle20.Active = false;
             loadingCircle21.Active = false;
-            loadingCircle22.Active = false;
-
+            
             pass = true;
             lblBM.Text = BM;
             lblModel.Text = Model;
@@ -3907,16 +4059,19 @@ namespace HardwareInformation
         }
 
         //Runs when the collection ends, ending the thread
-        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private async void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            Task p = printHardwareData();
+            await p;
+            
             if (!offlineMode)
             {
                 accessSystemButton.Enabled = true;
                 registerButton.Enabled = true;
             }
+            loadingCircle22.Visible = false;
             collectButton.Enabled = true;
             collectButton.Text = StringsAndConstants.FETCH_AGAIN;
-            printHardwareData();
         }
 
         //Attributes the data collected previously to the variables which will inside the URL for registration

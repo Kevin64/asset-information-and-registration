@@ -24,16 +24,16 @@ namespace HardwareInformation
             this.textBoxDescription.Text = AssemblyDescription;
             this.textBoxDescription.LinkClicked += textBoxDescription_LinkClicked;
 
-            if (StringsAndConstants.themeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
                     darkTheme();
                 else
                     lightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[1]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
                 lightTheme();
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.themeGUI[2]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
                 darkTheme();
         }
 
