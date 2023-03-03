@@ -108,6 +108,9 @@
     <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.2.9.1\lib\net461\CommandLine.dll</HintPath>
     </Reference>
+    <Reference Include="DarkNet, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DarkNet.2.1.1\lib\net452\DarkNet.dll</HintPath>
+    </Reference>
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
@@ -290,7 +293,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\definitions.ini" "$(TargetDir)" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ../$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\misc\definitions.ini" &amp; xcopy /E /Y "$(TargetDir)\..\misc\Resources\*.*" "$(TargetDir)\Resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

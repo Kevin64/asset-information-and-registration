@@ -6,6 +6,8 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using ConstantsDLL;
+using Dark.Net;
+using HardwareInfoDLL;
 using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
@@ -19,7 +21,7 @@ namespace HardwareInformation
         private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
         private TaskbarManager tbProgLogin;
-        private MainForm form;
+        private MainForm mForm;
         private List<string[]> definitionList;
         private List<string> orgList;
         private string[] str = { };
@@ -39,14 +41,30 @@ namespace HardwareInformation
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
+                {
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     darkTheme();
+                }
                 else
+                {
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     lightTheme();
+                }
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            {
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 lightTheme();
-            else if(definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            }
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            {
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 darkTheme();
+            }
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
 
@@ -169,13 +187,79 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values
         private void Form2_Load(object sender, EventArgs e)
         {
-            //Init loading circles parameters
-            loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            // Define loading circle parameters
+            #region
+
+            switch (MiscMethods.GetWindowsScaling())
+            {
+                case 100:
+                    //Init loading circles parameters for 100% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    break;
+                case 125:
+                    //Init loading circles parameters for 125% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    break;
+                case 150:
+                    //Init loading circles parameters for 150% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    break;
+                case 175:
+                    //Init loading circles parameters for 175% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    break;
+                case 200:
+                    //Init loading circles parameters for 200% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    break;
+                case 225:
+                    //Init loading circles parameters for 225% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    break;
+                case 250:
+                    //Init loading circles parameters for 250% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    break;
+                case 300:
+                    //Init loading circles parameters for 300% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    break;
+                case 350:
+                    //Init loading circles parameters for 350% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    break;
+            }
+
             loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
+            #endregion
 
             FormClosing += Form2_FormClosing;
             tbProgLogin = TaskbarManager.Instance;
@@ -201,14 +285,16 @@ namespace HardwareInformation
             if (checkBoxOfflineMode.Checked)
             {
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                form = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList, orgList);
+                mForm = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList, orgList);
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                 this.Hide();
                 textBoxUser.Text = null;
                 textBoxPassword.Text = null;
                 textBoxUser.Select();
-                form.ShowDialog();
-                form.Close();
-                form.Dispose();
+                mForm.ShowDialog();
+                mForm.Close();
+                mForm.Dispose();
                 this.Show();
             }
             else
@@ -238,14 +324,16 @@ namespace HardwareInformation
                     else
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MainForm form = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList, orgList);
+                        MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList, orgList);
+                        if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                            DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                         this.Hide();
                         textBoxUser.Text = null;
                         textBoxPassword.Text = null;
                         textBoxUser.Select();
-                        form.ShowDialog();
-                        form.Close();
-                        form.Dispose();
+                        mForm.ShowDialog();
+                        mForm.Close();
+                        mForm.Dispose();
                         this.Show();
                     }
                 }

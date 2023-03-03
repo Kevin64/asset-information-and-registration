@@ -17,6 +17,7 @@ using System.Globalization;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using System.Reflection;
 using System.Drawing;
+using Dark.Net;
 
 namespace HardwareInformation
 {
@@ -48,18 +49,30 @@ namespace HardwareInformation
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
+                {
+                    if(HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     darkTheme();
+                }
                 else
+                {
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     lightTheme();
+                }
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 comboBoxTheme.Enabled = false;
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 lightTheme();
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 comboBoxTheme.Enabled = false;
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 darkTheme();
             }
 
@@ -855,14 +868,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle19.Active = false;
             this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle19.InnerCircleRadius = 8;
+            this.loadingCircle19.InnerCircleRadius = 5;
             this.loadingCircle19.Location = new System.Drawing.Point(194, 482);
             this.loadingCircle19.Name = "loadingCircle19";
-            this.loadingCircle19.NumberSpoke = 28;
-            this.loadingCircle19.OuterCircleRadius = 9;
+            this.loadingCircle19.NumberSpoke = 12;
+            this.loadingCircle19.OuterCircleRadius = 11;
             this.loadingCircle19.RotationSpeed = 1;
             this.loadingCircle19.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle19.SpokeThickness = 4;
+            this.loadingCircle19.SpokeThickness = 2;
+            this.loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle19.TabIndex = 131;
             this.loadingCircle19.Text = "loadingCircle19";
             // 
@@ -870,14 +884,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle18.Active = false;
             this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle18.InnerCircleRadius = 8;
+            this.loadingCircle18.InnerCircleRadius = 5;
             this.loadingCircle18.Location = new System.Drawing.Point(194, 456);
             this.loadingCircle18.Name = "loadingCircle18";
-            this.loadingCircle18.NumberSpoke = 28;
-            this.loadingCircle18.OuterCircleRadius = 9;
+            this.loadingCircle18.NumberSpoke = 12;
+            this.loadingCircle18.OuterCircleRadius = 11;
             this.loadingCircle18.RotationSpeed = 1;
             this.loadingCircle18.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle18.SpokeThickness = 4;
+            this.loadingCircle18.SpokeThickness = 2;
+            this.loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle18.TabIndex = 130;
             this.loadingCircle18.Text = "loadingCircle18";
             // 
@@ -885,14 +900,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle17.Active = false;
             this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle17.InnerCircleRadius = 8;
+            this.loadingCircle17.InnerCircleRadius = 5;
             this.loadingCircle17.Location = new System.Drawing.Point(194, 430);
             this.loadingCircle17.Name = "loadingCircle17";
-            this.loadingCircle17.NumberSpoke = 28;
-            this.loadingCircle17.OuterCircleRadius = 9;
+            this.loadingCircle17.NumberSpoke = 12;
+            this.loadingCircle17.OuterCircleRadius = 11;
             this.loadingCircle17.RotationSpeed = 1;
             this.loadingCircle17.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle17.SpokeThickness = 4;
+            this.loadingCircle17.SpokeThickness = 2;
+            this.loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle17.TabIndex = 129;
             this.loadingCircle17.Text = "loadingCircle17";
             // 
@@ -900,14 +916,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle16.Active = false;
             this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle16.InnerCircleRadius = 8;
+            this.loadingCircle16.InnerCircleRadius = 5;
             this.loadingCircle16.Location = new System.Drawing.Point(194, 404);
             this.loadingCircle16.Name = "loadingCircle16";
-            this.loadingCircle16.NumberSpoke = 28;
-            this.loadingCircle16.OuterCircleRadius = 9;
+            this.loadingCircle16.NumberSpoke = 12;
+            this.loadingCircle16.OuterCircleRadius = 11;
             this.loadingCircle16.RotationSpeed = 1;
             this.loadingCircle16.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle16.SpokeThickness = 4;
+            this.loadingCircle16.SpokeThickness = 2;
+            this.loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle16.TabIndex = 128;
             this.loadingCircle16.Text = "loadingCircle16";
             // 
@@ -915,14 +932,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle15.Active = false;
             this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle15.InnerCircleRadius = 8;
+            this.loadingCircle15.InnerCircleRadius = 5;
             this.loadingCircle15.Location = new System.Drawing.Point(194, 378);
             this.loadingCircle15.Name = "loadingCircle15";
-            this.loadingCircle15.NumberSpoke = 28;
-            this.loadingCircle15.OuterCircleRadius = 9;
+            this.loadingCircle15.NumberSpoke = 12;
+            this.loadingCircle15.OuterCircleRadius = 11;
             this.loadingCircle15.RotationSpeed = 1;
             this.loadingCircle15.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle15.SpokeThickness = 4;
+            this.loadingCircle15.SpokeThickness = 2;
+            this.loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle15.TabIndex = 127;
             this.loadingCircle15.Text = "loadingCircle15";
             // 
@@ -930,14 +948,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle14.Active = false;
             this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle14.InnerCircleRadius = 8;
+            this.loadingCircle14.InnerCircleRadius = 5;
             this.loadingCircle14.Location = new System.Drawing.Point(194, 352);
             this.loadingCircle14.Name = "loadingCircle14";
-            this.loadingCircle14.NumberSpoke = 28;
-            this.loadingCircle14.OuterCircleRadius = 9;
+            this.loadingCircle14.NumberSpoke = 12;
+            this.loadingCircle14.OuterCircleRadius = 11;
             this.loadingCircle14.RotationSpeed = 1;
             this.loadingCircle14.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle14.SpokeThickness = 4;
+            this.loadingCircle14.SpokeThickness = 2;
+            this.loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle14.TabIndex = 126;
             this.loadingCircle14.Text = "loadingCircle14";
             // 
@@ -945,14 +964,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle13.Active = false;
             this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle13.InnerCircleRadius = 8;
+            this.loadingCircle13.InnerCircleRadius = 5;
             this.loadingCircle13.Location = new System.Drawing.Point(194, 326);
             this.loadingCircle13.Name = "loadingCircle13";
-            this.loadingCircle13.NumberSpoke = 28;
-            this.loadingCircle13.OuterCircleRadius = 9;
+            this.loadingCircle13.NumberSpoke = 12;
+            this.loadingCircle13.OuterCircleRadius = 11;
             this.loadingCircle13.RotationSpeed = 1;
             this.loadingCircle13.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle13.SpokeThickness = 4;
+            this.loadingCircle13.SpokeThickness = 2;
+            this.loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle13.TabIndex = 125;
             this.loadingCircle13.Text = "loadingCircle13";
             // 
@@ -960,14 +980,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle12.Active = false;
             this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle12.InnerCircleRadius = 8;
+            this.loadingCircle12.InnerCircleRadius = 5;
             this.loadingCircle12.Location = new System.Drawing.Point(194, 300);
             this.loadingCircle12.Name = "loadingCircle12";
-            this.loadingCircle12.NumberSpoke = 28;
-            this.loadingCircle12.OuterCircleRadius = 9;
+            this.loadingCircle12.NumberSpoke = 12;
+            this.loadingCircle12.OuterCircleRadius = 11;
             this.loadingCircle12.RotationSpeed = 1;
             this.loadingCircle12.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle12.SpokeThickness = 4;
+            this.loadingCircle12.SpokeThickness = 2;
+            this.loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle12.TabIndex = 124;
             this.loadingCircle12.Text = "loadingCircle12";
             // 
@@ -975,14 +996,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle11.Active = false;
             this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle11.InnerCircleRadius = 8;
+            this.loadingCircle11.InnerCircleRadius = 5;
             this.loadingCircle11.Location = new System.Drawing.Point(194, 274);
             this.loadingCircle11.Name = "loadingCircle11";
-            this.loadingCircle11.NumberSpoke = 28;
-            this.loadingCircle11.OuterCircleRadius = 9;
+            this.loadingCircle11.NumberSpoke = 12;
+            this.loadingCircle11.OuterCircleRadius = 11;
             this.loadingCircle11.RotationSpeed = 1;
             this.loadingCircle11.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle11.SpokeThickness = 4;
+            this.loadingCircle11.SpokeThickness = 2;
+            this.loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle11.TabIndex = 123;
             this.loadingCircle11.Text = "loadingCircle11";
             // 
@@ -990,14 +1012,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle10.Active = false;
             this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle10.InnerCircleRadius = 8;
+            this.loadingCircle10.InnerCircleRadius = 5;
             this.loadingCircle10.Location = new System.Drawing.Point(194, 248);
             this.loadingCircle10.Name = "loadingCircle10";
-            this.loadingCircle10.NumberSpoke = 28;
-            this.loadingCircle10.OuterCircleRadius = 9;
+            this.loadingCircle10.NumberSpoke = 12;
+            this.loadingCircle10.OuterCircleRadius = 11;
             this.loadingCircle10.RotationSpeed = 1;
             this.loadingCircle10.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle10.SpokeThickness = 4;
+            this.loadingCircle10.SpokeThickness = 2;
+            this.loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle10.TabIndex = 122;
             this.loadingCircle10.Text = "loadingCircle10";
             // 
@@ -1005,14 +1028,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle9.Active = false;
             this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle9.InnerCircleRadius = 8;
+            this.loadingCircle9.InnerCircleRadius = 5;
             this.loadingCircle9.Location = new System.Drawing.Point(194, 222);
             this.loadingCircle9.Name = "loadingCircle9";
-            this.loadingCircle9.NumberSpoke = 28;
-            this.loadingCircle9.OuterCircleRadius = 9;
+            this.loadingCircle9.NumberSpoke = 12;
+            this.loadingCircle9.OuterCircleRadius = 11;
             this.loadingCircle9.RotationSpeed = 1;
             this.loadingCircle9.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle9.SpokeThickness = 4;
+            this.loadingCircle9.SpokeThickness = 2;
+            this.loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle9.TabIndex = 121;
             this.loadingCircle9.Text = "loadingCircle9";
             // 
@@ -1020,14 +1044,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle8.Active = false;
             this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle8.InnerCircleRadius = 8;
+            this.loadingCircle8.InnerCircleRadius = 5;
             this.loadingCircle8.Location = new System.Drawing.Point(194, 196);
             this.loadingCircle8.Name = "loadingCircle8";
-            this.loadingCircle8.NumberSpoke = 28;
-            this.loadingCircle8.OuterCircleRadius = 9;
+            this.loadingCircle8.NumberSpoke = 12;
+            this.loadingCircle8.OuterCircleRadius = 11;
             this.loadingCircle8.RotationSpeed = 1;
             this.loadingCircle8.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle8.SpokeThickness = 4;
+            this.loadingCircle8.SpokeThickness = 2;
+            this.loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle8.TabIndex = 120;
             this.loadingCircle8.Text = "loadingCircle8";
             // 
@@ -1035,14 +1060,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle7.Active = false;
             this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle7.InnerCircleRadius = 8;
+            this.loadingCircle7.InnerCircleRadius = 5;
             this.loadingCircle7.Location = new System.Drawing.Point(194, 170);
             this.loadingCircle7.Name = "loadingCircle7";
-            this.loadingCircle7.NumberSpoke = 28;
-            this.loadingCircle7.OuterCircleRadius = 9;
+            this.loadingCircle7.NumberSpoke = 12;
+            this.loadingCircle7.OuterCircleRadius = 11;
             this.loadingCircle7.RotationSpeed = 1;
             this.loadingCircle7.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle7.SpokeThickness = 4;
+            this.loadingCircle7.SpokeThickness = 2;
+            this.loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle7.TabIndex = 119;
             this.loadingCircle7.Text = "loadingCircle7";
             // 
@@ -1050,14 +1076,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle6.Active = false;
             this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle6.InnerCircleRadius = 8;
+            this.loadingCircle6.InnerCircleRadius = 5;
             this.loadingCircle6.Location = new System.Drawing.Point(194, 144);
             this.loadingCircle6.Name = "loadingCircle6";
-            this.loadingCircle6.NumberSpoke = 28;
-            this.loadingCircle6.OuterCircleRadius = 9;
+            this.loadingCircle6.NumberSpoke = 12;
+            this.loadingCircle6.OuterCircleRadius = 11;
             this.loadingCircle6.RotationSpeed = 1;
             this.loadingCircle6.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle6.SpokeThickness = 4;
+            this.loadingCircle6.SpokeThickness = 2;
+            this.loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle6.TabIndex = 118;
             this.loadingCircle6.Text = "loadingCircle6";
             // 
@@ -1065,14 +1092,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle5.Active = false;
             this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle5.InnerCircleRadius = 8;
+            this.loadingCircle5.InnerCircleRadius = 5;
             this.loadingCircle5.Location = new System.Drawing.Point(194, 118);
             this.loadingCircle5.Name = "loadingCircle5";
-            this.loadingCircle5.NumberSpoke = 28;
-            this.loadingCircle5.OuterCircleRadius = 9;
+            this.loadingCircle5.NumberSpoke = 12;
+            this.loadingCircle5.OuterCircleRadius = 11;
             this.loadingCircle5.RotationSpeed = 1;
             this.loadingCircle5.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle5.SpokeThickness = 4;
+            this.loadingCircle5.SpokeThickness = 2;
+            this.loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle5.TabIndex = 117;
             this.loadingCircle5.Text = "loadingCircle5";
             // 
@@ -1080,14 +1108,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle4.Active = false;
             this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle4.InnerCircleRadius = 8;
+            this.loadingCircle4.InnerCircleRadius = 5;
             this.loadingCircle4.Location = new System.Drawing.Point(194, 92);
             this.loadingCircle4.Name = "loadingCircle4";
-            this.loadingCircle4.NumberSpoke = 28;
-            this.loadingCircle4.OuterCircleRadius = 9;
+            this.loadingCircle4.NumberSpoke = 12;
+            this.loadingCircle4.OuterCircleRadius = 11;
             this.loadingCircle4.RotationSpeed = 1;
             this.loadingCircle4.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle4.SpokeThickness = 4;
+            this.loadingCircle4.SpokeThickness = 2;
+            this.loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle4.TabIndex = 116;
             this.loadingCircle4.Text = "loadingCircle4";
             // 
@@ -1095,14 +1124,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle3.Active = false;
             this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle3.InnerCircleRadius = 8;
+            this.loadingCircle3.InnerCircleRadius = 5;
             this.loadingCircle3.Location = new System.Drawing.Point(194, 66);
             this.loadingCircle3.Name = "loadingCircle3";
-            this.loadingCircle3.NumberSpoke = 28;
-            this.loadingCircle3.OuterCircleRadius = 9;
+            this.loadingCircle3.NumberSpoke = 12;
+            this.loadingCircle3.OuterCircleRadius = 11;
             this.loadingCircle3.RotationSpeed = 1;
             this.loadingCircle3.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle3.SpokeThickness = 4;
+            this.loadingCircle3.SpokeThickness = 2;
+            this.loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle3.TabIndex = 115;
             this.loadingCircle3.Text = "loadingCircle3";
             // 
@@ -1110,14 +1140,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle2.Active = false;
             this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle2.InnerCircleRadius = 8;
+            this.loadingCircle2.InnerCircleRadius = 5;
             this.loadingCircle2.Location = new System.Drawing.Point(194, 40);
             this.loadingCircle2.Name = "loadingCircle2";
-            this.loadingCircle2.NumberSpoke = 28;
-            this.loadingCircle2.OuterCircleRadius = 9;
+            this.loadingCircle2.NumberSpoke = 12;
+            this.loadingCircle2.OuterCircleRadius = 11;
             this.loadingCircle2.RotationSpeed = 1;
             this.loadingCircle2.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle2.SpokeThickness = 4;
+            this.loadingCircle2.SpokeThickness = 2;
+            this.loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle2.TabIndex = 114;
             this.loadingCircle2.Text = "loadingCircle2";
             // 
@@ -1125,14 +1156,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle1.Active = false;
             this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.InnerCircleRadius = 5;
             this.loadingCircle1.Location = new System.Drawing.Point(194, 14);
             this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 28;
-            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.NumberSpoke = 12;
+            this.loadingCircle1.OuterCircleRadius = 11;
             this.loadingCircle1.RotationSpeed = 1;
             this.loadingCircle1.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.SpokeThickness = 2;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle1.TabIndex = 113;
             this.loadingCircle1.Text = "loadingCircle1";
             // 
@@ -2061,14 +2093,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle21.Active = false;
             this.loadingCircle21.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle21.InnerCircleRadius = 8;
+            this.loadingCircle21.InnerCircleRadius = 5;
             this.loadingCircle21.Location = new System.Drawing.Point(89, 57);
             this.loadingCircle21.Name = "loadingCircle21";
-            this.loadingCircle21.NumberSpoke = 28;
-            this.loadingCircle21.OuterCircleRadius = 9;
+            this.loadingCircle21.NumberSpoke = 12;
+            this.loadingCircle21.OuterCircleRadius = 11;
             this.loadingCircle21.RotationSpeed = 1;
             this.loadingCircle21.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle21.SpokeThickness = 4;
+            this.loadingCircle21.SpokeThickness = 2;
+            this.loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle21.TabIndex = 133;
             this.loadingCircle21.Text = "loadingCircle21";
             // 
@@ -2076,14 +2109,15 @@ namespace HardwareInformation
             // 
             this.loadingCircle20.Active = false;
             this.loadingCircle20.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle20.InnerCircleRadius = 8;
+            this.loadingCircle20.InnerCircleRadius = 5;
             this.loadingCircle20.Location = new System.Drawing.Point(89, 16);
             this.loadingCircle20.Name = "loadingCircle20";
-            this.loadingCircle20.NumberSpoke = 28;
-            this.loadingCircle20.OuterCircleRadius = 9;
+            this.loadingCircle20.NumberSpoke = 12;
+            this.loadingCircle20.OuterCircleRadius = 11;
             this.loadingCircle20.RotationSpeed = 1;
             this.loadingCircle20.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle20.SpokeThickness = 4;
+            this.loadingCircle20.SpokeThickness = 2;
+            this.loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle20.TabIndex = 132;
             this.loadingCircle20.Text = "loadingCircle20";
             // 
@@ -2192,7 +2226,7 @@ namespace HardwareInformation
             // 
             this.lblAgentName.AutoSize = true;
             this.lblAgentName.ForeColor = System.Drawing.Color.Silver;
-            this.lblAgentName.Location = new System.Drawing.Point(291, 35);
+            this.lblAgentName.Location = new System.Drawing.Point(299, 35);
             this.lblAgentName.Name = "lblAgentName";
             this.lblAgentName.Size = new System.Drawing.Size(10, 13);
             this.lblAgentName.TabIndex = 123;
@@ -2212,7 +2246,7 @@ namespace HardwareInformation
             // 
             this.lblPortServer.AutoSize = true;
             this.lblPortServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblPortServer.Location = new System.Drawing.Point(42, 35);
+            this.lblPortServer.Location = new System.Drawing.Point(50, 35);
             this.lblPortServer.Name = "lblPortServer";
             this.lblPortServer.Size = new System.Drawing.Size(10, 13);
             this.lblPortServer.TabIndex = 121;
@@ -2222,7 +2256,7 @@ namespace HardwareInformation
             // 
             this.lblIPServer.AutoSize = true;
             this.lblIPServer.ForeColor = System.Drawing.Color.Silver;
-            this.lblIPServer.Location = new System.Drawing.Point(42, 16);
+            this.lblIPServer.Location = new System.Drawing.Point(50, 16);
             this.lblIPServer.Name = "lblIPServer";
             this.lblIPServer.Size = new System.Drawing.Size(10, 13);
             this.lblIPServer.TabIndex = 120;
@@ -2243,7 +2277,7 @@ namespace HardwareInformation
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.ForeColor = System.Drawing.Color.Silver;
-            this.label26.Location = new System.Drawing.Point(291, 16);
+            this.label26.Location = new System.Drawing.Point(299, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(10, 13);
             this.label26.TabIndex = 72;
@@ -2386,30 +2420,34 @@ namespace HardwareInformation
             this.loadingCircle22.Active = false;
             this.loadingCircle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle22.InnerCircleRadius = 8;
+            this.loadingCircle22.InnerCircleRadius = 5;
             this.loadingCircle22.Location = new System.Drawing.Point(576, 634);
             this.loadingCircle22.Name = "loadingCircle22";
-            this.loadingCircle22.NumberSpoke = 28;
-            this.loadingCircle22.OuterCircleRadius = 9;
+            this.loadingCircle22.NumberSpoke = 12;
+            this.loadingCircle22.OuterCircleRadius = 11;
+            this.loadingCircle22.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.loadingCircle22.RotationSpeed = 1;
             this.loadingCircle22.Size = new System.Drawing.Size(178, 23);
-            this.loadingCircle22.SpokeThickness = 4;
+            this.loadingCircle22.SpokeThickness = 2;
+            this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle22.TabIndex = 134;
             this.loadingCircle22.Text = "loadingCircle22";
+            this.loadingCircle22.UseWaitCursor = true;
             // 
             // loadingCircle23
             // 
             this.loadingCircle23.Active = false;
             this.loadingCircle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle23.InnerCircleRadius = 8;
+            this.loadingCircle23.InnerCircleRadius = 5;
             this.loadingCircle23.Location = new System.Drawing.Point(761, 634);
             this.loadingCircle23.Name = "loadingCircle23";
-            this.loadingCircle23.NumberSpoke = 28;
-            this.loadingCircle23.OuterCircleRadius = 9;
+            this.loadingCircle23.NumberSpoke = 12;
+            this.loadingCircle23.OuterCircleRadius = 11;
             this.loadingCircle23.RotationSpeed = 1;
             this.loadingCircle23.Size = new System.Drawing.Size(263, 54);
-            this.loadingCircle23.SpokeThickness = 4;
+            this.loadingCircle23.SpokeThickness = 2;
+            this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle23.TabIndex = 134;
             this.loadingCircle23.Text = "loadingCircle23";
             this.loadingCircle23.Visible = false;
@@ -2437,21 +2475,22 @@ namespace HardwareInformation
             // 
             this.loadingCircle24.Active = false;
             this.loadingCircle24.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle24.InnerCircleRadius = 8;
-            this.loadingCircle24.Location = new System.Drawing.Point(285, 9);
+            this.loadingCircle24.InnerCircleRadius = 5;
+            this.loadingCircle24.Location = new System.Drawing.Point(293, 9);
             this.loadingCircle24.Name = "loadingCircle24";
-            this.loadingCircle24.NumberSpoke = 28;
-            this.loadingCircle24.OuterCircleRadius = 9;
+            this.loadingCircle24.NumberSpoke = 12;
+            this.loadingCircle24.OuterCircleRadius = 11;
             this.loadingCircle24.RotationSpeed = 1;
             this.loadingCircle24.Size = new System.Drawing.Size(37, 25);
-            this.loadingCircle24.SpokeThickness = 4;
+            this.loadingCircle24.SpokeThickness = 2;
+            this.loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle24.TabIndex = 134;
             this.loadingCircle24.Text = "loadingCircle24";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
@@ -2525,6 +2564,7 @@ namespace HardwareInformation
         }
 
         //Variables being declared
+        #region
         private Label lblBM;
         private Label lblModel;
         private Label lblSerialNo;
@@ -2709,6 +2749,7 @@ namespace HardwareInformation
         private LoadingCircle loadingCircle22;
         private LoadingCircle loadingCircle23;
         private int i = 0;
+        #endregion
 
         //Sets service mode to format
         private void formatButton1_CheckedChanged(object sender, EventArgs e)
@@ -2741,9 +2782,17 @@ namespace HardwareInformation
         {
             themeBool = MiscMethods.ThemeInit();
             if (themeBool)
+            {
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 darkTheme();
+            }
             else
+            {
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 lightTheme();
+            }
         }
 
         //Method for logging out
@@ -2764,6 +2813,8 @@ namespace HardwareInformation
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LIGHTMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
             lightTheme();
             themeBool = false;
         }
@@ -2772,6 +2823,8 @@ namespace HardwareInformation
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DARKMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
             darkTheme();
             themeBool = true;
         }
@@ -3000,8 +3053,10 @@ namespace HardwareInformation
 
         private void about_Click(object sender, EventArgs e)
         {
-            AboutBox about = new AboutBox(defList, themeBool);
-            about.ShowDialog();
+            AboutBox aboutForm = new AboutBox(defList, themeBool);
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
+            aboutForm.ShowDialog();
         }
 
         //Sets a dark theme for the UI
@@ -3239,106 +3294,903 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
-            //Init loading circles parameters
-            loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
-            loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke;
+            // Define loading circle parameters
+            #region
 
-            loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-            loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness;
-
-            loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-            loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius;
-
-            loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
-            loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius;
+            switch(MiscMethods.GetWindowsScaling())
+            {
+                case 100:
+                    //Init loading circles parameters for 100% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    break;
+                case 125:
+                    //Init loading circles parameters for 125% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    break;
+                case 150:
+                    //Init loading circles parameters for 150% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    break;
+                case 175:
+                    //Init loading circles parameters for 175% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    break;
+                case 200:
+                    //Init loading circles parameters for 200% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    break;
+                case 225:
+                    //Init loading circles parameters for 225% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    break;
+                case 250:
+                    //Init loading circles parameters for 250% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    break;
+                case 300:
+                    //Init loading circles parameters for 300% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    break;
+                case 350:
+                    //Init loading circles parameters for 350% scaling
+                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
+                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
+                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
+                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    break;
+            }
 
             loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle2.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
@@ -3364,7 +4216,6 @@ namespace HardwareInformation
             loadingCircle22.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle23.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle24.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-
             loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle2.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle3.Color = StringsAndConstants.rotatingCircleColor;
@@ -3389,6 +4240,8 @@ namespace HardwareInformation
             loadingCircle22.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle23.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle24.Color = StringsAndConstants.rotatingCircleColor;
+
+            #endregion
 
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 19;

@@ -39,16 +39,16 @@
             this.label1.Name = "label1";
             this.label1.UseWaitCursor = true;
             // 
-            // BusyWindow
+            // BusyForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BusyWindow";
+            this.Name = "BusyForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.TopMost = true;

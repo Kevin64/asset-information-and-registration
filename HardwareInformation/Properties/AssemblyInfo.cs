@@ -61,7 +61,11 @@ using System.Runtime.InteropServices;
     "    • Copyright (c) 2013 Ryan D. Emerle (.Net port)\r\n" +
     "    • Copyright (c) 2016/2021 Chris McKee (.Net-core port / patches)\r\n" +
     "    • URL do projeto: https://github.com/BcryptNet/bcrypt.net\r\n" +
-    "    • Licença: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt\r\n")]
+    "    • Licença: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt\r\n" +
+    "\r\n" +
+    "► DarkNet (créditos a Ben Hutchison)\r\n" +
+    "    • URL do projeto: https://github.com/Aldaviva/DarkNet\r\n" +
+    "    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt\r\n")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Coleta de Hardware e Cadastro de Patrimônio")]
 [assembly: AssemblyCopyright("")]

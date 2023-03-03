@@ -5,6 +5,7 @@ using ConstantsDLL;
 using System.IO;
 using HardwareInformation.Properties;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace HardwareInformation
 {
@@ -158,6 +159,12 @@ namespace HardwareInformation
                 else
                     return StringsAndConstants.SINCE_UNKNOWN;
             }
+        }
+
+        //Fetches the screen scale
+        public static int GetWindowsScaling()
+        {
+            return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
         //Fetches the program's binary version

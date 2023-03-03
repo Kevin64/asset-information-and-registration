@@ -1,4 +1,6 @@
 ﻿using ConstantsDLL;
+using Dark.Net;
+using HardwareInfoDLL;
 using HardwareInformation.Properties;
 using System;
 using System.Collections.Generic;
@@ -27,9 +29,17 @@ namespace HardwareInformation
             if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
+                {
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     darkTheme();
+                }
                 else
+                {
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     lightTheme();
+                }
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
                 lightTheme();

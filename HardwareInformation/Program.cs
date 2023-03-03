@@ -15,6 +15,8 @@ using IniParser;
 using IniParser.Exceptions;
 using System.Collections.Generic;
 using System.Text;
+using Dark.Net;
+using HardwareInfoDLL;
 
 namespace HardwareInformation
 {
@@ -122,6 +124,8 @@ namespace HardwareInformation
         [STAThread]
 		static void Main(string[] args)
 		{
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
@@ -232,7 +236,10 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                     FreeConsole();
-                    Application.Run(new LoginForm(log, definitionListSection, orgDataListSection)); //If given no args, runs LoginForm
+                    Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
+                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                        DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
+                    Application.Run(lForm); //If given no args, runs LoginForm
                 }
                 else
                 {

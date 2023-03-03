@@ -42,12 +42,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
-            this.comboBoxServerPort = new CustomFlatComboBox();
-            this.comboBoxServerIP = new CustomFlatComboBox();
             this.configurableQualityPictureBox2 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox5 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox4 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.configurableQualityPictureBox3 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.comboBoxServerPort = new CustomFlatComboBox();
+            this.comboBoxServerIP = new CustomFlatComboBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).BeginInit();
@@ -187,39 +187,18 @@
             this.loadingCircle1.Active = false;
             this.loadingCircle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
             this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.InnerCircleRadius = 5;
             this.loadingCircle1.Location = new System.Drawing.Point(12, 270);
             this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 28;
-            this.loadingCircle1.OuterCircleRadius = 9;
+            this.loadingCircle1.NumberSpoke = 12;
+            this.loadingCircle1.OuterCircleRadius = 11;
             this.loadingCircle1.RotationSpeed = 1;
             this.loadingCircle1.Size = new System.Drawing.Size(217, 46);
-            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.SpokeThickness = 2;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle1.TabIndex = 135;
             this.loadingCircle1.Text = "loadingCircle23";
             this.loadingCircle1.Visible = false;
-            // 
-            // comboBoxServerPort
-            // 
-            this.comboBoxServerPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerPort.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServerPort.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerPort.FormattingEnabled = true;
-            this.comboBoxServerPort.Location = new System.Drawing.Point(92, 220);
-            this.comboBoxServerPort.Name = "comboBoxServerPort";
-            this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxServerPort.TabIndex = 3;
-            // 
-            // comboBoxServerIP
-            // 
-            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxServerIP.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxServerIP.FormattingEnabled = true;
-            this.comboBoxServerIP.Location = new System.Drawing.Point(92, 193);
-            this.comboBoxServerIP.Name = "comboBoxServerIP";
-            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
-            this.comboBoxServerIP.TabIndex = 2;
             // 
             // configurableQualityPictureBox2
             // 
@@ -269,11 +248,33 @@
             this.configurableQualityPictureBox3.TabIndex = 136;
             this.configurableQualityPictureBox3.TabStop = false;
             // 
+            // comboBoxServerPort
+            // 
+            this.comboBoxServerPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerPort.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerPort.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerPort.FormattingEnabled = true;
+            this.comboBoxServerPort.Location = new System.Drawing.Point(92, 220);
+            this.comboBoxServerPort.Name = "comboBoxServerPort";
+            this.comboBoxServerPort.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxServerPort.TabIndex = 3;
+            // 
+            // comboBoxServerIP
+            // 
+            this.comboBoxServerIP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxServerIP.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxServerIP.FormattingEnabled = true;
+            this.comboBoxServerIP.Location = new System.Drawing.Point(92, 193);
+            this.comboBoxServerIP.Name = "comboBoxServerIP";
+            this.comboBoxServerIP.Size = new System.Drawing.Size(140, 21);
+            this.comboBoxServerIP.TabIndex = 2;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.AuthButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(241, 352);
             this.Controls.Add(this.configurableQualityPictureBox2);
