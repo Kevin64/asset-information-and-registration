@@ -140,13 +140,13 @@
             // 
             // configurableQualityPictureBox1
             // 
-            this.configurableQualityPictureBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.configurableQualityPictureBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
+            this.configurableQualityPictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(0, -1);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
             this.configurableQualityPictureBox1.Size = new System.Drawing.Size(241, 129);
             this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.configurableQualityPictureBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.configurableQualityPictureBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.configurableQualityPictureBox1.TabIndex = 5;
             this.configurableQualityPictureBox1.TabStop = false;
             // 

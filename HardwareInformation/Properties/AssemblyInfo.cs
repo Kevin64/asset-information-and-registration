@@ -20,7 +20,10 @@ using System.Runtime.InteropServices;
     "Este software e suas bibliotecas (DLLs) utilizam bibliotecas Open Source e códigos avulsos de terceiros, listados abaixo. Todos os créditos vão para os seus respectivos criadores e mantenedores:\r\n" +
     "\r\n" +
     "► Configurable Quality PictureBox (créditos a Jason D)\r\n" +
-    "    • URL do projeto: https://stackoverflow.com/questions/566245/how-to-draw-smooth-images-with-c\r\n" +
+    "    • URL do projeto: https://stackoverflow.com/a/1774592/16838132\r\n" +
+    "\r\n" +
+    "► Custom Flat ComboBox (créditos a Reza Aghaei)\r\n" +
+    "    • URL do projeto: https://stackoverflow.com/a/65976649/16838132\r\n" +
     "\r\n" +
     "► CommandLineParser\r\n" +
     "    • Copyright (c) 2005 - 2015 Giacomo Stelluti Scala & Contributors\r\n" +
