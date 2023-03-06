@@ -139,8 +139,6 @@ namespace HardwareInformation
             configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
             configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
             configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_light_path));
-
-            //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_light;
         }
 
         //Sets a dark theme for the login form
@@ -189,8 +187,6 @@ namespace HardwareInformation
             configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_dark_path));
             configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
             configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_dark_path));
-
-            //this.configurableQualityPictureBox1.Image = global::HardwareInformation.Properties.Resources.uti_logo_dark;
         }
 
         //Loads the form, sets some combobox values

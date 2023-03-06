@@ -30,21 +30,36 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusyForm));
             this.label1 = new System.Windows.Forms.Label();
+            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
             this.SuspendLayout();
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Name = "label1";
             this.label1.UseWaitCursor = true;
+            // 
+            // loadingCircle1
+            // 
+            this.loadingCircle1.Active = false;
+            this.loadingCircle1.Color = System.Drawing.Color.DarkGray;
+            this.loadingCircle1.InnerCircleRadius = 8;
+            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
+            this.loadingCircle1.Name = "loadingCircle1";
+            this.loadingCircle1.NumberSpoke = 10;
+            this.loadingCircle1.OuterCircleRadius = 10;
+            this.loadingCircle1.RotationSpeed = 100;
+            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // BusyForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ControlBox = false;
+            this.Controls.Add(this.loadingCircle1);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -61,5 +76,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private MRG.Controls.UI.LoadingCircle loadingCircle1;
     }
 }

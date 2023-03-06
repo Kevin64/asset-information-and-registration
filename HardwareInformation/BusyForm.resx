@@ -126,7 +126,7 @@
     <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 30</value>
+    <value>87, 5</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>398, 39</value>
@@ -147,6 +147,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="loadingCircle1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>38, 5</value>
+  </data>
+  <data name="loadingCircle1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 39</value>
+  </data>
+  <data name="loadingCircle1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="loadingCircle1.Text" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Name" xml:space="preserve">
+    <value>loadingCircle1</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8465.17616, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loadingCircle1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -156,7 +180,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>608, 100</value>
+    <value>523, 52</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

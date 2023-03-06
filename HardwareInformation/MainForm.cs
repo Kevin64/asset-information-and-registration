@@ -221,6 +221,13 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.configurableQualityPictureBox35 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -296,13 +303,6 @@ namespace HardwareInformation
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox32)).BeginInit();
@@ -350,7 +350,7 @@ namespace HardwareInformation
             // 
             this.lblBM.AutoSize = true;
             this.lblBM.ForeColor = System.Drawing.Color.Silver;
-            this.lblBM.Location = new System.Drawing.Point(195, 20);
+            this.lblBM.Location = new System.Drawing.Point(203, 20);
             this.lblBM.Name = "lblBM";
             this.lblBM.Size = new System.Drawing.Size(10, 13);
             this.lblBM.TabIndex = 7;
@@ -360,7 +360,7 @@ namespace HardwareInformation
             // 
             this.lblModel.AutoSize = true;
             this.lblModel.ForeColor = System.Drawing.Color.Silver;
-            this.lblModel.Location = new System.Drawing.Point(195, 46);
+            this.lblModel.Location = new System.Drawing.Point(203, 46);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(10, 13);
             this.lblModel.TabIndex = 8;
@@ -370,7 +370,7 @@ namespace HardwareInformation
             // 
             this.lblSerialNo.AutoSize = true;
             this.lblSerialNo.ForeColor = System.Drawing.Color.Silver;
-            this.lblSerialNo.Location = new System.Drawing.Point(195, 72);
+            this.lblSerialNo.Location = new System.Drawing.Point(203, 72);
             this.lblSerialNo.Name = "lblSerialNo";
             this.lblSerialNo.Size = new System.Drawing.Size(10, 13);
             this.lblSerialNo.TabIndex = 9;
@@ -380,7 +380,7 @@ namespace HardwareInformation
             // 
             this.lblProcName.AutoSize = true;
             this.lblProcName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProcName.Location = new System.Drawing.Point(195, 98);
+            this.lblProcName.Location = new System.Drawing.Point(203, 98);
             this.lblProcName.Name = "lblProcName";
             this.lblProcName.Size = new System.Drawing.Size(10, 13);
             this.lblProcName.TabIndex = 10;
@@ -390,7 +390,7 @@ namespace HardwareInformation
             // 
             this.lblPM.AutoSize = true;
             this.lblPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblPM.Location = new System.Drawing.Point(195, 124);
+            this.lblPM.Location = new System.Drawing.Point(203, 124);
             this.lblPM.Name = "lblPM";
             this.lblPM.Size = new System.Drawing.Size(10, 13);
             this.lblPM.TabIndex = 11;
@@ -400,7 +400,7 @@ namespace HardwareInformation
             // 
             this.lblHDSize.AutoSize = true;
             this.lblHDSize.ForeColor = System.Drawing.Color.Silver;
-            this.lblHDSize.Location = new System.Drawing.Point(195, 150);
+            this.lblHDSize.Location = new System.Drawing.Point(203, 150);
             this.lblHDSize.Name = "lblHDSize";
             this.lblHDSize.Size = new System.Drawing.Size(10, 13);
             this.lblHDSize.TabIndex = 12;
@@ -410,7 +410,7 @@ namespace HardwareInformation
             // 
             this.lblOS.AutoSize = true;
             this.lblOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblOS.Location = new System.Drawing.Point(195, 280);
+            this.lblOS.Location = new System.Drawing.Point(203, 280);
             this.lblOS.Name = "lblOS";
             this.lblOS.Size = new System.Drawing.Size(10, 13);
             this.lblOS.TabIndex = 13;
@@ -420,7 +420,7 @@ namespace HardwareInformation
             // 
             this.lblHostname.AutoSize = true;
             this.lblHostname.ForeColor = System.Drawing.Color.Silver;
-            this.lblHostname.Location = new System.Drawing.Point(195, 306);
+            this.lblHostname.Location = new System.Drawing.Point(203, 306);
             this.lblHostname.Name = "lblHostname";
             this.lblHostname.Size = new System.Drawing.Size(10, 13);
             this.lblHostname.TabIndex = 15;
@@ -430,7 +430,7 @@ namespace HardwareInformation
             // 
             this.lblMac.AutoSize = true;
             this.lblMac.ForeColor = System.Drawing.Color.Silver;
-            this.lblMac.Location = new System.Drawing.Point(195, 332);
+            this.lblMac.Location = new System.Drawing.Point(203, 332);
             this.lblMac.Name = "lblMac";
             this.lblMac.Size = new System.Drawing.Size(10, 13);
             this.lblMac.TabIndex = 18;
@@ -440,7 +440,7 @@ namespace HardwareInformation
             // 
             this.lblIP.AutoSize = true;
             this.lblIP.ForeColor = System.Drawing.Color.Silver;
-            this.lblIP.Location = new System.Drawing.Point(195, 358);
+            this.lblIP.Location = new System.Drawing.Point(203, 358);
             this.lblIP.Name = "lblIP";
             this.lblIP.Size = new System.Drawing.Size(10, 13);
             this.lblIP.TabIndex = 19;
@@ -739,7 +739,7 @@ namespace HardwareInformation
             // 
             this.lblBIOS.AutoSize = true;
             this.lblBIOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOS.Location = new System.Drawing.Point(195, 410);
+            this.lblBIOS.Location = new System.Drawing.Point(203, 410);
             this.lblBIOS.Name = "lblBIOS";
             this.lblBIOS.Size = new System.Drawing.Size(10, 13);
             this.lblBIOS.TabIndex = 57;
@@ -771,7 +771,7 @@ namespace HardwareInformation
             // 
             this.lblBIOSType.AutoSize = true;
             this.lblBIOSType.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOSType.Location = new System.Drawing.Point(195, 384);
+            this.lblBIOSType.Location = new System.Drawing.Point(203, 384);
             this.lblBIOSType.Name = "lblBIOSType";
             this.lblBIOSType.Size = new System.Drawing.Size(10, 13);
             this.lblBIOSType.TabIndex = 63;
@@ -873,7 +873,7 @@ namespace HardwareInformation
             this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle19.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle19.InnerCircleRadius = 5;
-            this.loadingCircle19.Location = new System.Drawing.Point(194, 482);
+            this.loadingCircle19.Location = new System.Drawing.Point(202, 482);
             this.loadingCircle19.Name = "loadingCircle19";
             this.loadingCircle19.NumberSpoke = 12;
             this.loadingCircle19.OuterCircleRadius = 11;
@@ -890,7 +890,7 @@ namespace HardwareInformation
             this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle18.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle18.InnerCircleRadius = 5;
-            this.loadingCircle18.Location = new System.Drawing.Point(194, 456);
+            this.loadingCircle18.Location = new System.Drawing.Point(202, 456);
             this.loadingCircle18.Name = "loadingCircle18";
             this.loadingCircle18.NumberSpoke = 12;
             this.loadingCircle18.OuterCircleRadius = 11;
@@ -907,7 +907,7 @@ namespace HardwareInformation
             this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle17.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle17.InnerCircleRadius = 5;
-            this.loadingCircle17.Location = new System.Drawing.Point(194, 430);
+            this.loadingCircle17.Location = new System.Drawing.Point(202, 430);
             this.loadingCircle17.Name = "loadingCircle17";
             this.loadingCircle17.NumberSpoke = 12;
             this.loadingCircle17.OuterCircleRadius = 11;
@@ -924,7 +924,7 @@ namespace HardwareInformation
             this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle16.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle16.InnerCircleRadius = 5;
-            this.loadingCircle16.Location = new System.Drawing.Point(194, 404);
+            this.loadingCircle16.Location = new System.Drawing.Point(202, 404);
             this.loadingCircle16.Name = "loadingCircle16";
             this.loadingCircle16.NumberSpoke = 12;
             this.loadingCircle16.OuterCircleRadius = 11;
@@ -941,7 +941,7 @@ namespace HardwareInformation
             this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle15.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle15.InnerCircleRadius = 5;
-            this.loadingCircle15.Location = new System.Drawing.Point(194, 378);
+            this.loadingCircle15.Location = new System.Drawing.Point(202, 378);
             this.loadingCircle15.Name = "loadingCircle15";
             this.loadingCircle15.NumberSpoke = 12;
             this.loadingCircle15.OuterCircleRadius = 11;
@@ -958,7 +958,7 @@ namespace HardwareInformation
             this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle14.InnerCircleRadius = 5;
-            this.loadingCircle14.Location = new System.Drawing.Point(194, 352);
+            this.loadingCircle14.Location = new System.Drawing.Point(202, 352);
             this.loadingCircle14.Name = "loadingCircle14";
             this.loadingCircle14.NumberSpoke = 12;
             this.loadingCircle14.OuterCircleRadius = 11;
@@ -975,7 +975,7 @@ namespace HardwareInformation
             this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle13.InnerCircleRadius = 5;
-            this.loadingCircle13.Location = new System.Drawing.Point(194, 326);
+            this.loadingCircle13.Location = new System.Drawing.Point(202, 326);
             this.loadingCircle13.Name = "loadingCircle13";
             this.loadingCircle13.NumberSpoke = 12;
             this.loadingCircle13.OuterCircleRadius = 11;
@@ -992,7 +992,7 @@ namespace HardwareInformation
             this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle12.InnerCircleRadius = 5;
-            this.loadingCircle12.Location = new System.Drawing.Point(194, 300);
+            this.loadingCircle12.Location = new System.Drawing.Point(202, 300);
             this.loadingCircle12.Name = "loadingCircle12";
             this.loadingCircle12.NumberSpoke = 12;
             this.loadingCircle12.OuterCircleRadius = 11;
@@ -1009,7 +1009,7 @@ namespace HardwareInformation
             this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle11.InnerCircleRadius = 5;
-            this.loadingCircle11.Location = new System.Drawing.Point(194, 274);
+            this.loadingCircle11.Location = new System.Drawing.Point(202, 274);
             this.loadingCircle11.Name = "loadingCircle11";
             this.loadingCircle11.NumberSpoke = 12;
             this.loadingCircle11.OuterCircleRadius = 11;
@@ -1026,7 +1026,7 @@ namespace HardwareInformation
             this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle10.InnerCircleRadius = 5;
-            this.loadingCircle10.Location = new System.Drawing.Point(194, 248);
+            this.loadingCircle10.Location = new System.Drawing.Point(202, 248);
             this.loadingCircle10.Name = "loadingCircle10";
             this.loadingCircle10.NumberSpoke = 12;
             this.loadingCircle10.OuterCircleRadius = 11;
@@ -1043,7 +1043,7 @@ namespace HardwareInformation
             this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle9.InnerCircleRadius = 5;
-            this.loadingCircle9.Location = new System.Drawing.Point(194, 222);
+            this.loadingCircle9.Location = new System.Drawing.Point(202, 222);
             this.loadingCircle9.Name = "loadingCircle9";
             this.loadingCircle9.NumberSpoke = 12;
             this.loadingCircle9.OuterCircleRadius = 11;
@@ -1060,7 +1060,7 @@ namespace HardwareInformation
             this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle8.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle8.InnerCircleRadius = 5;
-            this.loadingCircle8.Location = new System.Drawing.Point(194, 196);
+            this.loadingCircle8.Location = new System.Drawing.Point(202, 196);
             this.loadingCircle8.Name = "loadingCircle8";
             this.loadingCircle8.NumberSpoke = 12;
             this.loadingCircle8.OuterCircleRadius = 11;
@@ -1077,7 +1077,7 @@ namespace HardwareInformation
             this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle7.InnerCircleRadius = 5;
-            this.loadingCircle7.Location = new System.Drawing.Point(194, 170);
+            this.loadingCircle7.Location = new System.Drawing.Point(202, 170);
             this.loadingCircle7.Name = "loadingCircle7";
             this.loadingCircle7.NumberSpoke = 12;
             this.loadingCircle7.OuterCircleRadius = 11;
@@ -1094,7 +1094,7 @@ namespace HardwareInformation
             this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle6.InnerCircleRadius = 5;
-            this.loadingCircle6.Location = new System.Drawing.Point(194, 144);
+            this.loadingCircle6.Location = new System.Drawing.Point(202, 144);
             this.loadingCircle6.Name = "loadingCircle6";
             this.loadingCircle6.NumberSpoke = 12;
             this.loadingCircle6.OuterCircleRadius = 11;
@@ -1111,7 +1111,7 @@ namespace HardwareInformation
             this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle5.InnerCircleRadius = 5;
-            this.loadingCircle5.Location = new System.Drawing.Point(194, 118);
+            this.loadingCircle5.Location = new System.Drawing.Point(202, 118);
             this.loadingCircle5.Name = "loadingCircle5";
             this.loadingCircle5.NumberSpoke = 12;
             this.loadingCircle5.OuterCircleRadius = 11;
@@ -1128,7 +1128,7 @@ namespace HardwareInformation
             this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle4.InnerCircleRadius = 5;
-            this.loadingCircle4.Location = new System.Drawing.Point(194, 92);
+            this.loadingCircle4.Location = new System.Drawing.Point(202, 92);
             this.loadingCircle4.Name = "loadingCircle4";
             this.loadingCircle4.NumberSpoke = 12;
             this.loadingCircle4.OuterCircleRadius = 11;
@@ -1145,7 +1145,7 @@ namespace HardwareInformation
             this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle3.InnerCircleRadius = 5;
-            this.loadingCircle3.Location = new System.Drawing.Point(194, 66);
+            this.loadingCircle3.Location = new System.Drawing.Point(202, 66);
             this.loadingCircle3.Name = "loadingCircle3";
             this.loadingCircle3.NumberSpoke = 12;
             this.loadingCircle3.OuterCircleRadius = 11;
@@ -1162,7 +1162,7 @@ namespace HardwareInformation
             this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle2.InnerCircleRadius = 5;
-            this.loadingCircle2.Location = new System.Drawing.Point(194, 40);
+            this.loadingCircle2.Location = new System.Drawing.Point(202, 40);
             this.loadingCircle2.Name = "loadingCircle2";
             this.loadingCircle2.NumberSpoke = 12;
             this.loadingCircle2.OuterCircleRadius = 11;
@@ -1179,7 +1179,7 @@ namespace HardwareInformation
             this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Location = new System.Drawing.Point(194, 14);
+            this.loadingCircle1.Location = new System.Drawing.Point(202, 14);
             this.loadingCircle1.Name = "loadingCircle1";
             this.loadingCircle1.NumberSpoke = 12;
             this.loadingCircle1.OuterCircleRadius = 11;
@@ -1202,7 +1202,7 @@ namespace HardwareInformation
             // separatorV
             // 
             this.separatorV.BackColor = System.Drawing.Color.DimGray;
-            this.separatorV.Location = new System.Drawing.Point(192, 14);
+            this.separatorV.Location = new System.Drawing.Point(200, 14);
             this.separatorV.Name = "separatorV";
             this.separatorV.Size = new System.Drawing.Size(1, 499);
             this.separatorV.TabIndex = 111;
@@ -1236,7 +1236,7 @@ namespace HardwareInformation
             // 
             this.lblSmart.AutoSize = true;
             this.lblSmart.ForeColor = System.Drawing.Color.Silver;
-            this.lblSmart.Location = new System.Drawing.Point(195, 176);
+            this.lblSmart.Location = new System.Drawing.Point(203, 176);
             this.lblSmart.Name = "lblSmart";
             this.lblSmart.Size = new System.Drawing.Size(10, 13);
             this.lblSmart.TabIndex = 106;
@@ -1246,7 +1246,7 @@ namespace HardwareInformation
             // 
             this.lblTPM.AutoSize = true;
             this.lblTPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblTPM.Location = new System.Drawing.Point(195, 488);
+            this.lblTPM.Location = new System.Drawing.Point(203, 488);
             this.lblTPM.Name = "lblTPM";
             this.lblTPM.Size = new System.Drawing.Size(10, 13);
             this.lblTPM.TabIndex = 109;
@@ -1288,7 +1288,7 @@ namespace HardwareInformation
             // 
             this.progressBar1.Location = new System.Drawing.Point(6, 533);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(525, 30);
+            this.progressBar1.Size = new System.Drawing.Size(525, 33);
             this.progressBar1.TabIndex = 69;
             // 
             // label28
@@ -1306,7 +1306,7 @@ namespace HardwareInformation
             // 
             this.lblVT.AutoSize = true;
             this.lblVT.ForeColor = System.Drawing.Color.Silver;
-            this.lblVT.Location = new System.Drawing.Point(195, 462);
+            this.lblVT.Location = new System.Drawing.Point(203, 462);
             this.lblVT.Name = "lblVT";
             this.lblVT.Size = new System.Drawing.Size(10, 13);
             this.lblVT.TabIndex = 103;
@@ -1518,7 +1518,7 @@ namespace HardwareInformation
             // 
             this.lblSecBoot.AutoSize = true;
             this.lblSecBoot.ForeColor = System.Drawing.Color.Silver;
-            this.lblSecBoot.Location = new System.Drawing.Point(195, 436);
+            this.lblSecBoot.Location = new System.Drawing.Point(203, 436);
             this.lblSecBoot.Name = "lblSecBoot";
             this.lblSecBoot.Size = new System.Drawing.Size(10, 13);
             this.lblSecBoot.TabIndex = 71;
@@ -1538,7 +1538,7 @@ namespace HardwareInformation
             // 
             this.lblMediaOperation.AutoSize = true;
             this.lblMediaOperation.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaOperation.Location = new System.Drawing.Point(195, 228);
+            this.lblMediaOperation.Location = new System.Drawing.Point(203, 228);
             this.lblMediaOperation.Name = "lblMediaOperation";
             this.lblMediaOperation.Size = new System.Drawing.Size(10, 13);
             this.lblMediaOperation.TabIndex = 69;
@@ -1558,7 +1558,7 @@ namespace HardwareInformation
             // 
             this.lblGPUInfo.AutoSize = true;
             this.lblGPUInfo.ForeColor = System.Drawing.Color.Silver;
-            this.lblGPUInfo.Location = new System.Drawing.Point(195, 254);
+            this.lblGPUInfo.Location = new System.Drawing.Point(203, 254);
             this.lblGPUInfo.Name = "lblGPUInfo";
             this.lblGPUInfo.Size = new System.Drawing.Size(10, 13);
             this.lblGPUInfo.TabIndex = 67;
@@ -1578,7 +1578,7 @@ namespace HardwareInformation
             // 
             this.lblMediaType.AutoSize = true;
             this.lblMediaType.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaType.Location = new System.Drawing.Point(195, 202);
+            this.lblMediaType.Location = new System.Drawing.Point(203, 202);
             this.lblMediaType.Name = "lblMediaType";
             this.lblMediaType.Size = new System.Drawing.Size(10, 13);
             this.lblMediaType.TabIndex = 65;
@@ -1657,6 +1657,99 @@ namespace HardwareInformation
             this.groupBox2.TabIndex = 66;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados do patrimônio, manutenção e de localização";
+            // 
+            // comboBoxBattery
+            // 
+            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxBattery.TabIndex = 47;
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.Enabled = false;
+            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
+            this.comboBoxStandard.TabIndex = 46;
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.Enabled = false;
+            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
+            this.comboBoxActiveDirectory.TabIndex = 45;
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
+            this.comboBoxTag.Name = "comboBoxTag";
+            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxTag.TabIndex = 41;
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxInUse.TabIndex = 39;
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxType.TabIndex = 40;
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxBuilding.TabIndex = 38;
             // 
             // label48
             // 
@@ -2404,7 +2497,7 @@ namespace HardwareInformation
             this.groupBox5.Controls.Add(this.label53);
             this.groupBox5.Controls.Add(this.lblAgentName);
             this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox5.Location = new System.Drawing.Point(575, 501);
+            this.groupBox5.Location = new System.Drawing.Point(575, 503);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(450, 56);
             this.groupBox5.TabIndex = 132;
@@ -2426,99 +2519,6 @@ namespace HardwareInformation
             this.loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle24.TabIndex = 134;
             this.loadingCircle24.Text = "loadingCircle24";
-            // 
-            // comboBoxBattery
-            // 
-            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxBattery.TabIndex = 47;
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.Enabled = false;
-            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxStandard.TabIndex = 46;
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.Enabled = false;
-            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxActiveDirectory.TabIndex = 45;
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
-            this.comboBoxTag.Name = "comboBoxTag";
-            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxTag.TabIndex = 41;
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxInUse.TabIndex = 39;
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxType.TabIndex = 40;
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.WindowText;
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxBuilding.TabIndex = 38;
             // 
             // MainForm
             // 
