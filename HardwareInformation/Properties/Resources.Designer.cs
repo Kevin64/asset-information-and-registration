@@ -61,31 +61,11 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap darkback {
-            get {
-                object obj = ResourceManager.GetObject("darkback", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a beta.
         /// </summary>
         internal static string dev_status {
             get {
                 return ResourceManager.GetString("dev-status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap lightback {
-            get {
-                object obj = ResourceManager.GetObject("lightback", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

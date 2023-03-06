@@ -33,7 +33,12 @@ namespace HardwareInformation
             definitionList = definitionListSection;
             orgList = orgDataListSection;
 
-            this.toolStripStatusLabel1.Text = orgList[3].ToString() + " - " + orgList[1].ToString();
+            string[] oList = new string[6];
+            for (int i = 0; i < orgList.Count; i++)
+                if (!orgList[i].Equals(string.Empty))
+                    oList[i] = orgList[i].ToString() + " - ";
+
+            this.toolStripStatusLabel1.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
 
             log = l;
 
@@ -97,7 +102,7 @@ namespace HardwareInformation
             this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            this.loadingCircle1.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.loadingCircle1.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
             this.textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
@@ -121,6 +126,8 @@ namespace HardwareInformation
             this.checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
+            this.aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -169,6 +176,8 @@ namespace HardwareInformation
             this.checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
+            this.aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -373,6 +382,15 @@ namespace HardwareInformation
                 comboBoxServerIP.Enabled = true;
                 comboBoxServerPort.Enabled = true;
             }
+        }
+
+        //Opens the About box
+        private void aboutLabel_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutForm = new AboutBox(definitionList, themeBool);
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
+            aboutForm.ShowDialog();
         }
     }
 }

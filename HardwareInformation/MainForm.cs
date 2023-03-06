@@ -107,8 +107,14 @@ namespace HardwareInformation
             backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(BackgroundWorker1_RunWorkerCompleted);
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
-            this.toolStripStatusLabel1.Text = orgList[4].ToString() + " - " + orgList[2].ToString() + " - " + orgList[0].ToString();
-            this.Text = Application.ProductName + " - " + orgList[5].ToString() + " / " + orgList[3].ToString() + " / " + orgList[1].ToString();
+
+            string[] oList = new string[6];
+            for(int i = 0; i < orgList.Count; i++)
+                if (!orgList[i].Equals(string.Empty))
+                    oList[i] = orgList[i].ToString() + " - ";
+
+            this.toolStripStatusLabel1.Text = oList[4] + oList[2] + oList[0].Substring(0, oList[0].Length - 2);
+            this.Text = Application.ProductName + " / " + oList[5] + oList[3] + oList[1].Substring(0, oList[1].Length - 2);
         }
 
         private void InitializeComponent()
@@ -443,7 +449,7 @@ namespace HardwareInformation
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(37, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
@@ -453,7 +459,7 @@ namespace HardwareInformation
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(37, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
@@ -463,7 +469,7 @@ namespace HardwareInformation
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(37, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
@@ -473,7 +479,7 @@ namespace HardwareInformation
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(37, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 13);
@@ -483,7 +489,7 @@ namespace HardwareInformation
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(37, 124);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 13);
@@ -493,7 +499,7 @@ namespace HardwareInformation
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label6.Location = new System.Drawing.Point(37, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(153, 13);
@@ -503,7 +509,7 @@ namespace HardwareInformation
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label7.Location = new System.Drawing.Point(37, 280);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 13);
@@ -513,7 +519,7 @@ namespace HardwareInformation
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label8.Location = new System.Drawing.Point(37, 306);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(113, 13);
@@ -523,7 +529,7 @@ namespace HardwareInformation
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label9.Location = new System.Drawing.Point(37, 332);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 13);
@@ -533,7 +539,7 @@ namespace HardwareInformation
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label10.Location = new System.Drawing.Point(37, 358);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 13);
@@ -543,7 +549,7 @@ namespace HardwareInformation
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label11.Location = new System.Drawing.Point(37, 20);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
@@ -553,7 +559,7 @@ namespace HardwareInformation
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label12.Location = new System.Drawing.Point(37, 46);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(93, 13);
@@ -563,7 +569,7 @@ namespace HardwareInformation
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label13.Location = new System.Drawing.Point(37, 98);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
@@ -572,8 +578,8 @@ namespace HardwareInformation
             // 
             // textBoxPatrimony
             // 
-            this.textBoxPatrimony.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.textBoxPatrimony.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxPatrimony.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPatrimony.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxPatrimony.Location = new System.Drawing.Point(185, 17);
             this.textBoxPatrimony.MaxLength = 6;
             this.textBoxPatrimony.Name = "textBoxPatrimony";
@@ -583,8 +589,8 @@ namespace HardwareInformation
             // 
             // textBoxSeal
             // 
-            this.textBoxSeal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.textBoxSeal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxSeal.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxSeal.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxSeal.Location = new System.Drawing.Point(185, 43);
             this.textBoxSeal.MaxLength = 10;
             this.textBoxSeal.Name = "textBoxSeal";
@@ -594,8 +600,8 @@ namespace HardwareInformation
             // 
             // textBoxRoom
             // 
-            this.textBoxRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.textBoxRoom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxRoom.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxRoom.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxRoom.Location = new System.Drawing.Point(185, 69);
             this.textBoxRoom.MaxLength = 4;
             this.textBoxRoom.Name = "textBoxRoom";
@@ -605,8 +611,8 @@ namespace HardwareInformation
             // 
             // textBoxLetter
             // 
-            this.textBoxLetter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.textBoxLetter.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxLetter.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxLetter.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxLetter.Location = new System.Drawing.Point(419, 69);
             this.textBoxLetter.MaxLength = 1;
             this.textBoxLetter.Name = "textBoxLetter";
@@ -617,7 +623,7 @@ namespace HardwareInformation
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label14.Location = new System.Drawing.Point(37, 72);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(135, 13);
@@ -627,7 +633,7 @@ namespace HardwareInformation
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label16.Location = new System.Drawing.Point(37, 150);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(115, 13);
@@ -636,11 +642,10 @@ namespace HardwareInformation
             // 
             // registerButton
             // 
-            this.registerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.registerButton.BackColor = System.Drawing.SystemColors.Control;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.registerButton.Location = new System.Drawing.Point(760, 633);
+            this.registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.registerButton.Location = new System.Drawing.Point(760, 630);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(265, 56);
             this.registerButton.TabIndex = 53;
@@ -651,7 +656,7 @@ namespace HardwareInformation
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label18.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label18.Location = new System.Drawing.Point(322, 98);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(45, 13);
@@ -661,7 +666,7 @@ namespace HardwareInformation
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label19.Location = new System.Drawing.Point(322, 124);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(49, 13);
@@ -671,7 +676,7 @@ namespace HardwareInformation
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label20.Location = new System.Drawing.Point(37, 124);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(31, 13);
@@ -681,7 +686,7 @@ namespace HardwareInformation
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label21.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label21.Location = new System.Drawing.Point(187, 16);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(98, 13);
@@ -691,7 +696,7 @@ namespace HardwareInformation
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label22.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label22.Location = new System.Drawing.Point(7, 35);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(35, 13);
@@ -700,10 +705,9 @@ namespace HardwareInformation
             // 
             // collectButton
             // 
-            this.collectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.collectButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.collectButton.Location = new System.Drawing.Point(575, 633);
+            this.collectButton.BackColor = System.Drawing.SystemColors.Control;
+            this.collectButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.collectButton.Location = new System.Drawing.Point(575, 630);
             this.collectButton.Name = "collectButton";
             this.collectButton.Size = new System.Drawing.Size(180, 25);
             this.collectButton.TabIndex = 51;
@@ -714,7 +718,7 @@ namespace HardwareInformation
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label23.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label23.Location = new System.Drawing.Point(322, 72);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(90, 13);
@@ -724,7 +728,7 @@ namespace HardwareInformation
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label24.Location = new System.Drawing.Point(37, 410);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(100, 13);
@@ -743,10 +747,9 @@ namespace HardwareInformation
             // 
             // accessSystemButton
             // 
-            this.accessSystemButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.accessSystemButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.accessSystemButton.Location = new System.Drawing.Point(575, 664);
+            this.accessSystemButton.BackColor = System.Drawing.SystemColors.Control;
+            this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.accessSystemButton.Location = new System.Drawing.Point(575, 661);
             this.accessSystemButton.Name = "accessSystemButton";
             this.accessSystemButton.Size = new System.Drawing.Size(180, 25);
             this.accessSystemButton.TabIndex = 52;
@@ -757,7 +760,7 @@ namespace HardwareInformation
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label25.Location = new System.Drawing.Point(37, 384);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(88, 13);
@@ -856,10 +859,10 @@ namespace HardwareInformation
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(32, 113);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 576);
+            this.groupBox1.Size = new System.Drawing.Size(537, 573);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do computador";
@@ -868,6 +871,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle19.Active = false;
             this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle19.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle19.InnerCircleRadius = 5;
             this.loadingCircle19.Location = new System.Drawing.Point(194, 482);
             this.loadingCircle19.Name = "loadingCircle19";
@@ -884,6 +888,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle18.Active = false;
             this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle18.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle18.InnerCircleRadius = 5;
             this.loadingCircle18.Location = new System.Drawing.Point(194, 456);
             this.loadingCircle18.Name = "loadingCircle18";
@@ -900,6 +905,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle17.Active = false;
             this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle17.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle17.InnerCircleRadius = 5;
             this.loadingCircle17.Location = new System.Drawing.Point(194, 430);
             this.loadingCircle17.Name = "loadingCircle17";
@@ -916,6 +922,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle16.Active = false;
             this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle16.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle16.InnerCircleRadius = 5;
             this.loadingCircle16.Location = new System.Drawing.Point(194, 404);
             this.loadingCircle16.Name = "loadingCircle16";
@@ -932,6 +939,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle15.Active = false;
             this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle15.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle15.InnerCircleRadius = 5;
             this.loadingCircle15.Location = new System.Drawing.Point(194, 378);
             this.loadingCircle15.Name = "loadingCircle15";
@@ -948,6 +956,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle14.Active = false;
             this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle14.InnerCircleRadius = 5;
             this.loadingCircle14.Location = new System.Drawing.Point(194, 352);
             this.loadingCircle14.Name = "loadingCircle14";
@@ -964,6 +973,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle13.Active = false;
             this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle13.InnerCircleRadius = 5;
             this.loadingCircle13.Location = new System.Drawing.Point(194, 326);
             this.loadingCircle13.Name = "loadingCircle13";
@@ -980,6 +990,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle12.Active = false;
             this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle12.InnerCircleRadius = 5;
             this.loadingCircle12.Location = new System.Drawing.Point(194, 300);
             this.loadingCircle12.Name = "loadingCircle12";
@@ -996,6 +1007,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle11.Active = false;
             this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle11.InnerCircleRadius = 5;
             this.loadingCircle11.Location = new System.Drawing.Point(194, 274);
             this.loadingCircle11.Name = "loadingCircle11";
@@ -1012,6 +1024,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle10.Active = false;
             this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle10.InnerCircleRadius = 5;
             this.loadingCircle10.Location = new System.Drawing.Point(194, 248);
             this.loadingCircle10.Name = "loadingCircle10";
@@ -1028,6 +1041,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle9.Active = false;
             this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle9.InnerCircleRadius = 5;
             this.loadingCircle9.Location = new System.Drawing.Point(194, 222);
             this.loadingCircle9.Name = "loadingCircle9";
@@ -1044,6 +1058,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle8.Active = false;
             this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle8.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle8.InnerCircleRadius = 5;
             this.loadingCircle8.Location = new System.Drawing.Point(194, 196);
             this.loadingCircle8.Name = "loadingCircle8";
@@ -1060,6 +1075,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle7.Active = false;
             this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle7.InnerCircleRadius = 5;
             this.loadingCircle7.Location = new System.Drawing.Point(194, 170);
             this.loadingCircle7.Name = "loadingCircle7";
@@ -1076,6 +1092,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle6.Active = false;
             this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle6.InnerCircleRadius = 5;
             this.loadingCircle6.Location = new System.Drawing.Point(194, 144);
             this.loadingCircle6.Name = "loadingCircle6";
@@ -1092,6 +1109,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle5.Active = false;
             this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle5.InnerCircleRadius = 5;
             this.loadingCircle5.Location = new System.Drawing.Point(194, 118);
             this.loadingCircle5.Name = "loadingCircle5";
@@ -1108,6 +1126,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle4.Active = false;
             this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle4.InnerCircleRadius = 5;
             this.loadingCircle4.Location = new System.Drawing.Point(194, 92);
             this.loadingCircle4.Name = "loadingCircle4";
@@ -1124,6 +1143,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle3.Active = false;
             this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle3.InnerCircleRadius = 5;
             this.loadingCircle3.Location = new System.Drawing.Point(194, 66);
             this.loadingCircle3.Name = "loadingCircle3";
@@ -1140,6 +1160,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle2.Active = false;
             this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle2.InnerCircleRadius = 5;
             this.loadingCircle2.Location = new System.Drawing.Point(194, 40);
             this.loadingCircle2.Name = "loadingCircle2";
@@ -1156,6 +1177,7 @@ namespace HardwareInformation
             // 
             this.loadingCircle1.Active = false;
             this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle1.InnerCircleRadius = 5;
             this.loadingCircle1.Location = new System.Drawing.Point(194, 14);
             this.loadingCircle1.Name = "loadingCircle1";
@@ -1233,7 +1255,7 @@ namespace HardwareInformation
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label44.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label44.Location = new System.Drawing.Point(37, 176);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(96, 13);
@@ -1255,7 +1277,7 @@ namespace HardwareInformation
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label45.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label45.Location = new System.Drawing.Point(37, 488);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(121, 13);
@@ -1266,15 +1288,15 @@ namespace HardwareInformation
             // 
             this.progressBar1.Location = new System.Drawing.Point(6, 533);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(525, 37);
+            this.progressBar1.Size = new System.Drawing.Size(525, 30);
             this.progressBar1.TabIndex = 69;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label28.Location = new System.Drawing.Point(260, 517);
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label28.Location = new System.Drawing.Point(260, 515);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(10, 13);
             this.label28.TabIndex = 70;
@@ -1293,7 +1315,7 @@ namespace HardwareInformation
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label33.Location = new System.Drawing.Point(37, 462);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(141, 13);
@@ -1505,7 +1527,7 @@ namespace HardwareInformation
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label32.Location = new System.Drawing.Point(37, 436);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(69, 13);
@@ -1525,7 +1547,7 @@ namespace HardwareInformation
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label30.Location = new System.Drawing.Point(37, 228);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(154, 13);
@@ -1545,7 +1567,7 @@ namespace HardwareInformation
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label29.Location = new System.Drawing.Point(37, 254);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(126, 13);
@@ -1565,7 +1587,7 @@ namespace HardwareInformation
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label27.Location = new System.Drawing.Point(37, 202);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(124, 13);
@@ -1628,7 +1650,7 @@ namespace HardwareInformation
             this.groupBox2.Controls.Add(this.textBoxLetter);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox2.Location = new System.Drawing.Point(575, 113);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(450, 390);
@@ -1639,7 +1661,7 @@ namespace HardwareInformation
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label48.ForeColor = System.Drawing.Color.Red;
             this.label48.Location = new System.Drawing.Point(367, 244);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(17, 13);
@@ -1649,7 +1671,7 @@ namespace HardwareInformation
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label47.ForeColor = System.Drawing.Color.Red;
             this.label47.Location = new System.Drawing.Point(146, 244);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(17, 13);
@@ -1671,7 +1693,7 @@ namespace HardwareInformation
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label31.Location = new System.Drawing.Point(303, 244);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(69, 13);
@@ -1680,8 +1702,8 @@ namespace HardwareInformation
             // 
             // textBoxTicket
             // 
-            this.textBoxTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.textBoxTicket.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxTicket.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxTicket.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxTicket.Location = new System.Drawing.Point(384, 241);
             this.textBoxTicket.MaxLength = 6;
             this.textBoxTicket.Name = "textBoxTicket";
@@ -1704,7 +1726,7 @@ namespace HardwareInformation
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label42.ForeColor = System.Drawing.Color.Red;
             this.label42.Location = new System.Drawing.Point(103, 176);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(17, 13);
@@ -1714,7 +1736,7 @@ namespace HardwareInformation
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label41.ForeColor = System.Drawing.Color.Red;
             this.label41.Location = new System.Drawing.Point(367, 124);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(17, 13);
@@ -1724,7 +1746,7 @@ namespace HardwareInformation
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label46.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label46.Location = new System.Drawing.Point(37, 244);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(112, 13);
@@ -1734,7 +1756,7 @@ namespace HardwareInformation
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label40.ForeColor = System.Drawing.Color.Red;
             this.label40.Location = new System.Drawing.Point(64, 124);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(17, 13);
@@ -1744,7 +1766,7 @@ namespace HardwareInformation
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label39.ForeColor = System.Drawing.Color.Red;
             this.label39.Location = new System.Drawing.Point(363, 98);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(17, 13);
@@ -1754,7 +1776,7 @@ namespace HardwareInformation
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label38.ForeColor = System.Drawing.Color.Red;
             this.label38.Location = new System.Drawing.Point(73, 98);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(17, 13);
@@ -1764,7 +1786,7 @@ namespace HardwareInformation
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label37.ForeColor = System.Drawing.Color.Red;
             this.label37.Location = new System.Drawing.Point(167, 72);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(17, 13);
@@ -1774,7 +1796,7 @@ namespace HardwareInformation
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label36.ForeColor = System.Drawing.Color.Red;
             this.label36.Location = new System.Drawing.Point(92, 20);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(17, 13);
@@ -1784,7 +1806,7 @@ namespace HardwareInformation
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label35.ForeColor = System.Drawing.Color.Red;
             this.label35.Location = new System.Drawing.Point(258, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(152, 13);
@@ -1794,6 +1816,7 @@ namespace HardwareInformation
             // studentRadioButton
             // 
             this.studentRadioButton.AutoSize = true;
+            this.studentRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.studentRadioButton.Location = new System.Drawing.Point(185, 192);
             this.studentRadioButton.Name = "studentRadioButton";
             this.studentRadioButton.Size = new System.Drawing.Size(246, 17);
@@ -1806,6 +1829,7 @@ namespace HardwareInformation
             // employeeRadioButton
             // 
             this.employeeRadioButton.AutoSize = true;
+            this.employeeRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.employeeRadioButton.Location = new System.Drawing.Point(185, 174);
             this.employeeRadioButton.Name = "employeeRadioButton";
             this.employeeRadioButton.Size = new System.Drawing.Size(242, 17);
@@ -1830,7 +1854,7 @@ namespace HardwareInformation
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label34.Location = new System.Drawing.Point(37, 176);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(70, 13);
@@ -1988,8 +2012,8 @@ namespace HardwareInformation
             this.groupBox3.Controls.Add(this.textBox6);
             this.groupBox3.Controls.Add(this.formatButton);
             this.groupBox3.Controls.Add(this.maintenanceButton);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox3.Location = new System.Drawing.Point(6, 269);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox3.Location = new System.Drawing.Point(6, 266);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(438, 115);
             this.groupBox3.TabIndex = 72;
@@ -2051,7 +2075,7 @@ namespace HardwareInformation
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(0)))));
+            this.label43.ForeColor = System.Drawing.Color.Red;
             this.label43.Location = new System.Drawing.Point(82, 0);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(17, 13);
@@ -2060,10 +2084,10 @@ namespace HardwareInformation
             // 
             // textBox5
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Enabled = false;
-            this.textBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox5.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox5.Location = new System.Drawing.Point(29, 38);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -2074,10 +2098,10 @@ namespace HardwareInformation
             // 
             // textBox6
             // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Enabled = false;
-            this.textBox6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBox6.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox6.Location = new System.Drawing.Point(29, 78);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
@@ -2090,6 +2114,7 @@ namespace HardwareInformation
             // formatButton
             // 
             this.formatButton.AutoSize = true;
+            this.formatButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.formatButton.Location = new System.Drawing.Point(10, 20);
             this.formatButton.Name = "formatButton";
             this.formatButton.Size = new System.Drawing.Size(81, 17);
@@ -2101,6 +2126,7 @@ namespace HardwareInformation
             // maintenanceButton
             // 
             this.maintenanceButton.AutoSize = true;
+            this.maintenanceButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.maintenanceButton.Location = new System.Drawing.Point(10, 59);
             this.maintenanceButton.Name = "maintenanceButton";
             this.maintenanceButton.Size = new System.Drawing.Size(85, 17);
@@ -2112,7 +2138,7 @@ namespace HardwareInformation
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label15.Location = new System.Drawing.Point(37, 218);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(137, 13);
@@ -2122,7 +2148,7 @@ namespace HardwareInformation
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label17.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label17.Location = new System.Drawing.Point(303, 218);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(44, 13);
@@ -2132,7 +2158,7 @@ namespace HardwareInformation
             // lblAgentName
             // 
             this.lblAgentName.AutoSize = true;
-            this.lblAgentName.ForeColor = System.Drawing.Color.Silver;
+            this.lblAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblAgentName.Location = new System.Drawing.Point(299, 35);
             this.lblAgentName.Name = "lblAgentName";
             this.lblAgentName.Size = new System.Drawing.Size(10, 13);
@@ -2142,7 +2168,7 @@ namespace HardwareInformation
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label53.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label53.Location = new System.Drawing.Point(187, 35);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(104, 13);
@@ -2152,7 +2178,7 @@ namespace HardwareInformation
             // lblPortServer
             // 
             this.lblPortServer.AutoSize = true;
-            this.lblPortServer.ForeColor = System.Drawing.Color.Silver;
+            this.lblPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblPortServer.Location = new System.Drawing.Point(50, 35);
             this.lblPortServer.Name = "lblPortServer";
             this.lblPortServer.Size = new System.Drawing.Size(10, 13);
@@ -2162,7 +2188,7 @@ namespace HardwareInformation
             // lblIPServer
             // 
             this.lblIPServer.AutoSize = true;
-            this.lblIPServer.ForeColor = System.Drawing.Color.Silver;
+            this.lblIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblIPServer.Location = new System.Drawing.Point(50, 16);
             this.lblIPServer.Name = "lblIPServer";
             this.lblIPServer.Size = new System.Drawing.Size(10, 13);
@@ -2172,7 +2198,7 @@ namespace HardwareInformation
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label49.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label49.Location = new System.Drawing.Point(7, 16);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(20, 13);
@@ -2192,16 +2218,15 @@ namespace HardwareInformation
             // 
             // toolStripStatusLabel2
             // 
-            this.toolStripStatusLabel2.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top)));
             this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 19);
             // 
             // statusStrip1
             // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comboBoxTheme,
@@ -2209,30 +2234,30 @@ namespace HardwareInformation
             this.aboutLabel,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 693);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 691);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1056, 22);
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
             this.statusStrip1.TabIndex = 60;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // comboBoxTheme
             // 
-            this.comboBoxTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.comboBoxTheme.BackColor = System.Drawing.SystemColors.Control;
             this.comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
-            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(48, 20);
+            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
             this.comboBoxTheme.Text = "Tema";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
@@ -2241,7 +2266,7 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
@@ -2250,7 +2275,7 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
@@ -2259,28 +2284,31 @@ namespace HardwareInformation
             // 
             // logLabel
             // 
-            this.logLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.logLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.logLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.logLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(27, 17);
+            this.logLabel.Size = new System.Drawing.Size(31, 19);
             this.logLabel.Text = "Log";
             this.logLabel.Click += new System.EventHandler(this.logLabel_Click);
             // 
             // aboutLabel
             // 
-            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.aboutLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Size = new System.Drawing.Size(37, 17);
+            this.aboutLabel.Size = new System.Drawing.Size(41, 19);
             this.aboutLabel.Text = "Sobre";
             this.aboutLabel.Click += new System.EventHandler(this.about_Click);
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)(((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(894, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(921, 19);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2290,8 +2318,8 @@ namespace HardwareInformation
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.webView2);
-            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox4.Location = new System.Drawing.Point(575, 562);
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox4.Location = new System.Drawing.Point(575, 559);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(450, 65);
             this.groupBox4.TabIndex = 73;
@@ -2319,7 +2347,7 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.InterpolationMode = null;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
-            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1061, 109);
+            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1061, 106);
             this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.configurableQualityPictureBox1.SmoothingMode = null;
             this.configurableQualityPictureBox1.TabIndex = 64;
@@ -2328,16 +2356,17 @@ namespace HardwareInformation
             // loadingCircle22
             // 
             this.loadingCircle22.Active = false;
-            this.loadingCircle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle22.BackColor = System.Drawing.SystemColors.Control;
             this.loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle22.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle22.InnerCircleRadius = 5;
-            this.loadingCircle22.Location = new System.Drawing.Point(576, 634);
+            this.loadingCircle22.Location = new System.Drawing.Point(577, 632);
             this.loadingCircle22.Name = "loadingCircle22";
             this.loadingCircle22.NumberSpoke = 12;
             this.loadingCircle22.OuterCircleRadius = 11;
             this.loadingCircle22.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.loadingCircle22.RotationSpeed = 1;
-            this.loadingCircle22.Size = new System.Drawing.Size(178, 23);
+            this.loadingCircle22.Size = new System.Drawing.Size(176, 21);
             this.loadingCircle22.SpokeThickness = 2;
             this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle22.TabIndex = 134;
@@ -2347,15 +2376,16 @@ namespace HardwareInformation
             // loadingCircle23
             // 
             this.loadingCircle23.Active = false;
-            this.loadingCircle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.loadingCircle23.BackColor = System.Drawing.SystemColors.Control;
             this.loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircle23.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle23.InnerCircleRadius = 5;
-            this.loadingCircle23.Location = new System.Drawing.Point(761, 634);
+            this.loadingCircle23.Location = new System.Drawing.Point(762, 632);
             this.loadingCircle23.Name = "loadingCircle23";
             this.loadingCircle23.NumberSpoke = 12;
             this.loadingCircle23.OuterCircleRadius = 11;
             this.loadingCircle23.RotationSpeed = 1;
-            this.loadingCircle23.Size = new System.Drawing.Size(263, 54);
+            this.loadingCircle23.Size = new System.Drawing.Size(261, 52);
             this.loadingCircle23.SpokeThickness = 2;
             this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             this.loadingCircle23.TabIndex = 134;
@@ -2373,8 +2403,8 @@ namespace HardwareInformation
             this.groupBox5.Controls.Add(this.lblPortServer);
             this.groupBox5.Controls.Add(this.label53);
             this.groupBox5.Controls.Add(this.lblAgentName);
-            this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox5.Location = new System.Drawing.Point(575, 504);
+            this.groupBox5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox5.Location = new System.Drawing.Point(575, 501);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(450, 56);
             this.groupBox5.TabIndex = 132;
@@ -2399,9 +2429,9 @@ namespace HardwareInformation
             // 
             // comboBoxBattery
             // 
-            this.comboBoxBattery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBattery.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxBattery.FormattingEnabled = true;
@@ -2412,9 +2442,9 @@ namespace HardwareInformation
             // 
             // comboBoxStandard
             // 
-            this.comboBoxStandard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxStandard.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStandard.Enabled = false;
             this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2426,9 +2456,9 @@ namespace HardwareInformation
             // 
             // comboBoxActiveDirectory
             // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActiveDirectory.Enabled = false;
             this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2440,9 +2470,9 @@ namespace HardwareInformation
             // 
             // comboBoxTag
             // 
-            this.comboBoxTag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxTag.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxTag.FormattingEnabled = true;
@@ -2453,9 +2483,9 @@ namespace HardwareInformation
             // 
             // comboBoxInUse
             // 
-            this.comboBoxInUse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxInUse.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxInUse.FormattingEnabled = true;
@@ -2466,9 +2496,9 @@ namespace HardwareInformation
             // 
             // comboBoxType
             // 
-            this.comboBoxType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxType.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxType.FormattingEnabled = true;
@@ -2479,9 +2509,9 @@ namespace HardwareInformation
             // 
             // comboBoxBuilding
             // 
-            this.comboBoxBuilding.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.comboBoxBuilding.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxBuilding.FormattingEnabled = true;
@@ -2496,7 +2526,7 @@ namespace HardwareInformation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1056, 715);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.loadingCircle23);
@@ -2977,6 +3007,11 @@ namespace HardwareInformation
             this.comboBoxTheme.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.comboBoxTheme.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
+            this.employeeRadioButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.studentRadioButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.formatButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            this.maintenanceButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+
             this.registerButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.registerButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -3006,11 +3041,11 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.toolStripMenuItem1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.toolStripMenuItem2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.lightback;
+            this.toolStripMenuItem3.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -3054,6 +3089,7 @@ namespace HardwareInformation
             this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_light_path));
         }
 
+        //Opens the About box
         private void about_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(defList, themeBool);
@@ -3197,6 +3233,11 @@ namespace HardwareInformation
             this.comboBoxTheme.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.comboBoxTheme.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
+            this.employeeRadioButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.studentRadioButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.formatButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            this.maintenanceButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+
             this.registerButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             this.registerButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.registerButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
@@ -3226,11 +3267,11 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.toolStripMenuItem1.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem1.BackColor = StringsAndConstants.DARK_BACKGROUND; ;
             this.toolStripMenuItem1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.toolStripMenuItem2.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem2.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.toolStripMenuItem3.BackgroundImage = global::HardwareInformation.Properties.Resources.darkback;
+            this.toolStripMenuItem3.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripMenuItem3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.logLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
