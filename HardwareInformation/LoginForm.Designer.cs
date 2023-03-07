@@ -263,7 +263,7 @@
             // comboBoxServerPort
             // 
             this.comboBoxServerPort.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxServerPort.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxServerPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerPort.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerPort.FormattingEnabled = true;
             this.comboBoxServerPort.Location = new System.Drawing.Point(91, 221);
@@ -274,7 +274,7 @@
             // comboBoxServerIP
             // 
             this.comboBoxServerIP.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxServerIP.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxServerIP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerIP.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerIP.FormattingEnabled = true;
             this.comboBoxServerIP.Location = new System.Drawing.Point(91, 194);

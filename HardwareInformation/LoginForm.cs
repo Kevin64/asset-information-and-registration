@@ -113,10 +113,12 @@ namespace HardwareInformation
             this.comboBoxServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxServerIP.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxServerPort.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
 
             this.AuthButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.AuthButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
