@@ -134,6 +134,10 @@ namespace HardwareInformation
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
+            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
+
+            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
+
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
             configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
             configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
@@ -181,6 +185,10 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
+
+            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
 
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
             configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));

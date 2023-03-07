@@ -650,7 +650,7 @@ namespace HardwareInformation
             this.registerButton.Size = new System.Drawing.Size(265, 56);
             this.registerButton.TabIndex = 53;
             this.registerButton.Text = "Cadastrar / Atualizar dados";
-            this.registerButton.UseVisualStyleBackColor = false;
+            this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.cadastra_ClickAsync);
             // 
             // label18
@@ -712,7 +712,7 @@ namespace HardwareInformation
             this.collectButton.Size = new System.Drawing.Size(180, 25);
             this.collectButton.TabIndex = 51;
             this.collectButton.Text = "Coletar novamente";
-            this.collectButton.UseVisualStyleBackColor = false;
+            this.collectButton.UseVisualStyleBackColor = true;
             this.collectButton.Click += new System.EventHandler(this.coleta_Click);
             // 
             // label23
@@ -754,7 +754,7 @@ namespace HardwareInformation
             this.accessSystemButton.Size = new System.Drawing.Size(180, 25);
             this.accessSystemButton.TabIndex = 52;
             this.accessSystemButton.Text = "Acessar sistema de patrimônios";
-            this.accessSystemButton.UseVisualStyleBackColor = false;
+            this.accessSystemButton.UseVisualStyleBackColor = true;
             this.accessSystemButton.Click += new System.EventHandler(this.accessButton_Click);
             // 
             // label25
@@ -1661,7 +1661,7 @@ namespace HardwareInformation
             // comboBoxBattery
             // 
             this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1674,7 +1674,7 @@ namespace HardwareInformation
             // comboBoxStandard
             // 
             this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStandard.Enabled = false;
@@ -1688,7 +1688,7 @@ namespace HardwareInformation
             // comboBoxActiveDirectory
             // 
             this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActiveDirectory.Enabled = false;
@@ -1702,7 +1702,7 @@ namespace HardwareInformation
             // comboBoxTag
             // 
             this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1715,7 +1715,7 @@ namespace HardwareInformation
             // comboBoxInUse
             // 
             this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1728,7 +1728,7 @@ namespace HardwareInformation
             // comboBoxType
             // 
             this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1741,7 +1741,7 @@ namespace HardwareInformation
             // comboBoxBuilding
             // 
             this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.SystemColors.WindowText;
+            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -2311,23 +2311,24 @@ namespace HardwareInformation
             // 
             // toolStripStatusLabel2
             // 
-            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 19);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 19);
             // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comboBoxTheme,
             this.logLabel,
             this.aboutLabel,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 691);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 702);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(1056, 24);
@@ -2350,8 +2351,8 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(236, 22);
             this.toolStripMenuItem1.Text = "Automático (Tema do sistema)";
@@ -2359,8 +2360,8 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem2.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(236, 22);
             this.toolStripMenuItem2.Text = "Claro";
@@ -2368,8 +2369,8 @@ namespace HardwareInformation
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripMenuItem3.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripMenuItem3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(236, 22);
             this.toolStripMenuItem3.Text = "Escuro";
@@ -2379,29 +2380,35 @@ namespace HardwareInformation
             // 
             this.logLabel.BackColor = System.Drawing.SystemColors.Control;
             this.logLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.logLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.logLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.logLabel.Name = "logLabel";
             this.logLabel.Size = new System.Drawing.Size(31, 19);
             this.logLabel.Text = "Log";
             this.logLabel.Click += new System.EventHandler(this.logLabel_Click);
+            this.logLabel.MouseEnter += new System.EventHandler(this.logLabel_MouseEnter);
+            this.logLabel.MouseLeave += new System.EventHandler(this.logLabel_MouseLeave);
             // 
             // aboutLabel
             // 
             this.aboutLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.aboutLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.aboutLabel.Name = "aboutLabel";
             this.aboutLabel.Size = new System.Drawing.Size(41, 19);
             this.aboutLabel.Text = "Sobre";
-            this.aboutLabel.Click += new System.EventHandler(this.about_Click);
+            this.aboutLabel.Click += new System.EventHandler(this.aboutLabel_Click);
+            this.aboutLabel.MouseEnter += new System.EventHandler(this.aboutLabel_MouseEnter);
+            this.aboutLabel.MouseLeave += new System.EventHandler(this.aboutLabel_MouseLeave);
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripStatusLabel1.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(921, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(917, 19);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // timer1
@@ -2440,7 +2447,7 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.InterpolationMode = null;
             this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
-            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1061, 106);
+            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1095, 106);
             this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.configurableQualityPictureBox1.SmoothingMode = null;
             this.configurableQualityPictureBox1.TabIndex = 64;
@@ -2527,7 +2534,7 @@ namespace HardwareInformation
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1056, 715);
+            this.ClientSize = new System.Drawing.Size(1056, 726);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.loadingCircle23);
             this.Controls.Add(this.loadingCircle22);
@@ -2980,30 +2987,37 @@ namespace HardwareInformation
             this.comboBoxBuilding.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxBuilding.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxBuilding.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBuilding.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxActiveDirectory.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxActiveDirectory.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxActiveDirectory.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxActiveDirectory.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxStandard.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxStandard.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxStandard.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxStandard.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxStandard.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxInUse.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxInUse.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxInUse.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxInUse.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxInUse.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxTag.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxTag.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxTag.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxTag.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxTag.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxType.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxType.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxType.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxType.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxType.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxBattery.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             this.comboBoxBattery.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxBattery.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.comboBoxBattery.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            this.comboBoxBattery.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
             this.comboBoxTheme.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.comboBoxTheme.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
@@ -3029,11 +3043,11 @@ namespace HardwareInformation
             this.groupBox2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.groupBox3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.groupBox4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.groupBox1.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-            this.groupBox2.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-            this.groupBox3.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-            this.groupBox4.Paint += CustomGroupBox.groupBox_PaintLightTheme;
-            this.groupBox5.Paint += CustomGroupBox.groupBox_PaintLightTheme;
+            this.groupBox1.Paint += CustomColors.groupBox_PaintLightTheme;
+            this.groupBox2.Paint += CustomColors.groupBox_PaintLightTheme;
+            this.groupBox3.Paint += CustomColors.groupBox_PaintLightTheme;
+            this.groupBox4.Paint += CustomColors.groupBox_PaintLightTheme;
+            this.groupBox5.Paint += CustomColors.groupBox_PaintLightTheme;
             this.separatorH.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
             this.separatorV.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
 
@@ -3052,6 +3066,16 @@ namespace HardwareInformation
             this.aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             this.aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+
+            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
+
+            this.toolStripMenuItem1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_light_path));
+            this.toolStripMenuItem2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_lighttheme_light_path));
+            this.toolStripMenuItem3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_darktheme_light_path));
+
+            this.comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_light_path));
+            this.logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_log_light_path));
+            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
 
             this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_light_path));
             this.configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_light_path));
@@ -3090,12 +3114,42 @@ namespace HardwareInformation
         }
 
         //Opens the About box
-        private void about_Click(object sender, EventArgs e)
+        private void aboutLabel_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(defList, themeBool);
             if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             aboutForm.ShowDialog();
+        }
+
+        //Opens the About box
+        private void aboutLabel_MouseEnter(object sender, EventArgs e)
+        {
+            aboutLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
+        }
+
+        //Opens the About box
+        private void aboutLabel_MouseLeave(object sender, EventArgs e)
+        {
+            if(!themeBool)
+                aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+        }
+
+        //Opens the About box
+        private void logLabel_MouseEnter(object sender, EventArgs e)
+        {
+            logLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
+        }
+
+        //Opens the About box
+        private void logLabel_MouseLeave(object sender, EventArgs e)
+        {
+            if(!themeBool)
+                logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
         }
 
         //Sets a dark theme for the UI
@@ -3255,11 +3309,11 @@ namespace HardwareInformation
             this.groupBox2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.groupBox3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.groupBox4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.groupBox1.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-            this.groupBox2.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-            this.groupBox3.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-            this.groupBox4.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
-            this.groupBox5.Paint += CustomGroupBox.groupBox_PaintDarkTheme;
+            this.groupBox1.Paint += CustomColors.groupBox_PaintDarkTheme;
+            this.groupBox2.Paint += CustomColors.groupBox_PaintDarkTheme;
+            this.groupBox3.Paint += CustomColors.groupBox_PaintDarkTheme;
+            this.groupBox4.Paint += CustomColors.groupBox_PaintDarkTheme;
+            this.groupBox5.Paint += CustomColors.groupBox_PaintDarkTheme;
             this.separatorH.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
             this.separatorV.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
 
@@ -3267,7 +3321,7 @@ namespace HardwareInformation
             this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.toolStripMenuItem1.BackColor = StringsAndConstants.DARK_BACKGROUND; ;
+            this.toolStripMenuItem1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripMenuItem1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.toolStripMenuItem2.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.toolStripMenuItem2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
@@ -3278,6 +3332,16 @@ namespace HardwareInformation
             this.aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             this.aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
             this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
+
+            this.toolStripMenuItem1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_dark_path));
+            this.toolStripMenuItem2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_lighttheme_dark_path));
+            this.toolStripMenuItem3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_darktheme_dark_path));
+
+            this.comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_dark_path));
+            this.logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_log_dark_path));
+            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
 
             this.configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_dark_path));
             this.configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_dark_path));
@@ -4326,6 +4390,7 @@ namespace HardwareInformation
             FormClosing += Form1_FormClosing;
             tbProgMain = TaskbarManager.Instance;
             coleta_Click(sender, e);
+            //toolStrip1.Renderer = new ModifiedToolStrip();
         }
 
         //Restricts textbox4 only with chars

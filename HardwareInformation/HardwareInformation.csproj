@@ -163,7 +163,7 @@
     <Compile Include="BusyForm.Designer.cs">
       <DependentUpon>BusyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomGroupBox.cs" />
+    <Compile Include="CustomColors.cs" />
     <Compile Include="CustomFlatCombo.cs">
       <SubType>Component</SubType>
     </Compile>
