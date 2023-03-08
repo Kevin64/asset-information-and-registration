@@ -182,16 +182,47 @@ namespace HardwareInformation
                     if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                        Console.WriteLine(StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY);
                         webView2.Dispose();
                         Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    }
+                    else if (pcJsonStr[0] == "false")
+                    {
+                        //Modo
+                        if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
+                            strArgs[2] = StringsAndConstants.formatURL;
+                        else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
+                            strArgs[2] = StringsAndConstants.maintenanceURL;
+                        //AD
+                        if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
+                            strArgs[7] = StringsAndConstants.UTF8_NO;
+                        else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
+                            strArgs[7] = StringsAndConstants.YES;
+                        //Padrao
+                        if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                            strArgs[8] = StringsAndConstants.employee;
+                        else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                            strArgs[8] = StringsAndConstants.student;
+                        //Pilha
+                        if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
+                            strArgs[10] = StringsAndConstants.sameBattery;
+                        else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
+                            strArgs[10] = StringsAndConstants.replacedBattery;
+                        //Uso
+                        if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
+                            strArgs[12] = StringsAndConstants.UTF8_NO;
+                        else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
+                            strArgs[12] = StringsAndConstants.YES;
+                        //Etiqueta
+                        if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
+                            strArgs[13] = StringsAndConstants.UTF8_NO;
+                        else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
+                            strArgs[13] = StringsAndConstants.YES;
                     }
                     else
                     {
                         if (pcJsonStr[9] == "1")
                         {
                             log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutCLI);
-                            Console.WriteLine(StringsAndConstants.LOG_PC_DROPPED);
                             webView2.Dispose();
                             Environment.Exit(StringsAndConstants.RETURN_ERROR);
                         }
@@ -240,7 +271,7 @@ namespace HardwareInformation
                             strArgs[13] = pcJsonStr[7];
                         else if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
                             strArgs[13] = StringsAndConstants.UTF8_NO;
-                        else if(strArgs[13].Equals("S") || strArgs[13].Equals("s"))
+                        else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
                             strArgs[13] = StringsAndConstants.YES;
                         //Tipo
                         if (strArgs[14].Equals(StringsAndConstants.sameWord))
@@ -250,27 +281,79 @@ namespace HardwareInformation
 
                     if (pass)
                     {
-                        if (strArgs[9].Equals(StringsAndConstants.today))
-                        {
-                            strArgs[9] = DateTime.Today.ToString().Substring(0, 10);
+                        DateTime d = new DateTime();
+                        var todayDate = DateTime.Today;
+                        bool tDay;
 
-                            if (modo == "f" || modo == "F")
-                                MiscMethods.regCreate(true, DateTime.Today.ToString());
-                            if (modo == "m" || modo == "M")
-                                MiscMethods.regCreate(false, DateTime.Today.ToString());
-                        }
-                        else
+                        try
                         {
+                            if (strArgs[9].Equals(StringsAndConstants.today))
+                            {
+                                strArgs[9] = DateTime.Today.ToString("yyyy-MM-dd").Substring(0, 10);
+                                tDay = true;
+                            }
+                            else
+                            {
+                                d = DateTime.Parse(strArgs[9]);
+                                strArgs[9] = d.ToString("yyyy-MM-dd");
+                                tDay = false;
+                            }
+                            
+                            var registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                            if (registerDate >= lastRegisterDate)
+                            {
+                                if (tDay)
+                                    strArgs[9] = todayDate.ToString().Substring(0, 10);
+                                else if(registerDate <= todayDate)
+                                {
+                                    strArgs[9] = DateTime.Parse(strArgs[9]).ToString().Substring(0, 10);
+                                }
+                                else
+                                {
+                                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_FUTURE_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    webView2.Dispose();
+                                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                                }
+
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                                serverSendInfo(strArgs);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+
+                                if (modo == "f" || modo == "F")
+                                    MiscMethods.regCreate(true, strArgs[9]);
+                                if (modo == "m" || modo == "M")
+                                    MiscMethods.regCreate(false, strArgs[9]);
+                            }
+                            else
+                            {
+                                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                webView2.Dispose();
+                                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                            }
+                        }
+                        catch
+                        {
+                            if (strArgs[9].Equals(StringsAndConstants.today))
+                            {
+                                strArgs[9] = todayDate.ToString().Substring(0, 10);
+                            }
+                            else
+                            {
+                                d = DateTime.Parse(strArgs[9]);
+                                strArgs[9] = d.ToString().Substring(0, 10);
+                            }
+
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                            serverSendInfo(strArgs);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+
                             if (modo == "f" || modo == "F")
                                 MiscMethods.regCreate(true, strArgs[9]);
                             if (modo == "m" || modo == "M")
                                 MiscMethods.regCreate(false, strArgs[9]);
                         }
-
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                        serverSendInfo(strArgs);
-                        //webView2.NavigationCompleted += webView2_NavigationCompleted;
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
                     }
                     else
                     {
@@ -295,7 +378,6 @@ namespace HardwareInformation
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Console.WriteLine(StringsAndConstants.LOG_OFFLINE_SERVER);
                     webView2.Dispose();
                     Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
@@ -303,7 +385,6 @@ namespace HardwareInformation
             else
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                Console.WriteLine(StringsAndConstants.ARGS_ERROR);
                 webView2.Dispose();
                 Environment.Exit(StringsAndConstants.RETURN_ERROR);
             }
@@ -313,7 +394,6 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
             webView2.NavigationCompleted += webView2_NavigationCompleted;
-            //webView2.Dispose();
             Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
         }
 
@@ -428,62 +508,80 @@ namespace HardwareInformation
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
 
+            //Scans for PC maker
             strArgs[17] = HardwareInfo.GetBoardMaker();
             if (strArgs[17] == StringsAndConstants.ToBeFilledByOEM || strArgs[17] == "")
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, strArgs[17], StringsAndConstants.consoleOutCLI);
 
+            //Scans for PC model
             strArgs[18] = HardwareInfo.GetModel();
             if (strArgs[18] == StringsAndConstants.ToBeFilledByOEM || strArgs[18] == "")
                 strArgs[18] = HardwareInfo.GetModelAlt();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, strArgs[18], StringsAndConstants.consoleOutCLI);
 
+            //Scans for motherboard Serial number
             strArgs[19] = HardwareInfo.GetBoardProductId();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERIALNO, strArgs[19], StringsAndConstants.consoleOutCLI);
 
+            //Scans for CPU information
             strArgs[20] = HardwareInfo.GetProcessorCores();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PROCNAME, strArgs[20], StringsAndConstants.consoleOutCLI);
 
+            //Scans for RAM amount and total number of slots
             strArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, strArgs[21], StringsAndConstants.consoleOutCLI);
-
+            
+            //Scans for Storage size
             strArgs[22] = HardwareInfo.GetHDSize();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, strArgs[22], StringsAndConstants.consoleOutCLI);
 
+            //Scans for Storage type
             strArgs[29] = HardwareInfo.GetStorageType();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIATYPE, strArgs[29], StringsAndConstants.consoleOutCLI);
 
+            //Scans for Media Operation (IDE/AHCI/NVME)
             strArgs[31] = HardwareInfo.GetStorageOperation();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIAOP, strArgs[31], StringsAndConstants.consoleOutCLI);
 
+            //Scans for GPU information
             strArgs[30] = HardwareInfo.GetGPUInfo();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GPUINFO, strArgs[30], StringsAndConstants.consoleOutCLI);
 
+            //Scans for OS infomation
             strArgs[23] = HardwareInfo.GetOSInformation();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OS, strArgs[23], StringsAndConstants.consoleOutCLI);
 
+            //Scans for Hostname
             strArgs[24] = HardwareInfo.GetComputerName();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HOSTNAME, strArgs[24], StringsAndConstants.consoleOutCLI);
 
+            //Scans for MAC Address
             strArgs[26] = HardwareInfo.GetMACAddress();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MAC, strArgs[26], StringsAndConstants.consoleOutCLI);
 
+            //Scans for IP Address
             strArgs[27] = HardwareInfo.GetIPAddress();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_IP, strArgs[27], StringsAndConstants.consoleOutCLI);
 
+            //Scans for firmware type
             strArgs[28] = HardwareInfo.GetBIOSType();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOSTYPE, strArgs[28], StringsAndConstants.consoleOutCLI);
 
+            //Scans for Secure Boot status
             strArgs[32] = HardwareInfo.GetSecureBoot();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SECBOOT, strArgs[32], StringsAndConstants.consoleOutCLI);
 
+            //Scans for BIOS version
             strArgs[25] = HardwareInfo.GetComputerBIOS();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOS, strArgs[25], StringsAndConstants.consoleOutCLI);
 
+            //Scans for VT status
             strArgs[33] = HardwareInfo.GetVirtualizationTechnology();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VT, strArgs[33], StringsAndConstants.consoleOutCLI);
 
+            //Scans for TPM status
             strArgs[34] = HardwareInfo.GetTPMStatus();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_TPM, strArgs[34], StringsAndConstants.consoleOutCLI);
 

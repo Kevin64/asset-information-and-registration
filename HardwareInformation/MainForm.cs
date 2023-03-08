@@ -23,26 +23,24 @@ namespace HardwareInformation
 {
     public partial class MainForm : Form
     {
-        private BackgroundWorker backgroundWorker1;
-        private ToolStripStatusLabel logLabel;
-        private LogGenerator log;
-        private TaskbarManager tbProgMain;
+        private int percent, i = 0;
+        private bool themeBool, serverOnline, offlineMode, pass = true;
+        private string servidor_web, porta, modeURL, user, ip, port;
+        private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType, MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM;
+        private string[] sArgs = new string[34];
         private List<string[]> defList;
         private List<string> orgList;
-        private ToolStripStatusLabel aboutLabel;
-        private GroupBox groupBox5;
-        private LoadingCircle loadingCircle24;
-        private int percent;
 
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
         {
+            //Inits WinForms components
             InitializeComponent();
 
             //Program version
 #if DEBUG
-            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
+            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status); //Debug/Beta version
 #else
-            this.toolStripStatusLabel2.Text = MiscMethods.version();
+            this.toolStripStatusLabel2.Text = MiscMethods.version(); //Release/Final version
 #endif
             //Define theming according to ini file provided info
             if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
@@ -2445,9 +2443,9 @@ namespace HardwareInformation
             this.configurableQualityPictureBox1.CompositingQuality = null;
             this.configurableQualityPictureBox1.InitialImage = null;
             this.configurableQualityPictureBox1.InterpolationMode = null;
-            this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -2);
+            this.configurableQualityPictureBox1.Location = new System.Drawing.Point(0, 0);
             this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
-            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1095, 106);
+            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(1056, 105);
             this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.configurableQualityPictureBox1.SmoothingMode = null;
             this.configurableQualityPictureBox1.TabIndex = 64;
@@ -2738,14 +2736,6 @@ namespace HardwareInformation
         private Label lblMaintenanceSince;
         private Label lblInstallSince;
         private BusyForm bw;
-
-        private bool pass = true;
-        private bool themeBool, serverOnline, offlineMode;
-        private List<string> date;
-        private string servidor_web, porta, modeURL, user, ip, port;
-        private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType,
-           MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM;
-        private string[] sArgs = new string[34];
         private Label lblPortServer;
         private Label lblIPServer;
         private Label lblAgentName;
@@ -2788,7 +2778,14 @@ namespace HardwareInformation
         private LoadingCircle loadingCircle20;
         private LoadingCircle loadingCircle22;
         private LoadingCircle loadingCircle23;
-        private int i = 0;
+        private ToolStripStatusLabel aboutLabel;
+        private GroupBox groupBox5;
+        private LoadingCircle loadingCircle24;
+        private BackgroundWorker backgroundWorker1;
+        private ToolStripStatusLabel logLabel;
+        private LogGenerator log;
+        private TaskbarManager tbProgMain;
+
         #endregion
 
         //Sets service mode to format
@@ -2823,33 +2820,26 @@ namespace HardwareInformation
             themeBool = MiscMethods.ThemeInit();
             if (themeBool)
             {
-                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                darkTheme();
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10)) //If Windows 10/11
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark); //Sets context menus to dark
+                darkTheme(); //Sets dark theme
             }
             else
             {
-                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                lightTheme();
+                if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10)) //If Windows 10/11
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light); //Sets context menus to light
+                lightTheme(); //Sets light theme
             }
         }
 
-        //Method for logging out
-        private void logoutLabel_Click(object sender, EventArgs e)
-        {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGOUT, string.Empty, StringsAndConstants.consoleOutGUI);
-            this.DialogResult = DialogResult.OK;
-        }
-
-        //Method for setting the auto theme
+        //Method for setting the auto theme via toolStrip 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_AUTOTHEME_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
             comboBoxThemeInit();
         }
 
-        //Method for setting the light theme
+        //Method for setting the light theme via toolStrip
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LIGHTMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -2859,7 +2849,7 @@ namespace HardwareInformation
             themeBool = false;
         }
 
-        //Method for setting the dark theme
+        //Method for setting the dark theme via toolStrip
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DARKMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -2867,16 +2857,6 @@ namespace HardwareInformation
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
             darkTheme();
             themeBool = true;
-        }
-
-        private void logLabel_Click(object sender, EventArgs e)
-        {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OPENING_LOG, string.Empty, StringsAndConstants.consoleOutGUI);
-#if DEBUG
-            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
-#else
-            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
-#endif
         }
 
         //Sets a light theme for the UI
@@ -3113,45 +3093,6 @@ namespace HardwareInformation
             this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_light_path));
         }
 
-        //Opens the About box
-        private void aboutLabel_Click(object sender, EventArgs e)
-        {
-            AboutBox aboutForm = new AboutBox(defList, themeBool);
-            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
-                DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
-            aboutForm.ShowDialog();
-        }
-
-        //Opens the About box
-        private void aboutLabel_MouseEnter(object sender, EventArgs e)
-        {
-            aboutLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
-        }
-
-        //Opens the About box
-        private void aboutLabel_MouseLeave(object sender, EventArgs e)
-        {
-            if(!themeBool)
-                aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            else
-                aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-        }
-
-        //Opens the About box
-        private void logLabel_MouseEnter(object sender, EventArgs e)
-        {
-            logLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
-        }
-
-        //Opens the About box
-        private void logLabel_MouseLeave(object sender, EventArgs e)
-        {
-            if(!themeBool)
-                logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            else
-                logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-        }
-
         //Sets a dark theme for the UI
         private void darkTheme()
         {
@@ -3379,6 +3320,56 @@ namespace HardwareInformation
             this.configurableQualityPictureBox35.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_dark_path));
         }
 
+        //Sets highlight about label when hovering with the mouse
+        private void aboutLabel_MouseEnter(object sender, EventArgs e)
+        {
+            aboutLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
+        }
+
+        //Resets highlight about label when hovering with the mouse
+        private void aboutLabel_MouseLeave(object sender, EventArgs e)
+        {
+            if (!themeBool)
+                aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+        }
+
+        //Sets highlight log label when hovering with the mouse
+        private void logLabel_MouseEnter(object sender, EventArgs e)
+        {
+            logLabel.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
+        }
+
+        //Resets highlight log label when hovering with the mouse
+        private void logLabel_MouseLeave(object sender, EventArgs e)
+        {
+            if (!themeBool)
+                logLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            else
+                logLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+        }
+
+        //Opens the log file
+        private void logLabel_Click(object sender, EventArgs e)
+        {
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OPENING_LOG, string.Empty, StringsAndConstants.consoleOutGUI);
+#if DEBUG
+            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+#else
+            System.Diagnostics.Process.Start(defList[4][0] + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+#endif
+        }
+
+        //Opens the About box
+        private void aboutLabel_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutForm = new AboutBox(defList, themeBool);
+            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
+            aboutForm.ShowDialog();
+        }
+
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
         private void accessButton_Click(object sender, EventArgs e)
         {
@@ -3391,9 +3382,13 @@ namespace HardwareInformation
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_MAINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
+            
+            //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
+
+            //Kills Webview2 instance
             webView2.Dispose();
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
@@ -3402,7 +3397,7 @@ namespace HardwareInformation
         //Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
         private async void Form1_Load(object sender, EventArgs e)
         {
-            // Define loading circle parameters
+            //Define loading circle parameters
             #region
 
             switch(MiscMethods.GetWindowsScaling())
@@ -4300,6 +4295,8 @@ namespace HardwareInformation
                     break;
             }
 
+            //Sets loading circle color and rotation speed
+            #region
             loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle2.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle3.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
@@ -4348,13 +4345,15 @@ namespace HardwareInformation
             loadingCircle22.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle23.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle24.Color = StringsAndConstants.rotatingCircleColor;
+            #endregion
 
             #endregion
 
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 19;
             progressBar1.Value = 0;
-            //comboBoxThemeInit();
+            
+            //If stats in non-offline mode, instantiates WebView2 and show a Busy form until loading is complete
             if (!offlineMode)
             {
                 bw = new BusyForm();
@@ -4362,6 +4361,8 @@ namespace HardwareInformation
                 await loadWebView2();
                 bw.Visible = false;
             }
+            //Sets timer settings for respective alerts
+            #region
             timer1.Tick += new EventHandler(flashTextHostname);
             timer2.Tick += new EventHandler(flashTextMediaOp);
             timer3.Tick += new EventHandler(flashTextSecBoot);
@@ -4382,15 +4383,15 @@ namespace HardwareInformation
             timer8.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer9.Interval = StringsAndConstants.TIMER_INTERVAL;
             timer10.Interval = StringsAndConstants.TIMER_INTERVAL;
-            lblIPServer.Text = ip;
-            lblPortServer.Text = port;
-            lblAgentName.Text = this.user.ToUpper();
-            dateTimePicker1.MaxDate = DateTime.Today;
-            date = new List<string>();
-            FormClosing += Form1_FormClosing;
-            tbProgMain = TaskbarManager.Instance;
-            coleta_Click(sender, e);
-            //toolStrip1.Renderer = new ModifiedToolStrip();
+            #endregion
+
+            lblIPServer.Text = ip; //Prints IP address
+            lblPortServer.Text = port; //Prints port number
+            lblAgentName.Text = this.user.ToUpper(); //Prints agent name
+            dateTimePicker1.MaxDate = DateTime.Today; //Define max date of datetimepicker to current day
+            FormClosing += Form1_FormClosing; //Handles Form closing
+            tbProgMain = TaskbarManager.Instance; //Handles taskbar progress bar
+            coleta_Click(sender, e); //Start collecting
         }
 
         //Restricts textbox4 only with chars
@@ -4529,7 +4530,8 @@ namespace HardwareInformation
         //Starts the collection process
         private async void collecting()
         {
-            //Writes a dash in the labels, while collects data
+            //Writes a dash in the labels, while scanning the hardware
+            #region
             lblInstallSince.Text = StringsAndConstants.DASH;
             lblMaintenanceSince.Text = StringsAndConstants.DASH;
             lblBM.Text = StringsAndConstants.DASH;
@@ -4553,7 +4555,10 @@ namespace HardwareInformation
             lblTPM.Text = StringsAndConstants.DASH;
             collectButton.Text = StringsAndConstants.DASH;
             label26.Text = StringsAndConstants.DASH;
+            #endregion
 
+            //Show loading circles while scanning the hardware
+            #region
             loadingCircle1.Visible = true;
             loadingCircle2.Visible = true;
             loadingCircle3.Visible = true;
@@ -4576,7 +4581,6 @@ namespace HardwareInformation
             loadingCircle20.Visible = true;
             loadingCircle21.Visible = true;
             loadingCircle22.Visible = true;
-
             loadingCircle1.Active = true;
             loadingCircle2.Active = true;
             loadingCircle3.Active = true;
@@ -4599,6 +4603,7 @@ namespace HardwareInformation
             loadingCircle20.Active = true;
             loadingCircle21.Active = true;
             loadingCircle22.Active = true;
+            #endregion
 
             if (!offlineMode)
             {
@@ -4606,8 +4611,12 @@ namespace HardwareInformation
                 loadingCircle24.Active = true;
                 servidor_web = ip;
                 porta = port;
+
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
+                
+                //Feches model info from server
                 serverOnline = await BIOSFileReader.checkHostMT(servidor_web, porta);
+                
                 if (serverOnline && porta != "")
                 {
                     loadingCircle24.Visible = false;
@@ -4631,7 +4640,7 @@ namespace HardwareInformation
                 lblIPServer.ForeColor = lblPortServer.ForeColor = lblAgentName.ForeColor = label26.ForeColor = StringsAndConstants.OFFLINE_ALERT;
             }
 
-            //Stops blinking and resets red color
+            //Alerts stop blinking and resets red color
             timer1.Enabled = false;
             timer2.Enabled = false;
             timer3.Enabled = false;
@@ -4642,6 +4651,8 @@ namespace HardwareInformation
             timer8.Enabled = false;
             timer9.Enabled = false;
             timer10.Enabled = false;
+
+            //Resets the colors while scanning the hardware
             if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR || lblPM.ForeColor == StringsAndConstants.ALERT_COLOR || lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR)
             {
                 if (themeBool)
@@ -4669,7 +4680,7 @@ namespace HardwareInformation
             }
         }
 
-        //Auxiliary method
+        //Auxiliary method for progress bar
         private int progressAuxFunction(int k)
         {
             return (k * 100) / progressBar1.Maximum;
@@ -4683,6 +4694,7 @@ namespace HardwareInformation
 
             i = 0;
 
+            //Scans for PC maker
             BM = HardwareInfo.GetBoardMaker();
             if (BM == StringsAndConstants.ToBeFilledByOEM || BM == "")
                 BM = HardwareInfo.GetBoardMakerAlt();
@@ -4690,6 +4702,7 @@ namespace HardwareInformation
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, BM, StringsAndConstants.consoleOutGUI);
 
+            //Scans for PC model
             Model = HardwareInfo.GetModel();
             if (Model == StringsAndConstants.ToBeFilledByOEM || Model == "")
                 Model = HardwareInfo.GetModelAlt();
@@ -4697,87 +4710,104 @@ namespace HardwareInformation
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, Model, StringsAndConstants.consoleOutGUI);
 
+            //Scans for motherboard Serial number
             SerialNo = HardwareInfo.GetBoardProductId();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERIALNO, SerialNo, StringsAndConstants.consoleOutGUI);
 
+            //Scans for CPU information
             ProcName = HardwareInfo.GetProcessorCores();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PROCNAME, ProcName, StringsAndConstants.consoleOutGUI);
 
+            //Scans for RAM amount and total number of slots
             PM = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, PM, StringsAndConstants.consoleOutGUI);
 
+            //Scans for Storage size
             HDSize = HardwareInfo.GetHDSize();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, HDSize, StringsAndConstants.consoleOutGUI);
 
+            //Scans for SMART status
             Smart = HardwareInfo.GetSMARTStatus();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SMART, Smart, StringsAndConstants.consoleOutGUI);
 
+            //Scans for Storage type
             MediaType = HardwareInfo.GetStorageType();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIATYPE, MediaType, StringsAndConstants.consoleOutGUI);
 
+            //Scans for Media Operation (IDE/AHCI/NVME)
             MediaOperation = HardwareInfo.GetStorageOperation();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIAOP, MediaOperation, StringsAndConstants.consoleOutGUI);
 
+            //Scans for GPU information
             GPUInfo = HardwareInfo.GetGPUInfo();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GPUINFO, GPUInfo, StringsAndConstants.consoleOutGUI);
 
+            //Scans for OS infomation
             OS = HardwareInfo.GetOSInformation();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OS, OS, StringsAndConstants.consoleOutGUI);
 
+            //Scans for Hostname
             Hostname = HardwareInfo.GetComputerName();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HOSTNAME, Hostname, StringsAndConstants.consoleOutGUI);
 
+            //Scans for MAC Address
             Mac = HardwareInfo.GetMACAddress();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MAC, Mac, StringsAndConstants.consoleOutGUI);
 
+            //Scans for IP Address
             IP = HardwareInfo.GetIPAddress();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_IP, IP, StringsAndConstants.consoleOutGUI);
 
+            //Scans for firmware type
             BIOSType = HardwareInfo.GetBIOSType();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOSTYPE, BIOSType, StringsAndConstants.consoleOutGUI);
 
+            //Scans for Secure Boot status
             SecBoot = HardwareInfo.GetSecureBoot();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SECBOOT, SecBoot, StringsAndConstants.consoleOutGUI);
 
+            //Scans for BIOS version
             BIOS = HardwareInfo.GetComputerBIOS();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOS, BIOS, StringsAndConstants.consoleOutGUI);
 
+            //Scans for VT status
             VT = HardwareInfo.GetVirtualizationTechnology();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VT, VT, StringsAndConstants.consoleOutGUI);
 
+            //Scans for TPM status
             TPM = HardwareInfo.GetTPMStatus();
             i++;
             worker.ReportProgress(progressAuxFunction(i));
@@ -4789,6 +4819,8 @@ namespace HardwareInformation
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
         private async Task printHardwareData()
         {
+            //Hides loading circles after scanning the hardware
+            #region
             loadingCircle1.Visible = false;
             loadingCircle2.Visible = false;
             loadingCircle3.Visible = false;
@@ -4810,7 +4842,6 @@ namespace HardwareInformation
             loadingCircle19.Visible = false;
             loadingCircle20.Visible = false;
             loadingCircle21.Visible = false;
-
             loadingCircle1.Active = false;
             loadingCircle2.Active = false;
             loadingCircle3.Active = false;
@@ -4832,8 +4863,10 @@ namespace HardwareInformation
             loadingCircle19.Active = false;
             loadingCircle20.Active = false;
             loadingCircle21.Active = false;
-            
-            pass = true;
+            #endregion
+
+            //Prints fetched data into labels
+            #region
             lblBM.Text = BM;
             lblModel.Text = Model;
             lblSerialNo.Text = SerialNo;
@@ -4855,6 +4888,10 @@ namespace HardwareInformation
             lblTPM.Text = TPM;
             lblInstallSince.Text = MiscMethods.sinceLabelUpdate(true);
             lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
+            #endregion
+
+            pass = true;
+
             log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
             log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
 
@@ -4862,6 +4899,7 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
             try
             {
+                //Feches model info from server
                 string[] biosJsonStr = await BIOSFileReader.fetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
                 //Scan if hostname is the default one
@@ -4890,6 +4928,7 @@ namespace HardwareInformation
                     timer3.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //If model Json file does not exist
                 if (biosJsonStr == null)
                 {
                     if (!offlineMode)
@@ -4899,6 +4938,7 @@ namespace HardwareInformation
                         MessageBox.Show(StringsAndConstants.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+                //If model Json file does exist and BIOS/UEFI version is incorrect
                 if (biosJsonStr != null && !lblBIOS.Text.Contains(biosJsonStr[0]))
                 {
                     if (!biosJsonStr[0].Equals("-1"))
@@ -4909,6 +4949,7 @@ namespace HardwareInformation
                         log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                     }
                 }
+                //If model Json file does exist and firmware type is incorrect
                 if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
                 {
                     pass = false;
@@ -4916,23 +4957,24 @@ namespace HardwareInformation
                     timer6.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //If there is no MAC address assigned
                 if (lblMac.Text == "")
                 {
-                    if (!offlineMode)
+                    if (!offlineMode) //If it's not in offline mode
                     {
                         pass = false;
-                        lblMac.Text = StringsAndConstants.NETWORK_ERROR;
-                        lblIP.Text = StringsAndConstants.NETWORK_ERROR;
+                        lblMac.Text = StringsAndConstants.NETWORK_ERROR; //Prints a network error
+                        lblIP.Text = StringsAndConstants.NETWORK_ERROR; //Prints a network error
                         timer5.Enabled = true;
                         log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                     }
-                    else
+                    else //If it's in offline mode
                     {
-                        lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
-                        lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED;
+                        lblMac.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED; //Specifies offline mode
+                        lblIP.Text = StringsAndConstants.OFFLINE_MODE_ACTIVATED; //Specifies offline mode
                     }
-
                 }
+                //If Virtualization Technology is disabled
                 if (lblVT.Text == StringsAndConstants.deactivated)
                 {
                     pass = false;
@@ -4940,6 +4982,7 @@ namespace HardwareInformation
                     timer7.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //If Smart status is no OK
                 if (!lblSmart.Text.Contains(StringsAndConstants.ok))
                 {
                     pass = false;
@@ -4947,6 +4990,7 @@ namespace HardwareInformation
                     timer8.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //If model Json file does exist and TPM is not enabled
                 if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
                 {
                     pass = false;
@@ -4954,7 +4998,9 @@ namespace HardwareInformation
                     timer9.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                //If RAM is less than 4GB and OS is x64, shows an alert
                 if (d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
@@ -4962,6 +5008,7 @@ namespace HardwareInformation
                     timer10.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
+                //If RAM is more than 4GB and OS is x86, shows an alert
                 if (d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
@@ -5028,12 +5075,12 @@ namespace HardwareInformation
             
             if (!offlineMode)
             {
-                accessSystemButton.Enabled = true;
-                registerButton.Enabled = true;
+                accessSystemButton.Enabled = true; //Enables accessSystem button
+                registerButton.Enabled = true; //Enables register button
             }
-            loadingCircle22.Visible = false;
-            collectButton.Enabled = true;
-            collectButton.Text = StringsAndConstants.FETCH_AGAIN;
+            loadingCircle22.Visible = false; //Hides loading circle
+            collectButton.Enabled = true; //Enables collect button
+            collectButton.Text = StringsAndConstants.FETCH_AGAIN; //Updates collect button text
         }
 
         //Attributes the data collected previously to the variables which will inside the URL for registration
@@ -5074,27 +5121,17 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutGUI);
         }
 
-        //Allocates WebView2 runtime
-        public void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
-        {
-            if (e.IsSuccess)
-            {
-                webView2.Dispose();
-                Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
-            }
-        }
-
         //Sends hardware info to the specified server
         public void serverSendInfo(string[] serverArgs)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutGUI);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[10] + "&modelo=" + serverArgs[11] + "&numeroSerial=" + serverArgs[12] + "&processador=" + serverArgs[13] + "&memoria=" + serverArgs[14] + "&hd=" + serverArgs[15] + "&sistemaOperacional=" + serverArgs[16] + "&nomeDoComputador=" + serverArgs[17] + "&bios=" + serverArgs[18] + "&mac=" + serverArgs[19] + "&ip=" + serverArgs[20] + "&emUso=" + serverArgs[21] + "&etiqueta=" + serverArgs[22] + "&tipo=" + serverArgs[23] + "&tipoFW=" + serverArgs[24] + "&tipoArmaz=" + serverArgs[25] + "&gpu=" + serverArgs[26] + "&modoArmaz=" + serverArgs[27] + "&secBoot=" + serverArgs[28] + "&vt=" + serverArgs[29] + "&tpm=" + serverArgs[30] + "&trocaPilha=" + serverArgs[31] + "&ticketNum=" + serverArgs[32] + "&agent=" + serverArgs[33]);
-            //webView2.NavigationCompleted += webView2_NavigationCompleted;
         }
 
         //Runs the registration for the website
         private async void cadastra_ClickAsync(object sender, EventArgs e)
         {
+            webView2.Visible = false;
             tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutGUI);
             loadingCircle23.Visible = true;
@@ -5104,8 +5141,11 @@ namespace HardwareInformation
             accessSystemButton.Enabled = false;
             collectButton.Enabled = false;
             attrHardwareData();
+
+            //If all the mandatory fields are filled and there are no pendencies
             if (!string.IsNullOrWhiteSpace(textBoxPatrimony.Text) && !string.IsNullOrWhiteSpace(textBoxRoom.Text) && !string.IsNullOrWhiteSpace(textBoxTicket.Text) && comboBoxType.SelectedItem != null && comboBoxBuilding.SelectedItem != null && comboBoxInUse.SelectedItem != null && comboBoxTag.SelectedItem != null && comboBoxBattery.SelectedItem != null && (employeeRadioButton.Checked || studentRadioButton.Checked) && (formatButton.Checked || maintenanceButton.Checked) && pass == true)
             {
+                //Attributes variables to an array which will be sent to the server
                 sArgs[0] = ip;
                 sArgs[1] = port;
                 sArgs[2] = modeURL;
@@ -5118,7 +5158,7 @@ namespace HardwareInformation
                 sArgs[6] = comboBoxBuilding.SelectedItem.ToString();
                 sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString();
                 sArgs[8] = comboBoxStandard.SelectedItem.ToString();
-                sArgs[9] = dateTimePicker1.Value.ToString();
+                sArgs[9] = dateTimePicker1.Value.ToString("yyyy-MM-dd").Substring(0, 10);
                 sArgs[21] = comboBoxInUse.SelectedItem.ToString();
                 sArgs[22] = comboBoxTag.SelectedItem.ToString();
                 sArgs[23] = comboBoxType.SelectedItem.ToString();
@@ -5129,8 +5169,10 @@ namespace HardwareInformation
                 sArgs[32] = textBoxTicket.Text;
                 sArgs[33] = this.user;
 
+                //Feches patrimony data from server
                 string[] pcJsonStr = await PCFileReader.fetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
-                if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1")
+                
+                if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1") //If patrinony is discarded
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
@@ -5138,45 +5180,76 @@ namespace HardwareInformation
                     MessageBox.Show(StringsAndConstants.PC_DROPPED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
                 }
-                else
+                else //If not discarded
                 {
-                    if (serverOnline && porta != "")
+                    if (serverOnline && porta != "") //If server is online and port is not null
                     {
-                        if (!date.Contains(sArgs[9]))
+                        try //Tries to get the laster register date from the patrimony to check if the chosen date is adequate
                         {
+                            var registerDate = DateTime.ParseExact(sArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+
+                            if(registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
+                            {
+                                sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
+                                webView2.Visible = true;
+                                serverSendInfo(sArgs);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
+
+                                if (formatButton.Checked) //If the format radio button is checked
+                                {
+                                    MiscMethods.regCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
+                                    lblInstallSince.Text = MiscMethods.sinceLabelUpdate(true);
+                                    lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                }
+                                else if (maintenanceButton.Checked) //If the maintenance radio button is checked
+                                {
+                                    MiscMethods.regCreate(false, dateTimePicker1); //Create reg entry just for maintenance
+                                    lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                }
+                                await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
+                                tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                            }
+                            else //If chosen date is before the last format/maintenance date of the PC, shows an error
+                            {
+                                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                MessageBox.Show(StringsAndConstants.INCORRECT_REGISTER_DATE, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
+                                tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
+                            }
+                        }
+                        catch //If can't retrieve (patrimony non existent in the database), register normally
+                        {
+                            sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                             webView2.Visible = true;
                             serverSendInfo(sArgs);
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
-                            date.Add(sArgs[9]);
-                            if (formatButton.Checked)
+
+                            if (formatButton.Checked) //If the format radio button is checked
                             {
-                                MiscMethods.regCreate(true, dateTimePicker1);
+                                MiscMethods.regCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
                                 lblInstallSince.Text = MiscMethods.sinceLabelUpdate(true);
                                 lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                                date.Add(sArgs[9]);
+
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                                date.Add(sArgs[9]);
+
                             }
-                            else if (maintenanceButton.Checked)
+                            else if (maintenanceButton.Checked) //If the maintenance radio button is checked
                             {
-                                MiscMethods.regCreate(false, dateTimePicker1);
+                                MiscMethods.regCreate(false, dateTimePicker1); //Create reg entry just for maintenance
                                 lblMaintenanceSince.Text = MiscMethods.sinceLabelUpdate(false);
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                                date.Add(sArgs[9]);
+
                             }
                             await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
                             tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                         }
-                        else
-                        {
-                            log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ALREADY_REGISTERED_TODAY, string.Empty, StringsAndConstants.consoleOutGUI);
-                            MessageBox.Show(StringsAndConstants.ALREADY_REGISTERED_TODAY, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
-                            tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
-                        }
                     }
-                    else
+                    else //If the server is out of reach
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -5185,20 +5258,22 @@ namespace HardwareInformation
                     }
                 }
             }
-            else if (!pass)
+            else if (!pass) //If there are pendencies in the PC config
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
             }
-            else
+            else //If all fields are not filled
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 MessageBox.Show(StringsAndConstants.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, this.Handle);
             }
+
+            //When finished registering, resets control states
             loadingCircle23.Visible = false;
             loadingCircle23.Active = false;
             registerButton.Text = StringsAndConstants.REGISTER_AGAIN;

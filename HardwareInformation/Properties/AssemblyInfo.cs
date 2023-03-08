@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
     "    • URL do projeto: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes\r\n" +
     "    • Licença: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENCE\r\n" +
     "\r\n" +
-    "Este software e suas bibliotecas (DLLs) utilizam bibliotecas Open Source e códigos avulsos de terceiros, listados abaixo. Todos os créditos vão para os seus respectivos criadores e mantenedores:\r\n" +
+    "Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros, listados abaixo. Todos os créditos vão para os seus respectivos criadores e mantenedores:\r\n" +
     "\r\n" +
     "► Configurable Quality PictureBox (créditos a Jason D)\r\n" +
     "    • URL do projeto: https://stackoverflow.com/a/1774592/16838132\r\n" +
@@ -68,7 +68,12 @@ using System.Runtime.InteropServices;
     "\r\n" +
     "► DarkNet (créditos a Ben Hutchison)\r\n" +
     "    • URL do projeto: https://github.com/Aldaviva/DarkNet\r\n" +
-    "    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt\r\n")]
+    "    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt\r\n" +
+    "\r\n" +
+    "► fluentui-system-icons\r\n" +
+    "    • Copyright (c) 2020 Microsoft Corporation.\r\n" +
+    "    • URL do projeto: https://github.com/microsoft/fluentui-system-icons\r\n" +
+    "    • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE\r\n")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Coleta de Hardware e Cadastro de Patrimônio")]
 [assembly: AssemblyCopyright("")]
