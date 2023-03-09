@@ -22,15 +22,15 @@ namespace HardwareInformation
 {
 	public class Program
     {
+        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr, themeStr;
+        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
+        private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
+        private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
+
         private static List<string[]> definitionListSection;
         private static List<string> orgDataListSection;
         private static LogGenerator log;
-        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr, themeStr;
-        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
 
-        private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
-        private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
-        
         //Command line switch options specification
         public class Options
         {
@@ -232,6 +232,7 @@ namespace HardwareInformation
                 else
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
 
+                //If given no args, runs LoginForm
                 if (args.Length == 0)
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -239,9 +240,9 @@ namespace HardwareInformation
                     Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
                     if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
-                    Application.Run(lForm); //If given no args, runs LoginForm
+                    Application.Run(lForm);
                 }
-                else
+                else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
                     int index = Array.IndexOf(argsLog, "--senha");
@@ -255,7 +256,8 @@ namespace HardwareInformation
                         argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
                     
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
-                    //If given args, parses them
+                    
+                    //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
                     if (args.Length == 1 && args.Contains("--help"))

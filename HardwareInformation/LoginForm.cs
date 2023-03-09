@@ -12,37 +12,43 @@ using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
-using MRG.Controls.UI;
 
 namespace HardwareInformation
 {
     public partial class LoginForm : Form
     {
+        private bool themeBool;
+        private string[] str = { };
         private LogGenerator log;
         private BackgroundWorker backgroundWorker1;
+        private List<string[]> defList;
+        private List<string> orgList;
+
+        #region
         private TaskbarManager tbProgLogin;
         private MainForm mForm;
-        private List<string[]> definitionList;
-        private List<string> orgList;
-        private string[] str = { };
-        bool themeBool;
+        #endregion
 
+        //Form constructor
         public LoginForm(LogGenerator l, List<string[]> definitionListSection, List<string> orgDataListSection)
         {
+            //Inits WinForms components
             InitializeComponent();
-            definitionList = definitionListSection;
+
+            defList = definitionListSection;
             orgList = orgDataListSection;
 
+            //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
             for (int i = 0; i < orgList.Count; i++)
                 if (!orgList[i].Equals(string.Empty))
                     oList[i] = orgList[i].ToString() + " - ";
-
             this.toolStripStatusLabel1.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
 
             log = l;
 
-            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            //Define theming according to ini file provided info
+            if (StringsAndConstants.listThemeGUI.Contains(defList[5][0].ToString()) && defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -58,13 +64,13 @@ namespace HardwareInformation
                     lightTheme();
                 }
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 lightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
@@ -73,21 +79,21 @@ namespace HardwareInformation
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
 
-            comboBoxServerIP.Items.AddRange(definitionList[0]);
-            comboBoxServerPort.Items.AddRange(definitionList[1]);
-#if DEBUG
+            comboBoxServerIP.Items.AddRange(defList[0]);
+            comboBoxServerPort.Items.AddRange(defList[1]);
+
             //Program version
-            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);
-            
+#if DEBUG
+            this.toolStripStatusLabel2.Text = MiscMethods.version(Resources.dev_status);            
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
-            //Program version
-            this.toolStripStatusLabel2.Text = MiscMethods.version();
-            
+            this.toolStripStatusLabel2.Text = MiscMethods.version();            
             comboBoxServerIP.SelectedIndex = 0;
 			comboBoxServerPort.SelectedIndex = 0;
 #endif
+
+            //Inits thread worker for parallelism
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.WorkerSupportsCancellation = true;
         }
@@ -280,11 +286,13 @@ namespace HardwareInformation
             tbProgLogin = TaskbarManager.Instance;
         }
 
-        //this.Handles the closing of the current form
+        //Handles the closing of the current form
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_LOGINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
+
+            //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             if (e.CloseReason == CloseReason.UserClosing)
@@ -300,7 +308,7 @@ namespace HardwareInformation
             if (checkBoxOfflineMode.Checked)
             {
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
-                mForm = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, definitionList, orgList);
+                mForm = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, defList, orgList);
                 if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                 this.Hide();
@@ -321,25 +329,30 @@ namespace HardwareInformation
                 checkBoxOfflineMode.Enabled = false;
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
+                
+                //Feches login data from server
                 str = await LoginFileReader.fetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                
+                //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
+                    //If Login Json file does not exist, there is no internet connection
                     if (str == null)
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
-                    else if (str[0] == "false")
+                    else if (str[0] == "false") //If Login Json file does exist, but the user do not exist
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
                         MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                     }
-                    else
+                    else //If Login Json file does exist and user logs in
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList, orgList);
+                        MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
                         if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                         this.Hide();
@@ -352,16 +365,17 @@ namespace HardwareInformation
                         this.Show();
                     }
                 }
-                else
+                else //If all the mandatory fields are not filled
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
                     MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
                 }
             }
+
+            //Enables controls if login is not successful
             loadingCircle1.Visible = false;
             loadingCircle1.Active = false;
-            
             textBoxUser.Enabled = true;
             textBoxUser.Focus();
             textBoxPassword.Enabled = true;
@@ -371,7 +385,7 @@ namespace HardwareInformation
             checkBoxOfflineMode.Checked = false;
         }
 
-        //this.Handles the offline mode toggle 
+        //Handles the offline mode toggle 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOfflineMode.Checked)
@@ -393,7 +407,7 @@ namespace HardwareInformation
         //Opens the About box
         private void aboutLabel_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox(definitionList, themeBool);
+            AboutBox aboutForm = new AboutBox(defList, themeBool);
             if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             aboutForm.ShowDialog();

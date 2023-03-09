@@ -31,6 +31,7 @@ namespace HardwareInformation
         private List<string[]> defList;
         private List<string> orgList;
 
+        //Form constructor
         public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
         {
             //Inits WinForms components
@@ -106,15 +107,16 @@ namespace HardwareInformation
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
 
+            //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
             for(int i = 0; i < orgList.Count; i++)
                 if (!orgList[i].Equals(string.Empty))
                     oList[i] = orgList[i].ToString() + " - ";
-
             this.toolStripStatusLabel1.Text = oList[4] + oList[2] + oList[0].Substring(0, oList[0].Length - 2);
             this.Text = Application.ProductName + " / " + oList[5] + oList[3] + oList[1].Substring(0, oList[1].Length - 2);
         }
 
+        //Form elements
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -4910,7 +4912,7 @@ namespace HardwareInformation
                     timer1.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-                //The section below contains the exception cases for AHCI enforcement
+                //If model Json file does exist and the Media Operation is incorrect
                 if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
                 {
                     pass = false;
@@ -4928,7 +4930,7 @@ namespace HardwareInformation
                     timer3.Enabled = true;
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
-                //If model Json file does not exist
+                //If model Json file does not exist and server is unreachable
                 if (biosJsonStr == null)
                 {
                     if (!offlineMode)
@@ -5145,7 +5147,7 @@ namespace HardwareInformation
             //If all the mandatory fields are filled and there are no pendencies
             if (!string.IsNullOrWhiteSpace(textBoxPatrimony.Text) && !string.IsNullOrWhiteSpace(textBoxRoom.Text) && !string.IsNullOrWhiteSpace(textBoxTicket.Text) && comboBoxType.SelectedItem != null && comboBoxBuilding.SelectedItem != null && comboBoxInUse.SelectedItem != null && comboBoxTag.SelectedItem != null && comboBoxBattery.SelectedItem != null && (employeeRadioButton.Checked || studentRadioButton.Checked) && (formatButton.Checked || maintenanceButton.Checked) && pass == true)
             {
-                //Attributes variables to an array which will be sent to the server
+                //Attribute variables to an array which will be sent to the server
                 sArgs[0] = ip;
                 sArgs[1] = port;
                 sArgs[2] = modeURL;
@@ -5171,8 +5173,9 @@ namespace HardwareInformation
 
                 //Feches patrimony data from server
                 string[] pcJsonStr = await PCFileReader.fetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
-                
-                if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1") //If patrinony is discarded
+
+                //If patrinony is discarded
+                if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1")
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
@@ -5193,7 +5196,7 @@ namespace HardwareInformation
                             {
                                 sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                                 webView2.Visible = true;
-                                serverSendInfo(sArgs);
+                                serverSendInfo(sArgs); //Send info to server
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
 
                                 if (formatButton.Checked) //If the format radio button is checked
@@ -5225,7 +5228,7 @@ namespace HardwareInformation
                         {
                             sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                             webView2.Visible = true;
-                            serverSendInfo(sArgs);
+                            serverSendInfo(sArgs); //Send info to server
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
 
                             if (formatButton.Checked) //If the format radio button is checked

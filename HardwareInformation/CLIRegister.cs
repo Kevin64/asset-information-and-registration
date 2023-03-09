@@ -58,17 +58,22 @@ namespace HardwareInformation
             this.ResumeLayout(false);
         }
 
-        //Constructor
+        //Form constructor
         public CLIRegister(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, LogGenerator l, List<string[]> definitionList)
         {
+            //Inits WinForms components
             InitializeComponent();
+
             log = l;
+
             initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, definitionList);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
         public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> definitionList)
         {
+            #region
+
             /** !!Labels!!
              * strArgs[0](servidor)
              * strArgs[1](porta)
@@ -140,6 +145,8 @@ namespace HardwareInformation
             strAlert[9] = StringsAndConstants.CLI_TPM_ALERT;
             strAlert[10] = StringsAndConstants.CLI_MEMORY_ALERT;
 
+            #endregion
+
             webView2 = new WebView2();
 
             await loadWebView2();
@@ -179,13 +186,14 @@ namespace HardwareInformation
                         strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
 
                     string[] pcJsonStr = PCFileReader.fetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
+                    //If PC Json does not exist and there are some 'mesmo' cmd switch word
                     if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
                         webView2.Dispose();
                         Environment.Exit(StringsAndConstants.RETURN_ERROR);
                     }
-                    else if (pcJsonStr[0] == "false")
+                    else if (pcJsonStr[0] == "false") //If PC Json does not exist
                     {
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
@@ -218,8 +226,9 @@ namespace HardwareInformation
                         else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
                             strArgs[13] = StringsAndConstants.YES;
                     }
-                    else
+                    else //If PC Json does exist
                     {
+                        //If PC is discarded
                         if (pcJsonStr[9] == "1")
                         {
                             log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutCLI);
@@ -279,38 +288,42 @@ namespace HardwareInformation
                     }
                     printHardwareData();
 
+                    //If there are no pendencies
                     if (pass)
                     {
                         DateTime d = new DateTime();
                         var todayDate = DateTime.Today;
                         bool tDay;
 
-                        try
+                        try //If there is database record of the patrimony
                         {
+                            //If chosen date is 'hoje'
                             if (strArgs[9].Equals(StringsAndConstants.today))
                             {
                                 strArgs[9] = DateTime.Today.ToString("yyyy-MM-dd").Substring(0, 10);
                                 tDay = true;
                             }
-                            else
+                            else //If chosen date is not 'hoje'
                             {
                                 d = DateTime.Parse(strArgs[9]);
                                 strArgs[9] = d.ToString("yyyy-MM-dd");
                                 tDay = false;
                             }
                             
+                            //Calculates last registered date with chosen date
                             var registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
                             var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
+                            //If chosen date is later than the registered date
                             if (registerDate >= lastRegisterDate)
                             {
-                                if (tDay)
+                                if (tDay) //If today
                                     strArgs[9] = todayDate.ToString().Substring(0, 10);
-                                else if(registerDate <= todayDate)
+                                else if(registerDate <= todayDate) //If today is greater or equal than registered date
                                 {
                                     strArgs[9] = DateTime.Parse(strArgs[9]).ToString().Substring(0, 10);
                                 }
-                                else
+                                else //Forbids future registering
                                 {
                                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_FUTURE_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     webView2.Dispose();
@@ -318,22 +331,30 @@ namespace HardwareInformation
                                 }
 
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                                serverSendInfo(strArgs);
+                                serverSendInfo(strArgs); //Send info to server
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
+                                //Resets host install date
                                 if (modo == "f" || modo == "F")
+                                {
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     MiscMethods.regCreate(true, strArgs[9]);
-                                if (modo == "m" || modo == "M")
+                                }
+                                if (modo == "m" || modo == "M") //Resets host maintenance date
+                                {
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     MiscMethods.regCreate(false, strArgs[9]);
+                                }
                             }
-                            else
+                            else //If chosen date is earlier than the registered date, show an error
                             {
                                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                webView2.Dispose();
-                                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                                webView2.Dispose(); //Kills WebView2 instance
+                                Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
                             }
                         }
-                        catch
+                        catch //If there is no database record of the patrimony
                         {
                             if (strArgs[9].Equals(StringsAndConstants.today))
                             {
@@ -346,16 +367,24 @@ namespace HardwareInformation
                             }
 
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                            serverSendInfo(strArgs);
+                            serverSendInfo(strArgs); //Send info to server
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
+                            //Resets host install date
                             if (modo == "f" || modo == "F")
+                            {
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                 MiscMethods.regCreate(true, strArgs[9]);
-                            if (modo == "m" || modo == "M")
+                            }
+                            else if (modo == "m" || modo == "M") //Resets host maintenance date
+                            {
+                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                 MiscMethods.regCreate(false, strArgs[9]);
+                            }
                         }
                     }
-                    else
+                    else //If there are pendencies
                     {
                         log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.FIX_PROBLEMS, string.Empty, StringsAndConstants.consoleOutCLI);
                         for (int i = 0; i < strAlert.Length; i++)
@@ -363,47 +392,41 @@ namespace HardwareInformation
                             if (strAlertBool[i])
                                 log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
                         }
-                        webView2.Dispose();
-                        Environment.Exit(StringsAndConstants.RETURN_WARNING);
+                        webView2.Dispose(); //Kills WebView2 instance
+                        Environment.Exit(StringsAndConstants.RETURN_WARNING); //Exits
                     }
-
-                    if (modo == "f" || modo == "F")
-                    {
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                    }
-                    else
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
                 else
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
-                    webView2.Dispose();
-                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    webView2.Dispose(); //Kills WebView2 instance
+                    Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
                 }
             }
             else
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                webView2.Dispose();
-                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                webView2.Dispose(); //Kills WebView2 instance
+                Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
             }
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
+            
+            //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
             webView2.NavigationCompleted += webView2_NavigationCompleted;
-            Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
+            Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
         }
 
-        //Allocates WebView2 runtime
+        //When WebView2 navigation is finished
         public void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if (e.IsSuccess)
             {
-                webView2.Dispose();
-                Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
+                webView2.Dispose(); //Kills instance
+                Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
             }
         }
 
@@ -416,14 +439,17 @@ namespace HardwareInformation
 
             try
             {
+                //Feches model info from server
                 string[] biosJsonStr = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
+                //Scan if hostname is the default one
                 if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
                 {
                     pass = false;
                     strAlert[0] += strArgs[24] + StringsAndConstants.HOSTNAME_ALERT;
                     strAlertBool[0] = true;
                 }
+                //If model Json file does exist and the Media Operation is incorrect
                 if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
                 {
                     pass = false;
@@ -439,12 +465,14 @@ namespace HardwareInformation
                     strAlert[2] += strArgs[32] + StringsAndConstants.SECURE_BOOT_ALERT;
                     strAlertBool[2] = true;
                 }
+                //If model Json file does not exist and server is unreachable
                 if (biosJsonStr == null)
                 {
                     pass = false;
                     strAlert[3] += StringsAndConstants.DATABASE_REACH_ERROR;
                     strAlertBool[3] = true;
                 }
+                //If model Json file does exist and BIOS/UEFI version is incorrect
                 if (biosJsonStr != null && !strArgs[25].Contains(biosJsonStr[0]))
                 {
                     if (!biosJsonStr[0].Equals("-1"))
@@ -454,39 +482,46 @@ namespace HardwareInformation
                         strAlertBool[4] = true;
                     }
                 }
+                //If model Json file does exist and firmware type is incorrect
                 if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
                 {
                     pass = false;
                     strAlert[5] += strArgs[28] + StringsAndConstants.FIRMWARE_TYPE_ALERT;
                     strAlertBool[5] = true;
                 }
+                //If there is no MAC address assigned
                 if (strArgs[26] == "")
                 {
                     pass = false;
-                    strAlert[6] += strArgs[26] + StringsAndConstants.NETWORK_ERROR;
-                    strAlert[7] += strArgs[27] + StringsAndConstants.NETWORK_ERROR;
+                    strAlert[6] += strArgs[26] + StringsAndConstants.NETWORK_ERROR; //Prints a network error
+                    strAlert[7] += strArgs[27] + StringsAndConstants.NETWORK_ERROR; //Prints a network error
                     strAlertBool[6] = true;
                     strAlertBool[7] = true;
                 }
+                //If Virtualization Technology is disabled
                 if (strArgs[33] == StringsAndConstants.deactivated)
                 {
                     pass = false;
                     strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
                     strAlertBool[8] = true;
                 }
+                //If model Json file does exist and TPM is not enabled
                 if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
                 {
                     pass = false;
                     strAlert[9] += strArgs[34] + StringsAndConstants.TPM_ERROR;
                     strAlertBool[9] = true;
                 }
+                //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                //If RAM is less than 4GB and OS is x64, shows an alert
                 if (d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     strAlert[10] += strArgs[21] + StringsAndConstants.NOT_ENOUGH_MEMORY;
                     strAlertBool[10] = true;
                 }
+                //If RAM is more than 4GB and OS is x86, shows an alert
                 if (d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
