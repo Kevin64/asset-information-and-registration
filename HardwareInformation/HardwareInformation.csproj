@@ -286,7 +286,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\misc\definitions.ini" &amp; xcopy /E /Y "$(TargetDir)\..\misc\Resources\*.*" "$(TargetDir)\Resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\generic-settings\definitions.ini" &amp; xcopy /E /Y "$(TargetDir)\..\generic-settings\Resources\*.*" "$(TargetDir)\Resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
