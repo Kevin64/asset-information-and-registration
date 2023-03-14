@@ -93,6 +93,7 @@ namespace HardwareInformation
                 opts.Servidor = serverListSection[0];
             if (opts.Porta == null)
                 opts.Porta = portListSection[0];
+
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
             string[] str = LoginFileReader.fetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
@@ -149,8 +150,8 @@ namespace HardwareInformation
                 logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
                 serverIPStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_11];
                 serverPortStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_12];
-                roomListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_13];
-                hwTypeListStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_14];
+                roomListStr = null;
+                hwTypeListStr = null;
                 themeStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_15];
 
                 orgFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_1];
@@ -163,16 +164,14 @@ namespace HardwareInformation
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
                 portListSection = serverPortStr.Split(',').ToArray();
-                roomListSection = roomListStr.Split(',').ToArray();
-                hwTypeListSection = hwTypeListStr.Split(',').ToArray();
+                roomListSection = null;
+                hwTypeListSection = null;
                 themeSection = themeStr.Split().ToArray();
 
                 if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
-                {
                     throw new FormatException();
-                }
 
-                    orgFullNameSection = orgFullNameStr;
+                orgFullNameSection = orgFullNameStr;
                 orgAcronymSection = orgAcronymStr;
                 depFullNameSection = depFullNameStr;
                 depAcronymSection = depAcronymStr;

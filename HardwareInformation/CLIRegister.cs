@@ -147,6 +147,12 @@ namespace HardwareInformation
 
             #endregion
 
+            //Fetch building and hw types info from the specified server
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutCLI);
+            List<string[]> jsonServerSettings = ConfigFileReader.fetchInfoST(servidor, porta);
+            definitionList[2] = jsonServerSettings[0];
+            definitionList[3] = jsonServerSettings[1];
+
             webView2 = new WebView2();
 
             await loadWebView2();

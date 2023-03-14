@@ -80,12 +80,18 @@ namespace HardwareInformation
             defList = definitionList;
             orgList = orgDataList;
 
+            //Fetch building and hw types info from the specified server
+            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutGUI);
+            List<string[]> jsonServerSettings = ConfigFileReader.fetchInfoST(ip, port);
+            defList[2] = jsonServerSettings[0];
+            defList[3] = jsonServerSettings[1];
+
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OFFLINE_MODE, offlineMode.ToString(), StringsAndConstants.consoleOutGUI);
 
             this.user = user;
             this.ip = ip;
             this.port = port;
-
+            
             //Fills controls with provided info from ini file and constants dll
             comboBoxBuilding.Items.AddRange(defList[2]);
             comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.listActiveDirectoryGUI.ToArray());
