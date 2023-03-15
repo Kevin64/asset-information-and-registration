@@ -84,26 +84,6 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.2.9.1\lib\net461\CommandLine.dll</HintPath>
@@ -286,7 +266,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\generic-settings\definitions.ini" &amp; xcopy /E /Y "$(TargetDir)\..\generic-settings\Resources\*.*" "$(TargetDir)\Resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\generic-settings\definitions.ini" &amp; xcopy /E /Y "$(TargetDir)\..\generic-settings\Resources\*.*" "$(TargetDir)\Resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\github\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\github\$(TargetName)-v@(VersionNumber).7z *</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
