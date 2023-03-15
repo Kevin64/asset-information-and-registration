@@ -422,6 +422,7 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
+            File.Delete(StringsAndConstants.configPath);
             webView2.NavigationCompleted += webView2_NavigationCompleted;
             Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
         }

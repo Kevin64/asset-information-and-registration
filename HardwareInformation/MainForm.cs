@@ -3395,6 +3395,7 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
+            File.Delete(StringsAndConstants.configPath);
 
             //Kills Webview2 instance
             webView2.Dispose();

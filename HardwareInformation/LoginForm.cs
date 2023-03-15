@@ -295,6 +295,8 @@ namespace HardwareInformation
             //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
+            File.Delete(StringsAndConstants.pcPath);
+            File.Delete(StringsAndConstants.configPath);
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
         }
