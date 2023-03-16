@@ -22,7 +22,7 @@ namespace HardwareInformation
 {
 	public class Program
     {
-        private static string logLocationStr, serverIPStr, serverPortStr, roomListStr, hwTypeListStr, themeStr;
+        private static string logLocationStr, serverIPStr, serverPortStr, themeStr;
         private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
         private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
         private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
@@ -95,7 +95,7 @@ namespace HardwareInformation
                 opts.Porta = portListSection[0];
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
-            string[] str = LoginFileReader.fetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
+            string[] str = LoginFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
             {
                 if (str[0] == "true")
@@ -125,7 +125,7 @@ namespace HardwareInformation
         [STAThread]
 		static void Main(string[] args)
 		{
-            if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+            if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
@@ -150,8 +150,6 @@ namespace HardwareInformation
                 logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
                 serverIPStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_11];
                 serverPortStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_12];
-                roomListStr = null;
-                hwTypeListStr = null;
                 themeStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_15];
 
                 orgFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_1];
@@ -198,7 +196,7 @@ namespace HardwareInformation
                     subDepAcronymSection
                 };
 
-                bool fileExists = bool.Parse(MiscMethods.checkIfLogExists(logLocationStr));
+                bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
 #if DEBUG
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
@@ -215,13 +213,12 @@ namespace HardwareInformation
 
                 //Installs WebView2 Runtime if not found
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version())))
+                if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version())))
                 {
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                    var returnCode = WebView2Installer.install();
-                    int returnCodeInt;
-                    if (!int.TryParse(returnCode, out returnCodeInt))
+                    var returnCode = WebView2Installer.Install();
+                    if (!int.TryParse(returnCode, out int returnCodeInt))
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
                         Environment.Exit(StringsAndConstants.RETURN_ERROR);
@@ -237,7 +234,7 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                     FreeConsole();
                     Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
-                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
                     Application.Run(lForm);
                 }

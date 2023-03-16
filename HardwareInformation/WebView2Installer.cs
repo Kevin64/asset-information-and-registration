@@ -8,14 +8,14 @@ namespace HardwareInformation
 {
     internal static class WebView2Installer
     {
-        public static string install()
+        public static string Install()
         {
             try
             {
                 using (var client = new WebClient())
                 {
 
-                    if (HardwareInfo.getOSInfoAux() == StringsAndConstants.windows7)
+                    if (HardwareInfo.GetOSInfoAux() == StringsAndConstants.windows7)
                     {
                         ServicePointManager.Expect100Continue = true;
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

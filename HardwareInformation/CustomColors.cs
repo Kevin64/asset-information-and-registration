@@ -6,13 +6,13 @@ namespace HardwareInformation
 {
     public class CustomColors
     {
-        public static void groupBox_PaintDarkTheme(object sender, PaintEventArgs e)
+        public static void GroupBox_PaintDarkTheme(object sender, PaintEventArgs e)
         {
             GroupBox box = sender as GroupBox;
             DrawGroupBox(box, e.Graphics, StringsAndConstants.DARK_FORECOLOR, StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR);
         }
 
-        public static void groupBox_PaintLightTheme(object sender, PaintEventArgs e)
+        public static void GroupBox_PaintLightTheme(object sender, PaintEventArgs e)
         {
             GroupBox box = sender as GroupBox;
             DrawGroupBox(box, e.Graphics, StringsAndConstants.LIGHT_FORECOLOR, StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR);

@@ -24,30 +24,30 @@ namespace HardwareInformation
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
-            this.textBoxDescription.LinkClicked += textBoxDescription_LinkClicked;
+            this.textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
             if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
                 {
-                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                    darkTheme();
+                    DarkTheme();
                 }
                 else
                 {
-                    if (HardwareInfo.getOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                    lightTheme();
+                    LightTheme();
                 }
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
-                lightTheme();
+                LightTheme();
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
-                darkTheme();
+                DarkTheme();
         }
 
-        public void lightTheme()
+        public void LightTheme()
         {
             this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
@@ -62,7 +62,7 @@ namespace HardwareInformation
             this.textBoxDescription.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
         }
 
-        public void darkTheme()
+        public void DarkTheme()
         {
             this.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
@@ -79,7 +79,7 @@ namespace HardwareInformation
             this.textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
         }
 
-        private void textBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(e.LinkText);
         }

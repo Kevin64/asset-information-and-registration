@@ -107,7 +107,7 @@
             this.AuthButton.TabIndex = 5;
             this.AuthButton.Text = "Autenticar";
             this.AuthButton.UseVisualStyleBackColor = true;
-            this.AuthButton.Click += new System.EventHandler(this.authButton_Click);
+            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
             // 
             // statusStrip1
             // 
@@ -130,7 +130,7 @@
             this.aboutLabel.Name = "aboutLabel";
             this.aboutLabel.Size = new System.Drawing.Size(37, 17);
             this.aboutLabel.Text = "Sobre";
-            this.aboutLabel.Click += new System.EventHandler(this.aboutLabel_Click);
+            this.aboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // toolStripStatusLabel1
             // 
@@ -192,7 +192,7 @@
             this.checkBoxOfflineMode.TabIndex = 4;
             this.checkBoxOfflineMode.Text = "Modo Offline";
             this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
-            this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // loadingCircle1
             // 

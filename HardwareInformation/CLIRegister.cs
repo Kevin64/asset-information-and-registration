@@ -20,7 +20,7 @@ namespace HardwareInformation
         private bool[] strAlertBool;
         private string[] strArgs, strAlert;
         private WebView2 webView2;
-        private LogGenerator log;
+        private readonly LogGenerator log;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -66,11 +66,11 @@ namespace HardwareInformation
 
             log = l;
 
-            initProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, definitionList);
+            InitProc(servidor, porta, modo, patrimonio, lacre, sala, predio, ad, padrao, data, pilha, ticket, uso, etiqueta, tipo, usuario, definitionList);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void initProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> definitionList)
+        public async void InitProc(string servidor, string porta, string modo, string patrimonio, string lacre, string sala, string predio, string ad, string padrao, string data, string pilha, string ticket, string uso, string etiqueta, string tipo, string usuario, List<string[]> definitionList)
         {
             #region
 
@@ -149,16 +149,15 @@ namespace HardwareInformation
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutCLI);
-            List<string[]> jsonServerSettings = ConfigFileReader.fetchInfoST(servidor, porta);
+            List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(servidor, porta);
             definitionList[2] = jsonServerSettings[0];
             definitionList[3] = jsonServerSettings[1];
 
             webView2 = new WebView2();
 
-            await loadWebView2();
+            await LoadWebView2();
 
             string[] dateFormat = new string[] { "dd/MM/yyyy" };
-            DateTime datetime;
 
             if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 && //Servidor
                 strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) && //Porta
@@ -169,7 +168,7 @@ namespace HardwareInformation
                 (definitionList[2].Contains(strArgs[6]) || (strArgs[6].Equals(StringsAndConstants.sameWord))) && //Predio
                 (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || (strArgs[7].Equals(StringsAndConstants.sameWord))) && //AD
                 (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || (strArgs[8].Equals(StringsAndConstants.sameWord))) && //Padrao
-                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) && //Data
+                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) && //Data
                 StringsAndConstants.listBatteryCLI.Contains(strArgs[10]) && //Pilha
                 strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) && //Ticket
                 (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || (strArgs[12].Equals(StringsAndConstants.sameWord))) && //Uso
@@ -177,21 +176,21 @@ namespace HardwareInformation
                 (definitionList[3].Contains(strArgs[14]) || (strArgs[14].Equals(StringsAndConstants.sameWord)))) //Tipo
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
-                serverOnline = await BIOSFileReader.checkHostMT(strArgs[0], strArgs[1]);
+                serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
                 if (serverOnline && strArgs[1] != "")
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
 
-                    collectThread();
+                    CollectThread();
 
-                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.sinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.SinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.SinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
                     //Patrimonio
                     if (strArgs[3].Equals(string.Empty))
                         strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
 
-                    string[] pcJsonStr = PCFileReader.fetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
+                    string[] pcJsonStr = PCFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
                     if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
                     {
@@ -292,7 +291,7 @@ namespace HardwareInformation
                         if (strArgs[14].Equals(StringsAndConstants.sameWord))
                             strArgs[14] = pcJsonStr[8];
                     }
-                    printHardwareData();
+                    PrintHardwareData();
 
                     //If there are no pendencies
                     if (pass)
@@ -315,7 +314,7 @@ namespace HardwareInformation
                                 strArgs[9] = d.ToString("yyyy-MM-dd");
                                 tDay = false;
                             }
-                            
+
                             //Calculates last registered date with chosen date
                             var registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
                             var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
@@ -325,7 +324,7 @@ namespace HardwareInformation
                             {
                                 if (tDay) //If today
                                     strArgs[9] = todayDate.ToString().Substring(0, 10);
-                                else if(registerDate <= todayDate) //If today is greater or equal than registered date
+                                else if (registerDate <= todayDate) //If today is greater or equal than registered date
                                 {
                                     strArgs[9] = DateTime.Parse(strArgs[9]).ToString().Substring(0, 10);
                                 }
@@ -337,7 +336,7 @@ namespace HardwareInformation
                                 }
 
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                                serverSendInfo(strArgs); //Send info to server
+                                ServerSendInfo(strArgs); //Send info to server
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
                                 //Resets host install date
@@ -345,12 +344,12 @@ namespace HardwareInformation
                                 {
                                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                    MiscMethods.regCreate(true, strArgs[9]);
+                                    MiscMethods.RegCreate(true, strArgs[9]);
                                 }
                                 if (modo == "m" || modo == "M") //Resets host maintenance date
                                 {
                                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                    MiscMethods.regCreate(false, strArgs[9]);
+                                    MiscMethods.RegCreate(false, strArgs[9]);
                                 }
                             }
                             else //If chosen date is earlier than the registered date, show an error
@@ -373,7 +372,7 @@ namespace HardwareInformation
                             }
 
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
-                            serverSendInfo(strArgs); //Send info to server
+                            ServerSendInfo(strArgs); //Send info to server
                             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
                             //Resets host install date
@@ -381,12 +380,12 @@ namespace HardwareInformation
                             {
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                MiscMethods.regCreate(true, strArgs[9]);
+                                MiscMethods.RegCreate(true, strArgs[9]);
                             }
                             else if (modo == "m" || modo == "M") //Resets host maintenance date
                             {
                                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                MiscMethods.regCreate(false, strArgs[9]);
+                                MiscMethods.RegCreate(false, strArgs[9]);
                             }
                         }
                     }
@@ -423,12 +422,12 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.loginPath);
             File.Delete(StringsAndConstants.pcPath);
             File.Delete(StringsAndConstants.configPath);
-            webView2.NavigationCompleted += webView2_NavigationCompleted;
+            webView2.NavigationCompleted += WebView2_NavigationCompleted;
             Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
         }
 
         //When WebView2 navigation is finished
-        public void webView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        public void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if (e.IsSuccess)
             {
@@ -438,7 +437,7 @@ namespace HardwareInformation
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
-        private void printHardwareData()
+        private void PrintHardwareData()
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutCLI);
 
@@ -447,7 +446,7 @@ namespace HardwareInformation
             try
             {
                 //Feches model info from server
-                string[] biosJsonStr = BIOSFileReader.fetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
+                string[] biosJsonStr = BIOSFileReader.FetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
                 //Scan if hostname is the default one
                 if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
@@ -546,7 +545,7 @@ namespace HardwareInformation
 
         //Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables,
         // while reporting the progress to the progressbar
-        public void collectThread()
+        public void CollectThread()
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
 
@@ -631,14 +630,14 @@ namespace HardwareInformation
         }
 
         //Loads webView2 component
-        public async Task loadWebView2()
+        public async Task LoadWebView2()
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
             CoreWebView2Environment webView2Environment;
             if (Environment.Is64BitOperatingSystem)
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.getWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             else
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.getWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
+                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             webView2.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
@@ -646,7 +645,7 @@ namespace HardwareInformation
         }
 
         //Sends hardware info to the specified server
-        public void serverSendInfo(string[] serverArgs)
+        public void ServerSendInfo(string[] serverArgs)
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutCLI);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);

@@ -24,7 +24,7 @@ namespace HardwareInformation
     internal static class MiscMethods
     {
         //Check the registry for a installation/maintenance date
-        public static double regCheck(bool mode)
+        public static double RegCheck(bool mode)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace HardwareInformation
         }
 
         //Creates a registry key when a register operation is made in GUI mode
-        public static void regCreate(bool mode, DateTimePicker dateTimePicker)
+        public static void RegCreate(bool mode, DateTimePicker dateTimePicker)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.HWINFO_REG_PATH, true);
             if (mode)
@@ -56,7 +56,7 @@ namespace HardwareInformation
         }
 
         //Creates a registry key when a register operation is made in CLI mode
-        public static void regCreate(bool mode, string dateTime)
+        public static void RegCreate(bool mode, string dateTime)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.HWINFO_REG_PATH, true);
             if (mode)
@@ -69,7 +69,7 @@ namespace HardwareInformation
         }
 
         //Fetches the WebView2 systemwide version
-        public static string getWebView2Version()
+        public static string GetWebView2Version()
         {
             RegistryKey rk;
             if (Environment.Is64BitOperatingSystem)
@@ -87,7 +87,7 @@ namespace HardwareInformation
                 return "";
         }
 
-        public static string checkIfLogExists(string path)
+        public static string CheckIfLogExists(string path)
         {
             bool b;
             try
@@ -140,12 +140,12 @@ namespace HardwareInformation
         }
 
         //Updates the 'last installed' or 'last maintenance' labels
-        public static string sinceLabelUpdate(bool mode)
+        public static string SinceLabelUpdate(bool mode)
         {
             string InstallLabel, MaintenanceLabel;
             if (mode)
             {
-                InstallLabel = regCheck(mode).ToString();
+                InstallLabel = RegCheck(mode).ToString();
                 if (!InstallLabel.Equals("-1"))
                     return "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")";
                 else
@@ -153,7 +153,7 @@ namespace HardwareInformation
             }
             else
             {
-                MaintenanceLabel = regCheck(mode).ToString();
+                MaintenanceLabel = RegCheck(mode).ToString();
                 if (!MaintenanceLabel.Equals("-1"))
                     return "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")";
                 else
@@ -168,13 +168,13 @@ namespace HardwareInformation
         }
 
         //Fetches the program's binary version
-        public static string version()
+        public static string Version()
         {
             return "v" + Application.ProductVersion;
         }
 
         //Fetches the program's binary version (for unstable releases)
-        public static string version(string testBranch)
+        public static string Version(string testBranch)
         {
             return "v" + Application.ProductVersion + "-" + testBranch;
         }
