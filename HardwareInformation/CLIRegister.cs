@@ -26,36 +26,36 @@ namespace HardwareInformation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIRegister));
-            this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
-            ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
-            this.SuspendLayout();
+            webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            ((System.ComponentModel.ISupportInitialize)webView2).BeginInit();
+            SuspendLayout();
             // 
             // webView2
             // 
-            this.webView2.AllowExternalDrop = true;
-            this.webView2.CreationProperties = null;
-            this.webView2.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2.Location = new System.Drawing.Point(12, 12);
-            this.webView2.Name = "webView2";
-            this.webView2.Size = new System.Drawing.Size(134, 29);
-            this.webView2.TabIndex = 0;
-            this.webView2.ZoomFactor = 1D;
+            webView2.AllowExternalDrop = true;
+            webView2.CreationProperties = null;
+            webView2.DefaultBackgroundColor = System.Drawing.Color.White;
+            webView2.Location = new System.Drawing.Point(12, 12);
+            webView2.Name = "webView2";
+            webView2.Size = new System.Drawing.Size(134, 29);
+            webView2.TabIndex = 0;
+            webView2.ZoomFactor = 1D;
             // 
             // CLIRegister
             // 
-            this.ClientSize = new System.Drawing.Size(158, 53);
-            this.ControlBox = false;
-            this.Controls.Add(this.webView2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "CLIRegister";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
-            this.ResumeLayout(false);
+            ClientSize = new System.Drawing.Size(158, 53);
+            ControlBox = false;
+            Controls.Add(webView2);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "CLIRegister";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            ((System.ComponentModel.ISupportInitialize)webView2).EndInit();
+            ResumeLayout(false);
         }
 
         //Form constructor
@@ -162,18 +162,18 @@ namespace HardwareInformation
             if (strArgs[0].Length <= 15 && strArgs[0].Length > 6 && //Servidor
                 strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) && //Porta
                 StringsAndConstants.listModeCLI.Contains(strArgs[2]) && //Modo
-                (strArgs[3].Length <= 6 && strArgs[3].Length >= 0 && strArgs[3].All(char.IsDigit)) && //Patrimonio
-                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || (strArgs[4].Equals(StringsAndConstants.sameWord))) && //Lacre
-                ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || (strArgs[5].Equals(StringsAndConstants.sameWord))) && //Sala
-                (definitionList[2].Contains(strArgs[6]) || (strArgs[6].Equals(StringsAndConstants.sameWord))) && //Predio
-                (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || (strArgs[7].Equals(StringsAndConstants.sameWord))) && //AD
-                (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || (strArgs[8].Equals(StringsAndConstants.sameWord))) && //Padrao
-                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || (strArgs[9].Equals(StringsAndConstants.today))) && //Data
+                strArgs[3].Length <= 6 && strArgs[3].Length >= 0 && strArgs[3].All(char.IsDigit) && //Patrimonio
+                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || strArgs[4].Equals(StringsAndConstants.sameWord)) && //Lacre
+                ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || strArgs[5].Equals(StringsAndConstants.sameWord)) && //Sala
+                (definitionList[2].Contains(strArgs[6]) || strArgs[6].Equals(StringsAndConstants.sameWord)) && //Predio
+                (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || strArgs[7].Equals(StringsAndConstants.sameWord)) && //AD
+                (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || strArgs[8].Equals(StringsAndConstants.sameWord)) && //Padrao
+                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || strArgs[9].Equals(StringsAndConstants.today)) && //Data
                 StringsAndConstants.listBatteryCLI.Contains(strArgs[10]) && //Pilha
                 strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) && //Ticket
-                (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || (strArgs[12].Equals(StringsAndConstants.sameWord))) && //Uso
-                (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || (strArgs[13].Equals(StringsAndConstants.sameWord))) && //Etiqueta
-                (definitionList[3].Contains(strArgs[14]) || (strArgs[14].Equals(StringsAndConstants.sameWord)))) //Tipo
+                (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || strArgs[12].Equals(StringsAndConstants.sameWord)) && //Uso
+                (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || strArgs[13].Equals(StringsAndConstants.sameWord)) && //Etiqueta
+                (definitionList[3].Contains(strArgs[14]) || strArgs[14].Equals(StringsAndConstants.sameWord))) //Tipo
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
@@ -188,7 +188,9 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.SinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
                     //Patrimonio
                     if (strArgs[3].Equals(string.Empty))
+                    {
                         strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
+                    }
 
                     string[] pcJsonStr = PCFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
@@ -202,34 +204,58 @@ namespace HardwareInformation
                     {
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
+                        {
                             strArgs[2] = StringsAndConstants.formatURL;
+                        }
                         else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
+                        {
                             strArgs[2] = StringsAndConstants.maintenanceURL;
+                        }
                         //AD
                         if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
+                        {
                             strArgs[7] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
+                        {
                             strArgs[7] = StringsAndConstants.YES;
+                        }
                         //Padrao
                         if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                        {
                             strArgs[8] = StringsAndConstants.employee;
+                        }
                         else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                        {
                             strArgs[8] = StringsAndConstants.student;
+                        }
                         //Pilha
                         if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
+                        {
                             strArgs[10] = StringsAndConstants.sameBattery;
+                        }
                         else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
+                        {
                             strArgs[10] = StringsAndConstants.replacedBattery;
+                        }
                         //Uso
                         if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
+                        {
                             strArgs[12] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
+                        {
                             strArgs[12] = StringsAndConstants.YES;
+                        }
                         //Etiqueta
                         if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
+                        {
                             strArgs[13] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
+                        {
                             strArgs[13] = StringsAndConstants.YES;
+                        }
                     }
                     else //If PC Json does exist
                     {
@@ -242,54 +268,94 @@ namespace HardwareInformation
                         }
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
+                        {
                             strArgs[2] = StringsAndConstants.formatURL;
+                        }
                         else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
+                        {
                             strArgs[2] = StringsAndConstants.maintenanceURL;
+                        }
                         //Lacre
                         if (strArgs[4].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[4] = pcJsonStr[6];
+                        }
                         //Sala
                         if (strArgs[5].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[5] = pcJsonStr[2];
+                        }
                         //Predio
                         if (strArgs[6].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[6] = pcJsonStr[1];
+                        }
                         //AD
                         if (strArgs[7].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[7] = pcJsonStr[4];
+                        }
                         else if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
+                        {
                             strArgs[7] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
+                        {
                             strArgs[7] = StringsAndConstants.YES;
+                        }
                         //Padrao
                         if (strArgs[8].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[8] = pcJsonStr[3];
+                        }
                         else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
+                        {
                             strArgs[8] = StringsAndConstants.employee;
+                        }
                         else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
+                        {
                             strArgs[8] = StringsAndConstants.student;
+                        }
                         //Pilha
                         if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
+                        {
                             strArgs[10] = StringsAndConstants.sameBattery;
+                        }
                         else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
+                        {
                             strArgs[10] = StringsAndConstants.replacedBattery;
+                        }
                         //Uso
                         if (strArgs[12].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[12] = pcJsonStr[5];
+                        }
                         else if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
+                        {
                             strArgs[12] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
+                        {
                             strArgs[12] = StringsAndConstants.YES;
+                        }
                         //Etiqueta
                         if (strArgs[13].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[13] = pcJsonStr[7];
+                        }
                         else if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
+                        {
                             strArgs[13] = StringsAndConstants.UTF8_NO;
+                        }
                         else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
+                        {
                             strArgs[13] = StringsAndConstants.YES;
+                        }
                         //Tipo
                         if (strArgs[14].Equals(StringsAndConstants.sameWord))
+                        {
                             strArgs[14] = pcJsonStr[8];
+                        }
                     }
                     PrintHardwareData();
 
@@ -297,7 +363,7 @@ namespace HardwareInformation
                     if (pass)
                     {
                         DateTime d = new DateTime();
-                        var todayDate = DateTime.Today;
+                        DateTime todayDate = DateTime.Today;
                         bool tDay;
 
                         try //If there is database record of the patrimony
@@ -316,14 +382,16 @@ namespace HardwareInformation
                             }
 
                             //Calculates last registered date with chosen date
-                            var registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                            var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
                             //If chosen date is later than the registered date
                             if (registerDate >= lastRegisterDate)
                             {
                                 if (tDay) //If today
+                                {
                                     strArgs[9] = todayDate.ToString().Substring(0, 10);
+                                }
                                 else if (registerDate <= todayDate) //If today is greater or equal than registered date
                                 {
                                     strArgs[9] = DateTime.Parse(strArgs[9]).ToString().Substring(0, 10);
@@ -395,7 +463,9 @@ namespace HardwareInformation
                         for (int i = 0; i < strAlert.Length; i++)
                         {
                             if (strAlertBool[i])
+                            {
                                 log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
+                            }
                         }
                         webView2.Dispose(); //Kills WebView2 instance
                         Environment.Exit(StringsAndConstants.RETURN_WARNING); //Exits
@@ -535,7 +605,9 @@ namespace HardwareInformation
                     strAlertBool[10] = true;
                 }
                 if (pass)
+                {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
+                }
             }
             catch (Exception e)
             {
@@ -552,13 +624,19 @@ namespace HardwareInformation
             //Scans for PC maker
             strArgs[17] = HardwareInfo.GetBoardMaker();
             if (strArgs[17] == StringsAndConstants.ToBeFilledByOEM || strArgs[17] == "")
+            {
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
+            }
+
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, strArgs[17], StringsAndConstants.consoleOutCLI);
 
             //Scans for PC model
             strArgs[18] = HardwareInfo.GetModel();
             if (strArgs[18] == StringsAndConstants.ToBeFilledByOEM || strArgs[18] == "")
+            {
                 strArgs[18] = HardwareInfo.GetModelAlt();
+            }
+
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, strArgs[18], StringsAndConstants.consoleOutCLI);
 
             //Scans for motherboard Serial number
@@ -633,11 +711,9 @@ namespace HardwareInformation
         public async Task LoadWebView2()
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-            CoreWebView2Environment webView2Environment;
-            if (Environment.Is64BitOperatingSystem)
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
-            else
-                webView2Environment = await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
+            CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
+                ? await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"))
+                : await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             webView2.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;

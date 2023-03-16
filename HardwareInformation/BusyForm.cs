@@ -10,13 +10,13 @@ namespace HardwareInformation
             InitializeComponent();
             if (MiscMethods.ThemeInit())
             {
-                this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                BackColor = StringsAndConstants.DARK_BACKGROUND;
             }
             else
             {
-                this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             }
 
             loadingCircle1.Enabled = true;

@@ -39,9 +39,14 @@ namespace HardwareInformation
             //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
             for (int i = 0; i < orgList.Count; i++)
+            {
                 if (!orgList[i].Equals(string.Empty))
+                {
                     oList[i] = orgList[i].ToString() + " - ";
-            this.toolStripStatusLabel1.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
+                }
+            }
+
+            toolStripStatusLabel1.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
 
             log = l;
 
@@ -52,26 +57,38 @@ namespace HardwareInformation
                 if (themeBool)
                 {
                     if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+                    }
+
                     DarkTheme();
                 }
                 else
                 {
                     if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+                    }
+
                     LightTheme();
                 }
             }
             else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+                }
+
                 LightTheme();
             }
             else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+                }
+
                 DarkTheme();
             }
 
@@ -82,63 +99,63 @@ namespace HardwareInformation
 
             //Program version
 #if DEBUG
-            this.toolStripStatusLabel2.Text = MiscMethods.Version(Resources.dev_status);
+            toolStripStatusLabel2.Text = MiscMethods.Version(Resources.dev_status);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
-            this.toolStripStatusLabel2.Text = MiscMethods.version();            
+            toolStripStatusLabel2.Text = MiscMethods.Version();
             comboBoxServerIP.SelectedIndex = 0;
-			comboBoxServerPort.SelectedIndex = 0;
+            comboBoxServerPort.SelectedIndex = 0;
 #endif
         }
 
         //Sets a light theme for the login form
         public void LightTheme()
         {
-            this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            this.loadingCircle1.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
+            loadingCircle1.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
-            this.textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.textBoxPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            textBoxPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            this.comboBoxServerIP.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.comboBoxServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.comboBoxServerIP.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
-            this.comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.comboBoxServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.comboBoxServerPort.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
+            comboBoxServerIP.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            comboBoxServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            comboBoxServerIP.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            comboBoxServerIP.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
+            comboBoxServerPort.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            comboBoxServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+            comboBoxServerPort.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            comboBoxServerPort.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
 
-            this.AuthButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.AuthButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.AuthButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.AuthButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            AuthButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            AuthButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            AuthButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            AuthButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 
-            this.checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            this.aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            this.statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
+            statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
 
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
             configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
@@ -150,47 +167,47 @@ namespace HardwareInformation
         //Sets a dark theme for the login form
         public void DarkTheme()
         {
-            this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            this.loadingCircle1.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            loadingCircle1.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
-            this.textBoxUser.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.textBoxUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.textBoxPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            textBoxUser.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            textBoxUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            textBoxPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            this.comboBoxServerIP.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.comboBoxServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.comboBoxServerIP.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-            this.comboBoxServerIP.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.comboBoxServerPort.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.comboBoxServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.comboBoxServerPort.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-            this.comboBoxServerPort.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            comboBoxServerIP.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            comboBoxServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            comboBoxServerIP.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            comboBoxServerIP.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            comboBoxServerPort.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            comboBoxServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            comboBoxServerPort.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+            comboBoxServerPort.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
 
-            this.AuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.AuthButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.AuthButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            AuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            AuthButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            AuthButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            this.aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            this.statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
+            statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            this.aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
 
             configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
             configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));
@@ -292,7 +309,9 @@ namespace HardwareInformation
             File.Delete(StringsAndConstants.pcPath);
             File.Delete(StringsAndConstants.configPath);
             if (e.CloseReason == CloseReason.UserClosing)
+            {
                 Application.Exit();
+            }
         }
 
         //Checks the user/password and shows the main form
@@ -303,18 +322,21 @@ namespace HardwareInformation
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
-                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 mForm = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, defList, orgList);
                 if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
-                this.Hide();
+                }
+
+                Hide();
                 textBoxUser.Text = null;
                 textBoxPassword.Text = null;
                 textBoxUser.Select();
-                mForm.ShowDialog();
+                _ = mForm.ShowDialog();
                 mForm.Close();
                 mForm.Dispose();
-                this.Show();
+                Show();
             }
             else
             {
@@ -323,7 +345,7 @@ namespace HardwareInformation
                 comboBoxServerIP.Enabled = false;
                 comboBoxServerPort.Enabled = false;
                 checkBoxOfflineMode.Enabled = false;
-                tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
 
                 //Feches login data from server
@@ -336,36 +358,39 @@ namespace HardwareInformation
                     if (str == null)
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        _ = MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else if (str[0] == "false") //If Login Json file does exist, but the user do not exist
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
-                        MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                        _ = MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else //If Login Json file does exist and user logs in
                     {
                         log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
                         MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
                         if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                        {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
-                        this.Hide();
+                        }
+
+                        Hide();
                         textBoxUser.Text = null;
                         textBoxPassword.Text = null;
                         textBoxUser.Select();
-                        mForm.ShowDialog();
+                        _ = mForm.ShowDialog();
                         mForm.Close();
                         mForm.Dispose();
-                        this.Show();
+                        Show();
                     }
                 }
                 else //If all the mandatory fields are not filled
                 {
                     log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
-                    MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, this.Handle);
+                    _ = MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
             }
 
@@ -373,7 +398,7 @@ namespace HardwareInformation
             loadingCircle1.Visible = false;
             loadingCircle1.Active = false;
             textBoxUser.Enabled = true;
-            textBoxUser.Focus();
+            _ = textBoxUser.Focus();
             textBoxPassword.Enabled = true;
             comboBoxServerIP.Enabled = true;
             comboBoxServerPort.Enabled = true;
@@ -405,8 +430,11 @@ namespace HardwareInformation
         {
             AboutBox aboutForm = new AboutBox(defList, themeBool);
             if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+            {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
-            aboutForm.ShowDialog();
+            }
+
+            _ = aboutForm.ShowDialog();
         }
     }
 }

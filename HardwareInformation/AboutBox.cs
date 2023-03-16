@@ -2,86 +2,95 @@
 using Dark.Net;
 using HardwareInfoDLL;
 using HardwareInformation.Properties;
-using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace HardwareInformation
 {
-    partial class AboutBox : Form
+    internal partial class AboutBox : Form
     {
         public AboutBox(List<string[]> definitionList, bool themeBool)
         {
             InitializeComponent();
-            this.Text = String.Format("Sobre {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
+            Text = string.Format("Sobre {0}", AssemblyTitle);
+            labelProductName.Text = AssemblyProduct;
 #if DEBUG
-            this.labelVersion.Text = String.Format("Versão {0}-{1}", AssemblyVersion, Resources.dev_status);
+            labelVersion.Text = string.Format("Versão {0}-{1}", AssemblyVersion, Resources.dev_status);
 #else
-            this.labelVersion.Text = String.Format("Versão {0}", AssemblyVersion);
+            labelVersion.Text = string.Format("Versão {0}", AssemblyVersion);
 #endif
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
-            this.textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
+            labelCopyright.Text = AssemblyCopyright;
+            labelCompanyName.Text = AssemblyCompany;
+            textBoxDescription.Text = AssemblyDescription;
+            textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
             if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
                 {
                     if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+                    }
+
                     DarkTheme();
                 }
                 else
                 {
                     if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+                    }
+
                     LightTheme();
                 }
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            {
                 LightTheme();
+            }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            {
                 DarkTheme();
+            }
         }
 
         public void LightTheme()
         {
-            this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            this.labelProductName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.labelVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.labelCopyright.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            this.labelCompanyName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            labelProductName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            labelVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            labelCopyright.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            labelCompanyName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 
-            this.textBoxDescription.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            this.textBoxDescription.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            textBoxDescription.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            textBoxDescription.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
         }
 
         public void DarkTheme()
         {
-            this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.labelProductName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.labelVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.labelCopyright.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.labelCompanyName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            labelProductName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            labelVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            labelCopyright.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            labelCompanyName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            this.okButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.okButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            this.okButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            okButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            okButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            okButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
 
-            this.textBoxDescription.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            this.textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            textBoxDescription.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
         }
 
         private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.LinkText);
+            _ = System.Diagnostics.Process.Start(e.LinkText);
         }
 
         #region Acessório de Atributos do Assembly
@@ -103,24 +112,14 @@ namespace HardwareInformation
             }
         }
 
-        public string AssemblyVersion
-        {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-        }
+        public string AssemblyVersion => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public string AssemblyDescription
         {
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+                return attributes.Length == 0 ? "" : ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
         }
 
@@ -129,11 +128,7 @@ namespace HardwareInformation
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyProductAttribute)attributes[0]).Product;
+                return attributes.Length == 0 ? "" : ((AssemblyProductAttribute)attributes[0]).Product;
             }
         }
 
@@ -142,11 +137,7 @@ namespace HardwareInformation
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                return attributes.Length == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
         }
 
@@ -155,11 +146,7 @@ namespace HardwareInformation
             get
             {
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+                return attributes.Length == 0 ? "" : ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
         #endregion

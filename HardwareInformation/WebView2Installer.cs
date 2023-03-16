@@ -12,7 +12,7 @@ namespace HardwareInformation
         {
             try
             {
-                using (var client = new WebClient())
+                using (WebClient client = new WebClient())
                 {
 
                     if (HardwareInfo.GetOSInfoAux() == StringsAndConstants.windows7)
@@ -21,7 +21,7 @@ namespace HardwareInformation
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     }
                     client.DownloadFile(StringsAndConstants.webview2url, StringsAndConstants.webview2filePath);
-                    var process = Process.Start(StringsAndConstants.webview2filePath);
+                    Process process = Process.Start(StringsAndConstants.webview2filePath);
                     process.WaitForExit();
                     return process.ExitCode.ToString();
                 }

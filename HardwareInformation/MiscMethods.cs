@@ -12,10 +12,10 @@ namespace HardwareInformation
     public static class ModifyProgressBarColor
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
-        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
+        private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr w, IntPtr l);
         public static void SetState(this ProgressBar pBar, int state)
         {
-            SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
+            _ = SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
         }
     }
 
@@ -30,10 +30,7 @@ namespace HardwareInformation
                 RegistryKey rk = Registry.LocalMachine.OpenSubKey(StringsAndConstants.HWINFO_REG_PATH);
                 DateTime li = Convert.ToDateTime(rk.GetValue(StringsAndConstants.lastInstall).ToString());
                 DateTime lm = Convert.ToDateTime(rk.GetValue(StringsAndConstants.lastMaintenance).ToString());
-                if (mode)
-                    return (DateTime.Today - li).TotalDays;
-                else
-                    return (DateTime.Today - lm).TotalDays;
+                return mode ? (DateTime.Today - li).TotalDays : (DateTime.Today - lm).TotalDays;
             }
             catch
             {
@@ -51,7 +48,9 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
             }
             else
+            {
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+            }
         }
 
         //Creates a registry key when a register operation is made in CLI mode
@@ -64,26 +63,26 @@ namespace HardwareInformation
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
             }
             else
+            {
                 rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+            }
         }
 
         //Fetches the WebView2 systemwide version
         public static string GetWebView2Version()
         {
-            RegistryKey rk;
-            if (Environment.Is64BitOperatingSystem)
-                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true);
-            else
-                rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
+            RegistryKey rk = Environment.Is64BitOperatingSystem
+                ? Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true)
+                : Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
             if (rk != null)
             {
-                Object o = rk.GetValue("pv");
-                if (o != null)
-                    return o.ToString();
-                else return "";
+                object o = rk.GetValue("pv");
+                return o != null ? o.ToString() : "";
             }
             else
+            {
                 return "";
+            }
         }
 
         public static string CheckIfLogExists(string path)
@@ -122,14 +121,13 @@ namespace HardwareInformation
                 {
                     if (key != null)
                     {
-                        Object o = key.GetValue(StringsAndConstants.THEME_REG_KEY);
-                        if (o != null && o.Equals(0))
-                            return true;
-                        else
-                            return false;
+                        object o = key.GetValue(StringsAndConstants.THEME_REG_KEY);
+                        return o != null && o.Equals(0);
                     }
                     else
+                    {
                         return false;
+                    }
                 }
             }
             catch
@@ -145,18 +143,16 @@ namespace HardwareInformation
             if (mode)
             {
                 InstallLabel = RegCheck(mode).ToString();
-                if (!InstallLabel.Equals("-1"))
-                    return "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")";
-                else
-                    return StringsAndConstants.SINCE_UNKNOWN;
+                return !InstallLabel.Equals("-1")
+                    ? "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")"
+                    : StringsAndConstants.SINCE_UNKNOWN;
             }
             else
             {
                 MaintenanceLabel = RegCheck(mode).ToString();
-                if (!MaintenanceLabel.Equals("-1"))
-                    return "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")";
-                else
-                    return StringsAndConstants.SINCE_UNKNOWN;
+                return !MaintenanceLabel.Equals("-1")
+                    ? "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")"
+                    : StringsAndConstants.SINCE_UNKNOWN;
             }
         }
 

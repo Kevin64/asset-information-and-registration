@@ -90,9 +90,14 @@ namespace HardwareInformation
         public static void RunOptions(Options opts)
         {
             if (opts.Servidor == null)
+            {
                 opts.Servidor = serverListSection[0];
+            }
+
             if (opts.Porta == null)
+            {
                 opts.Porta = portListSection[0];
+            }
 
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
             string[] str = LoginFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
@@ -123,10 +128,12 @@ namespace HardwareInformation
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+            {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
+            }
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
@@ -142,7 +149,7 @@ namespace HardwareInformation
             try
             {
                 IniData def = null;
-                var parser = new FileIniDataParser();
+                FileIniDataParser parser = new FileIniDataParser();
                 //Parses the INI file
                 def = parser.ReadFile(StringsAndConstants.defFile, Encoding.UTF8);
 
@@ -167,7 +174,9 @@ namespace HardwareInformation
                 themeSection = themeStr.Split().ToArray();
 
                 if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
+                {
                     throw new FormatException();
+                }
 
                 orgFullNameSection = orgFullNameStr;
                 orgAcronymSection = orgAcronymStr;
@@ -207,9 +216,13 @@ namespace HardwareInformation
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #endif
                 if (!fileExists)
+                {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                }
                 else
+                {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                }
 
                 //Installs WebView2 Runtime if not found
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
@@ -217,7 +230,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                    var returnCode = WebView2Installer.Install();
+                    string returnCode = WebView2Installer.Install();
                     if (!int.TryParse(returnCode, out int returnCodeInt))
                     {
                         log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
@@ -226,7 +239,9 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
                 else
+                {
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                }
 
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
@@ -235,7 +250,10 @@ namespace HardwareInformation
                     FreeConsole();
                     Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
                     if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
+                    }
+
                     Application.Run(lForm);
                 }
                 else //If given args, hides password from Console and Log file and runs CLIRegister
@@ -246,10 +264,14 @@ namespace HardwareInformation
                     {
                         index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
                         if (index != -1)
+                        {
                             argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                        }
                     }
                     else
+                    {
                         argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                    }
 
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
 
