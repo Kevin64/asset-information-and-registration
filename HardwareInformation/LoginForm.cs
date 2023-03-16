@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
-using System.Windows.Forms;
-using ConstantsDLL;
+﻿using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace HardwareInformation
 {
@@ -83,7 +82,7 @@ namespace HardwareInformation
 
             //Program version
 #if DEBUG
-            this.toolStripStatusLabel2.Text = MiscMethods.Version(Resources.dev_status);            
+            this.toolStripStatusLabel2.Text = MiscMethods.Version(Resources.dev_status);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
@@ -326,10 +325,10 @@ namespace HardwareInformation
                 checkBoxOfflineMode.Enabled = false;
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, this.Handle);
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
-                
+
                 //Feches login data from server
                 str = await LoginFileReader.FetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
-                
+
                 //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {

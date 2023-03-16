@@ -1,23 +1,23 @@
+using ConfigurableQualityPictureBoxDLL;
+using ConstantsDLL;
+using Dark.Net;
+using HardwareInfoDLL;
+using HardwareInformation.Properties;
+using JsonFileReaderDLL;
+using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
+using Microsoft.WindowsAPICodePack.Taskbar;
+using MRG.Controls.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HardwareInfoDLL;
-using ConstantsDLL;
-using JsonFileReaderDLL;
-using ConfigurableQualityPictureBoxDLL;
-using MRG.Controls.UI;
-using LogGeneratorDLL;
-using HardwareInformation.Properties;
-using System.Globalization;
-using Microsoft.WindowsAPICodePack.Taskbar;
-using System.Reflection;
-using System.Drawing;
-using Dark.Net;
 
 namespace HardwareInformation
 {
@@ -52,7 +52,7 @@ namespace HardwareInformation
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
                 {
-                    if(HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     DarkTheme();
                 }
@@ -123,7 +123,7 @@ namespace HardwareInformation
 
             //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
-            for(int i = 0; i < orgList.Count; i++)
+            for (int i = 0; i < orgList.Count; i++)
                 if (!orgList[i].Equals(string.Empty))
                     oList[i] = orgList[i].ToString() + " - ";
             this.toolStripStatusLabel1.Text = oList[4] + oList[2] + oList[0].Substring(0, oList[0].Length - 2);
@@ -2453,7 +2453,7 @@ namespace HardwareInformation
             // 
             // configurableQualityPictureBox1
             // 
-            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.configurableQualityPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.configurableQualityPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.configurableQualityPictureBox1.CompositingQuality = null;
@@ -3398,7 +3398,7 @@ namespace HardwareInformation
         {
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_MAINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
-            
+
             //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
@@ -3417,7 +3417,7 @@ namespace HardwareInformation
             //Define loading circle parameters
             #region
 
-            switch(MiscMethods.GetWindowsScaling())
+            switch (MiscMethods.GetWindowsScaling())
             {
                 case 100:
                     //Init loading circles parameters for 100% scaling
@@ -4369,7 +4369,7 @@ namespace HardwareInformation
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 19;
             progressBar1.Value = 0;
-            
+
             //If stats in non-offline mode, instantiates WebView2 and show a Busy form until loading is complete
             if (!offlineMode)
             {
@@ -4632,10 +4632,10 @@ namespace HardwareInformation
                 porta = port;
 
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
-                
+
                 //Feches model info from server
                 serverOnline = await BIOSFileReader.CheckHostMT(servidor_web, porta);
-                
+
                 if (serverOnline && porta != "")
                 {
                     loadingCircle24.Visible = false;
@@ -4914,7 +4914,7 @@ namespace HardwareInformation
             log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
             log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
 
-            if(!offlineMode)
+            if (!offlineMode)
                 log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
             try
             {
@@ -5043,7 +5043,7 @@ namespace HardwareInformation
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, this.Handle);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutGUI);
             }
@@ -5091,7 +5091,7 @@ namespace HardwareInformation
         {
             Task p = PrintHardwareData();
             await p;
-            
+
             if (!offlineMode)
             {
                 accessSystemButton.Enabled = true; //Enables accessSystem button
@@ -5209,7 +5209,7 @@ namespace HardwareInformation
                             var registerDate = DateTime.ParseExact(sArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
                             var lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
 
-                            if(registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
+                            if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
                                 sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                                 webView2.Visible = true;

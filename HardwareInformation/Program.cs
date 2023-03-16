@@ -1,26 +1,26 @@
 ﻿using CommandLine;
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using ConstantsDLL;
-using JsonFileReaderDLL;
-using LogGeneratorDLL;
-using HardwareInformation.Properties;
-using System.IO;
-using System.Linq;
-using System.Diagnostics;
-using System.Reflection;
-using IniParser.Model;
-using IniParser;
-using IniParser.Exceptions;
-using System.Collections.Generic;
-using System.Text;
 using Dark.Net;
 using HardwareInfoDLL;
+using HardwareInformation.Properties;
+using IniParser;
+using IniParser.Exceptions;
+using IniParser.Model;
+using JsonFileReaderDLL;
+using LogGeneratorDLL;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 namespace HardwareInformation
 {
-	public class Program
+    public class Program
     {
         private static string logLocationStr, serverIPStr, serverPortStr, themeStr;
         private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
@@ -39,49 +39,49 @@ namespace HardwareInformation
 
             [Option("porta", Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
             public string Porta { get; set; }
-            
+
             [Option("modo", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
             public string TipoDeServico { get; set; }
-            
+
             [Option("patrimonio", Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
             public string Patrimonio { get; set; }
-            
+
             [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "mesmo")]
             public string Lacre { get; set; }
-            
+
             [Option("sala", Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = "mesmo")]
             public string Sala { get; set; }
-            
+
             [Option("predio", Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = "mesmo")]
             public string Predio { get; set; }
-            
+
             [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "mesmo")]
             public string AD { get; set; }
-            
+
             [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "mesmo")]
             public string Padrao { get; set; }
-            
+
             [Option("data", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "hoje")]
             public string Data { get; set; }
-            
+
             [Option("pilha", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
             public string Pilha { get; set; }
-            
+
             [Option("ticket", Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
             public string Ticket { get; set; }
-            
+
             [Option("uso", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "mesmo")]
             public string Uso { get; set; }
-            
+
             [Option("etiqueta", Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = "mesmo")]
             public string Etiqueta { get; set; }
-            
+
             [Option("tipo", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "mesmo")]
             public string TipoHardware { get; set; }
-            
+
             [Option("usuario", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
             public string Usuario { get; set; }
-            
+
             [Option("senha", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
             public string Senha { get; set; }
         }
@@ -89,7 +89,7 @@ namespace HardwareInformation
         //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         public static void RunOptions(Options opts)
         {
-            if(opts.Servidor == null)
+            if (opts.Servidor == null)
                 opts.Servidor = serverListSection[0];
             if (opts.Porta == null)
                 opts.Porta = portListSection[0];
@@ -123,8 +123,8 @@ namespace HardwareInformation
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-		static void Main(string[] args)
-		{
+        static void Main(string[] args)
+        {
             if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             //Check if application is running
@@ -137,7 +137,7 @@ namespace HardwareInformation
             string[] argsLog = new string[args.Length];
 
             Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);
 
             try
             {
@@ -145,7 +145,7 @@ namespace HardwareInformation
                 var parser = new FileIniDataParser();
                 //Parses the INI file
                 def = parser.ReadFile(StringsAndConstants.defFile, Encoding.UTF8);
-                
+
                 //Reads the INI file Definition section
                 logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
                 serverIPStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_11];
@@ -245,14 +245,14 @@ namespace HardwareInformation
                     if (index == -1)
                     {
                         index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
-                        if(index != -1)
+                        if (index != -1)
                             argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
                     }
                     else
                         argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
-                    
+
                     log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
-                    
+
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);

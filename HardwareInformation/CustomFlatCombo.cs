@@ -20,7 +20,9 @@ public class CustomFlatComboBox : ComboBox
             }
         }
     }
+
     private Color buttonColor = Color.LightGray;
+
     [DefaultValue(typeof(Color), "LightGray")]
     public Color ButtonColor
     {
@@ -116,11 +118,13 @@ public class CustomFlatComboBox : ComboBox
     }
 
     private const int WM_PAINT = 0xF;
+
     [StructLayout(LayoutKind.Sequential)]
     public struct RECT
     {
         public int L, T, R, B;
     }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct PAINTSTRUCT
     {
@@ -153,6 +157,7 @@ public class CustomFlatComboBox : ComboBox
 
     [DllImport("user32.dll")]
     public static extern int GetUpdateRgn(IntPtr hwnd, IntPtr hrgn, bool fErase);
+
     public enum RegionFlags
     {
         ERROR = 0,
@@ -160,6 +165,7 @@ public class CustomFlatComboBox : ComboBox
         SIMPLEREGION = 2,
         COMPLEXREGION = 3,
     }
+
     [DllImport("gdi32.dll")]
     internal static extern bool DeleteObject(IntPtr hObject);
 

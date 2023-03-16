@@ -1,23 +1,23 @@
-﻿using System.Windows.Forms;
-using ConstantsDLL;
+﻿using ConstantsDLL;
+using System.Windows.Forms;
 
 namespace HardwareInformation
 {
     public partial class BusyForm : Form
     {
-		public BusyForm()
+        public BusyForm()
         {
             InitializeComponent();
-			if(MiscMethods.ThemeInit())
+            if (MiscMethods.ThemeInit())
             {
-				this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-				this.BackColor = StringsAndConstants.DARK_BACKGROUND;
-			}
+                this.label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                this.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            }
             else
             {
-				this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-				this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-			}
+                this.label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                this.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            }
 
             loadingCircle1.Enabled = true;
             loadingCircle1.Active = true;
@@ -92,5 +92,5 @@ namespace HardwareInformation
             loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
             loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
         }
-	}
+    }
 }

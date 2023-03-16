@@ -1,11 +1,10 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Windows.Forms;
-using ConstantsDLL;
-using System.IO;
+﻿using ConstantsDLL;
 using HardwareInformation.Properties;
+using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Drawing;
+using System.Windows.Forms;
 
 namespace HardwareInformation
 {
@@ -19,7 +18,7 @@ namespace HardwareInformation
             SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
         }
     }
-    
+
     //Class with auxiliary methods for minor functionality
     internal static class MiscMethods
     {

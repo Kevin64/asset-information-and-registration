@@ -26,7 +26,7 @@ namespace HardwareInformation
                     return process.ExitCode.ToString();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }

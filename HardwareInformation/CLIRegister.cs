@@ -1,16 +1,16 @@
-﻿using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.WinForms;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ConstantsDLL;
 using HardwareInfoDLL;
-using ConstantsDLL;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
-using System.Globalization;
-using System.Linq;
+using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HardwareInformation
 {
@@ -416,7 +416,7 @@ namespace HardwareInformation
             }
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
             log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
-            
+
             //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
             File.Delete(StringsAndConstants.loginPath);
@@ -573,7 +573,7 @@ namespace HardwareInformation
             strArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, strArgs[21], StringsAndConstants.consoleOutCLI);
-            
+
             //Scans for Storage size
             strArgs[22] = HardwareInfo.GetHDSize();
             log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, strArgs[22], StringsAndConstants.consoleOutCLI);
