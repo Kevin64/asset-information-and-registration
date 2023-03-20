@@ -76,7 +76,7 @@ using System.Runtime.InteropServices;
     "    • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE\r\n")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Coleta de Hardware e Cadastro de Patrimônio")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
