@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Coleta de Hardware e Cadastro de Patrimônio")]
 [assembly: AssemblyDescription("Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.\r\n" +
     "\r\n" +
+    "    • Copyright © 2023 Kevin Vinícius Teixeira Costa\r\n" +
     "    • URL do projeto: https://github.com/Kevin64/HardwareInformation\r\n" +
     "    • Licença: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENCE\r\n" +
     "\r\n" +
@@ -17,63 +18,7 @@ using System.Runtime.InteropServices;
     "    • URL do projeto: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes\r\n" +
     "    • Licença: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENCE\r\n" +
     "\r\n" +
-    "Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros, listados abaixo. Todos os créditos vão para os seus respectivos criadores e mantenedores:\r\n" +
-    "\r\n" +
-    "► Configurable Quality PictureBox (créditos a Jason D)\r\n" +
-    "    • URL do projeto: https://stackoverflow.com/a/1774592/16838132\r\n" +
-    "\r\n" +
-    "► Custom Flat ComboBox (créditos a Reza Aghaei)\r\n" +
-    "    • URL do projeto: https://stackoverflow.com/a/65976649/16838132\r\n" +
-    "\r\n" +
-    "► CommandLineParser\r\n" +
-    "    • Copyright (c) 2005 - 2015 Giacomo Stelluti Scala & Contributors\r\n" +
-    "    • URL do projeto: https://github.com/commandlineparser/commandline\r\n" +
-    "    • Licença: (MIT) https://github.com/commandlineparser/commandline/blob/master/License.md\r\n" +
-    "\r\n" +
-    "► ini-parser\r\n" +
-    "    • Copyright (c) 2008 Ricardo Amores Hernández\r\n" +
-    "    • URL do projeto: https://github.com/rickyah/ini-parser \r\n" +
-    "    • Licença: (MIT) https://github.com/rickyah/ini-parser/blob/master/LICENSE\r\n" +
-    "\r\n" +
-    "► Microsoft.Web.WebView2\r\n" +
-    "    • Copyright (C) Microsoft Corporation. All rights reserved.\r\n" +
-    "    • URL do projeto: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/\r\n" +
-    "    • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1518.46/license\r\n" +
-    "\r\n" +
-    "► WindowsAPICodePack\r\n" +
-    "    • Copyright (C) Microsoft Corporation. All rights reserved.\r\n" +
-    "    • URL do projeto: https://github.com/aybe/Windows-API-Code-Pack-1.1\r\n" +
-    "    • Licença: https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE\r\n" +
-    "\r\n" +
-    "► PowerShellStandard.Library\r\n" +
-    "    • Copyright (c) Microsoft Corporation.\r\n" +
-    "    • URL do projeto: https://github.com/PowerShell/PowerShellStandard\r\n" +
-    "    • Licença: (MIT) https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt\r\n" +
-    "\r\n" +
-    "► LoadingCircle (créditos a Martin Gagne)\r\n" +
-    "    • URL do projeto: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET\r\n" +
-    "    • Licença: (CPOL) https://www.codeproject.com/info/cpol10.aspx\r\n" +
-    "\r\n" +
-    "► NewtonsoftJson\r\n" +
-    "    • Copyright (c) 2007 James Newton-King\r\n" +
-    "    • URL do projeto: https://github.com/JamesNK/Newtonsoft.Json\r\n" +
-    "    • Licença: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md\r\n" +
-    "\r\n" +
-    "► BCrypt.Net-Next\r\n" +
-    "    • Copyright (c) 2006 Damien Miller djm@mindrot.org (jBCrypt)\r\n" +
-    "    • Copyright (c) 2013 Ryan D. Emerle (.Net port)\r\n" +
-    "    • Copyright (c) 2016/2021 Chris McKee (.Net-core port / patches)\r\n" +
-    "    • URL do projeto: https://github.com/BcryptNet/bcrypt.net\r\n" +
-    "    • Licença: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt\r\n" +
-    "\r\n" +
-    "► DarkNet (créditos a Ben Hutchison)\r\n" +
-    "    • URL do projeto: https://github.com/Aldaviva/DarkNet\r\n" +
-    "    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt\r\n" +
-    "\r\n" +
-    "► fluentui-system-icons\r\n" +
-    "    • Copyright (c) 2020 Microsoft Corporation.\r\n" +
-    "    • URL do projeto: https://github.com/microsoft/fluentui-system-icons\r\n" +
-    "    • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE\r\n")]
+    "Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md\r\n")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Coleta de Hardware e Cadastro de Patrimônio")]
 [assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
@@ -103,8 +48,6 @@ using System.Runtime.InteropServices;
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
-[assembly: NeutralResourcesLanguage("pt-BR")]
 #else
 [assembly: AssemblyConfiguration("Release")]
-[assembly: NeutralResourcesLanguage("pt-BR")]
 #endif

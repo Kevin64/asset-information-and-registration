@@ -251,6 +251,13 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.lblFixedMediaType = new System.Windows.Forms.Label();
             this.groupBoxPatrData = new System.Windows.Forms.GroupBox();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
             this.lblFixedMandatory9 = new System.Windows.Forms.Label();
             this.lblFixedMandatory8 = new System.Windows.Forms.Label();
             this.ticketIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -326,13 +333,6 @@ namespace HardwareInformation
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
             this.groupBoxServerStatus = new System.Windows.Forms.GroupBox();
             this.loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.groupBoxHWData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tpmIconImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartIconImg)).BeginInit();
@@ -378,434 +378,272 @@ namespace HardwareInformation
             // 
             // lblBM
             // 
-            this.lblBM.AutoSize = true;
+            resources.ApplyResources(this.lblBM, "lblBM");
             this.lblBM.ForeColor = System.Drawing.Color.Silver;
-            this.lblBM.Location = new System.Drawing.Point(203, 20);
             this.lblBM.Name = "lblBM";
-            this.lblBM.Size = new System.Drawing.Size(10, 13);
-            this.lblBM.TabIndex = 7;
-            this.lblBM.Text = "-";
             // 
             // lblModel
             // 
-            this.lblModel.AutoSize = true;
+            resources.ApplyResources(this.lblModel, "lblModel");
             this.lblModel.ForeColor = System.Drawing.Color.Silver;
-            this.lblModel.Location = new System.Drawing.Point(203, 46);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(10, 13);
-            this.lblModel.TabIndex = 8;
-            this.lblModel.Text = "-";
             // 
             // lblSerialNo
             // 
-            this.lblSerialNo.AutoSize = true;
+            resources.ApplyResources(this.lblSerialNo, "lblSerialNo");
             this.lblSerialNo.ForeColor = System.Drawing.Color.Silver;
-            this.lblSerialNo.Location = new System.Drawing.Point(203, 72);
             this.lblSerialNo.Name = "lblSerialNo";
-            this.lblSerialNo.Size = new System.Drawing.Size(10, 13);
-            this.lblSerialNo.TabIndex = 9;
-            this.lblSerialNo.Text = "-";
             // 
             // lblProcName
             // 
-            this.lblProcName.AutoSize = true;
+            resources.ApplyResources(this.lblProcName, "lblProcName");
             this.lblProcName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProcName.Location = new System.Drawing.Point(203, 98);
             this.lblProcName.Name = "lblProcName";
-            this.lblProcName.Size = new System.Drawing.Size(10, 13);
-            this.lblProcName.TabIndex = 10;
-            this.lblProcName.Text = "-";
             // 
             // lblPM
             // 
-            this.lblPM.AutoSize = true;
+            resources.ApplyResources(this.lblPM, "lblPM");
             this.lblPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblPM.Location = new System.Drawing.Point(203, 124);
             this.lblPM.Name = "lblPM";
-            this.lblPM.Size = new System.Drawing.Size(10, 13);
-            this.lblPM.TabIndex = 11;
-            this.lblPM.Text = "-";
             // 
             // lblHDSize
             // 
-            this.lblHDSize.AutoSize = true;
+            resources.ApplyResources(this.lblHDSize, "lblHDSize");
             this.lblHDSize.ForeColor = System.Drawing.Color.Silver;
-            this.lblHDSize.Location = new System.Drawing.Point(203, 150);
             this.lblHDSize.Name = "lblHDSize";
-            this.lblHDSize.Size = new System.Drawing.Size(10, 13);
-            this.lblHDSize.TabIndex = 12;
-            this.lblHDSize.Text = "-";
             // 
             // lblOS
             // 
-            this.lblOS.AutoSize = true;
+            resources.ApplyResources(this.lblOS, "lblOS");
             this.lblOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblOS.Location = new System.Drawing.Point(203, 280);
             this.lblOS.Name = "lblOS";
-            this.lblOS.Size = new System.Drawing.Size(10, 13);
-            this.lblOS.TabIndex = 13;
-            this.lblOS.Text = "-";
             // 
             // lblHostname
             // 
-            this.lblHostname.AutoSize = true;
+            resources.ApplyResources(this.lblHostname, "lblHostname");
             this.lblHostname.ForeColor = System.Drawing.Color.Silver;
-            this.lblHostname.Location = new System.Drawing.Point(203, 306);
             this.lblHostname.Name = "lblHostname";
-            this.lblHostname.Size = new System.Drawing.Size(10, 13);
-            this.lblHostname.TabIndex = 15;
-            this.lblHostname.Text = "-";
             // 
             // lblMac
             // 
-            this.lblMac.AutoSize = true;
+            resources.ApplyResources(this.lblMac, "lblMac");
             this.lblMac.ForeColor = System.Drawing.Color.Silver;
-            this.lblMac.Location = new System.Drawing.Point(203, 332);
             this.lblMac.Name = "lblMac";
-            this.lblMac.Size = new System.Drawing.Size(10, 13);
-            this.lblMac.TabIndex = 18;
-            this.lblMac.Text = "-";
             // 
             // lblIP
             // 
-            this.lblIP.AutoSize = true;
+            resources.ApplyResources(this.lblIP, "lblIP");
             this.lblIP.ForeColor = System.Drawing.Color.Silver;
-            this.lblIP.Location = new System.Drawing.Point(203, 358);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(10, 13);
-            this.lblIP.TabIndex = 19;
-            this.lblIP.Text = "-";
             // 
             // lblFixedBM
             // 
-            this.lblFixedBM.AutoSize = true;
+            resources.ApplyResources(this.lblFixedBM, "lblFixedBM");
             this.lblFixedBM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBM.Location = new System.Drawing.Point(37, 20);
             this.lblFixedBM.Name = "lblFixedBM";
-            this.lblFixedBM.Size = new System.Drawing.Size(40, 13);
-            this.lblFixedBM.TabIndex = 0;
-            this.lblFixedBM.Text = "Marca:";
             // 
             // lblFixedModel
             // 
-            this.lblFixedModel.AutoSize = true;
+            resources.ApplyResources(this.lblFixedModel, "lblFixedModel");
             this.lblFixedModel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedModel.Location = new System.Drawing.Point(37, 46);
             this.lblFixedModel.Name = "lblFixedModel";
-            this.lblFixedModel.Size = new System.Drawing.Size(45, 13);
-            this.lblFixedModel.TabIndex = 1;
-            this.lblFixedModel.Text = "Modelo:";
             // 
             // lblFixedSerialNo
             // 
-            this.lblFixedSerialNo.AutoSize = true;
+            resources.ApplyResources(this.lblFixedSerialNo, "lblFixedSerialNo");
             this.lblFixedSerialNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSerialNo.Location = new System.Drawing.Point(37, 72);
             this.lblFixedSerialNo.Name = "lblFixedSerialNo";
-            this.lblFixedSerialNo.Size = new System.Drawing.Size(76, 13);
-            this.lblFixedSerialNo.TabIndex = 2;
-            this.lblFixedSerialNo.Text = "Número Serial:";
             // 
             // lblFixedProcName
             // 
-            this.lblFixedProcName.AutoSize = true;
+            resources.ApplyResources(this.lblFixedProcName, "lblFixedProcName");
             this.lblFixedProcName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedProcName.Location = new System.Drawing.Point(37, 98);
             this.lblFixedProcName.Name = "lblFixedProcName";
-            this.lblFixedProcName.Size = new System.Drawing.Size(146, 13);
-            this.lblFixedProcName.TabIndex = 3;
-            this.lblFixedProcName.Text = "Processador e nº de núcleos:";
             // 
             // lblFixedPM
             // 
-            this.lblFixedPM.AutoSize = true;
+            resources.ApplyResources(this.lblFixedPM, "lblFixedPM");
             this.lblFixedPM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPM.Location = new System.Drawing.Point(37, 124);
             this.lblFixedPM.Name = "lblFixedPM";
-            this.lblFixedPM.Size = new System.Drawing.Size(138, 13);
-            this.lblFixedPM.TabIndex = 4;
-            this.lblFixedPM.Text = "Memória RAM e nº de slots:";
             // 
             // lblFixedHDSize
             // 
-            this.lblFixedHDSize.AutoSize = true;
+            resources.ApplyResources(this.lblFixedHDSize, "lblFixedHDSize");
             this.lblFixedHDSize.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedHDSize.Location = new System.Drawing.Point(37, 150);
             this.lblFixedHDSize.Name = "lblFixedHDSize";
-            this.lblFixedHDSize.Size = new System.Drawing.Size(153, 13);
-            this.lblFixedHDSize.TabIndex = 5;
-            this.lblFixedHDSize.Text = "Armazenamento (espaço total):";
             // 
             // lblFixedOS
             // 
-            this.lblFixedOS.AutoSize = true;
+            resources.ApplyResources(this.lblFixedOS, "lblFixedOS");
             this.lblFixedOS.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedOS.Location = new System.Drawing.Point(37, 280);
             this.lblFixedOS.Name = "lblFixedOS";
-            this.lblFixedOS.Size = new System.Drawing.Size(107, 13);
-            this.lblFixedOS.TabIndex = 6;
-            this.lblFixedOS.Text = "Sistema Operacional:";
             // 
             // lblFixedHostname
             // 
-            this.lblFixedHostname.AutoSize = true;
+            resources.ApplyResources(this.lblFixedHostname, "lblFixedHostname");
             this.lblFixedHostname.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedHostname.Location = new System.Drawing.Point(37, 306);
             this.lblFixedHostname.Name = "lblFixedHostname";
-            this.lblFixedHostname.Size = new System.Drawing.Size(113, 13);
-            this.lblFixedHostname.TabIndex = 7;
-            this.lblFixedHostname.Text = "Nome do Computador:";
             // 
             // lblFixedMac
             // 
-            this.lblFixedMac.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMac, "lblFixedMac");
             this.lblFixedMac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMac.Location = new System.Drawing.Point(37, 332);
             this.lblFixedMac.Name = "lblFixedMac";
-            this.lblFixedMac.Size = new System.Drawing.Size(118, 13);
-            this.lblFixedMac.TabIndex = 8;
-            this.lblFixedMac.Text = "Endereço MAC do NIC:";
             // 
             // lblFixedIP
             // 
-            this.lblFixedIP.AutoSize = true;
+            resources.ApplyResources(this.lblFixedIP, "lblFixedIP");
             this.lblFixedIP.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedIP.Location = new System.Drawing.Point(37, 358);
             this.lblFixedIP.Name = "lblFixedIP";
-            this.lblFixedIP.Size = new System.Drawing.Size(105, 13);
-            this.lblFixedIP.TabIndex = 9;
-            this.lblFixedIP.Text = "Endereço IP do NIC:";
             // 
             // lblFixedPatrimony
             // 
-            this.lblFixedPatrimony.AutoSize = true;
+            resources.ApplyResources(this.lblFixedPatrimony, "lblFixedPatrimony");
             this.lblFixedPatrimony.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPatrimony.Location = new System.Drawing.Point(37, 20);
             this.lblFixedPatrimony.Name = "lblFixedPatrimony";
-            this.lblFixedPatrimony.Size = new System.Drawing.Size(59, 13);
-            this.lblFixedPatrimony.TabIndex = 10;
-            this.lblFixedPatrimony.Text = "Patrimônio:";
             // 
             // lblFixedSeal
             // 
-            this.lblFixedSeal.AutoSize = true;
+            resources.ApplyResources(this.lblFixedSeal, "lblFixedSeal");
             this.lblFixedSeal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSeal.Location = new System.Drawing.Point(37, 46);
             this.lblFixedSeal.Name = "lblFixedSeal";
-            this.lblFixedSeal.Size = new System.Drawing.Size(93, 13);
-            this.lblFixedSeal.TabIndex = 11;
-            this.lblFixedSeal.Text = "Lacre (se houver):";
             // 
             // lblFixedBuilding
             // 
-            this.lblFixedBuilding.AutoSize = true;
+            resources.ApplyResources(this.lblFixedBuilding, "lblFixedBuilding");
             this.lblFixedBuilding.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBuilding.Location = new System.Drawing.Point(37, 98);
             this.lblFixedBuilding.Name = "lblFixedBuilding";
-            this.lblFixedBuilding.Size = new System.Drawing.Size(40, 13);
-            this.lblFixedBuilding.TabIndex = 13;
-            this.lblFixedBuilding.Text = "Prédio:";
             // 
             // textBoxPatrimony
             // 
             this.textBoxPatrimony.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxPatrimony.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxPatrimony.Location = new System.Drawing.Point(185, 17);
-            this.textBoxPatrimony.MaxLength = 6;
+            resources.ApplyResources(this.textBoxPatrimony, "textBoxPatrimony");
             this.textBoxPatrimony.Name = "textBoxPatrimony";
-            this.textBoxPatrimony.Size = new System.Drawing.Size(259, 20);
-            this.textBoxPatrimony.TabIndex = 34;
             this.textBoxPatrimony.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxSeal
             // 
             this.textBoxSeal.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxSeal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxSeal.Location = new System.Drawing.Point(185, 43);
-            this.textBoxSeal.MaxLength = 10;
+            resources.ApplyResources(this.textBoxSeal, "textBoxSeal");
             this.textBoxSeal.Name = "textBoxSeal";
-            this.textBoxSeal.Size = new System.Drawing.Size(259, 20);
-            this.textBoxSeal.TabIndex = 35;
             this.textBoxSeal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxRoom
             // 
             this.textBoxRoom.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxRoom.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxRoom.Location = new System.Drawing.Point(185, 69);
-            this.textBoxRoom.MaxLength = 4;
+            resources.ApplyResources(this.textBoxRoom, "textBoxRoom");
             this.textBoxRoom.Name = "textBoxRoom";
-            this.textBoxRoom.Size = new System.Drawing.Size(101, 20);
-            this.textBoxRoom.TabIndex = 36;
             this.textBoxRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxLetter
             // 
             this.textBoxLetter.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxLetter.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxLetter.Location = new System.Drawing.Point(419, 69);
-            this.textBoxLetter.MaxLength = 1;
+            resources.ApplyResources(this.textBoxLetter, "textBoxLetter");
             this.textBoxLetter.Name = "textBoxLetter";
-            this.textBoxLetter.Size = new System.Drawing.Size(25, 20);
-            this.textBoxLetter.TabIndex = 37;
             this.textBoxLetter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCharsOnly_KeyPress);
             // 
             // lblFixedRoom
             // 
-            this.lblFixedRoom.AutoSize = true;
+            resources.ApplyResources(this.lblFixedRoom, "lblFixedRoom");
             this.lblFixedRoom.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedRoom.Location = new System.Drawing.Point(37, 72);
             this.lblFixedRoom.Name = "lblFixedRoom";
-            this.lblFixedRoom.Size = new System.Drawing.Size(135, 13);
-            this.lblFixedRoom.TabIndex = 12;
-            this.lblFixedRoom.Text = "Sala (0000 se não houver):";
             // 
             // lblFixedDateTimePicker
             // 
-            this.lblFixedDateTimePicker.AutoSize = true;
+            resources.ApplyResources(this.lblFixedDateTimePicker, "lblFixedDateTimePicker");
             this.lblFixedDateTimePicker.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedDateTimePicker.Location = new System.Drawing.Point(37, 150);
             this.lblFixedDateTimePicker.Name = "lblFixedDateTimePicker";
-            this.lblFixedDateTimePicker.Size = new System.Drawing.Size(115, 13);
-            this.lblFixedDateTimePicker.TabIndex = 16;
-            this.lblFixedDateTimePicker.Text = "Data do último serviço:";
             // 
             // registerButton
             // 
             this.registerButton.BackColor = System.Drawing.SystemColors.Control;
-            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            resources.ApplyResources(this.registerButton, "registerButton");
             this.registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registerButton.Location = new System.Drawing.Point(702, 603);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(268, 52);
-            this.registerButton.TabIndex = 53;
-            this.registerButton.Text = "Cadastrar / Atualizar dados";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.Cadastra_ClickAsync);
             // 
             // lblFixedInUse
             // 
-            this.lblFixedInUse.AutoSize = true;
+            resources.ApplyResources(this.lblFixedInUse, "lblFixedInUse");
             this.lblFixedInUse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedInUse.Location = new System.Drawing.Point(322, 98);
             this.lblFixedInUse.Name = "lblFixedInUse";
-            this.lblFixedInUse.Size = new System.Drawing.Size(45, 13);
-            this.lblFixedInUse.TabIndex = 48;
-            this.lblFixedInUse.Text = "Em uso:";
             // 
             // lblFixedTag
             // 
-            this.lblFixedTag.AutoSize = true;
+            resources.ApplyResources(this.lblFixedTag, "lblFixedTag");
             this.lblFixedTag.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTag.Location = new System.Drawing.Point(322, 124);
             this.lblFixedTag.Name = "lblFixedTag";
-            this.lblFixedTag.Size = new System.Drawing.Size(49, 13);
-            this.lblFixedTag.TabIndex = 50;
-            this.lblFixedTag.Text = "Etiqueta:";
             // 
             // lblFixedType
             // 
-            this.lblFixedType.AutoSize = true;
+            resources.ApplyResources(this.lblFixedType, "lblFixedType");
             this.lblFixedType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedType.Location = new System.Drawing.Point(37, 124);
             this.lblFixedType.Name = "lblFixedType";
-            this.lblFixedType.Size = new System.Drawing.Size(31, 13);
-            this.lblFixedType.TabIndex = 53;
-            this.lblFixedType.Text = "Tipo:";
             // 
             // lblFixedServerOpState
             // 
-            this.lblFixedServerOpState.AutoSize = true;
+            resources.ApplyResources(this.lblFixedServerOpState, "lblFixedServerOpState");
             this.lblFixedServerOpState.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedServerOpState.Location = new System.Drawing.Point(187, 16);
             this.lblFixedServerOpState.Name = "lblFixedServerOpState";
-            this.lblFixedServerOpState.Size = new System.Drawing.Size(98, 13);
-            this.lblFixedServerOpState.TabIndex = 17;
-            this.lblFixedServerOpState.Text = "Status operacional:";
             // 
             // lblFixedPortServer
             // 
-            this.lblFixedPortServer.AutoSize = true;
+            resources.ApplyResources(this.lblFixedPortServer, "lblFixedPortServer");
             this.lblFixedPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPortServer.Location = new System.Drawing.Point(7, 35);
             this.lblFixedPortServer.Name = "lblFixedPortServer";
-            this.lblFixedPortServer.Size = new System.Drawing.Size(35, 13);
-            this.lblFixedPortServer.TabIndex = 18;
-            this.lblFixedPortServer.Text = "Porta:";
             // 
             // collectButton
             // 
             this.collectButton.BackColor = System.Drawing.SystemColors.Control;
             this.collectButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.collectButton.Location = new System.Drawing.Point(520, 603);
+            resources.ApplyResources(this.collectButton, "collectButton");
             this.collectButton.Name = "collectButton";
-            this.collectButton.Size = new System.Drawing.Size(180, 25);
-            this.collectButton.TabIndex = 51;
-            this.collectButton.Text = "Coletar novamente";
             this.collectButton.UseVisualStyleBackColor = true;
             this.collectButton.Click += new System.EventHandler(this.Coleta_Click);
             // 
             // lblFixedLetter
             // 
-            this.lblFixedLetter.AutoSize = true;
+            resources.ApplyResources(this.lblFixedLetter, "lblFixedLetter");
             this.lblFixedLetter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedLetter.Location = new System.Drawing.Point(322, 72);
             this.lblFixedLetter.Name = "lblFixedLetter";
-            this.lblFixedLetter.Size = new System.Drawing.Size(90, 13);
-            this.lblFixedLetter.TabIndex = 55;
-            this.lblFixedLetter.Text = "Letra (se houver):";
             // 
             // lblFixedBIOS
             // 
-            this.lblFixedBIOS.AutoSize = true;
+            resources.ApplyResources(this.lblFixedBIOS, "lblFixedBIOS");
             this.lblFixedBIOS.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBIOS.Location = new System.Drawing.Point(37, 410);
             this.lblFixedBIOS.Name = "lblFixedBIOS";
-            this.lblFixedBIOS.Size = new System.Drawing.Size(100, 13);
-            this.lblFixedBIOS.TabIndex = 56;
-            this.lblFixedBIOS.Text = "Versão do firmware:";
             // 
             // lblBIOS
             // 
-            this.lblBIOS.AutoSize = true;
+            resources.ApplyResources(this.lblBIOS, "lblBIOS");
             this.lblBIOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOS.Location = new System.Drawing.Point(203, 410);
             this.lblBIOS.Name = "lblBIOS";
-            this.lblBIOS.Size = new System.Drawing.Size(10, 13);
-            this.lblBIOS.TabIndex = 57;
-            this.lblBIOS.Text = "-";
             // 
             // accessSystemButton
             // 
             this.accessSystemButton.BackColor = System.Drawing.SystemColors.Control;
             this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.accessSystemButton.Location = new System.Drawing.Point(520, 630);
+            resources.ApplyResources(this.accessSystemButton, "accessSystemButton");
             this.accessSystemButton.Name = "accessSystemButton";
-            this.accessSystemButton.Size = new System.Drawing.Size(180, 25);
-            this.accessSystemButton.TabIndex = 52;
-            this.accessSystemButton.Text = "Acessar sistema de patrimônios";
             this.accessSystemButton.UseVisualStyleBackColor = true;
             this.accessSystemButton.Click += new System.EventHandler(this.AccessButton_Click);
             // 
             // lblFixedBIOSType
             // 
-            this.lblFixedBIOSType.AutoSize = true;
+            resources.ApplyResources(this.lblFixedBIOSType, "lblFixedBIOSType");
             this.lblFixedBIOSType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBIOSType.Location = new System.Drawing.Point(37, 384);
             this.lblFixedBIOSType.Name = "lblFixedBIOSType";
-            this.lblFixedBIOSType.Size = new System.Drawing.Size(88, 13);
-            this.lblFixedBIOSType.TabIndex = 62;
-            this.lblFixedBIOSType.Text = "Tipo de firmware:";
             // 
             // lblBIOSType
             // 
-            this.lblBIOSType.AutoSize = true;
+            resources.ApplyResources(this.lblBIOSType, "lblBIOSType");
             this.lblBIOSType.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOSType.Location = new System.Drawing.Point(203, 384);
             this.lblBIOSType.Name = "lblBIOSType";
-            this.lblBIOSType.Size = new System.Drawing.Size(10, 13);
-            this.lblBIOSType.TabIndex = 63;
-            this.lblBIOSType.Text = "-";
             // 
             // groupBoxHWData
             // 
@@ -890,12 +728,9 @@ namespace HardwareInformation
             this.groupBoxHWData.Controls.Add(this.lblFixedMac);
             this.groupBoxHWData.Controls.Add(this.lblFixedIP);
             this.groupBoxHWData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxHWData.Location = new System.Drawing.Point(32, 89);
+            resources.ApplyResources(this.groupBoxHWData, "groupBoxHWData");
             this.groupBoxHWData.Name = "groupBoxHWData";
-            this.groupBoxHWData.Size = new System.Drawing.Size(482, 566);
-            this.groupBoxHWData.TabIndex = 65;
             this.groupBoxHWData.TabStop = false;
-            this.groupBoxHWData.Text = "Dados do computador";
             // 
             // loadingCircle19
             // 
@@ -903,16 +738,13 @@ namespace HardwareInformation
             this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle19.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle19.InnerCircleRadius = 5;
-            this.loadingCircle19.Location = new System.Drawing.Point(202, 482);
+            resources.ApplyResources(this.loadingCircle19, "loadingCircle19");
             this.loadingCircle19.Name = "loadingCircle19";
             this.loadingCircle19.NumberSpoke = 12;
             this.loadingCircle19.OuterCircleRadius = 11;
             this.loadingCircle19.RotationSpeed = 1;
-            this.loadingCircle19.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle19.SpokeThickness = 2;
             this.loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle19.TabIndex = 131;
-            this.loadingCircle19.Text = "loadingCircle19";
             // 
             // loadingCircle18
             // 
@@ -920,16 +752,13 @@ namespace HardwareInformation
             this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle18.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle18.InnerCircleRadius = 5;
-            this.loadingCircle18.Location = new System.Drawing.Point(202, 456);
+            resources.ApplyResources(this.loadingCircle18, "loadingCircle18");
             this.loadingCircle18.Name = "loadingCircle18";
             this.loadingCircle18.NumberSpoke = 12;
             this.loadingCircle18.OuterCircleRadius = 11;
             this.loadingCircle18.RotationSpeed = 1;
-            this.loadingCircle18.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle18.SpokeThickness = 2;
             this.loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle18.TabIndex = 130;
-            this.loadingCircle18.Text = "loadingCircle18";
             // 
             // loadingCircle17
             // 
@@ -937,16 +766,13 @@ namespace HardwareInformation
             this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle17.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle17.InnerCircleRadius = 5;
-            this.loadingCircle17.Location = new System.Drawing.Point(202, 430);
+            resources.ApplyResources(this.loadingCircle17, "loadingCircle17");
             this.loadingCircle17.Name = "loadingCircle17";
             this.loadingCircle17.NumberSpoke = 12;
             this.loadingCircle17.OuterCircleRadius = 11;
             this.loadingCircle17.RotationSpeed = 1;
-            this.loadingCircle17.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle17.SpokeThickness = 2;
             this.loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle17.TabIndex = 129;
-            this.loadingCircle17.Text = "loadingCircle17";
             // 
             // loadingCircle16
             // 
@@ -954,16 +780,13 @@ namespace HardwareInformation
             this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle16.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle16.InnerCircleRadius = 5;
-            this.loadingCircle16.Location = new System.Drawing.Point(202, 404);
+            resources.ApplyResources(this.loadingCircle16, "loadingCircle16");
             this.loadingCircle16.Name = "loadingCircle16";
             this.loadingCircle16.NumberSpoke = 12;
             this.loadingCircle16.OuterCircleRadius = 11;
             this.loadingCircle16.RotationSpeed = 1;
-            this.loadingCircle16.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle16.SpokeThickness = 2;
             this.loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle16.TabIndex = 128;
-            this.loadingCircle16.Text = "loadingCircle16";
             // 
             // loadingCircle15
             // 
@@ -971,16 +794,13 @@ namespace HardwareInformation
             this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle15.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle15.InnerCircleRadius = 5;
-            this.loadingCircle15.Location = new System.Drawing.Point(202, 378);
+            resources.ApplyResources(this.loadingCircle15, "loadingCircle15");
             this.loadingCircle15.Name = "loadingCircle15";
             this.loadingCircle15.NumberSpoke = 12;
             this.loadingCircle15.OuterCircleRadius = 11;
             this.loadingCircle15.RotationSpeed = 1;
-            this.loadingCircle15.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle15.SpokeThickness = 2;
             this.loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle15.TabIndex = 127;
-            this.loadingCircle15.Text = "loadingCircle15";
             // 
             // loadingCircle14
             // 
@@ -988,16 +808,13 @@ namespace HardwareInformation
             this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle14.InnerCircleRadius = 5;
-            this.loadingCircle14.Location = new System.Drawing.Point(202, 352);
+            resources.ApplyResources(this.loadingCircle14, "loadingCircle14");
             this.loadingCircle14.Name = "loadingCircle14";
             this.loadingCircle14.NumberSpoke = 12;
             this.loadingCircle14.OuterCircleRadius = 11;
             this.loadingCircle14.RotationSpeed = 1;
-            this.loadingCircle14.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle14.SpokeThickness = 2;
             this.loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle14.TabIndex = 126;
-            this.loadingCircle14.Text = "loadingCircle14";
             // 
             // loadingCircle13
             // 
@@ -1005,16 +822,13 @@ namespace HardwareInformation
             this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle13.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle13.InnerCircleRadius = 5;
-            this.loadingCircle13.Location = new System.Drawing.Point(202, 326);
+            resources.ApplyResources(this.loadingCircle13, "loadingCircle13");
             this.loadingCircle13.Name = "loadingCircle13";
             this.loadingCircle13.NumberSpoke = 12;
             this.loadingCircle13.OuterCircleRadius = 11;
             this.loadingCircle13.RotationSpeed = 1;
-            this.loadingCircle13.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle13.SpokeThickness = 2;
             this.loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle13.TabIndex = 125;
-            this.loadingCircle13.Text = "loadingCircle13";
             // 
             // loadingCircle12
             // 
@@ -1022,16 +836,13 @@ namespace HardwareInformation
             this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle12.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle12.InnerCircleRadius = 5;
-            this.loadingCircle12.Location = new System.Drawing.Point(202, 300);
+            resources.ApplyResources(this.loadingCircle12, "loadingCircle12");
             this.loadingCircle12.Name = "loadingCircle12";
             this.loadingCircle12.NumberSpoke = 12;
             this.loadingCircle12.OuterCircleRadius = 11;
             this.loadingCircle12.RotationSpeed = 1;
-            this.loadingCircle12.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle12.SpokeThickness = 2;
             this.loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle12.TabIndex = 124;
-            this.loadingCircle12.Text = "loadingCircle12";
             // 
             // loadingCircle11
             // 
@@ -1039,16 +850,13 @@ namespace HardwareInformation
             this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle11.InnerCircleRadius = 5;
-            this.loadingCircle11.Location = new System.Drawing.Point(202, 274);
+            resources.ApplyResources(this.loadingCircle11, "loadingCircle11");
             this.loadingCircle11.Name = "loadingCircle11";
             this.loadingCircle11.NumberSpoke = 12;
             this.loadingCircle11.OuterCircleRadius = 11;
             this.loadingCircle11.RotationSpeed = 1;
-            this.loadingCircle11.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle11.SpokeThickness = 2;
             this.loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle11.TabIndex = 123;
-            this.loadingCircle11.Text = "loadingCircle11";
             // 
             // loadingCircle10
             // 
@@ -1056,16 +864,13 @@ namespace HardwareInformation
             this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle10.InnerCircleRadius = 5;
-            this.loadingCircle10.Location = new System.Drawing.Point(202, 248);
+            resources.ApplyResources(this.loadingCircle10, "loadingCircle10");
             this.loadingCircle10.Name = "loadingCircle10";
             this.loadingCircle10.NumberSpoke = 12;
             this.loadingCircle10.OuterCircleRadius = 11;
             this.loadingCircle10.RotationSpeed = 1;
-            this.loadingCircle10.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle10.SpokeThickness = 2;
             this.loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle10.TabIndex = 122;
-            this.loadingCircle10.Text = "loadingCircle10";
             // 
             // loadingCircle9
             // 
@@ -1073,16 +878,13 @@ namespace HardwareInformation
             this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle9.InnerCircleRadius = 5;
-            this.loadingCircle9.Location = new System.Drawing.Point(202, 222);
+            resources.ApplyResources(this.loadingCircle9, "loadingCircle9");
             this.loadingCircle9.Name = "loadingCircle9";
             this.loadingCircle9.NumberSpoke = 12;
             this.loadingCircle9.OuterCircleRadius = 11;
             this.loadingCircle9.RotationSpeed = 1;
-            this.loadingCircle9.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle9.SpokeThickness = 2;
             this.loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle9.TabIndex = 121;
-            this.loadingCircle9.Text = "loadingCircle9";
             // 
             // loadingCircle8
             // 
@@ -1090,16 +892,13 @@ namespace HardwareInformation
             this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle8.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle8.InnerCircleRadius = 5;
-            this.loadingCircle8.Location = new System.Drawing.Point(202, 196);
+            resources.ApplyResources(this.loadingCircle8, "loadingCircle8");
             this.loadingCircle8.Name = "loadingCircle8";
             this.loadingCircle8.NumberSpoke = 12;
             this.loadingCircle8.OuterCircleRadius = 11;
             this.loadingCircle8.RotationSpeed = 1;
-            this.loadingCircle8.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle8.SpokeThickness = 2;
             this.loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle8.TabIndex = 120;
-            this.loadingCircle8.Text = "loadingCircle8";
             // 
             // loadingCircle7
             // 
@@ -1107,16 +906,13 @@ namespace HardwareInformation
             this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle7.InnerCircleRadius = 5;
-            this.loadingCircle7.Location = new System.Drawing.Point(202, 170);
+            resources.ApplyResources(this.loadingCircle7, "loadingCircle7");
             this.loadingCircle7.Name = "loadingCircle7";
             this.loadingCircle7.NumberSpoke = 12;
             this.loadingCircle7.OuterCircleRadius = 11;
             this.loadingCircle7.RotationSpeed = 1;
-            this.loadingCircle7.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle7.SpokeThickness = 2;
             this.loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle7.TabIndex = 119;
-            this.loadingCircle7.Text = "loadingCircle7";
             // 
             // loadingCircle6
             // 
@@ -1124,16 +920,13 @@ namespace HardwareInformation
             this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle6.InnerCircleRadius = 5;
-            this.loadingCircle6.Location = new System.Drawing.Point(202, 144);
+            resources.ApplyResources(this.loadingCircle6, "loadingCircle6");
             this.loadingCircle6.Name = "loadingCircle6";
             this.loadingCircle6.NumberSpoke = 12;
             this.loadingCircle6.OuterCircleRadius = 11;
             this.loadingCircle6.RotationSpeed = 1;
-            this.loadingCircle6.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle6.SpokeThickness = 2;
             this.loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle6.TabIndex = 118;
-            this.loadingCircle6.Text = "loadingCircle6";
             // 
             // loadingCircle5
             // 
@@ -1141,16 +934,13 @@ namespace HardwareInformation
             this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle5.InnerCircleRadius = 5;
-            this.loadingCircle5.Location = new System.Drawing.Point(202, 118);
+            resources.ApplyResources(this.loadingCircle5, "loadingCircle5");
             this.loadingCircle5.Name = "loadingCircle5";
             this.loadingCircle5.NumberSpoke = 12;
             this.loadingCircle5.OuterCircleRadius = 11;
             this.loadingCircle5.RotationSpeed = 1;
-            this.loadingCircle5.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle5.SpokeThickness = 2;
             this.loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle5.TabIndex = 117;
-            this.loadingCircle5.Text = "loadingCircle5";
             // 
             // loadingCircle4
             // 
@@ -1158,16 +948,13 @@ namespace HardwareInformation
             this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle4.InnerCircleRadius = 5;
-            this.loadingCircle4.Location = new System.Drawing.Point(202, 92);
+            resources.ApplyResources(this.loadingCircle4, "loadingCircle4");
             this.loadingCircle4.Name = "loadingCircle4";
             this.loadingCircle4.NumberSpoke = 12;
             this.loadingCircle4.OuterCircleRadius = 11;
             this.loadingCircle4.RotationSpeed = 1;
-            this.loadingCircle4.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle4.SpokeThickness = 2;
             this.loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle4.TabIndex = 116;
-            this.loadingCircle4.Text = "loadingCircle4";
             // 
             // loadingCircle3
             // 
@@ -1175,16 +962,13 @@ namespace HardwareInformation
             this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle3.InnerCircleRadius = 5;
-            this.loadingCircle3.Location = new System.Drawing.Point(202, 66);
+            resources.ApplyResources(this.loadingCircle3, "loadingCircle3");
             this.loadingCircle3.Name = "loadingCircle3";
             this.loadingCircle3.NumberSpoke = 12;
             this.loadingCircle3.OuterCircleRadius = 11;
             this.loadingCircle3.RotationSpeed = 1;
-            this.loadingCircle3.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle3.SpokeThickness = 2;
             this.loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle3.TabIndex = 115;
-            this.loadingCircle3.Text = "loadingCircle3";
             // 
             // loadingCircle2
             // 
@@ -1192,16 +976,13 @@ namespace HardwareInformation
             this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle2.InnerCircleRadius = 5;
-            this.loadingCircle2.Location = new System.Drawing.Point(202, 40);
+            resources.ApplyResources(this.loadingCircle2, "loadingCircle2");
             this.loadingCircle2.Name = "loadingCircle2";
             this.loadingCircle2.NumberSpoke = 12;
             this.loadingCircle2.OuterCircleRadius = 11;
             this.loadingCircle2.RotationSpeed = 1;
-            this.loadingCircle2.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle2.SpokeThickness = 2;
             this.loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle2.TabIndex = 114;
-            this.loadingCircle2.Text = "loadingCircle2";
             // 
             // loadingCircle1
             // 
@@ -1209,420 +990,292 @@ namespace HardwareInformation
             this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Location = new System.Drawing.Point(202, 14);
+            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
             this.loadingCircle1.Name = "loadingCircle1";
             this.loadingCircle1.NumberSpoke = 12;
             this.loadingCircle1.OuterCircleRadius = 11;
             this.loadingCircle1.RotationSpeed = 1;
-            this.loadingCircle1.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle1.SpokeThickness = 2;
             this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle1.TabIndex = 113;
-            this.loadingCircle1.Text = "loadingCircle1";
             // 
             // separatorH
             // 
             this.separatorH.BackColor = System.Drawing.Color.DimGray;
-            this.separatorH.Location = new System.Drawing.Point(6, 513);
+            resources.ApplyResources(this.separatorH, "separatorH");
             this.separatorH.Name = "separatorH";
-            this.separatorH.Size = new System.Drawing.Size(469, 1);
-            this.separatorH.TabIndex = 112;
-            this.separatorH.Text = "hSeparator";
             // 
             // separatorV
             // 
             this.separatorV.BackColor = System.Drawing.Color.DimGray;
-            this.separatorV.Location = new System.Drawing.Point(200, 14);
+            resources.ApplyResources(this.separatorV, "separatorV");
             this.separatorV.Name = "separatorV";
-            this.separatorV.Size = new System.Drawing.Size(1, 499);
-            this.separatorV.TabIndex = 111;
-            this.separatorV.Text = "vSeparator";
             // 
             // tpmIconImg
             // 
             this.tpmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.tpmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.tpmIconImg.Location = new System.Drawing.Point(7, 482);
+            resources.ApplyResources(this.tpmIconImg, "tpmIconImg");
             this.tpmIconImg.Name = "tpmIconImg";
-            this.tpmIconImg.Size = new System.Drawing.Size(25, 25);
-            this.tpmIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.tpmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tpmIconImg.TabIndex = 110;
             this.tpmIconImg.TabStop = false;
             // 
             // smartIconImg
             // 
             this.smartIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.smartIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.smartIconImg.Location = new System.Drawing.Point(7, 170);
+            resources.ApplyResources(this.smartIconImg, "smartIconImg");
             this.smartIconImg.Name = "smartIconImg";
-            this.smartIconImg.Size = new System.Drawing.Size(25, 25);
-            this.smartIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.smartIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.smartIconImg.TabIndex = 107;
             this.smartIconImg.TabStop = false;
             // 
             // lblSmart
             // 
-            this.lblSmart.AutoSize = true;
+            resources.ApplyResources(this.lblSmart, "lblSmart");
             this.lblSmart.ForeColor = System.Drawing.Color.Silver;
-            this.lblSmart.Location = new System.Drawing.Point(203, 176);
             this.lblSmart.Name = "lblSmart";
-            this.lblSmart.Size = new System.Drawing.Size(10, 13);
-            this.lblSmart.TabIndex = 106;
-            this.lblSmart.Text = "-";
             // 
             // lblTPM
             // 
-            this.lblTPM.AutoSize = true;
+            resources.ApplyResources(this.lblTPM, "lblTPM");
             this.lblTPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblTPM.Location = new System.Drawing.Point(203, 488);
             this.lblTPM.Name = "lblTPM";
-            this.lblTPM.Size = new System.Drawing.Size(10, 13);
-            this.lblTPM.TabIndex = 109;
-            this.lblTPM.Text = "-";
             // 
             // lblFixedSmart
             // 
-            this.lblFixedSmart.AutoSize = true;
+            resources.ApplyResources(this.lblFixedSmart, "lblFixedSmart");
             this.lblFixedSmart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSmart.Location = new System.Drawing.Point(37, 176);
             this.lblFixedSmart.Name = "lblFixedSmart";
-            this.lblFixedSmart.Size = new System.Drawing.Size(96, 13);
-            this.lblFixedSmart.TabIndex = 105;
-            this.lblFixedSmart.Text = "Status S.M.A.R.T.:";
             // 
             // vtIconImg
             // 
             this.vtIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.vtIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.vtIconImg.Location = new System.Drawing.Point(7, 456);
+            resources.ApplyResources(this.vtIconImg, "vtIconImg");
             this.vtIconImg.Name = "vtIconImg";
-            this.vtIconImg.Size = new System.Drawing.Size(25, 25);
-            this.vtIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.vtIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.vtIconImg.TabIndex = 104;
             this.vtIconImg.TabStop = false;
             // 
             // lblFixedTPM
             // 
-            this.lblFixedTPM.AutoSize = true;
+            resources.ApplyResources(this.lblFixedTPM, "lblFixedTPM");
             this.lblFixedTPM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTPM.Location = new System.Drawing.Point(37, 488);
             this.lblFixedTPM.Name = "lblFixedTPM";
-            this.lblFixedTPM.Size = new System.Drawing.Size(121, 13);
-            this.lblFixedTPM.TabIndex = 108;
-            this.lblFixedTPM.Text = "Versão do módulo TPM:";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 533);
+            resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(470, 27);
-            this.progressBar1.TabIndex = 69;
             // 
             // lblProgressPercent
             // 
-            this.lblProgressPercent.AutoSize = true;
+            resources.ApplyResources(this.lblProgressPercent, "lblProgressPercent");
             this.lblProgressPercent.BackColor = System.Drawing.Color.Transparent;
             this.lblProgressPercent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblProgressPercent.Location = new System.Drawing.Point(236, 517);
             this.lblProgressPercent.Name = "lblProgressPercent";
-            this.lblProgressPercent.Size = new System.Drawing.Size(10, 13);
-            this.lblProgressPercent.TabIndex = 70;
-            this.lblProgressPercent.Text = "-";
             // 
             // lblVT
             // 
-            this.lblVT.AutoSize = true;
+            resources.ApplyResources(this.lblVT, "lblVT");
             this.lblVT.ForeColor = System.Drawing.Color.Silver;
-            this.lblVT.Location = new System.Drawing.Point(203, 462);
             this.lblVT.Name = "lblVT";
-            this.lblVT.Size = new System.Drawing.Size(10, 13);
-            this.lblVT.TabIndex = 103;
-            this.lblVT.Text = "-";
             // 
             // lblFixedVT
             // 
-            this.lblFixedVT.AutoSize = true;
+            resources.ApplyResources(this.lblFixedVT, "lblFixedVT");
             this.lblFixedVT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedVT.Location = new System.Drawing.Point(37, 462);
             this.lblFixedVT.Name = "lblFixedVT";
-            this.lblFixedVT.Size = new System.Drawing.Size(141, 13);
-            this.lblFixedVT.TabIndex = 102;
-            this.lblFixedVT.Text = "Tecnologia de Virtualização:";
             // 
             // bmIconImg
             // 
             this.bmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.bmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.bmIconImg.Location = new System.Drawing.Point(7, 14);
+            resources.ApplyResources(this.bmIconImg, "bmIconImg");
             this.bmIconImg.Name = "bmIconImg";
-            this.bmIconImg.Size = new System.Drawing.Size(25, 25);
-            this.bmIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.bmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.bmIconImg.TabIndex = 101;
             this.bmIconImg.TabStop = false;
             // 
             // secBootIconImg
             // 
             this.secBootIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.secBootIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.secBootIconImg.Location = new System.Drawing.Point(7, 430);
+            resources.ApplyResources(this.secBootIconImg, "secBootIconImg");
             this.secBootIconImg.Name = "secBootIconImg";
-            this.secBootIconImg.Size = new System.Drawing.Size(25, 25);
-            this.secBootIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.secBootIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.secBootIconImg.TabIndex = 87;
             this.secBootIconImg.TabStop = false;
             // 
             // biosIconImg
             // 
             this.biosIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.biosIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.biosIconImg.Location = new System.Drawing.Point(7, 404);
+            resources.ApplyResources(this.biosIconImg, "biosIconImg");
             this.biosIconImg.Name = "biosIconImg";
-            this.biosIconImg.Size = new System.Drawing.Size(25, 25);
-            this.biosIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.biosIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.biosIconImg.TabIndex = 86;
             this.biosIconImg.TabStop = false;
             // 
             // biosTypeIconImg
             // 
             this.biosTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.biosTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.biosTypeIconImg.Location = new System.Drawing.Point(7, 378);
+            resources.ApplyResources(this.biosTypeIconImg, "biosTypeIconImg");
             this.biosTypeIconImg.Name = "biosTypeIconImg";
-            this.biosTypeIconImg.Size = new System.Drawing.Size(25, 25);
-            this.biosTypeIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.biosTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.biosTypeIconImg.TabIndex = 85;
             this.biosTypeIconImg.TabStop = false;
             // 
             // ipIconImg
             // 
             this.ipIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.ipIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.ipIconImg.Location = new System.Drawing.Point(7, 352);
+            resources.ApplyResources(this.ipIconImg, "ipIconImg");
             this.ipIconImg.Name = "ipIconImg";
-            this.ipIconImg.Size = new System.Drawing.Size(25, 25);
-            this.ipIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ipIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.ipIconImg.TabIndex = 84;
             this.ipIconImg.TabStop = false;
             // 
             // macIconImg
             // 
             this.macIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.macIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.macIconImg.Location = new System.Drawing.Point(7, 326);
+            resources.ApplyResources(this.macIconImg, "macIconImg");
             this.macIconImg.Name = "macIconImg";
-            this.macIconImg.Size = new System.Drawing.Size(25, 25);
-            this.macIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.macIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.macIconImg.TabIndex = 83;
             this.macIconImg.TabStop = false;
             // 
             // hostnameIconImg
             // 
             this.hostnameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.hostnameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.hostnameIconImg.Location = new System.Drawing.Point(7, 300);
+            resources.ApplyResources(this.hostnameIconImg, "hostnameIconImg");
             this.hostnameIconImg.Name = "hostnameIconImg";
-            this.hostnameIconImg.Size = new System.Drawing.Size(25, 25);
-            this.hostnameIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hostnameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hostnameIconImg.TabIndex = 82;
             this.hostnameIconImg.TabStop = false;
             // 
             // osIconImg
             // 
             this.osIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.osIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.osIconImg.Location = new System.Drawing.Point(7, 274);
+            resources.ApplyResources(this.osIconImg, "osIconImg");
             this.osIconImg.Name = "osIconImg";
-            this.osIconImg.Size = new System.Drawing.Size(25, 25);
-            this.osIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.osIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.osIconImg.TabIndex = 81;
             this.osIconImg.TabStop = false;
             // 
             // gpuInfoIconImg
             // 
             this.gpuInfoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.gpuInfoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.gpuInfoIconImg.Location = new System.Drawing.Point(7, 248);
+            resources.ApplyResources(this.gpuInfoIconImg, "gpuInfoIconImg");
             this.gpuInfoIconImg.Name = "gpuInfoIconImg";
-            this.gpuInfoIconImg.Size = new System.Drawing.Size(25, 25);
-            this.gpuInfoIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.gpuInfoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.gpuInfoIconImg.TabIndex = 80;
             this.gpuInfoIconImg.TabStop = false;
             // 
             // mediaOperationIconImg
             // 
             this.mediaOperationIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.mediaOperationIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.mediaOperationIconImg.Location = new System.Drawing.Point(7, 222);
+            resources.ApplyResources(this.mediaOperationIconImg, "mediaOperationIconImg");
             this.mediaOperationIconImg.Name = "mediaOperationIconImg";
-            this.mediaOperationIconImg.Size = new System.Drawing.Size(25, 25);
-            this.mediaOperationIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mediaOperationIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.mediaOperationIconImg.TabIndex = 79;
             this.mediaOperationIconImg.TabStop = false;
             // 
             // mediaTypeIconImg
             // 
             this.mediaTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.mediaTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.mediaTypeIconImg.Location = new System.Drawing.Point(7, 196);
+            resources.ApplyResources(this.mediaTypeIconImg, "mediaTypeIconImg");
             this.mediaTypeIconImg.Name = "mediaTypeIconImg";
-            this.mediaTypeIconImg.Size = new System.Drawing.Size(25, 25);
-            this.mediaTypeIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mediaTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.mediaTypeIconImg.TabIndex = 78;
             this.mediaTypeIconImg.TabStop = false;
             // 
             // hdSizeIconImg
             // 
             this.hdSizeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.hdSizeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.hdSizeIconImg.Location = new System.Drawing.Point(7, 144);
+            resources.ApplyResources(this.hdSizeIconImg, "hdSizeIconImg");
             this.hdSizeIconImg.Name = "hdSizeIconImg";
-            this.hdSizeIconImg.Size = new System.Drawing.Size(25, 25);
-            this.hdSizeIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.hdSizeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hdSizeIconImg.TabIndex = 77;
             this.hdSizeIconImg.TabStop = false;
             // 
             // pmIconImg
             // 
             this.pmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.pmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.pmIconImg.Location = new System.Drawing.Point(7, 118);
+            resources.ApplyResources(this.pmIconImg, "pmIconImg");
             this.pmIconImg.Name = "pmIconImg";
-            this.pmIconImg.Size = new System.Drawing.Size(25, 25);
-            this.pmIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.pmIconImg.TabIndex = 76;
             this.pmIconImg.TabStop = false;
             // 
             // procNameIconImg
             // 
             this.procNameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.procNameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.procNameIconImg.Location = new System.Drawing.Point(7, 92);
+            resources.ApplyResources(this.procNameIconImg, "procNameIconImg");
             this.procNameIconImg.Name = "procNameIconImg";
-            this.procNameIconImg.Size = new System.Drawing.Size(25, 25);
-            this.procNameIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.procNameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.procNameIconImg.TabIndex = 75;
             this.procNameIconImg.TabStop = false;
             // 
             // serialNoIconImg
             // 
             this.serialNoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.serialNoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.serialNoIconImg.Location = new System.Drawing.Point(7, 66);
+            resources.ApplyResources(this.serialNoIconImg, "serialNoIconImg");
             this.serialNoIconImg.Name = "serialNoIconImg";
-            this.serialNoIconImg.Size = new System.Drawing.Size(25, 25);
-            this.serialNoIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.serialNoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.serialNoIconImg.TabIndex = 74;
             this.serialNoIconImg.TabStop = false;
             // 
             // modelIconImg
             // 
             this.modelIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.modelIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.modelIconImg.Location = new System.Drawing.Point(7, 40);
+            resources.ApplyResources(this.modelIconImg, "modelIconImg");
             this.modelIconImg.Name = "modelIconImg";
-            this.modelIconImg.Size = new System.Drawing.Size(25, 25);
-            this.modelIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.modelIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.modelIconImg.TabIndex = 73;
             this.modelIconImg.TabStop = false;
             // 
             // lblSecBoot
             // 
-            this.lblSecBoot.AutoSize = true;
+            resources.ApplyResources(this.lblSecBoot, "lblSecBoot");
             this.lblSecBoot.ForeColor = System.Drawing.Color.Silver;
-            this.lblSecBoot.Location = new System.Drawing.Point(203, 436);
             this.lblSecBoot.Name = "lblSecBoot";
-            this.lblSecBoot.Size = new System.Drawing.Size(10, 13);
-            this.lblSecBoot.TabIndex = 71;
-            this.lblSecBoot.Text = "-";
             // 
             // lblFixedSecBoot
             // 
-            this.lblFixedSecBoot.AutoSize = true;
+            resources.ApplyResources(this.lblFixedSecBoot, "lblFixedSecBoot");
             this.lblFixedSecBoot.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSecBoot.Location = new System.Drawing.Point(37, 436);
             this.lblFixedSecBoot.Name = "lblFixedSecBoot";
-            this.lblFixedSecBoot.Size = new System.Drawing.Size(69, 13);
-            this.lblFixedSecBoot.TabIndex = 70;
-            this.lblFixedSecBoot.Text = "Secure Boot:";
             // 
             // lblMediaOperation
             // 
-            this.lblMediaOperation.AutoSize = true;
+            resources.ApplyResources(this.lblMediaOperation, "lblMediaOperation");
             this.lblMediaOperation.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaOperation.Location = new System.Drawing.Point(203, 228);
             this.lblMediaOperation.Name = "lblMediaOperation";
-            this.lblMediaOperation.Size = new System.Drawing.Size(10, 13);
-            this.lblMediaOperation.TabIndex = 69;
-            this.lblMediaOperation.Text = "-";
             // 
             // lblFixedMediaOperation
             // 
-            this.lblFixedMediaOperation.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMediaOperation, "lblFixedMediaOperation");
             this.lblFixedMediaOperation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMediaOperation.Location = new System.Drawing.Point(37, 228);
             this.lblFixedMediaOperation.Name = "lblFixedMediaOperation";
-            this.lblFixedMediaOperation.Size = new System.Drawing.Size(154, 13);
-            this.lblFixedMediaOperation.TabIndex = 68;
-            this.lblFixedMediaOperation.Text = "Modo de operação SATA/M.2:";
             // 
             // lblGPUInfo
             // 
-            this.lblGPUInfo.AutoSize = true;
+            resources.ApplyResources(this.lblGPUInfo, "lblGPUInfo");
             this.lblGPUInfo.ForeColor = System.Drawing.Color.Silver;
-            this.lblGPUInfo.Location = new System.Drawing.Point(203, 254);
             this.lblGPUInfo.Name = "lblGPUInfo";
-            this.lblGPUInfo.Size = new System.Drawing.Size(10, 13);
-            this.lblGPUInfo.TabIndex = 67;
-            this.lblGPUInfo.Text = "-";
             // 
             // lblFixedGPUInfo
             // 
-            this.lblFixedGPUInfo.AutoSize = true;
+            resources.ApplyResources(this.lblFixedGPUInfo, "lblFixedGPUInfo");
             this.lblFixedGPUInfo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedGPUInfo.Location = new System.Drawing.Point(37, 254);
             this.lblFixedGPUInfo.Name = "lblFixedGPUInfo";
-            this.lblFixedGPUInfo.Size = new System.Drawing.Size(126, 13);
-            this.lblFixedGPUInfo.TabIndex = 66;
-            this.lblFixedGPUInfo.Text = "Placa de Vídeo e vRAM:";
             // 
             // lblMediaType
             // 
-            this.lblMediaType.AutoSize = true;
+            resources.ApplyResources(this.lblMediaType, "lblMediaType");
             this.lblMediaType.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaType.Location = new System.Drawing.Point(203, 202);
             this.lblMediaType.Name = "lblMediaType";
-            this.lblMediaType.Size = new System.Drawing.Size(10, 13);
-            this.lblMediaType.TabIndex = 65;
-            this.lblMediaType.Text = "-";
             // 
             // lblFixedMediaType
             // 
-            this.lblFixedMediaType.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMediaType, "lblFixedMediaType");
             this.lblFixedMediaType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMediaType.Location = new System.Drawing.Point(37, 202);
             this.lblFixedMediaType.Name = "lblFixedMediaType";
-            this.lblFixedMediaType.Size = new System.Drawing.Size(124, 13);
-            this.lblFixedMediaType.TabIndex = 64;
-            this.lblFixedMediaType.Text = "Tipo de armazenamento:";
             // 
             // groupBoxPatrData
             // 
@@ -1681,191 +1334,193 @@ namespace HardwareInformation
             this.groupBoxPatrData.Controls.Add(this.lblFixedInUse);
             this.groupBoxPatrData.Controls.Add(this.lblFixedTag);
             this.groupBoxPatrData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxPatrData.Location = new System.Drawing.Point(520, 89);
+            resources.ApplyResources(this.groupBoxPatrData, "groupBoxPatrData");
             this.groupBoxPatrData.Name = "groupBoxPatrData";
-            this.groupBoxPatrData.Size = new System.Drawing.Size(450, 390);
-            this.groupBoxPatrData.TabIndex = 66;
             this.groupBoxPatrData.TabStop = false;
-            this.groupBoxPatrData.Text = "Dados do patrimônio, manutenção e de localização";
+            // 
+            // comboBoxBattery
+            // 
+            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBattery, "comboBoxBattery");
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Name = "comboBoxTag";
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxType, "comboBoxType");
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Name = "comboBoxType";
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
             // 
             // lblFixedMandatory9
             // 
-            this.lblFixedMandatory9.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory9, "lblFixedMandatory9");
             this.lblFixedMandatory9.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory9.Location = new System.Drawing.Point(367, 244);
             this.lblFixedMandatory9.Name = "lblFixedMandatory9";
-            this.lblFixedMandatory9.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory9.TabIndex = 118;
-            this.lblFixedMandatory9.Text = "✱";
             // 
             // lblFixedMandatory8
             // 
-            this.lblFixedMandatory8.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory8, "lblFixedMandatory8");
             this.lblFixedMandatory8.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory8.Location = new System.Drawing.Point(146, 244);
             this.lblFixedMandatory8.Name = "lblFixedMandatory8";
-            this.lblFixedMandatory8.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory8.TabIndex = 114;
-            this.lblFixedMandatory8.Text = "✱";
             // 
             // ticketIconImg
             // 
             this.ticketIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.ticketIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.ticketIconImg.Location = new System.Drawing.Point(273, 238);
+            resources.ApplyResources(this.ticketIconImg, "ticketIconImg");
             this.ticketIconImg.Name = "ticketIconImg";
-            this.ticketIconImg.Size = new System.Drawing.Size(25, 25);
-            this.ticketIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ticketIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.ticketIconImg.TabIndex = 117;
             this.ticketIconImg.TabStop = false;
             // 
             // lblFixedTicket
             // 
-            this.lblFixedTicket.AutoSize = true;
+            resources.ApplyResources(this.lblFixedTicket, "lblFixedTicket");
             this.lblFixedTicket.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTicket.Location = new System.Drawing.Point(303, 244);
             this.lblFixedTicket.Name = "lblFixedTicket";
-            this.lblFixedTicket.Size = new System.Drawing.Size(69, 13);
-            this.lblFixedTicket.TabIndex = 116;
-            this.lblFixedTicket.Text = "Nº chamado:";
             // 
             // textBoxTicket
             // 
             this.textBoxTicket.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxTicket.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxTicket.Location = new System.Drawing.Point(384, 241);
-            this.textBoxTicket.MaxLength = 6;
+            resources.ApplyResources(this.textBoxTicket, "textBoxTicket");
             this.textBoxTicket.Name = "textBoxTicket";
-            this.textBoxTicket.Size = new System.Drawing.Size(60, 20);
-            this.textBoxTicket.TabIndex = 48;
             this.textBoxTicket.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // batteryIconImg
             // 
             this.batteryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.batteryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.batteryIconImg.Location = new System.Drawing.Point(7, 238);
+            resources.ApplyResources(this.batteryIconImg, "batteryIconImg");
             this.batteryIconImg.Name = "batteryIconImg";
-            this.batteryIconImg.Size = new System.Drawing.Size(25, 25);
-            this.batteryIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.batteryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.batteryIconImg.TabIndex = 113;
             this.batteryIconImg.TabStop = false;
             // 
             // lblFixedMandatory7
             // 
-            this.lblFixedMandatory7.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory7, "lblFixedMandatory7");
             this.lblFixedMandatory7.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory7.Location = new System.Drawing.Point(103, 176);
             this.lblFixedMandatory7.Name = "lblFixedMandatory7";
-            this.lblFixedMandatory7.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory7.TabIndex = 112;
-            this.lblFixedMandatory7.Text = "✱";
             // 
             // lblFixedMandatory6
             // 
-            this.lblFixedMandatory6.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory6, "lblFixedMandatory6");
             this.lblFixedMandatory6.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory6.Location = new System.Drawing.Point(367, 124);
             this.lblFixedMandatory6.Name = "lblFixedMandatory6";
-            this.lblFixedMandatory6.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory6.TabIndex = 111;
-            this.lblFixedMandatory6.Text = "✱";
             // 
             // lblFixedBattery
             // 
-            this.lblFixedBattery.AutoSize = true;
+            resources.ApplyResources(this.lblFixedBattery, "lblFixedBattery");
             this.lblFixedBattery.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBattery.Location = new System.Drawing.Point(37, 244);
             this.lblFixedBattery.Name = "lblFixedBattery";
-            this.lblFixedBattery.Size = new System.Drawing.Size(112, 13);
-            this.lblFixedBattery.TabIndex = 111;
-            this.lblFixedBattery.Text = "Houve troca de pilha?";
             // 
             // lblFixedMandatory5
             // 
-            this.lblFixedMandatory5.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory5, "lblFixedMandatory5");
             this.lblFixedMandatory5.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory5.Location = new System.Drawing.Point(64, 124);
             this.lblFixedMandatory5.Name = "lblFixedMandatory5";
-            this.lblFixedMandatory5.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory5.TabIndex = 110;
-            this.lblFixedMandatory5.Text = "✱";
             // 
             // lblFixedMandatory4
             // 
-            this.lblFixedMandatory4.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory4, "lblFixedMandatory4");
             this.lblFixedMandatory4.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory4.Location = new System.Drawing.Point(363, 98);
             this.lblFixedMandatory4.Name = "lblFixedMandatory4";
-            this.lblFixedMandatory4.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory4.TabIndex = 109;
-            this.lblFixedMandatory4.Text = "✱";
             // 
             // lblFixedMandatory3
             // 
-            this.lblFixedMandatory3.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory3, "lblFixedMandatory3");
             this.lblFixedMandatory3.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory3.Location = new System.Drawing.Point(73, 98);
             this.lblFixedMandatory3.Name = "lblFixedMandatory3";
-            this.lblFixedMandatory3.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory3.TabIndex = 108;
-            this.lblFixedMandatory3.Text = "✱";
             // 
             // lblFixedMandatory2
             // 
-            this.lblFixedMandatory2.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory2, "lblFixedMandatory2");
             this.lblFixedMandatory2.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory2.Location = new System.Drawing.Point(167, 72);
             this.lblFixedMandatory2.Name = "lblFixedMandatory2";
-            this.lblFixedMandatory2.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory2.TabIndex = 107;
-            this.lblFixedMandatory2.Text = "✱";
             // 
             // lblFixedMandatory
             // 
-            this.lblFixedMandatory.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory, "lblFixedMandatory");
             this.lblFixedMandatory.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory.Location = new System.Drawing.Point(92, 20);
             this.lblFixedMandatory.Name = "lblFixedMandatory";
-            this.lblFixedMandatory.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory.TabIndex = 106;
-            this.lblFixedMandatory.Text = "✱";
             // 
             // lblFixedMandatoryMain
             // 
-            this.lblFixedMandatoryMain.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatoryMain, "lblFixedMandatoryMain");
             this.lblFixedMandatoryMain.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatoryMain.Location = new System.Drawing.Point(258, 0);
             this.lblFixedMandatoryMain.Name = "lblFixedMandatoryMain";
-            this.lblFixedMandatoryMain.Size = new System.Drawing.Size(152, 13);
-            this.lblFixedMandatoryMain.TabIndex = 105;
-            this.lblFixedMandatoryMain.Text = "✱ = Preenchimento obrigatório";
             // 
             // studentRadioButton
             // 
-            this.studentRadioButton.AutoSize = true;
+            resources.ApplyResources(this.studentRadioButton, "studentRadioButton");
             this.studentRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.studentRadioButton.Location = new System.Drawing.Point(185, 192);
             this.studentRadioButton.Name = "studentRadioButton";
-            this.studentRadioButton.Size = new System.Drawing.Size(246, 17);
-            this.studentRadioButton.TabIndex = 44;
             this.studentRadioButton.TabStop = true;
-            this.studentRadioButton.Text = "Aluno (computador de laboratório/sala de aula)";
             this.studentRadioButton.UseVisualStyleBackColor = true;
             this.studentRadioButton.CheckedChanged += new System.EventHandler(this.StudentButton2_CheckedChanged);
             // 
             // employeeRadioButton
             // 
-            this.employeeRadioButton.AutoSize = true;
+            resources.ApplyResources(this.employeeRadioButton, "employeeRadioButton");
             this.employeeRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.employeeRadioButton.Location = new System.Drawing.Point(185, 174);
             this.employeeRadioButton.Name = "employeeRadioButton";
-            this.employeeRadioButton.Size = new System.Drawing.Size(242, 17);
-            this.employeeRadioButton.TabIndex = 43;
             this.employeeRadioButton.TabStop = true;
-            this.employeeRadioButton.Text = "Funcionário/Bolsista (computador de trabalho)";
             this.employeeRadioButton.UseVisualStyleBackColor = true;
             this.employeeRadioButton.CheckedChanged += new System.EventHandler(this.EmployeeButton1_CheckedChanged);
             // 
@@ -1873,163 +1528,121 @@ namespace HardwareInformation
             // 
             this.whoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.whoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.whoIconImg.Location = new System.Drawing.Point(7, 170);
+            resources.ApplyResources(this.whoIconImg, "whoIconImg");
             this.whoIconImg.Name = "whoIconImg";
-            this.whoIconImg.Size = new System.Drawing.Size(25, 25);
-            this.whoIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.whoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.whoIconImg.TabIndex = 102;
             this.whoIconImg.TabStop = false;
             // 
             // lblFixedWho
             // 
-            this.lblFixedWho.AutoSize = true;
+            resources.ApplyResources(this.lblFixedWho, "lblFixedWho");
             this.lblFixedWho.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedWho.Location = new System.Drawing.Point(37, 176);
             this.lblFixedWho.Name = "lblFixedWho";
-            this.lblFixedWho.Size = new System.Drawing.Size(70, 13);
-            this.lblFixedWho.TabIndex = 101;
-            this.lblFixedWho.Text = "Quem usará?";
             // 
             // letterIconImg
             // 
             this.letterIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.letterIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.letterIconImg.Location = new System.Drawing.Point(292, 66);
+            resources.ApplyResources(this.letterIconImg, "letterIconImg");
             this.letterIconImg.Name = "letterIconImg";
-            this.letterIconImg.Size = new System.Drawing.Size(25, 25);
-            this.letterIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.letterIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.letterIconImg.TabIndex = 100;
             this.letterIconImg.TabStop = false;
             // 
             // typeIconImg
             // 
             this.typeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.typeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.typeIconImg.Location = new System.Drawing.Point(7, 118);
+            resources.ApplyResources(this.typeIconImg, "typeIconImg");
             this.typeIconImg.Name = "typeIconImg";
-            this.typeIconImg.Size = new System.Drawing.Size(25, 25);
-            this.typeIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.typeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.typeIconImg.TabIndex = 98;
             this.typeIconImg.TabStop = false;
             // 
             // tagIconImg
             // 
             this.tagIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.tagIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.tagIconImg.Location = new System.Drawing.Point(292, 118);
+            resources.ApplyResources(this.tagIconImg, "tagIconImg");
             this.tagIconImg.Name = "tagIconImg";
-            this.tagIconImg.Size = new System.Drawing.Size(25, 25);
-            this.tagIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.tagIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tagIconImg.TabIndex = 97;
             this.tagIconImg.TabStop = false;
             // 
             // inUseIconImg
             // 
             this.inUseIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.inUseIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.inUseIconImg.Location = new System.Drawing.Point(292, 92);
+            resources.ApplyResources(this.inUseIconImg, "inUseIconImg");
             this.inUseIconImg.Name = "inUseIconImg";
-            this.inUseIconImg.Size = new System.Drawing.Size(25, 25);
-            this.inUseIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.inUseIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.inUseIconImg.TabIndex = 96;
             this.inUseIconImg.TabStop = false;
             // 
             // datetimeIconImg
             // 
             this.datetimeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.datetimeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.datetimeIconImg.Location = new System.Drawing.Point(7, 144);
+            resources.ApplyResources(this.datetimeIconImg, "datetimeIconImg");
             this.datetimeIconImg.Name = "datetimeIconImg";
-            this.datetimeIconImg.Size = new System.Drawing.Size(25, 25);
-            this.datetimeIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.datetimeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.datetimeIconImg.TabIndex = 94;
             this.datetimeIconImg.TabStop = false;
             // 
             // standardIconImg
             // 
             this.standardIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.standardIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.standardIconImg.Location = new System.Drawing.Point(273, 212);
+            resources.ApplyResources(this.standardIconImg, "standardIconImg");
             this.standardIconImg.Name = "standardIconImg";
-            this.standardIconImg.Size = new System.Drawing.Size(25, 25);
-            this.standardIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.standardIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.standardIconImg.TabIndex = 93;
             this.standardIconImg.TabStop = false;
             // 
             // activeDirectoryIconImg
             // 
             this.activeDirectoryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.activeDirectoryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.activeDirectoryIconImg.Location = new System.Drawing.Point(7, 212);
+            resources.ApplyResources(this.activeDirectoryIconImg, "activeDirectoryIconImg");
             this.activeDirectoryIconImg.Name = "activeDirectoryIconImg";
-            this.activeDirectoryIconImg.Size = new System.Drawing.Size(25, 25);
-            this.activeDirectoryIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.activeDirectoryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.activeDirectoryIconImg.TabIndex = 92;
             this.activeDirectoryIconImg.TabStop = false;
             // 
             // buildingIconImg
             // 
             this.buildingIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.buildingIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.buildingIconImg.Location = new System.Drawing.Point(7, 92);
+            resources.ApplyResources(this.buildingIconImg, "buildingIconImg");
             this.buildingIconImg.Name = "buildingIconImg";
-            this.buildingIconImg.Size = new System.Drawing.Size(25, 25);
-            this.buildingIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.buildingIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.buildingIconImg.TabIndex = 91;
             this.buildingIconImg.TabStop = false;
             // 
             // roomIconImg
             // 
             this.roomIconImg.CompositingQuality = null;
             this.roomIconImg.InterpolationMode = null;
-            this.roomIconImg.Location = new System.Drawing.Point(7, 66);
+            resources.ApplyResources(this.roomIconImg, "roomIconImg");
             this.roomIconImg.Name = "roomIconImg";
-            this.roomIconImg.Size = new System.Drawing.Size(25, 25);
-            this.roomIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.roomIconImg.SmoothingMode = null;
-            this.roomIconImg.TabIndex = 90;
             this.roomIconImg.TabStop = false;
             // 
             // sealIconImg
             // 
             this.sealIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.sealIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.sealIconImg.Location = new System.Drawing.Point(7, 40);
+            resources.ApplyResources(this.sealIconImg, "sealIconImg");
             this.sealIconImg.Name = "sealIconImg";
-            this.sealIconImg.Size = new System.Drawing.Size(25, 25);
-            this.sealIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.sealIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.sealIconImg.TabIndex = 89;
             this.sealIconImg.TabStop = false;
             // 
             // patrimonyIconImg
             // 
             this.patrimonyIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             this.patrimonyIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.patrimonyIconImg.Location = new System.Drawing.Point(7, 14);
+            resources.ApplyResources(this.patrimonyIconImg, "patrimonyIconImg");
             this.patrimonyIconImg.Name = "patrimonyIconImg";
-            this.patrimonyIconImg.Size = new System.Drawing.Size(25, 25);
-            this.patrimonyIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.patrimonyIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.patrimonyIconImg.TabIndex = 88;
             this.patrimonyIconImg.TabStop = false;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker1.Location = new System.Drawing.Point(185, 148);
+            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 20);
-            this.dateTimePicker1.TabIndex = 42;
             // 
             // groupBoxTypeOfService
             // 
@@ -2043,208 +1656,136 @@ namespace HardwareInformation
             this.groupBoxTypeOfService.Controls.Add(this.formatRadioButton);
             this.groupBoxTypeOfService.Controls.Add(this.maintenanceRadioButton);
             this.groupBoxTypeOfService.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxTypeOfService.Location = new System.Drawing.Point(6, 266);
+            resources.ApplyResources(this.groupBoxTypeOfService, "groupBoxTypeOfService");
             this.groupBoxTypeOfService.Name = "groupBoxTypeOfService";
-            this.groupBoxTypeOfService.Size = new System.Drawing.Size(438, 115);
-            this.groupBoxTypeOfService.TabIndex = 72;
             this.groupBoxTypeOfService.TabStop = false;
-            this.groupBoxTypeOfService.Text = "Tipo de serviço";
             // 
             // loadingCircle21
             // 
             this.loadingCircle21.Active = false;
             this.loadingCircle21.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle21.InnerCircleRadius = 5;
-            this.loadingCircle21.Location = new System.Drawing.Point(89, 57);
+            resources.ApplyResources(this.loadingCircle21, "loadingCircle21");
             this.loadingCircle21.Name = "loadingCircle21";
             this.loadingCircle21.NumberSpoke = 12;
             this.loadingCircle21.OuterCircleRadius = 11;
             this.loadingCircle21.RotationSpeed = 1;
-            this.loadingCircle21.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle21.SpokeThickness = 2;
             this.loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle21.TabIndex = 133;
-            this.loadingCircle21.Text = "loadingCircle21";
             // 
             // loadingCircle20
             // 
             this.loadingCircle20.Active = false;
             this.loadingCircle20.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle20.InnerCircleRadius = 5;
-            this.loadingCircle20.Location = new System.Drawing.Point(89, 16);
+            resources.ApplyResources(this.loadingCircle20, "loadingCircle20");
             this.loadingCircle20.Name = "loadingCircle20";
             this.loadingCircle20.NumberSpoke = 12;
             this.loadingCircle20.OuterCircleRadius = 11;
             this.loadingCircle20.RotationSpeed = 1;
-            this.loadingCircle20.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle20.SpokeThickness = 2;
             this.loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle20.TabIndex = 132;
-            this.loadingCircle20.Text = "loadingCircle20";
             // 
             // lblMaintenanceSince
             // 
-            this.lblMaintenanceSince.AutoSize = true;
+            resources.ApplyResources(this.lblMaintenanceSince, "lblMaintenanceSince");
             this.lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblMaintenanceSince.Location = new System.Drawing.Point(101, 61);
             this.lblMaintenanceSince.Name = "lblMaintenanceSince";
-            this.lblMaintenanceSince.Size = new System.Drawing.Size(10, 13);
-            this.lblMaintenanceSince.TabIndex = 121;
-            this.lblMaintenanceSince.Text = "-";
             // 
             // lblInstallSince
             // 
-            this.lblInstallSince.AutoSize = true;
+            resources.ApplyResources(this.lblInstallSince, "lblInstallSince");
             this.lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblInstallSince.Location = new System.Drawing.Point(101, 22);
             this.lblInstallSince.Name = "lblInstallSince";
-            this.lblInstallSince.Size = new System.Drawing.Size(10, 13);
-            this.lblInstallSince.TabIndex = 120;
-            this.lblInstallSince.Text = "-";
             // 
             // lblFixedMandatory10
             // 
-            this.lblFixedMandatory10.AutoSize = true;
+            resources.ApplyResources(this.lblFixedMandatory10, "lblFixedMandatory10");
             this.lblFixedMandatory10.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory10.Location = new System.Drawing.Point(82, 0);
             this.lblFixedMandatory10.Name = "lblFixedMandatory10";
-            this.lblFixedMandatory10.Size = new System.Drawing.Size(17, 13);
-            this.lblFixedMandatory10.TabIndex = 113;
-            this.lblFixedMandatory10.Text = "✱";
             // 
             // textBoxFixedFormatRadio
             // 
             this.textBoxFixedFormatRadio.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxFixedFormatRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxFixedFormatRadio.Enabled = false;
+            resources.ApplyResources(this.textBoxFixedFormatRadio, "textBoxFixedFormatRadio");
             this.textBoxFixedFormatRadio.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxFixedFormatRadio.Location = new System.Drawing.Point(29, 38);
-            this.textBoxFixedFormatRadio.Multiline = true;
             this.textBoxFixedFormatRadio.Name = "textBoxFixedFormatRadio";
             this.textBoxFixedFormatRadio.ReadOnly = true;
-            this.textBoxFixedFormatRadio.Size = new System.Drawing.Size(391, 19);
-            this.textBoxFixedFormatRadio.TabIndex = 76;
-            this.textBoxFixedFormatRadio.Text = "Opção para quando o PC passar por formatação ou reset";
             // 
             // textBoxMaintenanceRadio
             // 
             this.textBoxMaintenanceRadio.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxMaintenanceRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxMaintenanceRadio.Enabled = false;
+            resources.ApplyResources(this.textBoxMaintenanceRadio, "textBoxMaintenanceRadio");
             this.textBoxMaintenanceRadio.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMaintenanceRadio.Location = new System.Drawing.Point(29, 78);
-            this.textBoxMaintenanceRadio.Multiline = true;
             this.textBoxMaintenanceRadio.Name = "textBoxMaintenanceRadio";
             this.textBoxMaintenanceRadio.ReadOnly = true;
-            this.textBoxMaintenanceRadio.Size = new System.Drawing.Size(391, 25);
-            this.textBoxMaintenanceRadio.TabIndex = 77;
-            this.textBoxMaintenanceRadio.Text = "Opção para quando o PC passar por manutenção preventiva, sem a necessidade de for" +
-    "matação ou reset";
             // 
             // formatRadioButton
             // 
-            this.formatRadioButton.AutoSize = true;
+            resources.ApplyResources(this.formatRadioButton, "formatRadioButton");
             this.formatRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.formatRadioButton.Location = new System.Drawing.Point(10, 20);
             this.formatRadioButton.Name = "formatRadioButton";
-            this.formatRadioButton.Size = new System.Drawing.Size(81, 17);
-            this.formatRadioButton.TabIndex = 49;
-            this.formatRadioButton.Text = "Formatação";
             this.formatRadioButton.UseVisualStyleBackColor = true;
             this.formatRadioButton.CheckedChanged += new System.EventHandler(this.FormatButton1_CheckedChanged);
             // 
             // maintenanceRadioButton
             // 
-            this.maintenanceRadioButton.AutoSize = true;
+            resources.ApplyResources(this.maintenanceRadioButton, "maintenanceRadioButton");
             this.maintenanceRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.maintenanceRadioButton.Location = new System.Drawing.Point(10, 59);
             this.maintenanceRadioButton.Name = "maintenanceRadioButton";
-            this.maintenanceRadioButton.Size = new System.Drawing.Size(85, 17);
-            this.maintenanceRadioButton.TabIndex = 50;
-            this.maintenanceRadioButton.Text = "Manutenção";
             this.maintenanceRadioButton.UseVisualStyleBackColor = true;
             this.maintenanceRadioButton.CheckedChanged += new System.EventHandler(this.MaintenanceButton2_CheckedChanged);
             // 
             // lblFixedActiveDirectory
             // 
-            this.lblFixedActiveDirectory.AutoSize = true;
+            resources.ApplyResources(this.lblFixedActiveDirectory, "lblFixedActiveDirectory");
             this.lblFixedActiveDirectory.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedActiveDirectory.Location = new System.Drawing.Point(37, 218);
             this.lblFixedActiveDirectory.Name = "lblFixedActiveDirectory";
-            this.lblFixedActiveDirectory.Size = new System.Drawing.Size(137, 13);
-            this.lblFixedActiveDirectory.TabIndex = 14;
-            this.lblFixedActiveDirectory.Text = "Cadastrado no servidor AD:";
             // 
             // lblFixedStandard
             // 
-            this.lblFixedStandard.AutoSize = true;
+            resources.ApplyResources(this.lblFixedStandard, "lblFixedStandard");
             this.lblFixedStandard.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedStandard.Location = new System.Drawing.Point(303, 218);
             this.lblFixedStandard.Name = "lblFixedStandard";
-            this.lblFixedStandard.Size = new System.Drawing.Size(44, 13);
-            this.lblFixedStandard.TabIndex = 15;
-            this.lblFixedStandard.Text = "Padrão:";
             // 
             // lblAgentName
             // 
-            this.lblAgentName.AutoSize = true;
+            resources.ApplyResources(this.lblAgentName, "lblAgentName");
             this.lblAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblAgentName.Location = new System.Drawing.Point(299, 35);
             this.lblAgentName.Name = "lblAgentName";
-            this.lblAgentName.Size = new System.Drawing.Size(10, 13);
-            this.lblAgentName.TabIndex = 123;
-            this.lblAgentName.Text = "-";
             // 
             // lblFixedAgentName
             // 
-            this.lblFixedAgentName.AutoSize = true;
+            resources.ApplyResources(this.lblFixedAgentName, "lblFixedAgentName");
             this.lblFixedAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedAgentName.Location = new System.Drawing.Point(187, 35);
             this.lblFixedAgentName.Name = "lblFixedAgentName";
-            this.lblFixedAgentName.Size = new System.Drawing.Size(104, 13);
-            this.lblFixedAgentName.TabIndex = 122;
-            this.lblFixedAgentName.Text = "Agente responsável:";
             // 
             // lblPortServer
             // 
-            this.lblPortServer.AutoSize = true;
+            resources.ApplyResources(this.lblPortServer, "lblPortServer");
             this.lblPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPortServer.Location = new System.Drawing.Point(50, 35);
             this.lblPortServer.Name = "lblPortServer";
-            this.lblPortServer.Size = new System.Drawing.Size(10, 13);
-            this.lblPortServer.TabIndex = 121;
-            this.lblPortServer.Text = "-";
             // 
             // lblIPServer
             // 
-            this.lblIPServer.AutoSize = true;
+            resources.ApplyResources(this.lblIPServer, "lblIPServer");
             this.lblIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblIPServer.Location = new System.Drawing.Point(50, 16);
             this.lblIPServer.Name = "lblIPServer";
-            this.lblIPServer.Size = new System.Drawing.Size(10, 13);
-            this.lblIPServer.TabIndex = 120;
-            this.lblIPServer.Text = "-";
             // 
             // lblFixedIPServer
             // 
-            this.lblFixedIPServer.AutoSize = true;
+            resources.ApplyResources(this.lblFixedIPServer, "lblFixedIPServer");
             this.lblFixedIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedIPServer.Location = new System.Drawing.Point(7, 16);
             this.lblFixedIPServer.Name = "lblFixedIPServer";
-            this.lblFixedIPServer.Size = new System.Drawing.Size(20, 13);
-            this.lblFixedIPServer.TabIndex = 119;
-            this.lblFixedIPServer.Text = "IP:";
             // 
             // lblServerOpState
             // 
-            this.lblServerOpState.AutoSize = true;
+            resources.ApplyResources(this.lblServerOpState, "lblServerOpState");
             this.lblServerOpState.BackColor = System.Drawing.Color.Transparent;
             this.lblServerOpState.ForeColor = System.Drawing.Color.Silver;
-            this.lblServerOpState.Location = new System.Drawing.Point(299, 16);
             this.lblServerOpState.Name = "lblServerOpState";
-            this.lblServerOpState.Size = new System.Drawing.Size(10, 13);
-            this.lblServerOpState.TabIndex = 72;
-            this.lblServerOpState.Text = "-";
             // 
             // toolStripVersionText
             // 
@@ -2252,8 +1793,7 @@ namespace HardwareInformation
             this.toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripVersionText.Name = "toolStripVersionText";
-            this.toolStripVersionText.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripVersionText.Size = new System.Drawing.Size(4, 19);
+            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
             // 
             // statusStrip1
             // 
@@ -2265,12 +1805,9 @@ namespace HardwareInformation
             this.aboutLabel,
             this.toolStripStatusBarText,
             this.toolStripVersionText});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 673);
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1000, 24);
-            this.statusStrip1.TabIndex = 60;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // comboBoxTheme
             // 
@@ -2281,18 +1818,15 @@ namespace HardwareInformation
             this.toolStripLightTheme,
             this.toolStripDarkTheme});
             this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.comboBoxTheme.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.comboBoxTheme, "comboBoxTheme");
             this.comboBoxTheme.Name = "comboBoxTheme";
-            this.comboBoxTheme.Size = new System.Drawing.Size(48, 22);
-            this.comboBoxTheme.Text = "Tema";
             // 
             // toolStripAutoTheme
             // 
             this.toolStripAutoTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripAutoTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripAutoTheme.Name = "toolStripAutoTheme";
-            this.toolStripAutoTheme.Size = new System.Drawing.Size(236, 22);
-            this.toolStripAutoTheme.Text = "Automático (Tema do sistema)";
+            resources.ApplyResources(this.toolStripAutoTheme, "toolStripAutoTheme");
             this.toolStripAutoTheme.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
             // 
             // toolStripLightTheme
@@ -2300,8 +1834,7 @@ namespace HardwareInformation
             this.toolStripLightTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripLightTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLightTheme.Name = "toolStripLightTheme";
-            this.toolStripLightTheme.Size = new System.Drawing.Size(236, 22);
-            this.toolStripLightTheme.Text = "Claro";
+            resources.ApplyResources(this.toolStripLightTheme, "toolStripLightTheme");
             this.toolStripLightTheme.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
             // toolStripDarkTheme
@@ -2309,8 +1842,7 @@ namespace HardwareInformation
             this.toolStripDarkTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripDarkTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripDarkTheme.Name = "toolStripDarkTheme";
-            this.toolStripDarkTheme.Size = new System.Drawing.Size(236, 22);
-            this.toolStripDarkTheme.Text = "Escuro";
+            resources.ApplyResources(this.toolStripDarkTheme, "toolStripDarkTheme");
             this.toolStripDarkTheme.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
             // 
             // logLabel
@@ -2320,8 +1852,7 @@ namespace HardwareInformation
             this.logLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.logLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.logLabel.Name = "logLabel";
-            this.logLabel.Size = new System.Drawing.Size(31, 19);
-            this.logLabel.Text = "Log";
+            resources.ApplyResources(this.logLabel, "logLabel");
             this.logLabel.Click += new System.EventHandler(this.LogLabel_Click);
             this.logLabel.MouseEnter += new System.EventHandler(this.LogLabel_MouseEnter);
             this.logLabel.MouseLeave += new System.EventHandler(this.LogLabel_MouseLeave);
@@ -2332,8 +1863,7 @@ namespace HardwareInformation
             this.aboutLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Size = new System.Drawing.Size(41, 19);
-            this.aboutLabel.Text = "Sobre";
+            resources.ApplyResources(this.aboutLabel, "aboutLabel");
             this.aboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             this.aboutLabel.MouseEnter += new System.EventHandler(this.AboutLabel_MouseEnter);
             this.aboutLabel.MouseLeave += new System.EventHandler(this.AboutLabel_MouseLeave);
@@ -2345,7 +1875,7 @@ namespace HardwareInformation
             this.toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusBarText.Name = "toolStripStatusBarText";
-            this.toolStripStatusBarText.Size = new System.Drawing.Size(861, 19);
+            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
             this.toolStripStatusBarText.Spring = true;
             // 
             // timer1
@@ -2356,38 +1886,26 @@ namespace HardwareInformation
             // 
             this.groupBoxRegistryStatus.Controls.Add(this.webView2Control);
             this.groupBoxRegistryStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxRegistryStatus.Location = new System.Drawing.Point(520, 534);
+            resources.ApplyResources(this.groupBoxRegistryStatus, "groupBoxRegistryStatus");
             this.groupBoxRegistryStatus.Name = "groupBoxRegistryStatus";
-            this.groupBoxRegistryStatus.Size = new System.Drawing.Size(450, 65);
-            this.groupBoxRegistryStatus.TabIndex = 73;
             this.groupBoxRegistryStatus.TabStop = false;
-            this.groupBoxRegistryStatus.Text = "Status do cadastro";
             // 
             // webView2Control
             // 
             this.webView2Control.AllowExternalDrop = true;
             this.webView2Control.CreationProperties = null;
             this.webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2Control.Location = new System.Drawing.Point(1, 13);
+            resources.ApplyResources(this.webView2Control, "webView2Control");
             this.webView2Control.Name = "webView2Control";
-            this.webView2Control.Size = new System.Drawing.Size(448, 51);
-            this.webView2Control.TabIndex = 0;
             this.webView2Control.ZoomFactor = 1D;
             // 
             // topBannerImg
             // 
-            this.topBannerImg.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.topBannerImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            resources.ApplyResources(this.topBannerImg, "topBannerImg");
             this.topBannerImg.CompositingQuality = null;
-            this.topBannerImg.InitialImage = null;
             this.topBannerImg.InterpolationMode = null;
-            this.topBannerImg.Location = new System.Drawing.Point(0, 0);
             this.topBannerImg.Name = "topBannerImg";
-            this.topBannerImg.Size = new System.Drawing.Size(1000, 83);
-            this.topBannerImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.topBannerImg.SmoothingMode = null;
-            this.topBannerImg.TabIndex = 64;
             this.topBannerImg.TabStop = false;
             // 
             // loadingCircle22
@@ -2397,17 +1915,13 @@ namespace HardwareInformation
             this.loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle22.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle22.InnerCircleRadius = 5;
-            this.loadingCircle22.Location = new System.Drawing.Point(522, 605);
+            resources.ApplyResources(this.loadingCircle22, "loadingCircle22");
             this.loadingCircle22.Name = "loadingCircle22";
             this.loadingCircle22.NumberSpoke = 12;
             this.loadingCircle22.OuterCircleRadius = 11;
-            this.loadingCircle22.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.loadingCircle22.RotationSpeed = 1;
-            this.loadingCircle22.Size = new System.Drawing.Size(176, 21);
             this.loadingCircle22.SpokeThickness = 2;
             this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle22.TabIndex = 134;
-            this.loadingCircle22.Text = "loadingCircle22";
             this.loadingCircle22.UseWaitCursor = true;
             // 
             // loadingCircle23
@@ -2417,17 +1931,13 @@ namespace HardwareInformation
             this.loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle23.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircle23.InnerCircleRadius = 5;
-            this.loadingCircle23.Location = new System.Drawing.Point(704, 605);
+            resources.ApplyResources(this.loadingCircle23, "loadingCircle23");
             this.loadingCircle23.Name = "loadingCircle23";
             this.loadingCircle23.NumberSpoke = 12;
             this.loadingCircle23.OuterCircleRadius = 11;
             this.loadingCircle23.RotationSpeed = 1;
-            this.loadingCircle23.Size = new System.Drawing.Size(264, 48);
             this.loadingCircle23.SpokeThickness = 2;
             this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle23.TabIndex = 134;
-            this.loadingCircle23.Text = "loadingCircle23";
-            this.loadingCircle23.Visible = false;
             // 
             // groupBoxServerStatus
             // 
@@ -2441,130 +1951,28 @@ namespace HardwareInformation
             this.groupBoxServerStatus.Controls.Add(this.lblFixedAgentName);
             this.groupBoxServerStatus.Controls.Add(this.lblAgentName);
             this.groupBoxServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxServerStatus.Location = new System.Drawing.Point(520, 479);
+            resources.ApplyResources(this.groupBoxServerStatus, "groupBoxServerStatus");
             this.groupBoxServerStatus.Name = "groupBoxServerStatus";
-            this.groupBoxServerStatus.Size = new System.Drawing.Size(450, 56);
-            this.groupBoxServerStatus.TabIndex = 132;
             this.groupBoxServerStatus.TabStop = false;
-            this.groupBoxServerStatus.Text = "Servidor SCPD";
             // 
             // loadingCircle24
             // 
             this.loadingCircle24.Active = false;
             this.loadingCircle24.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircle24.InnerCircleRadius = 5;
-            this.loadingCircle24.Location = new System.Drawing.Point(293, 9);
+            resources.ApplyResources(this.loadingCircle24, "loadingCircle24");
             this.loadingCircle24.Name = "loadingCircle24";
             this.loadingCircle24.NumberSpoke = 12;
             this.loadingCircle24.OuterCircleRadius = 11;
             this.loadingCircle24.RotationSpeed = 1;
-            this.loadingCircle24.Size = new System.Drawing.Size(37, 25);
             this.loadingCircle24.SpokeThickness = 2;
             this.loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle24.TabIndex = 134;
-            this.loadingCircle24.Text = "loadingCircle24";
-            // 
-            // comboBoxBattery
-            // 
-            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Location = new System.Drawing.Point(185, 241);
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            this.comboBoxBattery.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxBattery.TabIndex = 47;
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.Enabled = false;
-            this.comboBoxStandard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Location = new System.Drawing.Point(348, 215);
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            this.comboBoxStandard.Size = new System.Drawing.Size(96, 21);
-            this.comboBoxStandard.TabIndex = 46;
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.Enabled = false;
-            this.comboBoxActiveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Location = new System.Drawing.Point(185, 215);
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            this.comboBoxActiveDirectory.Size = new System.Drawing.Size(84, 21);
-            this.comboBoxActiveDirectory.TabIndex = 45;
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Location = new System.Drawing.Point(384, 121);
-            this.comboBoxTag.Name = "comboBoxTag";
-            this.comboBoxTag.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxTag.TabIndex = 41;
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Location = new System.Drawing.Point(384, 95);
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            this.comboBoxInUse.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxInUse.TabIndex = 39;
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(185, 121);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxType.TabIndex = 40;
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Location = new System.Drawing.Point(185, 95);
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            this.comboBoxBuilding.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxBuilding.TabIndex = 38;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoScroll = true;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1000, 697);
             this.Controls.Add(this.groupBoxServerStatus);
             this.Controls.Add(this.loadingCircle23);
             this.Controls.Add(this.loadingCircle22);
@@ -2577,10 +1985,8 @@ namespace HardwareInformation
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.registerButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBoxHWData.ResumeLayout(false);
             this.groupBoxHWData.PerformLayout();

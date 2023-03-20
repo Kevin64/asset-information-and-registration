@@ -44,14 +44,15 @@
             // 
             this.loadingCircle1.Active = false;
             this.loadingCircle1.Color = System.Drawing.Color.DarkGray;
-            this.loadingCircle1.InnerCircleRadius = 8;
+            this.loadingCircle1.InnerCircleRadius = 5;
             resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
             this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 10;
-            this.loadingCircle1.OuterCircleRadius = 10;
+            this.loadingCircle1.NumberSpoke = 12;
+            this.loadingCircle1.OuterCircleRadius = 11;
             this.loadingCircle1.RotationSpeed = 100;
-            this.loadingCircle1.SpokeThickness = 4;
+            this.loadingCircle1.SpokeThickness = 2;
             this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircle1.UseWaitCursor = true;
             // 
             // BusyForm
             // 

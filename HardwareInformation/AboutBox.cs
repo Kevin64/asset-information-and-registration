@@ -13,12 +13,12 @@ namespace HardwareInformation
         public AboutBox(List<string[]> definitionList, bool themeBool)
         {
             InitializeComponent();
-            Text = string.Format("Sobre {0}", AssemblyTitle);
+            Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
 #if DEBUG
-            labelVersion.Text = string.Format("Versão {0}-{1}", AssemblyVersion, Resources.dev_status);
+            labelVersion.Text = string.Format(labelVersion.Text + " {0}-{1}", AssemblyVersion, Resources.dev_status);
 #else
-            labelVersion.Text = string.Format("Versão {0}", AssemblyVersion);
+            labelVersion.Text = string.Format(labelVersion.Text + " {0}", AssemblyVersion);
 #endif
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
