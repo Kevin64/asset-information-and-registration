@@ -46,7 +46,7 @@ namespace HardwareInformation
                 }
             }
 
-            toolStripStatusLabel1.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
+            toolStripStatusBarText.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
 
             log = l;
 
@@ -99,11 +99,11 @@ namespace HardwareInformation
 
             //Program version
 #if DEBUG
-            toolStripStatusLabel2.Text = MiscMethods.Version(Resources.dev_status);
+            toolStripVersionText.Text = MiscMethods.Version(Resources.dev_status);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
-            toolStripStatusLabel2.Text = MiscMethods.Version();
+            toolStripVersionText.Text = MiscMethods.Version();
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
@@ -114,10 +114,10 @@ namespace HardwareInformation
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            label1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            label2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            label3.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            label4.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblFixedUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblFixedPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblFixedServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblFixedServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
             loadingCircle1.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
@@ -147,21 +147,21 @@ namespace HardwareInformation
 
             aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            toolStripStatusLabel1.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            toolStripStatusLabel2.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            toolStripStatusLabel1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            toolStripStatusLabel2.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripStatusBarText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripVersionText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripStatusBarText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripVersionText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
             aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
 
-            configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
-            configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
-            configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
-            configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
-            configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_light_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
+            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
+            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
+            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
+            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_light_path));
         }
 
         //Sets a dark theme for the login form
@@ -169,10 +169,10 @@ namespace HardwareInformation
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            label1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            label2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            label3.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            label4.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblFixedUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblFixedPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblFixedServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblFixedServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
             loadingCircle1.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
@@ -199,21 +199,21 @@ namespace HardwareInformation
 
             aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            toolStripStatusLabel1.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            toolStripStatusLabel2.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            toolStripStatusLabel1.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            toolStripStatusLabel2.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripStatusBarText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripVersionText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripStatusBarText.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripVersionText.BackColor = StringsAndConstants.DARK_BACKGROUND;
             statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
             aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
 
-            configurableQualityPictureBox1.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
-            configurableQualityPictureBox2.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));
-            configurableQualityPictureBox3.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_dark_path));
-            configurableQualityPictureBox4.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
-            configurableQualityPictureBox5.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_dark_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
+            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));
+            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_dark_path));
+            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
+            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_dark_path));
         }
 
         //Loads the form, sets some combobox values

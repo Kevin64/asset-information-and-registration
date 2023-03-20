@@ -31,30 +31,30 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblFixedUser = new System.Windows.Forms.Label();
+            this.lblFixedPassword = new System.Windows.Forms.Label();
             this.AuthButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.aboutLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.configurableQualityPictureBox1 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.toolStripStatusBarText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripVersionText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.topBannerImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.lblFixedServerPort = new System.Windows.Forms.Label();
+            this.lblFixedServerIP = new System.Windows.Forms.Label();
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
             this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
-            this.configurableQualityPictureBox2 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox5 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox4 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.configurableQualityPictureBox3 = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.userIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.serverPortIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.serverIPIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.passwordIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.comboBoxServerPort = new CustomFlatComboBox();
             this.comboBoxServerIP = new CustomFlatComboBox();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userIconImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverPortIconImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverIPIconImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordIconImg)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxUser
@@ -76,25 +76,25 @@
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
-            // label1
+            // lblFixedUser
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(39, 146);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Usuário:";
+            this.lblFixedUser.AutoSize = true;
+            this.lblFixedUser.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedUser.Location = new System.Drawing.Point(39, 146);
+            this.lblFixedUser.Name = "lblFixedUser";
+            this.lblFixedUser.Size = new System.Drawing.Size(46, 13);
+            this.lblFixedUser.TabIndex = 2;
+            this.lblFixedUser.Text = "Usuário:";
             // 
-            // label2
+            // lblFixedPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(39, 171);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Senha:";
+            this.lblFixedPassword.AutoSize = true;
+            this.lblFixedPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedPassword.Location = new System.Drawing.Point(39, 171);
+            this.lblFixedPassword.Name = "lblFixedPassword";
+            this.lblFixedPassword.Size = new System.Drawing.Size(41, 13);
+            this.lblFixedPassword.TabIndex = 3;
+            this.lblFixedPassword.Text = "Senha:";
             // 
             // AuthButton
             // 
@@ -115,8 +115,8 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutLabel,
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusBarText,
+            this.toolStripVersionText});
             this.statusStrip1.Location = new System.Drawing.Point(0, 330);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -132,55 +132,55 @@
             this.aboutLabel.Text = "Sobre";
             this.aboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusBarText
             // 
-            this.toolStripStatusLabel1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(185, 17);
-            this.toolStripStatusLabel1.Spring = true;
+            this.toolStripStatusBarText.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripStatusBarText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripStatusBarText.Name = "toolStripStatusBarText";
+            this.toolStripStatusBarText.Size = new System.Drawing.Size(185, 17);
+            this.toolStripStatusBarText.Spring = true;
             // 
-            // toolStripStatusLabel2
+            // toolStripVersionText
             // 
-            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.toolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(4, 17);
+            this.toolStripVersionText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            this.toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripVersionText.Name = "toolStripVersionText";
+            this.toolStripVersionText.Size = new System.Drawing.Size(4, 17);
             // 
-            // configurableQualityPictureBox1
+            // topBannerImg
             // 
-            this.configurableQualityPictureBox1.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
-            this.configurableQualityPictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.configurableQualityPictureBox1.Location = new System.Drawing.Point(-5, -1);
-            this.configurableQualityPictureBox1.Name = "configurableQualityPictureBox1";
-            this.configurableQualityPictureBox1.Size = new System.Drawing.Size(252, 126);
-            this.configurableQualityPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.configurableQualityPictureBox1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.configurableQualityPictureBox1.TabIndex = 5;
-            this.configurableQualityPictureBox1.TabStop = false;
+            this.topBannerImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
+            this.topBannerImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.topBannerImg.Location = new System.Drawing.Point(-5, -1);
+            this.topBannerImg.Name = "topBannerImg";
+            this.topBannerImg.Size = new System.Drawing.Size(252, 126);
+            this.topBannerImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.topBannerImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.topBannerImg.TabIndex = 5;
+            this.topBannerImg.TabStop = false;
             // 
-            // label3
+            // lblFixedServerPort
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(39, 224);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Porta:";
+            this.lblFixedServerPort.AutoSize = true;
+            this.lblFixedServerPort.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedServerPort.Location = new System.Drawing.Point(39, 224);
+            this.lblFixedServerPort.Name = "lblFixedServerPort";
+            this.lblFixedServerPort.Size = new System.Drawing.Size(35, 13);
+            this.lblFixedServerPort.TabIndex = 10;
+            this.lblFixedServerPort.Text = "Porta:";
             // 
-            // label4
+            // lblFixedServerIP
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(39, 197);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Servidor:";
+            this.lblFixedServerIP.AutoSize = true;
+            this.lblFixedServerIP.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedServerIP.Location = new System.Drawing.Point(39, 197);
+            this.lblFixedServerIP.Name = "lblFixedServerIP";
+            this.lblFixedServerIP.Size = new System.Drawing.Size(49, 13);
+            this.lblFixedServerIP.TabIndex = 9;
+            this.lblFixedServerIP.Text = "Servidor:";
             // 
             // checkBoxOfflineMode
             // 
@@ -212,53 +212,53 @@
             this.loadingCircle1.Text = "loadingCircle23";
             this.loadingCircle1.Visible = false;
             // 
-            // configurableQualityPictureBox2
+            // userIconImg
             // 
-            this.configurableQualityPictureBox2.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox2.Location = new System.Drawing.Point(11, 139);
-            this.configurableQualityPictureBox2.Name = "configurableQualityPictureBox2";
-            this.configurableQualityPictureBox2.Size = new System.Drawing.Size(24, 25);
-            this.configurableQualityPictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox2.TabIndex = 139;
-            this.configurableQualityPictureBox2.TabStop = false;
+            this.userIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.userIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.userIconImg.Location = new System.Drawing.Point(11, 139);
+            this.userIconImg.Name = "userIconImg";
+            this.userIconImg.Size = new System.Drawing.Size(24, 25);
+            this.userIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.userIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.userIconImg.TabIndex = 139;
+            this.userIconImg.TabStop = false;
             // 
-            // configurableQualityPictureBox5
+            // serverPortIconImg
             // 
-            this.configurableQualityPictureBox5.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox5.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox5.Location = new System.Drawing.Point(11, 217);
-            this.configurableQualityPictureBox5.Name = "configurableQualityPictureBox5";
-            this.configurableQualityPictureBox5.Size = new System.Drawing.Size(24, 25);
-            this.configurableQualityPictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox5.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox5.TabIndex = 138;
-            this.configurableQualityPictureBox5.TabStop = false;
+            this.serverPortIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.serverPortIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.serverPortIconImg.Location = new System.Drawing.Point(11, 217);
+            this.serverPortIconImg.Name = "serverPortIconImg";
+            this.serverPortIconImg.Size = new System.Drawing.Size(24, 25);
+            this.serverPortIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.serverPortIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.serverPortIconImg.TabIndex = 138;
+            this.serverPortIconImg.TabStop = false;
             // 
-            // configurableQualityPictureBox4
+            // serverIPIconImg
             // 
-            this.configurableQualityPictureBox4.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox4.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox4.Location = new System.Drawing.Point(11, 191);
-            this.configurableQualityPictureBox4.Name = "configurableQualityPictureBox4";
-            this.configurableQualityPictureBox4.Size = new System.Drawing.Size(24, 25);
-            this.configurableQualityPictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox4.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox4.TabIndex = 137;
-            this.configurableQualityPictureBox4.TabStop = false;
+            this.serverIPIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.serverIPIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.serverIPIconImg.Location = new System.Drawing.Point(11, 191);
+            this.serverIPIconImg.Name = "serverIPIconImg";
+            this.serverIPIconImg.Size = new System.Drawing.Size(24, 25);
+            this.serverIPIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.serverIPIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.serverIPIconImg.TabIndex = 137;
+            this.serverIPIconImg.TabStop = false;
             // 
-            // configurableQualityPictureBox3
+            // passwordIconImg
             // 
-            this.configurableQualityPictureBox3.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.configurableQualityPictureBox3.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.configurableQualityPictureBox3.Location = new System.Drawing.Point(11, 165);
-            this.configurableQualityPictureBox3.Name = "configurableQualityPictureBox3";
-            this.configurableQualityPictureBox3.Size = new System.Drawing.Size(24, 25);
-            this.configurableQualityPictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configurableQualityPictureBox3.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.configurableQualityPictureBox3.TabIndex = 136;
-            this.configurableQualityPictureBox3.TabStop = false;
+            this.passwordIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.passwordIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.passwordIconImg.Location = new System.Drawing.Point(11, 165);
+            this.passwordIconImg.Name = "passwordIconImg";
+            this.passwordIconImg.Size = new System.Drawing.Size(24, 25);
+            this.passwordIconImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.passwordIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.passwordIconImg.TabIndex = 136;
+            this.passwordIconImg.TabStop = false;
             // 
             // comboBoxServerPort
             // 
@@ -289,21 +289,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(241, 352);
-            this.Controls.Add(this.configurableQualityPictureBox2);
-            this.Controls.Add(this.configurableQualityPictureBox5);
-            this.Controls.Add(this.configurableQualityPictureBox4);
-            this.Controls.Add(this.configurableQualityPictureBox3);
+            this.Controls.Add(this.userIconImg);
+            this.Controls.Add(this.serverPortIconImg);
+            this.Controls.Add(this.serverIPIconImg);
+            this.Controls.Add(this.passwordIconImg);
             this.Controls.Add(this.loadingCircle1);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.checkBoxOfflineMode);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblFixedServerPort);
+            this.Controls.Add(this.lblFixedServerIP);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.configurableQualityPictureBox1);
+            this.Controls.Add(this.topBannerImg);
             this.Controls.Add(this.AuthButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFixedPassword);
+            this.Controls.Add(this.lblFixedUser);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -315,11 +315,11 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.configurableQualityPictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userIconImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverPortIconImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverIPIconImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordIconImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,23 +329,23 @@
 
         private System.Windows.Forms.TextBox textBoxUser;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblFixedUser;
+        private System.Windows.Forms.Label lblFixedPassword;
         private System.Windows.Forms.Button AuthButton;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox1;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox topBannerImg;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripVersionText;
+        private System.Windows.Forms.Label lblFixedServerPort;
+        private System.Windows.Forms.Label lblFixedServerIP;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusBarText;
         private System.Windows.Forms.CheckBox checkBoxOfflineMode;
         private CustomFlatComboBox comboBoxServerIP;
         private CustomFlatComboBox comboBoxServerPort;
         private MRG.Controls.UI.LoadingCircle loadingCircle1;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox2;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox5;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox4;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox configurableQualityPictureBox3;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox userIconImg;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox serverPortIconImg;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox serverIPIconImg;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox passwordIconImg;
         private System.Windows.Forms.ToolStripStatusLabel aboutLabel;
     }
 }
