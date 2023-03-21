@@ -123,7 +123,7 @@ namespace HardwareInformation
             comboBoxBattery.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
             textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(0, 3).ToUpper().Equals(StringsAndConstants.HOSTNAME_PATTERN)
                 ? System.Net.Dns.GetHostName().Substring(3)
-                : "";
+                : string.Empty;
 
             //Inits thread worker for parallelism
             backgroundWorker1 = new BackgroundWorker();
@@ -4065,7 +4065,7 @@ namespace HardwareInformation
                 //Feches model info from server
                 serverOnline = await BIOSFileReader.CheckHostMT(servidor_web, porta);
 
-                if (serverOnline && porta != "")
+                if (serverOnline && porta != string.Empty)
                 {
                     loadingCircle24.Visible = false;
                     log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
@@ -4144,7 +4144,7 @@ namespace HardwareInformation
 
             //Scans for PC maker
             BM = HardwareInfo.GetBoardMaker();
-            if (BM == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || BM == "")
+            if (BM == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || BM == string.Empty)
             {
                 BM = HardwareInfo.GetBoardMakerAlt();
             }
@@ -4155,7 +4155,7 @@ namespace HardwareInformation
 
             //Scans for PC model
             Model = HardwareInfo.GetModel();
-            if (Model == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || Model == "")
+            if (Model == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || Model == string.Empty)
             {
                 Model = HardwareInfo.GetModelAlt();
             }
@@ -4415,7 +4415,7 @@ namespace HardwareInformation
                     log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
                 }
                 //If there is no MAC address assigned
-                if (lblMac.Text == "")
+                if (lblMac.Text == string.Empty)
                 {
                     if (!offlineMode) //If it's not in offline mode
                     {
@@ -4611,7 +4611,7 @@ namespace HardwareInformation
                 sArgs[2] = modeURL;
                 sArgs[3] = textBoxPatrimony.Text;
                 sArgs[4] = textBoxSeal.Text;
-                sArgs[5] = textBoxLetter.Text != "" ? textBoxRoom.Text + textBoxLetter.Text : textBoxRoom.Text;
+                sArgs[5] = textBoxLetter.Text != string.Empty ? textBoxRoom.Text + textBoxLetter.Text : textBoxRoom.Text;
                 sArgs[6] = comboBoxBuilding.SelectedItem.ToString();
                 sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString();
                 sArgs[8] = comboBoxStandard.SelectedItem.ToString();
@@ -4637,7 +4637,7 @@ namespace HardwareInformation
                 }
                 else //If not discarded
                 {
-                    if (serverOnline && porta != "") //If server is online and port is not null
+                    if (serverOnline && porta != string.Empty) //If server is online and port is not null
                     {
                         try //Tries to get the laster register date from the patrimony to check if the chosen date is adequate
                         {

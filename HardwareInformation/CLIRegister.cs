@@ -178,7 +178,7 @@ namespace HardwareInformation
             {
                 log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
-                if (serverOnline && strArgs[1] != "")
+                if (serverOnline && strArgs[1] != string.Empty)
                 {
                     log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
                     log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
@@ -567,7 +567,7 @@ namespace HardwareInformation
                     strAlertBool[5] = true;
                 }
                 //If there is no MAC address assigned
-                if (strArgs[26] == "")
+                if (strArgs[26] == string.Empty)
                 {
                     pass = false;
                     strAlert[6] += strArgs[26] + Strings.NETWORK_ERROR; //Prints a network error
@@ -624,7 +624,7 @@ namespace HardwareInformation
 
             //Scans for PC maker
             strArgs[17] = HardwareInfo.GetBoardMaker();
-            if (strArgs[17] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[17] == "")
+            if (strArgs[17] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[17] == string.Empty)
             {
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
             }
@@ -633,7 +633,7 @@ namespace HardwareInformation
 
             //Scans for PC model
             strArgs[18] = HardwareInfo.GetModel();
-            if (strArgs[18] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[18] == "")
+            if (strArgs[18] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[18] == string.Empty)
             {
                 strArgs[18] = HardwareInfo.GetModelAlt();
             }

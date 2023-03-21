@@ -15,12 +15,12 @@ namespace HardwareInformation
                 using (WebClient client = new WebClient())
                 {
 
-                    if (HardwareInfo.GetOSInfoAux() == StringsAndConstants.windows7)
+                    if (HardwareInfo.GetOSInfoAux() == ConstantsDLL.Properties.Resources.windows7)
                     {
                         ServicePointManager.Expect100Continue = true;
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     }
-                    client.DownloadFile(StringsAndConstants.webview2url, StringsAndConstants.webview2filePath);
+                    client.DownloadFile(ConstantsDLL.Properties.Resources.webview2url, StringsAndConstants.webview2filePath);
                     Process process = Process.Start(StringsAndConstants.webview2filePath);
                     process.WaitForExit();
                     return process.ExitCode.ToString();

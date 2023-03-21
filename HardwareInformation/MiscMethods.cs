@@ -77,11 +77,11 @@ namespace HardwareInformation
             if (rk != null)
             {
                 object o = rk.GetValue("pv");
-                return o != null ? o.ToString() : "";
+                return o != null ? o.ToString() : string.Empty;
             }
             else
             {
-                return "";
+                return string.Empty;
             }
         }
 
