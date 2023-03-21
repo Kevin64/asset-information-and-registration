@@ -1,5 +1,6 @@
 ﻿using ConstantsDLL;
 using HardwareInfoDLL;
+using HardwareInformation.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
@@ -133,22 +134,22 @@ namespace HardwareInformation
 
             strAlert = new string[11];
             strAlertBool = new bool[11];
-            strAlert[0] = StringsAndConstants.CLI_HOSTNAME_ALERT;
-            strAlert[1] = StringsAndConstants.CLI_MEDIA_OPERATION_ALERT;
-            strAlert[2] = StringsAndConstants.CLI_SECURE_BOOT_ALERT;
-            strAlert[3] = StringsAndConstants.CLI_DATABASE_REACH_ERROR;
-            strAlert[4] = StringsAndConstants.CLI_BIOS_VERSION_ALERT;
-            strAlert[5] = StringsAndConstants.CLI_FIRMWARE_TYPE_ALERT;
-            strAlert[6] = StringsAndConstants.CLI_NETWORK_IP_ERROR;
-            strAlert[7] = StringsAndConstants.CLI_NETWORK_MAC_ERROR;
-            strAlert[8] = StringsAndConstants.CLI_VT_ALERT;
-            strAlert[9] = StringsAndConstants.CLI_TPM_ALERT;
-            strAlert[10] = StringsAndConstants.CLI_MEMORY_ALERT;
+            strAlert[0] = Strings.CLI_HOSTNAME_ALERT;
+            strAlert[1] = Strings.CLI_MEDIA_OPERATION_ALERT;
+            strAlert[2] = Strings.CLI_SECURE_BOOT_ALERT;
+            strAlert[3] = Strings.CLI_DATABASE_REACH_ERROR;
+            strAlert[4] = Strings.CLI_BIOS_VERSION_ALERT;
+            strAlert[5] = Strings.CLI_FIRMWARE_TYPE_ALERT;
+            strAlert[6] = Strings.CLI_NETWORK_IP_ERROR;
+            strAlert[7] = Strings.CLI_NETWORK_MAC_ERROR;
+            strAlert[8] = Strings.CLI_VT_ALERT;
+            strAlert[9] = Strings.CLI_TPM_ALERT;
+            strAlert[10] = Strings.CLI_MEMORY_ALERT;
 
             #endregion
 
             //Fetch building and hw types info from the specified server
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutCLI);
             List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(servidor, porta);
             definitionList[2] = jsonServerSettings[0];
             definitionList[3] = jsonServerSettings[1];
@@ -175,12 +176,12 @@ namespace HardwareInformation
                 (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || strArgs[13].Equals(StringsAndConstants.sameWord)) && //Etiqueta
                 (definitionList[3].Contains(strArgs[14]) || strArgs[14].Equals(StringsAndConstants.sameWord))) //Tipo
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                 serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
                 if (serverOnline && strArgs[1] != "")
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
 
                     CollectThread();
 
@@ -196,7 +197,7 @@ namespace HardwareInformation
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
                     if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
                         webView2.Dispose();
                         Environment.Exit(StringsAndConstants.RETURN_ERROR);
                     }
@@ -205,11 +206,11 @@ namespace HardwareInformation
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
                         {
-                            strArgs[2] = StringsAndConstants.formatURL;
+                            strArgs[2] = ConstantsDLL.Properties.Resources.formatURL;
                         }
                         else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
                         {
-                            strArgs[2] = StringsAndConstants.maintenanceURL;
+                            strArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
                         //AD
                         if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
@@ -223,20 +224,20 @@ namespace HardwareInformation
                         //Padrao
                         if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
                         {
-                            strArgs[8] = StringsAndConstants.employee;
+                            strArgs[8] = Strings.employee;
                         }
                         else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
                         {
-                            strArgs[8] = StringsAndConstants.student;
+                            strArgs[8] = Strings.student;
                         }
                         //Pilha
                         if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
                         {
-                            strArgs[10] = StringsAndConstants.sameBattery;
+                            strArgs[10] = Strings.sameBattery;
                         }
                         else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
                         {
-                            strArgs[10] = StringsAndConstants.replacedBattery;
+                            strArgs[10] = Strings.replacedBattery;
                         }
                         //Uso
                         if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
@@ -269,11 +270,11 @@ namespace HardwareInformation
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
                         {
-                            strArgs[2] = StringsAndConstants.formatURL;
+                            strArgs[2] = ConstantsDLL.Properties.Resources.formatURL;
                         }
                         else if (strArgs[2].Equals("m") || strArgs[2].Equals("M"))
                         {
-                            strArgs[2] = StringsAndConstants.maintenanceURL;
+                            strArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
                         //Lacre
                         if (strArgs[4].Equals(StringsAndConstants.sameWord))
@@ -310,20 +311,20 @@ namespace HardwareInformation
                         }
                         else if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
                         {
-                            strArgs[8] = StringsAndConstants.employee;
+                            strArgs[8] = Strings.employee;
                         }
                         else if (strArgs[8].Equals("A") || strArgs[8].Equals("a"))
                         {
-                            strArgs[8] = StringsAndConstants.student;
+                            strArgs[8] = Strings.student;
                         }
                         //Pilha
                         if (strArgs[10].Equals("N") || strArgs[10].Equals("n"))
                         {
-                            strArgs[10] = StringsAndConstants.sameBattery;
+                            strArgs[10] = Strings.sameBattery;
                         }
                         else if (strArgs[10].Equals("S") || strArgs[10].Equals("s"))
                         {
-                            strArgs[10] = StringsAndConstants.replacedBattery;
+                            strArgs[10] = Strings.replacedBattery;
                         }
                         //Uso
                         if (strArgs[12].Equals(StringsAndConstants.sameWord))
@@ -403,20 +404,20 @@ namespace HardwareInformation
                                     Environment.Exit(StringsAndConstants.RETURN_ERROR);
                                 }
 
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
                                 ServerSendInfo(strArgs); //Send info to server
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
                                 //Resets host install date
                                 if (modo == "f" || modo == "F")
                                 {
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     MiscMethods.RegCreate(true, strArgs[9]);
                                 }
                                 if (modo == "m" || modo == "M") //Resets host maintenance date
                                 {
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                     MiscMethods.RegCreate(false, strArgs[9]);
                                 }
                             }
@@ -439,27 +440,27 @@ namespace HardwareInformation
                                 strArgs[9] = d.ToString().Substring(0, 10);
                             }
 
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
                             ServerSendInfo(strArgs); //Send info to server
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+                            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
 
                             //Resets host install date
                             if (modo == "f" || modo == "F")
                             {
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                 MiscMethods.RegCreate(true, strArgs[9]);
                             }
                             else if (modo == "m" || modo == "M") //Resets host maintenance date
                             {
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
                                 MiscMethods.RegCreate(false, strArgs[9]);
                             }
                         }
                     }
                     else //If there are pendencies
                     {
-                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.FIX_PROBLEMS, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(StringsAndConstants.LOG_WARNING, Strings.FIX_PROBLEMS, string.Empty, StringsAndConstants.consoleOutCLI);
                         for (int i = 0; i < strAlert.Length; i++)
                         {
                             if (strAlertBool[i])
@@ -473,7 +474,7 @@ namespace HardwareInformation
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
                     webView2.Dispose(); //Kills WebView2 instance
                     Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
                 }
@@ -484,8 +485,8 @@ namespace HardwareInformation
                 webView2.Dispose(); //Kills WebView2 instance
                 Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
             }
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_MISC, ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
 
             //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
@@ -509,7 +510,7 @@ namespace HardwareInformation
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
         private void PrintHardwareData()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutCLI);
 
             pass = true;
 
@@ -519,33 +520,33 @@ namespace HardwareInformation
                 string[] biosJsonStr = BIOSFileReader.FetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
                 //Scan if hostname is the default one
-                if (strArgs[24].Equals(StringsAndConstants.DEFAULT_HOSTNAME))
+                if (strArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
-                    strAlert[0] += strArgs[24] + StringsAndConstants.HOSTNAME_ALERT;
+                    strAlert[0] += strArgs[24] + Strings.HOSTNAME_ALERT;
                     strAlertBool[0] = true;
                 }
                 //If model Json file does exist and the Media Operation is incorrect
                 if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
                 {
                     pass = false;
-                    strAlert[1] += strArgs[31] + StringsAndConstants.MEDIA_OPERATION_ALERT;
+                    strAlert[1] += strArgs[31] + Strings.MEDIA_OPERATION_ALERT;
                     strAlertBool[1] = true;
                 }
                 //The section below contains the exception cases for Secure Boot enforcement
-                if (strArgs[32].Equals(StringsAndConstants.deactivated) &&
-                    !strArgs[30].Contains(StringsAndConstants.nonSecBootGPU1) &&
-                    !strArgs[30].Contains(StringsAndConstants.nonSecBootGPU2))
+                if (strArgs[32].Equals(ConstantsDLL.Properties.Strings.deactivated) &&
+                    !strArgs[30].Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU1) &&
+                    !strArgs[30].Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU2))
                 {
                     pass = false;
-                    strAlert[2] += strArgs[32] + StringsAndConstants.SECURE_BOOT_ALERT;
+                    strAlert[2] += strArgs[32] + Strings.SECURE_BOOT_ALERT;
                     strAlertBool[2] = true;
                 }
                 //If model Json file does not exist and server is unreachable
                 if (biosJsonStr == null)
                 {
                     pass = false;
-                    strAlert[3] += StringsAndConstants.DATABASE_REACH_ERROR;
+                    strAlert[3] += Strings.DATABASE_REACH_ERROR;
                     strAlertBool[3] = true;
                 }
                 //If model Json file does exist and BIOS/UEFI version is incorrect
@@ -554,7 +555,7 @@ namespace HardwareInformation
                     if (!biosJsonStr[0].Equals("-1"))
                     {
                         pass = false;
-                        strAlert[4] += strArgs[25] + StringsAndConstants.BIOS_VERSION_ALERT;
+                        strAlert[4] += strArgs[25] + Strings.BIOS_VERSION_ALERT;
                         strAlertBool[4] = true;
                     }
                 }
@@ -562,30 +563,30 @@ namespace HardwareInformation
                 if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
                 {
                     pass = false;
-                    strAlert[5] += strArgs[28] + StringsAndConstants.FIRMWARE_TYPE_ALERT;
+                    strAlert[5] += strArgs[28] + Strings.FIRMWARE_TYPE_ALERT;
                     strAlertBool[5] = true;
                 }
                 //If there is no MAC address assigned
                 if (strArgs[26] == "")
                 {
                     pass = false;
-                    strAlert[6] += strArgs[26] + StringsAndConstants.NETWORK_ERROR; //Prints a network error
-                    strAlert[7] += strArgs[27] + StringsAndConstants.NETWORK_ERROR; //Prints a network error
+                    strAlert[6] += strArgs[26] + Strings.NETWORK_ERROR; //Prints a network error
+                    strAlert[7] += strArgs[27] + Strings.NETWORK_ERROR; //Prints a network error
                     strAlertBool[6] = true;
                     strAlertBool[7] = true;
                 }
                 //If Virtualization Technology is disabled
-                if (strArgs[33] == StringsAndConstants.deactivated)
+                if (strArgs[33] == ConstantsDLL.Properties.Strings.deactivated)
                 {
                     pass = false;
-                    strAlert[8] += strArgs[33] + StringsAndConstants.VT_ALERT;
+                    strAlert[8] += strArgs[33] + Strings.VT_ALERT;
                     strAlertBool[8] = true;
                 }
                 //If model Json file does exist and TPM is not enabled
                 if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
                 {
                     pass = false;
-                    strAlert[9] += strArgs[34] + StringsAndConstants.TPM_ERROR;
+                    strAlert[9] += strArgs[34] + Strings.TPM_ERROR;
                     strAlertBool[9] = true;
                 }
                 //Checks for RAM amount
@@ -594,19 +595,19 @@ namespace HardwareInformation
                 if (d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    strAlert[10] += strArgs[21] + StringsAndConstants.NOT_ENOUGH_MEMORY;
+                    strAlert[10] += strArgs[21] + Strings.NOT_ENOUGH_MEMORY;
                     strAlertBool[10] = true;
                 }
                 //If RAM is more than 4GB and OS is x86, shows an alert
                 if (d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    strAlert[10] += strArgs[21] + StringsAndConstants.TOO_MUCH_MEMORY;
+                    strAlert[10] += strArgs[21] + Strings.TOO_MUCH_MEMORY;
                     strAlertBool[10] = true;
                 }
                 if (pass)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
             }
             catch (Exception e)
@@ -619,111 +620,111 @@ namespace HardwareInformation
         // while reporting the progress to the progressbar
         public void CollectThread()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
 
             //Scans for PC maker
             strArgs[17] = HardwareInfo.GetBoardMaker();
-            if (strArgs[17] == StringsAndConstants.ToBeFilledByOEM || strArgs[17] == "")
+            if (strArgs[17] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[17] == "")
             {
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BM, strArgs[17], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BM, strArgs[17], StringsAndConstants.consoleOutCLI);
 
             //Scans for PC model
             strArgs[18] = HardwareInfo.GetModel();
-            if (strArgs[18] == StringsAndConstants.ToBeFilledByOEM || strArgs[18] == "")
+            if (strArgs[18] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || strArgs[18] == "")
             {
                 strArgs[18] = HardwareInfo.GetModelAlt();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MODEL, strArgs[18], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MODEL, strArgs[18], StringsAndConstants.consoleOutCLI);
 
             //Scans for motherboard Serial number
             strArgs[19] = HardwareInfo.GetBoardProductId();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERIALNO, strArgs[19], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERIALNO, strArgs[19], StringsAndConstants.consoleOutCLI);
 
             //Scans for CPU information
             strArgs[20] = HardwareInfo.GetProcessorCores();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PROCNAME, strArgs[20], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PROCNAME, strArgs[20], StringsAndConstants.consoleOutCLI);
 
             //Scans for RAM amount and total number of slots
             strArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_PM, strArgs[21], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PM, strArgs[21], StringsAndConstants.consoleOutCLI);
 
             //Scans for Storage size
             strArgs[22] = HardwareInfo.GetHDSize();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HDSIZE, strArgs[22], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HDSIZE, strArgs[22], StringsAndConstants.consoleOutCLI);
 
             //Scans for Storage type
             strArgs[29] = HardwareInfo.GetStorageType();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIATYPE, strArgs[29], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIATYPE, strArgs[29], StringsAndConstants.consoleOutCLI);
 
             //Scans for Media Operation (IDE/AHCI/NVME)
             strArgs[31] = HardwareInfo.GetStorageOperation();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MEDIAOP, strArgs[31], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIAOP, strArgs[31], StringsAndConstants.consoleOutCLI);
 
             //Scans for GPU information
             strArgs[30] = HardwareInfo.GetGPUInfo();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GPUINFO, strArgs[30], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_GPUINFO, strArgs[30], StringsAndConstants.consoleOutCLI);
 
             //Scans for OS infomation
             strArgs[23] = HardwareInfo.GetOSInformation();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_OS, strArgs[23], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OS, strArgs[23], StringsAndConstants.consoleOutCLI);
 
             //Scans for Hostname
             strArgs[24] = HardwareInfo.GetComputerName();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HOSTNAME, strArgs[24], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HOSTNAME, strArgs[24], StringsAndConstants.consoleOutCLI);
 
             //Scans for MAC Address
             strArgs[26] = HardwareInfo.GetMACAddress();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_MAC, strArgs[26], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MAC, strArgs[26], StringsAndConstants.consoleOutCLI);
 
             //Scans for IP Address
             strArgs[27] = HardwareInfo.GetIPAddress();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_IP, strArgs[27], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_IP, strArgs[27], StringsAndConstants.consoleOutCLI);
 
             //Scans for firmware type
             strArgs[28] = HardwareInfo.GetBIOSType();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOSTYPE, strArgs[28], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOSTYPE, strArgs[28], StringsAndConstants.consoleOutCLI);
 
             //Scans for Secure Boot status
             strArgs[32] = HardwareInfo.GetSecureBoot();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SECBOOT, strArgs[32], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SECBOOT, strArgs[32], StringsAndConstants.consoleOutCLI);
 
             //Scans for BIOS version
             strArgs[25] = HardwareInfo.GetComputerBIOS();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_BIOS, strArgs[25], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOS, strArgs[25], StringsAndConstants.consoleOutCLI);
 
             //Scans for VT status
             strArgs[33] = HardwareInfo.GetVirtualizationTechnology();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_VT, strArgs[33], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_VT, strArgs[33], StringsAndConstants.consoleOutCLI);
 
             //Scans for TPM status
             strArgs[34] = HardwareInfo.GetTPMStatus();
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_TPM, strArgs[34], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_TPM, strArgs[34], StringsAndConstants.consoleOutCLI);
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
         }
 
         //Loads webView2 component
         public async Task LoadWebView2()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
             CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
-                ? await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"))
-                : await CoreWebView2Environment.CreateAsync(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
+                ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"))
+                : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             webView2.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
         }
 
         //Sends hardware info to the specified server
         public void ServerSendInfo(string[] serverArgs)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutCLI);
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);
         }
     }

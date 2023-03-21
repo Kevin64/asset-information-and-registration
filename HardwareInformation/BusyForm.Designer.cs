@@ -42,10 +42,10 @@
             // 
             // loadingCircle1
             // 
+            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
             this.loadingCircle1.Active = false;
             this.loadingCircle1.Color = System.Drawing.Color.DarkGray;
             this.loadingCircle1.InnerCircleRadius = 5;
-            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
             this.loadingCircle1.Name = "loadingCircle1";
             this.loadingCircle1.NumberSpoke = 12;
             this.loadingCircle1.OuterCircleRadius = 11;

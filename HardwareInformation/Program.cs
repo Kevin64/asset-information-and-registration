@@ -34,55 +34,55 @@ namespace HardwareInformation
         //Command line switch options specification
         public class Options
         {
-            [Option("servidor", Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
+            [Option("server", Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
             public string Servidor { get; set; }
 
-            [Option("porta", Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
+            [Option("port", Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
             public string Porta { get; set; }
 
-            [Option("modo", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
+            [Option("mode", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
             public string TipoDeServico { get; set; }
 
-            [Option("patrimonio", Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
+            [Option("assetNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
             public string Patrimonio { get; set; }
 
-            [Option("lacre", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "mesmo")]
+            [Option("sealNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "same")]
             public string Lacre { get; set; }
 
-            [Option("sala", Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = "mesmo")]
+            [Option("roomNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = "same")]
             public string Sala { get; set; }
 
-            [Option("predio", Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = "mesmo")]
+            [Option("building", Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = "same")]
             public string Predio { get; set; }
 
-            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "mesmo")]
+            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "same")]
             public string AD { get; set; }
 
-            [Option("padrao", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "mesmo")]
+            [Option("standard", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "same")]
             public string Padrao { get; set; }
 
-            [Option("data", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "hoje")]
+            [Option("date", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "today")]
             public string Data { get; set; }
 
-            [Option("pilha", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
+            [Option("battery", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
             public string Pilha { get; set; }
 
             [Option("ticket", Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
             public string Ticket { get; set; }
 
-            [Option("uso", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "mesmo")]
+            [Option("inUse", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "same")]
             public string Uso { get; set; }
 
-            [Option("etiqueta", Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = "mesmo")]
+            [Option("tag", Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = "same")]
             public string Etiqueta { get; set; }
 
-            [Option("tipo", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "mesmo")]
+            [Option("type", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "same")]
             public string TipoHardware { get; set; }
 
-            [Option("usuario", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
+            [Option("username", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
             public string Usuario { get; set; }
 
-            [Option("senha", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
+            [Option("password", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
             public string Senha { get; set; }
         }
 
@@ -99,18 +99,18 @@ namespace HardwareInformation
                 opts.Porta = portListSection[0];
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
             string[] str = LoginFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
             {
                 if (str[0] == "true")
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
                     Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log, definitionListSection));
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.AUTH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.AUTH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
                     Environment.Exit(StringsAndConstants.RETURN_ERROR);
                 }
             }
@@ -130,7 +130,7 @@ namespace HardwareInformation
         [STAThread]
         private static void Main(string[] args)
         {
-            if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             }
@@ -151,20 +151,20 @@ namespace HardwareInformation
                 IniData def = null;
                 FileIniDataParser parser = new FileIniDataParser();
                 //Parses the INI file
-                def = parser.ReadFile(StringsAndConstants.defFile, Encoding.UTF8);
+                def = parser.ReadFile(ConstantsDLL.Properties.Resources.defFile, Encoding.UTF8);
 
                 //Reads the INI file Definition section
-                logLocationStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_9];
-                serverIPStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_11];
-                serverPortStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_12];
-                themeStr = def[StringsAndConstants.INI_SECTION_1][StringsAndConstants.INI_SECTION_1_15];
+                logLocationStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_9];
+                serverIPStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_11];
+                serverPortStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_12];
+                themeStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_15];
 
-                orgFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_1];
-                orgAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_2];
-                depFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_3];
-                depAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_4];
-                subDepFullNameStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_5];
-                subDepAcronymStr = def[StringsAndConstants.INI_SECTION_2][StringsAndConstants.INI_SECTION_2_6];
+                orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_1];
+                orgAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_2];
+                depFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_3];
+                depAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_4];
+                subDepFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_5];
+                subDepAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_6];
 
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
@@ -208,48 +208,48 @@ namespace HardwareInformation
                 bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, Strings.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #else
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
 #endif
                 if (!fileExists)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
 
                 //Installs WebView2 Runtime if not found
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
-                if ((!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version())) && (!Directory.Exists(StringsAndConstants.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version())))
+                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                if ((!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version())) && (!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version())))
                 {
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_WARNING, Strings.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
                     string returnCode = WebView2Installer.Install();
                     if (!int.TryParse(returnCode, out int returnCodeInt))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
                         Environment.Exit(StringsAndConstants.RETURN_ERROR);
                     }
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
                 }
 
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
                     FreeConsole();
                     Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
-                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
                     }
@@ -265,22 +265,22 @@ namespace HardwareInformation
                         index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
                         if (index != -1)
                         {
-                            argsLog[index] = "--senha=" + StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = "--senha=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
                         }
                     }
                     else
                     {
-                        argsLog[index + 1] = StringsAndConstants.LOG_PASSWORD_PLACEHOLDER;
+                        argsLog[index + 1] = ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
                     }
 
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
 
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
                     if (args.Length == 1 && args.Contains("--help"))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SHOWING_HELP, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SHOWING_HELP, string.Empty, StringsAndConstants.consoleOutCLI);
                         Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
                     }
                     else

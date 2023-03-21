@@ -56,7 +56,7 @@ namespace HardwareInformation
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
@@ -65,7 +65,7 @@ namespace HardwareInformation
                 }
                 else
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
@@ -75,7 +75,7 @@ namespace HardwareInformation
             }
             else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 }
@@ -84,7 +84,7 @@ namespace HardwareInformation
             }
             else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 }
@@ -92,7 +92,7 @@ namespace HardwareInformation
                 DarkTheme();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
 
             comboBoxServerIP.Items.AddRange(defList[0]);
             comboBoxServerPort.Items.AddRange(defList[1]);
@@ -300,8 +300,8 @@ namespace HardwareInformation
         //Handles the closing of the current form
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_CLOSING_LOGINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, StringsAndConstants.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLOSING_LOGINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(StringsAndConstants.LOG_MISC, ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
 
             //Deletes downloaded json files
             File.Delete(StringsAndConstants.biosPath);
@@ -317,14 +317,14 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private async void AuthButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_INIT_LOGIN, textBoxUser.Text, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_LOGIN, textBoxUser.Text, StringsAndConstants.consoleOutGUI);
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(true, StringsAndConstants.OFFLINE_MODE_ACTIVATED, null, null, log, defList, orgList);
-                if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                mForm = new MainForm(true, Strings.OFFLINE_MODE_ACTIVATED, null, null, log, defList, orgList);
+                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                 }
@@ -346,7 +346,7 @@ namespace HardwareInformation
                 comboBoxServerPort.Enabled = false;
                 checkBoxOfflineMode.Enabled = false;
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
-                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
 
                 //Feches login data from server
                 str = await LoginFileReader.FetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
@@ -363,15 +363,15 @@ namespace HardwareInformation
                     }
                     else if (str[0] == "false") //If Login Json file does exist, but the user do not exist
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
-                        _ = MessageBox.Show(StringsAndConstants.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
+                        _ = MessageBox.Show(Strings.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else //If Login Json file does exist and user logs in
                     {
-                        log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
+                        log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
                         MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
-                        if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+                        if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                         }
@@ -429,7 +429,7 @@ namespace HardwareInformation
         private void AboutLabel_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(defList, themeBool);
-            if (HardwareInfo.GetOSInfoAux().Equals(StringsAndConstants.windows10))
+            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             }

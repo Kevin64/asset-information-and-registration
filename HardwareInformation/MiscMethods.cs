@@ -27,9 +27,9 @@ namespace HardwareInformation
         {
             try
             {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(StringsAndConstants.HWINFO_REG_PATH);
-                DateTime li = Convert.ToDateTime(rk.GetValue(StringsAndConstants.lastInstall).ToString());
-                DateTime lm = Convert.ToDateTime(rk.GetValue(StringsAndConstants.lastMaintenance).ToString());
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH);
+                DateTime li = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.lastInstall).ToString());
+                DateTime lm = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.lastMaintenance).ToString());
                 return mode ? (DateTime.Today - li).TotalDays : (DateTime.Today - lm).TotalDays;
             }
             catch
@@ -41,30 +41,30 @@ namespace HardwareInformation
         //Creates a registry key when a register operation is made in GUI mode
         public static void RegCreate(bool mode, DateTimePicker dateTimePicker)
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.HWINFO_REG_PATH, true);
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
             {
-                rk.SetValue(StringsAndConstants.lastInstall, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastInstall, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
             }
             else
             {
-                rk.SetValue(StringsAndConstants.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
             }
         }
 
         //Creates a registry key when a register operation is made in CLI mode
         public static void RegCreate(bool mode, string dateTime)
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(StringsAndConstants.HWINFO_REG_PATH, true);
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
             {
-                rk.SetValue(StringsAndConstants.lastInstall, dateTime.Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastInstall, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
             }
             else
             {
-                rk.SetValue(StringsAndConstants.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
             }
         }
 
@@ -72,8 +72,8 @@ namespace HardwareInformation
         public static string GetWebView2Version()
         {
             RegistryKey rk = Environment.Is64BitOperatingSystem
-                ? Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X64, true)
-                : Registry.LocalMachine.CreateSubKey(StringsAndConstants.WEBVIEW2_REG_PATH_X86, true);
+                ? Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.WEBVIEW2_REG_PATH_X64, true)
+                : Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.WEBVIEW2_REG_PATH_X86, true);
             if (rk != null)
             {
                 object o = rk.GetValue("pv");
@@ -92,7 +92,7 @@ namespace HardwareInformation
             {
 #if DEBUG
                 //Checks if log directory exists
-                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + StringsAndConstants.LOG_FILE_EXT);
+                b = File.Exists(path + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
                 //Checks if log file exists
                 b = File.Exists(path + StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
@@ -117,11 +117,11 @@ namespace HardwareInformation
         {
             try
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(StringsAndConstants.THEME_REG_PATH))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(ConstantsDLL.Properties.Resources.THEME_REG_PATH))
                 {
                     if (key != null)
                     {
-                        object o = key.GetValue(StringsAndConstants.THEME_REG_KEY);
+                        object o = key.GetValue(ConstantsDLL.Properties.Resources.THEME_REG_KEY);
                         return o != null && o.Equals(0);
                     }
                     else
@@ -144,15 +144,15 @@ namespace HardwareInformation
             {
                 InstallLabel = RegCheck(mode).ToString();
                 return !InstallLabel.Equals("-1")
-                    ? "(" + InstallLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.FORMAT_TEXT + ")"
-                    : StringsAndConstants.SINCE_UNKNOWN;
+                    ? "(" + InstallLabel + Strings.DAYS_PASSED_TEXT + Strings.FORMAT_TEXT + ")"
+                    : Strings.SINCE_UNKNOWN;
             }
             else
             {
                 MaintenanceLabel = RegCheck(mode).ToString();
                 return !MaintenanceLabel.Equals("-1")
-                    ? "(" + MaintenanceLabel + StringsAndConstants.DAYS_PASSED_TEXT + StringsAndConstants.MAINTENANCE_TEXT + ")"
-                    : StringsAndConstants.SINCE_UNKNOWN;
+                    ? "(" + MaintenanceLabel + Strings.DAYS_PASSED_TEXT + Strings.MAINTENANCE_TEXT + ")"
+                    : Strings.SINCE_UNKNOWN;
             }
         }
 

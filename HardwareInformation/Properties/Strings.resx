@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAAString1" xml:space="preserve">
+    <value />
+    <comment>HardwareInfo.Strings.Generic</comment>
+  </data>
+  <data name="ARGS_ERROR" xml:space="preserve">
+    <value>One or more arguments contain errors! Exiting the program</value>
+  </data>
+  <data name="AUTH_ERROR" xml:space="preserve">
+    <value>Authentication error! Exiting the program</value>
+  </data>
+  <data name="AUTH_INVALID" xml:space="preserve">
+    <value>Invalid credentials. Try again.</value>
+  </data>
+  <data name="BIOS_VERSION_ALERT" xml:space="preserve">
+    <value>(Update firmware)</value>
+  </data>
+  <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
+    <value>Firmware version:</value>
+  </data>
+  <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
+    <value>Database connectivity: </value>
+  </data>
+  <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
+    <value>Firmware type: </value>
+  </data>
+  <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
+    <value>Hostname: </value>
+  </data>
+  <data name="CLI_MEDIA_OPERATION_ALERT" xml:space="preserve">
+    <value>SATA/M.2 operating mode: </value>
+  </data>
+  <data name="CLI_MEMORY_ALERT" xml:space="preserve">
+    <value>RAM amount and number of slots: </value>
+  </data>
+  <data name="CLI_NETWORK_IP_ERROR" xml:space="preserve">
+    <value>IP address: </value>
+  </data>
+  <data name="CLI_NETWORK_MAC_ERROR" xml:space="preserve">
+    <value>MAC address: </value>
+  </data>
+  <data name="CLI_SECURE_BOOT_ALERT" xml:space="preserve">
+    <value>Secure Boot: </value>
+  </data>
+  <data name="CLI_TPM_ALERT" xml:space="preserve">
+    <value>TPM version: </value>
+  </data>
+  <data name="CLI_VT_ALERT" xml:space="preserve">
+    <value>Virtualization Technology: </value>
+  </data>
+  <data name="DATABASE_REACH_ERROR" xml:space="preserve">
+    <value>Error contacting the database, check your intranet connection and that the web server is up!</value>
+  </data>
+  <data name="DAYS_PASSED_TEXT" xml:space="preserve">
+    <value> days since the last</value>
+  </data>
+  <data name="DEFAULT_HOSTNAME" xml:space="preserve">
+    <value>CHANGE-NAME</value>
+  </data>
+  <data name="employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="FETCHING" xml:space="preserve">
+    <value>Collecting...</value>
+  </data>
+  <data name="FETCH_AGAIN" xml:space="preserve">
+    <value>Collect Again</value>
+  </data>
+  <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
+    <value> (Wrong firmware type)</value>
+  </data>
+  <data name="FIX_PROBLEMS" xml:space="preserve">
+    <value>Fix the following issues before proceeding:</value>
+  </data>
+  <data name="FORMAT_TEXT" xml:space="preserve">
+    <value>formatting</value>
+  </data>
+  <data name="HOSTNAME_ALERT" xml:space="preserve">
+    <value> (Incorrect name, change)</value>
+  </data>
+  <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
+    <value>It is not possible to register for a date in the future.</value>
+  </data>
+  <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
+    <value>Registration date prior to the last maintenance date.</value>
+  </data>
+  <data name="LOGFILE_EXISTS" xml:space="preserve">
+    <value>Found log file, adding information</value>
+  </data>
+  <data name="LOGFILE_NOTEXISTS" xml:space="preserve">
+    <value>Nonexistent log file, creating new file</value>
+  </data>
+  <data name="LOG_ALREADY_REGISTERED_TODAY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
+    <value>Automatically selecting theme</value>
+  </data>
+  <data name="LOG_BIOS" xml:space="preserve">
+    <value>Firmware version</value>
+  </data>
+  <data name="LOG_BIOSTYPE" xml:space="preserve">
+    <value>Firmware type</value>
+  </data>
+  <data name="LOG_BIOSVER_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_BM" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_CHECKING_WEBVIEW2" xml:space="preserve">
+    <value>Checking presence of WebView2 Runtime on the system</value>
+  </data>
+  <data name="LOG_CLI_MODE" xml:space="preserve">
+    <value>Arguments detected, starting in CLI mode. list of arguments</value>
+  </data>
+  <data name="LOG_CLOSING_CLI" xml:space="preserve">
+    <value>Ending program sequence</value>
+  </data>
+  <data name="LOG_CLOSING_LOGINFORM" xml:space="preserve">
+    <value>Finalizing login form</value>
+  </data>
+  <data name="LOG_CLOSING_MAINFORM" xml:space="preserve">
+    <value>Finalizing main form</value>
+  </data>
+  <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
+    <value>Switching to dark mode</value>
+  </data>
+  <data name="LOG_DEBUG_MODE" xml:space="preserve">
+    <value>Running in DEBUG mode</value>
+  </data>
+  <data name="LOG_END_COLLECTING" xml:space="preserve">
+    <value>Completion of hardware collection</value>
+  </data>
+  <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
+    <value>WebView2 Runtime loading finished</value>
+  </data>
+  <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
+    <value>Getting file with hardware model information</value>
+  </data>
+  <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
+    <value>Searching available buildings and types of hardware</value>
+  </data>
+  <data name="LOG_FILENAME_CP" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_FIRMWARE_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_GPUINFO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_GUI_MODE" xml:space="preserve">
+    <value>Missing arguments, starting in GUI mode</value>
+  </data>
+  <data name="LOG_HARDWARE_PASSED" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_HDSIZE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_HOSTNAME" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_HOSTNAME_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INCORRECT_REGISTER_DATE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INIT" xml:space="preserve">
+    <value>Start of execution</value>
+  </data>
+  <data name="LOG_INIT_LOGIN" xml:space="preserve">
+    <value>Authenticating user</value>
+  </data>
+  <data name="LOG_INIT_REGISTRY" xml:space="preserve">
+    <value>Starting registration process</value>
+  </data>
+  <data name="LOG_INSTALLING_WEBVIEW2" xml:space="preserve">
+    <value>Installing WebView2 Runtime</value>
+  </data>
+  <data name="LOG_IP" xml:space="preserve">
+    <value>NIC's IP Address</value>
+  </data>
+  <data name="LOG_LIGHTMODE_CHANGE" xml:space="preserve">
+    <value>Switching to light mode</value>
+  </data>
+  <data name="LOG_LOGIN_FAILED" xml:space="preserve">
+    <value>Authentication failed</value>
+  </data>
+  <data name="LOG_LOGIN_INCOMPLETE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_LOGIN_SUCCESS" xml:space="preserve">
+    <value>Authentication performed successfully</value>
+  </data>
+  <data name="LOG_LOGOUT" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MAC" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MANDATORY_FIELD_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEDIAOP" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEDIAOP_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEDIATYPE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEMORYFEW_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEMORYMUCH_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MODEL" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_NETWORK_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_NO_INTRANET" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OFFLINE_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OFFLINE_MODE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OFFLINE_SERVER" xml:space="preserve">
+    <value>Server is OFFLINE</value>
+  </data>
+  <data name="LOG_ONLINE_SERVER" xml:space="preserve">
+    <value>Server is ONLINE</value>
+  </data>
+  <data name="LOG_OPENING_LOG" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OS" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_PC_DROPPED" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_PENDENCY_ERROR" xml:space="preserve">
+    <value>Pending issues detected</value>
+  </data>
+  <data name="LOG_PINGGING_SERVER" xml:space="preserve">
+    <value>Checking server availability</value>
+  </data>
+  <data name="LOG_PM" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_PROCNAME" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_REGISTERING" xml:space="preserve">
+    <value>Registering on the Asset Control Server</value>
+  </data>
+  <data name="LOG_REGISTRY_FINISHED" xml:space="preserve">
+    <value>Registration finished</value>
+  </data>
+  <data name="LOG_RELEASE_MODE" xml:space="preserve">
+    <value>Running in RELEASE mode</value>
+  </data>
+  <data name="LOG_RESETTING_INSTALLDATE" xml:space="preserve">
+    <value>Recalculating last formatting date</value>
+  </data>
+  <data name="LOG_RESETTING_MAINTENANCEDATE" xml:space="preserve">
+    <value>Recalculating last maintenance date</value>
+  </data>
+  <data name="LOG_SAMEWORD_NOFIRSTREGISTRY" xml:space="preserve">
+    <value>One or more 'same' arguments detected, however there is no existing record for the current asset. Computer must be registered first via GUI or via CLI with all command line options correctly filled in</value>
+  </data>
+  <data name="LOG_SECBOOT" xml:space="preserve">
+    <value>Secure Boot</value>
+  </data>
+  <data name="LOG_SECBOOT_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SERIALNO" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SERVER_DETAIL" xml:space="preserve">
+    <value>Server and port</value>
+  </data>
+  <data name="LOG_SERVER_UNREACHABLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SHOWING_HELP" xml:space="preserve">
+    <value>Displaying list of commands</value>
+  </data>
+  <data name="LOG_SMART" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SMART_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_START_COLLECTING" xml:space="preserve">
+    <value>Collecting hardware</value>
+  </data>
+  <data name="LOG_START_LOADING_WEBVIEW2" xml:space="preserve">
+    <value>Starting loading of WebView2 Runtime</value>
+  </data>
+  <data name="LOG_START_THREAD" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_THEME" xml:space="preserve">
+    <value>Using dark theme</value>
+  </data>
+  <data name="LOG_TPM" xml:space="preserve">
+    <value>TPM version</value>
+  </data>
+  <data name="LOG_TPM_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_VIEW_SERVER" xml:space="preserve">
+    <value>Accessing asset control system</value>
+  </data>
+  <data name="LOG_VT" xml:space="preserve">
+    <value>Virtualization Technology</value>
+  </data>
+  <data name="LOG_VT_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_WEBVIEW2_ALREADY_INSTALLED" xml:space="preserve">
+    <value>WebView2 Runtime is already installed</value>
+  </data>
+  <data name="LOG_WEBVIEW2_INSTALLED" xml:space="preserve">
+    <value>WebView2 Runtime successfully installed</value>
+  </data>
+  <data name="LOG_WEBVIEW2_INSTALL_FAILED" xml:space="preserve">
+    <value>WebView2 Runtime installation failed, please try again</value>
+  </data>
+  <data name="LOG_WEBVIEW2_NOT_FOUND" xml:space="preserve">
+    <value>WebView2 Runtime not found</value>
+  </data>
+  <data name="MAINTENANCE_TEXT" xml:space="preserve">
+    <value>maintenance</value>
+  </data>
+  <data name="MANDATORY_FIELD" xml:space="preserve">
+    <value>Fill in the required fields</value>
+  </data>
+  <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
+    <value> (Incorrect operating mode, change)</value>
+  </data>
+  <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
+    <value>IDE/Legacy or RAID</value>
+  </data>
+  <data name="MEDIA_OPERATION_NVME" xml:space="preserve">
+    <value>NVMe</value>
+  </data>
+  <data name="NETWORK_ERROR" xml:space="preserve">
+    <value>Computer not connected to the Intranet</value>
+  </data>
+  <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
+    <value> (Insufficient memory)</value>
+  </data>
+  <data name="OFFLINE" xml:space="preserve">
+    <value>OFFLINE</value>
+  </data>
+  <data name="OFFLINE_MODE_ACTIVATED" xml:space="preserve">
+    <value>OFFLINE Mode!</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>ONLINE</value>
+  </data>
+  <data name="PC_DROPPED" xml:space="preserve">
+    <value>Equity written off, registration cancelled. Revert low and try again</value>
+  </data>
+  <data name="PENDENCY_ERROR" xml:space="preserve">
+    <value>Resolve issues displayed in red!</value>
+  </data>
+  <data name="REGISTERING" xml:space="preserve">
+    <value>Registering / Updating, please wait...</value>
+  </data>
+  <data name="REGISTER_AGAIN" xml:space="preserve">
+    <value>Register / Update data</value>
+  </data>
+  <data name="replacedBattery" xml:space="preserve">
+    <value>With battery change</value>
+  </data>
+  <data name="sameBattery" xml:space="preserve">
+    <value>No battery change</value>
+  </data>
+  <data name="SECURE_BOOT_ALERT" xml:space="preserve">
+    <value> (Enable secure boot)</value>
+  </data>
+  <data name="SERVER_PORT_ERROR" xml:space="preserve">
+    <value>To access, select the server and the port!</value>
+  </data>
+  <data name="SINCE_UNKNOWN" xml:space="preserve">
+    <value>(Could not determine date of last service)</value>
+  </data>
+  <data name="SMART_FAIL" xml:space="preserve">
+    <value> (Drive with imminent failure)</value>
+  </data>
+  <data name="student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="TOO_MUCH_MEMORY" xml:space="preserve">
+    <value> (Too much memory)</value>
+  </data>
+  <data name="TPM_ERROR" xml:space="preserve">
+    <value> (TPM disabled/incorrect version)</value>
+  </data>
+  <data name="VT_ALERT" xml:space="preserve">
+    <value> (Enable Virtualization Technology in firmware)</value>
+  </data>
+</root>

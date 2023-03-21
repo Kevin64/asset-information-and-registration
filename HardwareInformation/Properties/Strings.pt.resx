@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AAAString1" xml:space="preserve">
+    <value />
+    <comment>HardwareInfo.Strings.PT</comment>
+  </data>
+  <data name="ARGS_ERROR" xml:space="preserve">
+    <value>Um ou mais argumentos contém erros! Saindo do programa</value>
+  </data>
+  <data name="AUTH_ERROR" xml:space="preserve">
+    <value>Erro de autenticação! Saindo do programa</value>
+  </data>
+  <data name="AUTH_INVALID" xml:space="preserve">
+    <value>Credenciais inválidas. Tente novamente.</value>
+  </data>
+  <data name="BIOS_VERSION_ALERT" xml:space="preserve">
+    <value> (Atualizar firmware)</value>
+  </data>
+  <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
+    <value>Versão do firmware: </value>
+  </data>
+  <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
+    <value>Conectividade com o banco de dados: </value>
+  </data>
+  <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
+    <value>Tipo de firmware: </value>
+  </data>
+  <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
+    <value>Hostname: </value>
+  </data>
+  <data name="CLI_MEDIA_OPERATION_ALERT" xml:space="preserve">
+    <value>Modo de operação SATA/M.2: </value>
+  </data>
+  <data name="CLI_MEMORY_ALERT" xml:space="preserve">
+    <value>Memória RAM e nº de slots: </value>
+  </data>
+  <data name="CLI_NETWORK_IP_ERROR" xml:space="preserve">
+    <value>Endereço IP: </value>
+  </data>
+  <data name="CLI_NETWORK_MAC_ERROR" xml:space="preserve">
+    <value>Endereço MAC: </value>
+  </data>
+  <data name="CLI_SECURE_BOOT_ALERT" xml:space="preserve">
+    <value>Secure Boot: </value>
+  </data>
+  <data name="CLI_TPM_ALERT" xml:space="preserve">
+    <value>Versão do TPM: </value>
+  </data>
+  <data name="CLI_VT_ALERT" xml:space="preserve">
+    <value>Tecnologia de Virtualização: </value>
+  </data>
+  <data name="DATABASE_REACH_ERROR" xml:space="preserve">
+    <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
+  </data>
+  <data name="DAYS_PASSED_TEXT" xml:space="preserve">
+    <value> dias desde a última </value>
+  </data>
+  <data name="DEFAULT_HOSTNAME" xml:space="preserve">
+    <value>MUDAR-NOME</value>
+  </data>
+  <data name="employee" xml:space="preserve">
+    <value>Funcionário</value>
+  </data>
+  <data name="FETCHING" xml:space="preserve">
+    <value>Coletando...</value>
+  </data>
+  <data name="FETCH_AGAIN" xml:space="preserve">
+    <value>Coletar Novamente</value>
+  </data>
+  <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
+    <value> (Tipo de firmware incorreto)</value>
+  </data>
+  <data name="FIX_PROBLEMS" xml:space="preserve">
+    <value>Corrija os problemas a seguir antes de prosseguir:</value>
+  </data>
+  <data name="FORMAT_TEXT" xml:space="preserve">
+    <value>formatação</value>
+  </data>
+  <data name="HOSTNAME_ALERT" xml:space="preserve">
+    <value> (Nome incorreto, alterar)</value>
+  </data>
+  <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
+    <value>Não é possível registrar para uma data no futuro.</value>
+  </data>
+  <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
+    <value>Data de registro anterior à data da última manutenção.</value>
+  </data>
+  <data name="LOGFILE_EXISTS" xml:space="preserve">
+    <value>Arquivo de log encontrado, acrescentando informações</value>
+  </data>
+  <data name="LOGFILE_NOTEXISTS" xml:space="preserve">
+    <value>Arquivo de log inexistente, criando novo arquivo</value>
+  </data>
+  <data name="LOG_ALREADY_REGISTERED_TODAY" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
+    <value>Selecionando tema automaticamente</value>
+  </data>
+  <data name="LOG_BIOS" xml:space="preserve">
+    <value>Versão do firmware</value>
+  </data>
+  <data name="LOG_BIOSTYPE" xml:space="preserve">
+    <value>Tipo de firmware</value>
+  </data>
+  <data name="LOG_BIOSVER_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_BM" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="LOG_CHECKING_WEBVIEW2" xml:space="preserve">
+    <value>Verificando presença do WebView2 Runtime no sistema</value>
+  </data>
+  <data name="LOG_CLI_MODE" xml:space="preserve">
+    <value>Argumentos detectados, iniciando em modo CLI. Lista de argumentos</value>
+  </data>
+  <data name="LOG_CLOSING_CLI" xml:space="preserve">
+    <value>Finalizando sequência do programa</value>
+  </data>
+  <data name="LOG_CLOSING_LOGINFORM" xml:space="preserve">
+    <value>Finalizando form de login</value>
+  </data>
+  <data name="LOG_CLOSING_MAINFORM" xml:space="preserve">
+    <value>Finalizando form principal</value>
+  </data>
+  <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
+    <value>Mudando para modo escuro</value>
+  </data>
+  <data name="LOG_DEBUG_MODE" xml:space="preserve">
+    <value>Executando em modo DEBUG</value>
+  </data>
+  <data name="LOG_END_COLLECTING" xml:space="preserve">
+    <value>Finalização da coleta de hardware</value>
+  </data>
+  <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
+    <value>Carregamento do WebView2 Runtime finalizado</value>
+  </data>
+  <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
+    <value>Obtendo arquivo com informações de modelo de hardware</value>
+  </data>
+  <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
+    <value>Buscando prédios e tipos de hardware disponíveis</value>
+  </data>
+  <data name="LOG_FILENAME_CP" xml:space="preserve">
+    <value>CadastroPatrimonial</value>
+  </data>
+  <data name="LOG_FIRMWARE_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_GPUINFO" xml:space="preserve">
+    <value>Placa de Vídeo e vRAM</value>
+  </data>
+  <data name="LOG_GUI_MODE" xml:space="preserve">
+    <value>Argumentos ausentes, iniciando em modo GUI</value>
+  </data>
+  <data name="LOG_HARDWARE_PASSED" xml:space="preserve">
+    <value>Configuração sem pendências, pronto para registro</value>
+  </data>
+  <data name="LOG_HDSIZE" xml:space="preserve">
+    <value>Armazenamento (espaço total)</value>
+  </data>
+  <data name="LOG_HOSTNAME" xml:space="preserve">
+    <value>Nome do Computador</value>
+  </data>
+  <data name="LOG_HOSTNAME_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INCORRECT_REGISTER_DATE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_INIT" xml:space="preserve">
+    <value>Inicio da execução</value>
+  </data>
+  <data name="LOG_INIT_LOGIN" xml:space="preserve">
+    <value>Autenticando usuário</value>
+  </data>
+  <data name="LOG_INIT_REGISTRY" xml:space="preserve">
+    <value>Iniciando processo de registro</value>
+  </data>
+  <data name="LOG_INSTALLING_WEBVIEW2" xml:space="preserve">
+    <value>Instalando WebView2 Runtime</value>
+  </data>
+  <data name="LOG_IP" xml:space="preserve">
+    <value>Endereço IP do NIC</value>
+  </data>
+  <data name="LOG_LIGHTMODE_CHANGE" xml:space="preserve">
+    <value>Mudando para modo claro</value>
+  </data>
+  <data name="LOG_LOGIN_FAILED" xml:space="preserve">
+    <value>Falha na autenticação</value>
+  </data>
+  <data name="LOG_LOGIN_INCOMPLETE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_LOGIN_SUCCESS" xml:space="preserve">
+    <value>Autenticação realizada com êxito</value>
+  </data>
+  <data name="LOG_LOGOUT" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="LOG_MAC" xml:space="preserve">
+    <value>Endereço MAC do NIC</value>
+  </data>
+  <data name="LOG_MANDATORY_FIELD_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEDIAOP" xml:space="preserve">
+    <value>Modo de operação SATA/M.2</value>
+  </data>
+  <data name="LOG_MEDIAOP_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEDIATYPE" xml:space="preserve">
+    <value>Tipo de armazenamento</value>
+  </data>
+  <data name="LOG_MEMORYFEW_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MEMORYMUCH_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_MODEL" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="LOG_NETWORK_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_NO_INTRANET" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OFFLINE_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_OFFLINE_MODE" xml:space="preserve">
+    <value>Modo de execução offline</value>
+  </data>
+  <data name="LOG_OFFLINE_SERVER" xml:space="preserve">
+    <value>Servidor está OFFLINE</value>
+  </data>
+  <data name="LOG_ONLINE_SERVER" xml:space="preserve">
+    <value>Servidor está ONLINE</value>
+  </data>
+  <data name="LOG_OPENING_LOG" xml:space="preserve">
+    <value>Abrindo log de eventos</value>
+  </data>
+  <data name="LOG_OS" xml:space="preserve">
+    <value>Sistema Operacional</value>
+  </data>
+  <data name="LOG_PC_DROPPED" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_PENDENCY_ERROR" xml:space="preserve">
+    <value>Pendências detectadas</value>
+  </data>
+  <data name="LOG_PINGGING_SERVER" xml:space="preserve">
+    <value>Verificando disponibilidade do servidor</value>
+  </data>
+  <data name="LOG_PM" xml:space="preserve">
+    <value>Memória RAM e n° de slots</value>
+  </data>
+  <data name="LOG_PROCNAME" xml:space="preserve">
+    <value>Processador e nº de núcleos</value>
+  </data>
+  <data name="LOG_REGISTERING" xml:space="preserve">
+    <value>Registrando no servidor de controle patrimonial</value>
+  </data>
+  <data name="LOG_REGISTRY_FINISHED" xml:space="preserve">
+    <value>Registro finalizado</value>
+  </data>
+  <data name="LOG_RELEASE_MODE" xml:space="preserve">
+    <value>Executando em modo RELEASE</value>
+  </data>
+  <data name="LOG_RESETTING_INSTALLDATE" xml:space="preserve">
+    <value>Recalculando data da última formatação</value>
+  </data>
+  <data name="LOG_RESETTING_MAINTENANCEDATE" xml:space="preserve">
+    <value>Recalculando data da última manutenção</value>
+  </data>
+  <data name="LOG_SAMEWORD_NOFIRSTREGISTRY" xml:space="preserve">
+    <value>Um ou mais argumentos 'mesmo' detectados, porém não há registro existente para o patrimônio atual. Computador deve ser registrado primeiramente via GUI ou via CLI com todas as opções de linha de comando corretamente preenchidas</value>
+  </data>
+  <data name="LOG_SECBOOT" xml:space="preserve">
+    <value>Secure Boot</value>
+  </data>
+  <data name="LOG_SECBOOT_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SERIALNO" xml:space="preserve">
+    <value>Número Serial</value>
+  </data>
+  <data name="LOG_SERVER_DETAIL" xml:space="preserve">
+    <value>Servidor e porta</value>
+  </data>
+  <data name="LOG_SERVER_UNREACHABLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_SHOWING_HELP" xml:space="preserve">
+    <value>Exibindo lista de comandos</value>
+  </data>
+  <data name="LOG_SMART" xml:space="preserve">
+    <value>Status S.M.A.R.T.</value>
+  </data>
+  <data name="LOG_SMART_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_START_COLLECTING" xml:space="preserve">
+    <value>Coletando hardware</value>
+  </data>
+  <data name="LOG_START_LOADING_WEBVIEW2" xml:space="preserve">
+    <value>Iniciando carregamento do WebView2 Runtime</value>
+  </data>
+  <data name="LOG_START_THREAD" xml:space="preserve">
+    <value>Inicializando thread de procedimento de coleta</value>
+  </data>
+  <data name="LOG_THEME" xml:space="preserve">
+    <value>Usando tema escuro</value>
+  </data>
+  <data name="LOG_TPM" xml:space="preserve">
+    <value>Versão do TPM</value>
+  </data>
+  <data name="LOG_TPM_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_VIEW_SERVER" xml:space="preserve">
+    <value>Acessando sistema de controle patrimonial</value>
+  </data>
+  <data name="LOG_VT" xml:space="preserve">
+    <value>Tecnologia de Virtualização</value>
+  </data>
+  <data name="LOG_VT_ERROR" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LOG_WEBVIEW2_ALREADY_INSTALLED" xml:space="preserve">
+    <value>WebView2 Runtime já está instalado</value>
+  </data>
+  <data name="LOG_WEBVIEW2_INSTALLED" xml:space="preserve">
+    <value>WebView2 Runtime instalado com êxito</value>
+  </data>
+  <data name="LOG_WEBVIEW2_INSTALL_FAILED" xml:space="preserve">
+    <value>Falha na instalação do WebView2 Runtime, tente novamente</value>
+  </data>
+  <data name="LOG_WEBVIEW2_NOT_FOUND" xml:space="preserve">
+    <value>WebView2 Runtime não encontrado</value>
+  </data>
+  <data name="MAINTENANCE_TEXT" xml:space="preserve">
+    <value>manutenção</value>
+  </data>
+  <data name="MANDATORY_FIELD" xml:space="preserve">
+    <value>Preencha os campos obrigatórios</value>
+  </data>
+  <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
+    <value> (Modo de operação incorreto, alterar)</value>
+  </data>
+  <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
+    <value>IDE/Legacy ou RAID</value>
+  </data>
+  <data name="MEDIA_OPERATION_NVME" xml:space="preserve">
+    <value>NVMe</value>
+  </data>
+  <data name="NETWORK_ERROR" xml:space="preserve">
+    <value>Computador sem conexão com a Intranet</value>
+  </data>
+  <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
+    <value> (Memória insuficiente)</value>
+  </data>
+  <data name="OFFLINE" xml:space="preserve">
+    <value>OFFLINE</value>
+  </data>
+  <data name="OFFLINE_MODE_ACTIVATED" xml:space="preserve">
+    <value>Modo OFFLINE!</value>
+  </data>
+  <data name="ONLINE" xml:space="preserve">
+    <value>ONLINE</value>
+  </data>
+  <data name="PC_DROPPED" xml:space="preserve">
+    <value>Patrimônio baixado, cadastro cancelado. Reverta a baixa e tente novamente</value>
+  </data>
+  <data name="PENDENCY_ERROR" xml:space="preserve">
+    <value>Resolva as pendências exibidas em vermelho!</value>
+  </data>
+  <data name="REGISTERING" xml:space="preserve">
+    <value>Cadastrando / Atualizando, aguarde...</value>
+  </data>
+  <data name="REGISTER_AGAIN" xml:space="preserve">
+    <value>Cadastrar / Atualizar dados</value>
+  </data>
+  <data name="replacedBattery" xml:space="preserve">
+    <value>C/ troca de pilha</value>
+  </data>
+  <data name="sameBattery" xml:space="preserve">
+    <value>S/ troca de pilha</value>
+  </data>
+  <data name="SECURE_BOOT_ALERT" xml:space="preserve">
+    <value> (Ativar secure boot)</value>
+  </data>
+  <data name="SERVER_PORT_ERROR" xml:space="preserve">
+    <value>Para acessar, selecione o servidor e a porta!</value>
+  </data>
+  <data name="SINCE_UNKNOWN" xml:space="preserve">
+    <value>(Não foi possível determinar a data do último serviço)</value>
+  </data>
+  <data name="SMART_FAIL" xml:space="preserve">
+    <value> (Drive com falha iminente)</value>
+  </data>
+  <data name="student" xml:space="preserve">
+    <value>Aluno</value>
+  </data>
+  <data name="TOO_MUCH_MEMORY" xml:space="preserve">
+    <value> (Memória em excesso)</value>
+  </data>
+  <data name="TPM_ERROR" xml:space="preserve">
+    <value> (TPM desativado/versão incorreta)</value>
+  </data>
+  <data name="VT_ALERT" xml:space="preserve">
+    <value> (Ativar Tecnologia de Virtualização no firmware)</value>
+  </data>
+</root>

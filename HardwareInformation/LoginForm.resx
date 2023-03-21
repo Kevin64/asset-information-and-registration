@@ -180,7 +180,7 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;comboBoxServerPort.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, CadastroPatrimonial-SNAPSHOT, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CustomFlatComboBox, CadastroPatrimonial, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;checkBoxOfflineMode.Name" xml:space="preserve">
     <value>checkBoxOfflineMode</value>
@@ -210,7 +210,7 @@
     <value>4</value>
   </data>
   <data name="&gt;&gt;userIconImg.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.13684, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.16706, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="lblFixedPassword.Text" xml:space="preserve">
     <value>Password:</value>
@@ -243,7 +243,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;topBannerImg.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.13684, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.16706, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="lblFixedServerIP.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -328,7 +328,7 @@
     <value>lblFixedServerIP</value>
   </data>
   <data name="&gt;&gt;loadingCircle1.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8476.16686, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8476.16689, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="comboBoxServerPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 221</value>
@@ -346,7 +346,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxServerIP.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, CadastroPatrimonial-SNAPSHOT, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CustomFlatComboBox, CadastroPatrimonial, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="lblFixedPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 13</value>
@@ -1964,10 +1964,10 @@
     <value>32, 13</value>
   </data>
   <data name="&gt;&gt;serverIPIconImg.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.13684, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.16706, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;serverPortIconImg.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.13684, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.16706, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
     <value>statusStrip1</value>
@@ -2042,7 +2042,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;passwordIconImg.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.13684, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBoxDLL, Version=5.0.8479.16706, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="userIconImg.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
