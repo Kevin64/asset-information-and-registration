@@ -202,12 +202,6 @@
   <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
     <value>Data de registro anterior à data da última manutenção.</value>
   </data>
-  <data name="LOGFILE_EXISTS" xml:space="preserve">
-    <value>Arquivo de log encontrado, acrescentando informações</value>
-  </data>
-  <data name="LOGFILE_NOTEXISTS" xml:space="preserve">
-    <value>Arquivo de log inexistente, criando novo arquivo</value>
-  </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Selecionando tema automaticamente</value>
   </data>
@@ -238,9 +232,6 @@
   <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
     <value>Mudando para modo escuro</value>
   </data>
-  <data name="LOG_DEBUG_MODE" xml:space="preserve">
-    <value>Executando em modo DEBUG</value>
-  </data>
   <data name="LOG_END_COLLECTING" xml:space="preserve">
     <value>Finalização da coleta de hardware</value>
   </data>
@@ -268,12 +259,6 @@
   <data name="LOG_HOSTNAME" xml:space="preserve">
     <value>Nome do Computador</value>
   </data>
-  <data name="LOG_INIT" xml:space="preserve">
-    <value>Inicio da execução</value>
-  </data>
-  <data name="LOG_INIT_LOGIN" xml:space="preserve">
-    <value>Autenticando usuário</value>
-  </data>
   <data name="LOG_INIT_REGISTRY" xml:space="preserve">
     <value>Iniciando processo de registro</value>
   </data>
@@ -285,12 +270,6 @@
   </data>
   <data name="LOG_LIGHTMODE_CHANGE" xml:space="preserve">
     <value>Mudando para modo claro</value>
-  </data>
-  <data name="LOG_LOGIN_FAILED" xml:space="preserve">
-    <value>Falha na autenticação</value>
-  </data>
-  <data name="LOG_LOGIN_SUCCESS" xml:space="preserve">
-    <value>Autenticação realizada com êxito</value>
   </data>
   <data name="LOG_MAC" xml:space="preserve">
     <value>Endereço MAC do NIC</value>
@@ -426,9 +405,6 @@
   </data>
   <data name="ONLINE" xml:space="preserve">
     <value>ONLINE</value>
-  </data>
-  <data name="PC_DROPPED" xml:space="preserve">
-    <value>Patrimônio baixado, cadastro cancelado. Reverta a baixa e tente novamente</value>
   </data>
   <data name="PENDENCY_ERROR" xml:space="preserve">
     <value>Resolva as pendências exibidas em vermelho!</value>

@@ -403,15 +403,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Running in DEBUG mode.
-        /// </summary>
-        public static string LOG_DEBUG_MODE {
-            get {
-                return ResourceManager.GetString("LOG_DEBUG_MODE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Completion of hardware collection.
         /// </summary>
         public static string LOG_END_COLLECTING {
@@ -493,24 +484,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Start of execution.
-        /// </summary>
-        public static string LOG_INIT {
-            get {
-                return ResourceManager.GetString("LOG_INIT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Authenticating user.
-        /// </summary>
-        public static string LOG_INIT_LOGIN {
-            get {
-                return ResourceManager.GetString("LOG_INIT_LOGIN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Starting registration process.
         /// </summary>
         public static string LOG_INIT_REGISTRY {
@@ -543,24 +516,6 @@ namespace HardwareInformation.Properties {
         public static string LOG_LIGHTMODE_CHANGE {
             get {
                 return ResourceManager.GetString("LOG_LIGHTMODE_CHANGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Authentication failed.
-        /// </summary>
-        public static string LOG_LOGIN_FAILED {
-            get {
-                return ResourceManager.GetString("LOG_LOGIN_FAILED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Authentication performed successfully.
-        /// </summary>
-        public static string LOG_LOGIN_SUCCESS {
-            get {
-                return ResourceManager.GetString("LOG_LOGIN_SUCCESS", resourceCulture);
             }
         }
         
@@ -880,24 +835,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Found log file, adding information.
-        /// </summary>
-        public static string LOGFILE_EXISTS {
-            get {
-                return ResourceManager.GetString("LOGFILE_EXISTS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Nonexistent log file, creating new file.
-        /// </summary>
-        public static string LOGFILE_NOTEXISTS {
-            get {
-                return ResourceManager.GetString("LOGFILE_NOTEXISTS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a maintenance.
         /// </summary>
         public static string MAINTENANCE_TEXT {
@@ -984,15 +921,6 @@ namespace HardwareInformation.Properties {
         public static string ONLINE {
             get {
                 return ResourceManager.GetString("ONLINE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Equity written off, registration cancelled. Revert low and try again.
-        /// </summary>
-        public static string PC_DROPPED {
-            get {
-                return ResourceManager.GetString("PC_DROPPED", resourceCulture);
             }
         }
         
