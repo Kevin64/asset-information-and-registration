@@ -313,15 +313,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_ALREADY_REGISTERED_TODAY {
-            get {
-                return ResourceManager.GetString("LOG_ALREADY_REGISTERED_TODAY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Automatically selecting theme.
         /// </summary>
         public static string LOG_AUTOTHEME_CHANGE {
@@ -349,16 +340,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_BIOSVER_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_BIOSVER_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Brand.
         /// </summary>
         public static string LOG_BM {
             get {
@@ -466,25 +448,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_FILENAME_CP {
-            get {
-                return ResourceManager.GetString("LOG_FILENAME_CP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_FIRMWARE_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_FIRMWARE_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Video card and vRAM.
         /// </summary>
         public static string LOG_GPUINFO {
             get {
@@ -502,7 +466,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Compliant configuration, ready for registration.
         /// </summary>
         public static string LOG_HARDWARE_PASSED {
             get {
@@ -511,7 +475,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Storage (total space).
         /// </summary>
         public static string LOG_HDSIZE {
             get {
@@ -520,38 +484,11 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Hostname.
         /// </summary>
         public static string LOG_HOSTNAME {
             get {
                 return ResourceManager.GetString("LOG_HOSTNAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_HOSTNAME_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_HOSTNAME_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_INCORRECT_FUTURE_REGISTER_DATE {
-            get {
-                return ResourceManager.GetString("LOG_INCORRECT_FUTURE_REGISTER_DATE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_INCORRECT_REGISTER_DATE {
-            get {
-                return ResourceManager.GetString("LOG_INCORRECT_REGISTER_DATE", resourceCulture);
             }
         }
         
@@ -619,15 +556,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_LOGIN_INCOMPLETE {
-            get {
-                return ResourceManager.GetString("LOG_LOGIN_INCOMPLETE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Authentication performed successfully.
         /// </summary>
         public static string LOG_LOGIN_SUCCESS {
@@ -637,16 +565,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_LOGOUT {
-            get {
-                return ResourceManager.GetString("LOG_LOGOUT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a NIC&apos;s MAC Address.
         /// </summary>
         public static string LOG_MAC {
             get {
@@ -655,16 +574,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_MANDATORY_FIELD_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_MANDATORY_FIELD_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a SATA/M.2 operating mode.
         /// </summary>
         public static string LOG_MEDIAOP {
             get {
@@ -673,16 +583,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_MEDIAOP_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_MEDIAOP_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Storage type.
         /// </summary>
         public static string LOG_MEDIATYPE {
             get {
@@ -691,25 +592,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_MEMORYFEW_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_MEMORYFEW_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_MEMORYMUCH_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_MEMORYMUCH_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Model.
         /// </summary>
         public static string LOG_MODEL {
             get {
@@ -718,34 +601,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_NETWORK_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_NETWORK_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_NO_INTRANET {
-            get {
-                return ResourceManager.GetString("LOG_NO_INTRANET", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_OFFLINE_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_OFFLINE_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Offline execution mode.
         /// </summary>
         public static string LOG_OFFLINE_MODE {
             get {
@@ -772,7 +628,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Opening event log.
         /// </summary>
         public static string LOG_OPENING_LOG {
             get {
@@ -781,7 +637,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Operating system.
         /// </summary>
         public static string LOG_OS {
             get {
@@ -790,16 +646,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_PC_DROPPED {
-            get {
-                return ResourceManager.GetString("LOG_PC_DROPPED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Pending issues detected.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Issues detected in the configuration.
         /// </summary>
         public static string LOG_PENDENCY_ERROR {
             get {
@@ -817,7 +664,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a RAM amount and number of slots.
         /// </summary>
         public static string LOG_PM {
             get {
@@ -826,7 +673,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Processor and number of cores.
         /// </summary>
         public static string LOG_PROCNAME {
             get {
@@ -898,16 +745,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_SECBOOT_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_SECBOOT_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Serial Number.
         /// </summary>
         public static string LOG_SERIALNO {
             get {
@@ -925,15 +763,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_SERVER_UNREACHABLE {
-            get {
-                return ResourceManager.GetString("LOG_SERVER_UNREACHABLE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Displaying list of commands.
         /// </summary>
         public static string LOG_SHOWING_HELP {
@@ -943,20 +772,11 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a S.M.A.R.T. status.
         /// </summary>
         public static string LOG_SMART {
             get {
                 return ResourceManager.GetString("LOG_SMART", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_SMART_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_SMART_ERROR", resourceCulture);
             }
         }
         
@@ -979,7 +799,7 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Initializing collection procedure thread.
         /// </summary>
         public static string LOG_START_THREAD {
             get {
@@ -1006,15 +826,6 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_TPM_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_TPM_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Accessing asset control system.
         /// </summary>
         public static string LOG_VIEW_SERVER {
@@ -1029,15 +840,6 @@ namespace HardwareInformation.Properties {
         public static string LOG_VT {
             get {
                 return ResourceManager.GetString("LOG_VT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a .
-        /// </summary>
-        public static string LOG_VT_ERROR {
-            get {
-                return ResourceManager.GetString("LOG_VT_ERROR", resourceCulture);
             }
         }
         

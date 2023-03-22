@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Coleta de Hardware e Cadastro de Patrimônio")]
+[assembly: AssemblyTitle("Hardware Collection and Asset Registration")]
 [assembly: AssemblyDescription("Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.\r\n" +
     "\r\n" +
     "    • Copyright © 2023 Kevin Vinícius Teixeira Costa\r\n" +
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
     "\r\n" +
     "Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md\r\n")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Coleta de Hardware e Cadastro de Patrimônio")]
+[assembly: AssemblyProduct("Hardware Collection and Asset Registration")]
 [assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -99,25 +99,25 @@ namespace HardwareInformation
                 opts.Porta = portListSection[0];
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_LOGIN, opts.Usuario, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_LOGIN, opts.Usuario, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             string[] str = LoginFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
             {
                 if (str[0] == "true")
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                     Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log, definitionListSection));
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.AUTH_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.AUTH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                    Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                 }
             }
             catch
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.INTRANET_REQUIRED, string.Empty, StringsAndConstants.consoleOutCLI);
-                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
             }
         }
 
@@ -137,7 +137,7 @@ namespace HardwareInformation
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
-                MessageBox.Show(StringsAndConstants.ALREADY_RUNNING, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ConstantsDLL.Properties.Strings.ALREADY_RUNNING, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -208,45 +208,45 @@ namespace HardwareInformation
                 bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, Strings.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_DEBUG_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_DEBUG_MODE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 #else
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, StringsAndConstants.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, StringsAndConstants.consoleOutCLI);
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RELEASE_MODE, string.Empty, StringsAndConstants.consoleOutCLI);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RELEASE_MODE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 #endif
                 if (!fileExists)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOGFILE_NOTEXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOGFILE_NOTEXISTS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOGFILE_EXISTS, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOGFILE_EXISTS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 }
 
                 //Installs WebView2 Runtime if not found
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CHECKING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CHECKING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 if ((!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version())) && (!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version())))
                 {
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, Strings.LOG_WEBVIEW2_NOT_FOUND, string.Empty, StringsAndConstants.consoleOutCLI);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INSTALLING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.LOG_WEBVIEW2_NOT_FOUND, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INSTALLING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                     string returnCode = WebView2Installer.Install();
                     if (!int.TryParse(returnCode, out int returnCodeInt))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, StringsAndConstants.consoleOutCLI);
-                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                        Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_WEBVIEW2_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_WEBVIEW2_INSTALLED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 }
 
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_GUI_MODE, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     FreeConsole();
                     Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
                     if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
@@ -273,20 +273,20 @@ namespace HardwareInformation
                         argsLog[index + 1] = ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
                     }
 
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLI_MODE, string.Join(" ", argsLog), StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLI_MODE, string.Join(" ", argsLog), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
                     if (args.Length == 1 && args.Contains("--help"))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SHOWING_HELP, string.Empty, StringsAndConstants.consoleOutCLI);
-                        Environment.Exit(StringsAndConstants.RETURN_SUCCESS);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                        Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS));
                     }
                     else
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
-                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                        Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
                 }
             }
@@ -295,14 +295,14 @@ namespace HardwareInformation
                 Console.WriteLine(StringsAndConstants.LOG_DEFFILE_NOT_FOUND + ": " + e.Message);
                 Console.WriteLine(StringsAndConstants.KEY_FINISH);
                 Console.ReadLine();
-                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
             }
             catch (FormatException e) //If definition file was malformed, but the logfile is not created (log path is undefined)
             {
                 Console.WriteLine(StringsAndConstants.PARAMETER_ERROR + ": " + e.Message);
                 Console.WriteLine(StringsAndConstants.KEY_FINISH);
                 Console.ReadLine();
-                Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
             }
         }
     }

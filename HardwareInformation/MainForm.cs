@@ -98,7 +98,7 @@ namespace HardwareInformation
 
 
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             this.user = user;
             this.ip = ip;
@@ -107,7 +107,7 @@ namespace HardwareInformation
             if (!offlineMode)
             {
                 //Fetch building and hw types info from the specified server
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(ip, port);
                 defList[2] = jsonServerSettings[0];
                 defList[3] = jsonServerSettings[1];
@@ -121,7 +121,7 @@ namespace HardwareInformation
             comboBoxInUse.Items.AddRange(StringsAndConstants.listInUseGUI.ToArray());
             comboBoxTag.Items.AddRange(StringsAndConstants.listTagGUI.ToArray());
             comboBoxBattery.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
-            textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(0, 3).ToUpper().Equals(StringsAndConstants.HOSTNAME_PATTERN)
+            textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN)
                 ? System.Net.Dns.GetHostName().Substring(3)
                 : string.Empty;
 
@@ -252,13 +252,6 @@ namespace HardwareInformation
             this.lblMediaType = new System.Windows.Forms.Label();
             this.lblFixedMediaType = new System.Windows.Forms.Label();
             this.groupBoxPatrData = new System.Windows.Forms.GroupBox();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
             this.lblFixedMandatory9 = new System.Windows.Forms.Label();
             this.lblFixedMandatory8 = new System.Windows.Forms.Label();
             this.ticketIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -334,6 +327,13 @@ namespace HardwareInformation
             this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
             this.groupBoxServerStatus = new System.Windows.Forms.GroupBox();
             this.loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
+            this.comboBoxBattery = new CustomFlatComboBox();
+            this.comboBoxStandard = new CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new CustomFlatComboBox();
+            this.comboBoxTag = new CustomFlatComboBox();
+            this.comboBoxInUse = new CustomFlatComboBox();
+            this.comboBoxType = new CustomFlatComboBox();
+            this.comboBoxBuilding = new CustomFlatComboBox();
             this.groupBoxHWData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tpmIconImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.smartIconImg)).BeginInit();
@@ -1339,76 +1339,6 @@ namespace HardwareInformation
             this.groupBoxPatrData.Name = "groupBoxPatrData";
             this.groupBoxPatrData.TabStop = false;
             // 
-            // comboBoxBattery
-            // 
-            resources.ApplyResources(this.comboBoxBattery, "comboBoxBattery");
-            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Name = "comboBoxBattery";
-            // 
-            // comboBoxStandard
-            // 
-            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            // 
-            // comboBoxActiveDirectory
-            // 
-            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            // 
-            // comboBoxTag
-            // 
-            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Name = "comboBoxTag";
-            // 
-            // comboBoxInUse
-            // 
-            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            // 
-            // comboBoxType
-            // 
-            resources.ApplyResources(this.comboBoxType, "comboBoxType");
-            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Name = "comboBoxType";
-            // 
-            // comboBoxBuilding
-            // 
-            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
-            // 
             // lblFixedMandatory9
             // 
             resources.ApplyResources(this.lblFixedMandatory9, "lblFixedMandatory9");
@@ -1969,6 +1899,76 @@ namespace HardwareInformation
             this.loadingCircle24.SpokeThickness = 2;
             this.loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
+            // comboBoxBattery
+            // 
+            resources.ApplyResources(this.comboBoxBattery, "comboBoxBattery");
+            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBattery.FormattingEnabled = true;
+            this.comboBoxBattery.Name = "comboBoxBattery";
+            // 
+            // comboBoxStandard
+            // 
+            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            // 
+            // comboBoxActiveDirectory
+            // 
+            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            // 
+            // comboBoxTag
+            // 
+            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Name = "comboBoxTag";
+            // 
+            // comboBoxInUse
+            // 
+            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            // 
+            // comboBoxType
+            // 
+            resources.ApplyResources(this.comboBoxType, "comboBoxType");
+            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Name = "comboBoxType";
+            // 
+            // comboBoxBuilding
+            // 
+            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -2280,14 +2280,14 @@ namespace HardwareInformation
         //Method for setting the auto theme via toolStrip 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_AUTOTHEME_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             ComboBoxThemeInit();
         }
 
         //Method for setting the light theme via toolStrip
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_LIGHTMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_LIGHTMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
@@ -2300,7 +2300,7 @@ namespace HardwareInformation
         //Method for setting the dark theme via toolStrip
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_DARKMODE_CHANGE, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_DARKMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
@@ -2500,48 +2500,48 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_light_path));
-            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_lighttheme_light_path));
-            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_darktheme_light_path));
+            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_autotheme_light_path));
+            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_lighttheme_light_path));
+            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_darktheme_light_path));
 
-            comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_light_path));
-            logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_log_light_path));
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
+            comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_autotheme_light_path));
+            logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_log_light_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_light_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_light_path));
-            bmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_light_path));
-            modelIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_model_light_path));
-            serialNoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_serial_no_light_path));
-            procNameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cpu_light_path));
-            pmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ram_light_path));
-            hdSizeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_disk_size_light_path));
-            mediaTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hdd_light_path));
-            mediaOperationIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ahci_light_path));
-            gpuInfoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_gpu_light_path));
-            osIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_windows_light_path));
-            hostnameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hostname_light_path));
-            macIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_mac_light_path));
-            ipIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ip_light_path));
-            biosTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_light_path));
-            biosIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_version_light_path));
-            secBootIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_secure_boot_light_path));
-            patrimonyIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_patr_light_path));
-            sealIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_seal_light_path));
-            roomIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_room_light_path));
-            buildingIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_building_light_path));
-            activeDirectoryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
-            standardIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_standard_light_path));
-            datetimeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_service_light_path));
-            letterIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_letter_light_path));
-            inUseIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_light_path));
-            tagIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_light_path));
-            typeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_light_path));
-            vtIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_light_path));
-            whoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_light_path));
-            smartIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_light_path));
-            tpmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_tpm_light_path));
-            batteryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cmos_battery_light_path));
-            ticketIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_light_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.main_banner_light_path));
+            bmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_brand_light_path));
+            modelIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_model_light_path));
+            serialNoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_serial_no_light_path));
+            procNameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_cpu_light_path));
+            pmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ram_light_path));
+            hdSizeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_disk_size_light_path));
+            mediaTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_hdd_light_path));
+            mediaOperationIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ahci_light_path));
+            gpuInfoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_gpu_light_path));
+            osIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_windows_light_path));
+            hostnameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_hostname_light_path));
+            macIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_mac_light_path));
+            ipIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ip_light_path));
+            biosTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_bios_light_path));
+            biosIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_bios_version_light_path));
+            secBootIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_secure_boot_light_path));
+            patrimonyIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_patr_light_path));
+            sealIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_seal_light_path));
+            roomIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_room_light_path));
+            buildingIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_building_light_path));
+            activeDirectoryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_light_path));
+            standardIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_standard_light_path));
+            datetimeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_service_light_path));
+            letterIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_letter_light_path));
+            inUseIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_in_use_light_path));
+            tagIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_sticker_light_path));
+            typeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_type_light_path));
+            vtIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_VT_x_light_path));
+            whoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_who_light_path));
+            smartIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_smart_light_path));
+            tpmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_tpm_light_path));
+            batteryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_cmos_battery_light_path));
+            ticketIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ticket_light_path));
         }
 
         //Sets a dark theme for the UI
@@ -2727,48 +2727,48 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_dark_path));
-            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_lighttheme_dark_path));
-            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_darktheme_dark_path));
+            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_autotheme_dark_path));
+            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_lighttheme_dark_path));
+            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_darktheme_dark_path));
 
-            comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_autotheme_dark_path));
-            logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_log_dark_path));
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
+            comboBoxTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_autotheme_dark_path));
+            logLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_log_dark_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_dark_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.main_banner_dark_path));
-            bmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_brand_dark_path));
-            modelIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_model_dark_path));
-            serialNoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_serial_no_dark_path));
-            procNameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cpu_dark_path));
-            pmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ram_dark_path));
-            hdSizeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_disk_size_dark_path));
-            mediaTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hdd_dark_path));
-            mediaOperationIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ahci_dark_path));
-            gpuInfoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_gpu_dark_path));
-            osIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_windows_dark_path));
-            hostnameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_hostname_dark_path));
-            macIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_mac_dark_path));
-            ipIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ip_dark_path));
-            biosTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_dark_path));
-            biosIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_bios_version_dark_path));
-            secBootIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_secure_boot_dark_path));
-            patrimonyIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_patr_dark_path));
-            sealIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_seal_dark_path));
-            roomIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_room_dark_path));
-            buildingIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_building_dark_path));
-            activeDirectoryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
-            standardIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_standard_dark_path));
-            datetimeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_service_dark_path));
-            letterIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_letter_dark_path));
-            inUseIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_in_use_dark_path));
-            tagIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_sticker_dark_path));
-            typeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_type_dark_path));
-            vtIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_VT_x_dark_path));
-            whoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_who_dark_path));
-            smartIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_smart_dark_path));
-            tpmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_tpm_dark_path));
-            batteryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_cmos_battery_dark_path));
-            ticketIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_ticket_dark_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.main_banner_dark_path));
+            bmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_brand_dark_path));
+            modelIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_model_dark_path));
+            serialNoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_serial_no_dark_path));
+            procNameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_cpu_dark_path));
+            pmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ram_dark_path));
+            hdSizeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_disk_size_dark_path));
+            mediaTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_hdd_dark_path));
+            mediaOperationIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ahci_dark_path));
+            gpuInfoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_gpu_dark_path));
+            osIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_windows_dark_path));
+            hostnameIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_hostname_dark_path));
+            macIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_mac_dark_path));
+            ipIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ip_dark_path));
+            biosTypeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_bios_dark_path));
+            biosIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_bios_version_dark_path));
+            secBootIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_secure_boot_dark_path));
+            patrimonyIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_patr_dark_path));
+            sealIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_seal_dark_path));
+            roomIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_room_dark_path));
+            buildingIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_building_dark_path));
+            activeDirectoryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_dark_path));
+            standardIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_standard_dark_path));
+            datetimeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_service_dark_path));
+            letterIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_letter_dark_path));
+            inUseIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_in_use_dark_path));
+            tagIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_sticker_dark_path));
+            typeIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_type_dark_path));
+            vtIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_VT_x_dark_path));
+            whoIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_who_dark_path));
+            smartIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_smart_dark_path));
+            tpmIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_tpm_dark_path));
+            batteryIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_cmos_battery_dark_path));
+            ticketIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_ticket_dark_path));
         }
 
         //Sets highlight about label when hovering with the mouse
@@ -2798,11 +2798,11 @@ namespace HardwareInformation
         //Opens the log file
         private void LogLabel_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OPENING_LOG, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 #if DEBUG
-            System.Diagnostics.Process.Start(defList[4][0] + Strings.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(defList[4][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
-            System.Diagnostics.Process.Start(defList[4][0] + Strings.LOG_FILENAME_CP + "-v" + Application.ProductVersion + StringsAndConstants.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(defList[4][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #endif
         }
 
@@ -2821,21 +2821,21 @@ namespace HardwareInformation
         //Opens the selected webpage, according to the IP and port specified in the comboboxes
         private void AccessButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_VIEW_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             _ = System.Diagnostics.Process.Start("http://" + ip + ":" + port);
         }
 
         //Handles the closing of the current form
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLOSING_MAINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_MAINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Deletes downloaded json files
-            File.Delete(StringsAndConstants.biosPath);
-            File.Delete(StringsAndConstants.loginPath);
-            File.Delete(StringsAndConstants.pcPath);
-            File.Delete(StringsAndConstants.configPath);
+            File.Delete(ConstantsDLL.Properties.Resources.biosPath);
+            File.Delete(ConstantsDLL.Properties.Resources.loginPath);
+            File.Delete(ConstantsDLL.Properties.Resources.pcPath);
+            File.Delete(ConstantsDLL.Properties.Resources.configPath);
 
             //Kills Webview2 instance
             webView2Control.Dispose();
@@ -2855,923 +2855,923 @@ namespace HardwareInformation
             {
                 case 100:
                     //Init loading circles parameters for 100% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
                     break;
                 case 125:
                     //Init loading circles parameters for 125% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
                     break;
                 case 150:
                     //Init loading circles parameters for 150% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
                     break;
                 case 175:
                     //Init loading circles parameters for 175% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
                     break;
                 case 200:
                     //Init loading circles parameters for 200% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
                     break;
                 case 225:
                     //Init loading circles parameters for 225% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
                     break;
                 case 250:
                     //Init loading circles parameters for 250% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
                     break;
                 case 300:
                     //Init loading circles parameters for 300% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
                     break;
                 case 350:
                     //Init loading circles parameters for 350% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle2.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle3.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle4.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle5.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle6.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle7.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle8.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle9.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle10.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle11.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle12.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle13.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle14.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle15.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle16.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle17.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle18.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle19.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle20.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle21.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle22.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle23.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle24.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle2.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle3.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle4.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle5.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle6.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle7.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle8.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle9.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle10.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle11.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle12.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle13.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle14.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle15.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle16.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle17.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle18.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle19.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle20.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle21.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle22.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle23.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle24.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle2.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle3.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle4.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle5.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle6.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle7.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle8.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle9.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle10.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle11.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle12.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle13.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle14.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle15.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle16.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle17.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle18.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle19.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle20.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle21.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle22.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle23.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle24.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle2.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle3.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle4.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle5.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle6.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle7.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle8.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle9.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle10.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle11.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle12.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle13.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle14.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle15.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle16.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle17.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle18.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle19.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle20.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle21.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle22.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle23.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
-                    loadingCircle24.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle2.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle3.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle4.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle5.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle6.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle7.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle8.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle9.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle10.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle11.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle12.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle13.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle14.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle15.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle16.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle17.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle18.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle19.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle20.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle21.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle22.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle23.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle24.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle2.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle3.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle4.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle5.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle6.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle7.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle8.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle9.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle10.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle11.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle12.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle13.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle14.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle15.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle16.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle17.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle18.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle19.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle20.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle21.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle22.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle23.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle24.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle2.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle3.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle4.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle5.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle6.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle7.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle8.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle9.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle10.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle11.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle12.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle13.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle14.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle15.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle16.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle17.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle18.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle19.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle20.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle21.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle22.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle23.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle24.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle2.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle3.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle4.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle5.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle6.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle7.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle8.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle9.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle10.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle11.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle12.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle13.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle14.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle15.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle16.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle17.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle18.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle19.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle20.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle21.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle22.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle23.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircle24.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
                     break;
             }
 
             //Sets loading circle color and rotation speed
             #region
-            loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle2.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle3.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle4.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle5.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle6.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle7.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle8.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle9.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle10.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle11.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle12.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle13.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle14.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle15.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle16.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle17.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle18.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle19.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle20.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle21.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle22.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle23.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
-            loadingCircle24.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle1.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle2.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle3.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle4.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle5.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle6.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle7.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle8.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle9.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle10.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle11.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle12.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle13.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle14.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle15.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle16.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle17.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle18.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle19.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle20.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle21.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle22.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle23.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircle24.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
             loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle2.Color = StringsAndConstants.rotatingCircleColor;
             loadingCircle3.Color = StringsAndConstants.rotatingCircleColor;
@@ -3826,16 +3826,16 @@ namespace HardwareInformation
             timer8.Tick += new EventHandler(FlashTextSmart);
             timer9.Tick += new EventHandler(FlashTextTPM);
             timer10.Tick += new EventHandler(FlashTextRAM);
-            timer1.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer2.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer3.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer4.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer5.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer6.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer7.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer8.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer9.Interval = StringsAndConstants.TIMER_INTERVAL;
-            timer10.Interval = StringsAndConstants.TIMER_INTERVAL;
+            timer1.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer2.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer3.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer4.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer5.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer6.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer7.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer8.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer9.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
+            timer10.Interval = Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL);
             #endregion
 
             lblIPServer.Text = ip; //Prints IP address
@@ -4060,7 +4060,7 @@ namespace HardwareInformation
                 servidor_web = ip;
                 porta = port;
 
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                 //Feches model info from server
                 serverOnline = await BIOSFileReader.CheckHostMT(servidor_web, porta);
@@ -4068,14 +4068,14 @@ namespace HardwareInformation
                 if (serverOnline && porta != string.Empty)
                 {
                     loadingCircle24.Visible = false;
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     lblServerOpState.Text = Strings.ONLINE;
                     lblServerOpState.ForeColor = StringsAndConstants.ONLINE_ALERT;
                 }
                 else
                 {
                     loadingCircle24.Visible = false;
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     lblServerOpState.Text = Strings.OFFLINE;
                     lblServerOpState.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 }
@@ -4138,7 +4138,7 @@ namespace HardwareInformation
         // while reporting the progress to the progressbar
         private void CollectThread(BackgroundWorker worker)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             i = 0;
 
@@ -4151,7 +4151,7 @@ namespace HardwareInformation
 
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BM, BM, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, BM, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for PC model
             Model = HardwareInfo.GetModel();
@@ -4162,112 +4162,112 @@ namespace HardwareInformation
 
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MODEL, Model, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, Model, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for motherboard Serial number
             SerialNo = HardwareInfo.GetBoardProductId();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERIALNO, SerialNo, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, SerialNo, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for CPU information
             ProcName = HardwareInfo.GetProcessorCores();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PROCNAME, ProcName, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, ProcName, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for RAM amount and total number of slots
             PM = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PM, PM, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, PM, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Storage size
             HDSize = HardwareInfo.GetHDSize();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HDSIZE, HDSize, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, HDSize, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for SMART status
             Smart = HardwareInfo.GetSMARTStatus();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SMART, Smart, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SMART, Smart, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Storage type
             MediaType = HardwareInfo.GetStorageType();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIATYPE, MediaType, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, MediaType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)
             MediaOperation = HardwareInfo.GetStorageOperation();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIAOP, MediaOperation, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, MediaOperation, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for GPU information
             GPUInfo = HardwareInfo.GetGPUInfo();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_GPUINFO, GPUInfo, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, GPUInfo, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for OS infomation
             OS = HardwareInfo.GetOSInformation();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OS, OS, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, OS, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Hostname
             Hostname = HardwareInfo.GetComputerName();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HOSTNAME, Hostname, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, Hostname, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for MAC Address
             Mac = HardwareInfo.GetMACAddress();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MAC, Mac, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, Mac, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for IP Address
             IP = HardwareInfo.GetIPAddress();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_IP, IP, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, IP, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for firmware type
             BIOSType = HardwareInfo.GetBIOSType();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOSTYPE, BIOSType, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, BIOSType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Secure Boot status
             SecBoot = HardwareInfo.GetSecureBoot();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SECBOOT, SecBoot, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, SecBoot, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for BIOS version
             BIOS = HardwareInfo.GetComputerBIOS();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOS, BIOS, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, BIOS, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for VT status
             VT = HardwareInfo.GetVirtualizationTechnology();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_VT, VT, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, VT, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for TPM status
             TPM = HardwareInfo.GetTPMStatus();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_TPM, TPM, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, TPM, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_COLLECTING, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
@@ -4346,12 +4346,12 @@ namespace HardwareInformation
 
             pass = true;
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, lblInstallSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
-            log.LogWrite(StringsAndConstants.LOG_INFO, lblMaintenanceSince.Text, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), lblInstallSince.Text, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), lblMaintenanceSince.Text, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             if (!offlineMode)
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             }
 
             try
@@ -4365,7 +4365,7 @@ namespace HardwareInformation
                     pass = false;
                     lblHostname.Text += Strings.HOSTNAME_ALERT;
                     timer1.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_HOSTNAME_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.HOSTNAME_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If model Json file does exist and the Media Operation is incorrect
                 if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
@@ -4373,7 +4373,7 @@ namespace HardwareInformation
                     pass = false;
                     lblMediaOperation.Text += Strings.MEDIA_OPERATION_ALERT;
                     timer2.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEDIAOP_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //The section below contains the exception cases for Secure Boot enforcement
                 if (lblSecBoot.Text.Equals(ConstantsDLL.Properties.Strings.deactivated) &&
@@ -4383,7 +4383,7 @@ namespace HardwareInformation
                     pass = false;
                     lblSecBoot.Text += Strings.SECURE_BOOT_ALERT;
                     timer3.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SECBOOT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.SECURE_BOOT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If model Json file does not exist and server is unreachable
                 if (biosJsonStr == null)
@@ -4391,8 +4391,8 @@ namespace HardwareInformation
                     if (!offlineMode)
                     {
                         pass = false;
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_OFFLINE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-                        _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 //If model Json file does exist and BIOS/UEFI version is incorrect
@@ -4403,7 +4403,7 @@ namespace HardwareInformation
                         pass = false;
                         lblBIOS.Text += Strings.BIOS_VERSION_ALERT;
                         timer4.Enabled = true;
-                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_BIOSVER_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.BIOS_VERSION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     }
                 }
                 //If model Json file does exist and firmware type is incorrect
@@ -4412,7 +4412,7 @@ namespace HardwareInformation
                     pass = false;
                     lblBIOSType.Text += Strings.FIRMWARE_TYPE_ALERT;
                     timer6.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_FIRMWARE_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If there is no MAC address assigned
                 if (lblMac.Text == string.Empty)
@@ -4423,7 +4423,7 @@ namespace HardwareInformation
                         lblMac.Text = Strings.NETWORK_ERROR; //Prints a network error
                         lblIP.Text = Strings.NETWORK_ERROR; //Prints a network error
                         timer5.Enabled = true;
-                        log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_NETWORK_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.NETWORK_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     }
                     else //If it's in offline mode
                     {
@@ -4437,7 +4437,7 @@ namespace HardwareInformation
                     pass = false;
                     lblVT.Text += Strings.VT_ALERT;
                     timer7.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_VT_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.VT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If Smart status is no OK
                 if (!lblSmart.Text.Contains(ConstantsDLL.Properties.Resources.ok))
@@ -4445,7 +4445,7 @@ namespace HardwareInformation
                     pass = false;
                     lblSmart.Text += Strings.SMART_FAIL;
                     timer8.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_SMART_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.SMART_FAIL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If model Json file does exist and TPM is not enabled
                 if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
@@ -4453,7 +4453,7 @@ namespace HardwareInformation
                     pass = false;
                     lblTPM.Text += Strings.TPM_ERROR;
                     timer9.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_TPM_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.TPM_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
@@ -4463,7 +4463,7 @@ namespace HardwareInformation
                     pass = false;
                     lblPM.Text += Strings.NOT_ENOUGH_MEMORY;
                     timer10.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYFEW_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If RAM is more than 4GB and OS is x86, shows an alert
                 if (d > 4.0 && !Environment.Is64BitOperatingSystem)
@@ -4471,11 +4471,11 @@ namespace HardwareInformation
                     pass = false;
                     lblPM.Text += Strings.TOO_MUCH_MEMORY;
                     timer10.Enabled = true;
-                    log.LogWrite(StringsAndConstants.LOG_WARNING, StringsAndConstants.LOG_MEMORYMUCH_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 if (pass && !offlineMode)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutGUI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
 
                 if (!pass)
@@ -4486,7 +4486,7 @@ namespace HardwareInformation
             }
             catch (Exception e)
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             }
         }
 
@@ -4500,7 +4500,7 @@ namespace HardwareInformation
             accessSystemButton.Enabled = false;
             registerButton.Enabled = false;
             collectButton.Enabled = false;
-            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_START_THREAD, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_THREAD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             StartAsync(sender, e);
         }
 
@@ -4571,20 +4571,20 @@ namespace HardwareInformation
         //Loads webView2 component
         public async Task LoadWebView2()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
                 ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"))
                 : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             await webView2Control.EnsureCoreWebView2Async(webView2Environment);
             webView2Control.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2Control.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
         }
 
         //Sends hardware info to the specified server
         public void ServerSendInfo(string[] serverArgs)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             webView2Control.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[10] + "&modelo=" + serverArgs[11] + "&numeroSerial=" + serverArgs[12] + "&processador=" + serverArgs[13] + "&memoria=" + serverArgs[14] + "&hd=" + serverArgs[15] + "&sistemaOperacional=" + serverArgs[16] + "&nomeDoComputador=" + serverArgs[17] + "&bios=" + serverArgs[18] + "&mac=" + serverArgs[19] + "&ip=" + serverArgs[20] + "&emUso=" + serverArgs[21] + "&etiqueta=" + serverArgs[22] + "&tipo=" + serverArgs[23] + "&tipoFW=" + serverArgs[24] + "&tipoArmaz=" + serverArgs[25] + "&gpu=" + serverArgs[26] + "&modoArmaz=" + serverArgs[27] + "&secBoot=" + serverArgs[28] + "&vt=" + serverArgs[29] + "&tpm=" + serverArgs[30] + "&trocaPilha=" + serverArgs[31] + "&ticketNum=" + serverArgs[32] + "&agent=" + serverArgs[33]);
         }
 
@@ -4593,10 +4593,10 @@ namespace HardwareInformation
         {
             webView2Control.Visible = false;
             tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             loadingCircle23.Visible = true;
             loadingCircle23.Active = true;
-            registerButton.Text = Strings.DASH;
+            registerButton.Text = ConstantsDLL.Properties.Resources.DASH;
             registerButton.Enabled = false;
             accessSystemButton.Enabled = false;
             collectButton.Enabled = false;
@@ -4631,8 +4631,8 @@ namespace HardwareInformation
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutGUI);
-                    _ = MessageBox.Show(Strings.PC_DROPPED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.PC_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                    _ = MessageBox.Show(Strings.PC_DROPPED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                 }
                 else //If not discarded
@@ -4649,29 +4649,29 @@ namespace HardwareInformation
                                 sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                                 webView2Control.Visible = true;
                                 ServerSendInfo(sArgs); //Send info to server
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                                 if (formatRadioButton.Checked) //If the format radio button is checked
                                 {
                                     MiscMethods.RegCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
                                     lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                                 }
                                 else if (maintenanceRadioButton.Checked) //If the maintenance radio button is checked
                                 {
                                     MiscMethods.RegCreate(false, dateTimePicker1); //Create reg entry just for maintenance
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                                 }
-                                await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
+                                await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 3);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
                             {
-                                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutGUI);
-                                _ = MessageBox.Show(Strings.INCORRECT_REGISTER_DATE, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                                _ = MessageBox.Show(Strings.INCORRECT_REGISTER_DATE, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                             }
@@ -4681,33 +4681,33 @@ namespace HardwareInformation
                             sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                             webView2Control.Visible = true;
                             ServerSendInfo(sArgs); //Send info to server
-                            log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutGUI);
+                            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                             if (formatRadioButton.Checked) //If the format radio button is checked
                             {
                                 MiscMethods.RegCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
                                 lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                             }
                             else if (maintenanceRadioButton.Checked) //If the maintenance radio button is checked
                             {
                                 MiscMethods.RegCreate(false, dateTimePicker1); //Create reg entry just for maintenance
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
-                                log.LogWrite(StringsAndConstants.LOG_INFO, StringsAndConstants.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutGUI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                             }
-                            await Task.Delay(StringsAndConstants.TIMER_INTERVAL * 3);
+                            await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 3);
                             tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                         }
                     }
                     else //If the server is out of reach
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_SERVER_UNREACHABLE, string.Empty, StringsAndConstants.consoleOutGUI);
-                        _ = MessageBox.Show(ConstantsDLL.Properties.Strings.SERVER_NOT_FOUND_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.SERVER_NOT_FOUND_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        _ = MessageBox.Show(ConstantsDLL.Properties.Strings.SERVER_NOT_FOUND_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                     }
@@ -4715,15 +4715,15 @@ namespace HardwareInformation
             }
             else if (!pass) //If there are pendencies in the PC config
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PENDENCY_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-                _ = MessageBox.Show(Strings.PENDENCY_ERROR, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.PENDENCY_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                _ = MessageBox.Show(Strings.PENDENCY_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
             }
             else //If all fields are not filled
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_MANDATORY_FIELD_ERROR, string.Empty, StringsAndConstants.consoleOutGUI);
-                _ = MessageBox.Show(Strings.MANDATORY_FIELD, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.MANDATORY_FIELD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                _ = MessageBox.Show(Strings.MANDATORY_FIELD, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             }

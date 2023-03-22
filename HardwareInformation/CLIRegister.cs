@@ -149,7 +149,7 @@ namespace HardwareInformation
             #endregion
 
             //Fetch building and hw types info from the specified server
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_SERVER_DATA, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(servidor, porta);
             definitionList[2] = jsonServerSettings[0];
             definitionList[3] = jsonServerSettings[1];
@@ -164,29 +164,29 @@ namespace HardwareInformation
                 strArgs[1].Length <= 5 && strArgs[1].All(char.IsDigit) && //Porta
                 StringsAndConstants.listModeCLI.Contains(strArgs[2]) && //Modo
                 strArgs[3].Length <= 6 && strArgs[3].Length >= 0 && strArgs[3].All(char.IsDigit) && //Patrimonio
-                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || strArgs[4].Equals(StringsAndConstants.sameWord)) && //Lacre
-                ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || strArgs[5].Equals(StringsAndConstants.sameWord)) && //Sala
-                (definitionList[2].Contains(strArgs[6]) || strArgs[6].Equals(StringsAndConstants.sameWord)) && //Predio
-                (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || strArgs[7].Equals(StringsAndConstants.sameWord)) && //AD
-                (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || strArgs[8].Equals(StringsAndConstants.sameWord)) && //Padrao
-                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || strArgs[9].Equals(StringsAndConstants.today)) && //Data
+                ((strArgs[4].Length <= 10 && strArgs[4].All(char.IsDigit)) || strArgs[4].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Lacre
+                ((strArgs[5].Length <= 4 && strArgs[5].Length > 0 && strArgs[5].All(char.IsDigit)) || strArgs[5].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Sala
+                (definitionList[2].Contains(strArgs[6]) || strArgs[6].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Predio
+                (StringsAndConstants.listActiveDirectoryCLI.Contains(strArgs[7]) || strArgs[7].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //AD
+                (StringsAndConstants.listStandardCLI.Contains(strArgs[8]) || strArgs[8].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Padrao
+                ((strArgs[9].Length == 10 && DateTime.TryParseExact(strArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || strArgs[9].Equals(ConstantsDLL.Properties.Resources.today)) && //Data
                 StringsAndConstants.listBatteryCLI.Contains(strArgs[10]) && //Pilha
                 strArgs[11].Length <= 6 && strArgs[11].All(char.IsDigit) && //Ticket
-                (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || strArgs[12].Equals(StringsAndConstants.sameWord)) && //Uso
-                (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || strArgs[13].Equals(StringsAndConstants.sameWord)) && //Etiqueta
-                (definitionList[3].Contains(strArgs[14]) || strArgs[14].Equals(StringsAndConstants.sameWord))) //Tipo
+                (StringsAndConstants.listInUseCLI.Contains(strArgs[12]) || strArgs[12].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Uso
+                (StringsAndConstants.listTagCLI.Contains(strArgs[13]) || strArgs[13].Equals(ConstantsDLL.Properties.Resources.sameWord)) && //Etiqueta
+                (definitionList[3].Contains(strArgs[14]) || strArgs[14].Equals(ConstantsDLL.Properties.Resources.sameWord))) //Tipo
             {
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PINGGING_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
                 if (serverOnline && strArgs[1] != string.Empty)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_ONLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
                     CollectThread();
 
-                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.SinceLabelUpdate(true), string.Empty, StringsAndConstants.consoleOutCLI);
-                    log.LogWrite(StringsAndConstants.LOG_INFO, MiscMethods.SinceLabelUpdate(false), string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(true), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(false), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                     //Patrimonio
                     if (strArgs[3].Equals(string.Empty))
                     {
@@ -195,11 +195,11 @@ namespace HardwareInformation
 
                     string[] pcJsonStr = PCFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
-                    if (pcJsonStr[0] == "false" && strArgs.Contains(StringsAndConstants.sameWord))
+                    if (pcJsonStr[0] == "false" && strArgs.Contains(ConstantsDLL.Properties.Resources.sameWord))
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                         webView2.Dispose();
-                        Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                        Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
                     else if (pcJsonStr[0] == "false") //If PC Json does not exist
                     {
@@ -215,11 +215,11 @@ namespace HardwareInformation
                         //AD
                         if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
                         {
-                            strArgs[7] = StringsAndConstants.UTF8_NO;
+                            strArgs[7] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
                         {
-                            strArgs[7] = StringsAndConstants.YES;
+                            strArgs[7] = ConstantsDLL.Properties.Resources.YES;
                         }
                         //Padrao
                         if (strArgs[8].Equals("F") || strArgs[8].Equals("f"))
@@ -242,20 +242,20 @@ namespace HardwareInformation
                         //Uso
                         if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
                         {
-                            strArgs[12] = StringsAndConstants.UTF8_NO;
+                            strArgs[12] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
                         {
-                            strArgs[12] = StringsAndConstants.YES;
+                            strArgs[12] = ConstantsDLL.Properties.Resources.YES;
                         }
                         //Etiqueta
                         if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
                         {
-                            strArgs[13] = StringsAndConstants.UTF8_NO;
+                            strArgs[13] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
                         {
-                            strArgs[13] = StringsAndConstants.YES;
+                            strArgs[13] = ConstantsDLL.Properties.Resources.YES;
                         }
                     }
                     else //If PC Json does exist
@@ -263,9 +263,9 @@ namespace HardwareInformation
                         //If PC is discarded
                         if (pcJsonStr[9] == "1")
                         {
-                            log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_PC_DROPPED, string.Empty, StringsAndConstants.consoleOutCLI);
+                            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.PC_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                             webView2.Dispose();
-                            Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                            Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                         }
                         //Modo
                         if (strArgs[2].Equals("f") || strArgs[2].Equals("F"))
@@ -277,35 +277,35 @@ namespace HardwareInformation
                             strArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
                         //Lacre
-                        if (strArgs[4].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[4].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[4] = pcJsonStr[6];
                         }
                         //Sala
-                        if (strArgs[5].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[5].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[5] = pcJsonStr[2];
                         }
                         //Predio
-                        if (strArgs[6].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[6].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[6] = pcJsonStr[1];
                         }
                         //AD
-                        if (strArgs[7].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[7].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[7] = pcJsonStr[4];
                         }
                         else if (strArgs[7].Equals("N") || strArgs[7].Equals("n"))
                         {
-                            strArgs[7] = StringsAndConstants.UTF8_NO;
+                            strArgs[7] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[7].Equals("S") || strArgs[7].Equals("s"))
                         {
-                            strArgs[7] = StringsAndConstants.YES;
+                            strArgs[7] = ConstantsDLL.Properties.Resources.YES;
                         }
                         //Padrao
-                        if (strArgs[8].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[8].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[8] = pcJsonStr[3];
                         }
@@ -327,33 +327,33 @@ namespace HardwareInformation
                             strArgs[10] = Strings.replacedBattery;
                         }
                         //Uso
-                        if (strArgs[12].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[12].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[12] = pcJsonStr[5];
                         }
                         else if (strArgs[12].Equals("N") || strArgs[12].Equals("n"))
                         {
-                            strArgs[12] = StringsAndConstants.UTF8_NO;
+                            strArgs[12] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[12].Equals("S") || strArgs[12].Equals("s"))
                         {
-                            strArgs[12] = StringsAndConstants.YES;
+                            strArgs[12] = ConstantsDLL.Properties.Resources.YES;
                         }
                         //Etiqueta
-                        if (strArgs[13].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[13].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[13] = pcJsonStr[7];
                         }
                         else if (strArgs[13].Equals("N") || strArgs[13].Equals("n"))
                         {
-                            strArgs[13] = StringsAndConstants.UTF8_NO;
+                            strArgs[13] = ConstantsDLL.Properties.Resources.NO;
                         }
                         else if (strArgs[13].Equals("S") || strArgs[13].Equals("s"))
                         {
-                            strArgs[13] = StringsAndConstants.YES;
+                            strArgs[13] = ConstantsDLL.Properties.Resources.YES;
                         }
                         //Tipo
-                        if (strArgs[14].Equals(StringsAndConstants.sameWord))
+                        if (strArgs[14].Equals(ConstantsDLL.Properties.Resources.sameWord))
                         {
                             strArgs[14] = pcJsonStr[8];
                         }
@@ -370,7 +370,7 @@ namespace HardwareInformation
                         try //If there is database record of the patrimony
                         {
                             //If chosen date is 'hoje'
-                            if (strArgs[9].Equals(StringsAndConstants.today))
+                            if (strArgs[9].Equals(ConstantsDLL.Properties.Resources.today))
                             {
                                 strArgs[9] = DateTime.Today.ToString("yyyy-MM-dd").Substring(0, 10);
                                 tDay = true;
@@ -399,38 +399,38 @@ namespace HardwareInformation
                                 }
                                 else //Forbids future registering
                                 {
-                                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_FUTURE_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.INCORRECT_FUTURE_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                     webView2.Dispose();
-                                    Environment.Exit(StringsAndConstants.RETURN_ERROR);
+                                    Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                                 }
 
-                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                 ServerSendInfo(strArgs); //Send info to server
-                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
                                 //Resets host install date
                                 if (modo == "f" || modo == "F")
                                 {
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                     MiscMethods.RegCreate(true, strArgs[9]);
                                 }
                                 if (modo == "m" || modo == "M") //Resets host maintenance date
                                 {
-                                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                     MiscMethods.RegCreate(false, strArgs[9]);
                                 }
                             }
                             else //If chosen date is earlier than the registered date, show an error
                             {
-                                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_INCORRECT_REGISTER_DATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                 webView2.Dispose(); //Kills WebView2 instance
-                                Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
+                                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
                             }
                         }
                         catch //If there is no database record of the patrimony
                         {
-                            if (strArgs[9].Equals(StringsAndConstants.today))
+                            if (strArgs[9].Equals(ConstantsDLL.Properties.Resources.today))
                             {
                                 strArgs[9] = todayDate.ToString().Substring(0, 10);
                             }
@@ -440,61 +440,61 @@ namespace HardwareInformation
                                 strArgs[9] = d.ToString().Substring(0, 10);
                             }
 
-                            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_REGISTRY, string.Empty, StringsAndConstants.consoleOutCLI);
+                            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                             ServerSendInfo(strArgs); //Send info to server
-                            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTRY_FINISHED, string.Empty, StringsAndConstants.consoleOutCLI);
+                            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
                             //Resets host install date
                             if (modo == "f" || modo == "F")
                             {
-                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_INSTALLDATE, string.Empty, StringsAndConstants.consoleOutCLI);
-                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                 MiscMethods.RegCreate(true, strArgs[9]);
                             }
                             else if (modo == "m" || modo == "M") //Resets host maintenance date
                             {
-                                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                                 MiscMethods.RegCreate(false, strArgs[9]);
                             }
                         }
                     }
                     else //If there are pendencies
                     {
-                        log.LogWrite(StringsAndConstants.LOG_WARNING, Strings.FIX_PROBLEMS, string.Empty, StringsAndConstants.consoleOutCLI);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.FIX_PROBLEMS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                         for (int i = 0; i < strAlert.Length; i++)
                         {
                             if (strAlertBool[i])
                             {
-                                log.LogWrite(StringsAndConstants.LOG_WARNING, strAlert[i], string.Empty, StringsAndConstants.consoleOutCLI);
+                                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), strAlert[i], string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                             }
                         }
                         webView2.Dispose(); //Kills WebView2 instance
-                        Environment.Exit(StringsAndConstants.RETURN_WARNING); //Exits
+                        Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_WARNING)); //Exits
                     }
                 }
                 else
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_OFFLINE_SERVER, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                     webView2.Dispose(); //Kills WebView2 instance
-                    Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
+                    Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
                 }
             }
             else
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_ARGS_ERROR, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 webView2.Dispose(); //Kills WebView2 instance
-                Environment.Exit(StringsAndConstants.RETURN_ERROR); //Exits
+                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
             }
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLOSING_CLI, string.Empty, StringsAndConstants.consoleOutCLI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_CLI, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Deletes downloaded json files
-            File.Delete(StringsAndConstants.biosPath);
-            File.Delete(StringsAndConstants.loginPath);
-            File.Delete(StringsAndConstants.pcPath);
-            File.Delete(StringsAndConstants.configPath);
+            File.Delete(ConstantsDLL.Properties.Resources.biosPath);
+            File.Delete(ConstantsDLL.Properties.Resources.loginPath);
+            File.Delete(ConstantsDLL.Properties.Resources.pcPath);
+            File.Delete(ConstantsDLL.Properties.Resources.configPath);
             webView2.NavigationCompleted += WebView2_NavigationCompleted;
-            Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
+            Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS)); //Exits
         }
 
         //When WebView2 navigation is finished
@@ -503,14 +503,14 @@ namespace HardwareInformation
             if (e.IsSuccess)
             {
                 webView2.Dispose(); //Kills instance
-                Environment.Exit(StringsAndConstants.RETURN_SUCCESS); //Exits
+                Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS)); //Exits
             }
         }
 
         //Prints the collected data into the form labels, warning the user when there are forbidden modes
         private void PrintHardwareData()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_FETCHING_BIOSFILE, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             pass = true;
 
@@ -607,12 +607,12 @@ namespace HardwareInformation
                 }
                 if (pass)
                 {
-                    log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HARDWARE_PASSED, string.Empty, StringsAndConstants.consoleOutCLI);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 }
             }
             catch (Exception e)
             {
-                log.LogWrite(StringsAndConstants.LOG_ERROR, e.Message, string.Empty, StringsAndConstants.consoleOutCLI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             }
         }
 
@@ -620,7 +620,7 @@ namespace HardwareInformation
         // while reporting the progress to the progressbar
         public void CollectThread()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for PC maker
             strArgs[17] = HardwareInfo.GetBoardMaker();
@@ -629,7 +629,7 @@ namespace HardwareInformation
                 strArgs[17] = HardwareInfo.GetBoardMakerAlt();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BM, strArgs[17], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, strArgs[17], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for PC model
             strArgs[18] = HardwareInfo.GetModel();
@@ -638,93 +638,93 @@ namespace HardwareInformation
                 strArgs[18] = HardwareInfo.GetModelAlt();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MODEL, strArgs[18], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, strArgs[18], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for motherboard Serial number
             strArgs[19] = HardwareInfo.GetBoardProductId();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERIALNO, strArgs[19], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, strArgs[19], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for CPU information
             strArgs[20] = HardwareInfo.GetProcessorCores();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PROCNAME, strArgs[20], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, strArgs[20], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for RAM amount and total number of slots
             strArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_PM, strArgs[21], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, strArgs[21], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Storage size
             strArgs[22] = HardwareInfo.GetHDSize();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HDSIZE, strArgs[22], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, strArgs[22], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Storage type
             strArgs[29] = HardwareInfo.GetStorageType();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIATYPE, strArgs[29], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, strArgs[29], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)
             strArgs[31] = HardwareInfo.GetStorageOperation();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MEDIAOP, strArgs[31], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, strArgs[31], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for GPU information
             strArgs[30] = HardwareInfo.GetGPUInfo();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_GPUINFO, strArgs[30], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, strArgs[30], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for OS infomation
             strArgs[23] = HardwareInfo.GetOSInformation();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_OS, strArgs[23], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, strArgs[23], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Hostname
             strArgs[24] = HardwareInfo.GetComputerName();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_HOSTNAME, strArgs[24], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, strArgs[24], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for MAC Address
             strArgs[26] = HardwareInfo.GetMACAddress();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_MAC, strArgs[26], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, strArgs[26], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for IP Address
             strArgs[27] = HardwareInfo.GetIPAddress();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_IP, strArgs[27], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, strArgs[27], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for firmware type
             strArgs[28] = HardwareInfo.GetBIOSType();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOSTYPE, strArgs[28], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, strArgs[28], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Secure Boot status
             strArgs[32] = HardwareInfo.GetSecureBoot();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SECBOOT, strArgs[32], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, strArgs[32], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for BIOS version
             strArgs[25] = HardwareInfo.GetComputerBIOS();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_BIOS, strArgs[25], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, strArgs[25], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for VT status
             strArgs[33] = HardwareInfo.GetVirtualizationTechnology();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_VT, strArgs[33], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, strArgs[33], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for TPM status
             strArgs[34] = HardwareInfo.GetTPMStatus();
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_TPM, strArgs[34], StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, strArgs[34], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_COLLECTING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
         }
 
         //Loads webView2 component
         public async Task LoadWebView2()
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
                 ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"))
                 : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Environment.GetEnvironmentVariable("TEMP"));
             await webView2.EnsureCoreWebView2Async(webView2Environment);
             webView2.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
         }
 
         //Sends hardware info to the specified server
         public void ServerSendInfo(string[] serverArgs)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_REGISTERING, string.Empty, StringsAndConstants.consoleOutCLI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);
         }
     }

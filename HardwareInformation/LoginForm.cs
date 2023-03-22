@@ -92,7 +92,7 @@ namespace HardwareInformation
                 DarkTheme();
             }
 
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_THEME, themeBool.ToString(), StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_THEME, themeBool.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             comboBoxServerIP.Items.AddRange(defList[0]);
             comboBoxServerPort.Items.AddRange(defList[1]);
@@ -155,13 +155,13 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_light_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_light_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_light_path));
-            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_light_path));
-            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_light_path));
-            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_light_path));
-            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_light_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_light_path));
+            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_light_path));
+            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_light_path));
+            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_light_path));
+            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_light_path));
         }
 
         //Sets a dark theme for the login form
@@ -207,13 +207,13 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_about_dark_path));
+            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_dark_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.login_banner_dark_path));
-            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_user_dark_path));
-            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_password_dark_path));
-            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_server_dark_path));
-            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), StringsAndConstants.icon_port_dark_path));
+            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_dark_path));
+            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_dark_path));
+            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_dark_path));
+            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_dark_path));
+            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_dark_path));
         }
 
         //Loads the form, sets some combobox values
@@ -226,70 +226,70 @@ namespace HardwareInformation
             {
                 case 100:
                     //Init loading circles parameters for 100% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke100;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness100;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius100;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius100;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
                     break;
                 case 125:
                     //Init loading circles parameters for 125% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke125;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness125;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius125;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius125;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
                     break;
                 case 150:
                     //Init loading circles parameters for 150% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke150;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness150;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius150;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius150;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
                     break;
                 case 175:
                     //Init loading circles parameters for 175% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke175;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness175;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius175;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius175;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
                     break;
                 case 200:
                     //Init loading circles parameters for 200% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke200;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness200;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius200;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius200;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
                     break;
                 case 225:
                     //Init loading circles parameters for 225% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke225;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness225;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius225;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius225;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
                     break;
                 case 250:
                     //Init loading circles parameters for 250% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke250;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness250;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius250;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius250;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
                     break;
                 case 300:
                     //Init loading circles parameters for 300% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke300;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness300;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius300;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius300;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
                     break;
                 case 350:
                     //Init loading circles parameters for 350% scaling
-                    loadingCircle1.NumberSpoke = StringsAndConstants.rotatingCircleNumberSpoke350;
-                    loadingCircle1.SpokeThickness = StringsAndConstants.rotatingCircleSpokeThickness350;
-                    loadingCircle1.InnerCircleRadius = StringsAndConstants.rotatingCircleInnerCircleRadius350;
-                    loadingCircle1.OuterCircleRadius = StringsAndConstants.rotatingCircleOuterCircleRadius350;
+                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
                     break;
             }
 
-            loadingCircle1.RotationSpeed = StringsAndConstants.rotatingCircleRotationSpeed;
+            loadingCircle1.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
             loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
             #endregion
 
@@ -300,14 +300,14 @@ namespace HardwareInformation
         //Handles the closing of the current form
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_CLOSING_LOGINFORM, string.Empty, StringsAndConstants.consoleOutGUI);
-            log.LogWrite(StringsAndConstants.LOG_MISC, ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_LOGINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Deletes downloaded json files
-            File.Delete(StringsAndConstants.biosPath);
-            File.Delete(StringsAndConstants.loginPath);
-            File.Delete(StringsAndConstants.pcPath);
-            File.Delete(StringsAndConstants.configPath);
+            File.Delete(ConstantsDLL.Properties.Resources.biosPath);
+            File.Delete(ConstantsDLL.Properties.Resources.loginPath);
+            File.Delete(ConstantsDLL.Properties.Resources.pcPath);
+            File.Delete(ConstantsDLL.Properties.Resources.configPath);
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 Application.Exit();
@@ -317,7 +317,7 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private async void AuthButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_INIT_LOGIN, textBoxUser.Text, StringsAndConstants.consoleOutGUI);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_LOGIN, textBoxUser.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
@@ -346,7 +346,7 @@ namespace HardwareInformation
                 comboBoxServerPort.Enabled = false;
                 checkBoxOfflineMode.Enabled = false;
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
-                log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, StringsAndConstants.consoleOutGUI);
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                 //Feches login data from server
                 str = await LoginFileReader.FetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
@@ -357,19 +357,19 @@ namespace HardwareInformation
                     //If Login Json file does not exist, there is no internet connection
                     if (str == null)
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_NO_INTRANET, string.Empty, StringsAndConstants.consoleOutGUI);
-                        _ = MessageBox.Show(StringsAndConstants.INTRANET_REQUIRED, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        _ = MessageBox.Show(ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else if (str[0] == "false") //If Login Json file does exist, but the user do not exist
                     {
-                        log.LogWrite(StringsAndConstants.LOG_ERROR, Strings.LOG_LOGIN_FAILED, string.Empty, StringsAndConstants.consoleOutGUI);
-                        _ = MessageBox.Show(Strings.AUTH_INVALID, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        _ = MessageBox.Show(Strings.AUTH_INVALID, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else //If Login Json file does exist and user logs in
                     {
-                        log.LogWrite(StringsAndConstants.LOG_INFO, Strings.LOG_LOGIN_SUCCESS, string.Empty, StringsAndConstants.consoleOutGUI);
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
                         if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
@@ -388,8 +388,8 @@ namespace HardwareInformation
                 }
                 else //If all the mandatory fields are not filled
                 {
-                    log.LogWrite(StringsAndConstants.LOG_ERROR, StringsAndConstants.LOG_LOGIN_INCOMPLETE, string.Empty, StringsAndConstants.consoleOutGUI);
-                    _ = MessageBox.Show(StringsAndConstants.NO_AUTH, StringsAndConstants.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.NO_AUTH, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.NO_AUTH, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
             }

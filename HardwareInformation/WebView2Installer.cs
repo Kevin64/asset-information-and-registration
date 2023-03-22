@@ -20,8 +20,8 @@ namespace HardwareInformation
                         ServicePointManager.Expect100Continue = true;
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                     }
-                    client.DownloadFile(ConstantsDLL.Properties.Resources.webview2url, StringsAndConstants.webview2filePath);
-                    Process process = Process.Start(StringsAndConstants.webview2filePath);
+                    client.DownloadFile(ConstantsDLL.Properties.Resources.webview2url, ConstantsDLL.Properties.Resources.webview2filePath);
+                    Process process = Process.Start(ConstantsDLL.Properties.Resources.webview2filePath);
                     process.WaitForExit();
                     return process.ExitCode.ToString();
                 }

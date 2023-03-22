@@ -208,9 +208,6 @@
   <data name="LOGFILE_NOTEXISTS" xml:space="preserve">
     <value>Arquivo de log inexistente, criando novo arquivo</value>
   </data>
-  <data name="LOG_ALREADY_REGISTERED_TODAY" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Selecionando tema automaticamente</value>
   </data>
@@ -219,9 +216,6 @@
   </data>
   <data name="LOG_BIOSTYPE" xml:space="preserve">
     <value>Tipo de firmware</value>
-  </data>
-  <data name="LOG_BIOSVER_ERROR" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_BM" xml:space="preserve">
     <value>Marca</value>
@@ -259,12 +253,6 @@
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>
   </data>
-  <data name="LOG_FILENAME_CP" xml:space="preserve">
-    <value>CadastroPatrimonial</value>
-  </data>
-  <data name="LOG_FIRMWARE_ERROR" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_GPUINFO" xml:space="preserve">
     <value>Placa de Vídeo e vRAM</value>
   </data>
@@ -279,15 +267,6 @@
   </data>
   <data name="LOG_HOSTNAME" xml:space="preserve">
     <value>Nome do Computador</value>
-  </data>
-  <data name="LOG_HOSTNAME_ERROR" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LOG_INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LOG_INCORRECT_REGISTER_DATE" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_INIT" xml:space="preserve">
     <value>Inicio da execução</value>
@@ -310,47 +289,20 @@
   <data name="LOG_LOGIN_FAILED" xml:space="preserve">
     <value>Falha na autenticação</value>
   </data>
-  <data name="LOG_LOGIN_INCOMPLETE" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_LOGIN_SUCCESS" xml:space="preserve">
     <value>Autenticação realizada com êxito</value>
-  </data>
-  <data name="LOG_LOGOUT" xml:space="preserve">
-    <value>Logout</value>
   </data>
   <data name="LOG_MAC" xml:space="preserve">
     <value>Endereço MAC do NIC</value>
   </data>
-  <data name="LOG_MANDATORY_FIELD_ERROR" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_MEDIAOP" xml:space="preserve">
     <value>Modo de operação SATA/M.2</value>
-  </data>
-  <data name="LOG_MEDIAOP_ERROR" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_MEDIATYPE" xml:space="preserve">
     <value>Tipo de armazenamento</value>
   </data>
-  <data name="LOG_MEMORYFEW_ERROR" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LOG_MEMORYMUCH_ERROR" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_MODEL" xml:space="preserve">
     <value>Modelo</value>
-  </data>
-  <data name="LOG_NETWORK_ERROR" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LOG_NO_INTRANET" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LOG_OFFLINE_ERROR" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_OFFLINE_MODE" xml:space="preserve">
     <value>Modo de execução offline</value>
@@ -367,11 +319,8 @@
   <data name="LOG_OS" xml:space="preserve">
     <value>Sistema Operacional</value>
   </data>
-  <data name="LOG_PC_DROPPED" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_PENDENCY_ERROR" xml:space="preserve">
-    <value>Pendências detectadas</value>
+    <value>Pendências detectadas na configuração</value>
   </data>
   <data name="LOG_PINGGING_SERVER" xml:space="preserve">
     <value>Verificando disponibilidade do servidor</value>
@@ -403,26 +352,17 @@
   <data name="LOG_SECBOOT" xml:space="preserve">
     <value>Secure Boot</value>
   </data>
-  <data name="LOG_SECBOOT_ERROR" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_SERIALNO" xml:space="preserve">
     <value>Número Serial</value>
   </data>
   <data name="LOG_SERVER_DETAIL" xml:space="preserve">
     <value>Servidor e porta</value>
   </data>
-  <data name="LOG_SERVER_UNREACHABLE" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_SHOWING_HELP" xml:space="preserve">
     <value>Exibindo lista de comandos</value>
   </data>
   <data name="LOG_SMART" xml:space="preserve">
     <value>Status S.M.A.R.T.</value>
-  </data>
-  <data name="LOG_SMART_ERROR" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_START_COLLECTING" xml:space="preserve">
     <value>Coletando hardware</value>
@@ -439,17 +379,11 @@
   <data name="LOG_TPM" xml:space="preserve">
     <value>Versão do TPM</value>
   </data>
-  <data name="LOG_TPM_ERROR" xml:space="preserve">
-    <value />
-  </data>
   <data name="LOG_VIEW_SERVER" xml:space="preserve">
     <value>Acessando sistema de controle patrimonial</value>
   </data>
   <data name="LOG_VT" xml:space="preserve">
     <value>Tecnologia de Virtualização</value>
-  </data>
-  <data name="LOG_VT_ERROR" xml:space="preserve">
-    <value />
   </data>
   <data name="LOG_WEBVIEW2_ALREADY_INSTALLED" xml:space="preserve">
     <value>WebView2 Runtime já está instalado</value>
