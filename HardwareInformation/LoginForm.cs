@@ -317,7 +317,7 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private async void AuthButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_LOGIN, textBoxUser.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUser.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             loadingCircle1.Visible = true;
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
@@ -363,13 +363,13 @@ namespace HardwareInformation
                     }
                     else if (str[0] == "false") //If Login Json file does exist, but the user do not exist
                     {
-                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         _ = MessageBox.Show(Strings.AUTH_INVALID, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
                     else //If Login Json file does exist and user logs in
                     {
-                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                        log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
                         if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {

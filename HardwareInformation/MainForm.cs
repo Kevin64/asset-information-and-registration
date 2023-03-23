@@ -16,7 +16,6 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Resources;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -96,8 +95,6 @@ namespace HardwareInformation
             defList = definitionList;
             orgList = orgDataList;
 
-
-
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             this.user = user;
@@ -150,1893 +147,1893 @@ namespace HardwareInformation
         //Form elements
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.lblBM = new System.Windows.Forms.Label();
-            this.lblModel = new System.Windows.Forms.Label();
-            this.lblSerialNo = new System.Windows.Forms.Label();
-            this.lblProcName = new System.Windows.Forms.Label();
-            this.lblPM = new System.Windows.Forms.Label();
-            this.lblHDSize = new System.Windows.Forms.Label();
-            this.lblOS = new System.Windows.Forms.Label();
-            this.lblHostname = new System.Windows.Forms.Label();
-            this.lblMac = new System.Windows.Forms.Label();
-            this.lblIP = new System.Windows.Forms.Label();
-            this.lblFixedBM = new System.Windows.Forms.Label();
-            this.lblFixedModel = new System.Windows.Forms.Label();
-            this.lblFixedSerialNo = new System.Windows.Forms.Label();
-            this.lblFixedProcName = new System.Windows.Forms.Label();
-            this.lblFixedPM = new System.Windows.Forms.Label();
-            this.lblFixedHDSize = new System.Windows.Forms.Label();
-            this.lblFixedOS = new System.Windows.Forms.Label();
-            this.lblFixedHostname = new System.Windows.Forms.Label();
-            this.lblFixedMac = new System.Windows.Forms.Label();
-            this.lblFixedIP = new System.Windows.Forms.Label();
-            this.lblFixedPatrimony = new System.Windows.Forms.Label();
-            this.lblFixedSeal = new System.Windows.Forms.Label();
-            this.lblFixedBuilding = new System.Windows.Forms.Label();
-            this.textBoxPatrimony = new System.Windows.Forms.TextBox();
-            this.textBoxSeal = new System.Windows.Forms.TextBox();
-            this.textBoxRoom = new System.Windows.Forms.TextBox();
-            this.textBoxLetter = new System.Windows.Forms.TextBox();
-            this.lblFixedRoom = new System.Windows.Forms.Label();
-            this.lblFixedDateTimePicker = new System.Windows.Forms.Label();
-            this.registerButton = new System.Windows.Forms.Button();
-            this.lblFixedInUse = new System.Windows.Forms.Label();
-            this.lblFixedTag = new System.Windows.Forms.Label();
-            this.lblFixedType = new System.Windows.Forms.Label();
-            this.lblFixedServerOpState = new System.Windows.Forms.Label();
-            this.lblFixedPortServer = new System.Windows.Forms.Label();
-            this.collectButton = new System.Windows.Forms.Button();
-            this.lblFixedLetter = new System.Windows.Forms.Label();
-            this.lblFixedBIOS = new System.Windows.Forms.Label();
-            this.lblBIOS = new System.Windows.Forms.Label();
-            this.accessSystemButton = new System.Windows.Forms.Button();
-            this.lblFixedBIOSType = new System.Windows.Forms.Label();
-            this.lblBIOSType = new System.Windows.Forms.Label();
-            this.groupBoxHWData = new System.Windows.Forms.GroupBox();
-            this.loadingCircle19 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle18 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle17 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle16 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle15 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle14 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle13 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle12 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle11 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle10 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle9 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle8 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle7 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle6 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle5 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle4 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle3 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle2 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
-            this.separatorH = new System.Windows.Forms.Label();
-            this.separatorV = new System.Windows.Forms.Label();
-            this.tpmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.smartIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblSmart = new System.Windows.Forms.Label();
-            this.lblTPM = new System.Windows.Forms.Label();
-            this.lblFixedSmart = new System.Windows.Forms.Label();
-            this.vtIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblFixedTPM = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblProgressPercent = new System.Windows.Forms.Label();
-            this.lblVT = new System.Windows.Forms.Label();
-            this.lblFixedVT = new System.Windows.Forms.Label();
-            this.bmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.secBootIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.biosIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.biosTypeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.ipIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.macIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.hostnameIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.osIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.gpuInfoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.mediaOperationIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.mediaTypeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.hdSizeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.pmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.procNameIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.serialNoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.modelIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblSecBoot = new System.Windows.Forms.Label();
-            this.lblFixedSecBoot = new System.Windows.Forms.Label();
-            this.lblMediaOperation = new System.Windows.Forms.Label();
-            this.lblFixedMediaOperation = new System.Windows.Forms.Label();
-            this.lblGPUInfo = new System.Windows.Forms.Label();
-            this.lblFixedGPUInfo = new System.Windows.Forms.Label();
-            this.lblMediaType = new System.Windows.Forms.Label();
-            this.lblFixedMediaType = new System.Windows.Forms.Label();
-            this.groupBoxPatrData = new System.Windows.Forms.GroupBox();
-            this.lblFixedMandatory9 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory8 = new System.Windows.Forms.Label();
-            this.ticketIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblFixedTicket = new System.Windows.Forms.Label();
-            this.textBoxTicket = new System.Windows.Forms.TextBox();
-            this.batteryIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblFixedMandatory7 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory6 = new System.Windows.Forms.Label();
-            this.lblFixedBattery = new System.Windows.Forms.Label();
-            this.lblFixedMandatory5 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory4 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory3 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory2 = new System.Windows.Forms.Label();
-            this.lblFixedMandatory = new System.Windows.Forms.Label();
-            this.lblFixedMandatoryMain = new System.Windows.Forms.Label();
-            this.studentRadioButton = new System.Windows.Forms.RadioButton();
-            this.employeeRadioButton = new System.Windows.Forms.RadioButton();
-            this.whoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblFixedWho = new System.Windows.Forms.Label();
-            this.letterIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.typeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.tagIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.inUseIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.datetimeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.standardIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.activeDirectoryIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.buildingIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.roomIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.sealIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.patrimonyIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBoxTypeOfService = new System.Windows.Forms.GroupBox();
-            this.loadingCircle21 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle20 = new MRG.Controls.UI.LoadingCircle();
-            this.lblMaintenanceSince = new System.Windows.Forms.Label();
-            this.lblInstallSince = new System.Windows.Forms.Label();
-            this.lblFixedMandatory10 = new System.Windows.Forms.Label();
-            this.textBoxFixedFormatRadio = new System.Windows.Forms.TextBox();
-            this.textBoxMaintenanceRadio = new System.Windows.Forms.TextBox();
-            this.formatRadioButton = new System.Windows.Forms.RadioButton();
-            this.maintenanceRadioButton = new System.Windows.Forms.RadioButton();
-            this.lblFixedActiveDirectory = new System.Windows.Forms.Label();
-            this.lblFixedStandard = new System.Windows.Forms.Label();
-            this.lblAgentName = new System.Windows.Forms.Label();
-            this.lblFixedAgentName = new System.Windows.Forms.Label();
-            this.lblPortServer = new System.Windows.Forms.Label();
-            this.lblIPServer = new System.Windows.Forms.Label();
-            this.lblFixedIPServer = new System.Windows.Forms.Label();
-            this.lblServerOpState = new System.Windows.Forms.Label();
-            this.toolStripVersionText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.comboBoxTheme = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripAutoTheme = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripLightTheme = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDarkTheme = new System.Windows.Forms.ToolStripMenuItem();
-            this.logLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.aboutLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusBarText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.timer4 = new System.Windows.Forms.Timer(this.components);
-            this.timer5 = new System.Windows.Forms.Timer(this.components);
-            this.timer6 = new System.Windows.Forms.Timer(this.components);
-            this.timer7 = new System.Windows.Forms.Timer(this.components);
-            this.timer8 = new System.Windows.Forms.Timer(this.components);
-            this.groupBoxRegistryStatus = new System.Windows.Forms.GroupBox();
-            this.webView2Control = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.timer9 = new System.Windows.Forms.Timer(this.components);
-            this.timer10 = new System.Windows.Forms.Timer(this.components);
-            this.topBannerImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
-            this.groupBoxServerStatus = new System.Windows.Forms.GroupBox();
-            this.loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
-            this.comboBoxBattery = new CustomFlatComboBox();
-            this.comboBoxStandard = new CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new CustomFlatComboBox();
-            this.comboBoxTag = new CustomFlatComboBox();
-            this.comboBoxInUse = new CustomFlatComboBox();
-            this.comboBoxType = new CustomFlatComboBox();
-            this.comboBoxBuilding = new CustomFlatComboBox();
-            this.groupBoxHWData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tpmIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smartIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vtIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bmIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.secBootIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biosIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biosTypeIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.macIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hostnameIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.osIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gpuInfoIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaOperationIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaTypeIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hdSizeIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pmIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.procNameIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serialNoIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelIconImg)).BeginInit();
-            this.groupBoxPatrData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batteryIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.whoIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.letterIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tagIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inUseIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datetimeIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.standardIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activeDirectoryIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buildingIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roomIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sealIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patrimonyIconImg)).BeginInit();
-            this.groupBoxTypeOfService.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.groupBoxRegistryStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).BeginInit();
-            this.groupBoxServerStatus.SuspendLayout();
-            this.SuspendLayout();
+            lblBM = new System.Windows.Forms.Label();
+            lblModel = new System.Windows.Forms.Label();
+            lblSerialNo = new System.Windows.Forms.Label();
+            lblProcName = new System.Windows.Forms.Label();
+            lblPM = new System.Windows.Forms.Label();
+            lblHDSize = new System.Windows.Forms.Label();
+            lblOS = new System.Windows.Forms.Label();
+            lblHostname = new System.Windows.Forms.Label();
+            lblMac = new System.Windows.Forms.Label();
+            lblIP = new System.Windows.Forms.Label();
+            lblFixedBM = new System.Windows.Forms.Label();
+            lblFixedModel = new System.Windows.Forms.Label();
+            lblFixedSerialNo = new System.Windows.Forms.Label();
+            lblFixedProcName = new System.Windows.Forms.Label();
+            lblFixedPM = new System.Windows.Forms.Label();
+            lblFixedHDSize = new System.Windows.Forms.Label();
+            lblFixedOS = new System.Windows.Forms.Label();
+            lblFixedHostname = new System.Windows.Forms.Label();
+            lblFixedMac = new System.Windows.Forms.Label();
+            lblFixedIP = new System.Windows.Forms.Label();
+            lblFixedPatrimony = new System.Windows.Forms.Label();
+            lblFixedSeal = new System.Windows.Forms.Label();
+            lblFixedBuilding = new System.Windows.Forms.Label();
+            textBoxPatrimony = new System.Windows.Forms.TextBox();
+            textBoxSeal = new System.Windows.Forms.TextBox();
+            textBoxRoom = new System.Windows.Forms.TextBox();
+            textBoxLetter = new System.Windows.Forms.TextBox();
+            lblFixedRoom = new System.Windows.Forms.Label();
+            lblFixedDateTimePicker = new System.Windows.Forms.Label();
+            registerButton = new System.Windows.Forms.Button();
+            lblFixedInUse = new System.Windows.Forms.Label();
+            lblFixedTag = new System.Windows.Forms.Label();
+            lblFixedType = new System.Windows.Forms.Label();
+            lblFixedServerOpState = new System.Windows.Forms.Label();
+            lblFixedPortServer = new System.Windows.Forms.Label();
+            collectButton = new System.Windows.Forms.Button();
+            lblFixedLetter = new System.Windows.Forms.Label();
+            lblFixedBIOS = new System.Windows.Forms.Label();
+            lblBIOS = new System.Windows.Forms.Label();
+            accessSystemButton = new System.Windows.Forms.Button();
+            lblFixedBIOSType = new System.Windows.Forms.Label();
+            lblBIOSType = new System.Windows.Forms.Label();
+            groupBoxHWData = new System.Windows.Forms.GroupBox();
+            loadingCircle19 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle18 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle17 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle16 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle15 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle14 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle13 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle12 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle11 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle10 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle9 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle8 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle7 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle6 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle5 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle4 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle3 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle2 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
+            separatorH = new System.Windows.Forms.Label();
+            separatorV = new System.Windows.Forms.Label();
+            tpmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            smartIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblSmart = new System.Windows.Forms.Label();
+            lblTPM = new System.Windows.Forms.Label();
+            lblFixedSmart = new System.Windows.Forms.Label();
+            vtIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblFixedTPM = new System.Windows.Forms.Label();
+            progressBar1 = new System.Windows.Forms.ProgressBar();
+            lblProgressPercent = new System.Windows.Forms.Label();
+            lblVT = new System.Windows.Forms.Label();
+            lblFixedVT = new System.Windows.Forms.Label();
+            bmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            secBootIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            biosIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            biosTypeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            ipIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            macIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            hostnameIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            osIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            gpuInfoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            mediaOperationIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            mediaTypeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            hdSizeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            pmIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            procNameIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            serialNoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            modelIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblSecBoot = new System.Windows.Forms.Label();
+            lblFixedSecBoot = new System.Windows.Forms.Label();
+            lblMediaOperation = new System.Windows.Forms.Label();
+            lblFixedMediaOperation = new System.Windows.Forms.Label();
+            lblGPUInfo = new System.Windows.Forms.Label();
+            lblFixedGPUInfo = new System.Windows.Forms.Label();
+            lblMediaType = new System.Windows.Forms.Label();
+            lblFixedMediaType = new System.Windows.Forms.Label();
+            groupBoxPatrData = new System.Windows.Forms.GroupBox();
+            lblFixedMandatory9 = new System.Windows.Forms.Label();
+            lblFixedMandatory8 = new System.Windows.Forms.Label();
+            ticketIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblFixedTicket = new System.Windows.Forms.Label();
+            textBoxTicket = new System.Windows.Forms.TextBox();
+            batteryIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblFixedMandatory7 = new System.Windows.Forms.Label();
+            lblFixedMandatory6 = new System.Windows.Forms.Label();
+            lblFixedBattery = new System.Windows.Forms.Label();
+            lblFixedMandatory5 = new System.Windows.Forms.Label();
+            lblFixedMandatory4 = new System.Windows.Forms.Label();
+            lblFixedMandatory3 = new System.Windows.Forms.Label();
+            lblFixedMandatory2 = new System.Windows.Forms.Label();
+            lblFixedMandatory = new System.Windows.Forms.Label();
+            lblFixedMandatoryMain = new System.Windows.Forms.Label();
+            studentRadioButton = new System.Windows.Forms.RadioButton();
+            employeeRadioButton = new System.Windows.Forms.RadioButton();
+            whoIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            lblFixedWho = new System.Windows.Forms.Label();
+            letterIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            typeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            tagIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            inUseIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            datetimeIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            standardIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            activeDirectoryIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            buildingIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            roomIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            sealIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            patrimonyIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            groupBoxTypeOfService = new System.Windows.Forms.GroupBox();
+            loadingCircle21 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle20 = new MRG.Controls.UI.LoadingCircle();
+            lblMaintenanceSince = new System.Windows.Forms.Label();
+            lblInstallSince = new System.Windows.Forms.Label();
+            lblFixedMandatory10 = new System.Windows.Forms.Label();
+            textBoxFixedFormatRadio = new System.Windows.Forms.TextBox();
+            textBoxMaintenanceRadio = new System.Windows.Forms.TextBox();
+            formatRadioButton = new System.Windows.Forms.RadioButton();
+            maintenanceRadioButton = new System.Windows.Forms.RadioButton();
+            lblFixedActiveDirectory = new System.Windows.Forms.Label();
+            lblFixedStandard = new System.Windows.Forms.Label();
+            lblAgentName = new System.Windows.Forms.Label();
+            lblFixedAgentName = new System.Windows.Forms.Label();
+            lblPortServer = new System.Windows.Forms.Label();
+            lblIPServer = new System.Windows.Forms.Label();
+            lblFixedIPServer = new System.Windows.Forms.Label();
+            lblServerOpState = new System.Windows.Forms.Label();
+            toolStripVersionText = new System.Windows.Forms.ToolStripStatusLabel();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            comboBoxTheme = new System.Windows.Forms.ToolStripDropDownButton();
+            toolStripAutoTheme = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripLightTheme = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripDarkTheme = new System.Windows.Forms.ToolStripMenuItem();
+            logLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            aboutLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripStatusBarText = new System.Windows.Forms.ToolStripStatusLabel();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            timer3 = new System.Windows.Forms.Timer(components);
+            timer4 = new System.Windows.Forms.Timer(components);
+            timer5 = new System.Windows.Forms.Timer(components);
+            timer6 = new System.Windows.Forms.Timer(components);
+            timer7 = new System.Windows.Forms.Timer(components);
+            timer8 = new System.Windows.Forms.Timer(components);
+            groupBoxRegistryStatus = new System.Windows.Forms.GroupBox();
+            webView2Control = new Microsoft.Web.WebView2.WinForms.WebView2();
+            timer9 = new System.Windows.Forms.Timer(components);
+            timer10 = new System.Windows.Forms.Timer(components);
+            topBannerImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            loadingCircle22 = new MRG.Controls.UI.LoadingCircle();
+            loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
+            groupBoxServerStatus = new System.Windows.Forms.GroupBox();
+            loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
+            comboBoxBattery = new CustomFlatComboBox();
+            comboBoxStandard = new CustomFlatComboBox();
+            comboBoxActiveDirectory = new CustomFlatComboBox();
+            comboBoxTag = new CustomFlatComboBox();
+            comboBoxInUse = new CustomFlatComboBox();
+            comboBoxType = new CustomFlatComboBox();
+            comboBoxBuilding = new CustomFlatComboBox();
+            groupBoxHWData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tpmIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)smartIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)vtIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bmIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)secBootIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)biosIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)biosTypeIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ipIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)macIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hostnameIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)osIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gpuInfoIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mediaOperationIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mediaTypeIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hdSizeIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pmIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)procNameIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)serialNoIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)modelIconImg).BeginInit();
+            groupBoxPatrData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ticketIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)batteryIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)whoIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)letterIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)typeIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tagIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)inUseIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)datetimeIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)standardIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)activeDirectoryIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)buildingIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)roomIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sealIconImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)patrimonyIconImg).BeginInit();
+            groupBoxTypeOfService.SuspendLayout();
+            statusStrip1.SuspendLayout();
+            groupBoxRegistryStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)webView2Control).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)topBannerImg).BeginInit();
+            groupBoxServerStatus.SuspendLayout();
+            SuspendLayout();
             // 
             // lblBM
             // 
-            resources.ApplyResources(this.lblBM, "lblBM");
-            this.lblBM.ForeColor = System.Drawing.Color.Silver;
-            this.lblBM.Name = "lblBM";
+            resources.ApplyResources(lblBM, "lblBM");
+            lblBM.ForeColor = System.Drawing.Color.Silver;
+            lblBM.Name = "lblBM";
             // 
             // lblModel
             // 
-            resources.ApplyResources(this.lblModel, "lblModel");
-            this.lblModel.ForeColor = System.Drawing.Color.Silver;
-            this.lblModel.Name = "lblModel";
+            resources.ApplyResources(lblModel, "lblModel");
+            lblModel.ForeColor = System.Drawing.Color.Silver;
+            lblModel.Name = "lblModel";
             // 
             // lblSerialNo
             // 
-            resources.ApplyResources(this.lblSerialNo, "lblSerialNo");
-            this.lblSerialNo.ForeColor = System.Drawing.Color.Silver;
-            this.lblSerialNo.Name = "lblSerialNo";
+            resources.ApplyResources(lblSerialNo, "lblSerialNo");
+            lblSerialNo.ForeColor = System.Drawing.Color.Silver;
+            lblSerialNo.Name = "lblSerialNo";
             // 
             // lblProcName
             // 
-            resources.ApplyResources(this.lblProcName, "lblProcName");
-            this.lblProcName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProcName.Name = "lblProcName";
+            resources.ApplyResources(lblProcName, "lblProcName");
+            lblProcName.ForeColor = System.Drawing.Color.Silver;
+            lblProcName.Name = "lblProcName";
             // 
             // lblPM
             // 
-            resources.ApplyResources(this.lblPM, "lblPM");
-            this.lblPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblPM.Name = "lblPM";
+            resources.ApplyResources(lblPM, "lblPM");
+            lblPM.ForeColor = System.Drawing.Color.Silver;
+            lblPM.Name = "lblPM";
             // 
             // lblHDSize
             // 
-            resources.ApplyResources(this.lblHDSize, "lblHDSize");
-            this.lblHDSize.ForeColor = System.Drawing.Color.Silver;
-            this.lblHDSize.Name = "lblHDSize";
+            resources.ApplyResources(lblHDSize, "lblHDSize");
+            lblHDSize.ForeColor = System.Drawing.Color.Silver;
+            lblHDSize.Name = "lblHDSize";
             // 
             // lblOS
             // 
-            resources.ApplyResources(this.lblOS, "lblOS");
-            this.lblOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblOS.Name = "lblOS";
+            resources.ApplyResources(lblOS, "lblOS");
+            lblOS.ForeColor = System.Drawing.Color.Silver;
+            lblOS.Name = "lblOS";
             // 
             // lblHostname
             // 
-            resources.ApplyResources(this.lblHostname, "lblHostname");
-            this.lblHostname.ForeColor = System.Drawing.Color.Silver;
-            this.lblHostname.Name = "lblHostname";
+            resources.ApplyResources(lblHostname, "lblHostname");
+            lblHostname.ForeColor = System.Drawing.Color.Silver;
+            lblHostname.Name = "lblHostname";
             // 
             // lblMac
             // 
-            resources.ApplyResources(this.lblMac, "lblMac");
-            this.lblMac.ForeColor = System.Drawing.Color.Silver;
-            this.lblMac.Name = "lblMac";
+            resources.ApplyResources(lblMac, "lblMac");
+            lblMac.ForeColor = System.Drawing.Color.Silver;
+            lblMac.Name = "lblMac";
             // 
             // lblIP
             // 
-            resources.ApplyResources(this.lblIP, "lblIP");
-            this.lblIP.ForeColor = System.Drawing.Color.Silver;
-            this.lblIP.Name = "lblIP";
+            resources.ApplyResources(lblIP, "lblIP");
+            lblIP.ForeColor = System.Drawing.Color.Silver;
+            lblIP.Name = "lblIP";
             // 
             // lblFixedBM
             // 
-            resources.ApplyResources(this.lblFixedBM, "lblFixedBM");
-            this.lblFixedBM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBM.Name = "lblFixedBM";
+            resources.ApplyResources(lblFixedBM, "lblFixedBM");
+            lblFixedBM.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedBM.Name = "lblFixedBM";
             // 
             // lblFixedModel
             // 
-            resources.ApplyResources(this.lblFixedModel, "lblFixedModel");
-            this.lblFixedModel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedModel.Name = "lblFixedModel";
+            resources.ApplyResources(lblFixedModel, "lblFixedModel");
+            lblFixedModel.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedModel.Name = "lblFixedModel";
             // 
             // lblFixedSerialNo
             // 
-            resources.ApplyResources(this.lblFixedSerialNo, "lblFixedSerialNo");
-            this.lblFixedSerialNo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSerialNo.Name = "lblFixedSerialNo";
+            resources.ApplyResources(lblFixedSerialNo, "lblFixedSerialNo");
+            lblFixedSerialNo.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedSerialNo.Name = "lblFixedSerialNo";
             // 
             // lblFixedProcName
             // 
-            resources.ApplyResources(this.lblFixedProcName, "lblFixedProcName");
-            this.lblFixedProcName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedProcName.Name = "lblFixedProcName";
+            resources.ApplyResources(lblFixedProcName, "lblFixedProcName");
+            lblFixedProcName.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedProcName.Name = "lblFixedProcName";
             // 
             // lblFixedPM
             // 
-            resources.ApplyResources(this.lblFixedPM, "lblFixedPM");
-            this.lblFixedPM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPM.Name = "lblFixedPM";
+            resources.ApplyResources(lblFixedPM, "lblFixedPM");
+            lblFixedPM.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedPM.Name = "lblFixedPM";
             // 
             // lblFixedHDSize
             // 
-            resources.ApplyResources(this.lblFixedHDSize, "lblFixedHDSize");
-            this.lblFixedHDSize.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedHDSize.Name = "lblFixedHDSize";
+            resources.ApplyResources(lblFixedHDSize, "lblFixedHDSize");
+            lblFixedHDSize.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedHDSize.Name = "lblFixedHDSize";
             // 
             // lblFixedOS
             // 
-            resources.ApplyResources(this.lblFixedOS, "lblFixedOS");
-            this.lblFixedOS.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedOS.Name = "lblFixedOS";
+            resources.ApplyResources(lblFixedOS, "lblFixedOS");
+            lblFixedOS.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedOS.Name = "lblFixedOS";
             // 
             // lblFixedHostname
             // 
-            resources.ApplyResources(this.lblFixedHostname, "lblFixedHostname");
-            this.lblFixedHostname.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedHostname.Name = "lblFixedHostname";
+            resources.ApplyResources(lblFixedHostname, "lblFixedHostname");
+            lblFixedHostname.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedHostname.Name = "lblFixedHostname";
             // 
             // lblFixedMac
             // 
-            resources.ApplyResources(this.lblFixedMac, "lblFixedMac");
-            this.lblFixedMac.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMac.Name = "lblFixedMac";
+            resources.ApplyResources(lblFixedMac, "lblFixedMac");
+            lblFixedMac.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedMac.Name = "lblFixedMac";
             // 
             // lblFixedIP
             // 
-            resources.ApplyResources(this.lblFixedIP, "lblFixedIP");
-            this.lblFixedIP.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedIP.Name = "lblFixedIP";
+            resources.ApplyResources(lblFixedIP, "lblFixedIP");
+            lblFixedIP.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedIP.Name = "lblFixedIP";
             // 
             // lblFixedPatrimony
             // 
-            resources.ApplyResources(this.lblFixedPatrimony, "lblFixedPatrimony");
-            this.lblFixedPatrimony.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPatrimony.Name = "lblFixedPatrimony";
+            resources.ApplyResources(lblFixedPatrimony, "lblFixedPatrimony");
+            lblFixedPatrimony.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedPatrimony.Name = "lblFixedPatrimony";
             // 
             // lblFixedSeal
             // 
-            resources.ApplyResources(this.lblFixedSeal, "lblFixedSeal");
-            this.lblFixedSeal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSeal.Name = "lblFixedSeal";
+            resources.ApplyResources(lblFixedSeal, "lblFixedSeal");
+            lblFixedSeal.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedSeal.Name = "lblFixedSeal";
             // 
             // lblFixedBuilding
             // 
-            resources.ApplyResources(this.lblFixedBuilding, "lblFixedBuilding");
-            this.lblFixedBuilding.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBuilding.Name = "lblFixedBuilding";
+            resources.ApplyResources(lblFixedBuilding, "lblFixedBuilding");
+            lblFixedBuilding.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedBuilding.Name = "lblFixedBuilding";
             // 
             // textBoxPatrimony
             // 
-            resources.ApplyResources(this.textBoxPatrimony, "textBoxPatrimony");
-            this.textBoxPatrimony.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPatrimony.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxPatrimony.Name = "textBoxPatrimony";
-            this.textBoxPatrimony.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
+            resources.ApplyResources(textBoxPatrimony, "textBoxPatrimony");
+            textBoxPatrimony.BackColor = System.Drawing.SystemColors.Window;
+            textBoxPatrimony.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxPatrimony.Name = "textBoxPatrimony";
+            textBoxPatrimony.KeyPress += new System.Windows.Forms.KeyPressEventHandler(TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxSeal
             // 
-            resources.ApplyResources(this.textBoxSeal, "textBoxSeal");
-            this.textBoxSeal.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxSeal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxSeal.Name = "textBoxSeal";
-            this.textBoxSeal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
+            resources.ApplyResources(textBoxSeal, "textBoxSeal");
+            textBoxSeal.BackColor = System.Drawing.SystemColors.Window;
+            textBoxSeal.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxSeal.Name = "textBoxSeal";
+            textBoxSeal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxRoom
             // 
-            resources.ApplyResources(this.textBoxRoom, "textBoxRoom");
-            this.textBoxRoom.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxRoom.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxRoom.Name = "textBoxRoom";
-            this.textBoxRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
+            resources.ApplyResources(textBoxRoom, "textBoxRoom");
+            textBoxRoom.BackColor = System.Drawing.SystemColors.Window;
+            textBoxRoom.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxRoom.Name = "textBoxRoom";
+            textBoxRoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxLetter
             // 
-            resources.ApplyResources(this.textBoxLetter, "textBoxLetter");
-            this.textBoxLetter.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxLetter.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxLetter.Name = "textBoxLetter";
-            this.textBoxLetter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCharsOnly_KeyPress);
+            resources.ApplyResources(textBoxLetter, "textBoxLetter");
+            textBoxLetter.BackColor = System.Drawing.SystemColors.Window;
+            textBoxLetter.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxLetter.Name = "textBoxLetter";
+            textBoxLetter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(TextBoxCharsOnly_KeyPress);
             // 
             // lblFixedRoom
             // 
-            resources.ApplyResources(this.lblFixedRoom, "lblFixedRoom");
-            this.lblFixedRoom.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedRoom.Name = "lblFixedRoom";
+            resources.ApplyResources(lblFixedRoom, "lblFixedRoom");
+            lblFixedRoom.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedRoom.Name = "lblFixedRoom";
             // 
             // lblFixedDateTimePicker
             // 
-            resources.ApplyResources(this.lblFixedDateTimePicker, "lblFixedDateTimePicker");
-            this.lblFixedDateTimePicker.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedDateTimePicker.Name = "lblFixedDateTimePicker";
+            resources.ApplyResources(lblFixedDateTimePicker, "lblFixedDateTimePicker");
+            lblFixedDateTimePicker.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedDateTimePicker.Name = "lblFixedDateTimePicker";
             // 
             // registerButton
             // 
-            resources.ApplyResources(this.registerButton, "registerButton");
-            this.registerButton.BackColor = System.Drawing.SystemColors.Control;
-            this.registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registerButton.Name = "registerButton";
-            this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.Cadastra_ClickAsync);
+            resources.ApplyResources(registerButton, "registerButton");
+            registerButton.BackColor = System.Drawing.SystemColors.Control;
+            registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            registerButton.Name = "registerButton";
+            registerButton.UseVisualStyleBackColor = true;
+            registerButton.Click += new System.EventHandler(Cadastra_ClickAsync);
             // 
             // lblFixedInUse
             // 
-            resources.ApplyResources(this.lblFixedInUse, "lblFixedInUse");
-            this.lblFixedInUse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedInUse.Name = "lblFixedInUse";
+            resources.ApplyResources(lblFixedInUse, "lblFixedInUse");
+            lblFixedInUse.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedInUse.Name = "lblFixedInUse";
             // 
             // lblFixedTag
             // 
-            resources.ApplyResources(this.lblFixedTag, "lblFixedTag");
-            this.lblFixedTag.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTag.Name = "lblFixedTag";
+            resources.ApplyResources(lblFixedTag, "lblFixedTag");
+            lblFixedTag.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedTag.Name = "lblFixedTag";
             // 
             // lblFixedType
             // 
-            resources.ApplyResources(this.lblFixedType, "lblFixedType");
-            this.lblFixedType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedType.Name = "lblFixedType";
+            resources.ApplyResources(lblFixedType, "lblFixedType");
+            lblFixedType.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedType.Name = "lblFixedType";
             // 
             // lblFixedServerOpState
             // 
-            resources.ApplyResources(this.lblFixedServerOpState, "lblFixedServerOpState");
-            this.lblFixedServerOpState.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedServerOpState.Name = "lblFixedServerOpState";
+            resources.ApplyResources(lblFixedServerOpState, "lblFixedServerOpState");
+            lblFixedServerOpState.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedServerOpState.Name = "lblFixedServerOpState";
             // 
             // lblFixedPortServer
             // 
-            resources.ApplyResources(this.lblFixedPortServer, "lblFixedPortServer");
-            this.lblFixedPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedPortServer.Name = "lblFixedPortServer";
+            resources.ApplyResources(lblFixedPortServer, "lblFixedPortServer");
+            lblFixedPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedPortServer.Name = "lblFixedPortServer";
             // 
             // collectButton
             // 
-            resources.ApplyResources(this.collectButton, "collectButton");
-            this.collectButton.BackColor = System.Drawing.SystemColors.Control;
-            this.collectButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.collectButton.Name = "collectButton";
-            this.collectButton.UseVisualStyleBackColor = true;
-            this.collectButton.Click += new System.EventHandler(this.Coleta_Click);
+            resources.ApplyResources(collectButton, "collectButton");
+            collectButton.BackColor = System.Drawing.SystemColors.Control;
+            collectButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            collectButton.Name = "collectButton";
+            collectButton.UseVisualStyleBackColor = true;
+            collectButton.Click += new System.EventHandler(Coleta_Click);
             // 
             // lblFixedLetter
             // 
-            resources.ApplyResources(this.lblFixedLetter, "lblFixedLetter");
-            this.lblFixedLetter.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedLetter.Name = "lblFixedLetter";
+            resources.ApplyResources(lblFixedLetter, "lblFixedLetter");
+            lblFixedLetter.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedLetter.Name = "lblFixedLetter";
             // 
             // lblFixedBIOS
             // 
-            resources.ApplyResources(this.lblFixedBIOS, "lblFixedBIOS");
-            this.lblFixedBIOS.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBIOS.Name = "lblFixedBIOS";
+            resources.ApplyResources(lblFixedBIOS, "lblFixedBIOS");
+            lblFixedBIOS.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedBIOS.Name = "lblFixedBIOS";
             // 
             // lblBIOS
             // 
-            resources.ApplyResources(this.lblBIOS, "lblBIOS");
-            this.lblBIOS.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOS.Name = "lblBIOS";
+            resources.ApplyResources(lblBIOS, "lblBIOS");
+            lblBIOS.ForeColor = System.Drawing.Color.Silver;
+            lblBIOS.Name = "lblBIOS";
             // 
             // accessSystemButton
             // 
-            resources.ApplyResources(this.accessSystemButton, "accessSystemButton");
-            this.accessSystemButton.BackColor = System.Drawing.SystemColors.Control;
-            this.accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.accessSystemButton.Name = "accessSystemButton";
-            this.accessSystemButton.UseVisualStyleBackColor = true;
-            this.accessSystemButton.Click += new System.EventHandler(this.AccessButton_Click);
+            resources.ApplyResources(accessSystemButton, "accessSystemButton");
+            accessSystemButton.BackColor = System.Drawing.SystemColors.Control;
+            accessSystemButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            accessSystemButton.Name = "accessSystemButton";
+            accessSystemButton.UseVisualStyleBackColor = true;
+            accessSystemButton.Click += new System.EventHandler(AccessButton_Click);
             // 
             // lblFixedBIOSType
             // 
-            resources.ApplyResources(this.lblFixedBIOSType, "lblFixedBIOSType");
-            this.lblFixedBIOSType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBIOSType.Name = "lblFixedBIOSType";
+            resources.ApplyResources(lblFixedBIOSType, "lblFixedBIOSType");
+            lblFixedBIOSType.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedBIOSType.Name = "lblFixedBIOSType";
             // 
             // lblBIOSType
             // 
-            resources.ApplyResources(this.lblBIOSType, "lblBIOSType");
-            this.lblBIOSType.ForeColor = System.Drawing.Color.Silver;
-            this.lblBIOSType.Name = "lblBIOSType";
+            resources.ApplyResources(lblBIOSType, "lblBIOSType");
+            lblBIOSType.ForeColor = System.Drawing.Color.Silver;
+            lblBIOSType.Name = "lblBIOSType";
             // 
             // groupBoxHWData
             // 
-            resources.ApplyResources(this.groupBoxHWData, "groupBoxHWData");
-            this.groupBoxHWData.Controls.Add(this.loadingCircle19);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle18);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle17);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle16);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle15);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle14);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle13);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle12);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle11);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle10);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle9);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle8);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle7);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle6);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle5);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle4);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle3);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle2);
-            this.groupBoxHWData.Controls.Add(this.loadingCircle1);
-            this.groupBoxHWData.Controls.Add(this.separatorH);
-            this.groupBoxHWData.Controls.Add(this.separatorV);
-            this.groupBoxHWData.Controls.Add(this.tpmIconImg);
-            this.groupBoxHWData.Controls.Add(this.smartIconImg);
-            this.groupBoxHWData.Controls.Add(this.lblSmart);
-            this.groupBoxHWData.Controls.Add(this.lblTPM);
-            this.groupBoxHWData.Controls.Add(this.lblFixedSmart);
-            this.groupBoxHWData.Controls.Add(this.vtIconImg);
-            this.groupBoxHWData.Controls.Add(this.lblFixedTPM);
-            this.groupBoxHWData.Controls.Add(this.progressBar1);
-            this.groupBoxHWData.Controls.Add(this.lblProgressPercent);
-            this.groupBoxHWData.Controls.Add(this.lblVT);
-            this.groupBoxHWData.Controls.Add(this.lblFixedVT);
-            this.groupBoxHWData.Controls.Add(this.bmIconImg);
-            this.groupBoxHWData.Controls.Add(this.secBootIconImg);
-            this.groupBoxHWData.Controls.Add(this.biosIconImg);
-            this.groupBoxHWData.Controls.Add(this.biosTypeIconImg);
-            this.groupBoxHWData.Controls.Add(this.ipIconImg);
-            this.groupBoxHWData.Controls.Add(this.macIconImg);
-            this.groupBoxHWData.Controls.Add(this.hostnameIconImg);
-            this.groupBoxHWData.Controls.Add(this.osIconImg);
-            this.groupBoxHWData.Controls.Add(this.gpuInfoIconImg);
-            this.groupBoxHWData.Controls.Add(this.mediaOperationIconImg);
-            this.groupBoxHWData.Controls.Add(this.mediaTypeIconImg);
-            this.groupBoxHWData.Controls.Add(this.hdSizeIconImg);
-            this.groupBoxHWData.Controls.Add(this.pmIconImg);
-            this.groupBoxHWData.Controls.Add(this.procNameIconImg);
-            this.groupBoxHWData.Controls.Add(this.serialNoIconImg);
-            this.groupBoxHWData.Controls.Add(this.modelIconImg);
-            this.groupBoxHWData.Controls.Add(this.lblSecBoot);
-            this.groupBoxHWData.Controls.Add(this.lblFixedSecBoot);
-            this.groupBoxHWData.Controls.Add(this.lblMediaOperation);
-            this.groupBoxHWData.Controls.Add(this.lblFixedMediaOperation);
-            this.groupBoxHWData.Controls.Add(this.lblGPUInfo);
-            this.groupBoxHWData.Controls.Add(this.lblFixedGPUInfo);
-            this.groupBoxHWData.Controls.Add(this.lblMediaType);
-            this.groupBoxHWData.Controls.Add(this.lblFixedMediaType);
-            this.groupBoxHWData.Controls.Add(this.lblFixedBM);
-            this.groupBoxHWData.Controls.Add(this.lblOS);
-            this.groupBoxHWData.Controls.Add(this.lblBIOSType);
-            this.groupBoxHWData.Controls.Add(this.lblHDSize);
-            this.groupBoxHWData.Controls.Add(this.lblFixedBIOSType);
-            this.groupBoxHWData.Controls.Add(this.lblPM);
-            this.groupBoxHWData.Controls.Add(this.lblProcName);
-            this.groupBoxHWData.Controls.Add(this.lblSerialNo);
-            this.groupBoxHWData.Controls.Add(this.lblBIOS);
-            this.groupBoxHWData.Controls.Add(this.lblModel);
-            this.groupBoxHWData.Controls.Add(this.lblFixedBIOS);
-            this.groupBoxHWData.Controls.Add(this.lblBM);
-            this.groupBoxHWData.Controls.Add(this.lblHostname);
-            this.groupBoxHWData.Controls.Add(this.lblMac);
-            this.groupBoxHWData.Controls.Add(this.lblIP);
-            this.groupBoxHWData.Controls.Add(this.lblFixedModel);
-            this.groupBoxHWData.Controls.Add(this.lblFixedSerialNo);
-            this.groupBoxHWData.Controls.Add(this.lblFixedProcName);
-            this.groupBoxHWData.Controls.Add(this.lblFixedPM);
-            this.groupBoxHWData.Controls.Add(this.lblFixedHDSize);
-            this.groupBoxHWData.Controls.Add(this.lblFixedOS);
-            this.groupBoxHWData.Controls.Add(this.lblFixedHostname);
-            this.groupBoxHWData.Controls.Add(this.lblFixedMac);
-            this.groupBoxHWData.Controls.Add(this.lblFixedIP);
-            this.groupBoxHWData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxHWData.Name = "groupBoxHWData";
-            this.groupBoxHWData.TabStop = false;
+            resources.ApplyResources(groupBoxHWData, "groupBoxHWData");
+            groupBoxHWData.Controls.Add(loadingCircle19);
+            groupBoxHWData.Controls.Add(loadingCircle18);
+            groupBoxHWData.Controls.Add(loadingCircle17);
+            groupBoxHWData.Controls.Add(loadingCircle16);
+            groupBoxHWData.Controls.Add(loadingCircle15);
+            groupBoxHWData.Controls.Add(loadingCircle14);
+            groupBoxHWData.Controls.Add(loadingCircle13);
+            groupBoxHWData.Controls.Add(loadingCircle12);
+            groupBoxHWData.Controls.Add(loadingCircle11);
+            groupBoxHWData.Controls.Add(loadingCircle10);
+            groupBoxHWData.Controls.Add(loadingCircle9);
+            groupBoxHWData.Controls.Add(loadingCircle8);
+            groupBoxHWData.Controls.Add(loadingCircle7);
+            groupBoxHWData.Controls.Add(loadingCircle6);
+            groupBoxHWData.Controls.Add(loadingCircle5);
+            groupBoxHWData.Controls.Add(loadingCircle4);
+            groupBoxHWData.Controls.Add(loadingCircle3);
+            groupBoxHWData.Controls.Add(loadingCircle2);
+            groupBoxHWData.Controls.Add(loadingCircle1);
+            groupBoxHWData.Controls.Add(separatorH);
+            groupBoxHWData.Controls.Add(separatorV);
+            groupBoxHWData.Controls.Add(tpmIconImg);
+            groupBoxHWData.Controls.Add(smartIconImg);
+            groupBoxHWData.Controls.Add(lblSmart);
+            groupBoxHWData.Controls.Add(lblTPM);
+            groupBoxHWData.Controls.Add(lblFixedSmart);
+            groupBoxHWData.Controls.Add(vtIconImg);
+            groupBoxHWData.Controls.Add(lblFixedTPM);
+            groupBoxHWData.Controls.Add(progressBar1);
+            groupBoxHWData.Controls.Add(lblProgressPercent);
+            groupBoxHWData.Controls.Add(lblVT);
+            groupBoxHWData.Controls.Add(lblFixedVT);
+            groupBoxHWData.Controls.Add(bmIconImg);
+            groupBoxHWData.Controls.Add(secBootIconImg);
+            groupBoxHWData.Controls.Add(biosIconImg);
+            groupBoxHWData.Controls.Add(biosTypeIconImg);
+            groupBoxHWData.Controls.Add(ipIconImg);
+            groupBoxHWData.Controls.Add(macIconImg);
+            groupBoxHWData.Controls.Add(hostnameIconImg);
+            groupBoxHWData.Controls.Add(osIconImg);
+            groupBoxHWData.Controls.Add(gpuInfoIconImg);
+            groupBoxHWData.Controls.Add(mediaOperationIconImg);
+            groupBoxHWData.Controls.Add(mediaTypeIconImg);
+            groupBoxHWData.Controls.Add(hdSizeIconImg);
+            groupBoxHWData.Controls.Add(pmIconImg);
+            groupBoxHWData.Controls.Add(procNameIconImg);
+            groupBoxHWData.Controls.Add(serialNoIconImg);
+            groupBoxHWData.Controls.Add(modelIconImg);
+            groupBoxHWData.Controls.Add(lblSecBoot);
+            groupBoxHWData.Controls.Add(lblFixedSecBoot);
+            groupBoxHWData.Controls.Add(lblMediaOperation);
+            groupBoxHWData.Controls.Add(lblFixedMediaOperation);
+            groupBoxHWData.Controls.Add(lblGPUInfo);
+            groupBoxHWData.Controls.Add(lblFixedGPUInfo);
+            groupBoxHWData.Controls.Add(lblMediaType);
+            groupBoxHWData.Controls.Add(lblFixedMediaType);
+            groupBoxHWData.Controls.Add(lblFixedBM);
+            groupBoxHWData.Controls.Add(lblOS);
+            groupBoxHWData.Controls.Add(lblBIOSType);
+            groupBoxHWData.Controls.Add(lblHDSize);
+            groupBoxHWData.Controls.Add(lblFixedBIOSType);
+            groupBoxHWData.Controls.Add(lblPM);
+            groupBoxHWData.Controls.Add(lblProcName);
+            groupBoxHWData.Controls.Add(lblSerialNo);
+            groupBoxHWData.Controls.Add(lblBIOS);
+            groupBoxHWData.Controls.Add(lblModel);
+            groupBoxHWData.Controls.Add(lblFixedBIOS);
+            groupBoxHWData.Controls.Add(lblBM);
+            groupBoxHWData.Controls.Add(lblHostname);
+            groupBoxHWData.Controls.Add(lblMac);
+            groupBoxHWData.Controls.Add(lblIP);
+            groupBoxHWData.Controls.Add(lblFixedModel);
+            groupBoxHWData.Controls.Add(lblFixedSerialNo);
+            groupBoxHWData.Controls.Add(lblFixedProcName);
+            groupBoxHWData.Controls.Add(lblFixedPM);
+            groupBoxHWData.Controls.Add(lblFixedHDSize);
+            groupBoxHWData.Controls.Add(lblFixedOS);
+            groupBoxHWData.Controls.Add(lblFixedHostname);
+            groupBoxHWData.Controls.Add(lblFixedMac);
+            groupBoxHWData.Controls.Add(lblFixedIP);
+            groupBoxHWData.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxHWData.Name = "groupBoxHWData";
+            groupBoxHWData.TabStop = false;
             // 
             // loadingCircle19
             // 
-            resources.ApplyResources(this.loadingCircle19, "loadingCircle19");
-            this.loadingCircle19.Active = false;
-            this.loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle19.InnerCircleRadius = 5;
-            this.loadingCircle19.Name = "loadingCircle19";
-            this.loadingCircle19.NumberSpoke = 12;
-            this.loadingCircle19.OuterCircleRadius = 11;
-            this.loadingCircle19.RotationSpeed = 1;
-            this.loadingCircle19.SpokeThickness = 2;
-            this.loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle19, "loadingCircle19");
+            loadingCircle19.Active = false;
+            loadingCircle19.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle19.InnerCircleRadius = 5;
+            loadingCircle19.Name = "loadingCircle19";
+            loadingCircle19.NumberSpoke = 12;
+            loadingCircle19.OuterCircleRadius = 11;
+            loadingCircle19.RotationSpeed = 1;
+            loadingCircle19.SpokeThickness = 2;
+            loadingCircle19.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle18
             // 
-            resources.ApplyResources(this.loadingCircle18, "loadingCircle18");
-            this.loadingCircle18.Active = false;
-            this.loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle18.InnerCircleRadius = 5;
-            this.loadingCircle18.Name = "loadingCircle18";
-            this.loadingCircle18.NumberSpoke = 12;
-            this.loadingCircle18.OuterCircleRadius = 11;
-            this.loadingCircle18.RotationSpeed = 1;
-            this.loadingCircle18.SpokeThickness = 2;
-            this.loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle18, "loadingCircle18");
+            loadingCircle18.Active = false;
+            loadingCircle18.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle18.InnerCircleRadius = 5;
+            loadingCircle18.Name = "loadingCircle18";
+            loadingCircle18.NumberSpoke = 12;
+            loadingCircle18.OuterCircleRadius = 11;
+            loadingCircle18.RotationSpeed = 1;
+            loadingCircle18.SpokeThickness = 2;
+            loadingCircle18.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle17
             // 
-            resources.ApplyResources(this.loadingCircle17, "loadingCircle17");
-            this.loadingCircle17.Active = false;
-            this.loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle17.InnerCircleRadius = 5;
-            this.loadingCircle17.Name = "loadingCircle17";
-            this.loadingCircle17.NumberSpoke = 12;
-            this.loadingCircle17.OuterCircleRadius = 11;
-            this.loadingCircle17.RotationSpeed = 1;
-            this.loadingCircle17.SpokeThickness = 2;
-            this.loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle17, "loadingCircle17");
+            loadingCircle17.Active = false;
+            loadingCircle17.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle17.InnerCircleRadius = 5;
+            loadingCircle17.Name = "loadingCircle17";
+            loadingCircle17.NumberSpoke = 12;
+            loadingCircle17.OuterCircleRadius = 11;
+            loadingCircle17.RotationSpeed = 1;
+            loadingCircle17.SpokeThickness = 2;
+            loadingCircle17.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle16
             // 
-            resources.ApplyResources(this.loadingCircle16, "loadingCircle16");
-            this.loadingCircle16.Active = false;
-            this.loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle16.InnerCircleRadius = 5;
-            this.loadingCircle16.Name = "loadingCircle16";
-            this.loadingCircle16.NumberSpoke = 12;
-            this.loadingCircle16.OuterCircleRadius = 11;
-            this.loadingCircle16.RotationSpeed = 1;
-            this.loadingCircle16.SpokeThickness = 2;
-            this.loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle16, "loadingCircle16");
+            loadingCircle16.Active = false;
+            loadingCircle16.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle16.InnerCircleRadius = 5;
+            loadingCircle16.Name = "loadingCircle16";
+            loadingCircle16.NumberSpoke = 12;
+            loadingCircle16.OuterCircleRadius = 11;
+            loadingCircle16.RotationSpeed = 1;
+            loadingCircle16.SpokeThickness = 2;
+            loadingCircle16.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle15
             // 
-            resources.ApplyResources(this.loadingCircle15, "loadingCircle15");
-            this.loadingCircle15.Active = false;
-            this.loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle15.InnerCircleRadius = 5;
-            this.loadingCircle15.Name = "loadingCircle15";
-            this.loadingCircle15.NumberSpoke = 12;
-            this.loadingCircle15.OuterCircleRadius = 11;
-            this.loadingCircle15.RotationSpeed = 1;
-            this.loadingCircle15.SpokeThickness = 2;
-            this.loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle15, "loadingCircle15");
+            loadingCircle15.Active = false;
+            loadingCircle15.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle15.InnerCircleRadius = 5;
+            loadingCircle15.Name = "loadingCircle15";
+            loadingCircle15.NumberSpoke = 12;
+            loadingCircle15.OuterCircleRadius = 11;
+            loadingCircle15.RotationSpeed = 1;
+            loadingCircle15.SpokeThickness = 2;
+            loadingCircle15.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle14
             // 
-            resources.ApplyResources(this.loadingCircle14, "loadingCircle14");
-            this.loadingCircle14.Active = false;
-            this.loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle14.InnerCircleRadius = 5;
-            this.loadingCircle14.Name = "loadingCircle14";
-            this.loadingCircle14.NumberSpoke = 12;
-            this.loadingCircle14.OuterCircleRadius = 11;
-            this.loadingCircle14.RotationSpeed = 1;
-            this.loadingCircle14.SpokeThickness = 2;
-            this.loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle14, "loadingCircle14");
+            loadingCircle14.Active = false;
+            loadingCircle14.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle14.InnerCircleRadius = 5;
+            loadingCircle14.Name = "loadingCircle14";
+            loadingCircle14.NumberSpoke = 12;
+            loadingCircle14.OuterCircleRadius = 11;
+            loadingCircle14.RotationSpeed = 1;
+            loadingCircle14.SpokeThickness = 2;
+            loadingCircle14.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle13
             // 
-            resources.ApplyResources(this.loadingCircle13, "loadingCircle13");
-            this.loadingCircle13.Active = false;
-            this.loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle13.InnerCircleRadius = 5;
-            this.loadingCircle13.Name = "loadingCircle13";
-            this.loadingCircle13.NumberSpoke = 12;
-            this.loadingCircle13.OuterCircleRadius = 11;
-            this.loadingCircle13.RotationSpeed = 1;
-            this.loadingCircle13.SpokeThickness = 2;
-            this.loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle13, "loadingCircle13");
+            loadingCircle13.Active = false;
+            loadingCircle13.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle13.InnerCircleRadius = 5;
+            loadingCircle13.Name = "loadingCircle13";
+            loadingCircle13.NumberSpoke = 12;
+            loadingCircle13.OuterCircleRadius = 11;
+            loadingCircle13.RotationSpeed = 1;
+            loadingCircle13.SpokeThickness = 2;
+            loadingCircle13.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle12
             // 
-            resources.ApplyResources(this.loadingCircle12, "loadingCircle12");
-            this.loadingCircle12.Active = false;
-            this.loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle12.InnerCircleRadius = 5;
-            this.loadingCircle12.Name = "loadingCircle12";
-            this.loadingCircle12.NumberSpoke = 12;
-            this.loadingCircle12.OuterCircleRadius = 11;
-            this.loadingCircle12.RotationSpeed = 1;
-            this.loadingCircle12.SpokeThickness = 2;
-            this.loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle12, "loadingCircle12");
+            loadingCircle12.Active = false;
+            loadingCircle12.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle12.InnerCircleRadius = 5;
+            loadingCircle12.Name = "loadingCircle12";
+            loadingCircle12.NumberSpoke = 12;
+            loadingCircle12.OuterCircleRadius = 11;
+            loadingCircle12.RotationSpeed = 1;
+            loadingCircle12.SpokeThickness = 2;
+            loadingCircle12.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle11
             // 
-            resources.ApplyResources(this.loadingCircle11, "loadingCircle11");
-            this.loadingCircle11.Active = false;
-            this.loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle11.InnerCircleRadius = 5;
-            this.loadingCircle11.Name = "loadingCircle11";
-            this.loadingCircle11.NumberSpoke = 12;
-            this.loadingCircle11.OuterCircleRadius = 11;
-            this.loadingCircle11.RotationSpeed = 1;
-            this.loadingCircle11.SpokeThickness = 2;
-            this.loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle11, "loadingCircle11");
+            loadingCircle11.Active = false;
+            loadingCircle11.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle11.InnerCircleRadius = 5;
+            loadingCircle11.Name = "loadingCircle11";
+            loadingCircle11.NumberSpoke = 12;
+            loadingCircle11.OuterCircleRadius = 11;
+            loadingCircle11.RotationSpeed = 1;
+            loadingCircle11.SpokeThickness = 2;
+            loadingCircle11.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle10
             // 
-            resources.ApplyResources(this.loadingCircle10, "loadingCircle10");
-            this.loadingCircle10.Active = false;
-            this.loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle10.InnerCircleRadius = 5;
-            this.loadingCircle10.Name = "loadingCircle10";
-            this.loadingCircle10.NumberSpoke = 12;
-            this.loadingCircle10.OuterCircleRadius = 11;
-            this.loadingCircle10.RotationSpeed = 1;
-            this.loadingCircle10.SpokeThickness = 2;
-            this.loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle10, "loadingCircle10");
+            loadingCircle10.Active = false;
+            loadingCircle10.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle10.InnerCircleRadius = 5;
+            loadingCircle10.Name = "loadingCircle10";
+            loadingCircle10.NumberSpoke = 12;
+            loadingCircle10.OuterCircleRadius = 11;
+            loadingCircle10.RotationSpeed = 1;
+            loadingCircle10.SpokeThickness = 2;
+            loadingCircle10.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle9
             // 
-            resources.ApplyResources(this.loadingCircle9, "loadingCircle9");
-            this.loadingCircle9.Active = false;
-            this.loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle9.InnerCircleRadius = 5;
-            this.loadingCircle9.Name = "loadingCircle9";
-            this.loadingCircle9.NumberSpoke = 12;
-            this.loadingCircle9.OuterCircleRadius = 11;
-            this.loadingCircle9.RotationSpeed = 1;
-            this.loadingCircle9.SpokeThickness = 2;
-            this.loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle9, "loadingCircle9");
+            loadingCircle9.Active = false;
+            loadingCircle9.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle9.InnerCircleRadius = 5;
+            loadingCircle9.Name = "loadingCircle9";
+            loadingCircle9.NumberSpoke = 12;
+            loadingCircle9.OuterCircleRadius = 11;
+            loadingCircle9.RotationSpeed = 1;
+            loadingCircle9.SpokeThickness = 2;
+            loadingCircle9.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle8
             // 
-            resources.ApplyResources(this.loadingCircle8, "loadingCircle8");
-            this.loadingCircle8.Active = false;
-            this.loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle8.InnerCircleRadius = 5;
-            this.loadingCircle8.Name = "loadingCircle8";
-            this.loadingCircle8.NumberSpoke = 12;
-            this.loadingCircle8.OuterCircleRadius = 11;
-            this.loadingCircle8.RotationSpeed = 1;
-            this.loadingCircle8.SpokeThickness = 2;
-            this.loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle8, "loadingCircle8");
+            loadingCircle8.Active = false;
+            loadingCircle8.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle8.InnerCircleRadius = 5;
+            loadingCircle8.Name = "loadingCircle8";
+            loadingCircle8.NumberSpoke = 12;
+            loadingCircle8.OuterCircleRadius = 11;
+            loadingCircle8.RotationSpeed = 1;
+            loadingCircle8.SpokeThickness = 2;
+            loadingCircle8.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle7
             // 
-            resources.ApplyResources(this.loadingCircle7, "loadingCircle7");
-            this.loadingCircle7.Active = false;
-            this.loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle7.InnerCircleRadius = 5;
-            this.loadingCircle7.Name = "loadingCircle7";
-            this.loadingCircle7.NumberSpoke = 12;
-            this.loadingCircle7.OuterCircleRadius = 11;
-            this.loadingCircle7.RotationSpeed = 1;
-            this.loadingCircle7.SpokeThickness = 2;
-            this.loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle7, "loadingCircle7");
+            loadingCircle7.Active = false;
+            loadingCircle7.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle7.InnerCircleRadius = 5;
+            loadingCircle7.Name = "loadingCircle7";
+            loadingCircle7.NumberSpoke = 12;
+            loadingCircle7.OuterCircleRadius = 11;
+            loadingCircle7.RotationSpeed = 1;
+            loadingCircle7.SpokeThickness = 2;
+            loadingCircle7.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle6
             // 
-            resources.ApplyResources(this.loadingCircle6, "loadingCircle6");
-            this.loadingCircle6.Active = false;
-            this.loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle6.InnerCircleRadius = 5;
-            this.loadingCircle6.Name = "loadingCircle6";
-            this.loadingCircle6.NumberSpoke = 12;
-            this.loadingCircle6.OuterCircleRadius = 11;
-            this.loadingCircle6.RotationSpeed = 1;
-            this.loadingCircle6.SpokeThickness = 2;
-            this.loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle6, "loadingCircle6");
+            loadingCircle6.Active = false;
+            loadingCircle6.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle6.InnerCircleRadius = 5;
+            loadingCircle6.Name = "loadingCircle6";
+            loadingCircle6.NumberSpoke = 12;
+            loadingCircle6.OuterCircleRadius = 11;
+            loadingCircle6.RotationSpeed = 1;
+            loadingCircle6.SpokeThickness = 2;
+            loadingCircle6.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle5
             // 
-            resources.ApplyResources(this.loadingCircle5, "loadingCircle5");
-            this.loadingCircle5.Active = false;
-            this.loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle5.InnerCircleRadius = 5;
-            this.loadingCircle5.Name = "loadingCircle5";
-            this.loadingCircle5.NumberSpoke = 12;
-            this.loadingCircle5.OuterCircleRadius = 11;
-            this.loadingCircle5.RotationSpeed = 1;
-            this.loadingCircle5.SpokeThickness = 2;
-            this.loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle5, "loadingCircle5");
+            loadingCircle5.Active = false;
+            loadingCircle5.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle5.InnerCircleRadius = 5;
+            loadingCircle5.Name = "loadingCircle5";
+            loadingCircle5.NumberSpoke = 12;
+            loadingCircle5.OuterCircleRadius = 11;
+            loadingCircle5.RotationSpeed = 1;
+            loadingCircle5.SpokeThickness = 2;
+            loadingCircle5.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle4
             // 
-            resources.ApplyResources(this.loadingCircle4, "loadingCircle4");
-            this.loadingCircle4.Active = false;
-            this.loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle4.InnerCircleRadius = 5;
-            this.loadingCircle4.Name = "loadingCircle4";
-            this.loadingCircle4.NumberSpoke = 12;
-            this.loadingCircle4.OuterCircleRadius = 11;
-            this.loadingCircle4.RotationSpeed = 1;
-            this.loadingCircle4.SpokeThickness = 2;
-            this.loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle4, "loadingCircle4");
+            loadingCircle4.Active = false;
+            loadingCircle4.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle4.InnerCircleRadius = 5;
+            loadingCircle4.Name = "loadingCircle4";
+            loadingCircle4.NumberSpoke = 12;
+            loadingCircle4.OuterCircleRadius = 11;
+            loadingCircle4.RotationSpeed = 1;
+            loadingCircle4.SpokeThickness = 2;
+            loadingCircle4.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle3
             // 
-            resources.ApplyResources(this.loadingCircle3, "loadingCircle3");
-            this.loadingCircle3.Active = false;
-            this.loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle3.InnerCircleRadius = 5;
-            this.loadingCircle3.Name = "loadingCircle3";
-            this.loadingCircle3.NumberSpoke = 12;
-            this.loadingCircle3.OuterCircleRadius = 11;
-            this.loadingCircle3.RotationSpeed = 1;
-            this.loadingCircle3.SpokeThickness = 2;
-            this.loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle3, "loadingCircle3");
+            loadingCircle3.Active = false;
+            loadingCircle3.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle3.InnerCircleRadius = 5;
+            loadingCircle3.Name = "loadingCircle3";
+            loadingCircle3.NumberSpoke = 12;
+            loadingCircle3.OuterCircleRadius = 11;
+            loadingCircle3.RotationSpeed = 1;
+            loadingCircle3.SpokeThickness = 2;
+            loadingCircle3.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle2
             // 
-            resources.ApplyResources(this.loadingCircle2, "loadingCircle2");
-            this.loadingCircle2.Active = false;
-            this.loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle2.InnerCircleRadius = 5;
-            this.loadingCircle2.Name = "loadingCircle2";
-            this.loadingCircle2.NumberSpoke = 12;
-            this.loadingCircle2.OuterCircleRadius = 11;
-            this.loadingCircle2.RotationSpeed = 1;
-            this.loadingCircle2.SpokeThickness = 2;
-            this.loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle2, "loadingCircle2");
+            loadingCircle2.Active = false;
+            loadingCircle2.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle2.InnerCircleRadius = 5;
+            loadingCircle2.Name = "loadingCircle2";
+            loadingCircle2.NumberSpoke = 12;
+            loadingCircle2.OuterCircleRadius = 11;
+            loadingCircle2.RotationSpeed = 1;
+            loadingCircle2.SpokeThickness = 2;
+            loadingCircle2.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle1
             // 
-            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
-            this.loadingCircle1.Active = false;
-            this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 12;
-            this.loadingCircle1.OuterCircleRadius = 11;
-            this.loadingCircle1.RotationSpeed = 1;
-            this.loadingCircle1.SpokeThickness = 2;
-            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle1, "loadingCircle1");
+            loadingCircle1.Active = false;
+            loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle1.InnerCircleRadius = 5;
+            loadingCircle1.Name = "loadingCircle1";
+            loadingCircle1.NumberSpoke = 12;
+            loadingCircle1.OuterCircleRadius = 11;
+            loadingCircle1.RotationSpeed = 1;
+            loadingCircle1.SpokeThickness = 2;
+            loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // separatorH
             // 
-            resources.ApplyResources(this.separatorH, "separatorH");
-            this.separatorH.BackColor = System.Drawing.Color.DimGray;
-            this.separatorH.Name = "separatorH";
+            resources.ApplyResources(separatorH, "separatorH");
+            separatorH.BackColor = System.Drawing.Color.DimGray;
+            separatorH.Name = "separatorH";
             // 
             // separatorV
             // 
-            resources.ApplyResources(this.separatorV, "separatorV");
-            this.separatorV.BackColor = System.Drawing.Color.DimGray;
-            this.separatorV.Name = "separatorV";
+            resources.ApplyResources(separatorV, "separatorV");
+            separatorV.BackColor = System.Drawing.Color.DimGray;
+            separatorV.Name = "separatorV";
             // 
             // tpmIconImg
             // 
-            resources.ApplyResources(this.tpmIconImg, "tpmIconImg");
-            this.tpmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.tpmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.tpmIconImg.Name = "tpmIconImg";
-            this.tpmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tpmIconImg.TabStop = false;
+            resources.ApplyResources(tpmIconImg, "tpmIconImg");
+            tpmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            tpmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            tpmIconImg.Name = "tpmIconImg";
+            tpmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            tpmIconImg.TabStop = false;
             // 
             // smartIconImg
             // 
-            resources.ApplyResources(this.smartIconImg, "smartIconImg");
-            this.smartIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.smartIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.smartIconImg.Name = "smartIconImg";
-            this.smartIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.smartIconImg.TabStop = false;
+            resources.ApplyResources(smartIconImg, "smartIconImg");
+            smartIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            smartIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            smartIconImg.Name = "smartIconImg";
+            smartIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            smartIconImg.TabStop = false;
             // 
             // lblSmart
             // 
-            resources.ApplyResources(this.lblSmart, "lblSmart");
-            this.lblSmart.ForeColor = System.Drawing.Color.Silver;
-            this.lblSmart.Name = "lblSmart";
+            resources.ApplyResources(lblSmart, "lblSmart");
+            lblSmart.ForeColor = System.Drawing.Color.Silver;
+            lblSmart.Name = "lblSmart";
             // 
             // lblTPM
             // 
-            resources.ApplyResources(this.lblTPM, "lblTPM");
-            this.lblTPM.ForeColor = System.Drawing.Color.Silver;
-            this.lblTPM.Name = "lblTPM";
+            resources.ApplyResources(lblTPM, "lblTPM");
+            lblTPM.ForeColor = System.Drawing.Color.Silver;
+            lblTPM.Name = "lblTPM";
             // 
             // lblFixedSmart
             // 
-            resources.ApplyResources(this.lblFixedSmart, "lblFixedSmart");
-            this.lblFixedSmart.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSmart.Name = "lblFixedSmart";
+            resources.ApplyResources(lblFixedSmart, "lblFixedSmart");
+            lblFixedSmart.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedSmart.Name = "lblFixedSmart";
             // 
             // vtIconImg
             // 
-            resources.ApplyResources(this.vtIconImg, "vtIconImg");
-            this.vtIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.vtIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.vtIconImg.Name = "vtIconImg";
-            this.vtIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.vtIconImg.TabStop = false;
+            resources.ApplyResources(vtIconImg, "vtIconImg");
+            vtIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            vtIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            vtIconImg.Name = "vtIconImg";
+            vtIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            vtIconImg.TabStop = false;
             // 
             // lblFixedTPM
             // 
-            resources.ApplyResources(this.lblFixedTPM, "lblFixedTPM");
-            this.lblFixedTPM.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTPM.Name = "lblFixedTPM";
+            resources.ApplyResources(lblFixedTPM, "lblFixedTPM");
+            lblFixedTPM.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedTPM.Name = "lblFixedTPM";
             // 
             // progressBar1
             // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.progressBar1.Name = "progressBar1";
+            resources.ApplyResources(progressBar1, "progressBar1");
+            progressBar1.Name = "progressBar1";
             // 
             // lblProgressPercent
             // 
-            resources.ApplyResources(this.lblProgressPercent, "lblProgressPercent");
-            this.lblProgressPercent.BackColor = System.Drawing.Color.Transparent;
-            this.lblProgressPercent.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblProgressPercent.Name = "lblProgressPercent";
+            resources.ApplyResources(lblProgressPercent, "lblProgressPercent");
+            lblProgressPercent.BackColor = System.Drawing.Color.Transparent;
+            lblProgressPercent.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblProgressPercent.Name = "lblProgressPercent";
             // 
             // lblVT
             // 
-            resources.ApplyResources(this.lblVT, "lblVT");
-            this.lblVT.ForeColor = System.Drawing.Color.Silver;
-            this.lblVT.Name = "lblVT";
+            resources.ApplyResources(lblVT, "lblVT");
+            lblVT.ForeColor = System.Drawing.Color.Silver;
+            lblVT.Name = "lblVT";
             // 
             // lblFixedVT
             // 
-            resources.ApplyResources(this.lblFixedVT, "lblFixedVT");
-            this.lblFixedVT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedVT.Name = "lblFixedVT";
+            resources.ApplyResources(lblFixedVT, "lblFixedVT");
+            lblFixedVT.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedVT.Name = "lblFixedVT";
             // 
             // bmIconImg
             // 
-            resources.ApplyResources(this.bmIconImg, "bmIconImg");
-            this.bmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.bmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.bmIconImg.Name = "bmIconImg";
-            this.bmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.bmIconImg.TabStop = false;
+            resources.ApplyResources(bmIconImg, "bmIconImg");
+            bmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            bmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            bmIconImg.Name = "bmIconImg";
+            bmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            bmIconImg.TabStop = false;
             // 
             // secBootIconImg
             // 
-            resources.ApplyResources(this.secBootIconImg, "secBootIconImg");
-            this.secBootIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.secBootIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.secBootIconImg.Name = "secBootIconImg";
-            this.secBootIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.secBootIconImg.TabStop = false;
+            resources.ApplyResources(secBootIconImg, "secBootIconImg");
+            secBootIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            secBootIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            secBootIconImg.Name = "secBootIconImg";
+            secBootIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            secBootIconImg.TabStop = false;
             // 
             // biosIconImg
             // 
-            resources.ApplyResources(this.biosIconImg, "biosIconImg");
-            this.biosIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.biosIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.biosIconImg.Name = "biosIconImg";
-            this.biosIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.biosIconImg.TabStop = false;
+            resources.ApplyResources(biosIconImg, "biosIconImg");
+            biosIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            biosIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            biosIconImg.Name = "biosIconImg";
+            biosIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            biosIconImg.TabStop = false;
             // 
             // biosTypeIconImg
             // 
-            resources.ApplyResources(this.biosTypeIconImg, "biosTypeIconImg");
-            this.biosTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.biosTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.biosTypeIconImg.Name = "biosTypeIconImg";
-            this.biosTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.biosTypeIconImg.TabStop = false;
+            resources.ApplyResources(biosTypeIconImg, "biosTypeIconImg");
+            biosTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            biosTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            biosTypeIconImg.Name = "biosTypeIconImg";
+            biosTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            biosTypeIconImg.TabStop = false;
             // 
             // ipIconImg
             // 
-            resources.ApplyResources(this.ipIconImg, "ipIconImg");
-            this.ipIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.ipIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.ipIconImg.Name = "ipIconImg";
-            this.ipIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.ipIconImg.TabStop = false;
+            resources.ApplyResources(ipIconImg, "ipIconImg");
+            ipIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            ipIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            ipIconImg.Name = "ipIconImg";
+            ipIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            ipIconImg.TabStop = false;
             // 
             // macIconImg
             // 
-            resources.ApplyResources(this.macIconImg, "macIconImg");
-            this.macIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.macIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.macIconImg.Name = "macIconImg";
-            this.macIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.macIconImg.TabStop = false;
+            resources.ApplyResources(macIconImg, "macIconImg");
+            macIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            macIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            macIconImg.Name = "macIconImg";
+            macIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            macIconImg.TabStop = false;
             // 
             // hostnameIconImg
             // 
-            resources.ApplyResources(this.hostnameIconImg, "hostnameIconImg");
-            this.hostnameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.hostnameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.hostnameIconImg.Name = "hostnameIconImg";
-            this.hostnameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hostnameIconImg.TabStop = false;
+            resources.ApplyResources(hostnameIconImg, "hostnameIconImg");
+            hostnameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            hostnameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            hostnameIconImg.Name = "hostnameIconImg";
+            hostnameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hostnameIconImg.TabStop = false;
             // 
             // osIconImg
             // 
-            resources.ApplyResources(this.osIconImg, "osIconImg");
-            this.osIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.osIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.osIconImg.Name = "osIconImg";
-            this.osIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.osIconImg.TabStop = false;
+            resources.ApplyResources(osIconImg, "osIconImg");
+            osIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            osIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            osIconImg.Name = "osIconImg";
+            osIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            osIconImg.TabStop = false;
             // 
             // gpuInfoIconImg
             // 
-            resources.ApplyResources(this.gpuInfoIconImg, "gpuInfoIconImg");
-            this.gpuInfoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.gpuInfoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.gpuInfoIconImg.Name = "gpuInfoIconImg";
-            this.gpuInfoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.gpuInfoIconImg.TabStop = false;
+            resources.ApplyResources(gpuInfoIconImg, "gpuInfoIconImg");
+            gpuInfoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            gpuInfoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            gpuInfoIconImg.Name = "gpuInfoIconImg";
+            gpuInfoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            gpuInfoIconImg.TabStop = false;
             // 
             // mediaOperationIconImg
             // 
-            resources.ApplyResources(this.mediaOperationIconImg, "mediaOperationIconImg");
-            this.mediaOperationIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.mediaOperationIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.mediaOperationIconImg.Name = "mediaOperationIconImg";
-            this.mediaOperationIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.mediaOperationIconImg.TabStop = false;
+            resources.ApplyResources(mediaOperationIconImg, "mediaOperationIconImg");
+            mediaOperationIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            mediaOperationIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            mediaOperationIconImg.Name = "mediaOperationIconImg";
+            mediaOperationIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            mediaOperationIconImg.TabStop = false;
             // 
             // mediaTypeIconImg
             // 
-            resources.ApplyResources(this.mediaTypeIconImg, "mediaTypeIconImg");
-            this.mediaTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.mediaTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.mediaTypeIconImg.Name = "mediaTypeIconImg";
-            this.mediaTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.mediaTypeIconImg.TabStop = false;
+            resources.ApplyResources(mediaTypeIconImg, "mediaTypeIconImg");
+            mediaTypeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            mediaTypeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            mediaTypeIconImg.Name = "mediaTypeIconImg";
+            mediaTypeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            mediaTypeIconImg.TabStop = false;
             // 
             // hdSizeIconImg
             // 
-            resources.ApplyResources(this.hdSizeIconImg, "hdSizeIconImg");
-            this.hdSizeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.hdSizeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.hdSizeIconImg.Name = "hdSizeIconImg";
-            this.hdSizeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hdSizeIconImg.TabStop = false;
+            resources.ApplyResources(hdSizeIconImg, "hdSizeIconImg");
+            hdSizeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            hdSizeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            hdSizeIconImg.Name = "hdSizeIconImg";
+            hdSizeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            hdSizeIconImg.TabStop = false;
             // 
             // pmIconImg
             // 
-            resources.ApplyResources(this.pmIconImg, "pmIconImg");
-            this.pmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.pmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.pmIconImg.Name = "pmIconImg";
-            this.pmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.pmIconImg.TabStop = false;
+            resources.ApplyResources(pmIconImg, "pmIconImg");
+            pmIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            pmIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            pmIconImg.Name = "pmIconImg";
+            pmIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pmIconImg.TabStop = false;
             // 
             // procNameIconImg
             // 
-            resources.ApplyResources(this.procNameIconImg, "procNameIconImg");
-            this.procNameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.procNameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.procNameIconImg.Name = "procNameIconImg";
-            this.procNameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.procNameIconImg.TabStop = false;
+            resources.ApplyResources(procNameIconImg, "procNameIconImg");
+            procNameIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            procNameIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            procNameIconImg.Name = "procNameIconImg";
+            procNameIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            procNameIconImg.TabStop = false;
             // 
             // serialNoIconImg
             // 
-            resources.ApplyResources(this.serialNoIconImg, "serialNoIconImg");
-            this.serialNoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.serialNoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.serialNoIconImg.Name = "serialNoIconImg";
-            this.serialNoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.serialNoIconImg.TabStop = false;
+            resources.ApplyResources(serialNoIconImg, "serialNoIconImg");
+            serialNoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            serialNoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            serialNoIconImg.Name = "serialNoIconImg";
+            serialNoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            serialNoIconImg.TabStop = false;
             // 
             // modelIconImg
             // 
-            resources.ApplyResources(this.modelIconImg, "modelIconImg");
-            this.modelIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.modelIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.modelIconImg.Name = "modelIconImg";
-            this.modelIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.modelIconImg.TabStop = false;
+            resources.ApplyResources(modelIconImg, "modelIconImg");
+            modelIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            modelIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            modelIconImg.Name = "modelIconImg";
+            modelIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            modelIconImg.TabStop = false;
             // 
             // lblSecBoot
             // 
-            resources.ApplyResources(this.lblSecBoot, "lblSecBoot");
-            this.lblSecBoot.ForeColor = System.Drawing.Color.Silver;
-            this.lblSecBoot.Name = "lblSecBoot";
+            resources.ApplyResources(lblSecBoot, "lblSecBoot");
+            lblSecBoot.ForeColor = System.Drawing.Color.Silver;
+            lblSecBoot.Name = "lblSecBoot";
             // 
             // lblFixedSecBoot
             // 
-            resources.ApplyResources(this.lblFixedSecBoot, "lblFixedSecBoot");
-            this.lblFixedSecBoot.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSecBoot.Name = "lblFixedSecBoot";
+            resources.ApplyResources(lblFixedSecBoot, "lblFixedSecBoot");
+            lblFixedSecBoot.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedSecBoot.Name = "lblFixedSecBoot";
             // 
             // lblMediaOperation
             // 
-            resources.ApplyResources(this.lblMediaOperation, "lblMediaOperation");
-            this.lblMediaOperation.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaOperation.Name = "lblMediaOperation";
+            resources.ApplyResources(lblMediaOperation, "lblMediaOperation");
+            lblMediaOperation.ForeColor = System.Drawing.Color.Silver;
+            lblMediaOperation.Name = "lblMediaOperation";
             // 
             // lblFixedMediaOperation
             // 
-            resources.ApplyResources(this.lblFixedMediaOperation, "lblFixedMediaOperation");
-            this.lblFixedMediaOperation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMediaOperation.Name = "lblFixedMediaOperation";
+            resources.ApplyResources(lblFixedMediaOperation, "lblFixedMediaOperation");
+            lblFixedMediaOperation.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedMediaOperation.Name = "lblFixedMediaOperation";
             // 
             // lblGPUInfo
             // 
-            resources.ApplyResources(this.lblGPUInfo, "lblGPUInfo");
-            this.lblGPUInfo.ForeColor = System.Drawing.Color.Silver;
-            this.lblGPUInfo.Name = "lblGPUInfo";
+            resources.ApplyResources(lblGPUInfo, "lblGPUInfo");
+            lblGPUInfo.ForeColor = System.Drawing.Color.Silver;
+            lblGPUInfo.Name = "lblGPUInfo";
             // 
             // lblFixedGPUInfo
             // 
-            resources.ApplyResources(this.lblFixedGPUInfo, "lblFixedGPUInfo");
-            this.lblFixedGPUInfo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedGPUInfo.Name = "lblFixedGPUInfo";
+            resources.ApplyResources(lblFixedGPUInfo, "lblFixedGPUInfo");
+            lblFixedGPUInfo.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedGPUInfo.Name = "lblFixedGPUInfo";
             // 
             // lblMediaType
             // 
-            resources.ApplyResources(this.lblMediaType, "lblMediaType");
-            this.lblMediaType.ForeColor = System.Drawing.Color.Silver;
-            this.lblMediaType.Name = "lblMediaType";
+            resources.ApplyResources(lblMediaType, "lblMediaType");
+            lblMediaType.ForeColor = System.Drawing.Color.Silver;
+            lblMediaType.Name = "lblMediaType";
             // 
             // lblFixedMediaType
             // 
-            resources.ApplyResources(this.lblFixedMediaType, "lblFixedMediaType");
-            this.lblFixedMediaType.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedMediaType.Name = "lblFixedMediaType";
+            resources.ApplyResources(lblFixedMediaType, "lblFixedMediaType");
+            lblFixedMediaType.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedMediaType.Name = "lblFixedMediaType";
             // 
             // groupBoxPatrData
             // 
-            resources.ApplyResources(this.groupBoxPatrData, "groupBoxPatrData");
-            this.groupBoxPatrData.Controls.Add(this.comboBoxBattery);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxStandard);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxActiveDirectory);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxTag);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxInUse);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxType);
-            this.groupBoxPatrData.Controls.Add(this.comboBoxBuilding);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory9);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory8);
-            this.groupBoxPatrData.Controls.Add(this.ticketIconImg);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedTicket);
-            this.groupBoxPatrData.Controls.Add(this.textBoxTicket);
-            this.groupBoxPatrData.Controls.Add(this.batteryIconImg);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory7);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory6);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedBattery);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory5);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory4);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory3);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory2);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatory);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedMandatoryMain);
-            this.groupBoxPatrData.Controls.Add(this.studentRadioButton);
-            this.groupBoxPatrData.Controls.Add(this.employeeRadioButton);
-            this.groupBoxPatrData.Controls.Add(this.whoIconImg);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedWho);
-            this.groupBoxPatrData.Controls.Add(this.letterIconImg);
-            this.groupBoxPatrData.Controls.Add(this.typeIconImg);
-            this.groupBoxPatrData.Controls.Add(this.tagIconImg);
-            this.groupBoxPatrData.Controls.Add(this.inUseIconImg);
-            this.groupBoxPatrData.Controls.Add(this.datetimeIconImg);
-            this.groupBoxPatrData.Controls.Add(this.standardIconImg);
-            this.groupBoxPatrData.Controls.Add(this.activeDirectoryIconImg);
-            this.groupBoxPatrData.Controls.Add(this.buildingIconImg);
-            this.groupBoxPatrData.Controls.Add(this.roomIconImg);
-            this.groupBoxPatrData.Controls.Add(this.sealIconImg);
-            this.groupBoxPatrData.Controls.Add(this.patrimonyIconImg);
-            this.groupBoxPatrData.Controls.Add(this.dateTimePicker1);
-            this.groupBoxPatrData.Controls.Add(this.groupBoxTypeOfService);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedPatrimony);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedSeal);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedBuilding);
-            this.groupBoxPatrData.Controls.Add(this.textBoxPatrimony);
-            this.groupBoxPatrData.Controls.Add(this.textBoxSeal);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedLetter);
-            this.groupBoxPatrData.Controls.Add(this.textBoxRoom);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedRoom);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedActiveDirectory);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedDateTimePicker);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedType);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedStandard);
-            this.groupBoxPatrData.Controls.Add(this.textBoxLetter);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedInUse);
-            this.groupBoxPatrData.Controls.Add(this.lblFixedTag);
-            this.groupBoxPatrData.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxPatrData.Name = "groupBoxPatrData";
-            this.groupBoxPatrData.TabStop = false;
+            resources.ApplyResources(groupBoxPatrData, "groupBoxPatrData");
+            groupBoxPatrData.Controls.Add(comboBoxBattery);
+            groupBoxPatrData.Controls.Add(comboBoxStandard);
+            groupBoxPatrData.Controls.Add(comboBoxActiveDirectory);
+            groupBoxPatrData.Controls.Add(comboBoxTag);
+            groupBoxPatrData.Controls.Add(comboBoxInUse);
+            groupBoxPatrData.Controls.Add(comboBoxType);
+            groupBoxPatrData.Controls.Add(comboBoxBuilding);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory9);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory8);
+            groupBoxPatrData.Controls.Add(ticketIconImg);
+            groupBoxPatrData.Controls.Add(lblFixedTicket);
+            groupBoxPatrData.Controls.Add(textBoxTicket);
+            groupBoxPatrData.Controls.Add(batteryIconImg);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory7);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory6);
+            groupBoxPatrData.Controls.Add(lblFixedBattery);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory5);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory4);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory3);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory2);
+            groupBoxPatrData.Controls.Add(lblFixedMandatory);
+            groupBoxPatrData.Controls.Add(lblFixedMandatoryMain);
+            groupBoxPatrData.Controls.Add(studentRadioButton);
+            groupBoxPatrData.Controls.Add(employeeRadioButton);
+            groupBoxPatrData.Controls.Add(whoIconImg);
+            groupBoxPatrData.Controls.Add(lblFixedWho);
+            groupBoxPatrData.Controls.Add(letterIconImg);
+            groupBoxPatrData.Controls.Add(typeIconImg);
+            groupBoxPatrData.Controls.Add(tagIconImg);
+            groupBoxPatrData.Controls.Add(inUseIconImg);
+            groupBoxPatrData.Controls.Add(datetimeIconImg);
+            groupBoxPatrData.Controls.Add(standardIconImg);
+            groupBoxPatrData.Controls.Add(activeDirectoryIconImg);
+            groupBoxPatrData.Controls.Add(buildingIconImg);
+            groupBoxPatrData.Controls.Add(roomIconImg);
+            groupBoxPatrData.Controls.Add(sealIconImg);
+            groupBoxPatrData.Controls.Add(patrimonyIconImg);
+            groupBoxPatrData.Controls.Add(dateTimePicker1);
+            groupBoxPatrData.Controls.Add(groupBoxTypeOfService);
+            groupBoxPatrData.Controls.Add(lblFixedPatrimony);
+            groupBoxPatrData.Controls.Add(lblFixedSeal);
+            groupBoxPatrData.Controls.Add(lblFixedBuilding);
+            groupBoxPatrData.Controls.Add(textBoxPatrimony);
+            groupBoxPatrData.Controls.Add(textBoxSeal);
+            groupBoxPatrData.Controls.Add(lblFixedLetter);
+            groupBoxPatrData.Controls.Add(textBoxRoom);
+            groupBoxPatrData.Controls.Add(lblFixedRoom);
+            groupBoxPatrData.Controls.Add(lblFixedActiveDirectory);
+            groupBoxPatrData.Controls.Add(lblFixedDateTimePicker);
+            groupBoxPatrData.Controls.Add(lblFixedType);
+            groupBoxPatrData.Controls.Add(lblFixedStandard);
+            groupBoxPatrData.Controls.Add(textBoxLetter);
+            groupBoxPatrData.Controls.Add(lblFixedInUse);
+            groupBoxPatrData.Controls.Add(lblFixedTag);
+            groupBoxPatrData.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxPatrData.Name = "groupBoxPatrData";
+            groupBoxPatrData.TabStop = false;
             // 
             // lblFixedMandatory9
             // 
-            resources.ApplyResources(this.lblFixedMandatory9, "lblFixedMandatory9");
-            this.lblFixedMandatory9.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory9.Name = "lblFixedMandatory9";
+            resources.ApplyResources(lblFixedMandatory9, "lblFixedMandatory9");
+            lblFixedMandatory9.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory9.Name = "lblFixedMandatory9";
             // 
             // lblFixedMandatory8
             // 
-            resources.ApplyResources(this.lblFixedMandatory8, "lblFixedMandatory8");
-            this.lblFixedMandatory8.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory8.Name = "lblFixedMandatory8";
+            resources.ApplyResources(lblFixedMandatory8, "lblFixedMandatory8");
+            lblFixedMandatory8.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory8.Name = "lblFixedMandatory8";
             // 
             // ticketIconImg
             // 
-            resources.ApplyResources(this.ticketIconImg, "ticketIconImg");
-            this.ticketIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.ticketIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.ticketIconImg.Name = "ticketIconImg";
-            this.ticketIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.ticketIconImg.TabStop = false;
+            resources.ApplyResources(ticketIconImg, "ticketIconImg");
+            ticketIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            ticketIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            ticketIconImg.Name = "ticketIconImg";
+            ticketIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            ticketIconImg.TabStop = false;
             // 
             // lblFixedTicket
             // 
-            resources.ApplyResources(this.lblFixedTicket, "lblFixedTicket");
-            this.lblFixedTicket.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedTicket.Name = "lblFixedTicket";
+            resources.ApplyResources(lblFixedTicket, "lblFixedTicket");
+            lblFixedTicket.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedTicket.Name = "lblFixedTicket";
             // 
             // textBoxTicket
             // 
-            resources.ApplyResources(this.textBoxTicket, "textBoxTicket");
-            this.textBoxTicket.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxTicket.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxTicket.Name = "textBoxTicket";
-            this.textBoxTicket.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
+            resources.ApplyResources(textBoxTicket, "textBoxTicket");
+            textBoxTicket.BackColor = System.Drawing.SystemColors.Window;
+            textBoxTicket.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxTicket.Name = "textBoxTicket";
+            textBoxTicket.KeyPress += new System.Windows.Forms.KeyPressEventHandler(TextBoxNumbersOnly_KeyPress);
             // 
             // batteryIconImg
             // 
-            resources.ApplyResources(this.batteryIconImg, "batteryIconImg");
-            this.batteryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.batteryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.batteryIconImg.Name = "batteryIconImg";
-            this.batteryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.batteryIconImg.TabStop = false;
+            resources.ApplyResources(batteryIconImg, "batteryIconImg");
+            batteryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            batteryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            batteryIconImg.Name = "batteryIconImg";
+            batteryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            batteryIconImg.TabStop = false;
             // 
             // lblFixedMandatory7
             // 
-            resources.ApplyResources(this.lblFixedMandatory7, "lblFixedMandatory7");
-            this.lblFixedMandatory7.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory7.Name = "lblFixedMandatory7";
+            resources.ApplyResources(lblFixedMandatory7, "lblFixedMandatory7");
+            lblFixedMandatory7.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory7.Name = "lblFixedMandatory7";
             // 
             // lblFixedMandatory6
             // 
-            resources.ApplyResources(this.lblFixedMandatory6, "lblFixedMandatory6");
-            this.lblFixedMandatory6.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory6.Name = "lblFixedMandatory6";
+            resources.ApplyResources(lblFixedMandatory6, "lblFixedMandatory6");
+            lblFixedMandatory6.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory6.Name = "lblFixedMandatory6";
             // 
             // lblFixedBattery
             // 
-            resources.ApplyResources(this.lblFixedBattery, "lblFixedBattery");
-            this.lblFixedBattery.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedBattery.Name = "lblFixedBattery";
+            resources.ApplyResources(lblFixedBattery, "lblFixedBattery");
+            lblFixedBattery.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedBattery.Name = "lblFixedBattery";
             // 
             // lblFixedMandatory5
             // 
-            resources.ApplyResources(this.lblFixedMandatory5, "lblFixedMandatory5");
-            this.lblFixedMandatory5.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory5.Name = "lblFixedMandatory5";
+            resources.ApplyResources(lblFixedMandatory5, "lblFixedMandatory5");
+            lblFixedMandatory5.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory5.Name = "lblFixedMandatory5";
             // 
             // lblFixedMandatory4
             // 
-            resources.ApplyResources(this.lblFixedMandatory4, "lblFixedMandatory4");
-            this.lblFixedMandatory4.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory4.Name = "lblFixedMandatory4";
+            resources.ApplyResources(lblFixedMandatory4, "lblFixedMandatory4");
+            lblFixedMandatory4.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory4.Name = "lblFixedMandatory4";
             // 
             // lblFixedMandatory3
             // 
-            resources.ApplyResources(this.lblFixedMandatory3, "lblFixedMandatory3");
-            this.lblFixedMandatory3.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory3.Name = "lblFixedMandatory3";
+            resources.ApplyResources(lblFixedMandatory3, "lblFixedMandatory3");
+            lblFixedMandatory3.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory3.Name = "lblFixedMandatory3";
             // 
             // lblFixedMandatory2
             // 
-            resources.ApplyResources(this.lblFixedMandatory2, "lblFixedMandatory2");
-            this.lblFixedMandatory2.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory2.Name = "lblFixedMandatory2";
+            resources.ApplyResources(lblFixedMandatory2, "lblFixedMandatory2");
+            lblFixedMandatory2.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory2.Name = "lblFixedMandatory2";
             // 
             // lblFixedMandatory
             // 
-            resources.ApplyResources(this.lblFixedMandatory, "lblFixedMandatory");
-            this.lblFixedMandatory.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory.Name = "lblFixedMandatory";
+            resources.ApplyResources(lblFixedMandatory, "lblFixedMandatory");
+            lblFixedMandatory.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory.Name = "lblFixedMandatory";
             // 
             // lblFixedMandatoryMain
             // 
-            resources.ApplyResources(this.lblFixedMandatoryMain, "lblFixedMandatoryMain");
-            this.lblFixedMandatoryMain.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatoryMain.Name = "lblFixedMandatoryMain";
+            resources.ApplyResources(lblFixedMandatoryMain, "lblFixedMandatoryMain");
+            lblFixedMandatoryMain.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatoryMain.Name = "lblFixedMandatoryMain";
             // 
             // studentRadioButton
             // 
-            resources.ApplyResources(this.studentRadioButton, "studentRadioButton");
-            this.studentRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.studentRadioButton.Name = "studentRadioButton";
-            this.studentRadioButton.TabStop = true;
-            this.studentRadioButton.UseVisualStyleBackColor = true;
-            this.studentRadioButton.CheckedChanged += new System.EventHandler(this.StudentButton2_CheckedChanged);
+            resources.ApplyResources(studentRadioButton, "studentRadioButton");
+            studentRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            studentRadioButton.Name = "studentRadioButton";
+            studentRadioButton.TabStop = true;
+            studentRadioButton.UseVisualStyleBackColor = true;
+            studentRadioButton.CheckedChanged += new System.EventHandler(StudentButton2_CheckedChanged);
             // 
             // employeeRadioButton
             // 
-            resources.ApplyResources(this.employeeRadioButton, "employeeRadioButton");
-            this.employeeRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.employeeRadioButton.Name = "employeeRadioButton";
-            this.employeeRadioButton.TabStop = true;
-            this.employeeRadioButton.UseVisualStyleBackColor = true;
-            this.employeeRadioButton.CheckedChanged += new System.EventHandler(this.EmployeeButton1_CheckedChanged);
+            resources.ApplyResources(employeeRadioButton, "employeeRadioButton");
+            employeeRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            employeeRadioButton.Name = "employeeRadioButton";
+            employeeRadioButton.TabStop = true;
+            employeeRadioButton.UseVisualStyleBackColor = true;
+            employeeRadioButton.CheckedChanged += new System.EventHandler(EmployeeButton1_CheckedChanged);
             // 
             // whoIconImg
             // 
-            resources.ApplyResources(this.whoIconImg, "whoIconImg");
-            this.whoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.whoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.whoIconImg.Name = "whoIconImg";
-            this.whoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.whoIconImg.TabStop = false;
+            resources.ApplyResources(whoIconImg, "whoIconImg");
+            whoIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            whoIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            whoIconImg.Name = "whoIconImg";
+            whoIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            whoIconImg.TabStop = false;
             // 
             // lblFixedWho
             // 
-            resources.ApplyResources(this.lblFixedWho, "lblFixedWho");
-            this.lblFixedWho.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedWho.Name = "lblFixedWho";
+            resources.ApplyResources(lblFixedWho, "lblFixedWho");
+            lblFixedWho.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedWho.Name = "lblFixedWho";
             // 
             // letterIconImg
             // 
-            resources.ApplyResources(this.letterIconImg, "letterIconImg");
-            this.letterIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.letterIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.letterIconImg.Name = "letterIconImg";
-            this.letterIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.letterIconImg.TabStop = false;
+            resources.ApplyResources(letterIconImg, "letterIconImg");
+            letterIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            letterIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            letterIconImg.Name = "letterIconImg";
+            letterIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            letterIconImg.TabStop = false;
             // 
             // typeIconImg
             // 
-            resources.ApplyResources(this.typeIconImg, "typeIconImg");
-            this.typeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.typeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.typeIconImg.Name = "typeIconImg";
-            this.typeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.typeIconImg.TabStop = false;
+            resources.ApplyResources(typeIconImg, "typeIconImg");
+            typeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            typeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            typeIconImg.Name = "typeIconImg";
+            typeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            typeIconImg.TabStop = false;
             // 
             // tagIconImg
             // 
-            resources.ApplyResources(this.tagIconImg, "tagIconImg");
-            this.tagIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.tagIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.tagIconImg.Name = "tagIconImg";
-            this.tagIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.tagIconImg.TabStop = false;
+            resources.ApplyResources(tagIconImg, "tagIconImg");
+            tagIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            tagIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            tagIconImg.Name = "tagIconImg";
+            tagIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            tagIconImg.TabStop = false;
             // 
             // inUseIconImg
             // 
-            resources.ApplyResources(this.inUseIconImg, "inUseIconImg");
-            this.inUseIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.inUseIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.inUseIconImg.Name = "inUseIconImg";
-            this.inUseIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.inUseIconImg.TabStop = false;
+            resources.ApplyResources(inUseIconImg, "inUseIconImg");
+            inUseIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            inUseIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            inUseIconImg.Name = "inUseIconImg";
+            inUseIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            inUseIconImg.TabStop = false;
             // 
             // datetimeIconImg
             // 
-            resources.ApplyResources(this.datetimeIconImg, "datetimeIconImg");
-            this.datetimeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.datetimeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.datetimeIconImg.Name = "datetimeIconImg";
-            this.datetimeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.datetimeIconImg.TabStop = false;
+            resources.ApplyResources(datetimeIconImg, "datetimeIconImg");
+            datetimeIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            datetimeIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            datetimeIconImg.Name = "datetimeIconImg";
+            datetimeIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            datetimeIconImg.TabStop = false;
             // 
             // standardIconImg
             // 
-            resources.ApplyResources(this.standardIconImg, "standardIconImg");
-            this.standardIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.standardIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.standardIconImg.Name = "standardIconImg";
-            this.standardIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.standardIconImg.TabStop = false;
+            resources.ApplyResources(standardIconImg, "standardIconImg");
+            standardIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            standardIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            standardIconImg.Name = "standardIconImg";
+            standardIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            standardIconImg.TabStop = false;
             // 
             // activeDirectoryIconImg
             // 
-            resources.ApplyResources(this.activeDirectoryIconImg, "activeDirectoryIconImg");
-            this.activeDirectoryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.activeDirectoryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.activeDirectoryIconImg.Name = "activeDirectoryIconImg";
-            this.activeDirectoryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.activeDirectoryIconImg.TabStop = false;
+            resources.ApplyResources(activeDirectoryIconImg, "activeDirectoryIconImg");
+            activeDirectoryIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            activeDirectoryIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            activeDirectoryIconImg.Name = "activeDirectoryIconImg";
+            activeDirectoryIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            activeDirectoryIconImg.TabStop = false;
             // 
             // buildingIconImg
             // 
-            resources.ApplyResources(this.buildingIconImg, "buildingIconImg");
-            this.buildingIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.buildingIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.buildingIconImg.Name = "buildingIconImg";
-            this.buildingIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.buildingIconImg.TabStop = false;
+            resources.ApplyResources(buildingIconImg, "buildingIconImg");
+            buildingIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            buildingIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            buildingIconImg.Name = "buildingIconImg";
+            buildingIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            buildingIconImg.TabStop = false;
             // 
             // roomIconImg
             // 
-            resources.ApplyResources(this.roomIconImg, "roomIconImg");
-            this.roomIconImg.CompositingQuality = null;
-            this.roomIconImg.InterpolationMode = null;
-            this.roomIconImg.Name = "roomIconImg";
-            this.roomIconImg.SmoothingMode = null;
-            this.roomIconImg.TabStop = false;
+            resources.ApplyResources(roomIconImg, "roomIconImg");
+            roomIconImg.CompositingQuality = null;
+            roomIconImg.InterpolationMode = null;
+            roomIconImg.Name = "roomIconImg";
+            roomIconImg.SmoothingMode = null;
+            roomIconImg.TabStop = false;
             // 
             // sealIconImg
             // 
-            resources.ApplyResources(this.sealIconImg, "sealIconImg");
-            this.sealIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.sealIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.sealIconImg.Name = "sealIconImg";
-            this.sealIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.sealIconImg.TabStop = false;
+            resources.ApplyResources(sealIconImg, "sealIconImg");
+            sealIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            sealIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            sealIconImg.Name = "sealIconImg";
+            sealIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            sealIconImg.TabStop = false;
             // 
             // patrimonyIconImg
             // 
-            resources.ApplyResources(this.patrimonyIconImg, "patrimonyIconImg");
-            this.patrimonyIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.patrimonyIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.patrimonyIconImg.Name = "patrimonyIconImg";
-            this.patrimonyIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.patrimonyIconImg.TabStop = false;
+            resources.ApplyResources(patrimonyIconImg, "patrimonyIconImg");
+            patrimonyIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            patrimonyIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            patrimonyIconImg.Name = "patrimonyIconImg";
+            patrimonyIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            patrimonyIconImg.TabStop = false;
             // 
             // dateTimePicker1
             // 
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dateTimePicker1.Name = "dateTimePicker1";
+            resources.ApplyResources(dateTimePicker1, "dateTimePicker1");
+            dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dateTimePicker1.Name = "dateTimePicker1";
             // 
             // groupBoxTypeOfService
             // 
-            resources.ApplyResources(this.groupBoxTypeOfService, "groupBoxTypeOfService");
-            this.groupBoxTypeOfService.Controls.Add(this.loadingCircle21);
-            this.groupBoxTypeOfService.Controls.Add(this.loadingCircle20);
-            this.groupBoxTypeOfService.Controls.Add(this.lblMaintenanceSince);
-            this.groupBoxTypeOfService.Controls.Add(this.lblInstallSince);
-            this.groupBoxTypeOfService.Controls.Add(this.lblFixedMandatory10);
-            this.groupBoxTypeOfService.Controls.Add(this.textBoxFixedFormatRadio);
-            this.groupBoxTypeOfService.Controls.Add(this.textBoxMaintenanceRadio);
-            this.groupBoxTypeOfService.Controls.Add(this.formatRadioButton);
-            this.groupBoxTypeOfService.Controls.Add(this.maintenanceRadioButton);
-            this.groupBoxTypeOfService.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxTypeOfService.Name = "groupBoxTypeOfService";
-            this.groupBoxTypeOfService.TabStop = false;
+            resources.ApplyResources(groupBoxTypeOfService, "groupBoxTypeOfService");
+            groupBoxTypeOfService.Controls.Add(loadingCircle21);
+            groupBoxTypeOfService.Controls.Add(loadingCircle20);
+            groupBoxTypeOfService.Controls.Add(lblMaintenanceSince);
+            groupBoxTypeOfService.Controls.Add(lblInstallSince);
+            groupBoxTypeOfService.Controls.Add(lblFixedMandatory10);
+            groupBoxTypeOfService.Controls.Add(textBoxFixedFormatRadio);
+            groupBoxTypeOfService.Controls.Add(textBoxMaintenanceRadio);
+            groupBoxTypeOfService.Controls.Add(formatRadioButton);
+            groupBoxTypeOfService.Controls.Add(maintenanceRadioButton);
+            groupBoxTypeOfService.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxTypeOfService.Name = "groupBoxTypeOfService";
+            groupBoxTypeOfService.TabStop = false;
             // 
             // loadingCircle21
             // 
-            resources.ApplyResources(this.loadingCircle21, "loadingCircle21");
-            this.loadingCircle21.Active = false;
-            this.loadingCircle21.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle21.InnerCircleRadius = 5;
-            this.loadingCircle21.Name = "loadingCircle21";
-            this.loadingCircle21.NumberSpoke = 12;
-            this.loadingCircle21.OuterCircleRadius = 11;
-            this.loadingCircle21.RotationSpeed = 1;
-            this.loadingCircle21.SpokeThickness = 2;
-            this.loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle21, "loadingCircle21");
+            loadingCircle21.Active = false;
+            loadingCircle21.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle21.InnerCircleRadius = 5;
+            loadingCircle21.Name = "loadingCircle21";
+            loadingCircle21.NumberSpoke = 12;
+            loadingCircle21.OuterCircleRadius = 11;
+            loadingCircle21.RotationSpeed = 1;
+            loadingCircle21.SpokeThickness = 2;
+            loadingCircle21.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // loadingCircle20
             // 
-            resources.ApplyResources(this.loadingCircle20, "loadingCircle20");
-            this.loadingCircle20.Active = false;
-            this.loadingCircle20.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle20.InnerCircleRadius = 5;
-            this.loadingCircle20.Name = "loadingCircle20";
-            this.loadingCircle20.NumberSpoke = 12;
-            this.loadingCircle20.OuterCircleRadius = 11;
-            this.loadingCircle20.RotationSpeed = 1;
-            this.loadingCircle20.SpokeThickness = 2;
-            this.loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle20, "loadingCircle20");
+            loadingCircle20.Active = false;
+            loadingCircle20.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle20.InnerCircleRadius = 5;
+            loadingCircle20.Name = "loadingCircle20";
+            loadingCircle20.NumberSpoke = 12;
+            loadingCircle20.OuterCircleRadius = 11;
+            loadingCircle20.RotationSpeed = 1;
+            loadingCircle20.SpokeThickness = 2;
+            loadingCircle20.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // lblMaintenanceSince
             // 
-            resources.ApplyResources(this.lblMaintenanceSince, "lblMaintenanceSince");
-            this.lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblMaintenanceSince.Name = "lblMaintenanceSince";
+            resources.ApplyResources(lblMaintenanceSince, "lblMaintenanceSince");
+            lblMaintenanceSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            lblMaintenanceSince.Name = "lblMaintenanceSince";
             // 
             // lblInstallSince
             // 
-            resources.ApplyResources(this.lblInstallSince, "lblInstallSince");
-            this.lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblInstallSince.Name = "lblInstallSince";
+            resources.ApplyResources(lblInstallSince, "lblInstallSince");
+            lblInstallSince.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            lblInstallSince.Name = "lblInstallSince";
             // 
             // lblFixedMandatory10
             // 
-            resources.ApplyResources(this.lblFixedMandatory10, "lblFixedMandatory10");
-            this.lblFixedMandatory10.ForeColor = System.Drawing.Color.Red;
-            this.lblFixedMandatory10.Name = "lblFixedMandatory10";
+            resources.ApplyResources(lblFixedMandatory10, "lblFixedMandatory10");
+            lblFixedMandatory10.ForeColor = System.Drawing.Color.Red;
+            lblFixedMandatory10.Name = "lblFixedMandatory10";
             // 
             // textBoxFixedFormatRadio
             // 
-            resources.ApplyResources(this.textBoxFixedFormatRadio, "textBoxFixedFormatRadio");
-            this.textBoxFixedFormatRadio.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxFixedFormatRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxFixedFormatRadio.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxFixedFormatRadio.Name = "textBoxFixedFormatRadio";
-            this.textBoxFixedFormatRadio.ReadOnly = true;
+            resources.ApplyResources(textBoxFixedFormatRadio, "textBoxFixedFormatRadio");
+            textBoxFixedFormatRadio.BackColor = System.Drawing.SystemColors.Control;
+            textBoxFixedFormatRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBoxFixedFormatRadio.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxFixedFormatRadio.Name = "textBoxFixedFormatRadio";
+            textBoxFixedFormatRadio.ReadOnly = true;
             // 
             // textBoxMaintenanceRadio
             // 
-            resources.ApplyResources(this.textBoxMaintenanceRadio, "textBoxMaintenanceRadio");
-            this.textBoxMaintenanceRadio.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxMaintenanceRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxMaintenanceRadio.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMaintenanceRadio.Name = "textBoxMaintenanceRadio";
-            this.textBoxMaintenanceRadio.ReadOnly = true;
+            resources.ApplyResources(textBoxMaintenanceRadio, "textBoxMaintenanceRadio");
+            textBoxMaintenanceRadio.BackColor = System.Drawing.SystemColors.Control;
+            textBoxMaintenanceRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            textBoxMaintenanceRadio.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxMaintenanceRadio.Name = "textBoxMaintenanceRadio";
+            textBoxMaintenanceRadio.ReadOnly = true;
             // 
             // formatRadioButton
             // 
-            resources.ApplyResources(this.formatRadioButton, "formatRadioButton");
-            this.formatRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.formatRadioButton.Name = "formatRadioButton";
-            this.formatRadioButton.UseVisualStyleBackColor = true;
-            this.formatRadioButton.CheckedChanged += new System.EventHandler(this.FormatButton1_CheckedChanged);
+            resources.ApplyResources(formatRadioButton, "formatRadioButton");
+            formatRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            formatRadioButton.Name = "formatRadioButton";
+            formatRadioButton.UseVisualStyleBackColor = true;
+            formatRadioButton.CheckedChanged += new System.EventHandler(FormatButton1_CheckedChanged);
             // 
             // maintenanceRadioButton
             // 
-            resources.ApplyResources(this.maintenanceRadioButton, "maintenanceRadioButton");
-            this.maintenanceRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.maintenanceRadioButton.Name = "maintenanceRadioButton";
-            this.maintenanceRadioButton.UseVisualStyleBackColor = true;
-            this.maintenanceRadioButton.CheckedChanged += new System.EventHandler(this.MaintenanceButton2_CheckedChanged);
+            resources.ApplyResources(maintenanceRadioButton, "maintenanceRadioButton");
+            maintenanceRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            maintenanceRadioButton.Name = "maintenanceRadioButton";
+            maintenanceRadioButton.UseVisualStyleBackColor = true;
+            maintenanceRadioButton.CheckedChanged += new System.EventHandler(MaintenanceButton2_CheckedChanged);
             // 
             // lblFixedActiveDirectory
             // 
-            resources.ApplyResources(this.lblFixedActiveDirectory, "lblFixedActiveDirectory");
-            this.lblFixedActiveDirectory.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedActiveDirectory.Name = "lblFixedActiveDirectory";
+            resources.ApplyResources(lblFixedActiveDirectory, "lblFixedActiveDirectory");
+            lblFixedActiveDirectory.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedActiveDirectory.Name = "lblFixedActiveDirectory";
             // 
             // lblFixedStandard
             // 
-            resources.ApplyResources(this.lblFixedStandard, "lblFixedStandard");
-            this.lblFixedStandard.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedStandard.Name = "lblFixedStandard";
+            resources.ApplyResources(lblFixedStandard, "lblFixedStandard");
+            lblFixedStandard.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedStandard.Name = "lblFixedStandard";
             // 
             // lblAgentName
             // 
-            resources.ApplyResources(this.lblAgentName, "lblAgentName");
-            this.lblAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblAgentName.Name = "lblAgentName";
+            resources.ApplyResources(lblAgentName, "lblAgentName");
+            lblAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblAgentName.Name = "lblAgentName";
             // 
             // lblFixedAgentName
             // 
-            resources.ApplyResources(this.lblFixedAgentName, "lblFixedAgentName");
-            this.lblFixedAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedAgentName.Name = "lblFixedAgentName";
+            resources.ApplyResources(lblFixedAgentName, "lblFixedAgentName");
+            lblFixedAgentName.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedAgentName.Name = "lblFixedAgentName";
             // 
             // lblPortServer
             // 
-            resources.ApplyResources(this.lblPortServer, "lblPortServer");
-            this.lblPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblPortServer.Name = "lblPortServer";
+            resources.ApplyResources(lblPortServer, "lblPortServer");
+            lblPortServer.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblPortServer.Name = "lblPortServer";
             // 
             // lblIPServer
             // 
-            resources.ApplyResources(this.lblIPServer, "lblIPServer");
-            this.lblIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblIPServer.Name = "lblIPServer";
+            resources.ApplyResources(lblIPServer, "lblIPServer");
+            lblIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblIPServer.Name = "lblIPServer";
             // 
             // lblFixedIPServer
             // 
-            resources.ApplyResources(this.lblFixedIPServer, "lblFixedIPServer");
-            this.lblFixedIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedIPServer.Name = "lblFixedIPServer";
+            resources.ApplyResources(lblFixedIPServer, "lblFixedIPServer");
+            lblFixedIPServer.ForeColor = System.Drawing.SystemColors.ControlText;
+            lblFixedIPServer.Name = "lblFixedIPServer";
             // 
             // lblServerOpState
             // 
-            resources.ApplyResources(this.lblServerOpState, "lblServerOpState");
-            this.lblServerOpState.BackColor = System.Drawing.Color.Transparent;
-            this.lblServerOpState.ForeColor = System.Drawing.Color.Silver;
-            this.lblServerOpState.Name = "lblServerOpState";
+            resources.ApplyResources(lblServerOpState, "lblServerOpState");
+            lblServerOpState.BackColor = System.Drawing.Color.Transparent;
+            lblServerOpState.ForeColor = System.Drawing.Color.Silver;
+            lblServerOpState.Name = "lblServerOpState";
             // 
             // toolStripVersionText
             // 
-            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
-            this.toolStripVersionText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripVersionText.Name = "toolStripVersionText";
+            resources.ApplyResources(toolStripVersionText, "toolStripVersionText");
+            toolStripVersionText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
+            toolStripVersionText.Name = "toolStripVersionText";
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comboBoxTheme,
-            this.logLabel,
-            this.aboutLabel,
-            this.toolStripStatusBarText,
-            this.toolStripVersionText});
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            resources.ApplyResources(statusStrip1, "statusStrip1");
+            statusStrip1.BackColor = System.Drawing.SystemColors.Control;
+            statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            comboBoxTheme,
+            logLabel,
+            aboutLabel,
+            toolStripStatusBarText,
+            toolStripVersionText});
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // comboBoxTheme
             // 
-            resources.ApplyResources(this.comboBoxTheme, "comboBoxTheme");
-            this.comboBoxTheme.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripAutoTheme,
-            this.toolStripLightTheme,
-            this.toolStripDarkTheme});
-            this.comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.comboBoxTheme.Name = "comboBoxTheme";
+            resources.ApplyResources(comboBoxTheme, "comboBoxTheme");
+            comboBoxTheme.BackColor = System.Drawing.SystemColors.Control;
+            comboBoxTheme.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            comboBoxTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripAutoTheme,
+            toolStripLightTheme,
+            toolStripDarkTheme});
+            comboBoxTheme.ForeColor = System.Drawing.SystemColors.ControlText;
+            comboBoxTheme.Name = "comboBoxTheme";
             // 
             // toolStripAutoTheme
             // 
-            resources.ApplyResources(this.toolStripAutoTheme, "toolStripAutoTheme");
-            this.toolStripAutoTheme.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripAutoTheme.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripAutoTheme.Name = "toolStripAutoTheme";
-            this.toolStripAutoTheme.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
+            resources.ApplyResources(toolStripAutoTheme, "toolStripAutoTheme");
+            toolStripAutoTheme.BackColor = System.Drawing.SystemColors.Control;
+            toolStripAutoTheme.ForeColor = System.Drawing.SystemColors.ControlText;
+            toolStripAutoTheme.Name = "toolStripAutoTheme";
+            toolStripAutoTheme.Click += new System.EventHandler(ToolStripMenuItem1_Click);
             // 
             // toolStripLightTheme
             // 
-            resources.ApplyResources(this.toolStripLightTheme, "toolStripLightTheme");
-            this.toolStripLightTheme.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripLightTheme.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripLightTheme.Name = "toolStripLightTheme";
-            this.toolStripLightTheme.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
+            resources.ApplyResources(toolStripLightTheme, "toolStripLightTheme");
+            toolStripLightTheme.BackColor = System.Drawing.SystemColors.Control;
+            toolStripLightTheme.ForeColor = System.Drawing.SystemColors.ControlText;
+            toolStripLightTheme.Name = "toolStripLightTheme";
+            toolStripLightTheme.Click += new System.EventHandler(ToolStripMenuItem2_Click);
             // 
             // toolStripDarkTheme
             // 
-            resources.ApplyResources(this.toolStripDarkTheme, "toolStripDarkTheme");
-            this.toolStripDarkTheme.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripDarkTheme.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripDarkTheme.Name = "toolStripDarkTheme";
-            this.toolStripDarkTheme.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
+            resources.ApplyResources(toolStripDarkTheme, "toolStripDarkTheme");
+            toolStripDarkTheme.BackColor = System.Drawing.SystemColors.Control;
+            toolStripDarkTheme.ForeColor = System.Drawing.SystemColors.ControlText;
+            toolStripDarkTheme.Name = "toolStripDarkTheme";
+            toolStripDarkTheme.Click += new System.EventHandler(ToolStripMenuItem3_Click);
             // 
             // logLabel
             // 
-            resources.ApplyResources(this.logLabel, "logLabel");
-            this.logLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.logLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.logLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.logLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.logLabel.Name = "logLabel";
-            this.logLabel.Click += new System.EventHandler(this.LogLabel_Click);
-            this.logLabel.MouseEnter += new System.EventHandler(this.LogLabel_MouseEnter);
-            this.logLabel.MouseLeave += new System.EventHandler(this.LogLabel_MouseLeave);
+            resources.ApplyResources(logLabel, "logLabel");
+            logLabel.BackColor = System.Drawing.SystemColors.Control;
+            logLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            logLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            logLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            logLabel.Name = "logLabel";
+            logLabel.Click += new System.EventHandler(LogLabel_Click);
+            logLabel.MouseEnter += new System.EventHandler(LogLabel_MouseEnter);
+            logLabel.MouseLeave += new System.EventHandler(LogLabel_MouseLeave);
             // 
             // aboutLabel
             // 
-            resources.ApplyResources(this.aboutLabel, "aboutLabel");
-            this.aboutLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.aboutLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
-            this.aboutLabel.MouseEnter += new System.EventHandler(this.AboutLabel_MouseEnter);
-            this.aboutLabel.MouseLeave += new System.EventHandler(this.AboutLabel_MouseLeave);
+            resources.ApplyResources(aboutLabel, "aboutLabel");
+            aboutLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            aboutLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            aboutLabel.Name = "aboutLabel";
+            aboutLabel.Click += new System.EventHandler(AboutLabel_Click);
+            aboutLabel.MouseEnter += new System.EventHandler(AboutLabel_MouseEnter);
+            aboutLabel.MouseLeave += new System.EventHandler(AboutLabel_MouseLeave);
             // 
             // toolStripStatusBarText
             // 
-            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
-            this.toolStripStatusBarText.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripStatusBarText.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-            this.toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripStatusBarText.Name = "toolStripStatusBarText";
-            this.toolStripStatusBarText.Spring = true;
+            resources.ApplyResources(toolStripStatusBarText, "toolStripStatusBarText");
+            toolStripStatusBarText.BackColor = System.Drawing.SystemColors.Control;
+            toolStripStatusBarText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
+            toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
+            toolStripStatusBarText.Name = "toolStripStatusBarText";
+            toolStripStatusBarText.Spring = true;
             // 
             // timer1
             // 
-            this.timer1.Interval = 500;
+            timer1.Interval = 500;
             // 
             // groupBoxRegistryStatus
             // 
-            resources.ApplyResources(this.groupBoxRegistryStatus, "groupBoxRegistryStatus");
-            this.groupBoxRegistryStatus.Controls.Add(this.webView2Control);
-            this.groupBoxRegistryStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxRegistryStatus.Name = "groupBoxRegistryStatus";
-            this.groupBoxRegistryStatus.TabStop = false;
+            resources.ApplyResources(groupBoxRegistryStatus, "groupBoxRegistryStatus");
+            groupBoxRegistryStatus.Controls.Add(webView2Control);
+            groupBoxRegistryStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxRegistryStatus.Name = "groupBoxRegistryStatus";
+            groupBoxRegistryStatus.TabStop = false;
             // 
             // webView2Control
             // 
-            resources.ApplyResources(this.webView2Control, "webView2Control");
-            this.webView2Control.AllowExternalDrop = true;
-            this.webView2Control.CreationProperties = null;
-            this.webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2Control.Name = "webView2Control";
-            this.webView2Control.ZoomFactor = 1D;
+            resources.ApplyResources(webView2Control, "webView2Control");
+            webView2Control.AllowExternalDrop = true;
+            webView2Control.CreationProperties = null;
+            webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
+            webView2Control.Name = "webView2Control";
+            webView2Control.ZoomFactor = 1D;
             // 
             // topBannerImg
             // 
-            resources.ApplyResources(this.topBannerImg, "topBannerImg");
-            this.topBannerImg.CompositingQuality = null;
-            this.topBannerImg.InterpolationMode = null;
-            this.topBannerImg.Name = "topBannerImg";
-            this.topBannerImg.SmoothingMode = null;
-            this.topBannerImg.TabStop = false;
+            resources.ApplyResources(topBannerImg, "topBannerImg");
+            topBannerImg.CompositingQuality = null;
+            topBannerImg.InterpolationMode = null;
+            topBannerImg.Name = "topBannerImg";
+            topBannerImg.SmoothingMode = null;
+            topBannerImg.TabStop = false;
             // 
             // loadingCircle22
             // 
-            resources.ApplyResources(this.loadingCircle22, "loadingCircle22");
-            this.loadingCircle22.Active = false;
-            this.loadingCircle22.BackColor = System.Drawing.SystemColors.Control;
-            this.loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle22.InnerCircleRadius = 5;
-            this.loadingCircle22.Name = "loadingCircle22";
-            this.loadingCircle22.NumberSpoke = 12;
-            this.loadingCircle22.OuterCircleRadius = 11;
-            this.loadingCircle22.RotationSpeed = 1;
-            this.loadingCircle22.SpokeThickness = 2;
-            this.loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle22.UseWaitCursor = true;
+            resources.ApplyResources(loadingCircle22, "loadingCircle22");
+            loadingCircle22.Active = false;
+            loadingCircle22.BackColor = System.Drawing.SystemColors.Control;
+            loadingCircle22.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle22.InnerCircleRadius = 5;
+            loadingCircle22.Name = "loadingCircle22";
+            loadingCircle22.NumberSpoke = 12;
+            loadingCircle22.OuterCircleRadius = 11;
+            loadingCircle22.RotationSpeed = 1;
+            loadingCircle22.SpokeThickness = 2;
+            loadingCircle22.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            loadingCircle22.UseWaitCursor = true;
             // 
             // loadingCircle23
             // 
-            resources.ApplyResources(this.loadingCircle23, "loadingCircle23");
-            this.loadingCircle23.Active = false;
-            this.loadingCircle23.BackColor = System.Drawing.SystemColors.Control;
-            this.loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircle23.InnerCircleRadius = 5;
-            this.loadingCircle23.Name = "loadingCircle23";
-            this.loadingCircle23.NumberSpoke = 12;
-            this.loadingCircle23.OuterCircleRadius = 11;
-            this.loadingCircle23.RotationSpeed = 1;
-            this.loadingCircle23.SpokeThickness = 2;
-            this.loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle23, "loadingCircle23");
+            loadingCircle23.Active = false;
+            loadingCircle23.BackColor = System.Drawing.SystemColors.Control;
+            loadingCircle23.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            loadingCircle23.InnerCircleRadius = 5;
+            loadingCircle23.Name = "loadingCircle23";
+            loadingCircle23.NumberSpoke = 12;
+            loadingCircle23.OuterCircleRadius = 11;
+            loadingCircle23.RotationSpeed = 1;
+            loadingCircle23.SpokeThickness = 2;
+            loadingCircle23.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // groupBoxServerStatus
             // 
-            resources.ApplyResources(this.groupBoxServerStatus, "groupBoxServerStatus");
-            this.groupBoxServerStatus.Controls.Add(this.loadingCircle24);
-            this.groupBoxServerStatus.Controls.Add(this.lblFixedIPServer);
-            this.groupBoxServerStatus.Controls.Add(this.lblFixedServerOpState);
-            this.groupBoxServerStatus.Controls.Add(this.lblFixedPortServer);
-            this.groupBoxServerStatus.Controls.Add(this.lblServerOpState);
-            this.groupBoxServerStatus.Controls.Add(this.lblIPServer);
-            this.groupBoxServerStatus.Controls.Add(this.lblPortServer);
-            this.groupBoxServerStatus.Controls.Add(this.lblFixedAgentName);
-            this.groupBoxServerStatus.Controls.Add(this.lblAgentName);
-            this.groupBoxServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxServerStatus.Name = "groupBoxServerStatus";
-            this.groupBoxServerStatus.TabStop = false;
+            resources.ApplyResources(groupBoxServerStatus, "groupBoxServerStatus");
+            groupBoxServerStatus.Controls.Add(loadingCircle24);
+            groupBoxServerStatus.Controls.Add(lblFixedIPServer);
+            groupBoxServerStatus.Controls.Add(lblFixedServerOpState);
+            groupBoxServerStatus.Controls.Add(lblFixedPortServer);
+            groupBoxServerStatus.Controls.Add(lblServerOpState);
+            groupBoxServerStatus.Controls.Add(lblIPServer);
+            groupBoxServerStatus.Controls.Add(lblPortServer);
+            groupBoxServerStatus.Controls.Add(lblFixedAgentName);
+            groupBoxServerStatus.Controls.Add(lblAgentName);
+            groupBoxServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            groupBoxServerStatus.Name = "groupBoxServerStatus";
+            groupBoxServerStatus.TabStop = false;
             // 
             // loadingCircle24
             // 
-            resources.ApplyResources(this.loadingCircle24, "loadingCircle24");
-            this.loadingCircle24.Active = false;
-            this.loadingCircle24.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle24.InnerCircleRadius = 5;
-            this.loadingCircle24.Name = "loadingCircle24";
-            this.loadingCircle24.NumberSpoke = 12;
-            this.loadingCircle24.OuterCircleRadius = 11;
-            this.loadingCircle24.RotationSpeed = 1;
-            this.loadingCircle24.SpokeThickness = 2;
-            this.loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            resources.ApplyResources(loadingCircle24, "loadingCircle24");
+            loadingCircle24.Active = false;
+            loadingCircle24.Color = System.Drawing.Color.LightSlateGray;
+            loadingCircle24.InnerCircleRadius = 5;
+            loadingCircle24.Name = "loadingCircle24";
+            loadingCircle24.NumberSpoke = 12;
+            loadingCircle24.OuterCircleRadius = 11;
+            loadingCircle24.RotationSpeed = 1;
+            loadingCircle24.SpokeThickness = 2;
+            loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
             // comboBoxBattery
             // 
-            resources.ApplyResources(this.comboBoxBattery, "comboBoxBattery");
-            this.comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBattery.FormattingEnabled = true;
-            this.comboBoxBattery.Name = "comboBoxBattery";
+            resources.ApplyResources(comboBoxBattery, "comboBoxBattery");
+            comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxBattery.FormattingEnabled = true;
+            comboBoxBattery.Name = "comboBoxBattery";
             // 
             // comboBoxStandard
             // 
-            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Name = "comboBoxStandard";
+            resources.ApplyResources(comboBoxStandard, "comboBoxStandard");
+            comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxStandard.FormattingEnabled = true;
+            comboBoxStandard.Name = "comboBoxStandard";
             // 
             // comboBoxActiveDirectory
             // 
-            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            resources.ApplyResources(comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxActiveDirectory.FormattingEnabled = true;
+            comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
             // 
             // comboBoxTag
             // 
-            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Name = "comboBoxTag";
+            resources.ApplyResources(comboBoxTag, "comboBoxTag");
+            comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxTag.FormattingEnabled = true;
+            comboBoxTag.Name = "comboBoxTag";
             // 
             // comboBoxInUse
             // 
-            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Name = "comboBoxInUse";
+            resources.ApplyResources(comboBoxInUse, "comboBoxInUse");
+            comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxInUse.FormattingEnabled = true;
+            comboBoxInUse.Name = "comboBoxInUse";
             // 
             // comboBoxType
             // 
-            resources.ApplyResources(this.comboBoxType, "comboBoxType");
-            this.comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Name = "comboBoxType";
+            resources.ApplyResources(comboBoxType, "comboBoxType");
+            comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxType.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxType.FormattingEnabled = true;
+            comboBoxType.Name = "comboBoxType";
             // 
             // comboBoxBuilding
             // 
-            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            resources.ApplyResources(comboBoxBuilding, "comboBoxBuilding");
+            comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxBuilding.FormattingEnabled = true;
+            comboBoxBuilding.Name = "comboBoxBuilding";
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.groupBoxServerStatus);
-            this.Controls.Add(this.loadingCircle23);
-            this.Controls.Add(this.loadingCircle22);
-            this.Controls.Add(this.groupBoxRegistryStatus);
-            this.Controls.Add(this.groupBoxPatrData);
-            this.Controls.Add(this.groupBoxHWData);
-            this.Controls.Add(this.topBannerImg);
-            this.Controls.Add(this.accessSystemButton);
-            this.Controls.Add(this.collectButton);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.registerButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "MainForm";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBoxHWData.ResumeLayout(false);
-            this.groupBoxHWData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tpmIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.smartIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vtIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bmIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.secBootIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biosIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biosTypeIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.macIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hostnameIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.osIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gpuInfoIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaOperationIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mediaTypeIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hdSizeIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pmIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.procNameIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serialNoIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelIconImg)).EndInit();
-            this.groupBoxPatrData.ResumeLayout(false);
-            this.groupBoxPatrData.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ticketIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.batteryIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.whoIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.letterIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.typeIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tagIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inUseIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datetimeIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.standardIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activeDirectoryIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buildingIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roomIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sealIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.patrimonyIconImg)).EndInit();
-            this.groupBoxTypeOfService.ResumeLayout(false);
-            this.groupBoxTypeOfService.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.groupBoxRegistryStatus.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).EndInit();
-            this.groupBoxServerStatus.ResumeLayout(false);
-            this.groupBoxServerStatus.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            BackColor = System.Drawing.SystemColors.Control;
+            Controls.Add(groupBoxServerStatus);
+            Controls.Add(loadingCircle23);
+            Controls.Add(loadingCircle22);
+            Controls.Add(groupBoxRegistryStatus);
+            Controls.Add(groupBoxPatrData);
+            Controls.Add(groupBoxHWData);
+            Controls.Add(topBannerImg);
+            Controls.Add(accessSystemButton);
+            Controls.Add(collectButton);
+            Controls.Add(statusStrip1);
+            Controls.Add(registerButton);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            Name = "MainForm";
+            Load += new System.EventHandler(Form1_Load);
+            groupBoxHWData.ResumeLayout(false);
+            groupBoxHWData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tpmIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)smartIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)vtIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bmIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)secBootIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)biosIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)biosTypeIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ipIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)macIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hostnameIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)osIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gpuInfoIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mediaOperationIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mediaTypeIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hdSizeIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pmIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)procNameIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)serialNoIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)modelIconImg).EndInit();
+            groupBoxPatrData.ResumeLayout(false);
+            groupBoxPatrData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ticketIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)batteryIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)whoIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)letterIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)typeIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tagIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)inUseIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)datetimeIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)standardIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)activeDirectoryIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)buildingIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)roomIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sealIconImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)patrimonyIconImg).EndInit();
+            groupBoxTypeOfService.ResumeLayout(false);
+            groupBoxTypeOfService.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            groupBoxRegistryStatus.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)webView2Control).EndInit();
+            ((System.ComponentModel.ISupportInitialize)topBannerImg).EndInit();
+            groupBoxServerStatus.ResumeLayout(false);
+            groupBoxServerStatus.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -4631,8 +4628,8 @@ namespace HardwareInformation
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
-                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.PC_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-                    _ = MessageBox.Show(Strings.PC_DROPPED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.PC_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.PC_DROPPED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                 }
                 else //If not discarded

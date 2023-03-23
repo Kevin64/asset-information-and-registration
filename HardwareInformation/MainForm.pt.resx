@@ -414,7 +414,7 @@
     <value>121, 13</value>
   </data>
   <data name="lblFixedTPM.Text" xml:space="preserve">
-    <value>Versão do módulo TPM:</value>
+    <value>Versão do TPM:</value>
   </data>
   <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
