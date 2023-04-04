@@ -249,6 +249,13 @@ namespace HardwareInformation
             lblMediaType = new System.Windows.Forms.Label();
             lblFixedMediaType = new System.Windows.Forms.Label();
             groupBoxPatrData = new System.Windows.Forms.GroupBox();
+            comboBoxBattery = new CustomFlatComboBox();
+            comboBoxStandard = new CustomFlatComboBox();
+            comboBoxActiveDirectory = new CustomFlatComboBox();
+            comboBoxTag = new CustomFlatComboBox();
+            comboBoxInUse = new CustomFlatComboBox();
+            comboBoxType = new CustomFlatComboBox();
+            comboBoxBuilding = new CustomFlatComboBox();
             lblFixedMandatory9 = new System.Windows.Forms.Label();
             lblFixedMandatory8 = new System.Windows.Forms.Label();
             ticketIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -324,13 +331,6 @@ namespace HardwareInformation
             loadingCircle23 = new MRG.Controls.UI.LoadingCircle();
             groupBoxServerStatus = new System.Windows.Forms.GroupBox();
             loadingCircle24 = new MRG.Controls.UI.LoadingCircle();
-            comboBoxBattery = new CustomFlatComboBox();
-            comboBoxStandard = new CustomFlatComboBox();
-            comboBoxActiveDirectory = new CustomFlatComboBox();
-            comboBoxTag = new CustomFlatComboBox();
-            comboBoxInUse = new CustomFlatComboBox();
-            comboBoxType = new CustomFlatComboBox();
-            comboBoxBuilding = new CustomFlatComboBox();
             groupBoxHWData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tpmIconImg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)smartIconImg).BeginInit();
@@ -1336,6 +1336,76 @@ namespace HardwareInformation
             groupBoxPatrData.Name = "groupBoxPatrData";
             groupBoxPatrData.TabStop = false;
             // 
+            // comboBoxBattery
+            // 
+            resources.ApplyResources(comboBoxBattery, "comboBoxBattery");
+            comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxBattery.FormattingEnabled = true;
+            comboBoxBattery.Name = "comboBoxBattery";
+            // 
+            // comboBoxStandard
+            // 
+            resources.ApplyResources(comboBoxStandard, "comboBoxStandard");
+            comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxStandard.FormattingEnabled = true;
+            comboBoxStandard.Name = "comboBoxStandard";
+            // 
+            // comboBoxActiveDirectory
+            // 
+            resources.ApplyResources(comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxActiveDirectory.FormattingEnabled = true;
+            comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            // 
+            // comboBoxTag
+            // 
+            resources.ApplyResources(comboBoxTag, "comboBoxTag");
+            comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxTag.FormattingEnabled = true;
+            comboBoxTag.Name = "comboBoxTag";
+            // 
+            // comboBoxInUse
+            // 
+            resources.ApplyResources(comboBoxInUse, "comboBoxInUse");
+            comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxInUse.FormattingEnabled = true;
+            comboBoxInUse.Name = "comboBoxInUse";
+            // 
+            // comboBoxType
+            // 
+            resources.ApplyResources(comboBoxType, "comboBoxType");
+            comboBoxType.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxType.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxType.FormattingEnabled = true;
+            comboBoxType.Name = "comboBoxType";
+            // 
+            // comboBoxBuilding
+            // 
+            resources.ApplyResources(comboBoxBuilding, "comboBoxBuilding");
+            comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
+            comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxBuilding.FormattingEnabled = true;
+            comboBoxBuilding.Name = "comboBoxBuilding";
+            // 
             // lblFixedMandatory9
             // 
             resources.ApplyResources(lblFixedMandatory9, "lblFixedMandatory9");
@@ -1895,76 +1965,6 @@ namespace HardwareInformation
             loadingCircle24.RotationSpeed = 1;
             loadingCircle24.SpokeThickness = 2;
             loadingCircle24.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            // 
-            // comboBoxBattery
-            // 
-            resources.ApplyResources(comboBoxBattery, "comboBoxBattery");
-            comboBoxBattery.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxBattery.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxBattery.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxBattery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxBattery.FormattingEnabled = true;
-            comboBoxBattery.Name = "comboBoxBattery";
-            // 
-            // comboBoxStandard
-            // 
-            resources.ApplyResources(comboBoxStandard, "comboBoxStandard");
-            comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxStandard.FormattingEnabled = true;
-            comboBoxStandard.Name = "comboBoxStandard";
-            // 
-            // comboBoxActiveDirectory
-            // 
-            resources.ApplyResources(comboBoxActiveDirectory, "comboBoxActiveDirectory");
-            comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxActiveDirectory.FormattingEnabled = true;
-            comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            // 
-            // comboBoxTag
-            // 
-            resources.ApplyResources(comboBoxTag, "comboBoxTag");
-            comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxTag.FormattingEnabled = true;
-            comboBoxTag.Name = "comboBoxTag";
-            // 
-            // comboBoxInUse
-            // 
-            resources.ApplyResources(comboBoxInUse, "comboBoxInUse");
-            comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxInUse.FormattingEnabled = true;
-            comboBoxInUse.Name = "comboBoxInUse";
-            // 
-            // comboBoxType
-            // 
-            resources.ApplyResources(comboBoxType, "comboBoxType");
-            comboBoxType.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxType.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxType.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxType.FormattingEnabled = true;
-            comboBoxType.Name = "comboBoxType";
-            // 
-            // comboBoxBuilding
-            // 
-            resources.ApplyResources(comboBoxBuilding, "comboBoxBuilding");
-            comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(122, 122, 122);
-            comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            comboBoxBuilding.FormattingEnabled = true;
-            comboBoxBuilding.Name = "comboBoxBuilding";
             // 
             // MainForm
             // 
@@ -4060,7 +4060,7 @@ namespace HardwareInformation
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                 //Feches model info from server
-                serverOnline = await BIOSFileReader.CheckHostMT(servidor_web, porta);
+                serverOnline = await ModelFileReader.CheckHostMT(servidor_web, porta);
 
                 if (serverOnline && porta != string.Empty)
                 {
@@ -4354,7 +4354,7 @@ namespace HardwareInformation
             try
             {
                 //Feches model info from server
-                string[] biosJsonStr = await BIOSFileReader.FetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
+                string[] biosJsonStr = await ModelFileReader.FetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
 
                 //Scan if hostname is the default one
                 if (lblHostname.Text.Equals(Strings.DEFAULT_HOSTNAME))
@@ -4582,7 +4582,39 @@ namespace HardwareInformation
         public void ServerSendInfo(string[] serverArgs)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-            webView2Control.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[10] + "&modelo=" + serverArgs[11] + "&numeroSerial=" + serverArgs[12] + "&processador=" + serverArgs[13] + "&memoria=" + serverArgs[14] + "&hd=" + serverArgs[15] + "&sistemaOperacional=" + serverArgs[16] + "&nomeDoComputador=" + serverArgs[17] + "&bios=" + serverArgs[18] + "&mac=" + serverArgs[19] + "&ip=" + serverArgs[20] + "&emUso=" + serverArgs[21] + "&etiqueta=" + serverArgs[22] + "&tipo=" + serverArgs[23] + "&tipoFW=" + serverArgs[24] + "&tipoArmaz=" + serverArgs[25] + "&gpu=" + serverArgs[26] + "&modoArmaz=" + serverArgs[27] + "&secBoot=" + serverArgs[28] + "&vt=" + serverArgs[29] + "&tpm=" + serverArgs[30] + "&trocaPilha=" + serverArgs[31] + "&ticketNum=" + serverArgs[32] + "&agent=" + serverArgs[33]);
+            webView2Control.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php"
+                + ConstantsDLL.Properties.Resources.phpAssetNumber + serverArgs[3]
+                + ConstantsDLL.Properties.Resources.phpSealNumber + serverArgs[4]
+                + ConstantsDLL.Properties.Resources.phpRoom + serverArgs[5]
+                + ConstantsDLL.Properties.Resources.phpBuilding + serverArgs[6]
+                + ConstantsDLL.Properties.Resources.phpAdRegistered + serverArgs[7]
+                + ConstantsDLL.Properties.Resources.phpStandard + serverArgs[8]
+                + ConstantsDLL.Properties.Resources.phpServiceDate + serverArgs[9]
+                + ConstantsDLL.Properties.Resources.phpPreviousServiceDates + serverArgs[9]
+                + ConstantsDLL.Properties.Resources.phpBrand + serverArgs[10]
+                + ConstantsDLL.Properties.Resources.phpModel + serverArgs[11]
+                + ConstantsDLL.Properties.Resources.phpSerialNumber + serverArgs[12]
+                + ConstantsDLL.Properties.Resources.phpProcessor + serverArgs[13]
+                + ConstantsDLL.Properties.Resources.phpRam + serverArgs[14]
+                + ConstantsDLL.Properties.Resources.phpStorageSize + serverArgs[15]
+                + ConstantsDLL.Properties.Resources.phpOperatingSystem + serverArgs[16]
+                + ConstantsDLL.Properties.Resources.phpHostname + serverArgs[17]
+                + ConstantsDLL.Properties.Resources.phpFwVersion + serverArgs[18]
+                + ConstantsDLL.Properties.Resources.phpMacAddress + serverArgs[19]
+                + ConstantsDLL.Properties.Resources.phpIpAddress + serverArgs[20]
+                + ConstantsDLL.Properties.Resources.phpInUse + serverArgs[21]
+                + ConstantsDLL.Properties.Resources.phpTag + serverArgs[22]
+                + ConstantsDLL.Properties.Resources.phpHwType + serverArgs[23]
+                + ConstantsDLL.Properties.Resources.phpFwType + serverArgs[24]
+                + ConstantsDLL.Properties.Resources.phpStorageType + serverArgs[25]
+                + ConstantsDLL.Properties.Resources.phpVideoCard + serverArgs[26]
+                + ConstantsDLL.Properties.Resources.phpMediaOperationMode + serverArgs[27]
+                + ConstantsDLL.Properties.Resources.phpSecureBoot + serverArgs[28]
+                + ConstantsDLL.Properties.Resources.phpVirtualizationTechnology + serverArgs[29]
+                + ConstantsDLL.Properties.Resources.phpTpmVersion + serverArgs[30]
+                + ConstantsDLL.Properties.Resources.phpBatteryChange + serverArgs[31]
+                + ConstantsDLL.Properties.Resources.phpTicketNumber + serverArgs[32]
+                + ConstantsDLL.Properties.Resources.phpAgent + serverArgs[33]);
         }
 
         //Runs the registration for the website
@@ -4610,18 +4642,18 @@ namespace HardwareInformation
                 sArgs[4] = textBoxSeal.Text;
                 sArgs[5] = textBoxLetter.Text != string.Empty ? textBoxRoom.Text + textBoxLetter.Text : textBoxRoom.Text;
                 sArgs[6] = comboBoxBuilding.SelectedItem.ToString();
-                sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString();
+                sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
                 sArgs[8] = comboBoxStandard.SelectedItem.ToString();
-                sArgs[9] = dateTimePicker1.Value.ToString("yyyy-MM-dd").Substring(0, 10);
-                sArgs[21] = comboBoxInUse.SelectedItem.ToString();
-                sArgs[22] = comboBoxTag.SelectedItem.ToString();
+                sArgs[9] = dateTimePicker1.Value.ToString(ConstantsDLL.Properties.Resources.dateFormat).Substring(0, 10);
+                sArgs[21] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
+                sArgs[22] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
                 sArgs[23] = comboBoxType.SelectedItem.ToString();
-                sArgs[31] = comboBoxBattery.SelectedItem.ToString().Equals("Sim") ? Strings.replacedBattery : Strings.sameBattery;
+                sArgs[31] = comboBoxBattery.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
                 sArgs[32] = textBoxTicket.Text;
                 sArgs[33] = user;
 
                 //Feches patrimony data from server
-                string[] pcJsonStr = await PCFileReader.FetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
+                string[] pcJsonStr = await AssetFileReader.FetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
 
                 //If patrinony is discarded
                 if (pcJsonStr[0] != "false" && pcJsonStr[9] == "1")
@@ -4638,8 +4670,8 @@ namespace HardwareInformation
                     {
                         try //Tries to get the laster register date from the patrimony to check if the chosen date is adequate
                         {
-                            DateTime registerDate = DateTime.ParseExact(sArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(sArgs[9], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
+                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {

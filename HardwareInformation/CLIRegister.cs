@@ -177,7 +177,7 @@ namespace HardwareInformation
                 (definitionList[3].Contains(strArgs[14]) || strArgs[14].Equals(ConstantsDLL.Properties.Resources.sameWord))) //Tipo
             {
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                serverOnline = await BIOSFileReader.CheckHostMT(strArgs[0], strArgs[1]);
+                serverOnline = await ModelFileReader.CheckHostMT(strArgs[0], strArgs[1]);
                 if (serverOnline && strArgs[1] != string.Empty)
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, strArgs[0] + ":" + strArgs[1], true);
@@ -193,7 +193,7 @@ namespace HardwareInformation
                         strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
                     }
 
-                    string[] pcJsonStr = PCFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
+                    string[] pcJsonStr = AssetFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
                     if (pcJsonStr[0] == "false" && strArgs.Contains(ConstantsDLL.Properties.Resources.sameWord))
                     {
@@ -372,19 +372,19 @@ namespace HardwareInformation
                             //If chosen date is 'hoje'
                             if (strArgs[9].Equals(ConstantsDLL.Properties.Resources.today))
                             {
-                                strArgs[9] = DateTime.Today.ToString("yyyy-MM-dd").Substring(0, 10);
+                                strArgs[9] = DateTime.Today.ToString(ConstantsDLL.Properties.Resources.dateFormat).Substring(0, 10);
                                 tDay = true;
                             }
                             else //If chosen date is not 'hoje'
                             {
                                 d = DateTime.Parse(strArgs[9]);
-                                strArgs[9] = d.ToString("yyyy-MM-dd");
+                                strArgs[9] = d.ToString(ConstantsDLL.Properties.Resources.dateFormat);
                                 tDay = false;
                             }
 
                             //Calculates last registered date with chosen date
-                            DateTime registerDate = DateTime.ParseExact(strArgs[9], "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(strArgs[9], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
+                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
 
                             //If chosen date is later than the registered date
                             if (registerDate >= lastRegisterDate)
@@ -517,7 +517,7 @@ namespace HardwareInformation
             try
             {
                 //Feches model info from server
-                string[] biosJsonStr = BIOSFileReader.FetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
+                string[] biosJsonStr = ModelFileReader.FetchInfoST(strArgs[17], strArgs[18], strArgs[28], strArgs[34], strArgs[31], strArgs[0], strArgs[1]);
 
                 //Scan if hostname is the default one
                 if (strArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
@@ -725,7 +725,39 @@ namespace HardwareInformation
         public void ServerSendInfo(string[] serverArgs)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php?patrimonio=" + serverArgs[3] + "&lacre=" + serverArgs[4] + "&sala=" + serverArgs[5] + "&predio=" + serverArgs[6] + "&ad=" + serverArgs[7] + "&padrao=" + serverArgs[8] + "&formatacao=" + serverArgs[9] + "&formatacoesAnteriores=" + serverArgs[9] + "&marca=" + serverArgs[17] + "&modelo=" + serverArgs[18] + "&numeroSerial=" + serverArgs[19] + "&processador=" + serverArgs[20] + "&memoria=" + serverArgs[21] + "&hd=" + serverArgs[22] + "&sistemaOperacional=" + serverArgs[23] + "&nomeDoComputador=" + serverArgs[24] + "&bios=" + serverArgs[25] + "&mac=" + serverArgs[26] + "&ip=" + serverArgs[27] + "&emUso=" + serverArgs[12] + "&etiqueta=" + serverArgs[13] + "&tipo=" + serverArgs[14] + "&tipoFW=" + serverArgs[28] + "&tipoArmaz=" + serverArgs[29] + "&gpu=" + serverArgs[30] + "&modoArmaz=" + serverArgs[31] + "&secBoot=" + serverArgs[32] + "&vt=" + serverArgs[33] + "&tpm=" + serverArgs[34] + "&trocaPilha=" + serverArgs[10] + "&ticketNum=" + serverArgs[11] + "&agent=" + serverArgs[35]);
+            webView2.CoreWebView2.Navigate("http://" + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php"
+                + ConstantsDLL.Properties.Resources.phpAssetNumber + serverArgs[3]
+                + ConstantsDLL.Properties.Resources.phpSealNumber + serverArgs[4]
+                + ConstantsDLL.Properties.Resources.phpRoom + serverArgs[5]
+                + ConstantsDLL.Properties.Resources.phpBuilding + serverArgs[6]
+                + ConstantsDLL.Properties.Resources.phpAdRegistered + serverArgs[7]
+                + ConstantsDLL.Properties.Resources.phpStandard + serverArgs[8]
+                + ConstantsDLL.Properties.Resources.phpServiceDate + serverArgs[9]
+                + ConstantsDLL.Properties.Resources.phpPreviousServiceDates + serverArgs[9]
+                + ConstantsDLL.Properties.Resources.phpBrand + serverArgs[17]
+                + ConstantsDLL.Properties.Resources.phpModel + serverArgs[18]
+                + ConstantsDLL.Properties.Resources.phpSerialNumber + serverArgs[19]
+                + ConstantsDLL.Properties.Resources.phpProcessor + serverArgs[20]
+                + ConstantsDLL.Properties.Resources.phpRam + serverArgs[21]
+                + ConstantsDLL.Properties.Resources.phpStorageSize + serverArgs[22]
+                + ConstantsDLL.Properties.Resources.phpOperatingSystem + serverArgs[23]
+                + ConstantsDLL.Properties.Resources.phpHostname + serverArgs[24]
+                + ConstantsDLL.Properties.Resources.phpFwVersion + serverArgs[25]
+                + ConstantsDLL.Properties.Resources.phpMacAddress + serverArgs[26]
+                + ConstantsDLL.Properties.Resources.phpIpAddress + serverArgs[27]
+                + ConstantsDLL.Properties.Resources.phpInUse + serverArgs[12]
+                + ConstantsDLL.Properties.Resources.phpTag + serverArgs[13]
+                + ConstantsDLL.Properties.Resources.phpHwType + serverArgs[14]
+                + ConstantsDLL.Properties.Resources.phpFwType + serverArgs[28]
+                + ConstantsDLL.Properties.Resources.phpStorageType + serverArgs[29]
+                + ConstantsDLL.Properties.Resources.phpVideoCard + serverArgs[30]
+                + ConstantsDLL.Properties.Resources.phpMediaOperationMode + serverArgs[31]
+                + ConstantsDLL.Properties.Resources.phpSecureBoot + serverArgs[32]
+                + ConstantsDLL.Properties.Resources.phpVirtualizationTechnology + serverArgs[33]
+                + ConstantsDLL.Properties.Resources.phpTpmVersion + serverArgs[34]
+                + ConstantsDLL.Properties.Resources.phpBatteryChange + serverArgs[10]
+                + ConstantsDLL.Properties.Resources.phpTicketNumber + serverArgs[11]
+                + ConstantsDLL.Properties.Resources.phpAgent + serverArgs[35]);
         }
     }
 }

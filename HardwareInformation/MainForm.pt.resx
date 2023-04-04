@@ -411,7 +411,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFixedTPM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 13</value>
+    <value>84, 13</value>
   </data>
   <data name="lblFixedTPM.Text" xml:space="preserve">
     <value>Versão do TPM:</value>
@@ -2297,8 +2297,5 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>

@@ -100,7 +100,7 @@ namespace HardwareInformation
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Usuario, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            string[] str = LoginFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
+            string[] str = CredentialsFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
             {
                 if (str[0] == "true")
