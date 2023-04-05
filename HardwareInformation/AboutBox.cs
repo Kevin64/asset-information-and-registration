@@ -25,7 +25,7 @@ namespace HardwareInformation
             textBoxDescription.Text = AssemblyDescription;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
-            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[3][0].ToString()) && definitionList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
                 {

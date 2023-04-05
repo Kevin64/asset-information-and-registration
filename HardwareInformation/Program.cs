@@ -23,7 +23,7 @@ namespace HardwareInformation
     public class Program
     {
         private static string logLocationStr, serverIPStr, serverPortStr, themeStr;
-        private static string[] logLocationSection, serverListSection, portListSection, roomListSection, hwTypeListSection, themeSection;
+        private static string[] logLocationSection, serverListSection, portListSection, themeSection, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
         private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
         private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
 
@@ -169,9 +169,8 @@ namespace HardwareInformation
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
                 portListSection = serverPortStr.Split(',').ToArray();
-                roomListSection = null;
-                hwTypeListSection = null;
                 themeSection = themeStr.Split().ToArray();
+                firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
 
                 if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
                 {
@@ -189,10 +188,13 @@ namespace HardwareInformation
                 {
                     serverListSection,
                     portListSection,
-                    roomListSection,
-                    hwTypeListSection,
                     logLocationSection,
-                    themeSection
+                    themeSection,
+                    firmwareTypes,
+                    tpmTypes,
+                    mediaOperationTypes,
+                    secureBootStates,
+                    virtualizationTechnologyStates
                 };
 
                 orgDataListSection = new List<string>

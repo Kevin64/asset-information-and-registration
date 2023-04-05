@@ -22,6 +22,7 @@ namespace HardwareInformation
         private string[] strArgs, strAlert;
         private WebView2 webView2;
         private readonly LogGenerator log;
+        private List<string[]> jsonServerSettings;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -150,7 +151,7 @@ namespace HardwareInformation
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(servidor, porta);
+            jsonServerSettings = ConfigFileReader.FetchInfoST(servidor, porta);
             definitionList[2] = jsonServerSettings[0];
             definitionList[3] = jsonServerSettings[1];
 
@@ -190,7 +191,7 @@ namespace HardwareInformation
                     //Patrimonio
                     if (strArgs[3].Equals(string.Empty))
                     {
-                        strArgs[3] = System.Net.Dns.GetHostName().Substring(3);
+                        strArgs[3] = HardwareInfo.GetComputerName().Substring(3);
                     }
 
                     string[] pcJsonStr = AssetFileReader.FetchInfoST(strArgs[3], strArgs[0], strArgs[1]);

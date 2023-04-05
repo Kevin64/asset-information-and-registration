@@ -51,7 +51,7 @@ namespace HardwareInformation
             log = l;
 
             //Define theming according to ini file provided info
-            if (StringsAndConstants.listThemeGUI.Contains(defList[5][0].ToString()) && defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(defList[3][0].ToString()) && defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -73,7 +73,7 @@ namespace HardwareInformation
                     LightTheme();
                 }
             }
-            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
@@ -82,7 +82,7 @@ namespace HardwareInformation
 
                 LightTheme();
             }
-            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
@@ -322,8 +322,9 @@ namespace HardwareInformation
             loadingCircle1.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
+                string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(true, Strings.OFFLINE_MODE_ACTIVATED, null, null, log, defList, orgList);
+                mForm = new MainForm(true, offStr, null, null, log, defList, orgList);
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -370,7 +371,7 @@ namespace HardwareInformation
                     else //If Login Json file does exist and user logs in
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-                        MainForm mForm = new MainForm(false, str[1], comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
+                        MainForm mForm = new MainForm(false, str, comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
                         if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);

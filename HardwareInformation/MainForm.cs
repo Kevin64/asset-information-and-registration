@@ -29,13 +29,13 @@ namespace HardwareInformation
         private readonly bool offlineMode;
         private string servidor_web, porta, modeURL;
         private string BM, Model, SerialNo, ProcName, PM, HDSize, MediaType, MediaOperation, GPUInfo, OS, Hostname, Mac, IP, BIOS, BIOSType, SecBoot, VT, Smart, TPM;
-        private readonly string user, ip, port;
-        private readonly string[] sArgs = new string[34];
-        private readonly List<string[]> defList;
+        private readonly string ip, port;
+        private readonly string[] sArgs = new string[34], agentData = new string[2];
+        private readonly List<string[]> defList, jsonServerSettings;
         private readonly List<string> orgList;
 
         //Form constructor
-        public MainForm(bool noConnection, string user, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
+        public MainForm(bool noConnection, string[] agentData, string ip, string port, LogGenerator l, List<string[]> definitionList, List<string> orgDataList)
         {
             //Inits WinForms components
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace HardwareInformation
             toolStripVersionText.Text = MiscMethods.Version(); //Release/Final version
 #endif
             //Define theming according to ini file provided info
-            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[3][0].ToString()) && definitionList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -97,7 +97,7 @@ namespace HardwareInformation
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
-            this.user = user;
+            this.agentData = agentData;
             this.ip = ip;
             this.port = port;
 
@@ -105,9 +105,14 @@ namespace HardwareInformation
             {
                 //Fetch building and hw types info from the specified server
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-                List<string[]> jsonServerSettings = ConfigFileReader.FetchInfoST(ip, port);
+                jsonServerSettings = ConfigFileReader.FetchInfoST(ip, port);
                 defList[2] = jsonServerSettings[0];
                 defList[3] = jsonServerSettings[1];
+                defList[4] = jsonServerSettings[2];
+                defList[5] = jsonServerSettings[3];
+                defList[6] = jsonServerSettings[4];
+                defList[7] = jsonServerSettings[5];
+                defList[8] = jsonServerSettings[6];
                 comboBoxBuilding.Items.AddRange(defList[2]);
                 comboBoxType.Items.AddRange(defList[3]);
             }
@@ -119,7 +124,7 @@ namespace HardwareInformation
             comboBoxTag.Items.AddRange(StringsAndConstants.listTagGUI.ToArray());
             comboBoxBattery.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
             textBoxPatrimony.Text = System.Net.Dns.GetHostName().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN)
-                ? System.Net.Dns.GetHostName().Substring(3)
+                ? HardwareInfo.GetComputerName().Substring(3)
                 : string.Empty;
 
             //Inits thread worker for parallelism
@@ -3837,7 +3842,7 @@ namespace HardwareInformation
 
             lblIPServer.Text = ip; //Prints IP address
             lblPortServer.Text = port; //Prints port number
-            lblAgentName.Text = user.ToUpper(); //Prints agent name
+            lblAgentName.Text = agentData[1].ToUpper(); //Prints agent name
             dateTimePicker1.MaxDate = DateTime.Today; //Define max date of datetimepicker to current day
             FormClosing += Form1_FormClosing; //Handles Form closing
             tbProgMain = TaskbarManager.Instance; //Handles taskbar progress bar
@@ -4098,7 +4103,7 @@ namespace HardwareInformation
             timer10.Enabled = false;
 
             //Resets the colors while scanning the hardware
-            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR || lblPM.ForeColor == StringsAndConstants.ALERT_COLOR || lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR)
+            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOSType.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR || lblPM.ForeColor == StringsAndConstants.ALERT_COLOR || lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR)
             {
                 if (themeBool)
                 {
@@ -4106,6 +4111,7 @@ namespace HardwareInformation
                     lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                     lblSecBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                     lblBIOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                    lblBIOSType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                     lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                     lblSmart.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                     lblPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
@@ -4117,6 +4123,7 @@ namespace HardwareInformation
                     lblMediaOperation.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                     lblSecBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                     lblBIOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                    lblBIOSType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                     lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                     lblSmart.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                     lblPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
@@ -4326,17 +4333,19 @@ namespace HardwareInformation
             lblHDSize.Text = HDSize;
             lblSmart.Text = Smart;
             lblMediaType.Text = MediaType;
-            lblMediaOperation.Text = MediaOperation;
             lblGPUInfo.Text = GPUInfo;
             lblOS.Text = OS;
             lblHostname.Text = Hostname;
             lblMac.Text = Mac;
             lblIP.Text = IP;
             lblBIOS.Text = BIOS;
-            lblBIOSType.Text = BIOSType;
-            lblSecBoot.Text = SecBoot;
-            lblVT.Text = VT;
-            lblTPM.Text = TPM;
+
+            lblMediaOperation.Text = defList[6][Convert.ToInt32(MediaOperation)];
+            lblBIOSType.Text = defList[4][Convert.ToInt32(BIOSType)];
+            lblSecBoot.Text = defList[7][Convert.ToInt32(SecBoot)];
+            lblVT.Text = defList[8][Convert.ToInt32(VT)];
+            lblTPM.Text = defList[5][Convert.ToInt32(TPM)];
+
             lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
             lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
             #endregion
@@ -4354,10 +4363,10 @@ namespace HardwareInformation
             try
             {
                 //Feches model info from server
-                string[] biosJsonStr = await ModelFileReader.FetchInfoMT(lblBM.Text, lblModel.Text, lblBIOSType.Text, lblTPM.Text, lblMediaOperation.Text, ip, port);
+                string[] biosJsonStr = await ModelFileReader.FetchInfoMT(BM, Model, BIOSType, TPM, MediaOperation, ip, port);
 
                 //Scan if hostname is the default one
-                if (lblHostname.Text.Equals(Strings.DEFAULT_HOSTNAME))
+                if (Hostname.Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
                     lblHostname.Text += Strings.HOSTNAME_ALERT;
@@ -4373,7 +4382,7 @@ namespace HardwareInformation
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //The section below contains the exception cases for Secure Boot enforcement
-                if (lblSecBoot.Text.Equals(ConstantsDLL.Properties.Strings.deactivated) &&
+                if (SecBoot.Equals(ConstantsDLL.Properties.Strings.deactivated) &&
                     !lblGPUInfo.Text.Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU1) &&
                     !lblGPUInfo.Text.Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU2))
                 {
@@ -4393,7 +4402,7 @@ namespace HardwareInformation
                     }
                 }
                 //If model Json file does exist and BIOS/UEFI version is incorrect
-                if (biosJsonStr != null && !lblBIOS.Text.Contains(biosJsonStr[0]))
+                if (biosJsonStr != null && !BIOS.Contains(biosJsonStr[0]))
                 {
                     if (!biosJsonStr[0].Equals("-1"))
                     {
@@ -4412,7 +4421,7 @@ namespace HardwareInformation
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If there is no MAC address assigned
-                if (lblMac.Text == string.Empty)
+                if (Mac == string.Empty)
                 {
                     if (!offlineMode) //If it's not in offline mode
                     {
@@ -4429,15 +4438,15 @@ namespace HardwareInformation
                     }
                 }
                 //If Virtualization Technology is disabled
-                if (lblVT.Text == ConstantsDLL.Properties.Strings.deactivated)
+                if (VT == ConstantsDLL.Properties.Strings.deactivated)
                 {
                     pass = false;
                     lblVT.Text += Strings.VT_ALERT;
                     timer7.Enabled = true;
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.VT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
-                //If Smart status is no OK
-                if (!lblSmart.Text.Contains(ConstantsDLL.Properties.Resources.ok))
+                //If Smart status is not OK
+                if (!Smart.Contains(ConstantsDLL.Properties.Resources.ok))
                 {
                     pass = false;
                     lblSmart.Text += Strings.SMART_FAIL;
@@ -4545,24 +4554,25 @@ namespace HardwareInformation
         //Attributes the data collected previously to the variables which will inside the URL for registration
         private void AttrHardwareData()
         {
-            sArgs[10] = lblBM.Text;
-            sArgs[11] = lblModel.Text;
-            sArgs[12] = lblSerialNo.Text;
-            sArgs[13] = lblProcName.Text;
-            sArgs[14] = lblPM.Text;
-            sArgs[15] = lblHDSize.Text;
-            sArgs[16] = lblOS.Text;
-            sArgs[17] = lblHostname.Text;
-            sArgs[18] = lblBIOS.Text;
-            sArgs[19] = lblMac.Text;
-            sArgs[20] = lblIP.Text;
-            sArgs[24] = lblBIOSType.Text;
-            sArgs[25] = lblMediaType.Text;
-            sArgs[26] = lblGPUInfo.Text;
-            sArgs[27] = lblMediaOperation.Text;
-            sArgs[28] = lblSecBoot.Text;
-            sArgs[29] = lblVT.Text;
-            sArgs[30] = lblTPM.Text;
+            sArgs[10] = BM;
+            sArgs[11] = Model;
+            sArgs[12] = SerialNo;
+            sArgs[13] = ProcName;
+            sArgs[14] = PM;
+            sArgs[15] = HDSize;
+            sArgs[16] = Smart;
+            sArgs[17] = Hostname;
+            sArgs[18] = BIOS;
+            sArgs[19] = Mac;
+            sArgs[20] = IP;
+            sArgs[25] = MediaType;
+            sArgs[26] = GPUInfo;
+
+            sArgs[24] = BIOSType;
+            sArgs[27] = MediaOperation;
+            sArgs[28] = Array.IndexOf(defList[7], SecBoot).ToString();
+            sArgs[29] = Array.IndexOf(defList[8], VT).ToString();
+            sArgs[30] = TPM;
         }
 
         //Loads webView2 component
@@ -4641,16 +4651,16 @@ namespace HardwareInformation
                 sArgs[3] = textBoxPatrimony.Text;
                 sArgs[4] = textBoxSeal.Text;
                 sArgs[5] = textBoxLetter.Text != string.Empty ? textBoxRoom.Text + textBoxLetter.Text : textBoxRoom.Text;
-                sArgs[6] = comboBoxBuilding.SelectedItem.ToString();
+                sArgs[6] = Array.IndexOf(defList[2], comboBoxBuilding.SelectedItem.ToString()).ToString();
                 sArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
-                sArgs[8] = comboBoxStandard.SelectedItem.ToString();
+                sArgs[8] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listStandardGUIEmployee) ? "0" : "1";
                 sArgs[9] = dateTimePicker1.Value.ToString(ConstantsDLL.Properties.Resources.dateFormat).Substring(0, 10);
                 sArgs[21] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
                 sArgs[22] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
-                sArgs[23] = comboBoxType.SelectedItem.ToString();
+                sArgs[23] = Array.IndexOf(defList[3], comboBoxType.SelectedItem.ToString()).ToString();
                 sArgs[31] = comboBoxBattery.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.listYes0) ? "1" : "0";
                 sArgs[32] = textBoxTicket.Text;
-                sArgs[33] = user;
+                sArgs[33] = agentData[0];
 
                 //Feches patrimony data from server
                 string[] pcJsonStr = await AssetFileReader.FetchInfoMT(sArgs[3], sArgs[0], sArgs[1]);
