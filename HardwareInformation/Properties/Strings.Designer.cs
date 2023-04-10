@@ -889,6 +889,15 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  occupied.
+        /// </summary>
+        internal static string occupied {
+            get {
+                return ResourceManager.GetString("occupied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a OFFLINE.
         /// </summary>
         internal static string OFFLINE {
@@ -984,6 +993,15 @@ namespace HardwareInformation.Properties {
         internal static string SINCE_UNKNOWN {
             get {
                 return ResourceManager.GetString("SINCE_UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  slots of .
+        /// </summary>
+        internal static string slots_of {
+            get {
+                return ResourceManager.GetString("slots_of", resourceCulture);
             }
         }
         

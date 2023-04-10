@@ -4103,32 +4103,33 @@ namespace HardwareInformation
             timer10.Enabled = false;
 
             //Resets the colors while scanning the hardware
-            if (lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR || lblMediaOperation.ForeColor == StringsAndConstants.ALERT_COLOR || lblSecBoot.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOS.ForeColor == StringsAndConstants.ALERT_COLOR || lblBIOSType.ForeColor == StringsAndConstants.ALERT_COLOR || lblVT.ForeColor == StringsAndConstants.ALERT_COLOR || lblSmart.ForeColor == StringsAndConstants.ALERT_COLOR || lblPM.ForeColor == StringsAndConstants.ALERT_COLOR || lblTPM.ForeColor == StringsAndConstants.ALERT_COLOR)
+            if (themeBool)
             {
-                if (themeBool)
-                {
-                    lblHostname.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblSecBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblBIOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblBIOSType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblSmart.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                    lblTPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                }
-                else
-                {
-                    lblHostname.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblMediaOperation.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblSecBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblBIOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblBIOSType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblSmart.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                    lblTPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                }
+                lblHostname.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblMediaOperation.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblSecBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblBIOS.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblBIOSType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblVT.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblSmart.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblTPM.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblMac.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblIP.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            }
+            else
+            {
+                lblHostname.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblMediaOperation.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblSecBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblBIOS.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblBIOSType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblVT.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblSmart.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblTPM.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblMac.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblIP.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             }
         }
 
@@ -4182,7 +4183,7 @@ namespace HardwareInformation
 
             //Scans for RAM amount and total number of slots
             PM = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
-                " slots de " + HardwareInfo.GetNumRamSlots() + " ocupados" + ")";
+                Strings.slots_of + HardwareInfo.GetNumRamSlots() + Strings.occupied + ")";
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, PM, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4421,7 +4422,7 @@ namespace HardwareInformation
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //If there is no MAC address assigned
-                if (Mac == string.Empty)
+                if (string.IsNullOrEmpty(Mac))
                 {
                     if (!offlineMode) //If it's not in offline mode
                     {
@@ -4560,7 +4561,7 @@ namespace HardwareInformation
             sArgs[13] = ProcName;
             sArgs[14] = PM;
             sArgs[15] = HDSize;
-            sArgs[16] = Smart;
+            sArgs[16] = OS;
             sArgs[17] = Hostname;
             sArgs[18] = BIOS;
             sArgs[19] = Mac;

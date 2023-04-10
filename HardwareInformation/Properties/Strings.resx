@@ -394,6 +394,9 @@
   <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
     <value> (Insufficient memory)</value>
   </data>
+  <data name="occupied" xml:space="preserve">
+    <value> occupied</value>
+  </data>
   <data name="OFFLINE" xml:space="preserve">
     <value>OFFLINE</value>
   </data>
@@ -426,6 +429,9 @@
   </data>
   <data name="SINCE_UNKNOWN" xml:space="preserve">
     <value>(Could not determine date of last service)</value>
+  </data>
+  <data name="slots_of" xml:space="preserve">
+    <value> slots of </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
     <value> (Drive with imminent failure)</value>
