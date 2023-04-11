@@ -130,6 +130,10 @@ namespace HardwareInformation
         [STAThread]
         private static void Main(string[] args)
         {
+            //var culture = CultureInfo.GetCultureInfo("en");
+            //CultureInfo.DefaultThreadCurrentCulture = culture;
+            //CultureInfo.DefaultThreadCurrentUICulture = culture;
+
             if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);

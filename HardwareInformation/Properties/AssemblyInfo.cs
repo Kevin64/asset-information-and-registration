@@ -48,6 +48,7 @@ using System.Runtime.InteropServices;
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
+[assembly: NeutralResourcesLanguage("")]
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif

@@ -4343,8 +4343,8 @@ namespace HardwareInformation
 
             lblMediaOperation.Text = defList[6][Convert.ToInt32(MediaOperation)];
             lblBIOSType.Text = defList[4][Convert.ToInt32(BIOSType)];
-            lblSecBoot.Text = defList[7][Convert.ToInt32(SecBoot)];
-            lblVT.Text = defList[8][Convert.ToInt32(VT)];
+            lblSecBoot.Text = StringsAndConstants.listStates[Convert.ToInt32(defList[7][Convert.ToInt32(SecBoot)])];
+            lblVT.Text = StringsAndConstants.listStates[Convert.ToInt32(defList[8][Convert.ToInt32(VT)])];
             lblTPM.Text = defList[5][Convert.ToInt32(TPM)];
 
             lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
@@ -4686,14 +4686,13 @@ namespace HardwareInformation
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
-                                sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                                 webView2Control.Visible = true;
                                 ServerSendInfo(sArgs); //Send info to server
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                                 if (formatRadioButton.Checked) //If the format radio button is checked
                                 {
-                                    MiscMethods.RegCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
+                                    MiscMethods.RegCreate(true, sArgs[9]); //Create reg entries for format and maintenance
                                     lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4701,7 +4700,7 @@ namespace HardwareInformation
                                 }
                                 else if (maintenanceRadioButton.Checked) //If the maintenance radio button is checked
                                 {
-                                    MiscMethods.RegCreate(false, dateTimePicker1); //Create reg entry just for maintenance
+                                    MiscMethods.RegCreate(false, sArgs[9]); //Create reg entry just for maintenance
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                                 }
@@ -4718,14 +4717,13 @@ namespace HardwareInformation
                         }
                         catch //If can't retrieve (patrimony non existent in the database), register normally
                         {
-                            sArgs[9] = dateTimePicker1.Value.ToString().Substring(0, 10);
                             webView2Control.Visible = true;
                             ServerSendInfo(sArgs); //Send info to server
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                             if (formatRadioButton.Checked) //If the format radio button is checked
                             {
-                                MiscMethods.RegCreate(true, dateTimePicker1); //Create reg entries for format and maintenance
+                                MiscMethods.RegCreate(true, sArgs[9]); //Create reg entries for format and maintenance
                                 lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4735,7 +4733,7 @@ namespace HardwareInformation
                             }
                             else if (maintenanceRadioButton.Checked) //If the maintenance radio button is checked
                             {
-                                MiscMethods.RegCreate(false, dateTimePicker1); //Create reg entry just for maintenance
+                                MiscMethods.RegCreate(false, sArgs[9]); //Create reg entry just for maintenance
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
