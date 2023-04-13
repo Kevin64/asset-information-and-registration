@@ -19,8 +19,8 @@ namespace HardwareInformation
         private readonly bool themeBool;
         private string[] str = { };
         private readonly LogGenerator log;
-        private readonly List<string[]> defList;
-        private readonly List<string> orgList;
+        private readonly List<string[]> definitionList;
+        private readonly List<string> orgDataList;
 
         #region
         private TaskbarManager tbProgLogin;
@@ -33,16 +33,16 @@ namespace HardwareInformation
             //Inits WinForms components
             InitializeComponent();
 
-            defList = definitionListSection;
-            orgList = orgDataListSection;
+            definitionList = definitionListSection;
+            orgDataList = orgDataListSection;
 
             //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
-            for (int i = 0; i < orgList.Count; i++)
+            for (int i = 0; i < orgDataList.Count; i++)
             {
-                if (!orgList[i].Equals(string.Empty))
+                if (!orgDataList[i].Equals(string.Empty))
                 {
-                    oList[i] = orgList[i].ToString() + " - ";
+                    oList[i] = orgDataList[i].ToString() + " - ";
                 }
             }
 
@@ -51,7 +51,7 @@ namespace HardwareInformation
             log = l;
 
             //Define theming according to ini file provided info
-            if (StringsAndConstants.listThemeGUI.Contains(defList[5][0].ToString()) && defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -60,7 +60,6 @@ namespace HardwareInformation
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
-
                     DarkTheme();
                 }
                 else
@@ -69,11 +68,10 @@ namespace HardwareInformation
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
-
                     LightTheme();
                 }
             }
-            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
@@ -82,20 +80,19 @@ namespace HardwareInformation
 
                 LightTheme();
             }
-            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 }
-
                 DarkTheme();
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_THEME, themeBool.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
-            comboBoxServerIP.Items.AddRange(defList[0]);
-            comboBoxServerPort.Items.AddRange(defList[1]);
+            comboBoxServerIP.Items.AddRange(definitionList[0]);
+            comboBoxServerPort.Items.AddRange(definitionList[1]);
 
             //Program version
 #if DEBUG
@@ -217,7 +214,7 @@ namespace HardwareInformation
         }
 
         //Loads the form, sets some combobox values
-        private void Form2_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
             // Define loading circle parameters
             #region
@@ -293,12 +290,12 @@ namespace HardwareInformation
             loadingCircleAuthButton.Color = StringsAndConstants.rotatingCircleColor;
             #endregion
 
-            FormClosing += Form2_FormClosing;
+            FormClosing += LoginForm_Closing;
             tbProgLogin = TaskbarManager.Instance;
         }
 
         //Handles the closing of the current form
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_LOGINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -324,7 +321,7 @@ namespace HardwareInformation
             {
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(true, offStr, null, null, log, defList, orgList);
+                mForm = new MainForm(true, offStr, null, null, log, definitionList, orgDataList);
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -371,7 +368,7 @@ namespace HardwareInformation
                     else //If Login Json file does exist and user logs in
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-                        MainForm mForm = new MainForm(false, str, comboBoxServerIP.Text, comboBoxServerPort.Text, log, defList, orgList);
+                        MainForm mForm = new MainForm(false, str, comboBoxServerIP.Text, comboBoxServerPort.Text, log, definitionList, orgDataList);
                         if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -427,14 +424,13 @@ namespace HardwareInformation
         }
 
         //Opens the About box
-        private void AboutLabel_Click(object sender, EventArgs e)
+        private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox(defList, themeBool);
+            AboutBox aboutForm = new AboutBox(definitionList, themeBool);
             if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             }
-
             _ = aboutForm.ShowDialog();
         }
     }

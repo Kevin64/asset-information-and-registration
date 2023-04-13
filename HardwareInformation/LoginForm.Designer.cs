@@ -110,7 +110,7 @@
             this.aboutLabelButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.aboutLabelButton.Name = "aboutLabelButton";
             resources.ApplyResources(this.aboutLabelButton, "aboutLabelButton");
-            this.aboutLabelButton.Click += new System.EventHandler(this.AboutLabel_Click);
+            this.aboutLabelButton.Click += new System.EventHandler(this.AboutLabelButton_Click);
             // 
             // toolStripStatusBarText
             // 
@@ -253,7 +253,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).EndInit();

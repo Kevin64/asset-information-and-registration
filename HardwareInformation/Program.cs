@@ -23,9 +23,9 @@ namespace HardwareInformation
     public class Program
     {
         private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr;
-        private static string[] logLocationSection, serverListSection, portListSection, secureBootEnforcementSection, vtEnforcementSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
         private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
         private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
+        private static string[] logLocationSection, serverIPListSection, serverPortListSection, secureBootEnforcementSection, vtEnforcementSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
 
         private static List<string[]> definitionListSection;
         private static List<string> orgDataListSection;
@@ -34,79 +34,79 @@ namespace HardwareInformation
         //Command line switch options specification
         public class Options
         {
-            [Option(StringsAndConstants.cliServerIPSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
-            public string Servidor { get; set; }
+            [Option(StringsAndConstants.cliServerIPSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServerIP)]
+            public string ServerIP { get; set; }
 
-            [Option(StringsAndConstants.cliServerPortSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
-            public string Porta { get; set; }
+            [Option(StringsAndConstants.cliServerPortSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServerPort)]
+            public string ServerPort { get; set; }
 
-            [Option(StringsAndConstants.cliServiceTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = StringsAndConstants.cliDefaultServiceType)]
-            public string TipoDeServico { get; set; }
+            [Option(StringsAndConstants.cliServiceTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServiceType, Default = StringsAndConstants.cliDefaultServiceType)]
+            public string ServiceType { get; set; }
 
-            [Option(StringsAndConstants.cliAssetNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
-            public string Patrimonio { get; set; }
+            [Option(StringsAndConstants.cliAssetNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextAssetNumber, Default = "")]
+            public string AssetNumber { get; set; }
 
-            [Option(StringsAndConstants.cliSealNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Lacre { get; set; }
+            [Option(StringsAndConstants.cliSealNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextSealNumber, Default = StringsAndConstants.cliDefaultUnchanged)]
+            public string SealNumber { get; set; }
 
-            [Option(StringsAndConstants.cliRoomNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Sala { get; set; }
+            [Option(StringsAndConstants.cliRoomNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextRoomNumber, Default = StringsAndConstants.cliDefaultUnchanged)]
+            public string RoomNumber { get; set; }
 
             [Option(StringsAndConstants.cliBuildingSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Predio { get; set; }
+            public string Building { get; set; }
 
-            [Option(StringsAndConstants.cliAdRegisteredSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string AD { get; set; }
+            [Option(StringsAndConstants.cliAdRegisteredSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextAdRegistered, Default = StringsAndConstants.cliDefaultUnchanged)]
+            public string AdRegistered { get; set; }
 
             [Option(StringsAndConstants.cliStandardSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Padrao { get; set; }
+            public string Standard { get; set; }
 
-            [Option(StringsAndConstants.cliServiceDateSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = StringsAndConstants.cliDefaultServiceDate)]
-            public string Data { get; set; }
+            [Option(StringsAndConstants.cliServiceDateSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServiceDate, Default = StringsAndConstants.cliDefaultServiceDate)]
+            public string ServiceDate { get; set; }
 
-            [Option(StringsAndConstants.cliBatteryChangeSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
-            public string Pilha { get; set; }
+            [Option(StringsAndConstants.cliBatteryChangeSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextBatteryChange)]
+            public string BatteryChange { get; set; }
 
-            [Option(StringsAndConstants.cliTicketNumberSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
-            public string Ticket { get; set; }
+            [Option(StringsAndConstants.cliTicketNumberSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextTicketNumber)]
+            public string TicketNumber { get; set; }
 
             [Option(StringsAndConstants.cliInUseSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Uso { get; set; }
+            public string InUse { get; set; }
 
             [Option(StringsAndConstants.cliTagSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string Etiqueta { get; set; }
+            public string Tag { get; set; }
 
-            [Option(StringsAndConstants.cliHwTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = StringsAndConstants.cliDefaultUnchanged)]
-            public string TipoHardware { get; set; }
+            [Option(StringsAndConstants.cliHwTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextHwType, Default = StringsAndConstants.cliDefaultUnchanged)]
+            public string HwType { get; set; }
 
-            [Option(StringsAndConstants.cliUsernameSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
-            public string Usuario { get; set; }
+            [Option(StringsAndConstants.cliUsernameSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextUsername)]
+            public string Username { get; set; }
 
             [Option(StringsAndConstants.cliPasswordSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
-            public string Senha { get; set; }
+            public string Password { get; set; }
         }
 
         //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         public static void RunOptions(Options opts)
         {
-            if (opts.Servidor == null)
+            if (opts.ServerIP == null)
             {
-                opts.Servidor = serverListSection[0];
+                opts.ServerIP = serverIPListSection[0];
             }
 
-            if (opts.Porta == null)
+            if (opts.ServerPort == null)
             {
-                opts.Porta = portListSection[0];
+                opts.ServerPort = serverPortListSection[0];
             }
 
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Usuario, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            string[] str = CredentialsFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            string[] str = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
                 if (str[0] != "false")
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, str, log, definitionListSection));
+                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, str, log, definitionListSection));
                 }
                 else
                 {
@@ -173,11 +173,13 @@ namespace HardwareInformation
                 subDepAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_6];
 
                 logLocationSection = logLocationStr.Split().ToArray();
-                serverListSection = serverIPStr.Split(',').ToArray();
-                portListSection = serverPortStr.Split(',').ToArray();
+                serverIPListSection = serverIPStr.Split(',').ToArray();
+                serverPortListSection = serverPortStr.Split(',').ToArray();
                 secureBootEnforcementSection = secureBootEnforcementStr.Split().ToArray();
                 vtEnforcementSection = vtEnforcementStr.Split().ToArray();
                 themeSection = themeStr.Split().ToArray();
+
+                //Assigns null to allow to pass as argument and be filled later
                 buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
 
                 if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
@@ -194,8 +196,8 @@ namespace HardwareInformation
 
                 definitionListSection = new List<string[]>
                 {
-                    serverListSection,
-                    portListSection,
+                    serverIPListSection,
+                    serverPortListSection,
                     logLocationSection,
                     secureBootEnforcementSection,
                     vtEnforcementSection,

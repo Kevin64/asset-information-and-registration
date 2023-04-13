@@ -161,21 +161,21 @@ namespace HardwareInformation
 
             string[] dateFormat = new string[] { ConstantsDLL.Properties.Resources.dateFormat };
 
-            if (serverArgs[0].Length <= 15 && serverArgs[0].Length > 6 && //Servidor
-                serverArgs[1].Length <= 5 && serverArgs[1].All(char.IsDigit) && //Porta
-                StringsAndConstants.listModeCLI.Contains(serverArgs[2]) && //Modo
-                serverArgs[3].Length <= 6 && serverArgs[3].Length >= 0 && serverArgs[3].All(char.IsDigit) && //Patrimonio
-                ((serverArgs[4].Length <= 10 && serverArgs[4].All(char.IsDigit)) || serverArgs[4].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Lacre
-                ((serverArgs[5].Length <= 4 && serverArgs[5].Length > 0 && serverArgs[5].All(char.IsDigit)) || serverArgs[5].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Sala
-                (definitionList[2].Contains(serverArgs[6]) || serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Predio
-                (StringsAndConstants.listActiveDirectoryCLI.Contains(serverArgs[7]) || serverArgs[7].Equals(StringsAndConstants.cliDefaultUnchanged)) && //AD
-                (StringsAndConstants.listStandardCLI.Contains(serverArgs[8]) || serverArgs[8].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Padrao
+            if (serverArgs[0].Length <= 15 && serverArgs[0].Length > 6 && //serverIP
+                serverArgs[1].Length <= 5 && serverArgs[1].All(char.IsDigit) && //serverPort
+                StringsAndConstants.listModeCLI.Contains(serverArgs[2]) && //serviceType
+                serverArgs[3].Length <= 6 && serverArgs[3].Length >= 0 && serverArgs[3].All(char.IsDigit) && //assetNumber
+                ((serverArgs[4].Length <= 10 && serverArgs[4].All(char.IsDigit)) || serverArgs[4].Equals(StringsAndConstants.cliDefaultUnchanged)) && //sealNumber
+                ((serverArgs[5].Length <= 4 && serverArgs[5].Length > 0 && serverArgs[5].All(char.IsDigit)) || serverArgs[5].Equals(StringsAndConstants.cliDefaultUnchanged)) && //roomNumber
+                (definitionList[2].Contains(serverArgs[6]) || serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)) && //building
+                (StringsAndConstants.listActiveDirectoryCLI.Contains(serverArgs[7]) || serverArgs[7].Equals(StringsAndConstants.cliDefaultUnchanged)) && //adRegistered
+                (StringsAndConstants.listStandardCLI.Contains(serverArgs[8]) || serverArgs[8].Equals(StringsAndConstants.cliDefaultUnchanged)) && //standard
                 ((serverArgs[9].Length == 10 && DateTime.TryParseExact(serverArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || serverArgs[9].Equals(ConstantsDLL.Properties.Resources.today)) && //Data
-                StringsAndConstants.listBatteryCLI.Contains(serverArgs[10]) && //Pilha
+                StringsAndConstants.listBatteryCLI.Contains(serverArgs[10]) && //batteryChange
                 serverArgs[11].Length <= 6 && serverArgs[11].All(char.IsDigit) && //Ticket
-                (StringsAndConstants.listInUseCLI.Contains(serverArgs[12]) || serverArgs[12].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Uso
-                (StringsAndConstants.listTagCLI.Contains(serverArgs[13]) || serverArgs[13].Equals(StringsAndConstants.cliDefaultUnchanged)) && //Etiqueta
-                (definitionList[3].Contains(serverArgs[14]) || serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged))) //Tipo
+                (StringsAndConstants.listInUseCLI.Contains(serverArgs[12]) || serverArgs[12].Equals(StringsAndConstants.cliDefaultUnchanged)) && //inUse
+                (StringsAndConstants.listTagCLI.Contains(serverArgs[13]) || serverArgs[13].Equals(StringsAndConstants.cliDefaultUnchanged)) && //tag
+                (definitionList[3].Contains(serverArgs[14]) || serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 serverOnline = await ModelFileReader.CheckHostMT(serverArgs[0], serverArgs[1]);
@@ -188,7 +188,7 @@ namespace HardwareInformation
 
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(true), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(false), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                    //Patrimonio
+                    //assetNumber
                     if (serverArgs[3].Equals(string.Empty))
                     {
                         serverArgs[3] = HardwareInfo.GetComputerName().Substring(3);
@@ -204,7 +204,7 @@ namespace HardwareInformation
                     }
                     else if (pcJsonStr[0] == "false") //If PC Json does not exist
                     {
-                        //Modo
+                        //serviceType
                         if (serverArgs[2].Equals(StringsAndConstants.cliServiceType0))
                         {
                             serverArgs[2] = ConstantsDLL.Properties.Resources.formatURL;
@@ -213,9 +213,9 @@ namespace HardwareInformation
                         {
                             serverArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
-                        //Predio
+                        //building
                         serverArgs[6] = Array.IndexOf(definitionList[2], serverArgs[6]).ToString();
-                        //AD
+                        //adRegistered
                         if (serverArgs[7].Equals(StringsAndConstants.listNoAbbrev))
                         {
                             serverArgs[7] = "0";
@@ -224,7 +224,7 @@ namespace HardwareInformation
                         {
                             serverArgs[7] = "1";
                         }
-                        //Padrao
+                        //standard
                         if (serverArgs[8].Equals(StringsAndConstants.cliEmployeeType0))
                         {
                             serverArgs[8] = "0";
@@ -233,7 +233,7 @@ namespace HardwareInformation
                         {
                             serverArgs[8] = "1";
                         }
-                        //Pilha
+                        //batteryChange
                         if (serverArgs[10].Equals(StringsAndConstants.listNoAbbrev))
                         {
                             serverArgs[10] = "0";
@@ -242,7 +242,7 @@ namespace HardwareInformation
                         {
                             serverArgs[10] = "1";
                         }
-                        //Uso
+                        //inUse
                         if (serverArgs[12].Equals(StringsAndConstants.listNoAbbrev))
                         {
                             serverArgs[12] = "0";
@@ -251,7 +251,7 @@ namespace HardwareInformation
                         {
                             serverArgs[12] = "1";
                         }
-                        //Etiqueta
+                        //tag
                         if (serverArgs[13].Equals(StringsAndConstants.listNoAbbrev))
                         {
                             serverArgs[13] = "0";
@@ -270,7 +270,7 @@ namespace HardwareInformation
                             webView2.Dispose();
                             Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                         }
-                        //Modo
+                        //serviceType
                         if (serverArgs[2].Equals(StringsAndConstants.cliServiceType0))
                         {
                             serverArgs[2] = ConstantsDLL.Properties.Resources.formatURL;
@@ -279,26 +279,21 @@ namespace HardwareInformation
                         {
                             serverArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
-                        //Lacre
+                        //sealNumber
                         if (serverArgs[4].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[4] = pcJsonStr[6];
                         }
-                        //Sala
+                        //roomNumber
                         if (serverArgs[5].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[5] = pcJsonStr[2];
                         }
-                        //Predio
-                        if (serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged))
-                        {
-                            serverArgs[6] = pcJsonStr[1];
-                        }
-                        else
-                        {
-                            serverArgs[6] = Array.IndexOf(definitionList[2], serverArgs[6]).ToString();
-                        }
-                        //AD
+                        //building
+                        serverArgs[6] = serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)
+                            ? pcJsonStr[1]
+                            : Array.IndexOf(definitionList[2], serverArgs[6]).ToString();
+                        //adRegistered
                         if (serverArgs[7].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[7] = pcJsonStr[4];
@@ -311,7 +306,7 @@ namespace HardwareInformation
                         {
                             serverArgs[7] = "1";
                         }
-                        //Padrao
+                        //standard
                         if (serverArgs[8].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[8] = pcJsonStr[3];
@@ -324,7 +319,7 @@ namespace HardwareInformation
                         {
                             serverArgs[8] = "1";
                         }
-                        //Pilha
+                        //batteryChange
                         if (serverArgs[10].Equals(StringsAndConstants.listNoAbbrev))
                         {
                             serverArgs[10] = "0";
@@ -333,7 +328,7 @@ namespace HardwareInformation
                         {
                             serverArgs[10] = "1";
                         }
-                        //Uso
+                        //inUse
                         if (serverArgs[12].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[12] = pcJsonStr[5];
@@ -346,7 +341,7 @@ namespace HardwareInformation
                         {
                             serverArgs[12] = "1";
                         }
-                        //Etiqueta
+                        //tag
                         if (serverArgs[13].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
                             serverArgs[13] = pcJsonStr[7];
@@ -359,15 +354,10 @@ namespace HardwareInformation
                         {
                             serverArgs[13] = "1";
                         }
-                        //Tipo
-                        if (serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged))
-                        {
-                            serverArgs[14] = pcJsonStr[8];
-                        }
-                        else
-                        {
-                            serverArgs[14] = Array.IndexOf(definitionList[3], serverArgs[14]).ToString();
-                        }
+                        //hwType
+                        serverArgs[14] = serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged)
+                            ? pcJsonStr[8]
+                            : Array.IndexOf(definitionList[3], serverArgs[14]).ToString();
                     }
                     PrintHardwareData();
 
@@ -378,7 +368,7 @@ namespace HardwareInformation
                         DateTime todayDate = DateTime.Today;
                         bool tDay;
 
-                        try //If there is database record of the patrimony
+                        try //If there is database record of the asset number
                         {
                             //If chosen date is 'hoje'
                             if (serverArgs[9].Equals(ConstantsDLL.Properties.Resources.today))
@@ -439,7 +429,7 @@ namespace HardwareInformation
                                 Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
                             }
                         }
-                        catch //If there is no database record of the patrimony
+                        catch //If there is no database record of the asset number
                         {
                             if (serverArgs[9].Equals(ConstantsDLL.Properties.Resources.today))
                             {
