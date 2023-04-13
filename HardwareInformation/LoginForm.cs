@@ -51,7 +51,7 @@ namespace HardwareInformation
             log = l;
 
             //Define theming according to ini file provided info
-            if (StringsAndConstants.listThemeGUI.Contains(defList[3][0].ToString()) && defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(defList[5][0].ToString()) && defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
@@ -73,7 +73,7 @@ namespace HardwareInformation
                     LightTheme();
                 }
             }
-            else if (defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
@@ -82,7 +82,7 @@ namespace HardwareInformation
 
                 LightTheme();
             }
-            else if (defList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (defList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
@@ -114,15 +114,15 @@ namespace HardwareInformation
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            lblFixedUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblFixedUsername.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedServerPort.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedServerIP.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            loadingCircle1.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
+            loadingCircleAuthButton.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
-            textBoxUser.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            textBoxUser.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            textBoxUsername.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            textBoxUsername.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             textBoxPassword.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
@@ -145,8 +145,8 @@ namespace HardwareInformation
             checkBoxOfflineMode.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             checkBoxOfflineMode.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            aboutLabel.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            aboutLabel.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            aboutLabelButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            aboutLabelButton.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             toolStripStatusBarText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             toolStripVersionText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             toolStripStatusBarText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -155,13 +155,13 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_light_path));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_light_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_light_path));
-            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_light_path));
-            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_light_path));
-            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_light_path));
-            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_light_path));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_light_path));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_light_path));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_light_path));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_light_path));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_light_path));
         }
 
         //Sets a dark theme for the login form
@@ -169,15 +169,15 @@ namespace HardwareInformation
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            lblFixedUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblFixedUsername.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedServerPort.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedServerIP.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            loadingCircle1.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            loadingCircleAuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
-            textBoxUser.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            textBoxUser.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            textBoxUsername.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            textBoxUsername.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             textBoxPassword.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
@@ -197,8 +197,8 @@ namespace HardwareInformation
             checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
             checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            aboutLabel.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            aboutLabel.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            aboutLabelButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            aboutLabelButton.BackColor = StringsAndConstants.DARK_BACKGROUND;
             toolStripStatusBarText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             toolStripVersionText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             toolStripStatusBarText.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -207,13 +207,13 @@ namespace HardwareInformation
 
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            aboutLabel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_dark_path));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_dark_path));
 
-            topBannerImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_dark_path));
-            userIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_dark_path));
-            passwordIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_dark_path));
-            serverIPIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_dark_path));
-            serverPortIconImg.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_dark_path));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_dark_path));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_dark_path));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_dark_path));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_dark_path));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_dark_path));
         }
 
         //Loads the form, sets some combobox values
@@ -226,71 +226,71 @@ namespace HardwareInformation
             {
                 case 100:
                     //Init loading circles parameters for 100% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke100);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness100);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius100);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius100);
                     break;
                 case 125:
                     //Init loading circles parameters for 125% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke125);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness125);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius125);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius125);
                     break;
                 case 150:
                     //Init loading circles parameters for 150% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke150);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness150);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius150);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius150);
                     break;
                 case 175:
                     //Init loading circles parameters for 175% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke175);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness175);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius175);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius175);
                     break;
                 case 200:
                     //Init loading circles parameters for 200% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke200);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness200);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius200);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius200);
                     break;
                 case 225:
                     //Init loading circles parameters for 225% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke225);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness225);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius225);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius225);
                     break;
                 case 250:
                     //Init loading circles parameters for 250% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke250);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness250);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius250);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius250);
                     break;
                 case 300:
                     //Init loading circles parameters for 300% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke300);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness300);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius300);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius300);
                     break;
                 case 350:
                     //Init loading circles parameters for 350% scaling
-                    loadingCircle1.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
-                    loadingCircle1.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
-                    loadingCircle1.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
-                    loadingCircle1.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
+                    loadingCircleAuthButton.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleNumberSpoke350);
+                    loadingCircleAuthButton.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleSpokeThickness350);
+                    loadingCircleAuthButton.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleInnerCircleRadius350);
+                    loadingCircleAuthButton.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleOuterCircleRadius350);
                     break;
             }
 
-            loadingCircle1.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
-            loadingCircle1.Color = StringsAndConstants.rotatingCircleColor;
+            loadingCircleAuthButton.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.rotatingCircleRotationSpeed);
+            loadingCircleAuthButton.Color = StringsAndConstants.rotatingCircleColor;
             #endregion
 
             FormClosing += Form2_FormClosing;
@@ -304,10 +304,10 @@ namespace HardwareInformation
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Deletes downloaded json files
-            File.Delete(ConstantsDLL.Properties.Resources.biosPath);
-            File.Delete(ConstantsDLL.Properties.Resources.loginPath);
-            File.Delete(ConstantsDLL.Properties.Resources.pcPath);
-            File.Delete(ConstantsDLL.Properties.Resources.configPath);
+            File.Delete(StringsAndConstants.modelFilePath);
+            File.Delete(StringsAndConstants.credentialsFilePath);
+            File.Delete(StringsAndConstants.assetFilePath);
+            File.Delete(StringsAndConstants.configFilePath);
             if (e.CloseReason == CloseReason.UserClosing)
             {
                 Application.Exit();
@@ -317,9 +317,9 @@ namespace HardwareInformation
         //Checks the user/password and shows the main form
         private async void AuthButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUser.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-            loadingCircle1.Visible = true;
-            loadingCircle1.Active = true;
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
+            loadingCircleAuthButton.Visible = true;
+            loadingCircleAuthButton.Active = true;
             if (checkBoxOfflineMode.Checked)
             {
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
@@ -331,9 +331,9 @@ namespace HardwareInformation
                 }
 
                 Hide();
-                textBoxUser.Text = null;
+                textBoxUsername.Text = null;
                 textBoxPassword.Text = null;
-                textBoxUser.Select();
+                textBoxUsername.Select();
                 _ = mForm.ShowDialog();
                 mForm.Close();
                 mForm.Dispose();
@@ -341,7 +341,7 @@ namespace HardwareInformation
             }
             else
             {
-                textBoxUser.Enabled = false;
+                textBoxUsername.Enabled = false;
                 textBoxPassword.Enabled = false;
                 comboBoxServerIP.Enabled = false;
                 comboBoxServerPort.Enabled = false;
@@ -350,10 +350,10 @@ namespace HardwareInformation
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                 //Feches login data from server
-                str = await CredentialsFileReader.FetchInfoMT(textBoxUser.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                str = await CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
 
                 //If all the mandatory fields are filled
-                if (!string.IsNullOrWhiteSpace(textBoxUser.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
+                if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     //If Login Json file does not exist, there is no internet connection
                     if (str == null)
@@ -378,9 +378,9 @@ namespace HardwareInformation
                         }
 
                         Hide();
-                        textBoxUser.Text = null;
+                        textBoxUsername.Text = null;
                         textBoxPassword.Text = null;
-                        textBoxUser.Select();
+                        textBoxUsername.Select();
                         _ = mForm.ShowDialog();
                         mForm.Close();
                         mForm.Dispose();
@@ -396,10 +396,10 @@ namespace HardwareInformation
             }
 
             //Enables controls if login is not successful
-            loadingCircle1.Visible = false;
-            loadingCircle1.Active = false;
-            textBoxUser.Enabled = true;
-            _ = textBoxUser.Focus();
+            loadingCircleAuthButton.Visible = false;
+            loadingCircleAuthButton.Active = false;
+            textBoxUsername.Enabled = true;
+            _ = textBoxUsername.Focus();
             textBoxPassword.Enabled = true;
             comboBoxServerIP.Enabled = true;
             comboBoxServerPort.Enabled = true;
@@ -412,14 +412,14 @@ namespace HardwareInformation
         {
             if (checkBoxOfflineMode.Checked)
             {
-                textBoxUser.Enabled = false;
+                textBoxUsername.Enabled = false;
                 textBoxPassword.Enabled = false;
                 comboBoxServerIP.Enabled = false;
                 comboBoxServerPort.Enabled = false;
             }
             else
             {
-                textBoxUser.Enabled = true;
+                textBoxUsername.Enabled = true;
                 textBoxPassword.Enabled = true;
                 comboBoxServerIP.Enabled = true;
                 comboBoxServerPort.Enabled = true;

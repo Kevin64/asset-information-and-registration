@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusyForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
+            this.lblFixedLoading = new System.Windows.Forms.Label();
+            this.loadingCircleLoading = new MRG.Controls.UI.LoadingCircle();
             this.SuspendLayout();
             // 
-            // label1
+            // lblFixedLoading
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Name = "label1";
-            this.label1.UseWaitCursor = true;
+            resources.ApplyResources(this.lblFixedLoading, "lblFixedLoading");
+            this.lblFixedLoading.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedLoading.Name = "lblFixedLoading";
+            this.lblFixedLoading.UseWaitCursor = true;
             // 
-            // loadingCircle1
+            // loadingCircleLoading
             // 
-            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
-            this.loadingCircle1.Active = false;
-            this.loadingCircle1.Color = System.Drawing.Color.DarkGray;
-            this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 12;
-            this.loadingCircle1.OuterCircleRadius = 11;
-            this.loadingCircle1.RotationSpeed = 100;
-            this.loadingCircle1.SpokeThickness = 2;
-            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            this.loadingCircle1.UseWaitCursor = true;
+            this.loadingCircleLoading.Active = false;
+            this.loadingCircleLoading.Color = System.Drawing.Color.DarkGray;
+            this.loadingCircleLoading.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleLoading, "loadingCircleLoading");
+            this.loadingCircleLoading.Name = "loadingCircleLoading";
+            this.loadingCircleLoading.NumberSpoke = 12;
+            this.loadingCircleLoading.OuterCircleRadius = 11;
+            this.loadingCircleLoading.RotationSpeed = 100;
+            this.loadingCircleLoading.SpokeThickness = 2;
+            this.loadingCircleLoading.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircleLoading.UseWaitCursor = true;
             // 
             // BusyForm
             // 
@@ -60,8 +60,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ControlBox = false;
-            this.Controls.Add(this.loadingCircle1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.loadingCircleLoading);
+            this.Controls.Add(this.lblFixedLoading);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BusyForm";
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private MRG.Controls.UI.LoadingCircle loadingCircle1;
+        private System.Windows.Forms.Label lblFixedLoading;
+        private MRG.Controls.UI.LoadingCircle loadingCircleLoading;
     }
 }

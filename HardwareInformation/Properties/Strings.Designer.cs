@@ -430,6 +430,15 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Searching available buildings and types of hardware in the local file.
+        /// </summary>
+        internal static string LOG_FETCHING_LOCAL_DATA {
+            get {
+                return ResourceManager.GetString("LOG_FETCHING_LOCAL_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Searching available buildings and types of hardware.
         /// </summary>
         internal static string LOG_FETCHING_SERVER_DATA {

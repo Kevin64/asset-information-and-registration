@@ -29,54 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.textBoxUser = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.lblFixedUser = new System.Windows.Forms.Label();
+            this.lblFixedUsername = new System.Windows.Forms.Label();
             this.lblFixedPassword = new System.Windows.Forms.Label();
             this.AuthButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.aboutLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.aboutLabelButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusBarText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripVersionText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.topBannerImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.imgTopBanner = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.lblFixedServerPort = new System.Windows.Forms.Label();
             this.lblFixedServerIP = new System.Windows.Forms.Label();
             this.checkBoxOfflineMode = new System.Windows.Forms.CheckBox();
-            this.loadingCircle1 = new MRG.Controls.UI.LoadingCircle();
-            this.userIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.serverPortIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.serverIPIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.passwordIconImg = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.loadingCircleAuthButton = new MRG.Controls.UI.LoadingCircle();
+            this.iconImgUsername = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.iconImgServerPort = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.iconImgServerIP = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
+            this.iconImgPassword = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.comboBoxServerPort = new CustomFlatComboBox();
             this.comboBoxServerIP = new CustomFlatComboBox();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverPortIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverIPIconImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.passwordIconImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgServerPort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgServerIP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgPassword)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBoxUser
+            // textBoxUsername
             // 
-            resources.ApplyResources(this.textBoxUser, "textBoxUser");
-            this.textBoxUser.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxUser.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxUser.Name = "textBoxUser";
+            this.textBoxUsername.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxUsername.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxUsername, "textBoxUsername");
+            this.textBoxUsername.Name = "textBoxUsername";
             // 
             // textBoxPassword
             // 
-            resources.ApplyResources(this.textBoxPassword, "textBoxPassword");
             this.textBoxPassword.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxPassword.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxPassword, "textBoxPassword");
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
-            // lblFixedUser
+            // lblFixedUsername
             // 
-            resources.ApplyResources(this.lblFixedUser, "lblFixedUser");
-            this.lblFixedUser.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedUser.Name = "lblFixedUser";
+            resources.ApplyResources(this.lblFixedUsername, "lblFixedUsername");
+            this.lblFixedUsername.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFixedUsername.Name = "lblFixedUsername";
             // 
             // lblFixedPassword
             // 
@@ -86,8 +86,8 @@
             // 
             // AuthButton
             // 
-            resources.ApplyResources(this.AuthButton, "AuthButton");
             this.AuthButton.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.AuthButton, "AuthButton");
             this.AuthButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.AuthButton.Name = "AuthButton";
             this.AuthButton.UseVisualStyleBackColor = true;
@@ -95,49 +95,49 @@
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutLabel,
+            this.aboutLabelButton,
             this.toolStripStatusBarText,
             this.toolStripVersionText});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
-            // aboutLabel
+            // aboutLabelButton
             // 
-            resources.ApplyResources(this.aboutLabel, "aboutLabel");
-            this.aboutLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Click += new System.EventHandler(this.AboutLabel_Click);
+            this.aboutLabelButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.aboutLabelButton.Name = "aboutLabelButton";
+            resources.ApplyResources(this.aboutLabelButton, "aboutLabelButton");
+            this.aboutLabelButton.Click += new System.EventHandler(this.AboutLabel_Click);
             // 
             // toolStripStatusBarText
             // 
-            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
             this.toolStripStatusBarText.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripStatusBarText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusBarText.Name = "toolStripStatusBarText";
+            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
             this.toolStripStatusBarText.Spring = true;
             // 
             // toolStripVersionText
             // 
-            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
             this.toolStripVersionText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripVersionText.Name = "toolStripVersionText";
+            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
             // 
-            // topBannerImg
+            // imgTopBanner
             // 
-            resources.ApplyResources(this.topBannerImg, "topBannerImg");
-            this.topBannerImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
-            this.topBannerImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.topBannerImg.Name = "topBannerImg";
-            this.topBannerImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            this.topBannerImg.TabStop = false;
+            this.imgTopBanner.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
+            this.imgTopBanner.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            resources.ApplyResources(this.imgTopBanner, "imgTopBanner");
+            this.imgTopBanner.Name = "imgTopBanner";
+            this.imgTopBanner.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.imgTopBanner.TabStop = false;
             // 
             // lblFixedServerPort
             // 
@@ -159,72 +159,72 @@
             this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
             this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
-            // loadingCircle1
+            // loadingCircleAuthButton
             // 
-            resources.ApplyResources(this.loadingCircle1, "loadingCircle1");
-            this.loadingCircle1.Active = false;
-            this.loadingCircle1.BackColor = System.Drawing.SystemColors.Control;
-            this.loadingCircle1.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircle1.InnerCircleRadius = 5;
-            this.loadingCircle1.Name = "loadingCircle1";
-            this.loadingCircle1.NumberSpoke = 12;
-            this.loadingCircle1.OuterCircleRadius = 11;
-            this.loadingCircle1.RotationSpeed = 1;
-            this.loadingCircle1.SpokeThickness = 2;
-            this.loadingCircle1.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            this.loadingCircleAuthButton.Active = false;
+            this.loadingCircleAuthButton.BackColor = System.Drawing.SystemColors.Control;
+            this.loadingCircleAuthButton.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircleAuthButton.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleAuthButton, "loadingCircleAuthButton");
+            this.loadingCircleAuthButton.Name = "loadingCircleAuthButton";
+            this.loadingCircleAuthButton.NumberSpoke = 12;
+            this.loadingCircleAuthButton.OuterCircleRadius = 11;
+            this.loadingCircleAuthButton.RotationSpeed = 1;
+            this.loadingCircleAuthButton.SpokeThickness = 2;
+            this.loadingCircleAuthButton.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
-            // userIconImg
+            // iconImgUsername
             // 
-            resources.ApplyResources(this.userIconImg, "userIconImg");
-            this.userIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.userIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.userIconImg.Name = "userIconImg";
-            this.userIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.userIconImg.TabStop = false;
+            this.iconImgUsername.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.iconImgUsername.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            resources.ApplyResources(this.iconImgUsername, "iconImgUsername");
+            this.iconImgUsername.Name = "iconImgUsername";
+            this.iconImgUsername.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.iconImgUsername.TabStop = false;
             // 
-            // serverPortIconImg
+            // iconImgServerPort
             // 
-            resources.ApplyResources(this.serverPortIconImg, "serverPortIconImg");
-            this.serverPortIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.serverPortIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.serverPortIconImg.Name = "serverPortIconImg";
-            this.serverPortIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.serverPortIconImg.TabStop = false;
+            this.iconImgServerPort.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.iconImgServerPort.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            resources.ApplyResources(this.iconImgServerPort, "iconImgServerPort");
+            this.iconImgServerPort.Name = "iconImgServerPort";
+            this.iconImgServerPort.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.iconImgServerPort.TabStop = false;
             // 
-            // serverIPIconImg
+            // iconImgServerIP
             // 
-            resources.ApplyResources(this.serverIPIconImg, "serverIPIconImg");
-            this.serverIPIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.serverIPIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.serverIPIconImg.Name = "serverIPIconImg";
-            this.serverIPIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.serverIPIconImg.TabStop = false;
+            this.iconImgServerIP.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.iconImgServerIP.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            resources.ApplyResources(this.iconImgServerIP, "iconImgServerIP");
+            this.iconImgServerIP.Name = "iconImgServerIP";
+            this.iconImgServerIP.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.iconImgServerIP.TabStop = false;
             // 
-            // passwordIconImg
+            // iconImgPassword
             // 
-            resources.ApplyResources(this.passwordIconImg, "passwordIconImg");
-            this.passwordIconImg.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.passwordIconImg.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.passwordIconImg.Name = "passwordIconImg";
-            this.passwordIconImg.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.passwordIconImg.TabStop = false;
+            this.iconImgPassword.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.iconImgPassword.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            resources.ApplyResources(this.iconImgPassword, "iconImgPassword");
+            this.iconImgPassword.Name = "iconImgPassword";
+            this.iconImgPassword.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.iconImgPassword.TabStop = false;
             // 
             // comboBoxServerPort
             // 
-            resources.ApplyResources(this.comboBoxServerPort, "comboBoxServerPort");
             this.comboBoxServerPort.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerPort.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerPort.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxServerPort, "comboBoxServerPort");
             this.comboBoxServerPort.Name = "comboBoxServerPort";
             // 
             // comboBoxServerIP
             // 
-            resources.ApplyResources(this.comboBoxServerIP, "comboBoxServerIP");
             this.comboBoxServerIP.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerIP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerIP.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerIP.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxServerIP, "comboBoxServerIP");
             this.comboBoxServerIP.Name = "comboBoxServerIP";
             // 
             // LoginForm
@@ -233,34 +233,34 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.userIconImg);
-            this.Controls.Add(this.serverPortIconImg);
-            this.Controls.Add(this.serverIPIconImg);
-            this.Controls.Add(this.passwordIconImg);
-            this.Controls.Add(this.loadingCircle1);
+            this.Controls.Add(this.iconImgUsername);
+            this.Controls.Add(this.iconImgServerPort);
+            this.Controls.Add(this.iconImgServerIP);
+            this.Controls.Add(this.iconImgPassword);
+            this.Controls.Add(this.loadingCircleAuthButton);
             this.Controls.Add(this.comboBoxServerPort);
             this.Controls.Add(this.comboBoxServerIP);
             this.Controls.Add(this.checkBoxOfflineMode);
             this.Controls.Add(this.lblFixedServerPort);
             this.Controls.Add(this.lblFixedServerIP);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.topBannerImg);
+            this.Controls.Add(this.imgTopBanner);
             this.Controls.Add(this.AuthButton);
             this.Controls.Add(this.lblFixedPassword);
-            this.Controls.Add(this.lblFixedUser);
+            this.Controls.Add(this.lblFixedUsername);
             this.Controls.Add(this.textBoxPassword);
-            this.Controls.Add(this.textBoxUser);
+            this.Controls.Add(this.textBoxUsername);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.topBannerImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverPortIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverIPIconImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.passwordIconImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgServerPort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgServerIP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconImgPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,12 +268,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label lblFixedUser;
+        private System.Windows.Forms.Label lblFixedUsername;
         private System.Windows.Forms.Label lblFixedPassword;
         private System.Windows.Forms.Button AuthButton;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox topBannerImg;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox imgTopBanner;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripVersionText;
         private System.Windows.Forms.Label lblFixedServerPort;
@@ -282,11 +282,11 @@
         private System.Windows.Forms.CheckBox checkBoxOfflineMode;
         private CustomFlatComboBox comboBoxServerIP;
         private CustomFlatComboBox comboBoxServerPort;
-        private MRG.Controls.UI.LoadingCircle loadingCircle1;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox userIconImg;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox serverPortIconImg;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox serverIPIconImg;
-        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox passwordIconImg;
-        private System.Windows.Forms.ToolStripStatusLabel aboutLabel;
+        private MRG.Controls.UI.LoadingCircle loadingCircleAuthButton;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgUsername;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgServerPort;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgServerIP;
+        private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgPassword;
+        private System.Windows.Forms.ToolStripStatusLabel aboutLabelButton;
     }
 }

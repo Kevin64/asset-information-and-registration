@@ -117,49 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblBM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSerialNo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblProcName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblPM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblHDSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblHostname.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblMac.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblIP.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedBM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblFixedBM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedBrand.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
   </data>
-  <data name="lblFixedBM.Text" xml:space="preserve">
+  <data name="lblFixedBrand.Text" xml:space="preserve">
     <value>Marca:</value>
-  </data>
-  <data name="lblFixedModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedModel.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -167,50 +130,32 @@
   <data name="lblFixedModel.Text" xml:space="preserve">
     <value>Modelo:</value>
   </data>
-  <data name="lblFixedSerialNo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedSerialNo.Text" xml:space="preserve">
+  <data name="lblFixedSerialNumber.Text" xml:space="preserve">
     <value>Número Serial:</value>
   </data>
-  <data name="lblFixedProcName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedProcName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedProcessor.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 13</value>
   </data>
-  <data name="lblFixedProcName.Text" xml:space="preserve">
+  <data name="lblFixedProcessor.Text" xml:space="preserve">
     <value>Processador e nº de núcleos:</value>
   </data>
-  <data name="lblFixedPM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedPM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedRam.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 13</value>
   </data>
-  <data name="lblFixedPM.Text" xml:space="preserve">
+  <data name="lblFixedRam.Text" xml:space="preserve">
     <value>Memória RAM e nº de slots:</value>
   </data>
-  <data name="lblFixedHDSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedHDSize.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedStorageSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 13</value>
   </data>
-  <data name="lblFixedHDSize.Text" xml:space="preserve">
+  <data name="lblFixedStorageSize.Text" xml:space="preserve">
     <value>Armazenamento (espaço total):</value>
   </data>
-  <data name="lblFixedOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedOS.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedOperatingSystem.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 13</value>
   </data>
-  <data name="lblFixedOS.Text" xml:space="preserve">
+  <data name="lblFixedOperatingSystem.Text" xml:space="preserve">
     <value>Sistema Operacional:</value>
-  </data>
-  <data name="lblFixedHostname.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedHostname.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 13</value>
@@ -218,44 +163,29 @@
   <data name="lblFixedHostname.Text" xml:space="preserve">
     <value>Nome do Computador:</value>
   </data>
-  <data name="lblFixedMac.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMac.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedMacAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 13</value>
   </data>
-  <data name="lblFixedMac.Text" xml:space="preserve">
+  <data name="lblFixedMacAddress.Text" xml:space="preserve">
     <value>Endereço MAC do NIC:</value>
   </data>
-  <data name="lblFixedIP.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedIP.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedIpAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 13</value>
   </data>
-  <data name="lblFixedIP.Text" xml:space="preserve">
+  <data name="lblFixedIpAddress.Text" xml:space="preserve">
     <value>Endereço IP do NIC:</value>
   </data>
-  <data name="lblFixedPatrimony.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedPatrimony.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedAssetNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 13</value>
   </data>
-  <data name="lblFixedPatrimony.Text" xml:space="preserve">
+  <data name="lblFixedAssetNumber.Text" xml:space="preserve">
     <value>Número do patrimônio:</value>
   </data>
-  <data name="lblFixedSeal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedSeal.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedSealNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 13</value>
   </data>
-  <data name="lblFixedSeal.Text" xml:space="preserve">
+  <data name="lblFixedSealNumber.Text" xml:space="preserve">
     <value>Lacre (se houver):</value>
-  </data>
-  <data name="lblFixedBuilding.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedBuilding.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 13</value>
@@ -263,32 +193,20 @@
   <data name="lblFixedBuilding.Text" xml:space="preserve">
     <value>Prédio:</value>
   </data>
-  <data name="lblFixedRoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedRoom.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedRoomNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 13</value>
   </data>
-  <data name="lblFixedRoom.Text" xml:space="preserve">
+  <data name="lblFixedRoomNumber.Text" xml:space="preserve">
     <value>Sala (0000 se não houver):</value>
   </data>
-  <data name="lblFixedDateTimePicker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedDateTimePicker.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedServiceDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 13</value>
   </data>
-  <data name="lblFixedDateTimePicker.Text" xml:space="preserve">
+  <data name="lblFixedServiceDate.Text" xml:space="preserve">
     <value>Data do último serviço:</value>
-  </data>
-  <data name="registerButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="registerButton.Text" xml:space="preserve">
     <value>Cadastrar / Atualizar dados</value>
-  </data>
-  <data name="lblFixedInUse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedInUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -296,317 +214,134 @@
   <data name="lblFixedInUse.Text" xml:space="preserve">
     <value>Em uso:</value>
   </data>
-  <data name="lblFixedTag.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="lblFixedTag.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
   </data>
   <data name="lblFixedTag.Text" xml:space="preserve">
     <value>Etiqueta:</value>
   </data>
-  <data name="lblFixedType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedType.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedHwType.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 13</value>
   </data>
-  <data name="lblFixedType.Text" xml:space="preserve">
+  <data name="lblFixedHwType.Text" xml:space="preserve">
     <value>Tipo:</value>
   </data>
-  <data name="lblFixedServerOpState.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedServerOpState.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedServerOperationalStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 13</value>
   </data>
-  <data name="lblFixedServerOpState.Text" xml:space="preserve">
+  <data name="lblFixedServerOperationalStatus.Text" xml:space="preserve">
     <value>Status operacional:</value>
   </data>
-  <data name="lblFixedPortServer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedPortServer.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedServerPort.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
   </data>
-  <data name="lblFixedPortServer.Text" xml:space="preserve">
+  <data name="lblFixedServerPort.Text" xml:space="preserve">
     <value>Porta:</value>
-  </data>
-  <data name="collectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="collectButton.Text" xml:space="preserve">
     <value>Coletar novamente</value>
   </data>
-  <data name="lblFixedLetter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedLetter.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedRoomLetter.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 13</value>
   </data>
-  <data name="lblFixedLetter.Text" xml:space="preserve">
+  <data name="lblFixedRoomLetter.Text" xml:space="preserve">
     <value>Letra (se houver):</value>
   </data>
-  <data name="lblFixedBIOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedBIOS.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedFwVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 13</value>
   </data>
-  <data name="lblFixedBIOS.Text" xml:space="preserve">
+  <data name="lblFixedFwVersion.Text" xml:space="preserve">
     <value>Versão do firmware:</value>
   </data>
-  <data name="lblBIOS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="AtcsButton.Text" xml:space="preserve">
+    <value>Acessar SCPD</value>
   </data>
-  <data name="accessSystemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="accessSystemButton.Text" xml:space="preserve">
-    <value>Acessar sistema de patrimônios</value>
-  </data>
-  <data name="lblFixedBIOSType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedBIOSType.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedFwType.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
   </data>
-  <data name="lblFixedBIOSType.Text" xml:space="preserve">
+  <data name="lblFixedFwType.Text" xml:space="preserve">
     <value>Tipo de firmware:</value>
   </data>
-  <data name="lblBIOSType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="separatorH.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="separatorV.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tpmIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="smartIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSmart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTPM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedSmart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedSmart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 13</value>
-  </data>
-  <data name="lblFixedSmart.Text" xml:space="preserve">
-    <value>Status S.M.A.R.T.:</value>
-  </data>
-  <data name="vtIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedTPM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedTPM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 13</value>
-  </data>
-  <data name="lblFixedTPM.Text" xml:space="preserve">
-    <value>Versão do TPM:</value>
-  </data>
-  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblProgressPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblVT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedVT.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedVT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 13</value>
-  </data>
-  <data name="lblFixedVT.Text" xml:space="preserve">
-    <value>Tecnologia de Virtualização:</value>
-  </data>
-  <data name="bmIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="secBootIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="biosIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="biosTypeIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ipIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="macIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="hostnameIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="osIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="gpuInfoIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="mediaOperationIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="mediaTypeIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="hdSizeIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pmIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="procNameIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="serialNoIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="modelIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblSecBoot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedSecBoot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblMediaOperation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMediaOperation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMediaOperation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 13</value>
-  </data>
-  <data name="lblFixedMediaOperation.Text" xml:space="preserve">
-    <value>Modo de operação SATA/M.2:</value>
-  </data>
-  <data name="lblGPUInfo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedGPUInfo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedGPUInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
-  </data>
-  <data name="lblFixedGPUInfo.Text" xml:space="preserve">
-    <value>Placa de Vídeo e vRAM:</value>
-  </data>
-  <data name="lblMediaType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMediaType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMediaType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 13</value>
-  </data>
-  <data name="lblFixedMediaType.Text" xml:space="preserve">
-    <value>Tipo de armazenamento:</value>
-  </data>
-  <data name="groupBoxHWData.Text" xml:space="preserve">
+  <data name="groupBoxHwData.Text" xml:space="preserve">
     <value>Dados do computador</value>
   </data>
-  <data name="lblFixedMandatory9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="lblFixedSmartStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
   </data>
-  <data name="lblFixedMandatory9.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedSmartStatus.Text" xml:space="preserve">
+    <value>Status S.M.A.R.T.:</value>
+  </data>
+  <data name="lblFixedTpmVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="lblFixedTpmVersion.Text" xml:space="preserve">
+    <value>Versão do TPM:</value>
+  </data>
+  <data name="lblFixedVirtualizationTechnology.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 13</value>
+  </data>
+  <data name="lblFixedVirtualizationTechnology.Text" xml:space="preserve">
+    <value>Tecnologia de Virtualização:</value>
+  </data>
+  <data name="lblFixedMediaOperationMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 13</value>
+  </data>
+  <data name="lblFixedMediaOperationMode.Text" xml:space="preserve">
+    <value>Modo de operação SATA/M.2:</value>
+  </data>
+  <data name="lblFixedVideoCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
+  </data>
+  <data name="lblFixedVideoCard.Text" xml:space="preserve">
+    <value>Placa de Vídeo e vRAM:</value>
+  </data>
+  <data name="lblFixedStorageType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 13</value>
+  </data>
+  <data name="lblFixedStorageType.Text" xml:space="preserve">
+    <value>Tipo de armazenamento:</value>
+  </data>
+  <data name="groupBoxAssetData.Text" xml:space="preserve">
+    <value>Dados do patrimônio, manutenção e de localização</value>
+  </data>
+  <data name="lblFixedMandatoryTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 244</value>
   </data>
-  <data name="lblFixedMandatory8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory8.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryBatteryChange.Location" type="System.Drawing.Point, System.Drawing">
     <value>145, 244</value>
   </data>
-  <data name="ticketIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedTicket.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedTicket.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedTicketNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 13</value>
   </data>
-  <data name="lblFixedTicket.Text" xml:space="preserve">
+  <data name="lblFixedTicketNumber.Text" xml:space="preserve">
     <value>Nº chamado:</value>
   </data>
-  <data name="batteryIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory7.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryWho.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 176</value>
   </data>
-  <data name="lblFixedMandatory6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory6.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryTag.Location" type="System.Drawing.Point, System.Drawing">
     <value>366, 124</value>
   </data>
-  <data name="lblFixedBattery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedBattery.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblFixedBatteryChange.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 13</value>
   </data>
-  <data name="lblFixedBattery.Text" xml:space="preserve">
+  <data name="lblFixedBatteryChange.Text" xml:space="preserve">
     <value>Houve troca de pilha?</value>
   </data>
-  <data name="lblFixedMandatory5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryHwType.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 124</value>
   </data>
-  <data name="lblFixedMandatory4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryInUse.Location" type="System.Drawing.Point, System.Drawing">
     <value>362, 98</value>
   </data>
-  <data name="lblFixedMandatory3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryBuilding.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 98</value>
   </data>
-  <data name="lblFixedMandatory2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryRoomNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>167, 72</value>
   </data>
-  <data name="lblFixedMandatory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblFixedMandatoryAssetNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>145, 20</value>
-  </data>
-  <data name="lblFixedMandatoryMain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedMandatoryMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>258, 0</value>
@@ -617,29 +352,17 @@
   <data name="lblFixedMandatoryMain.Text" xml:space="preserve">
     <value>✱ = Preenchimento obrigatório</value>
   </data>
-  <data name="studentRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="studentRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="radioButtonStudent.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 17</value>
   </data>
-  <data name="studentRadioButton.Text" xml:space="preserve">
+  <data name="radioButtonStudent.Text" xml:space="preserve">
     <value>Aluno (computador de laboratório/sala de aula)</value>
   </data>
-  <data name="employeeRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="employeeRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="radioButtonEmployee.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 17</value>
   </data>
-  <data name="employeeRadioButton.Text" xml:space="preserve">
+  <data name="radioButtonEmployee.Text" xml:space="preserve">
     <value>Funcionário/Bolsista (computador de trabalho)</value>
-  </data>
-  <data name="whoIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedWho.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedWho.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -647,89 +370,35 @@
   <data name="lblFixedWho.Text" xml:space="preserve">
     <value>Quem usará?</value>
   </data>
-  <data name="letterIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="typeIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="tagIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="inUseIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="datetimeIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="standardIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="activeDirectoryIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buildingIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="roomIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="sealIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="patrimonyIconImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblMaintenanceSince.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblInstallSince.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatory10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 0</value>
-  </data>
-  <data name="textBoxFixedFormatRadio.Text" xml:space="preserve">
-    <value>Opção para quando o PC passar por formatação ou reset</value>
-  </data>
-  <data name="textBoxMaintenanceRadio.Text" xml:space="preserve">
-    <value>Opção para quando o PC passar por manutenção preventiva, sem a necessidade de formatação ou reset</value>
-  </data>
-  <data name="formatRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="formatRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="formatRadioButton.Text" xml:space="preserve">
-    <value>Formatação</value>
-  </data>
-  <data name="maintenanceRadioButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="maintenanceRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 17</value>
-  </data>
-  <data name="maintenanceRadioButton.Text" xml:space="preserve">
-    <value>Manutenção</value>
-  </data>
-  <data name="groupBoxTypeOfService.Text" xml:space="preserve">
+  <data name="groupBoxServiceType.Text" xml:space="preserve">
     <value>Tipo de serviço</value>
   </data>
-  <data name="lblFixedActiveDirectory.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 0</value>
   </data>
-  <data name="lblFixedActiveDirectory.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxFixedFormattingRadio.Text" xml:space="preserve">
+    <value>Opção para quando o PC passar por formatação ou reset</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Text" xml:space="preserve">
+    <value>Opção para quando o PC passar por manutenção preventiva, sem a necessidade de formatação ou reset</value>
+  </data>
+  <data name="radioButtonFormatting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="radioButtonFormatting.Text" xml:space="preserve">
+    <value>Formatação</value>
+  </data>
+  <data name="radioButtonMaintenance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="radioButtonMaintenance.Text" xml:space="preserve">
+    <value>Manutenção</value>
+  </data>
+  <data name="lblFixedAdRegistered.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 13</value>
   </data>
-  <data name="lblFixedActiveDirectory.Text" xml:space="preserve">
+  <data name="lblFixedAdRegistered.Text" xml:space="preserve">
     <value>Cadastrado no servidor AD:</value>
-  </data>
-  <data name="lblFixedStandard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="lblFixedStandard.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 13</value>
@@ -737,32 +406,17 @@
   <data name="lblFixedStandard.Text" xml:space="preserve">
     <value>Padrão:</value>
   </data>
-  <data name="groupBoxPatrData.Text" xml:space="preserve">
-    <value>Dados do patrimônio, manutenção e de localização</value>
-  </data>
-  <data name="lblAgentName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedAgentName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="lblFixedAgentName.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 13</value>
   </data>
   <data name="lblFixedAgentName.Text" xml:space="preserve">
     <value>Agente responsável:</value>
   </data>
-  <data name="lblPortServer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
   </data>
-  <data name="lblIPServer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedIPServer.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblServerOpState.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBoxThemeButton.Text" xml:space="preserve">
+    <value>Tema</value>
   </data>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -782,23 +436,14 @@
   <data name="toolStripDarkTheme.Text" xml:space="preserve">
     <value>Escuro</value>
   </data>
-  <data name="comboBoxTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
-  </data>
-  <data name="comboBoxTheme.Text" xml:space="preserve">
-    <value>Tema</value>
-  </data>
-  <data name="aboutLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 19</value>
   </data>
-  <data name="aboutLabel.Text" xml:space="preserve">
+  <data name="aboutLabelButton.Text" xml:space="preserve">
     <value>Sobre</value>
   </data>
   <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
     <value>861, 19</value>
-  </data>
-  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 50</value>
   </data>
   <data name="groupBoxRegistryStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 64</value>
@@ -806,8 +451,8 @@
   <data name="groupBoxRegistryStatus.Text" xml:space="preserve">
     <value>Status do cadastro</value>
   </data>
-  <data name="topBannerImg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 50</value>
   </data>
   <data name="groupBoxServerStatus.Text" xml:space="preserve">
     <value>Servidor SCPD</value>

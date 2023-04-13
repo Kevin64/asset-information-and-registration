@@ -241,6 +241,9 @@
   <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
     <value>Obtendo arquivo com informações de modelo de hardware</value>
   </data>
+  <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
+    <value>Buscando prédios e tipos de hardware disponíveis</value>
+  </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>
   </data>

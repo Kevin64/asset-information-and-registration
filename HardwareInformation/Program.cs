@@ -22,8 +22,8 @@ namespace HardwareInformation
 {
     public class Program
     {
-        private static string logLocationStr, serverIPStr, serverPortStr, themeStr;
-        private static string[] logLocationSection, serverListSection, portListSection, themeSection, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
+        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr;
+        private static string[] logLocationSection, serverListSection, portListSection, secureBootEnforcementSection, vtEnforcementSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
         private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
         private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
 
@@ -34,55 +34,55 @@ namespace HardwareInformation
         //Command line switch options specification
         public class Options
         {
-            [Option("server", Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
+            [Option(StringsAndConstants.cliServerIPSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServer)]
             public string Servidor { get; set; }
 
-            [Option("port", Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
+            [Option(StringsAndConstants.cliServerPortSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextPort)]
             public string Porta { get; set; }
 
-            [Option("mode", Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = "m")]
+            [Option(StringsAndConstants.cliServiceTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextMode, Default = StringsAndConstants.cliDefaultServiceType)]
             public string TipoDeServico { get; set; }
 
-            [Option("assetNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
+            [Option(StringsAndConstants.cliAssetNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextPatrimony, Default = "")]
             public string Patrimonio { get; set; }
 
-            [Option("sealNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = "same")]
+            [Option(StringsAndConstants.cliSealNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextSeal, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Lacre { get; set; }
 
-            [Option("roomNumber", Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = "same")]
+            [Option(StringsAndConstants.cliRoomNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextRoom, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Sala { get; set; }
 
-            [Option("building", Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = "same")]
+            [Option(StringsAndConstants.cliBuildingSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Predio { get; set; }
 
-            [Option("ad", Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = "same")]
+            [Option(StringsAndConstants.cliAdRegisteredSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextActiveDirectory, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string AD { get; set; }
 
-            [Option("standard", Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = "same")]
+            [Option(StringsAndConstants.cliStandardSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Padrao { get; set; }
 
-            [Option("date", Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = "today")]
+            [Option(StringsAndConstants.cliServiceDateSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextDate, Default = StringsAndConstants.cliDefaultServiceDate)]
             public string Data { get; set; }
 
-            [Option("battery", Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
+            [Option(StringsAndConstants.cliBatteryChangeSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextBattery)]
             public string Pilha { get; set; }
 
-            [Option("ticket", Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
+            [Option(StringsAndConstants.cliTicketNumberSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextTicket)]
             public string Ticket { get; set; }
 
-            [Option("inUse", Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = "same")]
+            [Option(StringsAndConstants.cliInUseSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Uso { get; set; }
 
-            [Option("tag", Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = "same")]
+            [Option(StringsAndConstants.cliTagSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string Etiqueta { get; set; }
 
-            [Option("type", Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = "same")]
+            [Option(StringsAndConstants.cliHwTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextType, Default = StringsAndConstants.cliDefaultUnchanged)]
             public string TipoHardware { get; set; }
 
-            [Option("username", Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
+            [Option(StringsAndConstants.cliUsernameSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextUser)]
             public string Usuario { get; set; }
 
-            [Option("password", Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
+            [Option(StringsAndConstants.cliPasswordSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
             public string Senha { get; set; }
         }
 
@@ -103,10 +103,10 @@ namespace HardwareInformation
             string[] str = CredentialsFileReader.FetchInfoST(opts.Usuario, opts.Senha, opts.Servidor, opts.Porta);
             try
             {
-                if (str[0] == "true")
+                if (str[0] != "false")
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, opts.Usuario, log, definitionListSection));
+                    Application.Run(new CLIRegister(opts.Servidor, opts.Porta, opts.TipoDeServico, opts.Patrimonio, opts.Lacre, opts.Sala, opts.Predio, opts.AD, opts.Padrao, opts.Data, opts.Pilha, opts.Ticket, opts.Uso, opts.Etiqueta, opts.TipoHardware, str, log, definitionListSection));
                 }
                 else
                 {
@@ -130,9 +130,9 @@ namespace HardwareInformation
         [STAThread]
         private static void Main(string[] args)
         {
-            //var culture = CultureInfo.GetCultureInfo("en");
-            //CultureInfo.DefaultThreadCurrentCulture = culture;
-            //CultureInfo.DefaultThreadCurrentUICulture = culture;
+            //var culture = System.Globalization.CultureInfo.GetCultureInfo("en");
+            //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
+            //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
@@ -161,6 +161,8 @@ namespace HardwareInformation
                 logLocationStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_9];
                 serverIPStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_11];
                 serverPortStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_12];
+                secureBootEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_19];
+                vtEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_20];
                 themeStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_15];
 
                 orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_1];
@@ -173,8 +175,10 @@ namespace HardwareInformation
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverListSection = serverIPStr.Split(',').ToArray();
                 portListSection = serverPortStr.Split(',').ToArray();
+                secureBootEnforcementSection = secureBootEnforcementStr.Split().ToArray();
+                vtEnforcementSection = vtEnforcementStr.Split().ToArray();
                 themeSection = themeStr.Split().ToArray();
-                firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
+                buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
 
                 if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
                 {
@@ -193,7 +197,11 @@ namespace HardwareInformation
                     serverListSection,
                     portListSection,
                     logLocationSection,
+                    secureBootEnforcementSection,
+                    vtEnforcementSection,
                     themeSection,
+                    buildings,
+                    hardwareTypes,
                     firmwareTypes,
                     tpmTypes,
                     mediaOperationTypes,
@@ -265,13 +273,13 @@ namespace HardwareInformation
                 else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
-                    int index = Array.IndexOf(argsLog, "--senha");
+                    int index = Array.IndexOf(argsLog, ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch);
                     if (index == -1)
                     {
-                        index = Array.FindIndex(argsLog, x => x.StartsWith("--senha"));
+                        index = Array.FindIndex(argsLog, x => x.StartsWith(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch));
                         if (index != -1)
                         {
-                            argsLog[index] = "--senha=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch + "=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
                         }
                     }
                     else
@@ -284,7 +292,7 @@ namespace HardwareInformation
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
-                    if (args.Length == 1 && args.Contains("--help"))
+                    if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliHelpSwitch))
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS));
