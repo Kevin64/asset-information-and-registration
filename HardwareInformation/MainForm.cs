@@ -205,7 +205,7 @@ namespace HardwareInformation
             this.lblFixedRoomLetter = new System.Windows.Forms.Label();
             this.lblFixedFwVersion = new System.Windows.Forms.Label();
             this.lblFwVersion = new System.Windows.Forms.Label();
-            this.AtcsButton = new System.Windows.Forms.Button();
+            this.ApcsButton = new System.Windows.Forms.Button();
             this.lblFixedFwType = new System.Windows.Forms.Label();
             this.lblFwType = new System.Windows.Forms.Label();
             this.groupBoxHwData = new System.Windows.Forms.GroupBox();
@@ -639,14 +639,14 @@ namespace HardwareInformation
             this.lblFwVersion.ForeColor = System.Drawing.Color.Silver;
             this.lblFwVersion.Name = "lblFwVersion";
             // 
-            // AtcsButton
+            // ApcsButton
             // 
-            this.AtcsButton.BackColor = System.Drawing.SystemColors.Control;
-            this.AtcsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.AtcsButton, "AtcsButton");
-            this.AtcsButton.Name = "AtcsButton";
-            this.AtcsButton.UseVisualStyleBackColor = true;
-            this.AtcsButton.Click += new System.EventHandler(this.AtcsButton_Click);
+            this.ApcsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.ApcsButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.ApcsButton, "ApcsButton");
+            this.ApcsButton.Name = "ApcsButton";
+            this.ApcsButton.UseVisualStyleBackColor = true;
+            this.ApcsButton.Click += new System.EventHandler(this.AtcsButton_Click);
             // 
             // lblFixedFwType
             // 
@@ -1995,7 +1995,7 @@ namespace HardwareInformation
             this.Controls.Add(this.groupBoxAssetData);
             this.Controls.Add(this.groupBoxHwData);
             this.Controls.Add(this.imgTopBanner);
-            this.Controls.Add(this.AtcsButton);
+            this.Controls.Add(this.ApcsButton);
             this.Controls.Add(this.collectButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.registerButton);
@@ -2109,7 +2109,7 @@ namespace HardwareInformation
         private Label lblFixedRoomLetter;
         private Label lblFixedFwVersion;
         private Label lblFwVersion;
-        private Button AtcsButton;
+        private Button ApcsButton;
         private ProgressBar progressBar1;
         private Label lblProgressBarPercent;
         private Label lblSecureBoot;
@@ -2479,10 +2479,10 @@ namespace HardwareInformation
             collectButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             collectButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
             collectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            AtcsButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            AtcsButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            AtcsButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-            AtcsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            ApcsButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            ApcsButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            ApcsButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            ApcsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 
             groupBoxHwData.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             groupBoxAssetData.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
@@ -2706,10 +2706,10 @@ namespace HardwareInformation
             collectButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             collectButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
             collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            AtcsButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            AtcsButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            AtcsButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-            AtcsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            ApcsButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            ApcsButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            ApcsButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            ApcsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 
             groupBoxHwData.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             groupBoxAssetData.ForeColor = StringsAndConstants.DARK_FORECOLOR;
@@ -4517,7 +4517,7 @@ namespace HardwareInformation
             tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             webView2Control.Visible = false;
             Collecting();
-            AtcsButton.Enabled = false;
+            ApcsButton.Enabled = false;
             registerButton.Enabled = false;
             collectButton.Enabled = false;
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_THREAD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4557,7 +4557,7 @@ namespace HardwareInformation
 
             if (!offlineMode)
             {
-                AtcsButton.Enabled = true; //Enables accessSystem button
+                ApcsButton.Enabled = true; //Enables accessSystem button
                 registerButton.Enabled = true; //Enables register button
             }
             loadingCircleCollectButton.Visible = false; //Hides loading circle
@@ -4650,7 +4650,7 @@ namespace HardwareInformation
             loadingCircleRegisterButton.Active = true;
             registerButton.Text = ConstantsDLL.Properties.Resources.DASH;
             registerButton.Enabled = false;
-            AtcsButton.Enabled = false;
+            ApcsButton.Enabled = false;
             collectButton.Enabled = false;
             AttrHardwareData();
 
@@ -4783,7 +4783,7 @@ namespace HardwareInformation
             loadingCircleRegisterButton.Active = false;
             registerButton.Text = Strings.REGISTER_AGAIN;
             registerButton.Enabled = true;
-            AtcsButton.Enabled = true;
+            ApcsButton.Enabled = true;
             collectButton.Enabled = true;
         }
     }

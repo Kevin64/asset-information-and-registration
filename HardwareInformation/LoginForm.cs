@@ -119,6 +119,8 @@ namespace HardwareInformation
 
             loadingCircleAuthButton.BackColor = StringsAndConstants.INACTIVE_SYSTEM_BUTTON_COLOR;
 
+            textBoxFixedLoginIntro.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            textBoxFixedLoginIntro.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             textBoxUsername.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             textBoxUsername.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             textBoxPassword.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
@@ -174,6 +176,8 @@ namespace HardwareInformation
 
             loadingCircleAuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
 
+            textBoxFixedLoginIntro.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            textBoxFixedLoginIntro.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             textBoxUsername.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             textBoxUsername.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             textBoxPassword.BackColor = StringsAndConstants.DARK_BACKCOLOR;

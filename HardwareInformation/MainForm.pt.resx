@@ -253,8 +253,8 @@
   <data name="lblFixedFwVersion.Text" xml:space="preserve">
     <value>Versão do firmware:</value>
   </data>
-  <data name="AtcsButton.Text" xml:space="preserve">
-    <value>Acessar SCPD</value>
+  <data name="ApcsButton.Text" xml:space="preserve">
+    <value>Acessar APCS</value>
   </data>
   <data name="lblFixedFwType.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
@@ -455,7 +455,7 @@
     <value>448, 50</value>
   </data>
   <data name="groupBoxServerStatus.Text" xml:space="preserve">
-    <value>Servidor SCPD</value>
+    <value>Servidor APCS</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

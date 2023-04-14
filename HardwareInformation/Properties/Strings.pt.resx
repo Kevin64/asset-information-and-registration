@@ -182,11 +182,13 @@
     • URL do projeto: https://github.com/Kevin64/HardwareInformation
     • Licença: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
 
-Este software deve ser usado em conjunto com projeto SCPD para funcionar corretamente.
+Este software deve ser usado em conjunto com projeto APCS para funcionar corretamente.
 
-► Sistema de Controle de Patrimônio e Docentes - SCPD
+► Asset and Personnel Control System - APCS
+    • Copyright © 2023 Kevin Vinícius Teixeira Costa
     • URL do projeto: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes
     • Licença: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENSE
+
 Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md
 
 ► Configurable Quality PictureBox (créditos a Jason D)
@@ -208,7 +210,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
 ► Microsoft.Web.WebView2
     • Copyright © Microsoft Corporation. All rights reserved.
     • URL do projeto: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
-    • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1518.46/license
+    • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
 
 ► WindowsAPICodePack
     • Copyright © Microsoft Corporation. All rights reserved.

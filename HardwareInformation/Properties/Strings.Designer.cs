@@ -238,10 +238,10 @@ namespace HardwareInformation.Properties {
         ///    • Project URL: https://github.com/Kevin64/HardwareInformation
         ///    • License: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
         ///
-        ///This software must be used in conjunction with ATCS project to work properly.
+        ///This software must be used in conjunction with APCS project to work properly.
         ///
-        ///► Assets and Teachers Control System - ATCS
-        ///    • Project URL: https://g [o restante da cadeia de caracteres foi truncado]&quot;;.
+        ///► Asset and Personnel Control System - APCS
+        ///    • Copyright © 2023 Kevin [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>
         internal static string description {
             get {

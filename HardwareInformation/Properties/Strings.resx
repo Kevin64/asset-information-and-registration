@@ -182,11 +182,13 @@
     • Project URL: https://github.com/Kevin64/HardwareInformation
     • License: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
 
-This software must be used in conjunction with ATCS project to work properly.
+This software must be used in conjunction with APCS project to work properly.
 
-► Assets and Teachers Control System - ATCS
+► Asset and Personnel Control System - APCS
+    • Copyright © 2023 Kevin Vinícius Teixeira Costa
     • Project URL: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes
     • License: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENSE
+
 This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers. These components are listed in the README on the project's GitHub page: https://github.com/Kevin64/Dependencies/blob/main/README.md
 
 ► Configurable Quality PictureBox (credits to Jason D)
@@ -208,7 +210,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
 ► Microsoft.Web.WebView2
     • Copyright © Microsoft Corporation. All rights reserved.
     • Project URL: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
-    • License: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1518.46/license
+    • License: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
 
 ► WindowsAPICodePack
     • Copyright © Microsoft Corporation. All rights reserved.

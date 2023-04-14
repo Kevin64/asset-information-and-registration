@@ -118,6 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblFixedUsername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="lblFixedUsername.Text" xml:space="preserve">
+    <value>Usuário:</value>
+  </data>
+  <data name="lblFixedPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="lblFixedPassword.Text" xml:space="preserve">
+    <value>Senha:</value>
+  </data>
+  <data name="AuthButton.Text" xml:space="preserve">
+    <value>Autenticar</value>
+  </data>
+  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="aboutLabelButton.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 17</value>
+  </data>
+  <data name="lblFixedServerPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="lblFixedServerPort.Text" xml:space="preserve">
+    <value>Porta:</value>
+  </data>
+  <data name="lblFixedServerIP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="lblFixedServerIP.Text" xml:space="preserve">
+    <value>Servidor:</value>
+  </data>
+  <data name="checkBoxOfflineMode.Text" xml:space="preserve">
+    <value>Modo Offline</value>
+  </data>
+  <data name="lblFixedLoginIntro.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 13</value>
+  </data>
+  <data name="textBoxFixedLoginIntro.Text" xml:space="preserve">
+    <value>Digite suas credenciais do sistema APCS e clique em Autenticar:</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAAAAAAAEAIAAPswAAhgAAAEBAAAABACAAKEIAAJWzAAAwMAAAAQAgAKglAAC99QAAKCgAAAEA
@@ -1603,26 +1648,5 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
-  </data>
-  <data name="aboutLabelButton.Text" xml:space="preserve">
-    <value>Sobre</value>
-  </data>
-  <data name="AuthButton.Text" xml:space="preserve">
-    <value>Autenticar</value>
-  </data>
-  <data name="checkBoxOfflineMode.Text" xml:space="preserve">
-    <value>Modo Offline</value>
-  </data>
-  <data name="lblFixedPassword.Text" xml:space="preserve">
-    <value>Senha:</value>
-  </data>
-  <data name="lblFixedServerIP.Text" xml:space="preserve">
-    <value>Servidor:</value>
-  </data>
-  <data name="lblFixedServerPort.Text" xml:space="preserve">
-    <value>Porta:</value>
-  </data>
-  <data name="lblFixedUsername.Text" xml:space="preserve">
-    <value>Usuário:</value>
   </data>
 </root>

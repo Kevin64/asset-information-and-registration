@@ -49,6 +49,7 @@
             this.iconImgPassword = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.comboBoxServerPort = new CustomFlatComboBox();
             this.comboBoxServerIP = new CustomFlatComboBox();
+            this.textBoxFixedLoginIntro = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgUsername)).BeginInit();
@@ -227,12 +228,20 @@
             resources.ApplyResources(this.comboBoxServerIP, "comboBoxServerIP");
             this.comboBoxServerIP.Name = "comboBoxServerIP";
             // 
+            // textBoxFixedLoginIntro
+            // 
+            this.textBoxFixedLoginIntro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxFixedLoginIntro, "textBoxFixedLoginIntro");
+            this.textBoxFixedLoginIntro.Name = "textBoxFixedLoginIntro";
+            this.textBoxFixedLoginIntro.ReadOnly = true;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.AuthButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.textBoxFixedLoginIntro);
             this.Controls.Add(this.iconImgUsername);
             this.Controls.Add(this.iconImgServerPort);
             this.Controls.Add(this.iconImgServerIP);
@@ -288,5 +297,6 @@
         private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgServerIP;
         private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgPassword;
         private System.Windows.Forms.ToolStripStatusLabel aboutLabelButton;
+        private System.Windows.Forms.TextBox textBoxFixedLoginIntro;
     }
 }

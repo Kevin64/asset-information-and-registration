@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Hardware Collection and Asset Registration")]
-[assembly: AssemblyDescription("Hardware Collection and Asset Registration")]
+[assembly: AssemblyDescription("Collects IT asset hardware details and registers on a APCS database")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Hardware Collection and Asset Registration")]
 [assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
