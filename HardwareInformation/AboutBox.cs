@@ -22,7 +22,7 @@ namespace HardwareInformation
 #endif
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
-            textBoxDescription.Text = AssemblyDescription;
+            textBoxDescription.Text = Strings.description;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
             if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))

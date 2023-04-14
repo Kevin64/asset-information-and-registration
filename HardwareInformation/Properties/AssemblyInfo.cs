@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using ConstantsDLL;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
@@ -6,19 +7,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Hardware Collection and Asset Registration")]
-[assembly: AssemblyDescription("Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.\r\n" +
-    "\r\n" +
-    "    • Copyright © 2023 Kevin Vinícius Teixeira Costa\r\n" +
-    "    • URL do projeto: https://github.com/Kevin64/HardwareInformation\r\n" +
-    "    • Licença: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENCE\r\n" +
-    "\r\n" +
-    "Este software deve ser usado em conjunto com projeto SCPD para funcionar corretamente.\r\n" +
-    "\r\n" +
-    "► Sistema de Controle de Patrimônio e Docentes - SCPD\r\n" +
-    "    • URL do projeto: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes\r\n" +
-    "    • Licença: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENCE\r\n" +
-    "\r\n" +
-    "Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md\r\n")]
+[assembly: AssemblyDescription("Hardware Collection and Asset Registration")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Hardware Collection and Asset Registration")]
 [assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
@@ -48,7 +37,6 @@ using System.Runtime.InteropServices;
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
-[assembly: NeutralResourcesLanguage("")]
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif

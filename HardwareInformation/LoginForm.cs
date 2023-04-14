@@ -77,8 +77,8 @@ namespace HardwareInformation
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 }
-
                 LightTheme();
+                themeBool = false;
             }
             else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
@@ -87,6 +87,7 @@ namespace HardwareInformation
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 }
                 DarkTheme();
+                themeBool = true;
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_THEME, themeBool.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));

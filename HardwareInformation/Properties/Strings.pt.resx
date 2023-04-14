@@ -175,6 +175,76 @@
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>MUDAR-NOME</value>
   </data>
+  <data name="description" xml:space="preserve">
+    <value>Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.
+
+    • Copyright © 2023 Kevin Vinícius Teixeira Costa
+    • URL do projeto: https://github.com/Kevin64/HardwareInformation
+    • Licença: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
+
+Este software deve ser usado em conjunto com projeto SCPD para funcionar corretamente.
+
+► Sistema de Controle de Patrimônio e Docentes - SCPD
+    • URL do projeto: https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes
+    • Licença: (MIT) https://github.com/Kevin64/Sistema-de-controle-de-patrimonio-e-docentes/blob/main/LICENSE
+Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md
+
+► Configurable Quality PictureBox (créditos a Jason D)
+    • URL do projeto: https://stackoverflow.com/a/1774592/16838132
+
+► Custom Flat ComboBox (créditos a Reza Aghaei)
+    • URL do projeto: https://stackoverflow.com/a/65976649/16838132
+
+► CommandLineParser
+    • Copyright © 2005 - 2015 Giacomo Stelluti Scala &amp; Contributors
+    • URL do projeto: https://github.com/commandlineparser/commandline
+    • Licença: (MIT) https://github.com/commandlineparser/commandline/blob/master/License.md
+
+► ini-parser
+    • Copyright © 2008 Ricardo Amores Hernández
+    • URL do projeto: https://github.com/rickyah/ini-parser
+    • Licença: (MIT) https://github.com/rickyah/ini-parser/blob/master/LICENSE
+
+► Microsoft.Web.WebView2
+    • Copyright © Microsoft Corporation. All rights reserved.
+    • URL do projeto: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
+    • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1518.46/license
+
+► WindowsAPICodePack
+    • Copyright © Microsoft Corporation. All rights reserved.
+    • URL do projeto: https://github.com/aybe/Windows-API-Code-Pack-1.1
+    • Licença: https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE
+
+► PowerShellStandard.Library
+    • Copyright © Microsoft Corporation.
+    • URL do projeto: https://github.com/PowerShell/PowerShellStandard
+    • Licença: (MIT) https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
+
+► LoadingCircle (créditos a Martin Gagne)
+    • URL do projeto: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
+    • Licença: (CPOL) https://www.codeproject.com/info/cpol10.aspx
+
+► NewtonsoftJson
+    • Copyright © 2007 James Newton-King
+    • URL do projeto: https://github.com/JamesNK/Newtonsoft.Json
+    • Licença: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
+
+► BCrypt.Net-Next
+    • Copyright © 2006 Damien Miller djm@mindrot.org (jBCrypt)
+    • Copyright © 2013 Ryan D. Emerle (.Net port)
+    • Copyright © 2016/2021 Chris McKee (.Net-core port / patches)
+    • URL do projeto: https://github.com/BcryptNet/bcrypt.net
+    • Licença: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt
+
+► DarkNet (créditos a Ben Hutchison)
+    • URL do projeto: https://github.com/Aldaviva/DarkNet
+    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt
+
+► fluentui-system-icons
+    • Copyright © 2020 Microsoft Corporation.
+    • URL do projeto: https://github.com/microsoft/fluentui-system-icons
+    • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE</value>
+  </data>
   <data name="employee" xml:space="preserve">
     <value>Funcionário</value>
   </data>

@@ -232,6 +232,24 @@ namespace HardwareInformation.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Software created, developed and maintained by Kevin Costa. Programmed in C# using .NET Framework 4.8. Supported systems: Windows 7, 10 and 11.
+        ///
+        ///    • Copyright © 2023 Kevin Vinícius Teixeira Costa
+        ///    • Project URL: https://github.com/Kevin64/HardwareInformation
+        ///    • License: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
+        ///
+        ///This software must be used in conjunction with ATCS project to work properly.
+        ///
+        ///► Assets and Teachers Control System - ATCS
+        ///    • Project URL: https://g [o restante da cadeia de caracteres foi truncado]&quot;;.
+        /// </summary>
+        internal static string description {
+            get {
+                return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Employee.
         /// </summary>
         internal static string employee {

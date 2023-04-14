@@ -1604,7 +1604,7 @@
         AA==
 </value>
   </data>
-  <data name="aboutLabel.Text" xml:space="preserve">
+  <data name="aboutLabelButton.Text" xml:space="preserve">
     <value>Sobre</value>
   </data>
   <data name="AuthButton.Text" xml:space="preserve">
@@ -1622,7 +1622,7 @@
   <data name="lblFixedServerPort.Text" xml:space="preserve">
     <value>Porta:</value>
   </data>
-  <data name="lblFixedUser.Text" xml:space="preserve">
+  <data name="lblFixedUsername.Text" xml:space="preserve">
     <value>Usuário:</value>
   </data>
 </root>
