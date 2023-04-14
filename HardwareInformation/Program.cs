@@ -22,13 +22,11 @@ namespace HardwareInformation
 {
     public class Program
     {
-        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr;
-        private static string orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
-        private static string orgFullNameSection, orgAcronymSection, depFullNameSection, depAcronymSection, subDepFullNameSection, subDepAcronymSection;
-        private static string[] logLocationSection, serverIPListSection, serverPortListSection, secureBootEnforcementSection, vtEnforcementSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
+        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
+        private static string[] logLocationSection, serverIPListSection, serverPortListSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
 
-        private static List<string[]> definitionListSection;
-        private static List<string> orgDataListSection;
+        private static List<string[]> parametersListSection;
+        private static List<string> orgDataListSection, enforcementListSection;
         private static LogGenerator log;
 
         //Command line switch options specification
@@ -100,13 +98,13 @@ namespace HardwareInformation
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            string[] str = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
+            string[] usersJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
-                if (str[0] != "false")
+                if (usersJsonStr[0] != "false")
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, str, log, definitionListSection));
+                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, usersJsonStr, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {
@@ -130,6 +128,7 @@ namespace HardwareInformation
         [STAThread]
         private static void Main(string[] args)
         {
+            //Code for testing string localization for other languages
             //var culture = System.Globalization.CultureInfo.GetCultureInfo("en");
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
@@ -157,27 +156,35 @@ namespace HardwareInformation
                 //Parses the INI file
                 def = parser.ReadFile(ConstantsDLL.Properties.Resources.defFile, Encoding.UTF8);
 
-                //Reads the INI file Definition section
+                //Reads the INI file Parameters section
                 logLocationStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_9];
                 serverIPStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_11];
                 serverPortStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_12];
-                secureBootEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_19];
-                vtEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_20];
                 themeStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_15];
-
-                orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_1];
-                orgAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_2];
-                depFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_3];
-                depAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_4];
-                subDepFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_5];
-                subDepAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_6];
 
                 logLocationSection = logLocationStr.Split().ToArray();
                 serverIPListSection = serverIPStr.Split(',').ToArray();
                 serverPortListSection = serverPortStr.Split(',').ToArray();
-                secureBootEnforcementSection = secureBootEnforcementStr.Split().ToArray();
-                vtEnforcementSection = vtEnforcementStr.Split().ToArray();
                 themeSection = themeStr.Split().ToArray();
+
+                //Reads the INI file Enforcement section
+                ramLimitEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_1];
+                smartStatusEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_2];
+                mediaOperationModeEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_3];
+                hostnameEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_4];
+                firmwareTypeEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_5];
+                firmwareVersionEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_6];
+                secureBootEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_7];
+                vtEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_8];
+                tpmEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_9];
+
+                //Reads the INI file OrgData section
+                orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_1];
+                orgAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_2];
+                depFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_3];
+                depAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_4];
+                subDepFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_5];
+                subDepAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_6];
 
                 //Assigns null to allow to pass as argument and be filled later
                 buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
@@ -187,20 +194,11 @@ namespace HardwareInformation
                     throw new FormatException();
                 }
 
-                orgFullNameSection = orgFullNameStr;
-                orgAcronymSection = orgAcronymStr;
-                depFullNameSection = depFullNameStr;
-                depAcronymSection = depAcronymStr;
-                subDepFullNameSection = subDepFullNameStr;
-                subDepAcronymSection = subDepAcronymStr;
-
-                definitionListSection = new List<string[]>
+                parametersListSection = new List<string[]>
                 {
                     serverIPListSection,
                     serverPortListSection,
                     logLocationSection,
-                    secureBootEnforcementSection,
-                    vtEnforcementSection,
                     themeSection,
                     buildings,
                     hardwareTypes,
@@ -211,14 +209,27 @@ namespace HardwareInformation
                     virtualizationTechnologyStates
                 };
 
+                enforcementListSection = new List<string>
+                {
+                    ramLimitEnforcementStr,
+                    smartStatusEnforcementStr,
+                    mediaOperationModeEnforcementStr,
+                    hostnameEnforcementStr,
+                    firmwareTypeEnforcementStr,
+                    firmwareVersionEnforcementStr,
+                    secureBootEnforcementStr,
+                    vtEnforcementStr,
+                    tpmEnforcementStr
+                };
+
                 orgDataListSection = new List<string>
                 {
-                    orgFullNameSection,
-                    orgAcronymSection,
-                    depFullNameSection,
-                    depAcronymSection,
-                    subDepFullNameSection,
-                    subDepAcronymSection
+                    orgFullNameStr,
+                    orgAcronymStr,
+                    depFullNameStr,
+                    depAcronymStr,
+                    subDepFullNameStr,
+                    subDepAcronymStr
                 };
 
                 bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
@@ -264,7 +275,7 @@ namespace HardwareInformation
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                     FreeConsole();
-                    Form lForm = new LoginForm(log, definitionListSection, orgDataListSection);
+                    Form lForm = new LoginForm(log, parametersListSection, enforcementListSection, orgDataListSection);
                     if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);

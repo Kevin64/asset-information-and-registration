@@ -10,7 +10,7 @@ namespace HardwareInformation
 {
     internal partial class AboutBox : Form
     {
-        public AboutBox(List<string[]> definitionList, bool themeBool)
+        public AboutBox(List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
@@ -25,7 +25,7 @@ namespace HardwareInformation
             textBoxDescription.Text = Strings.description;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
-            if (StringsAndConstants.listThemeGUI.Contains(definitionList[5][0].ToString()) && definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.listThemeGUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
             {
                 if (themeBool)
                 {
@@ -33,7 +33,6 @@ namespace HardwareInformation
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
-
                     DarkTheme();
                 }
                 else
@@ -42,15 +41,14 @@ namespace HardwareInformation
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
-
                     LightTheme();
                 }
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 LightTheme();
             }
-            else if (definitionList[5][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 DarkTheme();
             }

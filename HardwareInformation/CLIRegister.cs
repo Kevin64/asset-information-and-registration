@@ -23,6 +23,7 @@ namespace HardwareInformation
         private WebView2 webView2;
         private readonly LogGenerator log;
         private List<string[]> jsonServerSettings;
+        private List<string> enforcementList;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -61,18 +62,19 @@ namespace HardwareInformation
         }
 
         //Form constructor
-        public CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> definitionList)
+        public CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             //Inits WinForms components
             InitializeComponent();
 
+            this.enforcementList = enforcementList;
             this.log = log;
 
-            InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData, definitionList);
+            InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData, parametersList);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, List<string[]> definitionList)
+        public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, List<string[]> parametersList)
         {
             #region
 
@@ -152,8 +154,8 @@ namespace HardwareInformation
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
             jsonServerSettings = ConfigFileReader.FetchInfoST(serverIP, serverPort);
-            definitionList[2] = jsonServerSettings[0];
-            definitionList[3] = jsonServerSettings[1];
+            parametersList[2] = jsonServerSettings[0];
+            parametersList[3] = jsonServerSettings[1];
 
             webView2 = new WebView2();
 
@@ -167,7 +169,7 @@ namespace HardwareInformation
                 serverArgs[3].Length <= 6 && serverArgs[3].Length >= 0 && serverArgs[3].All(char.IsDigit) && //assetNumber
                 ((serverArgs[4].Length <= 10 && serverArgs[4].All(char.IsDigit)) || serverArgs[4].Equals(StringsAndConstants.cliDefaultUnchanged)) && //sealNumber
                 ((serverArgs[5].Length <= 4 && serverArgs[5].Length > 0 && serverArgs[5].All(char.IsDigit)) || serverArgs[5].Equals(StringsAndConstants.cliDefaultUnchanged)) && //roomNumber
-                (definitionList[2].Contains(serverArgs[6]) || serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)) && //building
+                (parametersList[2].Contains(serverArgs[6]) || serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)) && //building
                 (StringsAndConstants.listActiveDirectoryCLI.Contains(serverArgs[7]) || serverArgs[7].Equals(StringsAndConstants.cliDefaultUnchanged)) && //adRegistered
                 (StringsAndConstants.listStandardCLI.Contains(serverArgs[8]) || serverArgs[8].Equals(StringsAndConstants.cliDefaultUnchanged)) && //standard
                 ((serverArgs[9].Length == 10 && DateTime.TryParseExact(serverArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || serverArgs[9].Equals(ConstantsDLL.Properties.Resources.today)) && //Data
@@ -175,7 +177,7 @@ namespace HardwareInformation
                 serverArgs[11].Length <= 6 && serverArgs[11].All(char.IsDigit) && //Ticket
                 (StringsAndConstants.listInUseCLI.Contains(serverArgs[12]) || serverArgs[12].Equals(StringsAndConstants.cliDefaultUnchanged)) && //inUse
                 (StringsAndConstants.listTagCLI.Contains(serverArgs[13]) || serverArgs[13].Equals(StringsAndConstants.cliDefaultUnchanged)) && //tag
-                (definitionList[3].Contains(serverArgs[14]) || serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged))) //hwType
+                (parametersList[3].Contains(serverArgs[14]) || serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                 serverOnline = await ModelFileReader.CheckHostMT(serverArgs[0], serverArgs[1]);
@@ -194,15 +196,15 @@ namespace HardwareInformation
                         serverArgs[3] = HardwareInfo.GetComputerName().Substring(3);
                     }
 
-                    string[] pcJsonStr = AssetFileReader.FetchInfoST(serverArgs[3], serverArgs[0], serverArgs[1]);
+                    string[] assetJsonStr = AssetFileReader.FetchInfoST(serverArgs[3], serverArgs[0], serverArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
-                    if (pcJsonStr[0] == "false" && serverArgs.Contains(StringsAndConstants.cliDefaultUnchanged))
+                    if (assetJsonStr[0] == "false" && serverArgs.Contains(StringsAndConstants.cliDefaultUnchanged))
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                         webView2.Dispose();
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
-                    else if (pcJsonStr[0] == "false") //If PC Json does not exist
+                    else if (assetJsonStr[0] == "false") //If PC Json does not exist
                     {
                         //serviceType
                         if (serverArgs[2].Equals(StringsAndConstants.cliServiceType0))
@@ -214,7 +216,7 @@ namespace HardwareInformation
                             serverArgs[2] = ConstantsDLL.Properties.Resources.maintenanceURL;
                         }
                         //building
-                        serverArgs[6] = Array.IndexOf(definitionList[2], serverArgs[6]).ToString();
+                        serverArgs[6] = Array.IndexOf(parametersList[2], serverArgs[6]).ToString();
                         //adRegistered
                         if (serverArgs[7].Equals(StringsAndConstants.listNoAbbrev))
                         {
@@ -264,7 +266,7 @@ namespace HardwareInformation
                     else //If PC Json does exist
                     {
                         //If PC is discarded
-                        if (pcJsonStr[9] == "1")
+                        if (assetJsonStr[9] == "1")
                         {
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.PC_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
                             webView2.Dispose();
@@ -282,21 +284,21 @@ namespace HardwareInformation
                         //sealNumber
                         if (serverArgs[4].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[4] = pcJsonStr[6];
+                            serverArgs[4] = assetJsonStr[6];
                         }
                         //roomNumber
                         if (serverArgs[5].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[5] = pcJsonStr[2];
+                            serverArgs[5] = assetJsonStr[2];
                         }
                         //building
                         serverArgs[6] = serverArgs[6].Equals(StringsAndConstants.cliDefaultUnchanged)
-                            ? pcJsonStr[1]
-                            : Array.IndexOf(definitionList[2], serverArgs[6]).ToString();
+                            ? assetJsonStr[1]
+                            : Array.IndexOf(parametersList[2], serverArgs[6]).ToString();
                         //adRegistered
                         if (serverArgs[7].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[7] = pcJsonStr[4];
+                            serverArgs[7] = assetJsonStr[4];
                         }
                         else if (serverArgs[7].Equals(StringsAndConstants.listNoAbbrev))
                         {
@@ -309,7 +311,7 @@ namespace HardwareInformation
                         //standard
                         if (serverArgs[8].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[8] = pcJsonStr[3];
+                            serverArgs[8] = assetJsonStr[3];
                         }
                         else if (serverArgs[8].Equals(StringsAndConstants.cliEmployeeType0))
                         {
@@ -331,7 +333,7 @@ namespace HardwareInformation
                         //inUse
                         if (serverArgs[12].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[12] = pcJsonStr[5];
+                            serverArgs[12] = assetJsonStr[5];
                         }
                         else if (serverArgs[12].Equals(StringsAndConstants.listNoAbbrev))
                         {
@@ -344,7 +346,7 @@ namespace HardwareInformation
                         //tag
                         if (serverArgs[13].Equals(StringsAndConstants.cliDefaultUnchanged))
                         {
-                            serverArgs[13] = pcJsonStr[7];
+                            serverArgs[13] = assetJsonStr[7];
                         }
                         else if (serverArgs[13].Equals(StringsAndConstants.listNoAbbrev))
                         {
@@ -356,8 +358,8 @@ namespace HardwareInformation
                         }
                         //hwType
                         serverArgs[14] = serverArgs[14].Equals(StringsAndConstants.cliDefaultUnchanged)
-                            ? pcJsonStr[8]
-                            : Array.IndexOf(definitionList[3], serverArgs[14]).ToString();
+                            ? assetJsonStr[8]
+                            : Array.IndexOf(parametersList[3], serverArgs[14]).ToString();
                     }
                     PrintHardwareData();
 
@@ -385,7 +387,7 @@ namespace HardwareInformation
 
                             //Calculates last registered date with chosen date
                             DateTime registerDate = DateTime.ParseExact(serverArgs[9], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
-                            DateTime lastRegisterDate = DateTime.ParseExact(pcJsonStr[10], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
+                            DateTime lastRegisterDate = DateTime.ParseExact(assetJsonStr[10], ConstantsDLL.Properties.Resources.dateFormat, CultureInfo.InvariantCulture);
 
                             //If chosen date is later than the registered date
                             if (registerDate >= lastRegisterDate)
@@ -518,24 +520,24 @@ namespace HardwareInformation
             try
             {
                 //Feches model info from server
-                string[] biosJsonStr = ModelFileReader.FetchInfoST(serverArgs[17], serverArgs[18], serverArgs[28], serverArgs[34], serverArgs[31], serverArgs[0], serverArgs[1]);
+                string[] modelJsonStr = ModelFileReader.FetchInfoST(serverArgs[17], serverArgs[18], serverArgs[28], serverArgs[34], serverArgs[31], serverArgs[0], serverArgs[1]);
 
-                //Scan if hostname is the default one
-                if (serverArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
+                //If hostname is the default one and its enforcement is enabled
+                if (enforcementList[3] == "true" && serverArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
                     serverAlert[0] += serverArgs[24] + Strings.HOSTNAME_ALERT;
                     serverAlertBool[0] = true;
                 }
-                //If model Json file does exist and the Media Operation is incorrect
-                if (biosJsonStr != null && biosJsonStr[3].Equals("false"))
+                //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
+                if (enforcementList[2] == "true" && modelJsonStr != null && modelJsonStr[3].Equals("false"))
                 {
                     pass = false;
                     serverAlert[1] += serverArgs[31] + Strings.MEDIA_OPERATION_ALERT;
                     serverAlertBool[1] = true;
                 }
-                //The section below contains the exception cases for Secure Boot enforcement
-                if (serverArgs[32].Equals(ConstantsDLL.Properties.Strings.deactivated) &&
+                //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
+                if (enforcementList[6] == "true" && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.deactivated) &&
                     !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU1) &&
                     !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.nonSecBootGPU2))
                 {
@@ -544,24 +546,24 @@ namespace HardwareInformation
                     serverAlertBool[2] = true;
                 }
                 //If model Json file does not exist and server is unreachable
-                if (biosJsonStr == null)
+                if (modelJsonStr == null)
                 {
                     pass = false;
                     serverAlert[3] += Strings.DATABASE_REACH_ERROR;
                     serverAlertBool[3] = true;
                 }
-                //If model Json file does exist and BIOS/UEFI version is incorrect
-                if (biosJsonStr != null && !serverArgs[25].Contains(biosJsonStr[0]))
+                //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
+                if (enforcementList[5] == "true" && modelJsonStr != null && !serverArgs[25].Contains(modelJsonStr[0]))
                 {
-                    if (!biosJsonStr[0].Equals("-1"))
+                    if (!modelJsonStr[0].Equals("-1"))
                     {
                         pass = false;
                         serverAlert[4] += serverArgs[25] + Strings.BIOS_VERSION_ALERT;
                         serverAlertBool[4] = true;
                     }
                 }
-                //If model Json file does exist and firmware type is incorrect
-                if (biosJsonStr != null && biosJsonStr[1].Equals("false"))
+                //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
+                if (enforcementList[4] == "true" && modelJsonStr != null && modelJsonStr[1].Equals("false"))
                 {
                     pass = false;
                     serverAlert[5] += serverArgs[28] + Strings.FIRMWARE_TYPE_ALERT;
@@ -576,15 +578,15 @@ namespace HardwareInformation
                     serverAlertBool[6] = true;
                     serverAlertBool[7] = true;
                 }
-                //If Virtualization Technology is disabled
-                if (serverArgs[33] == ConstantsDLL.Properties.Strings.deactivated)
+                //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
+                if (enforcementList[7] == "true" && serverArgs[33] == ConstantsDLL.Properties.Strings.deactivated)
                 {
                     pass = false;
                     serverAlert[8] += serverArgs[33] + Strings.VT_ALERT;
                     serverAlertBool[8] = true;
                 }
-                //If model Json file does exist and TPM is not enabled
-                if (biosJsonStr != null && biosJsonStr[2].Equals("false"))
+                //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
+                if (enforcementList[8] == "true" && modelJsonStr != null && modelJsonStr[2].Equals("false"))
                 {
                     pass = false;
                     serverAlert[9] += serverArgs[34] + Strings.TPM_ERROR;
@@ -592,15 +594,15 @@ namespace HardwareInformation
                 }
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
-                //If RAM is less than 4GB and OS is x64, shows an alert
-                if (d < 4.0 && Environment.Is64BitOperatingSystem)
+                //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
+                if (enforcementList[0] == "true" && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     serverAlert[10] += serverArgs[21] + Strings.NOT_ENOUGH_MEMORY;
                     serverAlertBool[10] = true;
                 }
-                //If RAM is more than 4GB and OS is x86, shows an alert
-                if (d > 4.0 && !Environment.Is64BitOperatingSystem)
+                //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
+                if (enforcementList[0] == "true" && d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     serverAlert[10] += serverArgs[21] + Strings.TOO_MUCH_MEMORY;

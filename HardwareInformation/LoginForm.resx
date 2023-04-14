@@ -228,7 +228,7 @@
     <value>5</value>
   </data>
   <data name="AuthButton.Text" xml:space="preserve">
-    <value>Autenticate</value>
+    <value>Authenticate</value>
   </data>
   <data name="&gt;&gt;AuthButton.Name" xml:space="preserve">
     <value>AuthButton</value>
@@ -242,9 +242,9 @@
   <data name="&gt;&gt;AuthButton.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 17</value>
   </data>
@@ -582,9 +582,9 @@
   <data name="&gt;&gt;textBoxFixedLoginIntro.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
