@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Net;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     internal static class WebView2Installer
     {

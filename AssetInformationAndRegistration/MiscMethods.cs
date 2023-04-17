@@ -1,11 +1,11 @@
-﻿using HardwareInformation.Properties;
+﻿using AssetInformationAndRegistration.Properties;
 using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     //Class that allows changing the progressbar color
     public static class ModifyProgressBarColor

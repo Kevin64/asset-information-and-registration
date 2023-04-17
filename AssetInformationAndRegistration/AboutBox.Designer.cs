@@ -1,4 +1,4 @@
-﻿namespace HardwareInformation
+﻿namespace AssetInformationAndRegistration
 {
     partial class AboutBox
     {

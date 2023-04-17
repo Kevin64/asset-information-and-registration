@@ -2,7 +2,7 @@
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using HardwareInformation.Properties;
+using AssetInformationAndRegistration.Properties;
 using IniParser;
 using IniParser.Exceptions;
 using IniParser.Model;
@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     public class Program
     {

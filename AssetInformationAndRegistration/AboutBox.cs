@@ -1,12 +1,12 @@
 ﻿using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using HardwareInformation.Properties;
+using AssetInformationAndRegistration.Properties;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     internal partial class AboutBox : Form
     {

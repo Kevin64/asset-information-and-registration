@@ -3472,7 +3472,7 @@
     <value>43</value>
   </data>
   <data name="radioButtonEmployee.Text" xml:space="preserve">
-    <value>Employee/Scholar (work computer)</value>
+    <value>Employee (work computer)</value>
   </data>
   <data name="&gt;&gt;radioButtonEmployee.Name" xml:space="preserve">
     <value>radioButtonEmployee</value>
@@ -4267,7 +4267,7 @@
     <value>122</value>
   </data>
   <data name="lblFixedAgentName.Text" xml:space="preserve">
-    <value>Responsible agent:</value>
+    <value>Assigned agent:</value>
   </data>
   <data name="&gt;&gt;lblFixedAgentName.Name" xml:space="preserve">
     <value>lblFixedAgentName</value>
@@ -4407,9 +4407,9 @@
   <data name="toolStripVersionText.Size" type="System.Drawing.Size, System.Drawing">
     <value>4, 19</value>
   </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>18, 11</value>
-  </metadata>
+  </data>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
@@ -4476,30 +4476,30 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>133, 9</value>
-  </metadata>
-  <metadata name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>295, 9</value>
-  </metadata>
-  <metadata name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>522, 9</value>
-  </metadata>
-  <metadata name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>690, 9</value>
-  </metadata>
-  <metadata name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>852, 9</value>
-  </metadata>
-  <metadata name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>1045, 9</value>
-  </metadata>
-  <metadata name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>1192, 9</value>
-  </metadata>
-  <metadata name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 48</value>
-  </metadata>
+  </data>
   <data name="webView2Control.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 13</value>
   </data>
@@ -4545,12 +4545,12 @@
   <data name="&gt;&gt;groupBoxRegistryStatus.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>188, 48</value>
-  </metadata>
-  <metadata name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>359, 48</value>
-  </metadata>
+  </data>
   <data name="imgTopBanner.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -4680,12 +4680,12 @@
   <data name="&gt;&gt;groupBoxServerStatus.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>48</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>

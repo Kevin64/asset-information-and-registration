@@ -7,7 +7,7 @@
     <ProjectGuid>{A7AFE7A2-F74A-400E-9DFA-02BC6A8E4F9B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HardwareInformation</RootNamespace>
+    <RootNamespace>AssetInformationAndRegistration</RootNamespace>
     <!-- <AssemblyName>CadastroPatrimonial</AssemblyName> -->
     <AssemblyName Condition="'$(Configuration)'=='Debug'">CadastroPatrimonial-SNAPSHOT</AssemblyName>
     <AssemblyName Condition="'$(Configuration)'=='Release'">CadastroPatrimonial</AssemblyName>
@@ -85,7 +85,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>IT-Asset-Registration</AssemblyName>
+    <AssemblyName>AIR</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=2.9.1.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">

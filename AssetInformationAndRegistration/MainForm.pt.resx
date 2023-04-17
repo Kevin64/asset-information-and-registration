@@ -179,7 +179,7 @@
     <value>113, 13</value>
   </data>
   <data name="lblFixedAssetNumber.Text" xml:space="preserve">
-    <value>Número do patrimônio:</value>
+    <value>Número do ativo:</value>
   </data>
   <data name="lblFixedSealNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 13</value>
@@ -302,7 +302,7 @@
     <value>Tipo de armazenamento:</value>
   </data>
   <data name="groupBoxAssetData.Text" xml:space="preserve">
-    <value>Dados do patrimônio, manutenção e de localização</value>
+    <value>Dados do ativo, manutenção e de localização</value>
   </data>
   <data name="lblFixedMandatoryTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 244</value>
@@ -362,7 +362,7 @@
     <value>242, 17</value>
   </data>
   <data name="radioButtonEmployee.Text" xml:space="preserve">
-    <value>Funcionário/Bolsista (computador de trabalho)</value>
+    <value>Funcionário (computador de trabalho)</value>
   </data>
   <data name="lblFixedWho.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
@@ -410,7 +410,7 @@
     <value>104, 13</value>
   </data>
   <data name="lblFixedAgentName.Text" xml:space="preserve">
-    <value>Agente responsável:</value>
+    <value>Agente designado:</value>
   </data>
   <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 22</value>

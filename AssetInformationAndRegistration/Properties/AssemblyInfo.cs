@@ -1,15 +1,13 @@
-﻿using ConstantsDLL;
-using System.Reflection;
-using System.Resources;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Hardware Collection and Asset Registration")]
+[assembly: AssemblyTitle("Asset Information and Registration")]
 [assembly: AssemblyDescription("Collects IT asset hardware details and registers on a APCS database")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Hardware Collection and Asset Registration")]
+[assembly: AssemblyProduct("Asset Information and Registration")]
 [assembly: AssemblyCopyright("Copyright © 2023 Kevin Vinícius Teixeira Costa")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

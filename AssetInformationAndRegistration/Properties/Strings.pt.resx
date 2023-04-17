@@ -119,408 +119,408 @@
   </resheader>
   <data name="aaaPROJECTaaa" xml:space="preserve">
     <value />
-    <comment>HardwareInfo.Strings.Generic</comment>
+    <comment>HardwareInfo.Strings.PT</comment>
   </data>
   <data name="ARGS_ERROR" xml:space="preserve">
-    <value>One or more arguments contain errors! Exiting the program</value>
+    <value>Um ou mais argumentos contém erros! Saindo do programa</value>
   </data>
   <data name="AUTH_ERROR" xml:space="preserve">
-    <value>Authentication error! Exiting the program</value>
+    <value>Erro de autenticação! Saindo do programa</value>
   </data>
   <data name="AUTH_INVALID" xml:space="preserve">
-    <value>Invalid credentials. Try again.</value>
+    <value>Credenciais inválidas. Tente novamente.</value>
   </data>
   <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>(Update firmware)</value>
+    <value> (Atualizar firmware)</value>
   </data>
   <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>Firmware version:</value>
+    <value>Versão do firmware: </value>
   </data>
   <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
-    <value>Database connectivity: </value>
+    <value>Conectividade com o banco de dados: </value>
   </data>
   <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
-    <value>Firmware type: </value>
+    <value>Tipo de firmware: </value>
   </data>
   <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
     <value>Hostname: </value>
   </data>
   <data name="CLI_MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value>SATA/M.2 operating mode: </value>
+    <value>Modo de operação SATA/M.2: </value>
   </data>
   <data name="CLI_MEMORY_ALERT" xml:space="preserve">
-    <value>RAM amount and number of slots: </value>
+    <value>Memória RAM e nº de slots: </value>
   </data>
   <data name="CLI_NETWORK_IP_ERROR" xml:space="preserve">
-    <value>IP address: </value>
+    <value>Endereço IP: </value>
   </data>
   <data name="CLI_NETWORK_MAC_ERROR" xml:space="preserve">
-    <value>MAC address: </value>
+    <value>Endereço MAC: </value>
   </data>
   <data name="CLI_SECURE_BOOT_ALERT" xml:space="preserve">
     <value>Secure Boot: </value>
   </data>
   <data name="CLI_TPM_ALERT" xml:space="preserve">
-    <value>TPM version: </value>
+    <value>Versão do TPM: </value>
   </data>
   <data name="CLI_VT_ALERT" xml:space="preserve">
-    <value>Virtualization Technology: </value>
+    <value>Tecnologia de Virtualização: </value>
   </data>
   <data name="DATABASE_REACH_ERROR" xml:space="preserve">
-    <value>Error contacting the database, check your intranet connection and that the web server is up!</value>
+    <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
-    <value> days since the last</value>
+    <value> dias desde a última </value>
   </data>
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
-    <value>CHANGE-NAME</value>
+    <value>MUDAR-NOME</value>
   </data>
   <data name="description" xml:space="preserve">
-    <value>Software created, developed and maintained by Kevin Costa. Programmed in C# using .NET Framework 4.8. Supported systems: Windows 7, 10 and 11.
+    <value>Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.
 
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
-    • Project URL: https://github.com/Kevin64/HardwareInformation
-    • License: (MIT) https://github.com/Kevin64/HardwareInformation/blob/master/LICENSE
+    • URL do projeto: https://github.com/Kevin64/AssetInformationAndRegistration
+    • Licença: (MIT) https://github.com/Kevin64/AssetInformationAndRegistration/blob/master/LICENSE
 
-This software must be used in conjunction with APCS project to work properly.
+Este software deve ser usado em conjunto com projeto APCS para funcionar corretamente.
 
 ► Asset and Personnel Control System - APCS
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
-    • Project URL: https://github.com/Kevin64/asset-and-personnel-control-system
-    • License: (MIT) https://github.com/Kevin64/asset-and-personnel-control-system/blob/main/LICENSE
+    • URL do projeto: https://github.com/Kevin64/asset-and-personnel-control-system
+    • Licença: (MIT) https://github.com/Kevin64/asset-and-personnel-control-system/blob/main/LICENSE
 
-This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers. These components are listed in the README on the project's GitHub page: https://github.com/Kevin64/Dependencies/blob/main/README.md
+Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source e códigos avulsos de terceiros. Todos os créditos vão para os seus respectivos criadores e mantenedores. Estes componentes estão listados no README na página do projeto no GitHub: https://github.com/Kevin64/Dependencies/blob/main/README.md
 
-► Configurable Quality PictureBox (credits to Jason D)
-    • Project URL: https://stackoverflow.com/a/1774592/16838132
+► Configurable Quality PictureBox (créditos a Jason D)
+    • URL do projeto: https://stackoverflow.com/a/1774592/16838132
 
-► Custom Flat ComboBox (credits to Reza Aghaei)
-    • Project URL: https://stackoverflow.com/a/65976649/16838132
+► Custom Flat ComboBox (créditos a Reza Aghaei)
+    • URL do projeto: https://stackoverflow.com/a/65976649/16838132
 
 ► CommandLineParser
     • Copyright © 2005 - 2015 Giacomo Stelluti Scala &amp; Contributors
-    • Project URL: https://github.com/commandlineparser/commandline
-    • License: (MIT) https://github.com/commandlineparser/commandline/blob/master/License.md
+    • URL do projeto: https://github.com/commandlineparser/commandline
+    • Licença: (MIT) https://github.com/commandlineparser/commandline/blob/master/License.md
 
-► ini parser
+► ini-parser
     • Copyright © 2008 Ricardo Amores Hernández
-    • Project URL: https://github.com/rickyah/ini-parser
-    • License: (MIT) https://github.com/rickyah/ini-parser/blob/master/LICENSE
+    • URL do projeto: https://github.com/rickyah/ini-parser
+    • Licença: (MIT) https://github.com/rickyah/ini-parser/blob/master/LICENSE
 
 ► Microsoft.Web.WebView2
     • Copyright © Microsoft Corporation. All rights reserved.
-    • Project URL: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
-    • License: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
+    • URL do projeto: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
+    • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
 
 ► WindowsAPICodePack
     • Copyright © Microsoft Corporation. All rights reserved.
-    • Project URL: https://github.com/aybe/Windows-API-Code-Pack-1.1
-    • License: https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE
+    • URL do projeto: https://github.com/aybe/Windows-API-Code-Pack-1.1
+    • Licença: https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE
 
 ► PowerShellStandard.Library
     • Copyright © Microsoft Corporation.
-    • Project URL: https://github.com/PowerShell/PowerShellStandard
-    • License: (MIT) https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
+    • URL do projeto: https://github.com/PowerShell/PowerShellStandard
+    • Licença: (MIT) https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
 
-► LoadingCircle (credits to Martin Gagne)
-    • Project URL: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
-    • License: (CPOL) https://www.codeproject.com/info/cpol10.aspx
+► LoadingCircle (créditos a Martin Gagne)
+    • URL do projeto: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
+    • Licença: (CPOL) https://www.codeproject.com/info/cpol10.aspx
 
 ► NewtonsoftJson
     • Copyright © 2007 James Newton-King
-    • Project URL: https://github.com/JamesNK/Newtonsoft.Json
-    • License: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
+    • URL do projeto: https://github.com/JamesNK/Newtonsoft.Json
+    • Licença: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
 
 ► BCrypt.Net-Next
     • Copyright © 2006 Damien Miller djm@mindrot.org (jBCrypt)
     • Copyright © 2013 Ryan D. Emerle (.Net port)
     • Copyright © 2016/2021 Chris McKee (.Net-core port / patches)
-    • Project URL: https://github.com/BcryptNet/bcrypt.net
-    • License: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt
+    • URL do projeto: https://github.com/BcryptNet/bcrypt.net
+    • Licença: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt
 
-► DarkNet (credits to Ben Hutchison)
-    • Project URL: https://github.com/Aldaviva/DarkNet
-    • License: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt
+► DarkNet (créditos a Ben Hutchison)
+    • URL do projeto: https://github.com/Aldaviva/DarkNet
+    • Licença: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt
 
 ► fluentui-system-icons
     • Copyright © 2020 Microsoft Corporation.
-    • Project URL: https://github.com/microsoft/fluentui-system-icons
-    • License: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE</value>
+    • URL do projeto: https://github.com/microsoft/fluentui-system-icons
+    • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE</value>
   </data>
   <data name="employee" xml:space="preserve">
-    <value>Employee</value>
+    <value>Funcionário</value>
   </data>
   <data name="FETCHING" xml:space="preserve">
-    <value>Collecting...</value>
+    <value>Coletando...</value>
   </data>
   <data name="FETCH_AGAIN" xml:space="preserve">
-    <value>Collect Again</value>
+    <value>Coletar Novamente</value>
   </data>
   <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
-    <value> (Wrong firmware type)</value>
+    <value> (Tipo de firmware incorreto)</value>
   </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
-    <value>Fix the following issues before proceeding:</value>
+    <value>Corrija os problemas a seguir antes de prosseguir:</value>
   </data>
   <data name="FORMAT_TEXT" xml:space="preserve">
-    <value>formatting</value>
+    <value>formatação</value>
   </data>
   <data name="HOSTNAME_ALERT" xml:space="preserve">
-    <value> (Incorrect name, change)</value>
+    <value> (Nome incorreto, alterar)</value>
   </data>
   <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
-    <value>It is not possible to register for a date in the future.</value>
+    <value>Não é possível registrar para uma data no futuro.</value>
   </data>
   <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
-    <value>Registration date prior to the last maintenance date.</value>
+    <value>Data de registro anterior à data da última manutenção.</value>
   </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
-    <value>Automatically selecting theme</value>
+    <value>Selecionando tema automaticamente</value>
   </data>
   <data name="LOG_BIOS" xml:space="preserve">
-    <value>Firmware version</value>
+    <value>Versão do firmware</value>
   </data>
   <data name="LOG_BIOSTYPE" xml:space="preserve">
-    <value>Firmware type</value>
+    <value>Tipo de firmware</value>
   </data>
   <data name="LOG_BM" xml:space="preserve">
-    <value>Brand</value>
+    <value>Marca</value>
   </data>
   <data name="LOG_CHECKING_WEBVIEW2" xml:space="preserve">
-    <value>Checking presence of WebView2 Runtime on the system</value>
+    <value>Verificando presença do WebView2 Runtime no sistema</value>
   </data>
   <data name="LOG_CLI_MODE" xml:space="preserve">
-    <value>Arguments detected, starting in CLI mode. list of arguments</value>
+    <value>Argumentos detectados, iniciando em modo CLI. Lista de argumentos</value>
   </data>
   <data name="LOG_CLOSING_CLI" xml:space="preserve">
-    <value>Ending program sequence</value>
+    <value>Finalizando sequência do programa</value>
   </data>
   <data name="LOG_CLOSING_LOGINFORM" xml:space="preserve">
-    <value>Finalizing login form</value>
+    <value>Finalizando form de login</value>
   </data>
   <data name="LOG_CLOSING_MAINFORM" xml:space="preserve">
-    <value>Finalizing main form</value>
+    <value>Finalizando form principal</value>
   </data>
   <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
-    <value>Switching to dark mode</value>
+    <value>Mudando para modo escuro</value>
   </data>
   <data name="LOG_END_COLLECTING" xml:space="preserve">
-    <value>Completion of hardware collection</value>
+    <value>Finalização da coleta de hardware</value>
   </data>
   <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
-    <value>WebView2 Runtime loading finished</value>
+    <value>Carregamento do WebView2 Runtime finalizado</value>
   </data>
   <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
-    <value>Getting file with hardware model information</value>
+    <value>Obtendo arquivo com informações de modelo de hardware</value>
   </data>
   <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
-    <value>Searching available buildings and types of hardware in the local file</value>
+    <value>Buscando prédios e tipos de hardware disponíveis</value>
   </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
-    <value>Searching available buildings and types of hardware</value>
+    <value>Buscando prédios e tipos de hardware disponíveis</value>
   </data>
   <data name="LOG_GPUINFO" xml:space="preserve">
-    <value>Video card and vRAM</value>
+    <value>Placa de Vídeo e vRAM</value>
   </data>
   <data name="LOG_GUI_MODE" xml:space="preserve">
-    <value>Missing arguments, starting in GUI mode</value>
+    <value>Argumentos ausentes, iniciando em modo GUI</value>
   </data>
   <data name="LOG_HARDWARE_PASSED" xml:space="preserve">
-    <value>Compliant configuration, ready for registration</value>
+    <value>Configuração sem pendências, pronto para registro</value>
   </data>
   <data name="LOG_HDSIZE" xml:space="preserve">
-    <value>Storage (total space)</value>
+    <value>Armazenamento (espaço total)</value>
   </data>
   <data name="LOG_HOSTNAME" xml:space="preserve">
-    <value>Hostname</value>
+    <value>Nome do Computador</value>
   </data>
   <data name="LOG_INIT_REGISTRY" xml:space="preserve">
-    <value>Starting registration process</value>
+    <value>Iniciando processo de registro</value>
   </data>
   <data name="LOG_INSTALLING_WEBVIEW2" xml:space="preserve">
-    <value>Installing WebView2 Runtime</value>
+    <value>Instalando WebView2 Runtime</value>
   </data>
   <data name="LOG_IP" xml:space="preserve">
-    <value>NIC's IP Address</value>
+    <value>Endereço IP do NIC</value>
   </data>
   <data name="LOG_LIGHTMODE_CHANGE" xml:space="preserve">
-    <value>Switching to light mode</value>
+    <value>Mudando para modo claro</value>
   </data>
   <data name="LOG_MAC" xml:space="preserve">
-    <value>NIC's MAC Address</value>
+    <value>Endereço MAC do NIC</value>
   </data>
   <data name="LOG_MEDIAOP" xml:space="preserve">
-    <value>SATA/M.2 operating mode</value>
+    <value>Modo de operação SATA/M.2</value>
   </data>
   <data name="LOG_MEDIATYPE" xml:space="preserve">
-    <value>Storage type</value>
+    <value>Tipo de armazenamento</value>
   </data>
   <data name="LOG_MODEL" xml:space="preserve">
-    <value>Model</value>
+    <value>Modelo</value>
   </data>
   <data name="LOG_OFFLINE_MODE" xml:space="preserve">
-    <value>Offline execution mode</value>
+    <value>Modo de execução offline</value>
   </data>
   <data name="LOG_OFFLINE_SERVER" xml:space="preserve">
-    <value>Server is OFFLINE</value>
+    <value>Servidor está OFFLINE</value>
   </data>
   <data name="LOG_ONLINE_SERVER" xml:space="preserve">
-    <value>Server is ONLINE</value>
+    <value>Servidor está ONLINE</value>
   </data>
   <data name="LOG_OPENING_LOG" xml:space="preserve">
-    <value>Opening event log</value>
+    <value>Abrindo log de eventos</value>
   </data>
   <data name="LOG_OS" xml:space="preserve">
-    <value>Operating system</value>
+    <value>Sistema Operacional</value>
   </data>
   <data name="LOG_PENDENCY_ERROR" xml:space="preserve">
-    <value>Issues detected in the configuration</value>
+    <value>Pendências detectadas na configuração</value>
   </data>
   <data name="LOG_PINGGING_SERVER" xml:space="preserve">
-    <value>Checking server availability</value>
+    <value>Verificando disponibilidade do servidor</value>
   </data>
   <data name="LOG_PM" xml:space="preserve">
-    <value>RAM amount and number of slots</value>
+    <value>Memória RAM e n° de slots</value>
   </data>
   <data name="LOG_PROCNAME" xml:space="preserve">
-    <value>Processor and number of cores</value>
+    <value>Processador e nº de núcleos</value>
   </data>
   <data name="LOG_REGISTERING" xml:space="preserve">
-    <value>Registering on the Asset Control Server</value>
+    <value>Registrando no servidor de controle patrimonial</value>
   </data>
   <data name="LOG_REGISTRY_FINISHED" xml:space="preserve">
-    <value>Registration finished</value>
+    <value>Registro finalizado</value>
   </data>
   <data name="LOG_RESETTING_INSTALLDATE" xml:space="preserve">
-    <value>Recalculating last formatting date</value>
+    <value>Recalculando data da última formatação</value>
   </data>
   <data name="LOG_RESETTING_MAINTENANCEDATE" xml:space="preserve">
-    <value>Recalculating last maintenance date</value>
+    <value>Recalculando data da última manutenção</value>
   </data>
   <data name="LOG_SAMEWORD_NOFIRSTREGISTRY" xml:space="preserve">
-    <value>One or more 'same' arguments detected, however there is no existing record for the current asset. Computer must be registered first via GUI or via CLI with all command line options correctly filled in</value>
+    <value>Um ou mais argumentos 'mesmo' detectados, porém não há registro existente para o ativo atual. Computador deve ser registrado primeiramente via GUI ou via CLI com todas as opções de linha de comando corretamente preenchidas</value>
   </data>
   <data name="LOG_SECBOOT" xml:space="preserve">
     <value>Secure Boot</value>
   </data>
   <data name="LOG_SERIALNO" xml:space="preserve">
-    <value>Serial Number</value>
+    <value>Número Serial</value>
   </data>
   <data name="LOG_SERVER_DETAIL" xml:space="preserve">
-    <value>Server and port</value>
+    <value>Servidor e porta</value>
   </data>
   <data name="LOG_SHOWING_HELP" xml:space="preserve">
-    <value>Displaying list of commands</value>
+    <value>Exibindo lista de comandos</value>
   </data>
   <data name="LOG_SMART" xml:space="preserve">
-    <value>S.M.A.R.T. status</value>
+    <value>Status S.M.A.R.T.</value>
   </data>
   <data name="LOG_START_COLLECTING" xml:space="preserve">
-    <value>Collecting hardware</value>
+    <value>Coletando hardware</value>
   </data>
   <data name="LOG_START_LOADING_WEBVIEW2" xml:space="preserve">
-    <value>Starting loading of WebView2 Runtime</value>
+    <value>Iniciando carregamento do WebView2 Runtime</value>
   </data>
   <data name="LOG_START_THREAD" xml:space="preserve">
-    <value>Initializing collection procedure thread</value>
+    <value>Inicializando thread de procedimento de coleta</value>
   </data>
   <data name="LOG_THEME" xml:space="preserve">
-    <value>Using dark theme</value>
+    <value>Usando tema escuro</value>
   </data>
   <data name="LOG_TPM" xml:space="preserve">
-    <value>TPM version</value>
+    <value>Versão do TPM</value>
   </data>
   <data name="LOG_VIEW_SERVER" xml:space="preserve">
-    <value>Accessing asset control system</value>
+    <value>Acessando sistema de controle patrimonial</value>
   </data>
   <data name="LOG_VT" xml:space="preserve">
-    <value>Virtualization Technology</value>
+    <value>Tecnologia de Virtualização</value>
   </data>
   <data name="LOG_WEBVIEW2_ALREADY_INSTALLED" xml:space="preserve">
-    <value>WebView2 Runtime is already installed</value>
+    <value>WebView2 Runtime já está instalado</value>
   </data>
   <data name="LOG_WEBVIEW2_INSTALLED" xml:space="preserve">
-    <value>WebView2 Runtime successfully installed</value>
+    <value>WebView2 Runtime instalado com êxito</value>
   </data>
   <data name="LOG_WEBVIEW2_INSTALL_FAILED" xml:space="preserve">
-    <value>WebView2 Runtime installation failed, please try again</value>
+    <value>Falha na instalação do WebView2 Runtime, tente novamente</value>
   </data>
   <data name="LOG_WEBVIEW2_NOT_FOUND" xml:space="preserve">
-    <value>WebView2 Runtime not found</value>
+    <value>WebView2 Runtime não encontrado</value>
   </data>
   <data name="MAINTENANCE_TEXT" xml:space="preserve">
-    <value>maintenance</value>
+    <value>manutenção</value>
   </data>
   <data name="MANDATORY_FIELD" xml:space="preserve">
-    <value>Fill in the required fields</value>
+    <value>Preencha os campos obrigatórios</value>
   </data>
   <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value> (Incorrect operating mode, change)</value>
+    <value> (Modo de operação incorreto, alterar)</value>
   </data>
   <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
-    <value>IDE/Legacy or RAID</value>
+    <value>IDE/Legacy ou RAID</value>
   </data>
   <data name="MEDIA_OPERATION_NVME" xml:space="preserve">
     <value>NVMe</value>
   </data>
   <data name="NETWORK_ERROR" xml:space="preserve">
-    <value>Computer not connected to the Intranet</value>
+    <value>Computador sem conexão com a Intranet</value>
   </data>
   <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
-    <value> (Insufficient memory)</value>
+    <value> (Memória insuficiente)</value>
   </data>
   <data name="occupied" xml:space="preserve">
-    <value> occupied</value>
+    <value> ocupados</value>
   </data>
   <data name="OFFLINE" xml:space="preserve">
     <value>OFFLINE</value>
   </data>
   <data name="OFFLINE_MODE_ACTIVATED" xml:space="preserve">
-    <value>OFFLINE Mode!</value>
+    <value>Modo OFFLINE!</value>
   </data>
   <data name="ONLINE" xml:space="preserve">
     <value>ONLINE</value>
   </data>
   <data name="PENDENCY_ERROR" xml:space="preserve">
-    <value>Resolve issues displayed in red!</value>
+    <value>Resolva as pendências exibidas em vermelho!</value>
   </data>
   <data name="REGISTERING" xml:space="preserve">
-    <value>Registering / Updating, please wait...</value>
+    <value>Cadastrando / Atualizando, aguarde...</value>
   </data>
   <data name="REGISTER_AGAIN" xml:space="preserve">
-    <value>Register / Update data</value>
+    <value>Cadastrar / Atualizar dados</value>
   </data>
   <data name="replacedBattery" xml:space="preserve">
-    <value>With battery change</value>
+    <value>C/ troca de pilha</value>
   </data>
   <data name="sameBattery" xml:space="preserve">
-    <value>No battery change</value>
+    <value>S/ troca de pilha</value>
   </data>
   <data name="SECURE_BOOT_ALERT" xml:space="preserve">
-    <value> (Enable secure boot)</value>
+    <value> (Ativar secure boot)</value>
   </data>
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
-    <value>To access, select the server and the port!</value>
+    <value>Para acessar, selecione o servidor e a porta!</value>
   </data>
   <data name="SINCE_UNKNOWN" xml:space="preserve">
-    <value>(Could not determine date of last service)</value>
+    <value>(Não foi possível determinar a data do último serviço)</value>
   </data>
   <data name="slots_of" xml:space="preserve">
-    <value> slots of </value>
+    <value> slots de </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
-    <value> (Drive with imminent failure)</value>
+    <value> (Drive com falha iminente)</value>
   </data>
   <data name="student" xml:space="preserve">
-    <value>Student</value>
+    <value>Aluno</value>
   </data>
   <data name="TOO_MUCH_MEMORY" xml:space="preserve">
-    <value> (Too much memory)</value>
+    <value> (Memória em excesso)</value>
   </data>
   <data name="TPM_ERROR" xml:space="preserve">
-    <value> (TPM disabled/incorrect version)</value>
+    <value> (TPM desativado/versão incorreta)</value>
   </data>
   <data name="VT_ALERT" xml:space="preserve">
-    <value> (Enable Virtualization Technology in firmware)</value>
+    <value> (Ativar Tecnologia de Virtualização no firmware)</value>
   </data>
 </root>

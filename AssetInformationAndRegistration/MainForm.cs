@@ -2,7 +2,7 @@ using ConfigurableQualityPictureBoxDLL;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using HardwareInformation.Properties;
+using AssetInformationAndRegistration.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     public partial class MainForm : Form
     {

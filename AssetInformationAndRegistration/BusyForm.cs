@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     public partial class BusyForm : Form
     {

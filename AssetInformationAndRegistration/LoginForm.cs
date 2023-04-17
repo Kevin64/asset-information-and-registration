@@ -1,7 +1,7 @@
 ﻿using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using HardwareInformation.Properties;
+using AssetInformationAndRegistration.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
@@ -12,7 +12,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace HardwareInformation
+namespace AssetInformationAndRegistration
 {
     public partial class LoginForm : Form
     {
