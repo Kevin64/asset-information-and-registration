@@ -235,13 +235,12 @@ namespace AssetInformationAndRegistration.Properties {
         ///   Consulta uma cadeia de caracteres localizada semelhante a Software created, developed and maintained by Kevin Costa. Programmed in C# using .NET Framework 4.8. Supported systems: Windows 7, 10 and 11.
         ///
         ///    • Copyright © 2023 Kevin Vinícius Teixeira Costa
-        ///    • Project URL: https://github.com/Kevin64/AssetInformationAndRegistration
-        ///    • License: (MIT) https://github.com/Kevin64/AssetInformationAndRegistration/blob/master/LICENSE
+        ///    • Project URL: https://github.com/Kevin64/asset-information-and-registration
+        ///    • License: (MIT) https://github.com/Kevin64/asset-information-and-registration/blob/master/LICENSE
         ///
         ///This software must be used in conjunction with APCS project to work properly.
         ///
-        ///► Asset and Personnel Control System - APCS
-        ///     [o restante da cadeia de caracteres foi truncado]&quot;;.
+        ///► Asset and Personnel Control System - APCS [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>
         internal static string description {
             get {

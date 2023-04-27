@@ -322,6 +322,7 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
             loadingCircleAuthButton.Visible = true;
             loadingCircleAuthButton.Active = true;
+            aboutLabelButton.Enabled = false;
             if (checkBoxOfflineMode.Checked)
             {
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
@@ -395,6 +396,7 @@ namespace AssetInformationAndRegistration
                     _ = MessageBox.Show(ConstantsDLL.Properties.Strings.NO_AUTH, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
+                aboutLabelButton.Enabled = true;
             }
 
             //Enables controls if login is not successful
