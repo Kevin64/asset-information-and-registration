@@ -212,6 +212,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     • URL do projeto: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
     • Licença: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
 
+► System.Buffers, System.Memory, System.Numerics.Vectors, System.Runtime.CompilerServices.Unsafe
+    • Copyright (c) .NET Foundation and Contributors
+    • URL do projeto: https://dot.net/
+    • Licença: (MIT) https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
+
 ► WindowsAPICodePack
     • Copyright © Microsoft Corporation. All rights reserved.
     • URL do projeto: https://github.com/aybe/Windows-API-Code-Pack-1.1
@@ -226,7 +231,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     • URL do projeto: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
     • Licença: (CPOL) https://www.codeproject.com/info/cpol10.aspx
 
-► NewtonsoftJson
+► Newtonsoft.Json
     • Copyright © 2007 James Newton-King
     • URL do projeto: https://github.com/JamesNK/Newtonsoft.Json
     • Licença: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
