@@ -1,6 +1,6 @@
-﻿using ConstantsDLL;
+﻿using AssetInformationAndRegistration.Properties;
+using ConstantsDLL;
 using HardwareInfoDLL;
-using AssetInformationAndRegistration.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
@@ -22,8 +22,8 @@ namespace AssetInformationAndRegistration
         private string[] serverArgs, serverAlert;
         private WebView2 webView2;
         private readonly LogGenerator log;
-        private List<string[]> jsonServerSettings;
-        private List<string> enforcementList;
+        private List<string[]> parametersList, jsonServerSettings;
+        private readonly List<string> enforcementList;
 
         //Basic form for WebView2
         private void InitializeComponent()
@@ -67,14 +67,15 @@ namespace AssetInformationAndRegistration
             //Inits WinForms components
             InitializeComponent();
 
+            this.parametersList = parametersList;
             this.enforcementList = enforcementList;
             this.log = log;
 
-            InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData, parametersList);
+            InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData);
         }
 
         //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
-        public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, List<string[]> parametersList)
+        public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData)
         {
             #region
 
@@ -156,6 +157,13 @@ namespace AssetInformationAndRegistration
             jsonServerSettings = ConfigFileReader.FetchInfoST(serverIP, serverPort);
             parametersList[2] = jsonServerSettings[0];
             parametersList[3] = jsonServerSettings[1];
+            parametersList[4] = jsonServerSettings[0]; //Buildings
+            parametersList[5] = jsonServerSettings[1]; //Hw Types
+            parametersList[6] = jsonServerSettings[2]; //Firmware Types
+            parametersList[7] = jsonServerSettings[3]; //Tpm Types
+            parametersList[8] = jsonServerSettings[4]; //Media Op Types
+            parametersList[9] = jsonServerSettings[5]; //Secure Boot States
+            parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
 
             webView2 = new WebView2();
 
@@ -666,7 +674,7 @@ namespace AssetInformationAndRegistration
 
             //Scans for Media Operation (IDE/AHCI/NVME)
             serverArgs[31] = HardwareInfo.GetStorageOperation();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, serverArgs[31], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(serverArgs[31])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for GPU information
             serverArgs[30] = HardwareInfo.GetGPUInfo();
@@ -690,11 +698,11 @@ namespace AssetInformationAndRegistration
 
             //Scans for firmware type
             serverArgs[28] = HardwareInfo.GetBIOSType();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, serverArgs[28], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(serverArgs[28])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Secure Boot status
             serverArgs[32] = HardwareInfo.GetSecureBoot();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, serverArgs[32], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.listStates[Convert.ToInt32(parametersList[9][Convert.ToInt32(serverArgs[32])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for BIOS version
             serverArgs[25] = HardwareInfo.GetComputerBIOS();
@@ -702,11 +710,11 @@ namespace AssetInformationAndRegistration
 
             //Scans for VT status
             serverArgs[33] = HardwareInfo.GetVirtualizationTechnology();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, serverArgs[33], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, StringsAndConstants.listStates[Convert.ToInt32(parametersList[10][Convert.ToInt32(serverArgs[33])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for TPM status
             serverArgs[34] = HardwareInfo.GetTPMStatus();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, serverArgs[34], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, parametersList[7][Convert.ToInt32(serverArgs[34])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
         }
