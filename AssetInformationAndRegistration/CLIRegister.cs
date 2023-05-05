@@ -22,7 +22,8 @@ namespace AssetInformationAndRegistration
         private string[] serverArgs, serverAlert;
         private WebView2 webView2;
         private readonly LogGenerator log;
-        private List<string[]> parametersList, jsonServerSettings;
+        private readonly List<string[]> parametersList;
+        private List<string[]> jsonServerSettings;
         private readonly List<string> enforcementList;
 
         //Basic form for WebView2
