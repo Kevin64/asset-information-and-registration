@@ -518,7 +518,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Prints the collected data into the form labels, warning the user when there are forbidden modes
+        //Prints the collected data into the form labels, warning the agent when there are forbidden modes
         private void PrintHardwareData()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));

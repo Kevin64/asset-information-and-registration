@@ -122,7 +122,7 @@
     <value>46, 13</value>
   </data>
   <data name="lblFixedUsername.Text" xml:space="preserve">
-    <value>Usuário:</value>
+    <value>Agente:</value>
   </data>
   <data name="lblFixedPassword.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>

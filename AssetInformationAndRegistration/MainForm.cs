@@ -4282,7 +4282,7 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
         }
 
-        //Prints the collected data into the form labels, warning the user when there are forbidden modes
+        //Prints the collected data into the form labels, warning the agent when there are forbidden modes
         private async Task PrintHardwareData()
         {
             //Hides loading circles after scanning the hardware
@@ -4504,7 +4504,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Triggers when the form opens, and when the user clicks to collect
+        //Triggers when the form opens, and when the agent clicks to collect
         private void CollectButton_Click(object sender, EventArgs e)
         {
             progressBar1.SetState(1);

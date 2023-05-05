@@ -174,7 +174,7 @@
     <value>2</value>
   </data>
   <data name="lblFixedUsername.Text" xml:space="preserve">
-    <value>User:</value>
+    <value>Agent:</value>
   </data>
   <data name="&gt;&gt;lblFixedUsername.Name" xml:space="preserve">
     <value>lblFixedUsername</value>

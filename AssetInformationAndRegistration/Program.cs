@@ -99,13 +99,13 @@ namespace AssetInformationAndRegistration
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-            string[] usersJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
+            string[] agentsJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
-                if (usersJsonStr[0] != "false")
+                if (agentsJsonStr[0] != "false")
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
-                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, usersJsonStr, log, parametersListSection, enforcementListSection));
+                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, agentsJsonStr, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {

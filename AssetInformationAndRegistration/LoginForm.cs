@@ -17,7 +17,7 @@ namespace AssetInformationAndRegistration
     public partial class LoginForm : Form
     {
         private readonly bool themeBool;
-        private string[] usersJsonStr = { };
+        private string[] agentsJsonStr = { };
         private readonly LogGenerator log;
         private readonly List<string[]> parametersList;
         private readonly List<string> enforcementList, orgDataList;
@@ -158,7 +158,7 @@ namespace AssetInformationAndRegistration
             aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_light_path));
 
             imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_light_path));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_light_path));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_agent_light_path));
             iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_light_path));
             iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_light_path));
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_light_path));
@@ -212,7 +212,7 @@ namespace AssetInformationAndRegistration
             aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_about_dark_path));
 
             imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.login_banner_dark_path));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_user_dark_path));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_agent_dark_path));
             iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_password_dark_path));
             iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_server_dark_path));
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.icon_port_dark_path));
@@ -316,7 +316,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Checks the user/password and shows the main form
+        //Checks the username/password and shows the main form
         private async void AuthButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -353,28 +353,28 @@ namespace AssetInformationAndRegistration
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
                 //Feches login data from server
-                usersJsonStr = await CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                agentsJsonStr = await CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
 
                 //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     //If Login Json file does not exist, there is no internet connection
-                    if (usersJsonStr == null)
+                    if (agentsJsonStr == null)
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         _ = MessageBox.Show(ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
-                    else if (usersJsonStr[0] == "false") //If Login Json file does exist, but the user do not exist
+                    else if (agentsJsonStr[0] == "false") //If Login Json file does exist, but the agent do not exist
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         _ = MessageBox.Show(Strings.AUTH_INVALID, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
-                    else //If Login Json file does exist and user logs in
+                    else //If Login Json file does exist and agent logs in
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-                        MainForm mForm = new MainForm(false, usersJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
+                        MainForm mForm = new MainForm(false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
                         if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
