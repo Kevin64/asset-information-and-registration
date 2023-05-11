@@ -56,7 +56,7 @@ namespace AssetInformationAndRegistration
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
@@ -64,7 +64,7 @@ namespace AssetInformationAndRegistration
                 }
                 else
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
@@ -73,7 +73,7 @@ namespace AssetInformationAndRegistration
             }
             else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 }
@@ -82,7 +82,7 @@ namespace AssetInformationAndRegistration
             }
             else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 }
@@ -328,7 +328,7 @@ namespace AssetInformationAndRegistration
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 mForm = new MainForm(true, offStr, null, null, log, parametersList, enforcementList, orgDataList);
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                 }
@@ -375,7 +375,7 @@ namespace AssetInformationAndRegistration
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                         MainForm mForm = new MainForm(false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
-                        if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                        if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                         }
@@ -434,7 +434,7 @@ namespace AssetInformationAndRegistration
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(parametersList, themeBool);
-            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             }

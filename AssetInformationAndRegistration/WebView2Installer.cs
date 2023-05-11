@@ -15,7 +15,7 @@ namespace AssetInformationAndRegistration
                 using (WebClient client = new WebClient())
                 {
 
-                    if (HardwareInfo.GetOSInfoAux() == ConstantsDLL.Properties.Resources.windows7)
+                    if (HardwareInfo.GetWinVersion() == ConstantsDLL.Properties.Resources.windows7)
                     {
                         ServicePointManager.Expect100Continue = true;
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;

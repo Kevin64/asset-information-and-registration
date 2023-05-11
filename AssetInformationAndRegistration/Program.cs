@@ -134,7 +134,7 @@ namespace AssetInformationAndRegistration
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             }
@@ -283,7 +283,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, showCLIOutput);
                     FreeConsole();
                     Form lForm = new LoginForm(log, parametersListSection, enforcementListSection, orgDataListSection);
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
                     }

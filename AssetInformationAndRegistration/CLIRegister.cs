@@ -202,7 +202,7 @@ namespace AssetInformationAndRegistration
                     //assetNumber
                     if (serverArgs[3].Equals(string.Empty))
                     {
-                        serverArgs[3] = HardwareInfo.GetComputerName().Substring(3);
+                        serverArgs[3] = HardwareInfo.GetHostname().Substring(3);
                     }
 
                     string[] assetJsonStr = AssetFileReader.FetchInfoST(serverArgs[3], serverArgs[0], serverArgs[1]);
@@ -602,7 +602,7 @@ namespace AssetInformationAndRegistration
                     serverAlertBool[9] = true;
                 }
                 //Checks for RAM amount
-                double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
                 if (enforcementList[0] == "true" && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
@@ -635,10 +635,10 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for PC maker
-            serverArgs[17] = HardwareInfo.GetBoardMaker();
+            serverArgs[17] = HardwareInfo.GetBrand();
             if (serverArgs[17] == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || serverArgs[17] == string.Empty)
             {
-                serverArgs[17] = HardwareInfo.GetBoardMakerAlt();
+                serverArgs[17] = HardwareInfo.GetBrandAlt();
             }
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, serverArgs[17], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
@@ -653,20 +653,20 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, serverArgs[18], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for motherboard Serial number
-            serverArgs[19] = HardwareInfo.GetBoardProductId();
+            serverArgs[19] = HardwareInfo.GetSerialNumber();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, serverArgs[19], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for CPU information
-            serverArgs[20] = HardwareInfo.GetProcessorCores();
+            serverArgs[20] = HardwareInfo.GetProcessorInfo();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, serverArgs[20], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for RAM amount and total number of slots
-            serverArgs[21] = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
+            serverArgs[21] = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 Strings.slots_of + HardwareInfo.GetNumRamSlots() + Strings.occupied + ")";
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, serverArgs[21], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Storage size
-            serverArgs[22] = HardwareInfo.GetHDSize();
+            serverArgs[22] = HardwareInfo.GetStorageSize();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, serverArgs[22], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Storage type
@@ -674,31 +674,31 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, serverArgs[29], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)
-            serverArgs[31] = HardwareInfo.GetStorageOperation();
+            serverArgs[31] = HardwareInfo.GetMediaOperationMode();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(serverArgs[31])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for GPU information
-            serverArgs[30] = HardwareInfo.GetGPUInfo();
+            serverArgs[30] = HardwareInfo.GetVideoCardInfo();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, serverArgs[30], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for OS infomation
-            serverArgs[23] = HardwareInfo.GetOSInformation();
+            serverArgs[23] = HardwareInfo.GetOSString();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, serverArgs[23], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for hostname
-            serverArgs[24] = HardwareInfo.GetComputerName();
+            serverArgs[24] = HardwareInfo.GetHostname();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, serverArgs[24], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for MAC Address
-            serverArgs[26] = HardwareInfo.GetMACAddress();
+            serverArgs[26] = HardwareInfo.GetMacAddress();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, serverArgs[26], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for IP Address
-            serverArgs[27] = HardwareInfo.GetIPAddress();
+            serverArgs[27] = HardwareInfo.GetIpAddress();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, serverArgs[27], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for firmware type
-            serverArgs[28] = HardwareInfo.GetBIOSType();
+            serverArgs[28] = HardwareInfo.GetFwType();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(serverArgs[28])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for Secure Boot status
@@ -706,7 +706,7 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.listStates[Convert.ToInt32(parametersList[9][Convert.ToInt32(serverArgs[32])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for BIOS version
-            serverArgs[25] = HardwareInfo.GetComputerBIOS();
+            serverArgs[25] = HardwareInfo.GetFirmwareVersion();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, serverArgs[25], Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
 
             //Scans for VT status

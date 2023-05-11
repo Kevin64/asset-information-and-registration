@@ -29,7 +29,7 @@ namespace AssetInformationAndRegistration
             {
                 if (themeBool)
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
@@ -37,7 +37,7 @@ namespace AssetInformationAndRegistration
                 }
                 else
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }

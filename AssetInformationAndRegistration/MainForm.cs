@@ -50,7 +50,7 @@ namespace AssetInformationAndRegistration
                 themeBool = MiscMethods.ThemeInit();
                 if (themeBool)
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
@@ -58,7 +58,7 @@ namespace AssetInformationAndRegistration
                 }
                 else
                 {
-                    if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
@@ -68,7 +68,7 @@ namespace AssetInformationAndRegistration
             else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
             {
                 comboBoxThemeButton.Enabled = false;
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                 }
@@ -78,7 +78,7 @@ namespace AssetInformationAndRegistration
             else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
             {
                 comboBoxThemeButton.Enabled = false;
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                 }
@@ -134,8 +134,8 @@ namespace AssetInformationAndRegistration
             comboBoxInUse.Items.AddRange(StringsAndConstants.listInUseGUI.ToArray());
             comboBoxTag.Items.AddRange(StringsAndConstants.listTagGUI.ToArray());
             comboBoxBatteryChange.Items.AddRange(StringsAndConstants.listBatteryGUI.ToArray());
-            textBoxAssetNumber.Text = HardwareInfo.GetComputerName().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN)
-                ? HardwareInfo.GetComputerName().Substring(3)
+            textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN)
+                ? HardwareInfo.GetHostname().Substring(3)
                 : string.Empty;
 
             //Inits thread worker for parallelism
@@ -2271,7 +2271,7 @@ namespace AssetInformationAndRegistration
             themeBool = MiscMethods.ThemeInit();
             if (themeBool)
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10)) //If Windows 10/11
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10)) //If Windows 10/11
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark); //Sets context menus to dark
                 }
@@ -2279,7 +2279,7 @@ namespace AssetInformationAndRegistration
             }
             else
             {
-                if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10)) //If Windows 10/11
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10)) //If Windows 10/11
                 {
                     DarkNet.Instance.SetCurrentProcessTheme(Theme.Light); //Sets context menus to light
                 }
@@ -2298,7 +2298,7 @@ namespace AssetInformationAndRegistration
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_LIGHTMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
             }
@@ -2310,7 +2310,7 @@ namespace AssetInformationAndRegistration
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_DARKMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
-            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
             }
@@ -2818,7 +2818,7 @@ namespace AssetInformationAndRegistration
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(parametersList, themeBool);
-            if (HardwareInfo.GetOSInfoAux().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             }
@@ -4155,10 +4155,10 @@ namespace AssetInformationAndRegistration
             i = 0;
 
             //Scans for PC maker
-            brand = HardwareInfo.GetBoardMaker();
+            brand = HardwareInfo.GetBrand();
             if (brand == ConstantsDLL.Properties.Resources.ToBeFilledByOEM || brand == string.Empty)
             {
-                brand = HardwareInfo.GetBoardMakerAlt();
+                brand = HardwareInfo.GetBrandAlt();
             }
 
             i++;
@@ -4177,26 +4177,26 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, model, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for motherboard Serial number
-            serialNumber = HardwareInfo.GetBoardProductId();
+            serialNumber = HardwareInfo.GetSerialNumber();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, serialNumber, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for CPU information
-            processor = HardwareInfo.GetProcessorCores();
+            processor = HardwareInfo.GetProcessorInfo();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, processor, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for RAM amount and total number of slots
-            ram = HardwareInfo.GetPhysicalMemory() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
+            ram = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
                 Strings.slots_of + HardwareInfo.GetNumRamSlots() + Strings.occupied + ")";
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, ram, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Storage size
-            storageSize = HardwareInfo.GetHDSize();
+            storageSize = HardwareInfo.GetStorageSize();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, storageSize, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4214,43 +4214,43 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, storageType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)
-            mediaOperationMode = HardwareInfo.GetStorageOperation();
+            mediaOperationMode = HardwareInfo.GetMediaOperationMode();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, mediaOperationMode, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for GPU information
-            videoCard = HardwareInfo.GetGPUInfo();
+            videoCard = HardwareInfo.GetVideoCardInfo();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, videoCard, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for OS infomation
-            operatingSystem = HardwareInfo.GetOSInformation();
+            operatingSystem = HardwareInfo.GetOSString();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, operatingSystem, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for Hostname
-            hostname = HardwareInfo.GetComputerName();
+            hostname = HardwareInfo.GetHostname();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, hostname, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for MAC Address
-            macAddress = HardwareInfo.GetMACAddress();
+            macAddress = HardwareInfo.GetMacAddress();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, macAddress, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for IP Address
-            ipAddress = HardwareInfo.GetIPAddress();
+            ipAddress = HardwareInfo.GetIpAddress();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, ipAddress, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for firmware type
-            fwType = HardwareInfo.GetBIOSType();
+            fwType = HardwareInfo.GetFwType();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, fwType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4262,7 +4262,7 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, secureBoot, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
 
             //Scans for BIOS version
-            fwVersion = HardwareInfo.GetComputerBIOS();
+            fwVersion = HardwareInfo.GetFirmwareVersion();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, fwVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
@@ -4470,7 +4470,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.TPM_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutGUI));
                 }
                 //Checks for RAM amount
-                double d = Convert.ToDouble(HardwareInfo.GetPhysicalMemoryAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
                 if (enforcementList[0] == "true" && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
