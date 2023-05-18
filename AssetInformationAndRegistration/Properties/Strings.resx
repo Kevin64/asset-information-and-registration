@@ -175,7 +175,7 @@
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>CHANGE-NAME</value>
   </data>
-  <data name="description" xml:space="preserve">
+  <data name="DESCRIPTION" xml:space="preserve">
     <value>Software created, developed and maintained by Kevin Costa. Programmed in C# using .NET Framework 4.8. Supported systems: Windows 7, 10 and 11.
 
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
@@ -253,7 +253,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     • Repository (GitHub): https://github.com/microsoft/fluentui-system-icons
     • License: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE</value>
   </data>
-  <data name="employee" xml:space="preserve">
+  <data name="EMPLOYEE" xml:space="preserve">
     <value>Employee</value>
   </data>
   <data name="FETCHING" xml:space="preserve">
@@ -475,7 +475,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
     <value> (Insufficient memory)</value>
   </data>
-  <data name="occupied" xml:space="preserve">
+  <data name="OCCUPIED" xml:space="preserve">
     <value> occupied</value>
   </data>
   <data name="OFFLINE" xml:space="preserve">
@@ -496,10 +496,10 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="REGISTER_AGAIN" xml:space="preserve">
     <value>Register / Update data</value>
   </data>
-  <data name="replacedBattery" xml:space="preserve">
+  <data name="REPLACED_BATTERY" xml:space="preserve">
     <value>With battery change</value>
   </data>
-  <data name="sameBattery" xml:space="preserve">
+  <data name="SAME_BATTERY" xml:space="preserve">
     <value>No battery change</value>
   </data>
   <data name="SECURE_BOOT_ALERT" xml:space="preserve">
@@ -511,13 +511,13 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="SINCE_UNKNOWN" xml:space="preserve">
     <value>(Could not determine date of last service)</value>
   </data>
-  <data name="slots_of" xml:space="preserve">
+  <data name="SLOTS_OF" xml:space="preserve">
     <value> slots of </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
     <value> (Drive with imminent failure)</value>
   </data>
-  <data name="student" xml:space="preserve">
+  <data name="STUDENT" xml:space="preserve">
     <value>Student</value>
   </data>
   <data name="TOO_MUCH_MEMORY" xml:space="preserve">

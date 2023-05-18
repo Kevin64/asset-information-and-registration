@@ -27,8 +27,8 @@ namespace AssetInformationAndRegistration
             try
             {
                 RegistryKey rk = Registry.LocalMachine.OpenSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH);
-                DateTime li = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.lastInstall).ToString());
-                DateTime lm = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.lastMaintenance).ToString());
+                DateTime li = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL).ToString());
+                DateTime lm = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE).ToString());
                 return mode ? (DateTime.Today - li).TotalDays : (DateTime.Today - lm).TotalDays;
             }
             catch
@@ -43,12 +43,12 @@ namespace AssetInformationAndRegistration
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
             {
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastInstall, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
             }
             else
             {
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
             }
         }
 
@@ -58,12 +58,12 @@ namespace AssetInformationAndRegistration
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
             {
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastInstall, dateTime.Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
             }
             else
             {
-                rk.SetValue(ConstantsDLL.Properties.Resources.lastMaintenance, dateTime.Substring(0, 10), RegistryValueKind.String);
+                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
             }
         }
 
@@ -91,7 +91,7 @@ namespace AssetInformationAndRegistration
             {
 #if DEBUG
                 //Checks if log directory exists
-                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
                 //Checks if log file exists
                 b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);

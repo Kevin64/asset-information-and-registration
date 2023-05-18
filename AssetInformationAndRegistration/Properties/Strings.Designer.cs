@@ -241,18 +241,18 @@ namespace AssetInformationAndRegistration.Properties {
         ///
         ///This software must be used in conju [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>
-        internal static string description {
+        internal static string DESCRIPTION {
             get {
-                return ResourceManager.GetString("description", resourceCulture);
+                return ResourceManager.GetString("DESCRIPTION", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Employee.
         /// </summary>
-        internal static string employee {
+        internal static string EMPLOYEE {
             get {
-                return ResourceManager.GetString("employee", resourceCulture);
+                return ResourceManager.GetString("EMPLOYEE", resourceCulture);
             }
         }
         
@@ -916,9 +916,9 @@ namespace AssetInformationAndRegistration.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a  occupied.
         /// </summary>
-        internal static string occupied {
+        internal static string OCCUPIED {
             get {
-                return ResourceManager.GetString("occupied", resourceCulture);
+                return ResourceManager.GetString("OCCUPIED", resourceCulture);
             }
         }
         
@@ -979,18 +979,18 @@ namespace AssetInformationAndRegistration.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a With battery change.
         /// </summary>
-        internal static string replacedBattery {
+        internal static string REPLACED_BATTERY {
             get {
-                return ResourceManager.GetString("replacedBattery", resourceCulture);
+                return ResourceManager.GetString("REPLACED_BATTERY", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a No battery change.
         /// </summary>
-        internal static string sameBattery {
+        internal static string SAME_BATTERY {
             get {
-                return ResourceManager.GetString("sameBattery", resourceCulture);
+                return ResourceManager.GetString("SAME_BATTERY", resourceCulture);
             }
         }
         
@@ -1024,9 +1024,9 @@ namespace AssetInformationAndRegistration.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a  slots of .
         /// </summary>
-        internal static string slots_of {
+        internal static string SLOTS_OF {
             get {
-                return ResourceManager.GetString("slots_of", resourceCulture);
+                return ResourceManager.GetString("SLOTS_OF", resourceCulture);
             }
         }
         
@@ -1042,9 +1042,9 @@ namespace AssetInformationAndRegistration.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Student.
         /// </summary>
-        internal static string student {
+        internal static string STUDENT {
             get {
-                return ResourceManager.GetString("student", resourceCulture);
+                return ResourceManager.GetString("STUDENT", resourceCulture);
             }
         }
         

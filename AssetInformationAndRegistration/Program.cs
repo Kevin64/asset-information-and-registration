@@ -33,55 +33,55 @@ namespace AssetInformationAndRegistration
         //Command line switch options specification
         public class Options
         {
-            [Option(StringsAndConstants.cliServerIPSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServerIP)]
+            [Option(StringsAndConstants.CLI_SERVER_IP_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_IP)]
             public string ServerIP { get; set; }
 
-            [Option(StringsAndConstants.cliServerPortSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServerPort)]
+            [Option(StringsAndConstants.CLI_SERVER_PORT_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_PORT)]
             public string ServerPort { get; set; }
 
-            [Option(StringsAndConstants.cliServiceTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServiceType, Default = StringsAndConstants.cliDefaultServiceType)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVICE_TYPE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string ServiceType { get; set; }
 
-            [Option(StringsAndConstants.cliAssetNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextAssetNumber, Default = "")]
+            [Option(StringsAndConstants.CLI_ASSET_NUMBER_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ASSET_NUMBER, Default = "")]
             public string AssetNumber { get; set; }
 
-            [Option(StringsAndConstants.cliSealNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextSealNumber, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SEAL_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string SealNumber { get; set; }
 
-            [Option(StringsAndConstants.cliRoomNumberSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextRoomNumber, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ROOM_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string RoomNumber { get; set; }
 
-            [Option(StringsAndConstants.cliBuildingSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextBuilding, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_BUILDING, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string Building { get; set; }
 
-            [Option(StringsAndConstants.cliAdRegisteredSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextAdRegistered, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_AD_REGISTERED, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string AdRegistered { get; set; }
 
-            [Option(StringsAndConstants.cliStandardSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextStandard, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_STANDARD, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string Standard { get; set; }
 
-            [Option(StringsAndConstants.cliServiceDateSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextServiceDate, Default = StringsAndConstants.cliDefaultServiceDate)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVICE_DATE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string ServiceDate { get; set; }
 
-            [Option(StringsAndConstants.cliBatteryChangeSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextBatteryChange)]
+            [Option(StringsAndConstants.CLI_BATTERY_CHANGE_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_BATTERY_CHANGE)]
             public string BatteryChange { get; set; }
 
-            [Option(StringsAndConstants.cliTicketNumberSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextTicketNumber)]
+            [Option(StringsAndConstants.CLI_TICKET_NUMBER_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_TICKET_NUMBER)]
             public string TicketNumber { get; set; }
 
-            [Option(StringsAndConstants.cliInUseSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextInUse, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_IN_USE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string InUse { get; set; }
 
-            [Option(StringsAndConstants.cliTagSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextTag, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_TAG, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string Tag { get; set; }
 
-            [Option(StringsAndConstants.cliHwTypeSwitch, Required = false, HelpText = StringsAndConstants.cliHelpTextHwType, Default = StringsAndConstants.cliDefaultUnchanged)]
+            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_HW_TYPE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
             public string HwType { get; set; }
 
-            [Option(StringsAndConstants.cliUsernameSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextUsername)]
+            [Option(StringsAndConstants.CLI_USERNAME_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_USERNAME)]
             public string Username { get; set; }
 
-            [Option(StringsAndConstants.cliPasswordSwitch, Required = true, HelpText = StringsAndConstants.cliHelpTextPassword)]
+            [Option(StringsAndConstants.CLI_PASSWORD_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_PASSWORD)]
             public string Password { get; set; }
         }
 
@@ -98,24 +98,24 @@ namespace AssetInformationAndRegistration
                 opts.ServerPort = serverPortListSection[0];
             }
 
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             string[] agentsJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
                 if (agentsJsonStr[0] != "false")
                 {
-                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, agentsJsonStr, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {
-                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.AUTH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.AUTH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                 }
             }
             catch
             {
-                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.consoleOutCLI));
+                log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
             }
         }
@@ -134,7 +134,7 @@ namespace AssetInformationAndRegistration
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
             }
@@ -155,7 +155,7 @@ namespace AssetInformationAndRegistration
                 IniData def = null;
                 FileIniDataParser parser = new FileIniDataParser();
                 //Parses the INI file
-                def = parser.ReadFile(ConstantsDLL.Properties.Resources.defFile, Encoding.UTF8);
+                def = parser.ReadFile(ConstantsDLL.Properties.Resources.DEF_FILE, Encoding.UTF8);
 
                 //Reads the INI file Parameters section
                 logLocationStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_9];
@@ -190,7 +190,7 @@ namespace AssetInformationAndRegistration
                 //Assigns null to allow to pass as argument and be filled later
                 buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
 
-                if (!StringsAndConstants.listThemeGUI.Contains(themeSection[0]))
+                if (!StringsAndConstants.LIST_THEME_GUI.Contains(themeSection[0]))
                 {
                     throw new FormatException();
                 }
@@ -236,13 +236,13 @@ namespace AssetInformationAndRegistration
                 bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
 
                 //If args has a --help switch, do not show log output
-                if (!args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliHelpSwitch))
+                if (!args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                 {
                     showCLIOutput = true;
                 }
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.dev_status, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.dev_status + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.DEV_STATUS, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)
@@ -283,7 +283,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, showCLIOutput);
                     FreeConsole();
                     Form lForm = new LoginForm(log, parametersListSection, enforcementListSection, orgDataListSection);
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
                     }
@@ -293,13 +293,13 @@ namespace AssetInformationAndRegistration
                 else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
-                    int index = Array.IndexOf(argsLog, ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch);
+                    int index = Array.IndexOf(argsLog, ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
                     if (index == -1)
                     {
-                        index = Array.FindIndex(argsLog, x => x.StartsWith(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch));
+                        index = Array.FindIndex(argsLog, x => x.StartsWith(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
                         if (index != -1)
                         {
-                            argsLog[index] = ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliPasswordSwitch + "=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
                         }
                     }
                     else
@@ -312,7 +312,7 @@ namespace AssetInformationAndRegistration
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args)
                        .WithParsed(RunOptions);
-                    if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.cliHelpSwitch))
+                    if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS));

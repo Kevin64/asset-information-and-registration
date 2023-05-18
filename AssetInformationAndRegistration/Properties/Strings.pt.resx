@@ -175,7 +175,7 @@
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>MUDAR-NOME</value>
   </data>
-  <data name="description" xml:space="preserve">
+  <data name="DESCRIPTION" xml:space="preserve">
     <value>Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.
 
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
@@ -475,7 +475,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
     <value> (Memória insuficiente)</value>
   </data>
-  <data name="occupied" xml:space="preserve">
+  <data name="OCCUPIED" xml:space="preserve">
     <value> ocupados</value>
   </data>
   <data name="OFFLINE" xml:space="preserve">
@@ -496,10 +496,10 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="REGISTER_AGAIN" xml:space="preserve">
     <value>Cadastrar / Atualizar dados</value>
   </data>
-  <data name="replacedBattery" xml:space="preserve">
+  <data name="REPLACED_BATTERY" xml:space="preserve">
     <value>C/ troca de pilha</value>
   </data>
-  <data name="sameBattery" xml:space="preserve">
+  <data name="SAME_BATTERY" xml:space="preserve">
     <value>S/ troca de pilha</value>
   </data>
   <data name="SECURE_BOOT_ALERT" xml:space="preserve">
@@ -511,13 +511,13 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="SINCE_UNKNOWN" xml:space="preserve">
     <value>(Não foi possível determinar a data do último serviço)</value>
   </data>
-  <data name="slots_of" xml:space="preserve">
+  <data name="SLOTS_OF" xml:space="preserve">
     <value> slots de </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
     <value> (Drive com falha iminente)</value>
   </data>
-  <data name="student" xml:space="preserve">
+  <data name="STUDENT" xml:space="preserve">
     <value>Aluno</value>
   </data>
   <data name="TOO_MUCH_MEMORY" xml:space="preserve">

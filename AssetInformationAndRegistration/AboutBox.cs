@@ -16,20 +16,20 @@ namespace AssetInformationAndRegistration
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
 #if DEBUG
-            labelVersion.Text = string.Format(labelVersion.Text + " {0}-{1}", AssemblyVersion, Resources.dev_status);
+            labelVersion.Text = string.Format(labelVersion.Text + " {0}-{1}", AssemblyVersion, Resources.DEV_STATUS);
 #else
             labelVersion.Text = string.Format(labelVersion.Text + " {0}", AssemblyVersion);
 #endif
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
-            textBoxDescription.Text = Strings.description;
+            textBoxDescription.Text = Strings.DESCRIPTION;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
 
-            if (StringsAndConstants.listThemeGUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[0]))
+            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
             {
                 if (themeBool)
                 {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
                     }
@@ -37,18 +37,18 @@ namespace AssetInformationAndRegistration
                 }
                 else
                 {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.windows10))
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
                     }
                     LightTheme();
                 }
             }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[1]))
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
             {
                 LightTheme();
             }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.listThemeGUI[2]))
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
             {
                 DarkTheme();
             }
