@@ -21,7 +21,7 @@ The software scans various aspects of a computer hardware, listed below:
 - **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is enabled on UEFI capable systems)
 - **TPM version** - enforced by default (alerts if the trusted platform module is the right version for a given hardware model)
 
-After the scan, AIR checks with the APCS server, that supplies the stardard configuration set in the database, for each hardware model. The client then alerts the agent for any configurations or irregularities with the PC specs.
+After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server, that supplies the stardard configuration set in the database, for each hardware model. The client then alerts the agent for any configurations or irregularities with the PC specs.
 
 ## Screens
 
@@ -41,7 +41,7 @@ After the scan, AIR checks with the APCS server, that supplies the stardard conf
 
 ![AIR-v4 0 0 2305_sZ49AI7yVv](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/3a0be826-8dc8-44e0-8feb-37ca51a73eac)
 
-### When specifications are not compliant:
+### When some specifications are not compliant:
 
 ![AIR-v4 0 0 2305_AWPkUd9sJn](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/8811c7d1-b449-4262-8332-e31b51a74eb3)
 
