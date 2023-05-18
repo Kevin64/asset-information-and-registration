@@ -44,3 +44,11 @@ After the scan, AIR checks with the APCS server, that supplies the stardard conf
 ### When specifications are not compliant:
 
 ![AIR-v4 0 0 2305_AWPkUd9sJn](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/8811c7d1-b449-4262-8332-e31b51a74eb3)
+
+### CLI switches
+
+![cmd_vudLBXaV4X](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1cd649a8-fefd-4c9a-a893-65b5186dcf12)
+
+
+
+
