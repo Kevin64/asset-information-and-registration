@@ -1,7 +1,7 @@
 # Asset Information and Registration (AIR)
 
-AIR is a program designed to scan a PC configuration and enforce some settings to ensure a specific level of standardization inside the organization.
-The software scans various aspects of a computer hardware, listed below:
+AIR is a program designed to scan a PC configuration and then registering into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (empoloyee or intern) and cannot check for compliance on each asset individually.
+The software scans various aspects of a computer hardware and configuration, such:
 - **Brand**
 - **Model**
 - **Serial Number**
@@ -10,18 +10,18 @@ The software scans various aspects of a computer hardware, listed below:
 - **Total storage size**
 - **S.M.A.R.T. status** - enforced by default (alerts if the storage device is not healty, according to the OS built-in S.M.A.R.T. reporting)
 - **Storage type**
-- **SATA/M.2 operation mode** - enforced by default (alerts if the storage devices are operating in the correct mode for a given hardware model)
+- **SATA/M.2 operation mode** - enforced by default (alerts if the storage devices are not operating in the correct mode for a given hardware model)
 - **Video card (GPU)**
-- **Hostname** - enforced by default (alerts if hostname is different from a name template used in custom system images)
+- **Hostname** - enforced by default (alerts if hostname is not different from a name template used in custom system images)
 - **Mac address**
 - **IP address**
-- **Firmware type** - enforced by default (alerts if the OS is running on the correct firmware type for a given hardware model)
-- **Firmware version** - enforced by default (alerts if the firmware is updated for a given hardware model)
-- **Secure Boot status** - enforced by default (alerts if the secure boot is enabled on UEFI capable systems)
-- **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is enabled on UEFI capable systems)
-- **TPM version** - enforced by default (alerts if the trusted platform module is on the right version for a given hardware model)
+- **Firmware type** - enforced by default (alerts if the OS is not running on the correct firmware type for a given hardware model)
+- **Firmware version** - enforced by default (alerts if the firmware is not updated for a given hardware model)
+- **Secure Boot status** - enforced by default (alerts if the secure boot is disabled on UEFI capable systems)
+- **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is disabled on UEFI capable systems)
+- **TPM version** - enforced by default (alerts if the trusted platform module is not on the right version for a given hardware model)
 
-After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server, that supplies a JSON file with the stardard configuration set by the agent in the database, for each hardware model. The client then compares the JSON file to the current scanned config, alerting the agent for any incorrect settings or irregularities with the PC specs.
+After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server, that supplies a JSON file with the stardard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
 
 ## Screens
 
@@ -64,7 +64,7 @@ AIR lets the agent choose which specifications and settings will be enforced whe
 
 ## Customization
 
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the 'definitions.ini' file to change the organization names/acronyms, present in the [OrgData] section.
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the 'definitions.ini' file to change the organization names/acronyms, present in the [OrgData] section.
 
 Required aspect ratio for proper showing, without stretching:
 
@@ -73,5 +73,3 @@ Required aspect ratio for proper showing, without stretching:
 - Main window banner - 12:1
 
 - Iconography - 1:1
-
-This capability allows organizations to tailor the program visuals to their specific needs.
