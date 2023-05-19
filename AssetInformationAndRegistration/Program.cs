@@ -45,22 +45,22 @@ namespace AssetInformationAndRegistration
             [Option(StringsAndConstants.CLI_ASSET_NUMBER_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ASSET_NUMBER, Default = "")]
             public string AssetNumber { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SEAL_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_SEAL_NUMBER_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SEAL_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string SealNumber { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ROOM_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_ROOM_NUMBER_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ROOM_NUMBER, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string RoomNumber { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_BUILDING, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_BUILDING_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_BUILDING, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string Building { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_AD_REGISTERED, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_AD_REGISTERED_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_AD_REGISTERED, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string AdRegistered { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_STANDARD, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_STANDARD_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_STANDARD, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string Standard { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVICE_DATE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_SERVICE_DATE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVICE_DATE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_DATE)]
             public string ServiceDate { get; set; }
 
             [Option(StringsAndConstants.CLI_BATTERY_CHANGE_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_BATTERY_CHANGE)]
@@ -69,13 +69,13 @@ namespace AssetInformationAndRegistration
             [Option(StringsAndConstants.CLI_TICKET_NUMBER_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_TICKET_NUMBER)]
             public string TicketNumber { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_IN_USE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_IN_USE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_IN_USE, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string InUse { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_TAG, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_TAG_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_TAG, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string Tag { get; set; }
 
-            [Option(StringsAndConstants.CLI_SERVICE_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_HW_TYPE, Default = StringsAndConstants.CLI_DEFAULT_SERVICE_TYPE)]
+            [Option(StringsAndConstants.CLI_HW_TYPE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_HW_TYPE, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string HwType { get; set; }
 
             [Option(StringsAndConstants.CLI_USERNAME_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_USERNAME)]
