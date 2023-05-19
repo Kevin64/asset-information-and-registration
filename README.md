@@ -64,7 +64,7 @@ AIR lets the agent choose which specifications and settings will be enforced whe
 
 ## Customization
 
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the 'definitions.ini' file to change the organization names/acronyms, present in the [OrgData] section.
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the 'definitions.ini' file to change the organization names/acronyms, present in the [OrgData] section. The program supports Light/Dark theme enforcement too.
 
 Required aspect ratio for proper showing, without stretching:
 
