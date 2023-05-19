@@ -4883,7 +4883,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFixedMediaOperationMode.Text" xml:space="preserve">
-    <value>Operation mode SATA/M.2:</value>
+    <value>SATA/M.2 operation mode:</value>
   </data>
   <data name="&gt;&gt;collectButton.Name" xml:space="preserve">
     <value>collectButton</value>
@@ -6262,43 +6262,43 @@
   <data name="&gt;&gt;lblVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <metadata name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 48</value>
-  </metadata>
-  <metadata name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>1192, 9</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>48</value>
-  </metadata>
-  <metadata name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>852, 9</value>
-  </metadata>
-  <metadata name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>295, 9</value>
-  </metadata>
-  <metadata name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>522, 9</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>133, 9</value>
-  </metadata>
-  <metadata name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>359, 48</value>
-  </metadata>
-  <metadata name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>1045, 9</value>
-  </metadata>
-  <metadata name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>188, 48</value>
-  </metadata>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>18, 11</value>
-  </metadata>
-  <metadata name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>690, 9</value>
-  </metadata>
+  </data>
 </root>

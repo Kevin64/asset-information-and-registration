@@ -214,7 +214,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  days since the last.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  days since the last .
         /// </summary>
         internal static string DAYS_PASSED_TEXT {
             get {

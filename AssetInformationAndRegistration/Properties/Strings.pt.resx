@@ -170,7 +170,7 @@
     <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
-    <value> dias desde a última </value>
+    <value> dias desde a última  </value>
   </data>
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>MUDAR-NOME</value>

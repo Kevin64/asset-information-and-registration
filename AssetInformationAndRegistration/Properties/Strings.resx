@@ -170,7 +170,7 @@
     <value>Error contacting the database, check your intranet connection and that the web server is up!</value>
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
-    <value> days since the last</value>
+    <value> days since the last </value>
   </data>
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>CHANGE-NAME</value>
