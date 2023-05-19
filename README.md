@@ -47,11 +47,26 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all alert triggers are disabled, because there is nothing to compare to.
 
+AIR running in CLI do not support 'offline mode'.
+
+## Flexible enforcement
+
+AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, open the 'definitions.ini' file and modify the [Enforcement] section. Keys are self explanatory.
+- RamLimitEnforcement
+- SmartStatusEnforcement
+- MediaOperationModeEnforcement
+- HostnameEnforcement
+- FirmwareTypeEnforcement
+- FirmwareVersionEnforcement
+- SecureBootEnforcement
+- VirtualizationTechnologyEnforcement
+- TpmEnforcement
+
 ## Customization
 
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the definitions.ini file to change the organization names/acronyms.
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and edit the 'definitions.ini' file to change the organization names/acronyms, present in the [OrgData] section.
 
-Required aspect ratio:
+Required aspect ratio for proper showing, without stretching:
 
 - Login window banner - 2:1
 
@@ -59,4 +74,4 @@ Required aspect ratio:
 
 - Iconography - 1:1
 
-This capability allows organizations to tailor the program to their specific needs.
+This capability allows organizations to tailor the program visuals to their specific needs.
