@@ -100,9 +100,9 @@ namespace AssetInformationAndRegistration
                 if (!b)
                 {
                     Directory.CreateDirectory(path);
-                    return "false";
+                    return ConstantsDLL.Properties.Resources.FALSE;
                 }
-                return "true";
+                return ConstantsDLL.Properties.Resources.TRUE;
             }
             catch (Exception e)
             {

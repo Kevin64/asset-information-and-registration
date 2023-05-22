@@ -4374,7 +4374,7 @@ namespace AssetInformationAndRegistration
                 string[] modelJsonStr = await ModelFileReader.FetchInfoMT(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
 
                 //If hostname is the default one and its enforcement is enabled
-                if (enforcementList[3] == "true" && hostname.Equals(Strings.DEFAULT_HOSTNAME))
+                if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && hostname.Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
                     lblHostname.Text += Strings.HOSTNAME_ALERT;
@@ -4382,7 +4382,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.HOSTNAME_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
-                if (enforcementList[2] == "true" && modelJsonStr != null && modelJsonStr[3].Equals("false"))
+                if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[3].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     lblMediaOperationMode.Text += Strings.MEDIA_OPERATION_ALERT;
@@ -4390,7 +4390,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (enforcementList[6] == "true" && StringsAndConstants.LIST_STATES[Convert.ToInt32(secureBoot)] == ConstantsDLL.Properties.Strings.DEACTIVATED &&
+                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(secureBoot)] == ConstantsDLL.Properties.Strings.DEACTIVATED &&
                     !lblVideoCard.Text.Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_1) &&
                     !lblVideoCard.Text.Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_2))
                 {
@@ -4410,7 +4410,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (enforcementList[5] == "true" && modelJsonStr != null && !fwVersion.Contains(modelJsonStr[0]))
+                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && !fwVersion.Contains(modelJsonStr[0]))
                 {
                     if (!modelJsonStr[0].Equals("-1"))
                     {
@@ -4421,7 +4421,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
-                if (enforcementList[4] == "true" && modelJsonStr != null && modelJsonStr[1].Equals("false"))
+                if (enforcementList[4] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[1].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     lblFwType.Text += Strings.FIRMWARE_TYPE_ALERT;
@@ -4446,7 +4446,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (enforcementList[7] == "true" && StringsAndConstants.LIST_STATES[Convert.ToInt32(virtualizationTechnology)] == ConstantsDLL.Properties.Strings.DEACTIVATED)
+                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(virtualizationTechnology)] == ConstantsDLL.Properties.Strings.DEACTIVATED)
                 {
                     pass = false;
                     lblVirtualizationTechnology.Text += Strings.VT_ALERT;
@@ -4454,7 +4454,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.VT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //If Smart status is not OK and its enforcement is enabled
-                if (enforcementList[1] == "true" && !smartStatus.Contains(ConstantsDLL.Properties.Resources.OK))
+                if (enforcementList[1] == ConstantsDLL.Properties.Resources.TRUE && !smartStatus.Contains(ConstantsDLL.Properties.Resources.OK))
                 {
                     pass = false;
                     lblSmartStatus.Text += Strings.SMART_FAIL;
@@ -4462,7 +4462,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.SMART_FAIL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
-                if (enforcementList[8] == "true" && modelJsonStr != null && modelJsonStr[2].Equals("false"))
+                if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[2].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     lblTpmVersion.Text += Strings.TPM_ERROR;
@@ -4472,7 +4472,7 @@ namespace AssetInformationAndRegistration
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == "true" && d < 4.0 && Environment.Is64BitOperatingSystem)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     lblRam.Text += Strings.NOT_ENOUGH_MEMORY;
@@ -4480,7 +4480,7 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), Strings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == "true" && d > 4.0 && !Environment.Is64BitOperatingSystem)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     lblRam.Text += Strings.TOO_MUCH_MEMORY;
@@ -4673,7 +4673,7 @@ namespace AssetInformationAndRegistration
                 string[] assetJsonStr = await AssetFileReader.FetchInfoMT(serverArgs[3], serverArgs[0], serverArgs[1]);
 
                 //If patrinony is discarded
-                if (assetJsonStr[0] != "false" && assetJsonStr[9] == "1")
+                if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE && assetJsonStr[9] == "1")
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);

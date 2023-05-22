@@ -102,7 +102,7 @@ namespace AssetInformationAndRegistration
             string[] agentsJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
-                if (agentsJsonStr[0] != "false")
+                if (agentsJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, agentsJsonStr, log, parametersListSection, enforcementListSection));
@@ -232,6 +232,18 @@ namespace AssetInformationAndRegistration
                     subDepFullNameStr,
                     subDepAcronymStr
                 };
+
+                foreach(string s in enforcementListSection)
+                {
+                    try
+                    {
+                        bool.Parse(s);
+                    }
+                    catch
+                    {
+                        throw new FormatException();
+                    }
+                }
 
                 bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
 

@@ -207,13 +207,13 @@ namespace AssetInformationAndRegistration
 
                     string[] assetJsonStr = AssetFileReader.FetchInfoST(serverArgs[3], serverArgs[0], serverArgs[1]);
                     //If PC Json does not exist and there are some 'mesmo' cmd switch word
-                    if (assetJsonStr[0] == "false" && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                    if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                         webView2.Dispose();
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
-                    else if (assetJsonStr[0] == "false") //If PC Json does not exist
+                    else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If PC Json does not exist
                     {
                         //serviceType
                         if (serverArgs[2].Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
@@ -532,21 +532,21 @@ namespace AssetInformationAndRegistration
                 string[] modelJsonStr = ModelFileReader.FetchInfoST(serverArgs[17], serverArgs[18], serverArgs[28], serverArgs[34], serverArgs[31], serverArgs[0], serverArgs[1]);
 
                 //If hostname is the default one and its enforcement is enabled
-                if (enforcementList[3] == "true" && serverArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
+                if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
                     serverAlert[0] += serverArgs[24] + Strings.HOSTNAME_ALERT;
                     serverAlertBool[0] = true;
                 }
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
-                if (enforcementList[2] == "true" && modelJsonStr != null && modelJsonStr[3].Equals("false"))
+                if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[3].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     serverAlert[1] += serverArgs[31] + Strings.MEDIA_OPERATION_ALERT;
                     serverAlertBool[1] = true;
                 }
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (enforcementList[6] == "true" && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.DEACTIVATED) &&
+                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.DEACTIVATED) &&
                     !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_1) &&
                     !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_2))
                 {
@@ -562,7 +562,7 @@ namespace AssetInformationAndRegistration
                     serverAlertBool[3] = true;
                 }
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (enforcementList[5] == "true" && modelJsonStr != null && !serverArgs[25].Contains(modelJsonStr[0]))
+                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && !serverArgs[25].Contains(modelJsonStr[0]))
                 {
                     if (!modelJsonStr[0].Equals("-1"))
                     {
@@ -572,7 +572,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
-                if (enforcementList[4] == "true" && modelJsonStr != null && modelJsonStr[1].Equals("false"))
+                if (enforcementList[4] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[1].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     serverAlert[5] += serverArgs[28] + Strings.FIRMWARE_TYPE_ALERT;
@@ -588,14 +588,14 @@ namespace AssetInformationAndRegistration
                     serverAlertBool[7] = true;
                 }
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (enforcementList[7] == "true" && serverArgs[33] == ConstantsDLL.Properties.Strings.DEACTIVATED)
+                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[33] == ConstantsDLL.Properties.Strings.DEACTIVATED)
                 {
                     pass = false;
                     serverAlert[8] += serverArgs[33] + Strings.VT_ALERT;
                     serverAlertBool[8] = true;
                 }
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
-                if (enforcementList[8] == "true" && modelJsonStr != null && modelJsonStr[2].Equals("false"))
+                if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[2].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
                     serverAlert[9] += serverArgs[34] + Strings.TPM_ERROR;
@@ -604,14 +604,14 @@ namespace AssetInformationAndRegistration
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == "true" && d < 4.0 && Environment.Is64BitOperatingSystem)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     serverAlert[10] += serverArgs[21] + Strings.NOT_ENOUGH_MEMORY;
                     serverAlertBool[10] = true;
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == "true" && d > 4.0 && !Environment.Is64BitOperatingSystem)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
                     serverAlert[10] += serverArgs[21] + Strings.TOO_MUCH_MEMORY;
