@@ -1,6 +1,6 @@
 # Asset Information and Registration (AIR)
 
-<img align="right" width="50" height="50" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/bb30c6cc-a0f0-4732-bae9-d1208fd77394)/>
+<img align="right" width="150" height="150" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/bb30c6cc-a0f0-4732-bae9-d1208fd77394)/>
 
 AIR is a program designed to scan a PC configuration and then registering into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (empoloyee or intern) and cannot check for compliance on each asset individually.
 The software scans various aspects of a computer hardware and configuration, such:
