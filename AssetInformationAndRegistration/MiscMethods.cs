@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
-    //Class that allows changing the progressbar color
+    ///<summary>Class that allows changing the progressbar color</summary>
     public static class ModifyProgressBarColor
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
@@ -18,10 +18,12 @@ namespace AssetInformationAndRegistration
         }
     }
 
-    //Class with auxiliary methods for minor functionality
+    ///<summary>Class for miscelaneous methods</summary>
     internal static class MiscMethods
     {
-        //Check the registry for a installation/maintenance date
+        ///<summary>Check the registry for a installation/maintenance date</summary>
+        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///<returns>The amount of days since the service date, or '-1' if an exception occur</returns>
         public static double RegCheck(bool mode)
         {
             try
@@ -37,7 +39,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Creates a registry key when a register operation is made in GUI mode
+        ///<summary>Creates a registry key when a register operation is made in GUI mode</summary>
+        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///<param name="dateTimePicker">Desired date</param>
         public static void RegCreate(bool mode, DateTimePicker dateTimePicker)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
@@ -52,7 +56,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Creates a registry key when a register operation is made in CLI mode
+        ///<summary>Creates a registry key when a register operation is made in CLI mode</summary>
+        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///<param name="dateTime">Desired date</param>
         public static void RegCreate(bool mode, string dateTime)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
@@ -67,7 +73,8 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Fetches the WebView2 systemwide version
+        ///<summary>Fetches the WebView2 systemwide version</summary>
+        ///<returns>The WebView2 runtime version, or an empty string if inexistent</returns>
         public static string GetWebView2Version()
         {
             RegistryKey rk = Environment.Is64BitOperatingSystem
@@ -84,6 +91,10 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Checks if a log file exists and creates a directory if necessary</summary>
+        ///<param name="path">File path</param>
+        ///<returns>'true' if log exists, 'false' if not</returns>
+        ///<exception cref="System.Exception">Thrown when there is a problem with the query</exception>
         public static string CheckIfLogExists(string path)
         {
             bool b;
@@ -93,7 +104,7 @@ namespace AssetInformationAndRegistration
                 //Checks if log directory exists
                 b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
-                //Checks if log file exists
+                //Checks if log directory exists
                 b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #endif
                 //If not, creates a new directory
@@ -111,7 +122,8 @@ namespace AssetInformationAndRegistration
 
         }
 
-        //Initializes the theme, according to the host theme
+        ///<summary>Initializes the theme, according to the host theme</summary>
+        ///<returns>'true' if system is using Dark theme, 'false' if otherwise</returns>
         public static bool ThemeInit()
         {
             try
@@ -135,7 +147,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Updates the 'last installed' or 'last maintenance' labels
+        ///<summary>Updates the 'last installed' or 'last maintenance' labels</summary>
+        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///<returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
         public static string SinceLabelUpdate(bool mode)
         {
             string InstallLabel, MaintenanceLabel;
@@ -155,19 +169,23 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Fetches the screen scale
+        ///<summary>Fetches the screen scale</summary>
+        ///<returns>The current window scaling</returns>
         public static int GetWindowsScaling()
         {
             return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
-        //Fetches the program's binary version
+        ///<summary>Fetches the program's binary version</summary>
+        ///<returns>The current application version in the format 'v0.0.0.0'</returns>
         public static string Version()
         {
             return "v" + Application.ProductVersion;
         }
 
-        //Fetches the program's binary version (for unstable releases)
+        ///<summary>Fetches the program's binary version (for unstable releases)</summary>
+        ///<param name="testBranch">Test branch (alpha, beta, rc, etc)</param>
+        ///<returns>The current application version in the format 'v0.0.0.0-testBranch'</returns>
         public static string Version(string testBranch)
         {
             return "v" + Application.ProductVersion + "-" + testBranch;

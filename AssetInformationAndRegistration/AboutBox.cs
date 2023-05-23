@@ -1,15 +1,19 @@
-﻿using ConstantsDLL;
+﻿using AssetInformationAndRegistration.Properties;
+using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using AssetInformationAndRegistration.Properties;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
+    ///<summary>Class for About box</summary>
     internal partial class AboutBox : Form
     {
+        ///<summary>About form constructor</summary>
+        ///<param name="parametersList">List containing data from [Parameters]</param>
+        ///<param name="themeBool">Theme mode</param>
         public AboutBox(List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
@@ -54,6 +58,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Sets a light theme for the about form</summary>
         public void LightTheme()
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -69,6 +74,7 @@ namespace AssetInformationAndRegistration
             textBoxDescription.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
         }
 
+        ///<summary>Sets a dark theme for the about form</summary>
         public void DarkTheme()
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -86,6 +92,9 @@ namespace AssetInformationAndRegistration
             textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
         }
 
+        ///<summary>Handles link clicks inside the Description box</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             _ = System.Diagnostics.Process.Start(e.LinkText);

@@ -1,7 +1,7 @@
-﻿using ConstantsDLL;
+﻿using AssetInformationAndRegistration.Properties;
+using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using AssetInformationAndRegistration.Properties;
 using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
+    ///<summary>Class for handling Login tasks and UI</summary>
     public partial class LoginForm : Form
     {
         private readonly bool themeBool;
@@ -27,7 +28,11 @@ namespace AssetInformationAndRegistration
         private MainForm mForm;
         #endregion
 
-        //Form constructor
+        ///<summary>Login form constructor</summary>
+        ///<param name="log">Log file object</param>
+        ///<param name="parametersList">List containing data from [Parameters]</param>
+        ///<param name="enforcementList">List containing data from [Enforcement]</param>
+        ///<param name="orgDataList">List containing data from [OrgData]</param>
         public LoginForm(LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
         {
             //Inits WinForms components
@@ -107,7 +112,7 @@ namespace AssetInformationAndRegistration
 #endif
         }
 
-        //Sets a light theme for the login form
+        ///<summary>Sets a light theme for the login form</summary>
         public void LightTheme()
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -164,7 +169,7 @@ namespace AssetInformationAndRegistration
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_LIGHT_PATH));
         }
 
-        //Sets a dark theme for the login form
+        ///<summary>Sets a dark theme for the login form</summary>
         public void DarkTheme()
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -218,7 +223,9 @@ namespace AssetInformationAndRegistration
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_DARK_PATH));
         }
 
-        //Loads the form, sets some combobox values
+        ///<summary>Loads the form, sets some combobox values</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void LoginForm_Load(object sender, EventArgs e)
         {
             // Define loading circle parameters
@@ -299,7 +306,9 @@ namespace AssetInformationAndRegistration
             tbProgLogin = TaskbarManager.Instance;
         }
 
-        //Handles the closing of the current form
+        ///<summary>Handles the closing of the current form</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_LOGINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -316,7 +325,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Checks the username/password and shows the main form
+        ///<summary>Checks the username/password and shows the main form</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private async void AuthButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -411,7 +422,9 @@ namespace AssetInformationAndRegistration
             checkBoxOfflineMode.Checked = false;
         }
 
-        //Handles the offline mode toggle 
+        ///<summary>Handles the offline mode toggle</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOfflineMode.Checked)
@@ -430,7 +443,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Opens the About box
+        ///<summary>Opens the About box</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(parametersList, themeBool);

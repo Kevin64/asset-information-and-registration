@@ -6,8 +6,12 @@ using System.Net;
 
 namespace AssetInformationAndRegistration
 {
+    ///<summary>Class for handling WebView2 install tasks</summary>
     internal static class WebView2Installer
     {
+        ///<summary>Downloads and installs the WebView2 runtime</summary>
+        ///<returns>The exit code returned from the installer</returns>
+        ///<exception cref="System.Exception">Thrown when the download or process creation fails</exception>
         public static string Install()
         {
             try

@@ -65,9 +65,6 @@ namespace AssetInformationAndRegistration
             e.Graphics.Clear(Color.Red);
             base.OnRenderMenuItemBackground(e);
         }
-
-
-
     }
 
     public class ModifiedToolStripProfessionalLightTheme : ToolStripProfessionalRenderer

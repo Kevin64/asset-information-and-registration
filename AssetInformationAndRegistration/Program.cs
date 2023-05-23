@@ -1,8 +1,8 @@
-﻿using CommandLine;
+﻿using AssetInformationAndRegistration.Properties;
+using CommandLine;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using AssetInformationAndRegistration.Properties;
 using IniParser;
 using IniParser.Exceptions;
 using IniParser.Model;
@@ -20,6 +20,7 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
+    ///<summary>Starting class for AIR</summary>
     public class Program
     {
         private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
@@ -30,7 +31,7 @@ namespace AssetInformationAndRegistration
         private static List<string> orgDataListSection, enforcementListSection;
         private static LogGenerator log;
 
-        //Command line switch options specification
+        ///<summary>Command line switch options specification</summary>
         public class Options
         {
             [Option(StringsAndConstants.CLI_SERVER_IP_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_IP)]
@@ -85,7 +86,8 @@ namespace AssetInformationAndRegistration
             public string Password { get; set; }
         }
 
-        //Passes args to auth method and then to register class, otherwise informs auth error and closes the program
+        ///<summary>Passes args to auth method and then to register class, otherwise informs auth error and closes the program</summary>
+        ///<param name="opts">Argument list</param>
         public static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
@@ -123,9 +125,8 @@ namespace AssetInformationAndRegistration
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern int FreeConsole();
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        ///<summary>The main entry point for the application</summary>
+        ///<param name="args">Argument list</param>
         [STAThread]
         private static void Main(string[] args)
         {
@@ -195,6 +196,7 @@ namespace AssetInformationAndRegistration
                     throw new FormatException();
                 }
 
+                //[Parameters] ini section
                 parametersListSection = new List<string[]>
                 {
                     serverIPListSection,
@@ -210,6 +212,7 @@ namespace AssetInformationAndRegistration
                     virtualizationTechnologyStates
                 };
 
+                //[Enforcement] ini section
                 enforcementListSection = new List<string>
                 {
                     ramLimitEnforcementStr,
@@ -223,6 +226,7 @@ namespace AssetInformationAndRegistration
                     tpmEnforcementStr
                 };
 
+                //[OrgData] ini section
                 orgDataListSection = new List<string>
                 {
                     orgFullNameStr,
@@ -233,7 +237,8 @@ namespace AssetInformationAndRegistration
                     subDepAcronymStr
                 };
 
-                foreach(string s in enforcementListSection)
+                //Checks if [Enforcement] bool values are valid
+                foreach (string s in enforcementListSection)
                 {
                     try
                     {

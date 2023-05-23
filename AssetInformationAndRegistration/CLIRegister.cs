@@ -15,6 +15,7 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
+    ///<summary>Class for CLI asset registering</summary>
     public class CLIRegister : Form
     {
         public bool pass, serverOnline;
@@ -26,7 +27,6 @@ namespace AssetInformationAndRegistration
         private List<string[]> jsonServerSettings;
         private readonly List<string> enforcementList;
 
-        //Basic form for WebView2
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIRegister));
@@ -62,7 +62,26 @@ namespace AssetInformationAndRegistration
             ResumeLayout(false);
         }
 
-        //Form constructor
+        ///<summary>CLI pseudo-form constructor</summary>
+        ///<param name="serverIP">Server IP address</param>
+        ///<param name="serverPort">Server port</param>
+        ///<param name="serviceType">Type os service</param>
+        ///<param name="assetNumber">Asset number</param>
+        ///<param name="sealNumber">Seal number</param>
+        ///<param name="roomNumber">Room number</param>
+        ///<param name="building">Building name</param>
+        ///<param name="adRegistered">Active Directory registered status</param>
+        ///<param name="standard">Image standard</param>
+        ///<param name="serviceDate">Date of service</param>
+        ///<param name="batteryChange">If there was a CMOS battery change</param>
+        ///<param name="ticketNumber">Helpdesk ticket number</param>
+        ///<param name="inUse">If the asset is in use</param>
+        ///<param name="tag">If the asset has a tag</param>
+        ///<param name="hwType">hardware type of the asset</param>
+        ///<param name="agentData">Agent username and ID</param>
+        ///<param name="log">Log file object</param>
+        ///<param name="parametersList">List containing data from [Parameters]</param>
+        ///<param name="enforcementList">List containing data from [Enforcement]</param>
         public CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             //Inits WinForms components
@@ -75,7 +94,23 @@ namespace AssetInformationAndRegistration
             InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData);
         }
 
-        //Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
+        ///<summary>Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method</summary>
+        ///<param name="serverIP">Server IP address</param>
+        ///<param name="serverPort">Server port</param>
+        ///<param name="serviceType">Type os service</param>
+        ///<param name="assetNumber">Asset number</param>
+        ///<param name="sealNumber">Seal number</param>
+        ///<param name="roomNumber">Room number</param>
+        ///<param name="building">Building name</param>
+        ///<param name="adRegistered">Active Directory registered status</param>
+        ///<param name="standard">Image standard</param>
+        ///<param name="serviceDate">Date of service</param>
+        ///<param name="batteryChange">If there was a CMOS battery change</param>
+        ///<param name="ticketNumber">Helpdesk ticket number</param>
+        ///<param name="inUse">If the asset is in use</param>
+        ///<param name="tag">If the asset has a tag</param>
+        ///<param name="hwType">hardware type of the asset</param>
+        ///<param name="agentData">Agent username and ID</param>
         public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData)
         {
             #region
@@ -509,7 +544,9 @@ namespace AssetInformationAndRegistration
             Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS)); //Exits
         }
 
-        //When WebView2 navigation is finished
+        ///<summary>Checks if WebView2 navigation is finished</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         public void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if (e.IsSuccess)
@@ -519,7 +556,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Prints the collected data into the form labels, warning the agent when there are forbidden modes
+        ///<summary>Prints the collected data into the form labels, warning the agent when there are forbidden modes</summary>
         private void PrintHardwareData()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -628,8 +665,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        //Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables,
-        // while reporting the progress to the progressbar
+        ///<summary>Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar</summary>
         public void CollectThread()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -705,7 +741,7 @@ namespace AssetInformationAndRegistration
             serverArgs[32] = HardwareInfo.GetSecureBoot();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(serverArgs[32])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
-            //Scans for BIOS version
+            //Scans for firmware version
             serverArgs[25] = HardwareInfo.GetFirmwareVersion();
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, serverArgs[25], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
@@ -720,7 +756,8 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
         }
 
-        //Loads webView2 component
+        ///<summary>Loads webView2 component</summary>
+        ///<returns>Returns a asynchronous task</returns>
         public async Task LoadWebView2()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -733,7 +770,8 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
         }
 
-        //Sends hardware info to the specified server
+        ///<summary>Sends hardware info to the specified server</summary>
+        ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
         public void ServerSendInfo(string[] serverArgs)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
