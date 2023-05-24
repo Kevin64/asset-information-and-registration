@@ -583,9 +583,7 @@ namespace AssetInformationAndRegistration
                     serverAlertBool[1] = true;
                 }
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.DEACTIVATED) &&
-                    !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_1) &&
-                    !serverArgs[30].Contains(ConstantsDLL.Properties.Resources.NON_SECBOOT_GPU_2))
+                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.DEACTIVATED))
                 {
                     pass = false;
                     serverAlert[2] += serverArgs[32] + Strings.SECURE_BOOT_ALERT;
@@ -697,7 +695,7 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, serverArgs[20], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for RAM amount and total number of slots
-            serverArgs[21] = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots(Convert.ToInt32(HardwareInfo.GetNumRamSlots())) +
+            serverArgs[21] = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots() +
                 Strings.SLOTS_OF + HardwareInfo.GetNumRamSlots() + Strings.OCCUPIED + ")";
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, serverArgs[21], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
