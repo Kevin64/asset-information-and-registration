@@ -32,7 +32,7 @@ namespace AssetInformationAndRegistration
         private static LogGenerator log;
 
         ///<summary>Command line switch options specification</summary>
-        public class Options
+        private class Options
         {
             [Option(StringsAndConstants.CLI_SERVER_IP_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_IP)]
             public string ServerIP { get; set; }
@@ -88,7 +88,7 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Passes args to auth method and then to register class, otherwise informs auth error and closes the program</summary>
         ///<param name="opts">Argument list</param>
-        public static void RunOptions(Options opts)
+        private static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
             {

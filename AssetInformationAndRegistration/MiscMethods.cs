@@ -24,7 +24,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Check the registry for a installation/maintenance date</summary>
         ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
         ///<returns>The amount of days since the service date, or '-1' if an exception occur</returns>
-        public static double RegCheck(bool mode)
+        internal static double RegCheck(bool mode)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Creates a registry key when a register operation is made in GUI mode</summary>
         ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
         ///<param name="dateTimePicker">Desired date</param>
-        public static void RegCreate(bool mode, DateTimePicker dateTimePicker)
+        internal static void RegCreate(bool mode, DateTimePicker dateTimePicker)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Creates a registry key when a register operation is made in CLI mode</summary>
         ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
         ///<param name="dateTime">Desired date</param>
-        public static void RegCreate(bool mode, string dateTime)
+        internal static void RegCreate(bool mode, string dateTime)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
@@ -75,7 +75,7 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Fetches the WebView2 systemwide version</summary>
         ///<returns>The WebView2 runtime version, or an empty string if inexistent</returns>
-        public static string GetWebView2Version()
+        internal static string GetWebView2Version()
         {
             RegistryKey rk = Environment.Is64BitOperatingSystem
                 ? Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.WEBVIEW2_REG_PATH_X64, true)
@@ -94,8 +94,8 @@ namespace AssetInformationAndRegistration
         ///<summary>Checks if a log file exists and creates a directory if necessary</summary>
         ///<param name="path">File path</param>
         ///<returns>'true' if log exists, 'false' if not</returns>
-        ///<exception cref="System.Exception">Thrown when there is a problem with the query</exception>
-        public static string CheckIfLogExists(string path)
+        ///<exception cref="Exception">Thrown when there is a problem with the query</exception>
+        internal static string CheckIfLogExists(string path)
         {
             bool b;
             try
@@ -124,7 +124,7 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Initializes the theme, according to the host theme</summary>
         ///<returns>'true' if system is using Dark theme, 'false' if otherwise</returns>
-        public static bool ThemeInit()
+        internal static bool ThemeInit()
         {
             try
             {
@@ -150,7 +150,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Updates the 'last installed' or 'last maintenance' labels</summary>
         ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
         ///<returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
-        public static string SinceLabelUpdate(bool mode)
+        internal static string SinceLabelUpdate(bool mode)
         {
             string InstallLabel, MaintenanceLabel;
             if (mode)
@@ -171,14 +171,14 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Fetches the screen scale</summary>
         ///<returns>The current window scaling</returns>
-        public static int GetWindowsScaling()
+        internal static int GetWindowsScaling()
         {
             return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
         ///<summary>Fetches the program's binary version</summary>
         ///<returns>The current application version in the format 'v0.0.0.0'</returns>
-        public static string Version()
+        internal static string Version()
         {
             return "v" + Application.ProductVersion;
         }
@@ -186,7 +186,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Fetches the program's binary version (for unstable releases)</summary>
         ///<param name="testBranch">Test branch (alpha, beta, rc, etc)</param>
         ///<returns>The current application version in the format 'v0.0.0.0-testBranch'</returns>
-        public static string Version(string testBranch)
+        internal static string Version(string testBranch)
         {
             return "v" + Application.ProductVersion + "-" + testBranch;
         }

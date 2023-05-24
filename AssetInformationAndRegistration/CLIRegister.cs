@@ -16,7 +16,7 @@ using System.Windows.Forms;
 namespace AssetInformationAndRegistration
 {
     ///<summary>Class for CLI asset registering</summary>
-    public class CLIRegister : Form
+    internal class CLIRegister : Form
     {
         public bool pass, serverOnline;
         private bool[] serverAlertBool;
@@ -82,7 +82,7 @@ namespace AssetInformationAndRegistration
         ///<param name="log">Log file object</param>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        public CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
+        internal CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             //Inits WinForms components
             InitializeComponent();
@@ -111,7 +111,7 @@ namespace AssetInformationAndRegistration
         ///<param name="tag">If the asset has a tag</param>
         ///<param name="hwType">hardware type of the asset</param>
         ///<param name="agentData">Agent username and ID</param>
-        public async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData)
+        private async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData)
         {
             #region
 
@@ -547,7 +547,7 @@ namespace AssetInformationAndRegistration
         ///<summary>Checks if WebView2 navigation is finished</summary>
         ///<param name="sender"></param>
         ///<param name="e"></param>
-        public void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        private void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if (e.IsSuccess)
             {
@@ -664,7 +664,7 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar</summary>
-        public void CollectThread()
+        private void CollectThread()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
@@ -674,7 +674,6 @@ namespace AssetInformationAndRegistration
             {
                 serverArgs[17] = HardwareInfo.GetBrandAlt();
             }
-
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, serverArgs[17], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for PC model
@@ -682,8 +681,11 @@ namespace AssetInformationAndRegistration
             if (serverArgs[18] == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || serverArgs[18] == string.Empty)
             {
                 serverArgs[18] = HardwareInfo.GetModelAlt();
+                if (serverArgs[18] == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || serverArgs[18] == string.Empty)
+                {
+                    serverArgs[18] = ConstantsDLL.Properties.Strings.UNKNOWN;
+                }
             }
-
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, serverArgs[18], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for motherboard Serial number
@@ -756,7 +758,7 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Loads webView2 component</summary>
         ///<returns>Returns a asynchronous task</returns>
-        public async Task LoadWebView2()
+        private async Task LoadWebView2()
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
@@ -770,7 +772,7 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Sends hardware info to the specified server</summary>
         ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
-        public void ServerSendInfo(string[] serverArgs)
+        private void ServerSendInfo(string[] serverArgs)
         {
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             webView2.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php"

@@ -14,7 +14,7 @@ namespace AssetInformationAndRegistration
         ///<summary>About form constructor</summary>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="themeBool">Theme mode</param>
-        public AboutBox(List<string[]> parametersList, bool themeBool)
+        internal AboutBox(List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>Sets a light theme for the about form</summary>
-        public void LightTheme()
+        private void LightTheme()
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
@@ -75,7 +75,7 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>Sets a dark theme for the about form</summary>
-        public void DarkTheme()
+        private void DarkTheme()
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 

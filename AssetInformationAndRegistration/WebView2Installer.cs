@@ -11,7 +11,7 @@ namespace AssetInformationAndRegistration
     {
         ///<summary>Downloads and installs the WebView2 runtime</summary>
         ///<returns>The exit code returned from the installer</returns>
-        ///<exception cref="System.Exception">Thrown when the download or process creation fails</exception>
+        ///<exception cref="Exception">Thrown when the download or process creation fails</exception>
         public static string Install()
         {
             try

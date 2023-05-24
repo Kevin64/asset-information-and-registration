@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace AssetInformationAndRegistration
 {
     ///<summary>Class for handling Login tasks and UI</summary>
-    public partial class LoginForm : Form
+    internal partial class LoginForm : Form
     {
         private readonly bool themeBool;
         private string[] agentsJsonStr = { };
@@ -33,7 +33,7 @@ namespace AssetInformationAndRegistration
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="enforcementList">List containing data from [Enforcement]</param>
         ///<param name="orgDataList">List containing data from [OrgData]</param>
-        public LoginForm(LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
+        internal LoginForm(LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
         {
             //Inits WinForms components
             InitializeComponent();
@@ -113,7 +113,7 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>Sets a light theme for the login form</summary>
-        public void LightTheme()
+        private void LightTheme()
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
@@ -170,7 +170,7 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>Sets a dark theme for the login form</summary>
-        public void DarkTheme()
+        private void DarkTheme()
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 

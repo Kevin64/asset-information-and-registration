@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace AssetInformationAndRegistration
 {
     ///<summary>Class for the Busy form</summary>
-    public partial class BusyForm : Form
+    internal partial class BusyForm : Form
     {
-        public BusyForm()
+        internal BusyForm()
         {
             InitializeComponent();
             if (MiscMethods.ThemeInit())
