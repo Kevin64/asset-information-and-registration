@@ -152,6 +152,7 @@
       <DependentUpon>Strings.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="SendData.cs" />
+    <Compile Include="ITheming.cs" />
     <Compile Include="WebView2Installer.cs" />
     <EmbeddedResource Include="AboutBox.pt.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>

@@ -5,20 +5,18 @@ using System.Windows.Forms;
 namespace AssetInformationAndRegistration
 {
     ///<summary>Class for the Busy form</summary>
-    internal partial class BusyForm : Form
+    internal partial class BusyForm : Form, ITheming
     {
         internal BusyForm()
         {
             InitializeComponent();
             if (MiscMethods.ThemeInit())
             {
-                lblFixedLoading.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                BackColor = StringsAndConstants.DARK_BACKGROUND;
+                DarkTheme();
             }
             else
             {
-                lblFixedLoading.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                LightTheme();
             }
 
             loadingCircleLoading.Enabled = true;
@@ -93,6 +91,18 @@ namespace AssetInformationAndRegistration
 
             loadingCircleLoading.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleLoading.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
+        }
+
+        public void LightTheme()
+        {
+            lblFixedLoading.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+        }
+
+        public void DarkTheme()
+        {
+            lblFixedLoading.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            BackColor = StringsAndConstants.DARK_BACKGROUND;
         }
     }
 }

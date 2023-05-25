@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace AssetInformationAndRegistration
 {
     ///<summary>Class for About box</summary>
-    internal partial class AboutBox : Form
+    internal partial class AboutBox : Form, ITheming
     {
         ///<summary>About form constructor</summary>
         ///<param name="parametersList">List containing data from [Parameters]</param>
@@ -58,8 +58,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        ///<summary>Sets a light theme for the about form</summary>
-        private void LightTheme()
+        public void LightTheme()
         {
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
@@ -74,8 +73,7 @@ namespace AssetInformationAndRegistration
             textBoxDescription.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
         }
 
-        ///<summary>Sets a dark theme for the about form</summary>
-        private void DarkTheme()
+        public void DarkTheme()
         {
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 

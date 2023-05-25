@@ -1,7 +1,9 @@
 ﻿using AssetInformationAndRegistration.Properties;
 using LogGeneratorDLL;
+using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using System;
+using System.Threading.Tasks;
 
 namespace AssetInformationAndRegistration
 {
@@ -46,9 +48,12 @@ namespace AssetInformationAndRegistration
 
         ///<summary>Sends hardware info to the specified server</summary>
         ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
+        ///<param name="log">Log file object</param>
+        ///<param name="consoleOut">Toggle for CLI output</param>
+        ///<param name="webView2Control">Webview2 control</param>
         internal static void ServerSendInfo(string[] serverArgs, LogGenerator log, bool consoleOut, WebView2 webView2Control)
         {
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, consoleOut);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, consoleOut);
             webView2Control.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[6] + ".php"
                 + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[2]
                 + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[3]
@@ -82,6 +87,20 @@ namespace AssetInformationAndRegistration
                 + ConstantsDLL.Properties.Resources.PHP_SEAL_NUMBER + serverArgs[31]
                 + ConstantsDLL.Properties.Resources.PHP_TAG + serverArgs[32]
                 + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[33]);
+        }
+
+        ///<summary>Loads webView2 component</summary>
+        ///<returns>Returns a asynchronous task</returns>
+        internal static async Task LoadWebView2(LogGenerator log, bool consoleOut, WebView2 webView2Control)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, consoleOut);
+            CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
+                ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), System.IO.Path.GetTempPath())
+                : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), System.IO.Path.GetTempPath());
+            await webView2Control.EnsureCoreWebView2Async(webView2Environment);
+            webView2Control.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            webView2Control.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, consoleOut);
         }
     }
 }
