@@ -4694,7 +4694,7 @@ namespace AssetInformationAndRegistration
                 //Feches asset number data from server
                 string[] assetJsonStr = await AssetFileReader.FetchInfoMT(serverArgs[2], serverArgs[0], serverArgs[1]);
 
-                //If patrinony is discarded
+                //If asset is discarded
                 if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE && assetJsonStr[9] == "1")
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);

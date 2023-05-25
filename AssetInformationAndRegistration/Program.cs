@@ -86,7 +86,6 @@ namespace AssetInformationAndRegistration
             public string Password { get; set; }
         }
 
-        ///<summary>Specifications binary states enumeration</summary>
         public enum SpecBinaryStates
         {
             DISABLED,
