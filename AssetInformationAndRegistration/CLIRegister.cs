@@ -7,9 +7,13 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,77 +25,98 @@ namespace AssetInformationAndRegistration
         public bool pass, serverOnline;
         private bool[] serverAlertBool;
         private string[] serverArgs, serverAlert;
-        private WebView2 webView2;
+        private WebView2 webView2Control;
         private readonly LogGenerator log;
         private readonly List<string[]> parametersList;
         private List<string[]> jsonServerSettings;
         private readonly List<string> enforcementList;
+        private readonly string serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, standard, adRegistered, inUse, sealNumber, tag, hwType;
+        private readonly string[] agentData;
+        private string brand, model, serialNumber, processor, ram, storageSize, storageType, mediaOperationMode, videoCard, operatingSystem, hostname, fwType, fwVersion, secureBoot, virtualizationTechnology, tpmVersion, macAddress, ipAddress;
 
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIRegister));
-            webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
-            ((System.ComponentModel.ISupportInitialize)webView2).BeginInit();
-            SuspendLayout();
+            this.webView2Control = new Microsoft.Web.WebView2.WinForms.WebView2();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).BeginInit();
+            this.SuspendLayout();
             // 
-            // webView2
+            // webView2Control
             // 
-            webView2.AllowExternalDrop = true;
-            webView2.CreationProperties = null;
-            webView2.DefaultBackgroundColor = System.Drawing.Color.White;
-            webView2.Location = new System.Drawing.Point(12, 12);
-            webView2.Name = "webView2";
-            webView2.Size = new System.Drawing.Size(134, 29);
-            webView2.TabIndex = 0;
-            webView2.ZoomFactor = 1D;
+            this.webView2Control.AllowExternalDrop = true;
+            this.webView2Control.CreationProperties = null;
+            this.webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView2Control.Location = new System.Drawing.Point(12, 12);
+            this.webView2Control.Name = "webView2Control";
+            this.webView2Control.Size = new System.Drawing.Size(134, 29);
+            this.webView2Control.TabIndex = 0;
+            this.webView2Control.ZoomFactor = 1D;
             // 
             // CLIRegister
             // 
-            ClientSize = new System.Drawing.Size(158, 53);
-            ControlBox = false;
-            Controls.Add(webView2);
-            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "CLIRegister";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            ((System.ComponentModel.ISupportInitialize)webView2).EndInit();
-            ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(158, 53);
+            this.ControlBox = false;
+            this.Controls.Add(this.webView2Control);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "CLIRegister";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         ///<summary>CLI pseudo-form constructor</summary>
         ///<param name="serverIP">Server IP address</param>
         ///<param name="serverPort">Server port</param>
-        ///<param name="serviceType">Type os service</param>
         ///<param name="assetNumber">Asset number</param>
-        ///<param name="sealNumber">Seal number</param>
-        ///<param name="roomNumber">Room number</param>
         ///<param name="building">Building name</param>
-        ///<param name="adRegistered">Active Directory registered status</param>
-        ///<param name="standard">Image standard</param>
+        ///<param name="roomNumber">Room number</param>
         ///<param name="serviceDate">Date of service</param>
+        ///<param name="serviceType">Type os service</param>
         ///<param name="batteryChange">If there was a CMOS battery change</param>
         ///<param name="ticketNumber">Helpdesk ticket number</param>
+        ///<param name="agentData">Agent username and ID</param>
+        ///<param name="standard">Image standard</param>
+        ///<param name="adRegistered">Active Directory registered status</param>
         ///<param name="inUse">If the asset is in use</param>
+        ///<param name="sealNumber">Seal number</param>
         ///<param name="tag">If the asset has a tag</param>
         ///<param name="hwType">hardware type of the asset</param>
-        ///<param name="agentData">Agent username and ID</param>
         ///<param name="log">Log file object</param>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        internal CLIRegister(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
+        internal CLIRegister(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string adRegistered, string inUse, string sealNumber, string tag, string hwType, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             //Inits WinForms components
             InitializeComponent();
 
+            this.serverIP = serverIP;
+            this.serverPort = serverPort;
+            this.assetNumber = assetNumber;
+            this.building = building;
+            this.roomNumber = roomNumber;
+            this.serviceDate = serviceDate;
+            this.serviceType = serviceType;
+            this.batteryChange = batteryChange;
+            this.ticketNumber = ticketNumber;
+            this.agentData = agentData;
+            this.standard = standard;
+            this.adRegistered = adRegistered;
+            this.inUse = inUse;
+            this.sealNumber = sealNumber;
+            this.tag = tag;
+            this.hwType = hwType;
+            this.log = log;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
-            this.log = log;
 
-            InitProc(serverIP, serverPort, serviceType, assetNumber, sealNumber, roomNumber, building, adRegistered, standard, serviceDate, batteryChange, ticketNumber, inUse, tag, hwType, agentData);
+
+            InitProc(this.serverIP, this.serverPort, this.assetNumber, this.building, this.roomNumber, this.serviceDate, this.serviceType, this.batteryChange, this.ticketNumber, this.agentData, this.standard, this.adRegistered, this.inUse, this.sealNumber, this.tag, this.hwType);
         }
 
         ///<summary>Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method</summary>
@@ -111,67 +136,8 @@ namespace AssetInformationAndRegistration
         ///<param name="tag">If the asset has a tag</param>
         ///<param name="hwType">hardware type of the asset</param>
         ///<param name="agentData">Agent username and ID</param>
-        private async void InitProc(string serverIP, string serverPort, string serviceType, string assetNumber, string sealNumber, string roomNumber, string building, string adRegistered, string standard, string serviceDate, string batteryChange, string ticketNumber, string inUse, string tag, string hwType, string[] agentData)
+        private async void InitProc(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string adRegistered, string inUse, string sealNumber, string tag, string hwType)
         {
-            #region
-
-            /** !!Labels!!
-             * serverArgs[0](serverIP)
-             * serverArgs[1](serverPort)
-             * serverArgs[2](serviceType)
-             * serverArgs[3](assetNumber)
-             * serverArgs[4](sealNumber)
-             * serverArgs[5](roomNumber)
-             * serverArgs[6](building)
-             * serverArgs[7](adRegistered)
-             * serverArgs[8](standard)
-             * serverArgs[9](serviceDate)
-             * serverArgs[10](batteryChange)
-             * serverArgs[11](ticketNumber)
-             * serverArgs[12](inUse)
-             * serverArgs[13](tag)
-             * serverArgs[14](hwType)
-             * serverArgs[15]()
-             * serverArgs[16]()
-             * serverArgs[17](brand)
-             * serverArgs[18](model)
-             * serverArgs[19](serialNumber)
-             * serverArgs[20](processor)
-             * serverArgs[21](ram)
-             * serverArgs[22](storageSize)
-             * serverArgs[23](operatingSystem)
-             * serverArgs[24](hostname)
-             * serverArgs[25](fwVersion)
-             * serverArgs[26](macAddress)
-             * serverArgs[27](ipAddress)
-             * serverArgs[28](fwType)
-             * serverArgs[29](storageType)
-             * serverArgs[30](videoCard)
-             * serverArgs[31](mediaOperationMode)
-             * serverArgs[32](secureBoot)
-             * serverArgs[33](virtualizationTechnology)
-             * serverArgs[34](tpmVersion)
-             * serverArgs[35](agent)
-             */
-            serverArgs = new string[36];
-
-            serverArgs[0] = serverIP;
-            serverArgs[1] = serverPort;
-            serverArgs[2] = serviceType;
-            serverArgs[3] = assetNumber;
-            serverArgs[4] = sealNumber;
-            serverArgs[5] = roomNumber;
-            serverArgs[6] = building;
-            serverArgs[7] = adRegistered;
-            serverArgs[8] = standard;
-            serverArgs[9] = serviceDate;
-            serverArgs[10] = batteryChange;
-            serverArgs[11] = ticketNumber;
-            serverArgs[12] = inUse;
-            serverArgs[13] = tag;
-            serverArgs[14] = hwType;
-            serverArgs[35] = agentData[0];
-
             serverAlert = new string[11];
             serverAlertBool = new bool[11];
             serverAlert[0] = Strings.CLI_HOSTNAME_ALERT;
@@ -186,8 +152,6 @@ namespace AssetInformationAndRegistration
             serverAlert[9] = Strings.CLI_TPM_ALERT;
             serverAlert[10] = Strings.CLI_MEMORY_ALERT;
 
-            #endregion
-
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             jsonServerSettings = ConfigFileReader.FetchInfoST(serverIP, serverPort);
@@ -201,33 +165,33 @@ namespace AssetInformationAndRegistration
             parametersList[9] = jsonServerSettings[5]; //Secure Boot States
             parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
 
-            webView2 = new WebView2();
+            webView2Control = new WebView2();
 
             await LoadWebView2();
 
             string[] dateFormat = new string[] { ConstantsDLL.Properties.Resources.DATE_FORMAT };
 
-            if (serverArgs[0].Length <= 15 && serverArgs[0].Length > 6 && //serverIP
-                serverArgs[1].Length <= 5 && serverArgs[1].All(char.IsDigit) && //serverPort
-                StringsAndConstants.LIST_MODE_CLI.Contains(serverArgs[2]) && //serviceType
-                serverArgs[3].Length <= 6 && serverArgs[3].Length >= 0 && serverArgs[3].All(char.IsDigit) && //assetNumber
-                ((serverArgs[4].Length <= 10 && serverArgs[4].All(char.IsDigit)) || serverArgs[4].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //sealNumber
-                ((serverArgs[5].Length <= 4 && serverArgs[5].Length > 0 && serverArgs[5].All(char.IsDigit)) || serverArgs[5].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
-                (parametersList[2].Contains(serverArgs[6]) || serverArgs[6].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
-                (StringsAndConstants.LIST_ACTIVE_DIRECTORY_CLI.Contains(serverArgs[7]) || serverArgs[7].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //adRegistered
-                (StringsAndConstants.LIST_STANDARD_CLI.Contains(serverArgs[8]) || serverArgs[8].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //standard
-                ((serverArgs[9].Length == 10 && DateTime.TryParseExact(serverArgs[9], dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || serverArgs[9].Equals(ConstantsDLL.Properties.Resources.TODAY)) && //Data
-                StringsAndConstants.LIST_BATTERY_CLI.Contains(serverArgs[10]) && //batteryChange
-                serverArgs[11].Length <= 6 && serverArgs[11].All(char.IsDigit) && //Ticket
-                (StringsAndConstants.LIST_IN_USE_CLI.Contains(serverArgs[12]) || serverArgs[12].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //inUse
-                (StringsAndConstants.LIST_TAG_CLI.Contains(serverArgs[13]) || serverArgs[13].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //tag
-                (parametersList[3].Contains(serverArgs[14]) || serverArgs[14].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
+            if (serverIP.Length <= 15 && serverIP.Length > 6 && //serverIP
+                serverPort.Length <= 5 && serverPort.All(char.IsDigit) && //serverPort
+                assetNumber.Length <= 6 && assetNumber.Length >= 0 && assetNumber.All(char.IsDigit) && //assetNumber
+                (parametersList[2].Contains(building) || building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
+                ((roomNumber.Length <= 4 && serverArgs[4].Length > 0 && roomNumber.All(char.IsDigit)) || roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
+                ((serviceDate.Length == 10 && DateTime.TryParseExact(serviceDate, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || serviceDate.Equals(ConstantsDLL.Properties.Resources.TODAY)) && //serviceDate
+                StringsAndConstants.LIST_MODE_CLI.Contains(serviceType) && //serviceType
+                StringsAndConstants.LIST_BATTERY_CLI.Contains(batteryChange) && //batteryChange
+                ticketNumber.Length <= 6 && ticketNumber.All(char.IsDigit) && //ticketNumber
+                (StringsAndConstants.LIST_STANDARD_CLI.Contains(standard) || standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //standard
+                (StringsAndConstants.LIST_ACTIVE_DIRECTORY_CLI.Contains(adRegistered) || adRegistered.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //adRegistered
+                (StringsAndConstants.LIST_IN_USE_CLI.Contains(inUse) || inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //inUse
+                ((sealNumber.Length <= 10 && sealNumber.All(char.IsDigit)) || sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //sealNumber
+                (StringsAndConstants.LIST_TAG_CLI.Contains(tag) || tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //tag
+                (parametersList[3].Contains(hwType) || hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                serverOnline = await ModelFileReader.CheckHostMT(serverArgs[0], serverArgs[1]);
-                if (serverOnline && serverArgs[1] != string.Empty)
+                serverOnline = await ModelFileReader.CheckHostMT(serverIP, serverPort);
+                if (serverOnline && serverPort != string.Empty)
                 {
-                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, serverArgs[0] + ":" + serverArgs[1], true);
+                    log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERVER_DETAIL, serverIP + ":" + serverPort, true);
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
                     CollectThread();
@@ -235,76 +199,76 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(true), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), MiscMethods.SinceLabelUpdate(false), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     //assetNumber
-                    if (serverArgs[3].Equals(string.Empty))
+                    if (assetNumber.Equals(string.Empty))
                     {
-                        serverArgs[3] = HardwareInfo.GetHostname().Substring(3);
+                        assetNumber = HardwareInfo.GetHostname().Substring(3);
                     }
 
-                    string[] assetJsonStr = AssetFileReader.FetchInfoST(serverArgs[3], serverArgs[0], serverArgs[1]);
-                    //If PC Json does not exist and there are some 'mesmo' cmd switch word
+                    string[] assetJsonStr = AssetFileReader.FetchInfoST(assetNumber, serverIP, serverPort);
+                    //If asset Json does not exist and there are some 'same' cmd switch word
                     if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                     {
                         log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                        webView2.Dispose();
+                        webView2Control.Dispose();
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                     }
                     else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If PC Json does not exist
                     {
                         //serviceType
-                        if (serverArgs[2].Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
+                        if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
                         {
-                            serverArgs[2] = ConstantsDLL.Properties.Resources.FORMAT_URL;
+                            serviceType = ConstantsDLL.Properties.Resources.FORMAT_URL;
                         }
-                        else if (serverArgs[2].Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
+                        else if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
                         {
-                            serverArgs[2] = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
+                            serviceType = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
                         }
                         //building
-                        serverArgs[6] = Array.IndexOf(parametersList[2], serverArgs[6]).ToString();
+                        building = Array.IndexOf(parametersList[2], building).ToString();
                         //adRegistered
-                        if (serverArgs[7].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        if (adRegistered.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[7] = "0";
+                            adRegistered = "0";
                         }
-                        else if (serverArgs[7].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (adRegistered.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[7] = "1";
+                            adRegistered = "1";
                         }
                         //standard
-                        if (serverArgs[8].Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
+                        if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
                         {
-                            serverArgs[8] = "0";
+                            standard = "0";
                         }
-                        else if (serverArgs[8].Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
+                        else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
                         {
-                            serverArgs[8] = "1";
+                            standard = "1";
                         }
                         //batteryChange
-                        if (serverArgs[10].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[10] = "0";
+                            batteryChange = "0";
                         }
-                        else if (serverArgs[10].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[10] = "1";
+                            batteryChange = "1";
                         }
                         //inUse
-                        if (serverArgs[12].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[12] = "0";
+                            inUse = "0";
                         }
-                        else if (serverArgs[12].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[12] = "1";
+                            inUse = "1";
                         }
                         //tag
-                        if (serverArgs[13].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[13] = "0";
+                            tag = "0";
                         }
-                        else if (serverArgs[13].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[13] = "1";
+                            tag = "1";
                         }
                     }
                     else //If PC Json does exist
@@ -313,103 +277,139 @@ namespace AssetInformationAndRegistration
                         if (assetJsonStr[9] == "1")
                         {
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), ConstantsDLL.Properties.Strings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                            webView2.Dispose();
+                            webView2Control.Dispose();
                             Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                         }
                         //serviceType
-                        if (serverArgs[2].Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
+                        if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
                         {
-                            serverArgs[2] = ConstantsDLL.Properties.Resources.FORMAT_URL;
+                            serviceType = ConstantsDLL.Properties.Resources.FORMAT_URL;
                         }
-                        else if (serverArgs[2].Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
+                        else if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
                         {
-                            serverArgs[2] = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
+                            serviceType = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
                         }
                         //sealNumber
-                        if (serverArgs[4].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[4] = assetJsonStr[6];
+                            sealNumber = assetJsonStr[6];
                         }
                         //roomNumber
-                        if (serverArgs[5].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[5] = assetJsonStr[2];
+                            roomNumber = assetJsonStr[2];
                         }
                         //building
-                        serverArgs[6] = serverArgs[6].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
+                        building = building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
                             ? assetJsonStr[1]
-                            : Array.IndexOf(parametersList[2], serverArgs[6]).ToString();
+                            : Array.IndexOf(parametersList[2], building).ToString();
                         //adRegistered
-                        if (serverArgs[7].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (adRegistered.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[7] = assetJsonStr[4];
+                            adRegistered = assetJsonStr[4];
                         }
-                        else if (serverArgs[7].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        else if (adRegistered.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[7] = "0";
+                            adRegistered = "0";
                         }
-                        else if (serverArgs[7].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (adRegistered.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[7] = "1";
+                            adRegistered = "1";
                         }
                         //standard
-                        if (serverArgs[8].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[8] = assetJsonStr[3];
+                            standard = assetJsonStr[3];
                         }
-                        else if (serverArgs[8].Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
+                        else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
                         {
-                            serverArgs[8] = "0";
+                            standard = "0";
                         }
-                        else if (serverArgs[8].Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
+                        else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
                         {
-                            serverArgs[8] = "1";
+                            standard = "1";
                         }
                         //batteryChange
-                        if (serverArgs[10].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[10] = "0";
+                            batteryChange = "0";
                         }
-                        else if (serverArgs[10].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[10] = "1";
+                            batteryChange = "1";
                         }
                         //inUse
-                        if (serverArgs[12].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[12] = assetJsonStr[5];
+                            inUse = assetJsonStr[5];
                         }
-                        else if (serverArgs[12].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        else if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[12] = "0";
+                            inUse = "0";
                         }
-                        else if (serverArgs[12].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[12] = "1";
+                            inUse = "1";
                         }
                         //tag
-                        if (serverArgs[13].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                        if (tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
-                            serverArgs[13] = assetJsonStr[7];
+                            tag = assetJsonStr[7];
                         }
-                        else if (serverArgs[13].Equals(StringsAndConstants.LIST_NO_ABBREV))
+                        else if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            serverArgs[13] = "0";
+                            tag = "0";
                         }
-                        else if (serverArgs[13].Equals(StringsAndConstants.LIST_YES_ABBREV))
+                        else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            serverArgs[13] = "1";
+                            tag = "1";
                         }
                         //hwType
-                        serverArgs[14] = serverArgs[14].Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
+                        hwType = hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
                             ? assetJsonStr[8]
-                            : Array.IndexOf(parametersList[3], serverArgs[14]).ToString();
+                            : Array.IndexOf(parametersList[3], hwType).ToString();
                     }
                     PrintHardwareData();
 
                     //If there are no pendencies
                     if (pass)
                     {
+                        serverArgs = new string[36];
+
+                        serverArgs[0] = serverIP;
+                        serverArgs[1] = serverPort;
+                        serverArgs[2] = assetNumber;
+                        serverArgs[3] = building;
+                        serverArgs[4] = roomNumber;
+                        serverArgs[6] = serviceType;
+                        serverArgs[7] = batteryChange;
+                        serverArgs[8] = ticketNumber;
+                        serverArgs[9] = agentData[0];
+                        serverArgs[10] = standard;
+                        serverArgs[11] = adRegistered;
+                        serverArgs[12] = brand;
+                        serverArgs[13] = model;
+                        serverArgs[14] = serialNumber;
+                        serverArgs[15] = processor;
+                        serverArgs[16] = ram;
+                        serverArgs[17] = storageSize;
+                        serverArgs[18] = storageType;
+                        serverArgs[19] = mediaOperationMode;
+                        serverArgs[20] = videoCard;
+                        serverArgs[21] = operatingSystem;
+                        serverArgs[22] = hostname;
+                        serverArgs[23] = fwType;
+                        serverArgs[24] = fwVersion;
+                        serverArgs[25] = secureBoot;
+                        serverArgs[26] = virtualizationTechnology;
+                        serverArgs[27] = tpmVersion;
+                        serverArgs[28] = macAddress;
+                        serverArgs[29] = ipAddress;
+                        serverArgs[30] = inUse;
+                        serverArgs[31] = sealNumber;
+                        serverArgs[32] = tag;
+                        serverArgs[33] = hwType;
+
                         DateTime d = new DateTime();
                         DateTime todayDate = DateTime.Today;
                         bool tDay;
@@ -417,20 +417,20 @@ namespace AssetInformationAndRegistration
                         try //If there is database record of the asset number
                         {
                             //If chosen date is 'hoje'
-                            if (serverArgs[9].Equals(ConstantsDLL.Properties.Resources.TODAY))
+                            if (serviceDate.Equals(ConstantsDLL.Properties.Resources.TODAY))
                             {
-                                serverArgs[9] = DateTime.Today.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                                serviceDate = DateTime.Today.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                                 tDay = true;
                             }
                             else //If chosen date is not 'hoje'
                             {
-                                d = DateTime.Parse(serverArgs[9]);
-                                serverArgs[9] = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT);
+                                d = DateTime.Parse(serviceDate);
+                                serviceDate = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT);
                                 tDay = false;
                             }
 
                             //Calculates last registered date with chosen date
-                            DateTime registerDate = DateTime.ParseExact(serverArgs[9], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(serviceDate, ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
                             DateTime lastRegisterDate = DateTime.ParseExact(assetJsonStr[10], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
 
                             //If chosen date is later than the registered date
@@ -438,21 +438,24 @@ namespace AssetInformationAndRegistration
                             {
                                 if (tDay) //If today
                                 {
-                                    serverArgs[9] = todayDate.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                                    serviceDate = todayDate.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                                 }
                                 else if (registerDate <= todayDate) //If today is greater or equal than registered date
                                 {
-                                    serverArgs[9] = DateTime.Parse(serverArgs[9]).ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                                    serviceDate = DateTime.Parse(serviceDate).ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                                 }
                                 else //Forbids future registering
                                 {
                                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.INCORRECT_FUTURE_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                    webView2.Dispose();
+                                    webView2Control.Dispose();
                                     Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR));
                                 }
 
+                                serverArgs[5] = serviceDate;
+
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                ServerSendInfo(serverArgs); //Send info to server
+                                SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI), webView2Control);
+                                //ServerSendInfo(serverArgs); //Send info to server
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
                                 //Resets host install date
@@ -471,24 +474,27 @@ namespace AssetInformationAndRegistration
                             else //If chosen date is earlier than the registered date, show an error
                             {
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                webView2.Dispose(); //Kills WebView2 instance
+                                webView2Control.Dispose(); //Kills WebView2 instance
                                 Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
                             }
                         }
                         catch //If there is no database record of the asset number
                         {
-                            if (serverArgs[9].Equals(ConstantsDLL.Properties.Resources.TODAY))
+                            if (serviceDate.Equals(ConstantsDLL.Properties.Resources.TODAY))
                             {
-                                serverArgs[9] = todayDate.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                                serviceDate = todayDate.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                             }
                             else
                             {
-                                d = DateTime.Parse(serverArgs[9]);
-                                serverArgs[9] = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                                d = DateTime.Parse(serviceDate);
+                                serviceDate = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                             }
 
+                            serverArgs[5] = serviceDate;
+
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                            ServerSendInfo(serverArgs); //Send info to server
+                            SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI), webView2Control);
+                            //ServerSendInfo(serverArgs); //Send info to server
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
                             //Resets host install date
@@ -496,12 +502,12 @@ namespace AssetInformationAndRegistration
                             {
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                MiscMethods.RegCreate(true, serverArgs[9]);
+                                MiscMethods.RegCreate(true, serviceDate);
                             }
                             else if (serviceType == StringsAndConstants.CLI_SERVICE_TYPE_1) //Resets host maintenance date
                             {
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                MiscMethods.RegCreate(false, serverArgs[9]);
+                                MiscMethods.RegCreate(false, serviceDate);
                             }
                         }
                     }
@@ -515,21 +521,21 @@ namespace AssetInformationAndRegistration
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_WARNING), serverAlert[i], string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                             }
                         }
-                        webView2.Dispose(); //Kills WebView2 instance
+                        webView2Control.Dispose(); //Kills WebView2 instance
                         Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_WARNING)); //Exits
                     }
                 }
                 else
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    webView2.Dispose(); //Kills WebView2 instance
+                    webView2Control.Dispose(); //Kills WebView2 instance
                     Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
                 }
             }
             else
             {
                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                webView2.Dispose(); //Kills WebView2 instance
+                webView2Control.Dispose(); //Kills WebView2 instance
                 Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_ERROR)); //Exits
             }
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_CLOSING_CLI, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -540,7 +546,7 @@ namespace AssetInformationAndRegistration
             File.Delete(StringsAndConstants.CREDENTIALS_FILE_PATH);
             File.Delete(StringsAndConstants.ASSET_FILE_PATH);
             File.Delete(StringsAndConstants.CONFIG_FILE_PATH);
-            webView2.NavigationCompleted += WebView2_NavigationCompleted;
+            webView2Control.NavigationCompleted += WebView2_NavigationCompleted;
             Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS)); //Exits
         }
 
@@ -551,7 +557,7 @@ namespace AssetInformationAndRegistration
         {
             if (e.IsSuccess)
             {
-                webView2.Dispose(); //Kills instance
+                webView2Control.Dispose(); //Kills instance
                 Environment.Exit(Convert.ToInt32(ConstantsDLL.Properties.Resources.RETURN_SUCCESS)); //Exits
             }
         }
@@ -566,27 +572,27 @@ namespace AssetInformationAndRegistration
             try
             {
                 //Feches model info from server
-                string[] modelJsonStr = ModelFileReader.FetchInfoST(serverArgs[17], serverArgs[18], serverArgs[28], serverArgs[34], serverArgs[31], serverArgs[0], serverArgs[1]);
+                string[] modelJsonStr = ModelFileReader.FetchInfoST(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
 
                 //If hostname is the default one and its enforcement is enabled
-                if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[24].Equals(Strings.DEFAULT_HOSTNAME))
+                if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && hostname.Equals(Strings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
-                    serverAlert[0] += serverArgs[24] + Strings.HOSTNAME_ALERT;
+                    serverAlert[0] += hostname + Strings.HOSTNAME_ALERT;
                     serverAlertBool[0] = true;
                 }
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
                 if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[3].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
-                    serverAlert[1] += serverArgs[31] + Strings.MEDIA_OPERATION_ALERT;
+                    serverAlert[1] += mediaOperationMode + Strings.MEDIA_OPERATION_ALERT;
                     serverAlertBool[1] = true;
                 }
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[32].Equals(ConstantsDLL.Properties.Strings.DEACTIVATED))
+                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && secureBoot.Equals(ConstantsDLL.Properties.Strings.DEACTIVATED))
                 {
                     pass = false;
-                    serverAlert[2] += serverArgs[32] + Strings.SECURE_BOOT_ALERT;
+                    serverAlert[2] += secureBoot + Strings.SECURE_BOOT_ALERT;
                     serverAlertBool[2] = true;
                 }
                 //If model Json file does not exist and server is unreachable
@@ -597,12 +603,12 @@ namespace AssetInformationAndRegistration
                     serverAlertBool[3] = true;
                 }
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && !serverArgs[25].Contains(modelJsonStr[0]))
+                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && !fwVersion.Contains(modelJsonStr[0]))
                 {
                     if (!modelJsonStr[0].Equals("-1"))
                     {
                         pass = false;
-                        serverAlert[4] += serverArgs[25] + Strings.BIOS_VERSION_ALERT;
+                        serverAlert[4] += fwVersion + Strings.BIOS_VERSION_ALERT;
                         serverAlertBool[4] = true;
                     }
                 }
@@ -610,30 +616,30 @@ namespace AssetInformationAndRegistration
                 if (enforcementList[4] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[1].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
-                    serverAlert[5] += serverArgs[28] + Strings.FIRMWARE_TYPE_ALERT;
+                    serverAlert[5] += fwType + Strings.FIRMWARE_TYPE_ALERT;
                     serverAlertBool[5] = true;
                 }
                 //If there is no MAC address assigned
-                if (serverArgs[26] == string.Empty)
+                if (macAddress == string.Empty)
                 {
                     pass = false;
-                    serverAlert[6] += serverArgs[26] + Strings.NETWORK_ERROR; //Prints a network error
-                    serverAlert[7] += serverArgs[27] + Strings.NETWORK_ERROR; //Prints a network error
+                    serverAlert[6] += macAddress + Strings.NETWORK_ERROR; //Prints a network error
+                    serverAlert[7] += ipAddress + Strings.NETWORK_ERROR; //Prints a network error
                     serverAlertBool[6] = true;
                     serverAlertBool[7] = true;
                 }
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && serverArgs[33] == ConstantsDLL.Properties.Strings.DEACTIVATED)
+                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && virtualizationTechnology == ConstantsDLL.Properties.Strings.DEACTIVATED)
                 {
                     pass = false;
-                    serverAlert[8] += serverArgs[33] + Strings.VT_ALERT;
+                    serverAlert[8] += virtualizationTechnology + Strings.VT_ALERT;
                     serverAlertBool[8] = true;
                 }
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
                 if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[2].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
                     pass = false;
-                    serverAlert[9] += serverArgs[34] + Strings.TPM_ERROR;
+                    serverAlert[9] += tpmVersion + Strings.TPM_ERROR;
                     serverAlertBool[9] = true;
                 }
                 //Checks for RAM amount
@@ -642,14 +648,14 @@ namespace AssetInformationAndRegistration
                 if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    serverAlert[10] += serverArgs[21] + Strings.NOT_ENOUGH_MEMORY;
+                    serverAlert[10] += ram + Strings.NOT_ENOUGH_MEMORY;
                     serverAlertBool[10] = true;
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
                 if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    serverAlert[10] += serverArgs[21] + Strings.TOO_MUCH_MEMORY;
+                    serverAlert[10] += ram + Strings.TOO_MUCH_MEMORY;
                     serverAlertBool[10] = true;
                 }
                 if (pass)
@@ -669,89 +675,89 @@ namespace AssetInformationAndRegistration
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for PC maker
-            serverArgs[17] = HardwareInfo.GetBrand();
-            if (serverArgs[17] == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || serverArgs[17] == string.Empty)
+            brand = HardwareInfo.GetBrand();
+            if (brand == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || brand == string.Empty)
             {
-                serverArgs[17] = HardwareInfo.GetBrandAlt();
+                brand = HardwareInfo.GetBrandAlt();
             }
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, serverArgs[17], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BM, brand, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for PC model
-            serverArgs[18] = HardwareInfo.GetModel();
-            if (serverArgs[18] == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || serverArgs[18] == string.Empty)
+            model = HardwareInfo.GetModel();
+            if (model == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || model == string.Empty)
             {
-                serverArgs[18] = HardwareInfo.GetModelAlt();
-                if (serverArgs[18] == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || serverArgs[18] == string.Empty)
+                model = HardwareInfo.GetModelAlt();
+                if (model == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || model == string.Empty)
                 {
-                    serverArgs[18] = ConstantsDLL.Properties.Strings.UNKNOWN;
+                    model = ConstantsDLL.Properties.Strings.UNKNOWN;
                 }
             }
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, serverArgs[18], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MODEL, model, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for motherboard Serial number
-            serverArgs[19] = HardwareInfo.GetSerialNumber();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, serverArgs[19], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            serialNumber = HardwareInfo.GetSerialNumber();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SERIALNO, serialNumber, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for CPU information
-            serverArgs[20] = HardwareInfo.GetProcessorInfo();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, serverArgs[20], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            processor = HardwareInfo.GetProcessorInfo();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PROCNAME, processor, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for RAM amount and total number of slots
-            serverArgs[21] = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots() +
+            ram = HardwareInfo.GetRam() + " (" + HardwareInfo.GetNumFreeRamSlots() +
                 Strings.SLOTS_OF + HardwareInfo.GetNumRamSlots() + Strings.OCCUPIED + ")";
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, serverArgs[21], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_PM, ram, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Storage size
-            serverArgs[22] = HardwareInfo.GetStorageSize();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, serverArgs[22], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            storageSize = HardwareInfo.GetStorageSize();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HDSIZE, storageSize, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Storage type
-            serverArgs[29] = HardwareInfo.GetStorageType();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, serverArgs[29], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            storageType = HardwareInfo.GetStorageType();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIATYPE, storageType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)
-            serverArgs[31] = HardwareInfo.GetMediaOperationMode();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(serverArgs[31])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            mediaOperationMode = HardwareInfo.GetMediaOperationMode();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(mediaOperationMode)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for GPU information
-            serverArgs[30] = HardwareInfo.GetVideoCardInfo();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, serverArgs[30], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            videoCard = HardwareInfo.GetVideoCardInfo();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_GPUINFO, videoCard, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for OS infomation
-            serverArgs[23] = HardwareInfo.GetOSString();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, serverArgs[23], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            operatingSystem = HardwareInfo.GetOSString();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_OS, operatingSystem, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for hostname
-            serverArgs[24] = HardwareInfo.GetHostname();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, serverArgs[24], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            hostname = HardwareInfo.GetHostname();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_HOSTNAME, hostname, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for MAC Address
-            serverArgs[26] = HardwareInfo.GetMacAddress();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, serverArgs[26], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            macAddress = HardwareInfo.GetMacAddress();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_MAC, macAddress, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for IP Address
-            serverArgs[27] = HardwareInfo.GetIpAddress();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, serverArgs[27], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            ipAddress = HardwareInfo.GetIpAddress();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_IP, ipAddress, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for firmware type
-            serverArgs[28] = HardwareInfo.GetFwType();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(serverArgs[28])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            fwType = HardwareInfo.GetFwType();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(fwType)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Secure Boot status
-            serverArgs[32] = HardwareInfo.GetSecureBoot();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(serverArgs[32])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            secureBoot = HardwareInfo.GetSecureBoot();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(secureBoot)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for firmware version
-            serverArgs[25] = HardwareInfo.GetFirmwareVersion();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, serverArgs[25], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            fwVersion = HardwareInfo.GetFirmwareVersion();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_BIOS, fwVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for VT status
-            serverArgs[33] = HardwareInfo.GetVirtualizationTechnology();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(serverArgs[33])])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(virtualizationTechnology)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for TPM status
-            serverArgs[34] = HardwareInfo.GetTPMStatus();
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, parametersList[7][Convert.ToInt32(serverArgs[34])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            tpmVersion = HardwareInfo.GetTPMStatus();
+            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_TPM, parametersList[7][Convert.ToInt32(tpmVersion)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
         }
@@ -764,50 +770,10 @@ namespace AssetInformationAndRegistration
             CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
                 ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), Path.GetTempPath())
                 : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), Path.GetTempPath());
-            await webView2.EnsureCoreWebView2Async(webView2Environment);
-            webView2.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            webView2.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
+            await webView2Control.EnsureCoreWebView2Async(webView2Environment);
+            webView2Control.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+            webView2Control.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-        }
-
-        ///<summary>Sends hardware info to the specified server</summary>
-        ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
-        private void ServerSendInfo(string[] serverArgs)
-        {
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            webView2.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php"
-                + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[3]
-                + ConstantsDLL.Properties.Resources.PHP_SEAL_NUMBER + serverArgs[4]
-                + ConstantsDLL.Properties.Resources.PHP_ROOM + serverArgs[5]
-                + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[6]
-                + ConstantsDLL.Properties.Resources.PHP_AD_REGISTERED + serverArgs[7]
-                + ConstantsDLL.Properties.Resources.PHP_STANDARD + serverArgs[8]
-                + ConstantsDLL.Properties.Resources.PHP_SERVICE_DATE + serverArgs[9]
-                + ConstantsDLL.Properties.Resources.PHP_PREVIOUS_SERVICE_DATES + serverArgs[9]
-                + ConstantsDLL.Properties.Resources.PHP_BRAND + serverArgs[17]
-                + ConstantsDLL.Properties.Resources.PHP_MODEL + serverArgs[18]
-                + ConstantsDLL.Properties.Resources.PHP_SERIAL_NUMBER + serverArgs[19]
-                + ConstantsDLL.Properties.Resources.PHP_PROCESSOR + serverArgs[20]
-                + ConstantsDLL.Properties.Resources.PHP_RAM + serverArgs[21]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_SIZE + serverArgs[22]
-                + ConstantsDLL.Properties.Resources.PHP_OPERATING_SYSTEM + serverArgs[23]
-                + ConstantsDLL.Properties.Resources.PHP_HOSTNAME + serverArgs[24]
-                + ConstantsDLL.Properties.Resources.PHP_FW_VERSION + serverArgs[25]
-                + ConstantsDLL.Properties.Resources.PHP_MAC_ADDRESS + serverArgs[26]
-                + ConstantsDLL.Properties.Resources.PHP_IP_ADDRESS + serverArgs[27]
-                + ConstantsDLL.Properties.Resources.PHP_IN_USE + serverArgs[12]
-                + ConstantsDLL.Properties.Resources.PHP_TAG + serverArgs[13]
-                + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[14]
-                + ConstantsDLL.Properties.Resources.PHP_FW_TYPE + serverArgs[28]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_TYPE + serverArgs[29]
-                + ConstantsDLL.Properties.Resources.PHP_VIDEO_CARD + serverArgs[30]
-                + ConstantsDLL.Properties.Resources.PHP_MEDIA_OPERATION_MODE + serverArgs[31]
-                + ConstantsDLL.Properties.Resources.PHP_SECURE_BOOT + serverArgs[32]
-                + ConstantsDLL.Properties.Resources.PHP_VIRTUALIZATION_TECHNOLOGY + serverArgs[33]
-                + ConstantsDLL.Properties.Resources.PHP_TPM_VERSION + serverArgs[34]
-                + ConstantsDLL.Properties.Resources.PHP_BATTERY_CHANGE + serverArgs[10]
-                + ConstantsDLL.Properties.Resources.PHP_TICKET_NUMBER + serverArgs[11]
-                + ConstantsDLL.Properties.Resources.PHP_AGENT + serverArgs[35]);
         }
     }
 }

@@ -4643,24 +4643,24 @@ namespace AssetInformationAndRegistration
         ///<summary>Attributes the data collected previously to the variables which will inside the URL for registration</summary>
         private void AttrHardwareData()
         {
-            serverArgs[10] = brand;
-            serverArgs[11] = model;
-            serverArgs[12] = serialNumber;
-            serverArgs[13] = processor;
-            serverArgs[14] = ram;
-            serverArgs[15] = storageSize;
-            serverArgs[16] = operatingSystem;
-            serverArgs[17] = hostname;
-            serverArgs[18] = fwVersion;
-            serverArgs[19] = macAddress;
-            serverArgs[20] = ipAddress;
-            serverArgs[24] = fwType;
-            serverArgs[25] = storageType;
-            serverArgs[26] = videoCard;
-            serverArgs[27] = mediaOperationMode;
-            serverArgs[28] = Array.IndexOf(parametersList[9], secureBoot).ToString();
-            serverArgs[29] = Array.IndexOf(parametersList[10], virtualizationTechnology).ToString();
-            serverArgs[30] = tpmVersion;
+            serverArgs[12] = brand;
+            serverArgs[13] = model;
+            serverArgs[14] = serialNumber;
+            serverArgs[15] = processor;
+            serverArgs[16] = ram;
+            serverArgs[17] = storageSize;
+            serverArgs[18] = storageType;
+            serverArgs[19] = mediaOperationMode;
+            serverArgs[20] = videoCard;
+            serverArgs[21] = operatingSystem;
+            serverArgs[22] = hostname;
+            serverArgs[23] = fwType;
+            serverArgs[24] = fwVersion;
+            serverArgs[25] = Array.IndexOf(parametersList[9], secureBoot).ToString();
+            serverArgs[26] = Array.IndexOf(parametersList[10], virtualizationTechnology).ToString();
+            serverArgs[27] = tpmVersion;
+            serverArgs[28] = macAddress;
+            serverArgs[29] = ipAddress;
         }
 
         ///<summary>Loads webView2 component</summary>
@@ -4675,46 +4675,6 @@ namespace AssetInformationAndRegistration
             webView2Control.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
             webView2Control.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-        }
-
-        ///<summary>Sends hardware info to the specified server</summary>
-        ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
-        private void ServerSendInfo(string[] serverArgs)
-        {
-            log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            webView2Control.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[2] + ".php"
-                + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[3]
-                + ConstantsDLL.Properties.Resources.PHP_SEAL_NUMBER + serverArgs[4]
-                + ConstantsDLL.Properties.Resources.PHP_ROOM + serverArgs[5]
-                + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[6]
-                + ConstantsDLL.Properties.Resources.PHP_AD_REGISTERED + serverArgs[7]
-                + ConstantsDLL.Properties.Resources.PHP_STANDARD + serverArgs[8]
-                + ConstantsDLL.Properties.Resources.PHP_SERVICE_DATE + serverArgs[9]
-                + ConstantsDLL.Properties.Resources.PHP_PREVIOUS_SERVICE_DATES + serverArgs[9]
-                + ConstantsDLL.Properties.Resources.PHP_BRAND + serverArgs[10]
-                + ConstantsDLL.Properties.Resources.PHP_MODEL + serverArgs[11]
-                + ConstantsDLL.Properties.Resources.PHP_SERIAL_NUMBER + serverArgs[12]
-                + ConstantsDLL.Properties.Resources.PHP_PROCESSOR + serverArgs[13]
-                + ConstantsDLL.Properties.Resources.PHP_RAM + serverArgs[14]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_SIZE + serverArgs[15]
-                + ConstantsDLL.Properties.Resources.PHP_OPERATING_SYSTEM + serverArgs[16]
-                + ConstantsDLL.Properties.Resources.PHP_HOSTNAME + serverArgs[17]
-                + ConstantsDLL.Properties.Resources.PHP_FW_VERSION + serverArgs[18]
-                + ConstantsDLL.Properties.Resources.PHP_MAC_ADDRESS + serverArgs[19]
-                + ConstantsDLL.Properties.Resources.PHP_IP_ADDRESS + serverArgs[20]
-                + ConstantsDLL.Properties.Resources.PHP_IN_USE + serverArgs[21]
-                + ConstantsDLL.Properties.Resources.PHP_TAG + serverArgs[22]
-                + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[23]
-                + ConstantsDLL.Properties.Resources.PHP_FW_TYPE + serverArgs[24]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_TYPE + serverArgs[25]
-                + ConstantsDLL.Properties.Resources.PHP_VIDEO_CARD + serverArgs[26]
-                + ConstantsDLL.Properties.Resources.PHP_MEDIA_OPERATION_MODE + serverArgs[27]
-                + ConstantsDLL.Properties.Resources.PHP_SECURE_BOOT + serverArgs[28]
-                + ConstantsDLL.Properties.Resources.PHP_VIRTUALIZATION_TECHNOLOGY + serverArgs[29]
-                + ConstantsDLL.Properties.Resources.PHP_TPM_VERSION + serverArgs[30]
-                + ConstantsDLL.Properties.Resources.PHP_BATTERY_CHANGE + serverArgs[31]
-                + ConstantsDLL.Properties.Resources.PHP_TICKET_NUMBER + serverArgs[32]
-                + ConstantsDLL.Properties.Resources.PHP_AGENT + serverArgs[33]);
         }
 
         ///<summary>Runs the registration for the website</summary>
@@ -4739,23 +4699,24 @@ namespace AssetInformationAndRegistration
                 //Attribute variables to an array which will be sent to the server
                 serverArgs[0] = serverIP;
                 serverArgs[1] = serverPort;
-                serverArgs[2] = serviceTypeURL;
-                serverArgs[3] = textBoxAssetNumber.Text;
-                serverArgs[4] = textBoxSealNumber.Text;
-                serverArgs[5] = textBoxRoomLetter.Text != string.Empty ? textBoxRoomNumber.Text + textBoxRoomLetter.Text : textBoxRoomNumber.Text;
-                serverArgs[6] = Array.IndexOf(parametersList[4], comboBoxBuilding.SelectedItem.ToString()).ToString();
-                serverArgs[7] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
-                serverArgs[8] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? "0" : "1";
-                serverArgs[9] = dateTimePickerServiceDate.Value.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
-                serverArgs[21] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
-                serverArgs[22] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
-                serverArgs[23] = Array.IndexOf(parametersList[5], comboBoxHwType.SelectedItem.ToString()).ToString();
-                serverArgs[31] = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
-                serverArgs[32] = textBoxTicketNumber.Text;
-                serverArgs[33] = agentData[0];
+                serverArgs[2] = textBoxAssetNumber.Text;
+                serverArgs[3] = Array.IndexOf(parametersList[4], comboBoxBuilding.SelectedItem.ToString()).ToString();
+                serverArgs[4] = textBoxRoomLetter.Text != string.Empty ? textBoxRoomNumber.Text + textBoxRoomLetter.Text : textBoxRoomNumber.Text;
+                serverArgs[5] = dateTimePickerServiceDate.Value.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
+                serverArgs[6] = serviceTypeURL;
+                serverArgs[7] = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
+                serverArgs[8] = textBoxTicketNumber.Text;
+                serverArgs[9] = agentData[0];
+                serverArgs[10] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? "0" : "1";
+                serverArgs[11] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
+                serverArgs[30] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
+                serverArgs[31] = textBoxSealNumber.Text;
+                serverArgs[32] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? "1" : "0";
+                serverArgs[33] = Array.IndexOf(parametersList[5], comboBoxHwType.SelectedItem.ToString()).ToString();
+                
 
                 //Feches asset number data from server
-                string[] assetJsonStr = await AssetFileReader.FetchInfoMT(serverArgs[3], serverArgs[0], serverArgs[1]);
+                string[] assetJsonStr = await AssetFileReader.FetchInfoMT(serverArgs[2], serverArgs[0], serverArgs[1]);
 
                 //If patrinony is discarded
                 if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE && assetJsonStr[9] == "1")
@@ -4772,18 +4733,19 @@ namespace AssetInformationAndRegistration
                     {
                         try //Tries to get the laster register date from the asset number to check if the chosen date is adequate
                         {
-                            DateTime registerDate = DateTime.ParseExact(serverArgs[9], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(serverArgs[5], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
                             DateTime lastRegisterDate = DateTime.ParseExact(assetJsonStr[10], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
                                 webView2Control.Visible = true;
-                                ServerSendInfo(serverArgs); //Send info to server
+                                SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control);
+                                //ServerSendInfo(serverArgs); //Send info to server
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                                 if (radioButtonFormatting.Checked) //If the format radio button is checked
                                 {
-                                    MiscMethods.RegCreate(true, serverArgs[9]); //Create reg entries for format and maintenance
+                                    MiscMethods.RegCreate(true, serverArgs[5]); //Create reg entries for format and maintenance
                                     lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4791,7 +4753,7 @@ namespace AssetInformationAndRegistration
                                 }
                                 else if (radioButtonMaintenance.Checked) //If the maintenance radio button is checked
                                 {
-                                    MiscMethods.RegCreate(false, serverArgs[9]); //Create reg entry just for maintenance
+                                    MiscMethods.RegCreate(false, serverArgs[5]); //Create reg entry just for maintenance
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                                 }
@@ -4809,12 +4771,13 @@ namespace AssetInformationAndRegistration
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
                             webView2Control.Visible = true;
-                            ServerSendInfo(serverArgs); //Send info to server
+                            SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control);
+                            //ServerSendInfo(serverArgs); //Send info to server
                             log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                             if (radioButtonFormatting.Checked) //If the format radio button is checked
                             {
-                                MiscMethods.RegCreate(true, serverArgs[9]); //Create reg entries for format and maintenance
+                                MiscMethods.RegCreate(true, serverArgs[5]); //Create reg entries for format and maintenance
                                 lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4824,7 +4787,7 @@ namespace AssetInformationAndRegistration
                             }
                             else if (radioButtonMaintenance.Checked) //If the maintenance radio button is checked
                             {
-                                MiscMethods.RegCreate(false, serverArgs[9]); //Create reg entry just for maintenance
+                                MiscMethods.RegCreate(false, serverArgs[5]); //Create reg entry just for maintenance
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 

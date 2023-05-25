@@ -107,7 +107,7 @@ namespace AssetInformationAndRegistration
                 if (agentsJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
                 {
                     log.LogWrite(Convert.ToInt32(ConstantsDLL.Properties.Resources.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.ServiceType, opts.AssetNumber, opts.SealNumber, opts.RoomNumber, opts.Building, opts.AdRegistered, opts.Standard, opts.ServiceDate, opts.BatteryChange, opts.TicketNumber, opts.InUse, opts.Tag, opts.HwType, agentsJsonStr, log, parametersListSection, enforcementListSection));
+                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, agentsJsonStr, opts.Standard, opts.AdRegistered, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {
