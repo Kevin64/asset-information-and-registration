@@ -2846,7 +2846,7 @@ namespace AssetInformationAndRegistration
             if (xPosOS + lblOperatingSystem.Width > rightBound && invertOSScroll == false)
             {
                 lblOperatingSystem.Location = new Point(xPosOS, yPosOS);
-                xPosOS -= 2;
+                xPosOS -= Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2856,7 +2856,7 @@ namespace AssetInformationAndRegistration
             if (xPosOS < leftBound && invertOSScroll == true)
             {
                 lblOperatingSystem.Location = new Point(xPosOS, yPosOS);
-                xPosOS += 2;
+                xPosOS += Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2869,7 +2869,7 @@ namespace AssetInformationAndRegistration
             if (xPosFwVersion + lblFwVersion.Width > rightBound && invertFwVersionScroll == false)
             {
                 lblFwVersion.Location = new Point(xPosFwVersion, yPosFwVersion);
-                xPosFwVersion -= 2;
+                xPosFwVersion -= Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2879,7 +2879,7 @@ namespace AssetInformationAndRegistration
             if (xPosFwVersion < leftBound && invertFwVersionScroll == true)
             {
                 lblFwVersion.Location = new Point(xPosFwVersion, yPosFwVersion);
-                xPosFwVersion += 2;
+                xPosFwVersion += Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2892,7 +2892,7 @@ namespace AssetInformationAndRegistration
             if (xPosVideoCard + lblVideoCard.Width > rightBound && invertVideoCardScroll == false)
             {
                 lblVideoCard.Location = new Point(xPosVideoCard, yPosFwVersion);
-                xPosVideoCard -= 2;
+                xPosVideoCard -= Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2902,7 +2902,7 @@ namespace AssetInformationAndRegistration
             if (xPosVideoCard < leftBound && invertVideoCardScroll == true)
             {
                 lblVideoCard.Location = new Point(xPosVideoCard, yPosFwVersion);
-                xPosVideoCard += 2;
+                xPosVideoCard += Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2915,7 +2915,7 @@ namespace AssetInformationAndRegistration
             if (xPosRam + lblRam.Width > rightBound && invertRamScroll == false)
             {
                 lblRam.Location = new Point(xPosRam, yPosRam);
-                xPosRam -= 2;
+                xPosRam -= Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2925,7 +2925,7 @@ namespace AssetInformationAndRegistration
             if (xPosRam < leftBound && invertRamScroll == true)
             {
                 lblRam.Location = new Point(xPosRam, yPosRam);
-                xPosRam += 2;
+                xPosRam += Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2938,7 +2938,7 @@ namespace AssetInformationAndRegistration
             if (xPosProcessor + lblProcessor.Width > rightBound && invertProcessorScroll == false)
             {
                 lblProcessor.Location = new Point(xPosProcessor, yPosProcessor);
-                xPosProcessor -= 2;
+                xPosProcessor -= Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -2948,7 +2948,7 @@ namespace AssetInformationAndRegistration
             if (xPosProcessor < leftBound && invertProcessorScroll == true)
             {
                 lblProcessor.Location = new Point(xPosProcessor, yPosProcessor);
-                xPosProcessor += 2;
+                xPosProcessor += Convert.ToInt32(ConstantsDLL.Properties.Resources.LABEL_SCROLL_SPEED);
             }
             else
             {
