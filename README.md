@@ -48,7 +48,7 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 ## Offline mode
 
-This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all alert triggers are disabled, because there is nothing to compare to.
+This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger).
 
 AIR running in CLI do not support 'offline mode'.
 
