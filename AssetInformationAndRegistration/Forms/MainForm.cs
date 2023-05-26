@@ -2006,23 +2006,23 @@ namespace AssetInformationAndRegistration
             // 
             // timerOSLabelScroll
             // 
-            this.timerOSLabelScroll.Tick += new System.EventHandler(this.timerOSLabelScroll_Tick);
+            this.timerOSLabelScroll.Tick += new System.EventHandler(this.TimerOSLabelScroll_Tick);
             // 
             // timerFwVersionLabelScroll
             // 
-            this.timerFwVersionLabelScroll.Tick += new System.EventHandler(this.timerFwVersionLabelScroll_Tick);
+            this.timerFwVersionLabelScroll.Tick += new System.EventHandler(this.TimerFwVersionLabelScroll_Tick);
             // 
             // timerVideoCardLabelScroll
             // 
-            this.timerVideoCardLabelScroll.Tick += new System.EventHandler(this.timerVideoCardLabelScroll_Tick);
+            this.timerVideoCardLabelScroll.Tick += new System.EventHandler(this.TimerVideoCardLabelScroll_Tick);
             // 
             // timerRamLabelScroll
             // 
-            this.timerRamLabelScroll.Tick += new System.EventHandler(this.timerRamLabelScroll_Tick);
+            this.timerRamLabelScroll.Tick += new System.EventHandler(this.TimerRamLabelScroll_Tick);
             // 
             // timerProcessorLabelScroll
             // 
-            this.timerProcessorLabelScroll.Tick += new System.EventHandler(this.timerProcessorLabelScroll_Tick);
+            this.timerProcessorLabelScroll.Tick += new System.EventHandler(this.TimerProcessorLabelScroll_Tick);
             // 
             // MainForm
             // 
@@ -2841,7 +2841,7 @@ namespace AssetInformationAndRegistration
             aboutLabelButton.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
         }
 
-        private void timerOSLabelScroll_Tick(object sender, EventArgs e)
+        private void TimerOSLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosOS + lblOperatingSystem.Width > rightBound && invertOSScroll == false)
             {
@@ -2864,7 +2864,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        private void timerFwVersionLabelScroll_Tick(object sender, EventArgs e)
+        private void TimerFwVersionLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosFwVersion + lblFwVersion.Width > rightBound && invertFwVersionScroll == false)
             {
@@ -2887,7 +2887,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        private void timerVideoCardLabelScroll_Tick(object sender, EventArgs e)
+        private void TimerVideoCardLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosVideoCard + lblVideoCard.Width > rightBound && invertVideoCardScroll == false)
             {
@@ -2910,7 +2910,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        private void timerRamLabelScroll_Tick(object sender, EventArgs e)
+        private void TimerRamLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosRam + lblRam.Width > rightBound && invertRamScroll == false)
             {
@@ -2933,7 +2933,7 @@ namespace AssetInformationAndRegistration
             }
         }
 
-        private void timerProcessorLabelScroll_Tick(object sender, EventArgs e)
+        private void TimerProcessorLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosProcessor + lblProcessor.Width > rightBound && invertProcessorScroll == false)
             {
