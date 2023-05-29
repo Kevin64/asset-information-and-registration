@@ -2841,6 +2841,9 @@ namespace AssetInformationAndRegistration
             aboutLabelButton.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
         }
 
+        ///<summary>Allow to OS label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TimerOSLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosOS + lblOperatingSystem.Width > rightBound && invertOSScroll == false)
@@ -2864,6 +2867,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Allow to firmware version label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TimerFwVersionLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosFwVersion + lblFwVersion.Width > rightBound && invertFwVersionScroll == false)
@@ -2887,6 +2893,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Allow to video card label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TimerVideoCardLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosVideoCard + lblVideoCard.Width > rightBound && invertVideoCardScroll == false)
@@ -2910,6 +2919,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Allow to RAM label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TimerRamLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosRam + lblRam.Width > rightBound && invertRamScroll == false)
@@ -2933,6 +2945,9 @@ namespace AssetInformationAndRegistration
             }
         }
 
+        ///<summary>Allow to processor label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void TimerProcessorLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosProcessor + lblProcessor.Width > rightBound && invertProcessorScroll == false)
@@ -3997,6 +4012,7 @@ namespace AssetInformationAndRegistration
             progressBar1.Maximum = 19;
             progressBar1.Value = 0;
 
+            //Sets label position for their default positions
             xPosOS = lblOperatingSystem.Location.X;
             yPosOS = lblOperatingSystem.Location.Y;
             xPosFwVersion = lblFwVersion.Location.X;
