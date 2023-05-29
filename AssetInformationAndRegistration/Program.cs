@@ -64,9 +64,6 @@ namespace AssetInformationAndRegistration
             [Option(StringsAndConstants.CLI_STANDARD_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_STANDARD, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string Standard { get; set; }
 
-            [Option(StringsAndConstants.CLI_AD_REGISTERED_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_AD_REGISTERED, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
-            public string AdRegistered { get; set; }
-
             [Option(StringsAndConstants.CLI_IN_USE_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_IN_USE, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
             public string InUse { get; set; }
 
@@ -120,7 +117,7 @@ namespace AssetInformationAndRegistration
                 if (agentsJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, agentsJsonStr, opts.Standard, opts.AdRegistered, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType, log, parametersListSection, enforcementListSection));
+                    Application.Run(new CLIRegister(opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, agentsJsonStr, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {

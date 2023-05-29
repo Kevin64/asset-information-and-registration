@@ -280,6 +280,9 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
     <value>Registration date prior to the last maintenance date.</value>
   </data>
+  <data name="LOG_AD_REGISTERED" xml:space="preserve">
+    <value>Active Directory registered</value>
+  </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Automatically selecting theme</value>
   </data>

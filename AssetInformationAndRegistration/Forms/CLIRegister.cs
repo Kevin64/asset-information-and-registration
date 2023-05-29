@@ -25,9 +25,27 @@ namespace AssetInformationAndRegistration
         private readonly List<string[]> parametersList;
         private List<string[]> jsonServerSettings;
         private readonly List<string> enforcementList;
-        private readonly string serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, standard, adRegistered, inUse, sealNumber, tag, hwType;
+        private readonly string serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, standard, inUse, sealNumber, tag, hwType;
         private readonly string[] agentData;
-        private string brand, model, serialNumber, processor, ram, storageSize, storageType, mediaOperationMode, videoCard, operatingSystem, hostname, fwType, fwVersion, secureBoot, virtualizationTechnology, tpmVersion, macAddress, ipAddress;
+        private string brand;
+        private string model;
+        private string serialNumber;
+        private string processor;
+        private string ram;
+        private string storageSize;
+        private string storageType;
+        private string mediaOperationMode;
+        private string videoCard;
+        private string operatingSystem;
+        private string hostname;
+        private string fwType;
+        private string fwVersion;
+        private string secureBoot;
+        private string virtualizationTechnology;
+        private string tpmVersion;
+        private string macAddress;
+        private string ipAddress;
+        private readonly string adRegistered;
 
         private void InitializeComponent()
         {
@@ -77,7 +95,6 @@ namespace AssetInformationAndRegistration
         ///<param name="ticketNumber">Helpdesk ticket number</param>
         ///<param name="agentData">Agent username and ID</param>
         ///<param name="standard">Image standard</param>
-        ///<param name="adRegistered">Active Directory registered status</param>
         ///<param name="inUse">If the asset is in use</param>
         ///<param name="sealNumber">Seal number</param>
         ///<param name="tag">If the asset has a tag</param>
@@ -85,7 +102,7 @@ namespace AssetInformationAndRegistration
         ///<param name="log">Log file object</param>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        internal CLIRegister(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string adRegistered, string inUse, string sealNumber, string tag, string hwType, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
+        internal CLIRegister(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string inUse, string sealNumber, string tag, string hwType, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             InitializeComponent();
 
@@ -100,7 +117,6 @@ namespace AssetInformationAndRegistration
             this.ticketNumber = ticketNumber;
             this.agentData = agentData;
             this.standard = standard;
-            this.adRegistered = adRegistered;
             this.inUse = inUse;
             this.sealNumber = sealNumber;
             this.tag = tag;
@@ -109,7 +125,7 @@ namespace AssetInformationAndRegistration
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
 
-            InitProc(this.serverIP, this.serverPort, this.assetNumber, this.building, this.roomNumber, this.serviceDate, this.serviceType, this.batteryChange, this.ticketNumber, this.agentData, this.standard, this.adRegistered, this.inUse, this.sealNumber, this.tag, this.hwType);
+            InitProc(this.serverIP, this.serverPort, this.assetNumber, this.building, this.roomNumber, this.serviceDate, this.serviceType, this.batteryChange, this.ticketNumber, this.agentData, this.standard, this.inUse, this.sealNumber, this.tag, this.hwType);
         }
 
         ///<summary>Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method</summary>
@@ -124,12 +140,11 @@ namespace AssetInformationAndRegistration
         ///<param name="ticketNumber">Helpdesk ticket number</param>
         ///<param name="agentData">Agent username and ID</param>
         ///<param name="standard">Image standard</param>
-        ///<param name="adRegistered">Active Directory registered status</param>
         ///<param name="inUse">If the asset is in use</param>
         ///<param name="sealNumber">Seal number</param>
         ///<param name="tag">If the asset has a tag</param>
         ///<param name="hwType">hardware type of the asset</param>
-        private async void InitProc(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string adRegistered, string inUse, string sealNumber, string tag, string hwType)
+        private async void InitProc(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string inUse, string sealNumber, string tag, string hwType)
         {
             serverAlert = new string[11];
             serverAlertBool = new bool[11];
@@ -174,7 +189,6 @@ namespace AssetInformationAndRegistration
                 StringsAndConstants.LIST_BATTERY_CLI.Contains(batteryChange) && //batteryChange
                 ticketNumber.Length <= 6 && ticketNumber.All(char.IsDigit) && //ticketNumber
                 (StringsAndConstants.LIST_STANDARD_CLI.Contains(standard) || standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //standard
-                (StringsAndConstants.LIST_ACTIVE_DIRECTORY_CLI.Contains(adRegistered) || adRegistered.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //adRegistered
                 (StringsAndConstants.LIST_IN_USE_CLI.Contains(inUse) || inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //inUse
                 ((sealNumber.Length <= 10 && sealNumber.All(char.IsDigit)) || sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //sealNumber
                 (StringsAndConstants.LIST_TAG_CLI.Contains(tag) || tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //tag
@@ -218,50 +232,41 @@ namespace AssetInformationAndRegistration
                         }
                         //building
                         building = Array.IndexOf(parametersList[2], building).ToString();
-                        //adRegistered
-                        if (adRegistered.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
-                            adRegistered = Program.SpecBinaryStates.DISABLED.ToString();
-                        }
-                        else if (adRegistered.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
-                            adRegistered = Program.SpecBinaryStates.ENABLED.ToString();
-                        }
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
                         {
-                            standard = Program.SpecBinaryStates.DISABLED.ToString();
+                            standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
                         {
-                            standard = Program.SpecBinaryStates.ENABLED.ToString();
+                            standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //batteryChange
                         if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            batteryChange = Program.SpecBinaryStates.DISABLED.ToString();
+                            batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            batteryChange = Program.SpecBinaryStates.ENABLED.ToString();
+                            batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //inUse
                         if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            inUse = Program.SpecBinaryStates.DISABLED.ToString();
+                            inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            inUse = Program.SpecBinaryStates.ENABLED.ToString();
+                            inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //tag
                         if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            tag = Program.SpecBinaryStates.DISABLED.ToString();
+                            tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            tag = Program.SpecBinaryStates.ENABLED.ToString();
+                            tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                     }
                     else //If PC Json does exist
@@ -296,19 +301,6 @@ namespace AssetInformationAndRegistration
                         building = building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
                             ? assetJsonStr[1]
                             : Array.IndexOf(parametersList[2], building).ToString();
-                        //adRegistered
-                        if (adRegistered.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
-                            adRegistered = assetJsonStr[4];
-                        }
-                        else if (adRegistered.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
-                            adRegistered = Program.SpecBinaryStates.DISABLED.ToString();
-                        }
-                        else if (adRegistered.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
-                            adRegistered = Program.SpecBinaryStates.ENABLED.ToString();
-                        }
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
@@ -316,20 +308,20 @@ namespace AssetInformationAndRegistration
                         }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
                         {
-                            standard = Program.SpecBinaryStates.DISABLED.ToString();
+                            standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
                         {
-                            standard = Program.SpecBinaryStates.ENABLED.ToString();
+                            standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //batteryChange
                         if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            batteryChange = Program.SpecBinaryStates.DISABLED.ToString();
+                            batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            batteryChange = Program.SpecBinaryStates.ENABLED.ToString();
+                            batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //inUse
                         if (inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
@@ -338,11 +330,11 @@ namespace AssetInformationAndRegistration
                         }
                         else if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            inUse = Program.SpecBinaryStates.DISABLED.ToString();
+                            inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            inUse = Program.SpecBinaryStates.ENABLED.ToString();
+                            inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //tag
                         if (tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
@@ -351,11 +343,11 @@ namespace AssetInformationAndRegistration
                         }
                         else if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
                         {
-                            tag = Program.SpecBinaryStates.DISABLED.ToString();
+                            tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
                         else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
                         {
-                            tag = Program.SpecBinaryStates.ENABLED.ToString();
+                            tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         //hwType
                         hwType = hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
@@ -379,7 +371,6 @@ namespace AssetInformationAndRegistration
                         serverArgs[8] = ticketNumber;
                         serverArgs[9] = agentData[0];
                         serverArgs[10] = standard;
-                        serverArgs[11] = adRegistered;
                         serverArgs[12] = brand;
                         serverArgs[13] = model;
                         serverArgs[14] = serialNumber;
@@ -406,6 +397,16 @@ namespace AssetInformationAndRegistration
                         DateTime d = new DateTime();
                         DateTime todayDate = DateTime.Today;
                         bool tDay;
+
+                        try
+                        {
+                            _ = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
+                            serverArgs[11] = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                        }
+                        catch
+                        {
+                            serverArgs[11] = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                        }
 
                         try //If there is database record of the asset number
                         {

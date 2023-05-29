@@ -1,0 +1,43 @@
+{
+    "Parameters": {
+        "Buildings": [
+            "Building0",
+            "Building1",
+            "Building2"
+        ],
+        "HardwareTypes": [
+            "Desktop",
+            "All-In-One",
+            "Notebook/Laptop",
+            "Tablet"
+        ],
+        "FirmwareTypes": [
+            "BIOS",
+            "UEFI"
+        ],
+        "TpmTypes": [
+            "N/A",
+            "1.2",
+            "2.0"
+        ],
+        "MediaOperationTypes": [
+            "IDE/RAID",
+            "AHCI",
+            "NVMe"
+        ],
+        "SecureBootStates": [
+            0,
+            1,
+            2
+        ],
+        "VirtualizationTechnologyStates": [
+            0,
+            1,
+            2
+        ],
+        "ServiceTypes": [
+            0,
+            1
+        ]
+    }
+}

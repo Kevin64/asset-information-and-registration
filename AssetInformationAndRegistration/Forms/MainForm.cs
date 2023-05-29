@@ -303,10 +303,6 @@ namespace AssetInformationAndRegistration
             lblFixedMandatoryRoomNumber = new System.Windows.Forms.Label();
             lblFixedMandatoryAssetNumber = new System.Windows.Forms.Label();
             lblFixedMandatoryMain = new System.Windows.Forms.Label();
-            radioButtonStudent = new System.Windows.Forms.RadioButton();
-            radioButtonEmployee = new System.Windows.Forms.RadioButton();
-            iconImgWho = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            lblFixedWho = new System.Windows.Forms.Label();
             iconImgRoomLetter = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             iconImgHwType = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             iconImgTag = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -391,7 +387,6 @@ namespace AssetInformationAndRegistration
             groupBoxAssetData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconImgTicketNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconImgBatteryChange).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconImgWho).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconImgRoomLetter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconImgHwType).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconImgTag).BeginInit();
@@ -1337,10 +1332,6 @@ namespace AssetInformationAndRegistration
             groupBoxAssetData.Controls.Add(lblFixedMandatoryRoomNumber);
             groupBoxAssetData.Controls.Add(lblFixedMandatoryAssetNumber);
             groupBoxAssetData.Controls.Add(lblFixedMandatoryMain);
-            groupBoxAssetData.Controls.Add(radioButtonStudent);
-            groupBoxAssetData.Controls.Add(radioButtonEmployee);
-            groupBoxAssetData.Controls.Add(iconImgWho);
-            groupBoxAssetData.Controls.Add(lblFixedWho);
             groupBoxAssetData.Controls.Add(iconImgRoomLetter);
             groupBoxAssetData.Controls.Add(iconImgHwType);
             groupBoxAssetData.Controls.Add(iconImgTag);
@@ -1541,39 +1532,6 @@ namespace AssetInformationAndRegistration
             resources.ApplyResources(lblFixedMandatoryMain, "lblFixedMandatoryMain");
             lblFixedMandatoryMain.ForeColor = System.Drawing.Color.Red;
             lblFixedMandatoryMain.Name = "lblFixedMandatoryMain";
-            // 
-            // radioButtonStudent
-            // 
-            resources.ApplyResources(radioButtonStudent, "radioButtonStudent");
-            radioButtonStudent.ForeColor = System.Drawing.SystemColors.ControlText;
-            radioButtonStudent.Name = "radioButtonStudent";
-            radioButtonStudent.TabStop = true;
-            radioButtonStudent.UseVisualStyleBackColor = true;
-            radioButtonStudent.CheckedChanged += new System.EventHandler(StudentButton2_CheckedChanged);
-            // 
-            // radioButtonEmployee
-            // 
-            resources.ApplyResources(radioButtonEmployee, "radioButtonEmployee");
-            radioButtonEmployee.ForeColor = System.Drawing.SystemColors.ControlText;
-            radioButtonEmployee.Name = "radioButtonEmployee";
-            radioButtonEmployee.TabStop = true;
-            radioButtonEmployee.UseVisualStyleBackColor = true;
-            radioButtonEmployee.CheckedChanged += new System.EventHandler(EmployeeButton1_CheckedChanged);
-            // 
-            // iconImgWho
-            // 
-            iconImgWho.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            resources.ApplyResources(iconImgWho, "iconImgWho");
-            iconImgWho.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            iconImgWho.Name = "iconImgWho";
-            iconImgWho.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            iconImgWho.TabStop = false;
-            // 
-            // lblFixedWho
-            // 
-            resources.ApplyResources(lblFixedWho, "lblFixedWho");
-            lblFixedWho.ForeColor = System.Drawing.SystemColors.ControlText;
-            lblFixedWho.Name = "lblFixedWho";
             // 
             // iconImgRoomLetter
             // 
@@ -2069,7 +2027,6 @@ namespace AssetInformationAndRegistration
             groupBoxAssetData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconImgTicketNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconImgBatteryChange).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconImgWho).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconImgRoomLetter).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconImgHwType).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconImgTag).EndInit();
@@ -2195,10 +2152,6 @@ namespace AssetInformationAndRegistration
         private ConfigurableQualityPictureBox iconImgVirtualizationTechnology;
         private Label lblVirtualizationTechnology;
         private Label lblFixedVirtualizationTechnology;
-        private ConfigurableQualityPictureBox iconImgWho;
-        private Label lblFixedWho;
-        private RadioButton radioButtonStudent;
-        private RadioButton radioButtonEmployee;
         private Label lblFixedMandatoryWho;
         private Label lblFixedMandatoryTag;
         private Label lblFixedMandatoryHwType;
@@ -2278,6 +2231,7 @@ namespace AssetInformationAndRegistration
         private ToolStripStatusLabel logLabelButton;
         private readonly LogGenerator log;
         private TaskbarManager tbProgMain;
+        private readonly bool adRegistered;
 
         #endregion
 
@@ -2295,24 +2249,6 @@ namespace AssetInformationAndRegistration
         private void MaintenanceButton2_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeURL = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
-        }
-
-        ///<summary>Sets service to employee</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        private void EmployeeButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBoxActiveDirectory.SelectedIndex = 1;
-            comboBoxStandard.SelectedIndex = 0;
-        }
-
-        ///<summary>Sets service to student</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        private void StudentButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            comboBoxActiveDirectory.SelectedIndex = 0;
-            comboBoxStandard.SelectedIndex = 1;
         }
 
         ///<summary>Method for auto selecting the app theme</summary>
@@ -2436,7 +2372,6 @@ namespace AssetInformationAndRegistration
             lblFixedTicketNumber.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedSecureBoot.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedVirtualizationTechnology.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblFixedWho.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedMandatoryMain.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
             lblFixedMandatoryAssetNumber.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
             lblFixedMandatoryRoomNumber.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
@@ -2515,8 +2450,6 @@ namespace AssetInformationAndRegistration
             comboBoxThemeButton.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             comboBoxThemeButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
-            radioButtonEmployee.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            radioButtonStudent.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             radioButtonFormatting.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             radioButtonMaintenance.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
@@ -2600,7 +2533,6 @@ namespace AssetInformationAndRegistration
             iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_STICKER_LIGHT_PATH));
             iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TYPE_LIGHT_PATH));
             iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_VT_X_LIGHT_PATH));
-            iconImgWho.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_WHO_LIGHT_PATH));
             iconImgSmartStatus.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SMART_LIGHT_PATH));
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_LIGHT_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_LIGHT_PATH));
@@ -2669,7 +2601,6 @@ namespace AssetInformationAndRegistration
             lblFixedTicketNumber.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedSecureBoot.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedVirtualizationTechnology.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblFixedWho.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedMandatoryMain.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
             lblFixedMandatoryAssetNumber.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
             lblFixedMandatoryRoomNumber.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
@@ -2741,8 +2672,6 @@ namespace AssetInformationAndRegistration
             comboBoxThemeButton.BackColor = StringsAndConstants.DARK_BACKGROUND;
             comboBoxThemeButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
-            radioButtonEmployee.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            radioButtonStudent.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             radioButtonFormatting.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             radioButtonMaintenance.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
@@ -2826,7 +2755,6 @@ namespace AssetInformationAndRegistration
             iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_STICKER_DARK_PATH));
             iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TYPE_DARK_PATH));
             iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_VT_X_DARK_PATH));
-            iconImgWho.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_WHO_DARK_PATH));
             iconImgSmartStatus.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SMART_DARK_PATH));
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_DARK_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_DARK_PATH));
@@ -4084,6 +4012,16 @@ namespace AssetInformationAndRegistration
 
             separatorV.BringToFront();
 
+            try
+            {
+                _ = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
+                comboBoxActiveDirectory.SelectedIndex = 0;
+            }
+            catch
+            {
+                comboBoxActiveDirectory.SelectedIndex = 1;
+            }
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_AD_REGISTERED, comboBoxActiveDirectory.SelectedItem.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             if (!offlineMode)
             {
                 lblAgentName.Text = agentData[1].ToUpper(); //Prints agent name
@@ -4872,7 +4810,7 @@ namespace AssetInformationAndRegistration
             AttrHardwareData();
 
             //If all the mandatory fields are filled and there are no pendencies
-            if (!string.IsNullOrWhiteSpace(textBoxAssetNumber.Text) && !string.IsNullOrWhiteSpace(textBoxRoomNumber.Text) && !string.IsNullOrWhiteSpace(textBoxTicketNumber.Text) && comboBoxHwType.SelectedItem != null && comboBoxBuilding.SelectedItem != null && comboBoxInUse.SelectedItem != null && comboBoxTag.SelectedItem != null && comboBoxBatteryChange.SelectedItem != null && (radioButtonEmployee.Checked || radioButtonStudent.Checked) && (radioButtonFormatting.Checked || radioButtonMaintenance.Checked) && pass == true)
+            if (!string.IsNullOrWhiteSpace(textBoxAssetNumber.Text) && !string.IsNullOrWhiteSpace(textBoxRoomNumber.Text) && !string.IsNullOrWhiteSpace(textBoxTicketNumber.Text) && comboBoxHwType.SelectedItem != null && comboBoxBuilding.SelectedItem != null && comboBoxInUse.SelectedItem != null && comboBoxTag.SelectedItem != null && comboBoxBatteryChange.SelectedItem != null && comboBoxStandard.SelectedItem != null && (radioButtonFormatting.Checked || radioButtonMaintenance.Checked) && pass == true)
             {
                 //Attribute variables to an array which will be sent to the server
                 serverArgs[0] = serverIP;
@@ -4882,14 +4820,14 @@ namespace AssetInformationAndRegistration
                 serverArgs[4] = textBoxRoomLetter.Text != string.Empty ? textBoxRoomNumber.Text + textBoxRoomLetter.Text : textBoxRoomNumber.Text;
                 serverArgs[5] = dateTimePickerServiceDate.Value.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                 serverArgs[6] = serviceTypeURL;
-                serverArgs[7] = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Program.SpecBinaryStates.ENABLED.ToString() : Program.SpecBinaryStates.DISABLED.ToString();
+                serverArgs[7] = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[8] = textBoxTicketNumber.Text;
                 serverArgs[9] = agentData[0];
-                serverArgs[10] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? Program.SpecBinaryStates.DISABLED.ToString() : Program.SpecBinaryStates.ENABLED.ToString();
-                serverArgs[11] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Program.SpecBinaryStates.ENABLED.ToString() : Program.SpecBinaryStates.DISABLED.ToString();
-                serverArgs[30] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Program.SpecBinaryStates.ENABLED.ToString() : Program.SpecBinaryStates.DISABLED.ToString();
+                serverArgs[10] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? Program.SpecBinaryStates.DISABLED.ToString() : Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                serverArgs[11] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                serverArgs[30] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[31] = textBoxSealNumber.Text;
-                serverArgs[32] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Program.SpecBinaryStates.ENABLED.ToString() : Program.SpecBinaryStates.DISABLED.ToString();
+                serverArgs[32] = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[33] = Array.IndexOf(parametersList[5], comboBoxHwType.SelectedItem.ToString()).ToString();
 
 

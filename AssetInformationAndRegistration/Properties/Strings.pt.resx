@@ -280,6 +280,9 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="INCORRECT_REGISTER_DATE" xml:space="preserve">
     <value>Data de registro anterior à data da última manutenção.</value>
   </data>
+  <data name="LOG_AD_REGISTERED" xml:space="preserve">
+    <value>Registrado no Active Directory</value>
+  </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Selecionando tema automaticamente</value>
   </data>

@@ -266,6 +266,9 @@
   <data name="lblFixedFwType.Text" xml:space="preserve">
     <value>Tipo de firmware:</value>
   </data>
+  <data name="groupBoxHwData.Text" xml:space="preserve">
+    <value>Dados do computador</value>
+  </data>
   <data name="lblFixedSmartStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
   </data>
@@ -302,14 +305,14 @@
   <data name="lblFixedStorageType.Text" xml:space="preserve">
     <value>Tipo de armazenamento:</value>
   </data>
-  <data name="groupBoxHwData.Text" xml:space="preserve">
-    <value>Dados do computador</value>
+  <data name="groupBoxAssetData.Text" xml:space="preserve">
+    <value>Dados do ativo, manutenção e de localização</value>
   </data>
   <data name="lblFixedMandatoryTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 244</value>
+    <value>367, 202</value>
   </data>
   <data name="lblFixedMandatoryBatteryChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 244</value>
+    <value>145, 202</value>
   </data>
   <data name="lblFixedTicketNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 13</value>
@@ -318,7 +321,7 @@
     <value>Nº chamado:</value>
   </data>
   <data name="lblFixedMandatoryWho.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 176</value>
+    <value>361, 150</value>
   </data>
   <data name="lblFixedMandatoryTag.Location" type="System.Drawing.Point, System.Drawing">
     <value>366, 124</value>
@@ -353,23 +356,8 @@
   <data name="lblFixedMandatoryMain.Text" xml:space="preserve">
     <value>✱ = Preenchimento obrigatório</value>
   </data>
-  <data name="radioButtonStudent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 17</value>
-  </data>
-  <data name="radioButtonStudent.Text" xml:space="preserve">
-    <value>Aluno (computador de laboratório/sala de aula)</value>
-  </data>
-  <data name="radioButtonEmployee.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 17</value>
-  </data>
-  <data name="radioButtonEmployee.Text" xml:space="preserve">
-    <value>Funcionário (computador de trabalho)</value>
-  </data>
-  <data name="lblFixedWho.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 13</value>
-  </data>
-  <data name="lblFixedWho.Text" xml:space="preserve">
-    <value>Quem usará?</value>
+  <data name="groupBoxServiceType.Text" xml:space="preserve">
+    <value>Tipo de serviço</value>
   </data>
   <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 0</value>
@@ -392,9 +380,6 @@
   <data name="radioButtonMaintenance.Text" xml:space="preserve">
     <value>Manutenção</value>
   </data>
-  <data name="groupBoxServiceType.Text" xml:space="preserve">
-    <value>Tipo de serviço</value>
-  </data>
   <data name="lblFixedAdRegistered.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 13</value>
   </data>
@@ -407,14 +392,17 @@
   <data name="lblFixedStandard.Text" xml:space="preserve">
     <value>Padrão:</value>
   </data>
-  <data name="groupBoxAssetData.Text" xml:space="preserve">
-    <value>Dados do ativo, manutenção e de localização</value>
-  </data>
   <data name="lblFixedAgentName.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
   </data>
   <data name="lblFixedAgentName.Text" xml:space="preserve">
     <value>Agente designado:</value>
+  </data>
+  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="comboBoxThemeButton.Text" xml:space="preserve">
+    <value>Tema</value>
   </data>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -434,12 +422,6 @@
   <data name="toolStripDarkTheme.Text" xml:space="preserve">
     <value>Escuro</value>
   </data>
-  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
-  </data>
-  <data name="comboBoxThemeButton.Text" xml:space="preserve">
-    <value>Tema</value>
-  </data>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 19</value>
   </data>
@@ -449,14 +431,14 @@
   <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
     <value>861, 19</value>
   </data>
-  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 50</value>
-  </data>
   <data name="groupBoxRegistryStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 64</value>
   </data>
   <data name="groupBoxRegistryStatus.Text" xml:space="preserve">
     <value>Status do cadastro</value>
+  </data>
+  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 50</value>
   </data>
   <data name="groupBoxServerStatus.Text" xml:space="preserve">
     <value>Servidor APCS</value>

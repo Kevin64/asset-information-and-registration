@@ -329,6 +329,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Active Directory registered.
+        /// </summary>
+        internal static string LOG_AD_REGISTERED {
+            get {
+                return ResourceManager.GetString("LOG_AD_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Automatically selecting theme.
         /// </summary>
         internal static string LOG_AUTOTHEME_CHANGE {
