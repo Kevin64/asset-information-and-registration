@@ -162,7 +162,7 @@
     <value>loadingCircleLoading</value>
   </data>
   <data name="&gt;&gt;loadingCircleLoading.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8524.26601, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleLoading.Parent" xml:space="preserve">
     <value>$this</value>
@@ -175,6 +175,9 @@
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>523, 52</value>

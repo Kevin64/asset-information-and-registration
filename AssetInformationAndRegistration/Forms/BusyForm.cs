@@ -1,4 +1,6 @@
 ﻿using ConstantsDLL;
+using Dark.Net;
+using HardwareInfoDLL;
 using System;
 using System.Windows.Forms;
 
@@ -7,15 +9,23 @@ namespace AssetInformationAndRegistration
     ///<summary>Class for the Busy form</summary>
     internal partial class BusyForm : Form, ITheming
     {
-        internal BusyForm()
+        internal BusyForm(bool themeBool)
         {
             InitializeComponent();
-            if (MiscMethods.ThemeInit())
+            if (themeBool)
             {
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                {
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+                }
                 DarkTheme();
             }
             else
             {
+                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                {
+                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+                }
                 LightTheme();
             }
 

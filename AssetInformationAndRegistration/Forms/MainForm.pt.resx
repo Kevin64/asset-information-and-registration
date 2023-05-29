@@ -237,10 +237,10 @@
     <value>Status operacional:</value>
   </data>
   <data name="lblFixedServerPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>89, 13</value>
   </data>
   <data name="lblFixedServerPort.Text" xml:space="preserve">
-    <value>Porta:</value>
+    <value>Número da porta:</value>
   </data>
   <data name="collectButton.Text" xml:space="preserve">
     <value>Coletar novamente</value>
@@ -265,9 +265,6 @@
   </data>
   <data name="lblFixedFwType.Text" xml:space="preserve">
     <value>Tipo de firmware:</value>
-  </data>
-  <data name="groupBoxHwData.Text" xml:space="preserve">
-    <value>Dados do computador</value>
   </data>
   <data name="lblFixedSmartStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
@@ -305,8 +302,8 @@
   <data name="lblFixedStorageType.Text" xml:space="preserve">
     <value>Tipo de armazenamento:</value>
   </data>
-  <data name="groupBoxAssetData.Text" xml:space="preserve">
-    <value>Dados do ativo, manutenção e de localização</value>
+  <data name="groupBoxHwData.Text" xml:space="preserve">
+    <value>Dados do computador</value>
   </data>
   <data name="lblFixedMandatoryTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 202</value>
@@ -356,9 +353,6 @@
   <data name="lblFixedMandatoryMain.Text" xml:space="preserve">
     <value>✱ = Preenchimento obrigatório</value>
   </data>
-  <data name="groupBoxServiceType.Text" xml:space="preserve">
-    <value>Tipo de serviço</value>
-  </data>
   <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 0</value>
   </data>
@@ -380,6 +374,9 @@
   <data name="radioButtonMaintenance.Text" xml:space="preserve">
     <value>Manutenção</value>
   </data>
+  <data name="groupBoxServiceType.Text" xml:space="preserve">
+    <value>Tipo de serviço</value>
+  </data>
   <data name="lblFixedAdRegistered.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 13</value>
   </data>
@@ -392,17 +389,20 @@
   <data name="lblFixedStandard.Text" xml:space="preserve">
     <value>Padrão:</value>
   </data>
+  <data name="groupBoxAssetData.Text" xml:space="preserve">
+    <value>Dados do ativo, manutenção e de localização</value>
+  </data>
   <data name="lblFixedAgentName.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
   </data>
   <data name="lblFixedAgentName.Text" xml:space="preserve">
     <value>Agente designado:</value>
   </data>
-  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+  <data name="lblFixedServerIP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 13</value>
   </data>
-  <data name="comboBoxThemeButton.Text" xml:space="preserve">
-    <value>Tema</value>
+  <data name="lblFixedServerIP.Text" xml:space="preserve">
+    <value>Endereço IP:</value>
   </data>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -422,6 +422,12 @@
   <data name="toolStripDarkTheme.Text" xml:space="preserve">
     <value>Escuro</value>
   </data>
+  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="comboBoxThemeButton.Text" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 19</value>
   </data>
@@ -431,14 +437,17 @@
   <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
     <value>861, 19</value>
   </data>
+  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 50</value>
+  </data>
   <data name="groupBoxRegistryStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 64</value>
   </data>
   <data name="groupBoxRegistryStatus.Text" xml:space="preserve">
     <value>Status do cadastro</value>
   </data>
-  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 50</value>
+  <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 50</value>
   </data>
   <data name="groupBoxServerStatus.Text" xml:space="preserve">
     <value>Servidor APCS</value>
