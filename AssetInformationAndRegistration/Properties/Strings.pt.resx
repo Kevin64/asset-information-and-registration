@@ -131,7 +131,7 @@
     <value>Credenciais inválidas. Tente novamente.</value>
   </data>
   <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value> (Atualizar firmware)</value>
+    <value> (Firmware desatualizado)</value>
   </data>
   <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
     <value>Versão do firmware: </value>
@@ -253,7 +253,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     • Repositório (GitHub): https://github.com/microsoft/fluentui-system-icons
     • Licença: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE</value>
   </data>
-  <data name="employee" xml:space="preserve">
+  <data name="EMPLOYEE" xml:space="preserve">
     <value>Funcionário</value>
   </data>
   <data name="FETCHING" xml:space="preserve">
@@ -272,7 +272,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value>formatação</value>
   </data>
   <data name="HOSTNAME_ALERT" xml:space="preserve">
-    <value> (Nome incorreto, alterar)</value>
+    <value> (Nome incorreto)</value>
   </data>
   <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
     <value>Não é possível registrar para uma data no futuro.</value>
@@ -461,7 +461,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value>Preencha os campos obrigatórios</value>
   </data>
   <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value> (Modo de operação incorreto, alterar)</value>
+    <value> (Modo de operação incorreto)</value>
   </data>
   <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
     <value>IDE/Legacy ou RAID</value>
@@ -503,7 +503,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value>S/ troca de pilha</value>
   </data>
   <data name="SECURE_BOOT_ALERT" xml:space="preserve">
-    <value> (Ativar secure boot)</value>
+    <value> (Secure Boot desativado)</value>
   </data>
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
     <value>Para acessar, selecione o servidor e a porta!</value>
@@ -527,6 +527,6 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value> (TPM desativado/versão incorreta)</value>
   </data>
   <data name="VT_ALERT" xml:space="preserve">
-    <value> (Ativar Tecnologia de Virtualização no firmware)</value>
+    <value> (Tecnologia de Virtualização desativada)</value>
   </data>
 </root>

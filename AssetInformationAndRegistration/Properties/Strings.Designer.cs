@@ -97,7 +97,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a (Update firmware).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a (Outdated firmware).
         /// </summary>
         internal static string BIOS_VERSION_ALERT {
             get {
@@ -275,7 +275,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Wrong firmware type).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect firmware type).
         /// </summary>
         internal static string FIRMWARE_TYPE_ALERT {
             get {
@@ -302,7 +302,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect name, change).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect name).
         /// </summary>
         internal static string HOSTNAME_ALERT {
             get {
@@ -869,7 +869,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect operating mode, change).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect operation mode).
         /// </summary>
         internal static string MEDIA_OPERATION_ALERT {
             get {
@@ -995,7 +995,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Enable secure boot).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Secure Boot disabled).
         /// </summary>
         internal static string SECURE_BOOT_ALERT {
             get {
@@ -1067,7 +1067,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Enable Virtualization Technology in firmware).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Virtualization Technology disabled).
         /// </summary>
         internal static string VT_ALERT {
             get {

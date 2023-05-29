@@ -131,7 +131,7 @@
     <value>Invalid credentials. Try again.</value>
   </data>
   <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>(Update firmware)</value>
+    <value>(Outdated firmware)</value>
   </data>
   <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
     <value>Firmware version:</value>
@@ -263,7 +263,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     <value>Collect Again</value>
   </data>
   <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
-    <value> (Wrong firmware type)</value>
+    <value> (Incorrect firmware type)</value>
   </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
     <value>Fix the following issues before proceeding:</value>
@@ -272,7 +272,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     <value>formatting</value>
   </data>
   <data name="HOSTNAME_ALERT" xml:space="preserve">
-    <value> (Incorrect name, change)</value>
+    <value> (Incorrect name)</value>
   </data>
   <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
     <value>It is not possible to register for a date in the future.</value>
@@ -461,7 +461,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     <value>Fill in the required fields</value>
   </data>
   <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value> (Incorrect operating mode, change)</value>
+    <value> (Incorrect operation mode)</value>
   </data>
   <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
     <value>IDE/Legacy or RAID</value>
@@ -503,7 +503,7 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     <value>No battery change</value>
   </data>
   <data name="SECURE_BOOT_ALERT" xml:space="preserve">
-    <value> (Enable secure boot)</value>
+    <value> (Secure Boot disabled)</value>
   </data>
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
     <value>To access, select the server and the port!</value>
@@ -527,6 +527,6 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
     <value> (TPM disabled/incorrect version)</value>
   </data>
   <data name="VT_ALERT" xml:space="preserve">
-    <value> (Enable Virtualization Technology in firmware)</value>
+    <value> (Virtualization Technology disabled)</value>
   </data>
 </root>
