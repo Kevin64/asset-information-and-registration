@@ -32,36 +32,36 @@ namespace AssetInformationAndRegistration
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CLIRegister));
-            this.webView2Control = new Microsoft.Web.WebView2.WinForms.WebView2();
-            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).BeginInit();
-            this.SuspendLayout();
+            webView2Control = new Microsoft.Web.WebView2.WinForms.WebView2();
+            ((System.ComponentModel.ISupportInitialize)webView2Control).BeginInit();
+            SuspendLayout();
             // 
             // webView2Control
             // 
-            this.webView2Control.AllowExternalDrop = true;
-            this.webView2Control.CreationProperties = null;
-            this.webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView2Control.Location = new System.Drawing.Point(12, 12);
-            this.webView2Control.Name = "webView2Control";
-            this.webView2Control.Size = new System.Drawing.Size(134, 29);
-            this.webView2Control.TabIndex = 0;
-            this.webView2Control.ZoomFactor = 1D;
+            webView2Control.AllowExternalDrop = true;
+            webView2Control.CreationProperties = null;
+            webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
+            webView2Control.Location = new System.Drawing.Point(12, 12);
+            webView2Control.Name = "webView2Control";
+            webView2Control.Size = new System.Drawing.Size(134, 29);
+            webView2Control.TabIndex = 0;
+            webView2Control.ZoomFactor = 1D;
             // 
             // CLIRegister
             // 
-            this.ClientSize = new System.Drawing.Size(158, 53);
-            this.ControlBox = false;
-            this.Controls.Add(this.webView2Control);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "CLIRegister";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            ((System.ComponentModel.ISupportInitialize)(this.webView2Control)).EndInit();
-            this.ResumeLayout(false);
+            ClientSize = new System.Drawing.Size(158, 53);
+            ControlBox = false;
+            Controls.Add(webView2Control);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "CLIRegister";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            ((System.ComponentModel.ISupportInitialize)webView2Control).EndInit();
+            ResumeLayout(false);
 
         }
 

@@ -1,8 +1,4 @@
-﻿using ConstantsDLL;
-using System.Drawing;
-using System.Windows.Forms;
-
-namespace AssetInformationAndRegistration
+﻿namespace AssetInformationAndRegistration
 {
     internal interface ITheming
     {
