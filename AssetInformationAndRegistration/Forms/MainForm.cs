@@ -4419,7 +4419,7 @@ namespace AssetInformationAndRegistration
             mediaOperationMode = HardwareInfo.GetMediaOperationMode();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MEDIAOP, mediaOperationMode, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(mediaOperationMode)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             //Scans for GPU information
             videoCard = HardwareInfo.GetVideoCardInfo();
@@ -4455,13 +4455,13 @@ namespace AssetInformationAndRegistration
             fwType = HardwareInfo.GetFwType();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_BIOSTYPE, fwType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(fwType)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             //Scans for Secure Boot status
             secureBoot = HardwareInfo.GetSecureBoot();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SECBOOT, secureBoot, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(secureBoot)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             //Scans for firmware version
             fwVersion = HardwareInfo.GetFirmwareVersion();
@@ -4473,13 +4473,13 @@ namespace AssetInformationAndRegistration
             virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VT, virtualizationTechnology, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(virtualizationTechnology)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             //Scans for TPM status
             tpmVersion = HardwareInfo.GetTPMStatus();
             i++;
             worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_TPM, tpmVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_TPM, parametersList[7][Convert.ToInt32(tpmVersion)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
         }
