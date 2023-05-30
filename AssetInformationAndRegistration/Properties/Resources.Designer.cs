@@ -61,6 +61,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a .
+        /// </summary>
+        internal static string aaaPROJECTaaa {
+            get {
+                return ResourceManager.GetString("aaaPROJECTaaa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a beta.
         /// </summary>
         internal static string DEV_STATUS {

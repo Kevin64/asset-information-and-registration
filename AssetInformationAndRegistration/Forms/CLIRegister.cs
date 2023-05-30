@@ -188,7 +188,7 @@ namespace AssetInformationAndRegistration
                         webView2Control.Dispose();
                         Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
                     }
-                    else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If PC Json does not exist
+                    else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If asset Json does not exist
                     {
                         //serviceType
                         if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
@@ -237,10 +237,12 @@ namespace AssetInformationAndRegistration
                         {
                             tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
+                        //hwType
+                        hwType = Array.IndexOf(parametersList[5], hwType).ToString();
                     }
-                    else //If PC Json does exist
+                    else //If asset Json does exist
                     {
-                        //If PC is discarded
+                        //If asset is discarded
                         if (assetJsonStr[9] == "1")
                         {
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -328,7 +330,7 @@ namespace AssetInformationAndRegistration
                     //If there are no pendencies
                     if (pass)
                     {
-                        serverArgs = new string[36];
+                        serverArgs = new string[34];
 
                         serverArgs[0] = serverIP;
                         serverArgs[1] = serverPort;
