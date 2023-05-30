@@ -2231,7 +2231,6 @@ namespace AssetInformationAndRegistration
         private ToolStripStatusLabel logLabelButton;
         private readonly LogGenerator log;
         private TaskbarManager tbProgMain;
-        private readonly bool adRegistered;
 
         #endregion
 

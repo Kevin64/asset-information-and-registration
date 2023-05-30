@@ -27,25 +27,7 @@ namespace AssetInformationAndRegistration
         private readonly List<string> enforcementList;
         private readonly string serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, standard, inUse, sealNumber, tag, hwType;
         private readonly string[] agentData;
-        private string brand;
-        private string model;
-        private string serialNumber;
-        private string processor;
-        private string ram;
-        private string storageSize;
-        private string storageType;
-        private string mediaOperationMode;
-        private string videoCard;
-        private string operatingSystem;
-        private string hostname;
-        private string fwType;
-        private string fwVersion;
-        private string secureBoot;
-        private string virtualizationTechnology;
-        private string tpmVersion;
-        private string macAddress;
-        private string ipAddress;
-        private readonly string adRegistered;
+        private string brand, model, serialNumber, processor, ram, storageSize, storageType, mediaOperationMode, videoCard, operatingSystem, hostname, fwType, fwVersion, secureBoot, virtualizationTechnology, tpmVersion, macAddress, ipAddress;
 
         private void InitializeComponent()
         {
@@ -84,43 +66,32 @@ namespace AssetInformationAndRegistration
         }
 
         ///<summary>CLI pseudo-form constructor</summary>
-        ///<param name="serverIP">Server IP address</param>
-        ///<param name="serverPort">Server port</param>
-        ///<param name="assetNumber">Asset number</param>
-        ///<param name="building">Building name</param>
-        ///<param name="roomNumber">Room number</param>
-        ///<param name="serviceDate">Date of service</param>
-        ///<param name="serviceType">Type os service</param>
-        ///<param name="batteryChange">If there was a CMOS battery change</param>
-        ///<param name="ticketNumber">Helpdesk ticket number</param>
+        ///<param name="argsArray">Arguments array</param>
         ///<param name="agentData">Agent username and ID</param>
-        ///<param name="standard">Image standard</param>
-        ///<param name="inUse">If the asset is in use</param>
-        ///<param name="sealNumber">Seal number</param>
-        ///<param name="tag">If the asset has a tag</param>
-        ///<param name="hwType">hardware type of the asset</param>
         ///<param name="log">Log file object</param>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        internal CLIRegister(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string inUse, string sealNumber, string tag, string hwType, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
+        internal CLIRegister(string[] argsArray, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             InitializeComponent();
 
-            this.serverIP = serverIP;
-            this.serverPort = serverPort;
-            this.assetNumber = assetNumber;
-            this.building = building;
-            this.roomNumber = roomNumber;
-            this.serviceDate = serviceDate;
-            this.serviceType = serviceType;
-            this.batteryChange = batteryChange;
-            this.ticketNumber = ticketNumber;
+            serverArgs = argsArray;
+
+            this.serverIP = argsArray[0];
+            this.serverPort = argsArray[1];
+            this.assetNumber = argsArray[2];
+            this.building = argsArray[3];
+            this.roomNumber = argsArray[4];
+            this.serviceDate = argsArray[5];
+            this.serviceType = argsArray[6];
+            this.batteryChange = argsArray[7];
+            this.ticketNumber = argsArray[8];
+            this.standard = argsArray[9];
+            this.inUse = argsArray[10];
+            this.sealNumber = argsArray[11];
+            this.tag = argsArray[12];
+            this.hwType = argsArray[13];
             this.agentData = agentData;
-            this.standard = standard;
-            this.inUse = inUse;
-            this.sealNumber = sealNumber;
-            this.tag = tag;
-            this.hwType = hwType;
             this.log = log;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
@@ -163,8 +134,6 @@ namespace AssetInformationAndRegistration
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             jsonServerSettings = ConfigFileReader.FetchInfoST(serverIP, serverPort);
-            parametersList[2] = jsonServerSettings[0];
-            parametersList[3] = jsonServerSettings[1];
             parametersList[4] = jsonServerSettings[0]; //Buildings
             parametersList[5] = jsonServerSettings[1]; //Hw Types
             parametersList[6] = jsonServerSettings[2]; //Firmware Types
@@ -182,8 +151,8 @@ namespace AssetInformationAndRegistration
             if (serverIP.Length <= 15 && serverIP.Length > 6 && //serverIP
                 serverPort.Length <= 5 && serverPort.All(char.IsDigit) && //serverPort
                 assetNumber.Length <= 6 && assetNumber.Length >= 0 && assetNumber.All(char.IsDigit) && //assetNumber
-                (parametersList[2].Contains(building) || building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
-                ((roomNumber.Length <= 4 && serverArgs[4].Length > 0 && roomNumber.All(char.IsDigit)) || roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
+                (parametersList[4].Contains(building) || building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
+                ((roomNumber.Length <= 4 && roomNumber.Length > 0 && roomNumber.All(char.IsDigit)) || roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
                 ((serviceDate.Length == 10 && DateTime.TryParseExact(serviceDate, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || serviceDate.Equals(ConstantsDLL.Properties.Resources.TODAY)) && //serviceDate
                 StringsAndConstants.LIST_MODE_CLI.Contains(serviceType) && //serviceType
                 StringsAndConstants.LIST_BATTERY_CLI.Contains(batteryChange) && //batteryChange
@@ -192,7 +161,7 @@ namespace AssetInformationAndRegistration
                 (StringsAndConstants.LIST_IN_USE_CLI.Contains(inUse) || inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //inUse
                 ((sealNumber.Length <= 10 && sealNumber.All(char.IsDigit)) || sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //sealNumber
                 (StringsAndConstants.LIST_TAG_CLI.Contains(tag) || tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //tag
-                (parametersList[3].Contains(hwType) || hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
+                (parametersList[5].Contains(hwType) || hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                 serverOnline = await ModelFileReader.CheckHostMT(serverIP, serverPort);
@@ -231,7 +200,7 @@ namespace AssetInformationAndRegistration
                             serviceType = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
                         }
                         //building
-                        building = Array.IndexOf(parametersList[2], building).ToString();
+                        building = Array.IndexOf(parametersList[4], building).ToString();
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
                         {
@@ -300,7 +269,7 @@ namespace AssetInformationAndRegistration
                         //building
                         building = building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
                             ? assetJsonStr[1]
-                            : Array.IndexOf(parametersList[2], building).ToString();
+                            : Array.IndexOf(parametersList[4], building).ToString();
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                         {
@@ -352,7 +321,7 @@ namespace AssetInformationAndRegistration
                         //hwType
                         hwType = hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
                             ? assetJsonStr[8]
-                            : Array.IndexOf(parametersList[3], hwType).ToString();
+                            : Array.IndexOf(parametersList[5], hwType).ToString();
                     }
                     PrintHardwareData();
 
