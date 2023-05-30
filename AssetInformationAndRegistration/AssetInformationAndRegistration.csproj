@@ -276,6 +276,9 @@
       <Name>MRG.Controls.UI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="PostBuildMacros">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
