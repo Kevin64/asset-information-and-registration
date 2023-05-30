@@ -27,19 +27,13 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 ## Screens
 
-### Login window in light and dark modes, respectively:
+### Main window in dark mode (light mode available):
 
-![AIR-v4 0 0 2306_9voXdXA4wJ](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1df7689a-0b02-46fa-b642-fdc5b7b00458)
-![AIR-v4 0 0 2306_pMXDjd3E9t](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/f725e71c-4764-41fc-bc56-5d8e052ae62f)
-
-### Main window in light and dark modes, respectively:
-
-![AIR-v4 0 0 2306_GNVz5s1vXI](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/799dbcda-e77a-450e-9376-b3204d37e771)
-![AIR-v4 0 0 2306_x8wB2wWxGa](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/6f26447f-6c60-4c23-b50e-8e51d09a327c)
+![AIR-v4 0 0 2306_HtGbuHjpNz](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/0259c905-ba92-40cb-81b9-4ac23439f3f7)
 
 ### When some specifications are not compliant:
 
-![AIR-v4 0 0 2306_aUoKMgwhcy](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/43e18bdc-14a5-42fc-8e5b-3d8ae780cb62)
+![AIR_AGkqyPkVKi](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/d19f9776-c3cb-4b18-994f-658cb3533c03)
 
 ### CLI switches
 
@@ -63,7 +57,7 @@ Required aspect ratio for proper image showing, without stretching:
 
 ### Set default switches and settings
 
-Modifying the contents of `[Parameters]` section allows to set some switches as default when running AIR in CLI mode, as well as set the log file location and theming. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
+Modifying the contents of `[Parameters]` section allows to set some settings as default, like setting the log file location, theming and default APCS server IP/Port access. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
 
 ```ini
 [Parameters]
@@ -75,7 +69,7 @@ ThemeUI=Auto
 
 ### Flexible enforcement
 
-AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, open the 'definitions.ini' file and modify the `[Enforcement]` section. Keys are self explanatory.
+AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, modify the `[Enforcement]` section. Keys are self explanatory.
 
 ```ini
 [Enforcement]
@@ -89,3 +83,13 @@ SecureBootEnforcement=true
 VirtualizationTechnologyEnforcement=true
 TpmEnforcement=true
 ```
+
+## Output in APCS
+
+After finishing, your asset will be recorded on the APCS database and will show on queries.
+
+### General asset list
+![firefox_FPGod3qbhq](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/583c4d25-ce7b-4716-939c-9410598423fd)
+
+### Asset details 
+![Web capture_30-5-2023_15910_localhost](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/33abcd34-b94f-4822-a736-8504e7ca6c05)
