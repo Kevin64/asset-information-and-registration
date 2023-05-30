@@ -47,13 +47,35 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 ## Offline mode
 
-This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default).
+This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default). AIR running in CLI do not support 'offline mode'.
 
-AIR running in CLI do not support 'offline mode'.
+## Customization
 
-## Flexible enforcement
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of `[Parameters]` to change some AIR settings, edit the contents of `[Enforcement]` to choose what settings you want to standardize, and edit the contents of `[OrgData]` section to change the organization names/acronyms.
 
-AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, open the 'definitions.ini' file and modify the [Enforcement] section. Keys are self explanatory.
+### Pictures aspect ratio
+
+Required aspect ratio for proper image showing, without stretching:
+
+- Login window banner - 2:1
+- Main window banner - 12:1
+- Iconography - 1:1
+
+### Set default switches and settings
+
+Modifying the contents of `[Parameters]` section allows to set some switches as default when running AIR in CLI mode, as well as set the log file location and theming. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
+
+```ini
+[Parameters]
+LogLocation=C:\AppLog\
+ServerIP=192.168.1.1,localhost
+ServerPort=8080,80
+ThemeUI=Auto
+```
+
+### Flexible enforcement
+
+AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, open the 'definitions.ini' file and modify the `[Enforcement]` section. Keys are self explanatory.
 
 ```ini
 [Enforcement]
@@ -67,15 +89,3 @@ SecureBootEnforcement=true
 VirtualizationTechnologyEnforcement=true
 TpmEnforcement=true
 ```
-
-## Customization
-
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of [OrgData] section to change the organization names/acronyms, and the contents of [Parameters] to change some AIR settings. The program supports Light/Dark theme enforcement too.
-
-Required aspect ratio for proper image showing, without stretching:
-
-- Login window banner - 2:1
-
-- Main window banner - 12:1
-
-- Iconography - 1:1
