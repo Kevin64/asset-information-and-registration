@@ -29,26 +29,25 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 ### Login window in light and dark modes, respectively:
 
-![AIR-v4 0 0 2305_4CZVnzcUka](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/edf72a6e-d0b9-4cb1-9e0d-637163a6b5d7)
-![AIR-v4 0 0 2305_4vj9v8PRr5](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/e35ab7ee-c449-4055-8ab6-1785016a9402)
+![AIR-v4 0 0 2306_9voXdXA4wJ](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1df7689a-0b02-46fa-b642-fdc5b7b00458)
+![AIR-v4 0 0 2306_pMXDjd3E9t](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/f725e71c-4764-41fc-bc56-5d8e052ae62f)
 
 ### Main window in light and dark modes, respectively:
 
-![AIR-v4 0 0 2305_w8rt5f8bIR](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/fc5dbf4c-af28-4771-a25c-1c64a627e173)
-![AIR-v4 0 0 2305_OIwWJJc1iK](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/0a338266-4248-42b2-a2ef-5c6ffadeafcb)
+![AIR-v4 0 0 2306_GNVz5s1vXI](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/799dbcda-e77a-450e-9376-b3204d37e771)
+![AIR-v4 0 0 2306_x8wB2wWxGa](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/6f26447f-6c60-4c23-b50e-8e51d09a327c)
 
 ### When some specifications are not compliant:
 
-![AIR-v4 0 0 2305_0ahVutDPlE](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/ed0a8127-eb83-41d7-8478-617ab063bc16)
-
+![AIR-v4 0 0 2306_aUoKMgwhcy](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/43e18bdc-14a5-42fc-8e5b-3d8ae780cb62)
 
 ### CLI switches
 
-![cmd_vudLBXaV4X](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1cd649a8-fefd-4c9a-a893-65b5186dcf12)
+![cmd_W9coG7aNjA](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/e91d057f-82f0-4e4e-b4ca-2249e6a818ab)
 
 ## Offline mode
 
-This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger).
+This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default).
 
 AIR running in CLI do not support 'offline mode'.
 
@@ -68,6 +67,7 @@ SecureBootEnforcement=true
 VirtualizationTechnologyEnforcement=true
 TpmEnforcement=true
 ```
+
 ## Customization
 
 AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of [OrgData] section to change the organization names/acronyms, and the contents of [Parameters] to change some AIR settings. The program supports Light/Dark theme enforcement too.
