@@ -36,11 +36,6 @@ namespace AssetInformationAndRegistration
         private readonly string[] serverArgs = new string[34], agentData = new string[2];
         private readonly List<string[]> parametersList, jsonServerSettings;
         private readonly List<string> enforcementList, orgDataList;
-        private Timer timerFwVersionLabelScroll;
-        private Timer timerVideoCardLabelScroll;
-        private Timer timerRamLabelScroll;
-        private Timer timerProcessorLabelScroll;
-        private Timer timerOSLabelScroll;
 
         ///<summary>Main form constructor</summary>
         ///<param name="offlineMode">Offline mode set</param>
@@ -2231,6 +2226,11 @@ namespace AssetInformationAndRegistration
         private ToolStripStatusLabel logLabelButton;
         private readonly LogGenerator log;
         private TaskbarManager tbProgMain;
+        private Timer timerFwVersionLabelScroll;
+        private Timer timerVideoCardLabelScroll;
+        private Timer timerRamLabelScroll;
+        private Timer timerProcessorLabelScroll;
+        private Timer timerOSLabelScroll;
 
         #endregion
 

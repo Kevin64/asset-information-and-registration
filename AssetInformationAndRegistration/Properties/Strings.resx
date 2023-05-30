@@ -131,7 +131,7 @@
     <value>Invalid credentials. Try again.</value>
   </data>
   <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>(Outdated firmware)</value>
+    <value> (Outdated firmware)</value>
   </data>
   <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
     <value>Firmware version:</value>
