@@ -23,7 +23,7 @@ The software scans various aspects of a computer hardware and configuration, suc
 - **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is disabled on UEFI capable systems)
 - **TPM version** - enforced by default (alerts if the trusted platform module is not on the right version for a given hardware model)
 
-After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server, that supplies a JSON file with the stardard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
+After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server, that supplies a JSON file with the stardard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
 
 ## Screens
 
@@ -41,7 +41,7 @@ After the scan, AIR checks with the <a href=https://github.com/Kevin64/asset-and
 
 ## Offline mode
 
-This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the <a href=https://github.com/Kevin64/asset-and-personnel-control-system>APCS</a> server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default). AIR running in CLI do not support 'offline mode'.
+This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default). AIR running in CLI do not support 'offline mode'.
 
 ## Customization
 
@@ -93,3 +93,68 @@ After finishing, your asset will be recorded on the APCS database and will show 
 
 ### Asset details 
 ![Web capture_30-5-2023_15910_localhost](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/33abcd34-b94f-4822-a736-8504e7ca6c05)
+
+## Third-party code and assets
+
+This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers. These components are listed below and in the README on the repository's GitHub page.
+
+#### Configurable Quality PictureBox (credits to Jason D)
+   - [URL](https://stackoverflow.com/a/1774592/16838132)
+
+#### Custom Flat ComboBox (credits to Reza Aghaei)
+   - [URL](https://stackoverflow.com/a/65976649/16838132)
+
+#### CommandLineParser
+   - Copyright © 2005 - 2015 Giacomo Stelluti Scala & Contributors
+   - [Repository (GitHub)](https://github.com/commandlineparser/commandline)
+   - [License: (MIT)](https://github.com/commandlineparser/commandline/blob/master/License.md)
+
+#### ini parser
+   - Copyright © 2008 Ricardo Amores Hernández
+   - [Repository (GitHub)](https://github.com/rickyah/ini-parser)
+   - [License: (MIT)](https://github.com/rickyah/ini-parser/blob/master/LICENSE)
+
+#### Microsoft.Web.WebView2
+   - Copyright © Microsoft Corporation. All rights reserved.
+   - [URL](https://learn.microsoft.com/pt-br/microsoft-edge/webview2/)
+   - [License](https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License)
+
+#### System.Buffers, System.Memory, System.Numerics.Vectors, System.Runtime.CompilerServices.Unsafe
+   - Copyright (c) .NET Foundation and Contributors
+   - [URL](https://dot.net/)
+   - [License: (MIT)](https://github.com/dotnet/corefx/blob/master/LICENSE.TXT)
+
+#### WindowsAPICodePack
+   - Copyright © Microsoft Corporation. All rights reserved.
+   - [Repository (GitHub)](https://github.com/aybe/Windows-API-Code-Pack-1.1)
+   - [License](https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE)
+
+#### PowerShellStandard.Library
+   - Copyright © Microsoft Corporation.
+   - [Repository (GitHub)](https://github.com/PowerShell/PowerShellStandard)
+   - [License: (MIT)](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt)
+
+#### LoadingCircle (credits to Martin Gagne)
+   - [URL](https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET)
+   - [License: (CPOL)](https://www.codeproject.com/info/cpol10.aspx)
+
+#### Newtonsoft.Json
+   - Copyright © 2007 James Newton-King
+   - [Repository (GitHub)](https://github.com/JamesNK/Newtonsoft.Json)
+   - [License: (MIT)](https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md)
+
+#### BCrypt.Net-Next
+   - Copyright © 2006 Damien Miller djm@mindrot.org (jBCrypt)
+   - Copyright © 2013 Ryan D. Emerle (.Net port)
+   - Copyright © 2016/2021 Chris McKee (.Net-core port / patches)
+   - [Repository (GitHub)](https://github.com/BcryptNet/bcrypt.net)
+   - [License: (MIT)](https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt)
+
+#### DarkNet (credits to Ben Hutchison)
+   - [Repository (GitHub)](https://github.com/Aldaviva/DarkNet)
+   - [License: (Apache-2.0)](https://github.com/Aldaviva/DarkNet/blob/master/License.txt)
+
+#### fluentui-system-icons
+   - Copyright © 2020 Microsoft Corporation.
+   - [Repository (GitHub)](https://github.com/microsoft/fluentui-system-icons)
+   - [License: (MIT)](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE)
