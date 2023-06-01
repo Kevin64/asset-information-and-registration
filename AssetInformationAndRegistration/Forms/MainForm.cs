@@ -4822,7 +4822,7 @@ namespace AssetInformationAndRegistration
                 serverArgs[7] = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[8] = textBoxTicketNumber.Text;
                 serverArgs[9] = agentData[0];
-                serverArgs[10] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? Program.SpecBinaryStates.DISABLED.ToString() : Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                serverArgs[10] = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                 serverArgs[11] = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[30] = comboBoxInUse.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 serverArgs[31] = textBoxSealNumber.Text;
