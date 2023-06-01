@@ -89,13 +89,6 @@ namespace AssetInformationAndRegistration
             ENABLED
         }
 
-        public enum ExitCodes
-        {
-            SUCCESS,
-            WARNING,
-            ERROR
-        }
-
         ///<summary>Passes args to auth method and then to register class, otherwise informs auth error and closes the program</summary>
         ///<param name="opts">Argument list</param>
         private static void RunOptions(Options opts)
@@ -123,13 +116,13 @@ namespace AssetInformationAndRegistration
                 else
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.AUTH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                    Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                 }
             }
             catch
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
 
@@ -296,7 +289,7 @@ namespace AssetInformationAndRegistration
                     if (!int.TryParse(returnCode, out int returnCodeInt))
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_WEBVIEW2_INSTALLED, string.Empty, showCLIOutput);
                 }
@@ -343,12 +336,12 @@ namespace AssetInformationAndRegistration
                     if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(Program.ExitCodes.SUCCESS));
+                        Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));
                     }
                     else
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                 }
             }
@@ -357,14 +350,14 @@ namespace AssetInformationAndRegistration
                 Console.WriteLine(ConstantsDLL.Properties.Strings.LOG_DEFFILE_NOT_FOUND + ": " + e.Message);
                 Console.WriteLine(ConstantsDLL.Properties.Strings.KEY_FINISH);
                 Console.ReadLine();
-                Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
             catch (FormatException e) //If definition file was malformed, but the logfile is not created (log path is undefined)
             {
                 Console.WriteLine(ConstantsDLL.Properties.Strings.PARAMETER_ERROR + ": " + e.Message);
                 Console.WriteLine(ConstantsDLL.Properties.Strings.KEY_FINISH);
                 Console.ReadLine();
-                Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
     }

@@ -186,7 +186,7 @@ namespace AssetInformationAndRegistration
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.LOG_SAMEWORD_NOFIRSTREGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                         webView2Control.Dispose();
-                        Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                     else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If asset Json does not exist
                     {
@@ -247,7 +247,7 @@ namespace AssetInformationAndRegistration
                         {
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                             webView2Control.Dispose();
-                            Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                            Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                         }
                         //serviceType
                         if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
@@ -413,7 +413,7 @@ namespace AssetInformationAndRegistration
                                 {
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INCORRECT_FUTURE_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                                     webView2Control.Dispose();
-                                    Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR));
+                                    Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                                 }
 
                                 serverArgs[5] = serviceDate;
@@ -439,7 +439,7 @@ namespace AssetInformationAndRegistration
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                                 webView2Control.Dispose(); //Kills WebView2 instance
-                                Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR)); //Exits
+                                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR)); //Exits
                             }
                         }
                         catch //If there is no database record of the asset number
@@ -485,21 +485,21 @@ namespace AssetInformationAndRegistration
                             }
                         }
                         webView2Control.Dispose(); //Kills WebView2 instance
-                        Environment.Exit(Convert.ToInt32(Program.ExitCodes.WARNING)); //Exits
+                        Environment.Exit(Convert.ToInt32(ExitCodes.WARNING)); //Exits
                     }
                 }
                 else
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     webView2Control.Dispose(); //Kills WebView2 instance
-                    Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR)); //Exits
+                    Environment.Exit(Convert.ToInt32(ExitCodes.ERROR)); //Exits
                 }
             }
             else
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                 webView2Control.Dispose(); //Kills WebView2 instance
-                Environment.Exit(Convert.ToInt32(Program.ExitCodes.ERROR)); //Exits
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR)); //Exits
             }
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_CLI, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -510,7 +510,7 @@ namespace AssetInformationAndRegistration
             File.Delete(StringsAndConstants.ASSET_FILE_PATH);
             File.Delete(StringsAndConstants.CONFIG_FILE_PATH);
             webView2Control.NavigationCompleted += WebView2_NavigationCompleted;
-            Environment.Exit(Convert.ToInt32(Program.ExitCodes.SUCCESS)); //Exits
+            Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS)); //Exits
         }
 
         ///<summary>Checks if WebView2 navigation is finished</summary>
@@ -521,7 +521,7 @@ namespace AssetInformationAndRegistration
             if (e.IsSuccess)
             {
                 webView2Control.Dispose(); //Kills instance
-                Environment.Exit(Convert.ToInt32(Program.ExitCodes.SUCCESS)); //Exits
+                Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS)); //Exits
             }
         }
 
