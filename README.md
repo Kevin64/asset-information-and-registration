@@ -96,7 +96,7 @@ After finishing, your asset will be recorded on the APCS database and will show 
 
 ## Third-party code and assets
 
-This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers. These components are listed below and in the README on the repository's GitHub page.
+This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers:
 
 #### Configurable Quality PictureBox (credits to Jason D)
    - [URL](https://stackoverflow.com/a/1774592/16838132)
