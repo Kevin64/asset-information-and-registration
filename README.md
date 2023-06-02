@@ -92,7 +92,7 @@ After finishing, your asset will be recorded on the APCS database and will show 
 ![firefox_FPGod3qbhq](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/583c4d25-ce7b-4716-939c-9410598423fd)
 
 ### Asset details 
-![Web capture_30-5-2023_15910_localhost](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/33abcd34-b94f-4822-a736-8504e7ca6c05)
+![Untitled](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/579d604f-cc2c-45ea-8448-3d0af7fbe360)
 
 ## Third-party code and assets
 
