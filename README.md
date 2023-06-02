@@ -1,6 +1,7 @@
 # Asset Information and Registration (AIR)
 
-<img align="right" width="150" height="150" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/bb30c6cc-a0f0-4732-bae9-d1208fd77394)/>
+<img align="right" width="150" height="150" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/44bdf179-9c9a-410f-9be4-7808627053c3 />
+
 
 AIR is a program designed to scan a PC configuration and then registering into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (empoloyee or intern) and cannot check for compliance on each asset individually.
 The software scans various aspects of a computer hardware and configuration, such:
@@ -29,15 +30,15 @@ After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-
 
 ### Main window in dark mode (light mode available):
 
-![AIR-v4 0 0 2306_HtGbuHjpNz](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/0259c905-ba92-40cb-81b9-4ac23439f3f7)
+![AIR-v4 0 0 2306_HtGbuHjpNz](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/9945a21b-4e83-4cfe-8957-5a962302fa7d)
 
 ### When some specifications are not compliant:
 
-![AIR_AGkqyPkVKi](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/d19f9776-c3cb-4b18-994f-658cb3533c03)
+![AIR_AGkqyPkVKi](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/a823e28b-8334-4c69-b077-33137591d770)
 
 ### CLI switches
 
-![cmd_W9coG7aNjA](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/e91d057f-82f0-4e4e-b4ca-2249e6a818ab)
+![cmd_cYxsfZnoZH](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/e7c7bd6f-815f-4567-bcbb-78c3343b1834)
 
 ## Offline mode
 
@@ -89,10 +90,12 @@ TpmEnforcement=true
 After finishing, your asset will be recorded on the APCS database and will show on queries.
 
 ### General asset list
-![firefox_FPGod3qbhq](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/583c4d25-ce7b-4716-939c-9410598423fd)
+
+![firefox_FPGod3qbhq](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/57a52e2f-96cc-4927-887e-f0a7f9ce3da7)
 
 ### Asset details 
-![Untitled](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/579d604f-cc2c-45ea-8448-3d0af7fbe360)
+
+![Untitled](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/af30b7ac-4c05-4f08-aeff-4ec7e79245c0)
 
 ## Third-party code and assets
 
