@@ -1,11 +1,12 @@
-﻿using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Misc;
+using AssetInformationAndRegistration.Properties;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Threading.Tasks;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.WebView
 {
     internal static class SendData
     {

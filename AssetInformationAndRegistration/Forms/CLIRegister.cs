@@ -1,7 +1,8 @@
-﻿using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Misc;
+using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.WebView;
 using ConstantsDLL;
 using HardwareInfoDLL;
-using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
@@ -12,7 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Forms
 {
     ///<summary>Class for CLI asset registering</summary>
     internal class CLIRegister : Form
@@ -77,26 +78,26 @@ namespace AssetInformationAndRegistration
 
             serverArgs = argsArray;
 
-            this.serverIP = argsArray[0];
-            this.serverPort = argsArray[1];
-            this.assetNumber = argsArray[2];
-            this.building = argsArray[3];
-            this.roomNumber = argsArray[4];
-            this.serviceDate = argsArray[5];
-            this.serviceType = argsArray[6];
-            this.batteryChange = argsArray[7];
-            this.ticketNumber = argsArray[8];
-            this.standard = argsArray[9];
-            this.inUse = argsArray[10];
-            this.sealNumber = argsArray[11];
-            this.tag = argsArray[12];
-            this.hwType = argsArray[13];
+            serverIP = argsArray[0];
+            serverPort = argsArray[1];
+            assetNumber = argsArray[2];
+            building = argsArray[3];
+            roomNumber = argsArray[4];
+            serviceDate = argsArray[5];
+            serviceType = argsArray[6];
+            batteryChange = argsArray[7];
+            ticketNumber = argsArray[8];
+            standard = argsArray[9];
+            inUse = argsArray[10];
+            sealNumber = argsArray[11];
+            tag = argsArray[12];
+            hwType = argsArray[13];
             this.agentData = agentData;
             this.log = log;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
 
-            InitProc(this.serverIP, this.serverPort, this.assetNumber, this.building, this.roomNumber, this.serviceDate, this.serviceType, this.batteryChange, this.ticketNumber, this.agentData, this.standard, this.inUse, this.sealNumber, this.tag, this.hwType);
+            InitProc(serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, this.agentData, standard, inUse, sealNumber, tag, hwType);
         }
 
         ///<summary>Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method</summary>
@@ -133,7 +134,7 @@ namespace AssetInformationAndRegistration
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            jsonServerSettings = ConfigFileReader.FetchInfoST(serverIP, serverPort);
+            jsonServerSettings = JsonFileReaderDLL.ConfigFileReader.FetchInfoST(serverIP, serverPort);
             parametersList[4] = jsonServerSettings[0]; //Buildings
             parametersList[5] = jsonServerSettings[1]; //Hw Types
             parametersList[6] = jsonServerSettings[2]; //Firmware Types
@@ -164,7 +165,7 @@ namespace AssetInformationAndRegistration
                 (parametersList[5].Contains(hwType) || hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                serverOnline = await ModelFileReader.CheckHostMT(serverIP, serverPort);
+                serverOnline = await JsonFileReaderDLL.ModelFileReader.CheckHostMT(serverIP, serverPort);
                 if (serverOnline && serverPort != string.Empty)
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SERVER_DETAIL, serverIP + ":" + serverPort, true);
@@ -180,7 +181,7 @@ namespace AssetInformationAndRegistration
                         assetNumber = HardwareInfo.GetHostname().Substring(3);
                     }
 
-                    string[] assetJsonStr = AssetFileReader.FetchInfoST(assetNumber, serverIP, serverPort);
+                    string[] assetJsonStr = JsonFileReaderDLL.AssetFileReader.FetchInfoST(assetNumber, serverIP, serverPort);
                     //If asset Json does not exist and there are some 'same' cmd switch word
                     if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                     {
@@ -535,7 +536,7 @@ namespace AssetInformationAndRegistration
             try
             {
                 //Feches model info from server
-                string[] modelJsonStr = ModelFileReader.FetchInfoST(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
+                string[] modelJsonStr = JsonFileReaderDLL.ModelFileReader.FetchInfoST(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
 
                 //If hostname is the default one and its enforcement is enabled
                 if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && hostname.Equals(Strings.DEFAULT_HOSTNAME))

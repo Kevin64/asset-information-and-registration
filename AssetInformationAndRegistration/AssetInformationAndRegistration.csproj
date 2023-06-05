@@ -84,6 +84,9 @@
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=6.0.0.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.6.0.0\lib\netstandard2.0\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
@@ -111,21 +114,17 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AboutBox.pt.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AboutBox.pt.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AboutBox1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AboutBox.resx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\BusyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\BusyForm.Designer.cs">
       <DependentUpon>BusyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdateCheckerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateCheckerForm.Designer.cs">
+      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CustomColors.cs" />
     <Compile Include="Misc\CustomFlatCombo.cs">
@@ -161,9 +160,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.pt.resx</DependentUpon>
     </Compile>
-    <Compile Include="WebView2\SendData.cs" />
+    <Compile Include="Updater\UpdateChecker.cs" />
+    <Compile Include="WebView\SendData.cs" />
     <Compile Include="Interfaces\ITheming.cs" />
-    <Compile Include="WebView2\WebView2Installer.cs" />
+    <Compile Include="WebView\WebView2Installer.cs" />
     <EmbeddedResource Include="Forms\AboutBox.pt.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -197,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateCheckerForm.pt.resx">
+      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateCheckerForm.resx">
+      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

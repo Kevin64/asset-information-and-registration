@@ -1,8 +1,9 @@
-﻿using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
+using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using System;
@@ -12,7 +13,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Forms
 {
     ///<summary>Class for handling Login tasks and UI</summary>
     internal partial class LoginForm : Form, ITheming
@@ -195,6 +196,7 @@ namespace AssetInformationAndRegistration
             AuthButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             AuthButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             AuthButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            AuthButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 
             checkBoxOfflineMode.BackColor = StringsAndConstants.DARK_BACKGROUND;
             checkBoxOfflineMode.ForeColor = StringsAndConstants.DARK_FORECOLOR;
@@ -358,7 +360,7 @@ namespace AssetInformationAndRegistration
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                 //Feches login data from server
-                agentsJsonStr = await CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                agentsJsonStr = await JsonFileReaderDLL.CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
 
                 //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
@@ -442,12 +444,12 @@ namespace AssetInformationAndRegistration
         ///<param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox(parametersList, themeBool);
+            AboutBox aForm = new AboutBox(parametersList, themeBool);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
-                DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
+                DarkNet.Instance.SetWindowThemeForms(aForm, Theme.Auto);
             }
-            _ = aboutForm.ShowDialog();
+            _ = aForm.ShowDialog();
         }
     }
 }

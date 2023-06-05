@@ -1,4 +1,4 @@
-﻿namespace AssetInformationAndRegistration
+﻿namespace AssetInformationAndRegistration.Interfaces
 {
     internal interface ITheming
     {

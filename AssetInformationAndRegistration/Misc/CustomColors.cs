@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Misc
 {
     public class CustomColors
     {

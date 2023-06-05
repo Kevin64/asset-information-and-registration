@@ -168,7 +168,7 @@
     <value>39, 180</value>
   </data>
   <data name="lblFixedUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+    <value>38, 13</value>
   </data>
   <data name="lblFixedUsername.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -242,9 +242,9 @@
   <data name="&gt;&gt;AuthButton.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
+  </metadata>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 17</value>
   </data>
@@ -298,7 +298,7 @@
     <value>imgTopBanner</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Parent" xml:space="preserve">
     <value>$this</value>
@@ -403,7 +403,7 @@
     <value>loadingCircleAuthButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -427,7 +427,7 @@
     <value>iconImgUsername</value>
   </data>
   <data name="&gt;&gt;iconImgUsername.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgUsername.Parent" xml:space="preserve">
     <value>$this</value>
@@ -451,7 +451,7 @@
     <value>iconImgServerPort</value>
   </data>
   <data name="&gt;&gt;iconImgServerPort.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServerPort.Parent" xml:space="preserve">
     <value>$this</value>
@@ -475,7 +475,7 @@
     <value>iconImgServerIP</value>
   </data>
   <data name="&gt;&gt;iconImgServerIP.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServerIP.Parent" xml:space="preserve">
     <value>$this</value>
@@ -499,7 +499,7 @@
     <value>iconImgPassword</value>
   </data>
   <data name="&gt;&gt;iconImgPassword.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8504.23152, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgPassword.Parent" xml:space="preserve">
     <value>$this</value>
@@ -520,7 +520,7 @@
     <value>comboBoxServerPort</value>
   </data>
   <data name="&gt;&gt;comboBoxServerPort.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, IT-Asset-Registration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxServerPort.Parent" xml:space="preserve">
     <value>$this</value>
@@ -541,7 +541,7 @@
     <value>comboBoxServerIP</value>
   </data>
   <data name="&gt;&gt;comboBoxServerIP.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, IT-Asset-Registration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxServerIP.Parent" xml:space="preserve">
     <value>$this</value>
@@ -582,9 +582,9 @@
   <data name="&gt;&gt;textBoxFixedLoginIntro.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>

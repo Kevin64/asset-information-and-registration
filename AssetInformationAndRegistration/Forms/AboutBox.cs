@@ -1,4 +1,6 @@
-﻿using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
@@ -6,17 +8,24 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Forms
 {
     ///<summary>Class for About box</summary>
     internal partial class AboutBox : Form, ITheming
     {
+        private readonly List<string[]> parametersList;
+        private readonly bool themeBool;
+
         ///<summary>About form constructor</summary>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="themeBool">Theme mode</param>
         internal AboutBox(List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
+
+            this.parametersList = parametersList;
+            this.themeBool = themeBool;
+
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
 #if DEBUG
@@ -67,6 +76,7 @@ namespace AssetInformationAndRegistration
             labelCopyright.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             labelCompanyName.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
 
+            checkUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             okButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
 
             textBoxDescription.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
@@ -82,9 +92,14 @@ namespace AssetInformationAndRegistration
             labelCopyright.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             labelCompanyName.ForeColor = StringsAndConstants.DARK_FORECOLOR;
 
+            checkUpdateButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            checkUpdateButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            checkUpdateButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            checkUpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             okButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             okButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             okButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 
             textBoxDescription.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
@@ -155,5 +170,10 @@ namespace AssetInformationAndRegistration
             }
         }
         #endregion
+
+        private void CheckUpdateButton_Click(object sender, System.EventArgs e)
+        {
+            UpdateChecker.Check(parametersList, themeBool);
+        }
     }
 }

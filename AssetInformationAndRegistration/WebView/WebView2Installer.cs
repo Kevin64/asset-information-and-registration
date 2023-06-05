@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Net;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.WebView
 {
     ///<summary>Class for handling WebView2 install tasks</summary>
     internal static class WebView2Installer

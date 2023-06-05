@@ -1,10 +1,12 @@
-﻿using ConstantsDLL;
+﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
+using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using System;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Forms
 {
     ///<summary>Class for the Busy form</summary>
     internal partial class BusyForm : Form, ITheming

@@ -1,4 +1,7 @@
-﻿using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Forms;
+using AssetInformationAndRegistration.Misc;
+using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.WebView;
 using CommandLine;
 using ConstantsDLL;
 using Dark.Net;
@@ -6,7 +9,6 @@ using HardwareInfoDLL;
 using IniParser;
 using IniParser.Exceptions;
 using IniParser.Model;
-using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
@@ -104,7 +106,7 @@ namespace AssetInformationAndRegistration
             }
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            string[] agentsJsonStr = CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
+            string[] agentsJsonStr = JsonFileReaderDLL.CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
                 if (agentsJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)

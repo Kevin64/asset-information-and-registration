@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace AssetInformationAndRegistration
+namespace AssetInformationAndRegistration.Misc
 {
     ///<summary>Class that allows changing the progressbar color</summary>
     public static class ModifyProgressBarColor
