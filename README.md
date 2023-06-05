@@ -161,3 +161,8 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
    - Copyright © 2020 Microsoft Corporation.
    - [Repository (GitHub)](https://github.com/microsoft/fluentui-system-icons)
    - [License: (MIT)](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE)
+
+#### Octokit
+   - Copyright (c) 2017 GitHub, Inc.
+   - [Repository (GitHub)](https://github.com/octokit/octokit.net)
+   - [License: (MIT)](https://github.com/octokit/octokit.net/blob/main/LICENSE.txt)
