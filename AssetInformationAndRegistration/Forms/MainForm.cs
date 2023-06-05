@@ -2942,7 +2942,7 @@ namespace AssetInformationAndRegistration.Forms
         ///<param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox(parametersList, themeBool);
+            AboutBox aboutForm = new AboutBox(log, parametersList, themeBool);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);

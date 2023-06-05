@@ -3,6 +3,7 @@ using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
+using LogGeneratorDLL;
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,13 @@ namespace AssetInformationAndRegistration.Forms
     public partial class UpdateCheckerForm : Form, ITheming
     {
         private readonly string currentVersion, newVersion, changelog, url;
+        private readonly LogGenerator log;
 
         ///<summary>Updater form constructor</summary>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="themeBool">Theme mode</param>
         ///<param name="releases">GitHub release information</param>
-        public UpdateCheckerForm(List<string[]> parametersList, bool themeBool, Release releases)
+        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, bool themeBool, Release releases)
         {
             InitializeComponent();
 
@@ -27,6 +29,7 @@ namespace AssetInformationAndRegistration.Forms
             newVersion = releases.TagName;
             changelog = releases.Body;
             url = releases.HtmlUrl;
+            this.log = log;
 
             if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
             {
@@ -57,30 +60,31 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Loads the form, sets labels if there is an update</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        private void UpdateChangelog_Load(object sender, EventArgs e)
+        ///<summary>Compares versions and sets labels if there is an update</summary>
+        ///<returns>True is there is a new version, false otherwise</returns>
+        public bool IsThereANewVersion()
         {
+            lblOldVersion.Text = currentVersion;
+            lblNewVersion.Text = newVersion;
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
                     lblNewVersion.Visible = true;
                     downloadButton.Visible = true;
-                    break;
+                    return true;
                 default:
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;
                     lblNewVersion.Visible = false;
                     downloadButton.Visible = false;
-                    break;
+                    return false;
             }
-            lblOldVersion.Text = currentVersion;
-            lblNewVersion.Text = newVersion;
         }
 
         ///<summary>Opens the GitHub url in the browser</summary>
@@ -88,7 +92,7 @@ namespace AssetInformationAndRegistration.Forms
         ///<param name="e"></param>
         private void downloadButton_Click(object sender, EventArgs e)
         {
-            //log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             _ = System.Diagnostics.Process.Start(url);
         }
 
@@ -97,6 +101,7 @@ namespace AssetInformationAndRegistration.Forms
         ///<param name="e"></param>
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             Close();
         }
 

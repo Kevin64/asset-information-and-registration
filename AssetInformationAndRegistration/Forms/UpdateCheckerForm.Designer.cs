@@ -111,7 +111,6 @@
             this.MinimizeBox = false;
             this.Name = "UpdateCheckerForm";
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.UpdateChangelog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

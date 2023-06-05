@@ -1,4 +1,6 @@
-﻿namespace AssetInformationAndRegistration.Forms
+﻿using AssetInformationAndRegistration.Misc;
+
+namespace AssetInformationAndRegistration.Forms
 {
     partial class LoginForm
     {

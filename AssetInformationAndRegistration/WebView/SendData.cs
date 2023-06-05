@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace AssetInformationAndRegistration.WebView
 {
+    ///<summary>Class for SendData</summary>
     internal static class SendData
     {
         /** !!Labels!!

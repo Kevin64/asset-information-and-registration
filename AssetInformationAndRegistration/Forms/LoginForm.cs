@@ -1,6 +1,7 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
@@ -108,6 +109,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
+            UpdateChecker.Check(log, parametersList, themeBool, true);
         }
 
         public void LightTheme()
@@ -444,7 +446,7 @@ namespace AssetInformationAndRegistration.Forms
         ///<param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aForm = new AboutBox(parametersList, themeBool);
+            AboutBox aForm = new AboutBox(log, parametersList, themeBool);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aForm, Theme.Auto);

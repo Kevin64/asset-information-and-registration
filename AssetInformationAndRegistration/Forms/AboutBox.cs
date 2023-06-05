@@ -4,6 +4,8 @@ using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
+using LogGeneratorDLL;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
@@ -15,16 +17,20 @@ namespace AssetInformationAndRegistration.Forms
     {
         private readonly List<string[]> parametersList;
         private readonly bool themeBool;
+        private readonly LogGenerator log;
 
         ///<summary>About form constructor</summary>
         ///<param name="parametersList">List containing data from [Parameters]</param>
         ///<param name="themeBool">Theme mode</param>
-        internal AboutBox(List<string[]> parametersList, bool themeBool)
+        internal AboutBox(LogGenerator log, List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
 
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_OPENING_ABOUTBOX, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
             this.parametersList = parametersList;
             this.themeBool = themeBool;
+            this.log = log;
 
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
@@ -171,9 +177,12 @@ namespace AssetInformationAndRegistration.Forms
         }
         #endregion
 
+        ///<summary>Triggers an update check</summary>
+        ///<param name="sender"></param>
+        ///<param name="e"></param>
         private void CheckUpdateButton_Click(object sender, System.EventArgs e)
         {
-            UpdateChecker.Check(parametersList, themeBool);
+            UpdateChecker.Check(log, parametersList, themeBool, false);
         }
     }
 }
