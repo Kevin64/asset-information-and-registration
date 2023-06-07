@@ -97,6 +97,10 @@ After finishing, your asset will be recorded on the APCS database and will show 
 
 ![Untitled](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/af30b7ac-4c05-4f08-aeff-4ec7e79245c0)
 
+## Build from scratch
+
+If you want to build AIR from source code, you'll also need to clone its [Dependencies](https://github.com/Kevin64/Dependencies).
+
 ## Third-party code and assets
 
 This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers:
