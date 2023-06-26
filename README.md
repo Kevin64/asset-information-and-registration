@@ -3,15 +3,17 @@
 <img align="right" width="150" height="150" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/44bdf179-9c9a-410f-9be4-7808627053c3 />
 
 
-AIR is a program designed to scan a PC configuration and then registering into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (empoloyee or intern) and cannot check for compliance on each asset individually.
+AIR is a program designed to scan a PC configuration and then register into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (employee or intern) and cannot check for compliance on each asset individually.
+
 The software scans various aspects of a computer hardware and configuration, such:
+
 - **Brand**
 - **Model**
 - **Serial Number**
 - **Processor (CPU)**
-- **RAM** - enforced by default (alerts if RAM amount is too high ou too low for x86 or x64 systems respectively)
+- **RAM** - enforced by default (alerts if the RAM amount is too high or too low for x86 or x64 systems respectively)
 - **Total storage size**
-- **S.M.A.R.T. status** - enforced by default (alerts if the storage device is not healty, according to the OS built-in S.M.A.R.T. reporting)
+- **S.M.A.R.T. status** - enforced by default (alerts if the storage device is not healthy, according to the OS built-in S.M.A.R.T. reporting)
 - **Storage type**
 - **SATA/M.2 operation mode** - enforced by default (alerts if the storage devices are not operating in the correct mode for a given hardware model)
 - **Video card (GPU)**
@@ -22,9 +24,9 @@ The software scans various aspects of a computer hardware and configuration, suc
 - **Firmware version** - enforced by default (alerts if the firmware is not updated for a given hardware model)
 - **Secure Boot status** - enforced by default (alerts if the secure boot is disabled on UEFI capable systems)
 - **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is disabled on UEFI capable systems)
-- **TPM version** - enforced by default (alerts if the trusted platform module is not on the right version for a given hardware model)
+- **TPM version** - enforced by default (alerts if the trusted platform module is not in the right version for a given hardware model)
 
-After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server, that supplies a JSON file with the stardard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
+After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server, that supplies a JSON file with the standard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
 
 ## Screens
 
@@ -42,7 +44,7 @@ After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-
 
 ## Offline mode
 
-This software has an 'offline mode', which is used for test the scanning process (mostly for debugging purposes), when the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server is not available. On this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default). AIR running in CLI do not support 'offline mode'.
+This software has an 'offline mode', which is used for testing the scanning process (mostly for debugging purposes), when the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server is not available. In this mode, all but one alert triggers are disabled, because there is nothing to compare to (RAM alert will still trigger by default). AIR running in CLI does not support 'offline mode'.
 
 ## Customization
 
@@ -58,7 +60,7 @@ Required aspect ratio for proper image showing, without stretching:
 
 ### Set default switches and settings
 
-Modifying the contents of `[Parameters]` section allows to set some settings as default, like setting the log file location, theming and default APCS server IP/Port access. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
+Modifying the contents of the `[Parameters]` section allows you to set some settings as default, like setting the log file location, theming and default APCS server IP/Port access. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
 
 ```ini
 [Parameters]
@@ -70,7 +72,7 @@ ThemeUI=Auto
 
 ### Flexible enforcement
 
-AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change this parameters, modify the `[Enforcement]` section. Keys are self explanatory.
+AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change these parameters, modify the `[Enforcement]` section. The keys are self-explanatory.
 
 ```ini
 [Enforcement]
@@ -87,7 +89,7 @@ TpmEnforcement=true
 
 ## Output in APCS
 
-After finishing, your asset will be recorded on the APCS database and will show on queries.
+After finishing, your asset will be recorded on the APCS database and will be shown on queries.
 
 ### General asset list
 
@@ -103,7 +105,7 @@ If you want to build AIR from source code, you'll also need to clone its [Depend
 
 ## Third-party code and assets
 
-This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers:
+This software and its libraries (DLLs) use art, Open Source libraries and loose code from third parties. All credits go to their respective creators and maintainers:
 
 #### Configurable Quality PictureBox (credits to Jason D)
    - [URL](https://stackoverflow.com/a/1774592/16838132)
