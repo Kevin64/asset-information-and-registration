@@ -192,7 +192,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void CheckUpdateButton_Click(object sender, System.EventArgs e)
         {
-            UpdateChecker.Check(ghc, log, parametersList, themeBool, false);
+            UpdateChecker.Check(ghc, log, parametersList, themeBool, false, false);
         }
     }
 }

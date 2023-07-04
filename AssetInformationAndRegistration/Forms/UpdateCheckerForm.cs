@@ -78,7 +78,7 @@ namespace AssetInformationAndRegistration.Forms
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
@@ -86,7 +86,7 @@ namespace AssetInformationAndRegistration.Forms
                     downloadButton.Visible = true;
                     return true;
                 default:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;

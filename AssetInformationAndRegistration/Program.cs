@@ -1,6 +1,7 @@
 ﻿using AssetInformationAndRegistration.Forms;
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.Updater;
 using AssetInformationAndRegistration.WebView;
 using CommandLine;
 using ConstantsDLL;
@@ -34,6 +35,7 @@ namespace AssetInformationAndRegistration
         private static List<string[]> parametersListSection;
         private static List<string> orgDataListSection, enforcementListSection;
         private static LogGenerator log;
+        private static Octokit.GitHubClient ghc;
 
         /// <summary> 
         /// Command line switch options specification
@@ -119,7 +121,7 @@ namespace AssetInformationAndRegistration
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    Application.Run(new CLIRegister(argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection));
+                    Application.Run(new CLIRegister(ghc, argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection));
                 }
                 else
                 {
@@ -149,7 +151,7 @@ namespace AssetInformationAndRegistration
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            Octokit.GitHubClient ghc = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR));
+            ghc = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR));
 
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
@@ -276,10 +278,12 @@ namespace AssetInformationAndRegistration
 #if DEBUG
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.DEV_STATUS, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
+                UpdateChecker.Check(ghc, log, parametersListSection, false, false, true);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
+                UpdateChecker.Check(ghc, log, parametersListSection, false, false, true);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)

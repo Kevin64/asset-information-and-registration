@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Updater
@@ -40,7 +41,7 @@ namespace AssetInformationAndRegistration.Updater
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="themeBool">Theme mode</param>
         /// <param name="autoCheck">Toggle for update autocheck</param>
-        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool themeBool, bool autoCheck)
+        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool themeBool, bool autoCheck, bool cliMode)
         {
             try
             {
@@ -82,15 +83,36 @@ namespace AssetInformationAndRegistration.Updater
                     };
                 }
 
-                UpdateCheckerForm uForm = new UpdateCheckerForm(log, parametersList, themeBool, ui);
-                bool isUpdated = uForm.IsThereANewVersion();
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                if (!cliMode)
                 {
-                    DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
+                    UpdateCheckerForm uForm = new UpdateCheckerForm(log, parametersList, themeBool, ui);
+                    bool isUpdated = uForm.IsThereANewVersion();
+                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                    {
+                        DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
+                    }
+                    if ((!isUpdated && !autoCheck) || isUpdated)
+                    {
+                        _ = uForm.ShowDialog();
+                    }
                 }
-                if ((!isUpdated && !autoCheck) || isUpdated)
+                else
                 {
-                    _ = uForm.ShowDialog();
+                    string newVersion, changelog, url, currentVersion;
+                    newVersion = ui.TagName;
+                    changelog = ui.Body;
+                    url = ui.HtmlUrl;
+                    currentVersion = Misc.MiscMethods.Version();
+
+                    switch (newVersion.CompareTo(currentVersion))
+                    {
+                        case 1:
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                            break;
+                        default:
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                            break;
+                    }
                 }
             }
             catch (Exception e) when (e is ApiException || e is HttpRequestException)

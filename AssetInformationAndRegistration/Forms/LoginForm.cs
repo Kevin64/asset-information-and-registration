@@ -115,7 +115,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-            UpdateChecker.Check(ghc, log, parametersList, themeBool, true);
+            UpdateChecker.Check(ghc, log, parametersList, themeBool, true, false);
         }
 
         public void LightTheme()
