@@ -22,7 +22,9 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for handling Main window tasks and UI</summary>
+    /// <summary> 
+    /// Class for handling Main window tasks and UI
+    /// </summary>
     internal partial class MainForm : Form, ITheming
     {
         private int percent, i = 0, leftBound, rightBound;
@@ -38,17 +40,20 @@ namespace AssetInformationAndRegistration.Forms
         private readonly string[] serverArgs = new string[34], agentData = new string[2];
         private readonly List<string[]> parametersList, jsonServerSettings;
         private readonly List<string> enforcementList, orgDataList;
+        private readonly Octokit.GitHubClient ghc;
 
-        ///<summary>Main form constructor</summary>
-        ///<param name="offlineMode">Offline mode set</param>
-        ///<param name="agentData">Agent name and id gotten from the Login form</param>
-        ///<param name="serverIP">Server IP address</param>
-        ///<param name="serverPort">Server port</param>
-        ///<param name="log">Log file object</param>
-        ///<param name="parametersList">List containing data from [Parameters]</param>
-        ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        ///<param name="orgDataList">List containing data from [OrgData]</param>
-        internal MainForm(bool offlineMode, string[] agentData, string serverIP, string serverPort, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
+        /// <summary> 
+        /// Main form constructor
+        /// </summary>
+        /// <param name="offlineMode">Offline mode set</param>
+        /// <param name="agentData">Agent name and id gotten from the Login form</param>
+        /// <param name="serverIP">Server IP address</param>
+        /// <param name="serverPort">Server port</param>
+        /// <param name="log">Log file object</param>
+        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="enforcementList">List containing data from [Enforcement]</param>
+        /// <param name="orgDataList">List containing data from [OrgData]</param>
+        internal MainForm(Octokit.GitHubClient ghc, bool offlineMode, string[] agentData, string serverIP, string serverPort, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
         {
             //Inits WinForms components
             InitializeComponent();
@@ -101,6 +106,7 @@ namespace AssetInformationAndRegistration.Forms
                 themeBool = true;
             }
 
+            this.ghc = ghc;
             this.serverIP = serverIP;
             this.serverPort = serverPort;
             this.log = log;
@@ -2236,23 +2242,29 @@ namespace AssetInformationAndRegistration.Forms
 
         #endregion
 
-        ///<summary>Sets service mode to format</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Sets service mode to format
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormatButton1_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeURL = ConstantsDLL.Properties.Resources.FORMAT_URL;
         }
 
-        ///<summary>Sets service mode to maintenance</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Sets service mode to maintenance
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MaintenanceButton2_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeURL = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
         }
 
-        ///<summary>Method for auto selecting the app theme</summary>
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
         private void ComboBoxThemeInit()
         {
             themeBool = MiscMethods.ThemeInit();
@@ -2274,18 +2286,22 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Method for setting the auto theme via toolStrip</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Method for setting the auto theme via toolStrip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             ComboBoxThemeInit();
         }
 
-        ///<summary>Method for setting the light theme via toolStrip</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Method for setting the light theme via toolStrip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_LIGHTMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -2297,9 +2313,11 @@ namespace AssetInformationAndRegistration.Forms
             themeBool = false;
         }
 
-        ///<summary>Method for setting the dark theme via toolStrip</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Method for setting the dark theme via toolStrip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_DARKMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -2762,17 +2780,21 @@ namespace AssetInformationAndRegistration.Forms
             iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TICKET_DARK_PATH));
         }
 
-        ///<summary>Sets highlight about label when hovering with the mouse</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Sets highlight about label when hovering with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutLabel_MouseEnter(object sender, EventArgs e)
         {
             aboutLabelButton.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
         }
 
-        ///<summary>Allow to OS label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Allow to OS label to slide left to right (and vice versa) if it is longer than its parent groupbox width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerOSLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosOS + lblOperatingSystem.Width > rightBound && invertOSScroll == false)
@@ -2796,9 +2818,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Allow to firmware version label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Allow to firmware version label to slide left to right (and vice versa) if it is longer than its parent groupbox width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerFwVersionLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosFwVersion + lblFwVersion.Width > rightBound && invertFwVersionScroll == false)
@@ -2822,9 +2846,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Allow to video card label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Allow to video card label to slide left to right (and vice versa) if it is longer than its parent groupbox width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerVideoCardLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosVideoCard + lblVideoCard.Width > rightBound && invertVideoCardScroll == false)
@@ -2848,9 +2874,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Allow to RAM label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Allow to RAM label to slide left to right (and vice versa) if it is longer than its parent groupbox width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerRamLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosRam + lblRam.Width > rightBound && invertRamScroll == false)
@@ -2874,9 +2902,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Allow to processor label to slide left to right (and vice versa) if it is longer than its parent groupbox width</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Allow to processor label to slide left to right (and vice versa) if it is longer than its parent groupbox width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimerProcessorLabelScroll_Tick(object sender, EventArgs e)
         {
             if (xPosProcessor + lblProcessor.Width > rightBound && invertProcessorScroll == false)
@@ -2900,33 +2930,41 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Resets highlight about label when hovering with the mouse</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Resets highlight about label when hovering with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutLabel_MouseLeave(object sender, EventArgs e)
         {
             aboutLabelButton.ForeColor = !themeBool ? StringsAndConstants.LIGHT_FORECOLOR : StringsAndConstants.DARK_FORECOLOR;
         }
 
-        ///<summary>Sets highlight log label when hovering with the mouse</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Sets highlight log label when hovering with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogLabel_MouseEnter(object sender, EventArgs e)
         {
             logLabelButton.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
         }
 
-        ///<summary>Resets highlight log label when hovering with the mouse</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Resets highlight log label when hovering with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogLabel_MouseLeave(object sender, EventArgs e)
         {
             logLabelButton.ForeColor = !themeBool ? StringsAndConstants.LIGHT_FORECOLOR : StringsAndConstants.DARK_FORECOLOR;
         }
 
-        ///<summary>Opens the log file</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Opens the log file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogLabelButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -2937,12 +2975,14 @@ namespace AssetInformationAndRegistration.Forms
 #endif
         }
 
-        ///<summary>Opens the About box</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Opens the About box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aboutForm = new AboutBox(log, parametersList, themeBool);
+            AboutBox aboutForm = new AboutBox(ghc, log, parametersList, themeBool);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
@@ -2950,18 +2990,22 @@ namespace AssetInformationAndRegistration.Forms
             _ = aboutForm.ShowDialog();
         }
 
-        ///<summary>Opens the selected webpage, according to the IP and port specified in the comboboxes</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Opens the selected webpage, according to the IP and port specified in the comboboxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ApcsButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             _ = System.Diagnostics.Process.Start(ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
         }
 
-        ///<summary>Handles the closing of the current form</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_MAINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -2981,10 +3025,12 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        ///<returns>Returns a asynchronous task</returns>
+        /// <summary> 
+        /// Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Returns a asynchronous task</returns>
         private async void MainForm_Load(object sender, EventArgs e)
         {
             #region Define loading circle parameters
@@ -4035,9 +4081,11 @@ namespace AssetInformationAndRegistration.Forms
             CollectButton_Click(sender, e); //Start collecting
         }
 
-        ///<summary>Restricts textbox4 only with chars</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Restricts textbox4 only with chars
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxCharsOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back))
@@ -4046,9 +4094,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Restricts textbox only with numbers</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Restricts textbox only with numbers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxNumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || (e.KeyChar == (char)Keys.Back)))
@@ -4057,9 +4107,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Sets the Hostname label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the Hostname label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextHostname(object myObject, EventArgs myEventArgs)
         {
             lblHostname.ForeColor = lblHostname.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4069,9 +4121,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the MediaOperations label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the MediaOperations label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextMediaOperationMode(object myobject, EventArgs myEventArgs)
         {
             lblMediaOperationMode.ForeColor = lblMediaOperationMode.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4081,9 +4135,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the Secure Boot label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the Secure Boot label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextSecureBoot(object myobject, EventArgs myEventArgs)
         {
             lblSecureBoot.ForeColor = lblSecureBoot.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4093,9 +4149,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the VT label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the VT label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextVirtualizationTechnology(object myobject, EventArgs myEventArgs)
         {
             lblVirtualizationTechnology.ForeColor = lblVirtualizationTechnology.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4105,9 +4163,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the SMART label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the SMART label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextSmartStatus(object myobject, EventArgs myEventArgs)
         {
             lblSmartStatus.ForeColor = lblSmartStatus.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4117,9 +4177,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the BIOS Version label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the BIOS Version label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void FlashTextFwVersion(object myobject, EventArgs myEventArgs)
         {
             lblFwVersion.ForeColor = lblFwVersion.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4129,9 +4191,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the Mac and IP labels to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the Mac and IP labels to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void FlashTextNetConnectivity(object myobject, EventArgs myEventArgs)
         {
             if (lblMacAddress.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true)
@@ -4151,9 +4215,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Sets the Firmware Type label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the Firmware Type label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void FlashTextBIOSType(object myobject, EventArgs myEventArgs)
         {
             lblFwType.ForeColor = lblFwType.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4163,9 +4229,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the Physical Memory label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the Physical Memory label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextRamAmount(object myobject, EventArgs myEventArgs)
         {
             lblRam.ForeColor = lblRam.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4175,9 +4243,11 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Sets the TPM label to flash in red</summary>
-        ///<param name="myObject"></param>
-        ///<param name="myEventArgs"></param>
+        /// <summary> 
+        /// Sets the TPM label to flash in red
+        /// </summary>
+        /// <param name="myObject"></param>
+        /// <param name="myEventArgs"></param>
         private void AlertFlashTextTpmVersion(object myobject, EventArgs myEventArgs)
         {
             lblTpmVersion.ForeColor = lblTpmVersion.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
@@ -4187,8 +4257,10 @@ namespace AssetInformationAndRegistration.Forms
                 : StringsAndConstants.ALERT_COLOR;
         }
 
-        ///<summary>Starts the collection process</summary>
-        ///<returns>Returns a asynchronous task</returns>
+        /// <summary> 
+        /// Starts the collection process
+        /// </summary>
+        /// <returns>Returns a asynchronous task</returns>
         private async void Collecting()
         {
             #region Writes a dash in the labels, while scanning the hardware
@@ -4340,16 +4412,20 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Auxiliary method for progress bar</summary>
-        ///<param name="k">Progress bar step</param>
-        ///<returns>Percentage</returns>
+        /// <summary> 
+        /// Auxiliary method for progress bar
+        /// </summary>
+        /// <param name="k">Progress bar step</param>
+        /// <returns>Percentage</returns>
         private int ProgressAuxFunction(int k)
         {
             return k * 100 / progressBar1.Maximum;
         }
 
-        ///<summary>Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar</summary>
-        ///<param name="worker"></param>
+        /// <summary> 
+        /// Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar
+        /// </summary>
+        /// <param name="worker"></param>
         private void CollectThread(BackgroundWorker worker)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4486,8 +4562,10 @@ namespace AssetInformationAndRegistration.Forms
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
         }
 
-        ///<summary>Prints the collected data into the form labels, warning the agent when there are forbidden modes</summary>
-        ///<returns>Returns a asynchronous task</returns>
+        /// <summary> 
+        /// Prints the collected data into the form labels, warning the agent when there are forbidden modes
+        /// </summary>
+        /// <returns>Returns a asynchronous task</returns>
         private async Task PrintHardwareData()
         {
             #region Hides loading circles after scanning the hardware
@@ -4705,9 +4783,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Triggers when the form opens, and when the agent clicks to collect</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Triggers when the form opens, and when the agent clicks to collect
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CollectButton_Click(object sender, EventArgs e)
         {
             progressBar1.SetState(1);
@@ -4721,9 +4801,11 @@ namespace AssetInformationAndRegistration.Forms
             StartAsync(sender, e);
         }
 
-        ///<summary>Starts the worker for threading</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Starts the worker for threading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartAsync(object sender, EventArgs e)
         {
             if (backgroundWorker1.IsBusy != true)
@@ -4732,18 +4814,22 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Runs the collectThread method in a separate thread</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Runs the collectThread method in a separate thread
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             CollectThread(worker);
         }
 
-        ///<summary>Draws the collection progress on the screen</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Draws the collection progress on the screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             percent = e.ProgressPercentage * progressBar1.Maximum / 100;
@@ -4752,10 +4838,12 @@ namespace AssetInformationAndRegistration.Forms
             lblProgressBarPercent.Text = e.ProgressPercentage.ToString() + "%";
         }
 
-        ///<summary>Runs when the collection ends, ending the thread</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        ///<returns>Returns a asynchronous task</returns>
+        /// <summary> 
+        /// Runs when the collection ends, ending the thread
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <returns>Returns a asynchronous task</returns>
         private async void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Task p = PrintHardwareData();
@@ -4771,7 +4859,9 @@ namespace AssetInformationAndRegistration.Forms
             collectButton.Text = Strings.FETCH_AGAIN; //Updates collect button text
         }
 
-        ///<summary>Attributes the data collected previously to the variables which will inside the URL for registration</summary>
+        /// <summary> 
+        /// Attributes the data collected previously to the variables which will inside the URL for registration
+        /// </summary>
         private void AttrHardwareData()
         {
             serverArgs[12] = brand;
@@ -4794,9 +4884,11 @@ namespace AssetInformationAndRegistration.Forms
             serverArgs[29] = ipAddress;
         }
 
-        ///<summary>Runs the registration for the website</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Runs the registration for the website
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void RegisterButton_ClickAsync(object sender, EventArgs e)
         {
             webView2Control.Visible = false;
@@ -4861,7 +4953,7 @@ namespace AssetInformationAndRegistration.Forms
 
                                 if (radioButtonFormatting.Checked) //If the format radio button is checked
                                 {
-                                    MiscMethods.RegCreate(true, serverArgs[5]); //Create reg entries for format and maintenance
+                                    MiscMethods.RegCreateDateData(true, serverArgs[5]); //Create reg entries for format and maintenance
                                     lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4869,7 +4961,7 @@ namespace AssetInformationAndRegistration.Forms
                                 }
                                 else if (radioButtonMaintenance.Checked) //If the maintenance radio button is checked
                                 {
-                                    MiscMethods.RegCreate(false, serverArgs[5]); //Create reg entry just for maintenance
+                                    MiscMethods.RegCreateDateData(false, serverArgs[5]); //Create reg entry just for maintenance
                                     lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                                 }
@@ -4892,7 +4984,7 @@ namespace AssetInformationAndRegistration.Forms
 
                             if (radioButtonFormatting.Checked) //If the format radio button is checked
                             {
-                                MiscMethods.RegCreate(true, serverArgs[5]); //Create reg entries for format and maintenance
+                                MiscMethods.RegCreateDateData(true, serverArgs[5]); //Create reg entries for format and maintenance
                                 lblInstallSince.Text = MiscMethods.SinceLabelUpdate(true);
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4902,7 +4994,7 @@ namespace AssetInformationAndRegistration.Forms
                             }
                             else if (radioButtonMaintenance.Checked) //If the maintenance radio button is checked
                             {
-                                MiscMethods.RegCreate(false, serverArgs[5]); //Create reg entry just for maintenance
+                                MiscMethods.RegCreateDateData(false, serverArgs[5]); //Create reg entry just for maintenance
                                 lblMaintenanceSince.Text = MiscMethods.SinceLabelUpdate(false);
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 

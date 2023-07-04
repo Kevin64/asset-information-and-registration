@@ -8,11 +8,15 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for the Busy form</summary>
+    /// <summary> 
+    /// Class for the Busy form
+    /// </summary>
     internal partial class BusyForm : Form, ITheming
     {
-        ///<summary>Busy form constructor</summary>
-        ///<param name="themeBool">Theme mode</param>
+        /// <summary> 
+        /// Busy form constructor
+        /// </summary>
+        /// <param name="themeBool">Theme mode</param>
         internal BusyForm(bool themeBool)
         {
             InitializeComponent();

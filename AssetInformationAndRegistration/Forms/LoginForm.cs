@@ -16,7 +16,9 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for handling Login tasks and UI</summary>
+    /// <summary> 
+    /// Class for handling Login tasks and UI
+    /// </summary>
     internal partial class LoginForm : Form, ITheming
     {
         private readonly bool themeBool;
@@ -26,17 +28,21 @@ namespace AssetInformationAndRegistration.Forms
         private readonly List<string> enforcementList, orgDataList;
         private TaskbarManager tbProgLogin;
         private MainForm mForm;
+        private readonly Octokit.GitHubClient ghc;
 
-        ///<summary>Login form constructor</summary>
-        ///<param name="log">Log file object</param>
-        ///<param name="parametersList">List containing data from [Parameters]</param>
-        ///<param name="enforcementList">List containing data from [Enforcement]</param>
-        ///<param name="orgDataList">List containing data from [OrgData]</param>
-        internal LoginForm(LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
+        /// <summary> 
+        /// Login form constructor
+        /// </summary>
+        /// <param name="log">Log file object</param>
+        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="enforcementList">List containing data from [Enforcement]</param>
+        /// <param name="orgDataList">List containing data from [OrgData]</param>
+        internal LoginForm(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
         {
             //Inits WinForms components
             InitializeComponent();
 
+            this.ghc = ghc;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
             this.orgDataList = orgDataList;
@@ -109,7 +115,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-            UpdateChecker.Check(log, parametersList, themeBool, true);
+            UpdateChecker.Check(ghc, log, parametersList, themeBool, true);
         }
 
         public void LightTheme()
@@ -222,9 +228,11 @@ namespace AssetInformationAndRegistration.Forms
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_DARK_PATH));
         }
 
-        ///<summary>Loads the form, sets some combobox values</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Loads the form, sets some combobox values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginForm_Load(object sender, EventArgs e)
         {
             #region Define loading circle parameters
@@ -304,9 +312,11 @@ namespace AssetInformationAndRegistration.Forms
             tbProgLogin = TaskbarManager.Instance;
         }
 
-        ///<summary>Handles the closing of the current form</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_LOGINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -323,9 +333,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Checks the username/password and shows the main form</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Checks the username/password and shows the main form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void AuthButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -336,7 +348,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(true, offStr, null, null, log, parametersList, enforcementList, orgDataList);
+                mForm = new MainForm(ghc, true, offStr, null, null, log, parametersList, enforcementList, orgDataList);
                 if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -383,7 +395,7 @@ namespace AssetInformationAndRegistration.Forms
                     else //If Login Json file does exist and agent logs in
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        MainForm mForm = new MainForm(false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
+                        MainForm mForm = new MainForm(ghc, false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
                         if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -420,9 +432,11 @@ namespace AssetInformationAndRegistration.Forms
             checkBoxOfflineMode.Checked = false;
         }
 
-        ///<summary>Handles the offline mode toggle</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Handles the offline mode toggle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOfflineMode.Checked)
@@ -441,12 +455,14 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Opens the About box</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Opens the About box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aForm = new AboutBox(log, parametersList, themeBool);
+            AboutBox aForm = new AboutBox(ghc, log, parametersList, themeBool);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
                 DarkNet.Instance.SetWindowThemeForms(aForm, Theme.Auto);

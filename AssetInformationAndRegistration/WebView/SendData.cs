@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace AssetInformationAndRegistration.WebView
 {
-    ///<summary>Class for SendData</summary>
+    /// <summary> 
+    /// Class for SendData
+    /// </summary>
     internal static class SendData
     {
         /** !!Labels!!
@@ -48,11 +50,13 @@ namespace AssetInformationAndRegistration.WebView
           * serverArgs[33](hwType)
           */
 
-        ///<summary>Sends hardware info to the specified server</summary>
-        ///<param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
-        ///<param name="log">Log file object</param>
-        ///<param name="consoleOut">Toggle for CLI output</param>
-        ///<param name="webView2Control">Webview2 control</param>
+        /// <summary> 
+        /// Sends hardware info to the specified server
+        /// </summary>
+        /// <param name="serverArgs">Array containing asset information, which will be sent to server via GET method</param>
+        /// <param name="log">Log file object</param>
+        /// <param name="consoleOut">Toggle for CLI output</param>
+        /// <param name="webView2Control">Webview2 control</param>
         internal static void ServerSendInfo(string[] serverArgs, LogGenerator log, bool consoleOut, WebView2 webView2Control)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, consoleOut);
@@ -91,8 +95,10 @@ namespace AssetInformationAndRegistration.WebView
                 + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[33]);
         }
 
-        ///<summary>Loads webView2 component</summary>
-        ///<returns>Returns a asynchronous task</returns>
+        /// <summary> 
+        /// Loads webView2 component
+        /// </summary>
+        /// <returns>Returns a asynchronous task</returns>
         internal static async Task LoadWebView2(LogGenerator log, bool consoleOut, WebView2 webView2Control)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, consoleOut);

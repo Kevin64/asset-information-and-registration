@@ -22,7 +22,9 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
 {
-    ///<summary>Starting class for AIR</summary>
+    /// <summary> 
+    /// Starting class for AIR
+    /// </summary>
     public partial class Program
     {
         private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
@@ -33,7 +35,9 @@ namespace AssetInformationAndRegistration
         private static List<string> orgDataListSection, enforcementListSection;
         private static LogGenerator log;
 
-        ///<summary>Command line switch options specification</summary>
+        /// <summary> 
+        /// Command line switch options specification
+        /// </summary>
         private class Options
         {
             [Option(StringsAndConstants.CLI_SERVER_IP_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_IP)]
@@ -91,8 +95,10 @@ namespace AssetInformationAndRegistration
             ENABLED
         }
 
-        ///<summary>Passes args to auth method and then to register class, otherwise informs auth error and closes the program</summary>
-        ///<param name="opts">Argument list</param>
+        /// <summary> 
+        /// Passes args to auth method and then to register class, otherwise informs auth error and closes the program
+        /// </summary>
+        /// <param name="opts">Argument list</param>
         private static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
@@ -131,8 +137,10 @@ namespace AssetInformationAndRegistration
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern int FreeConsole();
 
-        ///<summary>The main entry point for the application</summary>
-        ///<param name="args">Argument list</param>
+        /// <summary> 
+        /// The main entry point for the application
+        /// </summary>
+        /// <param name="args">Argument list</param>
         [STAThread]
         private static void Main(string[] args)
         {
@@ -140,6 +148,8 @@ namespace AssetInformationAndRegistration
             //var culture = System.Globalization.CultureInfo.GetCultureInfo("en");
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            Octokit.GitHubClient ghc = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR));
 
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
             {
@@ -305,7 +315,7 @@ namespace AssetInformationAndRegistration
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, showCLIOutput);
                     FreeConsole();
-                    Form lForm = new LoginForm(log, parametersListSection, enforcementListSection, orgDataListSection);
+                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection);
                     if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);

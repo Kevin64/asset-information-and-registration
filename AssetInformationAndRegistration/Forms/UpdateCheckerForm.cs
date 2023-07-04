@@ -1,34 +1,41 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
+using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
-using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for handling Updater window</summary>
+    /// <summary> 
+    /// Class for handling Updater window
+    /// </summary>
     public partial class UpdateCheckerForm : Form, ITheming
     {
         private readonly string currentVersion, newVersion, changelog, url;
         private readonly LogGenerator log;
 
-        ///<summary>Updater form constructor</summary>
-        ///<param name="parametersList">List containing data from [Parameters]</param>
-        ///<param name="themeBool">Theme mode</param>
-        ///<param name="releases">GitHub release information</param>
-        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, bool themeBool, Release releases)
+        /// <summary> 
+        /// Updater form constructor
+        /// </summary>
+        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="themeBool">Theme mode</param>
+        /// <param name="releases">GitHub release information</param>
+        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, bool themeBool, UpdateInfo ui)
         {
             InitializeComponent();
 
+            if (ui != null)
+            {
+                newVersion = ui.TagName;
+                changelog = ui.Body;
+                url = ui.HtmlUrl;
+            }
             currentVersion = MiscMethods.Version();
-            newVersion = releases.TagName;
-            changelog = releases.Body;
-            url = releases.HtmlUrl;
             this.log = log;
 
             if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
@@ -60,8 +67,10 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Compares versions and sets labels if there is an update</summary>
-        ///<returns>True is there is a new version, false otherwise</returns>
+        /// <summary> 
+        /// Compares versions and sets labels if there is an update
+        /// </summary>
+        /// <returns>True is there is a new version, false otherwise</returns>
         public bool IsThereANewVersion()
         {
             lblOldVersion.Text = currentVersion;
@@ -87,18 +96,22 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Opens the GitHub url in the browser</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
-        private void downloadButton_Click(object sender, EventArgs e)
+        /// <summary> 
+        /// Opens the GitHub url in the browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DownloadButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             _ = System.Diagnostics.Process.Start(url);
         }
 
-        ///<summary>Closes the window</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));

@@ -15,7 +15,9 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for CLI asset registering</summary>
+    /// <summary> 
+    /// Class for CLI asset registering
+    /// </summary>
     internal class CLIRegister : Form
     {
         public bool pass, serverOnline;
@@ -66,12 +68,14 @@ namespace AssetInformationAndRegistration.Forms
 
         }
 
-        ///<summary>CLI pseudo-form constructor</summary>
-        ///<param name="argsArray">Arguments array</param>
-        ///<param name="agentData">Agent username and ID</param>
-        ///<param name="log">Log file object</param>
-        ///<param name="parametersList">List containing data from [Parameters]</param>
-        ///<param name="enforcementList">List containing data from [Enforcement]</param>
+        /// <summary> 
+        /// CLI pseudo-form constructor
+        /// </summary>
+        /// <param name="argsArray">Arguments array</param>
+        /// <param name="agentData">Agent username and ID</param>
+        /// <param name="log">Log file object</param>
+        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="enforcementList">List containing data from [Enforcement]</param>
         internal CLIRegister(string[] argsArray, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             InitializeComponent();
@@ -100,22 +104,24 @@ namespace AssetInformationAndRegistration.Forms
             InitProc(serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, this.agentData, standard, inUse, sealNumber, tag, hwType);
         }
 
-        ///<summary>Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method</summary>
-        ///<param name="serverIP">Server IP address</param>
-        ///<param name="serverPort">Server port</param>
-        ///<param name="assetNumber">Asset number</param>
-        ///<param name="building">Building name</param>
-        ///<param name="roomNumber">Room number</param>
-        ///<param name="serviceDate">Date of service</param>
-        ///<param name="serviceType">Type os service</param>
-        ///<param name="batteryChange">If there was a CMOS battery change</param>
-        ///<param name="ticketNumber">Helpdesk ticket number</param>
-        ///<param name="agentData">Agent username and ID</param>
-        ///<param name="standard">Image standard</param>
-        ///<param name="inUse">If the asset is in use</param>
-        ///<param name="sealNumber">Seal number</param>
-        ///<param name="tag">If the asset has a tag</param>
-        ///<param name="hwType">hardware type of the asset</param>
+        /// <summary> 
+        /// Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
+        /// </summary>
+        /// <param name="serverIP">Server IP address</param>
+        /// <param name="serverPort">Server port</param>
+        /// <param name="assetNumber">Asset number</param>
+        /// <param name="building">Building name</param>
+        /// <param name="roomNumber">Room number</param>
+        /// <param name="serviceDate">Date of service</param>
+        /// <param name="serviceType">Type os service</param>
+        /// <param name="batteryChange">If there was a CMOS battery change</param>
+        /// <param name="ticketNumber">Helpdesk ticket number</param>
+        /// <param name="agentData">Agent username and ID</param>
+        /// <param name="standard">Image standard</param>
+        /// <param name="inUse">If the asset is in use</param>
+        /// <param name="sealNumber">Seal number</param>
+        /// <param name="tag">If the asset has a tag</param>
+        /// <param name="hwType">hardware type of the asset</param>
         private async void InitProc(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string[] agentData, string standard, string inUse, string sealNumber, string tag, string hwType)
         {
             serverAlert = new string[11];
@@ -428,12 +434,12 @@ namespace AssetInformationAndRegistration.Forms
                                 {
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                    MiscMethods.RegCreate(true, serverArgs[9]);
+                                    MiscMethods.RegCreateDateData(true, serverArgs[9]);
                                 }
                                 if (serviceType == StringsAndConstants.CLI_SERVICE_TYPE_1) //Resets host maintenance date
                                 {
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                    MiscMethods.RegCreate(false, serverArgs[9]);
+                                    MiscMethods.RegCreateDateData(false, serverArgs[9]);
                                 }
                             }
                             else //If chosen date is earlier than the registered date, show an error
@@ -466,12 +472,12 @@ namespace AssetInformationAndRegistration.Forms
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_INSTALLDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                MiscMethods.RegCreate(true, serviceDate);
+                                MiscMethods.RegCreateDateData(true, serviceDate);
                             }
                             else if (serviceType == StringsAndConstants.CLI_SERVICE_TYPE_1) //Resets host maintenance date
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_RESETTING_MAINTENANCEDATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                MiscMethods.RegCreate(false, serviceDate);
+                                MiscMethods.RegCreateDateData(false, serviceDate);
                             }
                         }
                     }
@@ -514,9 +520,11 @@ namespace AssetInformationAndRegistration.Forms
             Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS)); //Exits
         }
 
-        ///<summary>Checks if WebView2 navigation is finished</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Checks if WebView2 navigation is finished
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WebView2_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             if (e.IsSuccess)
@@ -526,7 +534,9 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Prints the collected data into the form labels, warning the agent when there are forbidden modes</summary>
+        /// <summary> 
+        /// Prints the collected data into the form labels, warning the agent when there are forbidden modes
+        /// </summary>
         private void PrintHardwareData()
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
@@ -633,7 +643,9 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        ///<summary>Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar</summary>
+        /// <summary> 
+        /// Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar
+        /// </summary>
         private void CollectThread()
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));

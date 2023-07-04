@@ -12,22 +12,28 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    ///<summary>Class for About box</summary>
+    /// <summary> 
+    /// Class for About box
+    /// </summary>
     internal partial class AboutBox : Form, ITheming
     {
         private readonly List<string[]> parametersList;
         private readonly bool themeBool;
         private readonly LogGenerator log;
+        private readonly Octokit.GitHubClient ghc;
 
-        ///<summary>About form constructor</summary>
-        ///<param name="parametersList">List containing data from [Parameters]</param>
-        ///<param name="themeBool">Theme mode</param>
-        internal AboutBox(LogGenerator log, List<string[]> parametersList, bool themeBool)
+        /// <summary> 
+        /// About form constructor
+        /// </summary>
+        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="themeBool">Theme mode</param>
+        internal AboutBox(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_OPENING_ABOUTBOX, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
+            this.ghc = ghc;
             this.parametersList = parametersList;
             this.themeBool = themeBool;
             this.log = log;
@@ -111,9 +117,11 @@ namespace AssetInformationAndRegistration.Forms
             textBoxDescription.ForeColor = StringsAndConstants.DARK_FORECOLOR;
         }
 
-        ///<summary>Handles link clicks inside the Description box</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Handles link clicks inside the Description box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             _ = System.Diagnostics.Process.Start(e.LinkText);
@@ -177,12 +185,14 @@ namespace AssetInformationAndRegistration.Forms
         }
         #endregion
 
-        ///<summary>Triggers an update check</summary>
-        ///<param name="sender"></param>
-        ///<param name="e"></param>
+        /// <summary> 
+        /// Triggers an update check
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckUpdateButton_Click(object sender, System.EventArgs e)
         {
-            UpdateChecker.Check(log, parametersList, themeBool, false);
+            UpdateChecker.Check(ghc, log, parametersList, themeBool, false);
         }
     }
 }

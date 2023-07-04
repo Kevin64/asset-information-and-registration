@@ -78,7 +78,7 @@
             resources.ApplyResources(this.downloadButton, "downloadButton");
             this.downloadButton.Name = "downloadButton";
             this.downloadButton.UseVisualStyleBackColor = true;
-            this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
+            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
             // closeButton
             // 

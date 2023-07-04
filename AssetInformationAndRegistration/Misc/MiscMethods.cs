@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Properties;
+using AssetInformationAndRegistration.Updater;
 using Microsoft.Win32;
 using System;
 using System.IO;
@@ -7,7 +8,9 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Misc
 {
-    ///<summary>Class that allows changing the progressbar color</summary>
+    /// <summary> 
+    /// Class that allows changing the progressbar color
+    /// </summary>
     public static class ModifyProgressBarColor
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = false)]
@@ -18,13 +21,52 @@ namespace AssetInformationAndRegistration.Misc
         }
     }
 
-    ///<summary>Class for miscelaneous methods</summary>
+    /// <summary> 
+    /// Class for miscelaneous methods
+    /// </summary>
     internal static class MiscMethods
     {
-        ///<summary>Check the registry for a installation/maintenance date</summary>
-        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        ///<returns>The amount of days since the service date, or '-1' if an exception occur</returns>
-        internal static double RegCheck(bool mode)
+        /// <summary> 
+        /// Creates registrys keys when a successful update check is made
+        /// </summary>
+        /// <param name="ui">An UpdateInfo object to write into the registry</param>
+        internal static void RegCreateUpdateData(UpdateInfo ui)
+        {
+            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
+            rk.SetValue(ConstantsDLL.Properties.Resources.ETAG, ui.ETag, RegistryValueKind.String);
+            rk.SetValue(ConstantsDLL.Properties.Resources.TAG_NAME, ui.TagName, RegistryValueKind.String);
+            rk.SetValue(ConstantsDLL.Properties.Resources.BODY, ui.Body, RegistryValueKind.String);
+            rk.SetValue(ConstantsDLL.Properties.Resources.HTML_URL, ui.HtmlUrl, RegistryValueKind.String);
+        }
+
+        /// <summary>
+        /// Checks the registry for existing update metadata
+        /// </summary>
+        /// <returns>An UpdateInfo object containing the ETag, TagName, Body and HtmlURL</returns>
+        internal static UpdateInfo RegCheckUpdateData()
+        {
+            UpdateInfo ui = new UpdateInfo();
+            try
+            {
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH);
+                ui.ETag = rk.GetValue(ConstantsDLL.Properties.Resources.ETAG).ToString();
+                ui.TagName = rk.GetValue(ConstantsDLL.Properties.Resources.TAG_NAME).ToString();
+                ui.Body = rk.GetValue(ConstantsDLL.Properties.Resources.BODY).ToString();
+                ui.HtmlUrl = rk.GetValue(ConstantsDLL.Properties.Resources.HTML_URL).ToString();
+                return ui;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary> 
+        /// Checks the registry for a installation/maintenance date
+        /// </summary>
+        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        /// <returns>The amount of days since the service date, or '-1' if an exception occur</returns>
+        internal static double RegCheckDateData(bool mode)
         {
             try
             {
@@ -39,10 +81,12 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        ///<summary>Creates a registry key when a register operation is made in GUI mode</summary>
-        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        ///<param name="dateTimePicker">Desired date</param>
-        internal static void RegCreate(bool mode, DateTimePicker dateTimePicker)
+        /// <summary> 
+        /// Creates a registry key when a register operation is made in GUI mode
+        /// </summary>
+        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        /// <param name="dateTimePicker">Desired date</param>
+        internal static void RegCreateDateData(bool mode, DateTimePicker dateTimePicker)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
@@ -56,10 +100,12 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        ///<summary>Creates a registry key when a register operation is made in CLI mode</summary>
-        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        ///<param name="dateTime">Desired date</param>
-        internal static void RegCreate(bool mode, string dateTime)
+        /// <summary> 
+        /// Creates a registry key when a register operation is made in CLI mode
+        /// </summary>
+        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        /// <param name="dateTime">Desired date</param>
+        internal static void RegCreateDateData(bool mode, string dateTime)
         {
             RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             if (mode)
@@ -73,8 +119,10 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        ///<summary>Fetches the WebView2 systemwide version</summary>
-        ///<returns>The WebView2 runtime version, or an empty string if inexistent</returns>
+        /// <summary> 
+        /// Fetches the WebView2 systemwide version
+        /// </summary>
+        /// <returns>The WebView2 runtime version, or an empty string if inexistent</returns>
         internal static string GetWebView2Version()
         {
             RegistryKey rk = Environment.Is64BitOperatingSystem
@@ -91,9 +139,11 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        ///<summary>Checks if a log file exists and creates a directory if necessary</summary>
-        ///<param name="path">File path</param>
-        ///<returns>'true' if log exists, 'false' if not</returns>
+        /// <summary> 
+        /// Checks if a log file exists and creates a directory if necessary
+        /// </summary>
+        /// <param name="path">File path</param>
+        /// <returns>'true' if log exists, 'false' if not</returns>
         ///<exception cref="Exception">Thrown when there is a problem with the query</exception>
         internal static string CheckIfLogExists(string path)
         {
@@ -122,8 +172,10 @@ namespace AssetInformationAndRegistration.Misc
 
         }
 
-        ///<summary>Initializes the theme, according to the host theme</summary>
-        ///<returns>'true' if system is using Dark theme, 'false' if otherwise</returns>
+        /// <summary> 
+        /// Initializes the theme, according to the host theme
+        /// </summary>
+        /// <returns>'true' if system is using Dark theme, 'false' if otherwise</returns>
         internal static bool ThemeInit()
         {
             try
@@ -147,45 +199,55 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        ///<summary>Updates the 'last installed' or 'last maintenance' labels</summary>
-        ///<param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        ///<returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
+        /// <summary> 
+        /// Updates the 'last installed' or 'last maintenance' labels
+        /// </summary>
+        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        /// <returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
         internal static string SinceLabelUpdate(bool mode)
         {
             string InstallLabel, MaintenanceLabel;
             if (mode)
             {
-                InstallLabel = RegCheck(mode).ToString();
+                InstallLabel = RegCheckDateData(mode).ToString();
                 return !InstallLabel.Equals("-1")
                     ? "(" + InstallLabel + Strings.DAYS_PASSED_TEXT + Strings.FORMAT_TEXT + ")"
                     : Strings.SINCE_UNKNOWN;
             }
             else
             {
-                MaintenanceLabel = RegCheck(mode).ToString();
+                MaintenanceLabel = RegCheckDateData(mode).ToString();
                 return !MaintenanceLabel.Equals("-1")
                     ? "(" + MaintenanceLabel + Strings.DAYS_PASSED_TEXT + Strings.MAINTENANCE_TEXT + ")"
                     : Strings.SINCE_UNKNOWN;
             }
         }
 
-        ///<summary>Fetches the screen scale</summary>
-        ///<returns>The current window scaling</returns>
+        /// <summary> 
+        /// Fetches the screen scale
+        /// 
+        /// </summary>
+        /// <returns>The current window scaling</returns>
         internal static int GetWindowsScaling()
         {
             return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
-        ///<summary>Fetches the program's binary version</summary>
-        ///<returns>The current application version in the format 'v0.0.0.0'</returns>
+        /// <summary> 
+        /// Fetches the program's binary version
+        /// 
+        /// </summary>
+        /// <returns>The current application version in the format 'v0.0.0.0'</returns>
         internal static string Version()
         {
             return "v" + Application.ProductVersion;
         }
 
-        ///<summary>Fetches the program's binary version (for unstable releases)</summary>
-        ///<param name="testBranch">Test branch (alpha, beta, rc, etc)</param>
-        ///<returns>The current application version in the format 'v0.0.0.0-testBranch'</returns>
+        /// <summary> 
+        /// Fetches the program's binary version (for unstable releases)
+        /// </summary>
+        /// <param name="testBranch">Test branch (alpha, beta, rc, etc)</param>
+        /// <returns>The current application version in the format 'v0.0.0.0-testBranch'</returns>
         internal static string Version(string testBranch)
         {
             return "v" + Application.ProductVersion + "-" + testBranch;
