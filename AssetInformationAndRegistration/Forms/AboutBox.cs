@@ -23,7 +23,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly LogGenerator log;
         private readonly Octokit.GitHubClient ghc;
         private bool themeBool;
-        private UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// About form constructor
@@ -127,15 +127,24 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            if (MiscMethods.GetSystemThemeMode())
+            switch (MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
             {
-                DarkTheme();
-                themeBool = true;
-            }
-            else
-            {
-                LightTheme();
-                themeBool = false;
+                case 0:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
+                case 1:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 2:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 3:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
             }
         }
 

@@ -17,9 +17,11 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     public partial class UpdateCheckerForm : Form, ITheming
     {
+        private bool themeBool;
         private readonly string currentVersion, newVersion, changelog, url;
+        private readonly List<string[]> parametersList;
         private readonly LogGenerator log;
-        private UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Updater form constructor
@@ -56,6 +58,8 @@ namespace AssetInformationAndRegistration.Forms
             }
             currentVersion = MiscMethods.Version();
             this.log = log;
+            this.themeBool = themeBool;
+            this.parametersList = parametersList;
 
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
@@ -170,13 +174,24 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            if (MiscMethods.GetSystemThemeMode())
+            switch (MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
             {
-                DarkTheme();
-            }
-            else
-            {
-                LightTheme();
+                case 0:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
+                case 1:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 2:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 3:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
             }
         }
 

@@ -43,7 +43,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly List<string[]> parametersList, jsonServerSettings;
         private readonly List<string> enforcementList, orgDataList;
         private readonly Octokit.GitHubClient ghc;
-        private UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Main form constructor
@@ -2752,15 +2752,24 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            if (MiscMethods.GetSystemThemeMode())
+            switch (MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
             {
-                DarkTheme();
-                themeBool = true;
-            }
-            else
-            {
-                LightTheme();
-                themeBool = false;
+                case 0:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
+                case 1:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 2:
+                    LightTheme();
+                    themeBool = false;
+                    break;
+                case 3:
+                    DarkTheme();
+                    themeBool = true;
+                    break;
             }
         }
 
