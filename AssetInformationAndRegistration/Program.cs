@@ -122,7 +122,7 @@ namespace AssetInformationAndRegistration
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     CLIRegister cr = new CLIRegister(argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection);
-                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), true, true);
+                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, true, true);
                     Application.Run(cr);
                 }
                 else
@@ -347,7 +347,7 @@ namespace AssetInformationAndRegistration
                                 break;
                         }
                     }
-                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, initialTheme);
+                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, false, initialTheme);
                     Application.Run(lForm);
                 }
                 else //If given args, hides password from Console and Log file and runs CLIRegister
