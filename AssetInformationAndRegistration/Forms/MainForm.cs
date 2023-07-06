@@ -17,7 +17,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -85,7 +84,7 @@ namespace AssetInformationAndRegistration.Forms
 
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            this.Disposed += new EventHandler(MainForm_Disposed);
+            Disposed += new EventHandler(MainForm_Disposed);
 
             //Program version
 #if DEBUG

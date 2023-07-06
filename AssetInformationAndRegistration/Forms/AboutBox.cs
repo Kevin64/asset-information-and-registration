@@ -71,7 +71,7 @@ namespace AssetInformationAndRegistration.Forms
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            this.Disposed += new EventHandler(AboutBox_Disposed);
+            Disposed += new EventHandler(AboutBox_Disposed);
         }
 
         public void LightTheme()

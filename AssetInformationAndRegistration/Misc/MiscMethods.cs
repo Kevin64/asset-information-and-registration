@@ -1,15 +1,10 @@
-﻿using AssetInformationAndRegistration.Interfaces;
-using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
-using Dark.Net;
-using HardwareInfoDLL;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -214,29 +209,11 @@ namespace AssetInformationAndRegistration.Misc
         /// <returns>0 or 3 for dark mode, 1 or 2 for light mode</returns>
         internal static int GetFileThemeMode(List<string[]> parametersList, bool themeBool)
         {
-            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
-            {
-                if (themeBool)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
-            {
-                return 2;
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
-            {
-                return 3;
-            }
-            else
-            {
-                return 1;
-            }
+            return StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0])
+                ? themeBool ? 0 : 1
+                : parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1])
+                    ? 2
+                    : parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]) ? 3 : 1;
         }
 
         /// <summary> 

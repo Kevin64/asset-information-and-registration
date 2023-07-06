@@ -63,7 +63,7 @@ namespace AssetInformationAndRegistration.Forms
 
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            this.Disposed += new EventHandler(UpdateCheckerForm_Disposed);
+            Disposed += new EventHandler(UpdateCheckerForm_Disposed);
         }
 
         /// <summary> 

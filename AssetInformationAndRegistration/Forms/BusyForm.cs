@@ -122,7 +122,7 @@ namespace AssetInformationAndRegistration.Forms
 
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            this.Disposed += new EventHandler(LoginForm_Disposed);
+            Disposed += new EventHandler(LoginForm_Disposed);
         }
 
         public void LightTheme()

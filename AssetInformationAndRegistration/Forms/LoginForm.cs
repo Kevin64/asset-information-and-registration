@@ -1,19 +1,16 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
-using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
-using MRG.Controls.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -225,7 +222,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            switch(MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
+            switch (MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
             {
                 case 0:
                     DarkTheme();
@@ -342,7 +339,7 @@ namespace AssetInformationAndRegistration.Forms
             FormClosing += LoginForm_Closing;
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            this.Disposed += new EventHandler(LoginForm_Disposed);
+            Disposed += new EventHandler(LoginForm_Disposed);
             tbProgLogin = TaskbarManager.Instance;
         }
 

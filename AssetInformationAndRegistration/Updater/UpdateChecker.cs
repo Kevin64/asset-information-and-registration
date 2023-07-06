@@ -1,5 +1,4 @@
 ﻿using AssetInformationAndRegistration.Forms;
-using AssetInformationAndRegistration.Misc;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Updater

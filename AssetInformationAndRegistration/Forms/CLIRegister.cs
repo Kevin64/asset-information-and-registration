@@ -1,13 +1,11 @@
 ﻿using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
-using AssetInformationAndRegistration.Updater;
 using AssetInformationAndRegistration.WebView;
 using ConstantsDLL;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
-using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
