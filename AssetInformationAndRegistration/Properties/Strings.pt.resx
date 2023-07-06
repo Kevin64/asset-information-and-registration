@@ -170,7 +170,7 @@
     <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
-    <value> dias desde a última  </value>
+    <value> dia(s) desde o último </value>
   </data>
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>MUDAR-NOME</value>
@@ -516,8 +516,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
     <value>Para acessar, selecione o servidor e a porta!</value>
   </data>
+  <data name="SERVICE_TEXT" xml:space="preserve">
+    <value>serviço</value>
+  </data>
   <data name="SINCE_UNKNOWN" xml:space="preserve">
-    <value>(Não foi possível determinar a data do último serviço)</value>
+    <value>Não foi possível determinar a data do último serviço</value>
   </data>
   <data name="SLOTS_OF" xml:space="preserve">
     <value> slots de </value>

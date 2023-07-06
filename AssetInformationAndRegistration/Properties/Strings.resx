@@ -170,7 +170,7 @@
     <value>Error contacting the database, check your intranet connection and that the web server is up!</value>
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
-    <value> days since the last </value>
+    <value> day(s) since the last </value>
   </data>
   <data name="DEFAULT_HOSTNAME" xml:space="preserve">
     <value>CHANGE-NAME</value>
@@ -516,8 +516,11 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
     <value>To access, select the server and the port!</value>
   </data>
+  <data name="SERVICE_TEXT" xml:space="preserve">
+    <value>service</value>
+  </data>
   <data name="SINCE_UNKNOWN" xml:space="preserve">
-    <value>(Could not determine date of last service)</value>
+    <value>Could not determine date of last service</value>
   </data>
   <data name="SLOTS_OF" xml:space="preserve">
     <value> slots of </value>

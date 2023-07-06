@@ -83,43 +83,43 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        /// <summary> 
-        /// Creates a registry key when a register operation is made in GUI mode
-        /// </summary>
-        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        /// <param name="dateTimePicker">Desired date</param>
-        internal static void RegCreateDateData(bool mode, DateTimePicker dateTimePicker)
-        {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
-            if (mode)
-            {
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-            }
-            else
-            {
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
-            }
-        }
+        ///// <summary> 
+        ///// Creates a registry key when a register operation is made in GUI mode
+        ///// </summary>
+        ///// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///// <param name="dateTimePicker">Desired date</param>
+        //internal static void RegCreateDateData(bool mode, DateTimePicker dateTimePicker)
+        //{
+        //    RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
+        //    if (mode)
+        //    {
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+        //    }
+        //    else
+        //    {
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTimePicker.Value.ToString().Substring(0, 10), RegistryValueKind.String);
+        //    }
+        //}
 
-        /// <summary> 
-        /// Creates a registry key when a register operation is made in CLI mode
-        /// </summary>
-        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        /// <param name="dateTime">Desired date</param>
-        internal static void RegCreateDateData(bool mode, string dateTime)
-        {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
-            if (mode)
-            {
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTime.Substring(0, 10), RegistryValueKind.String);
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
-            }
-            else
-            {
-                rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
-            }
-        }
+        ///// <summary> 
+        ///// Creates a registry key when a register operation is made in CLI mode
+        ///// </summary>
+        ///// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
+        ///// <param name="dateTime">Desired date</param>
+        //internal static void RegCreateDateData(bool mode, string dateTime)
+        //{
+        //    RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
+        //    if (mode)
+        //    {
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL, dateTime.Substring(0, 10), RegistryValueKind.String);
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
+        //    }
+        //    else
+        //    {
+        //        rk.SetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE, dateTime.Substring(0, 10), RegistryValueKind.String);
+        //    }
+        //}
 
         /// <summary> 
         /// Fetches the WebView2 systemwide version
@@ -221,23 +221,18 @@ namespace AssetInformationAndRegistration.Misc
         /// </summary>
         /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
         /// <returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
-        internal static string SinceLabelUpdate(bool mode)
+        internal static string SinceLabelUpdate(string date)
         {
-            string InstallLabel, MaintenanceLabel;
-            if (mode)
+            if(date != string.Empty)
             {
-                InstallLabel = RegCheckDateData(mode).ToString();
-                return !InstallLabel.Equals("-1")
-                    ? "(" + InstallLabel + Strings.DAYS_PASSED_TEXT + Strings.FORMAT_TEXT + ")"
-                    : Strings.SINCE_UNKNOWN;
+                DateTime d = Convert.ToDateTime(date);
+                return (DateTime.Today - d).TotalDays + Strings.DAYS_PASSED_TEXT + Strings.SERVICE_TEXT;
             }
             else
             {
-                MaintenanceLabel = RegCheckDateData(mode).ToString();
-                return !MaintenanceLabel.Equals("-1")
-                    ? "(" + MaintenanceLabel + Strings.DAYS_PASSED_TEXT + Strings.MAINTENANCE_TEXT + ")"
-                    : Strings.SINCE_UNKNOWN;
+                return Strings.SINCE_UNKNOWN;
             }
+            
         }
 
         /// <summary> 

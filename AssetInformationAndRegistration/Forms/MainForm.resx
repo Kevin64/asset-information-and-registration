@@ -1000,7 +1000,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;registerButton.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="lblFixedInUse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1177,7 +1177,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;collectButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="lblFixedRoomLetter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1297,7 +1297,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ApcsButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="lblFixedFwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1359,702 +1359,6 @@
   <data name="&gt;&gt;lblFwType.ZOrder" xml:space="preserve">
     <value>58</value>
   </data>
-  <data name="&gt;&gt;loadingCircleTpmVersion.Name" xml:space="preserve">
-    <value>loadingCircleTpmVersion</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleTpmVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleTpmVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleTpmVersion.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVirtualizationTechnology.Name" xml:space="preserve">
-    <value>loadingCircleVirtualizationTechnology</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVirtualizationTechnology.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVirtualizationTechnology.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVirtualizationTechnology.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSecureBoot.Name" xml:space="preserve">
-    <value>loadingCircleSecureBoot</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSecureBoot.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSecureBoot.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSecureBoot.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwVersion.Name" xml:space="preserve">
-    <value>loadingCircleFwVersion</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwVersion.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwType.Name" xml:space="preserve">
-    <value>loadingCircleFwType</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFwType.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleIpAddress.Name" xml:space="preserve">
-    <value>loadingCircleIpAddress</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleIpAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleIpAddress.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleIpAddress.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMacAddress.Name" xml:space="preserve">
-    <value>loadingCircleMacAddress</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMacAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMacAddress.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMacAddress.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleHostname.Name" xml:space="preserve">
-    <value>loadingCircleHostname</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleHostname.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleHostname.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleHostname.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleOperatingSystem.Name" xml:space="preserve">
-    <value>loadingCircleOperatingSystem</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleOperatingSystem.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleOperatingSystem.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleOperatingSystem.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVideoCard.Name" xml:space="preserve">
-    <value>loadingCircleVideoCard</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVideoCard.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVideoCard.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleVideoCard.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMediaOperationMode.Name" xml:space="preserve">
-    <value>loadingCircleMediaOperationMode</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMediaOperationMode.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMediaOperationMode.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMediaOperationMode.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageType.Name" xml:space="preserve">
-    <value>loadingCircleStorageType</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageType.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSmartStatus.Name" xml:space="preserve">
-    <value>loadingCircleSmartStatus</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSmartStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSmartStatus.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSmartStatus.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageSize.Name" xml:space="preserve">
-    <value>loadingCircleStorageSize</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageSize.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageSize.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleStorageSize.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleRam.Name" xml:space="preserve">
-    <value>loadingCircleRam</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleRam.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleRam.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleRam.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleProcessor.Name" xml:space="preserve">
-    <value>loadingCircleProcessor</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleProcessor.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleProcessor.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleProcessor.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSerialNumber.Name" xml:space="preserve">
-    <value>loadingCircleSerialNumber</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSerialNumber.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSerialNumber.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleSerialNumber.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleModel.Name" xml:space="preserve">
-    <value>loadingCircleModel</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleModel.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleModel.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleModel.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleBrand.Name" xml:space="preserve">
-    <value>loadingCircleBrand</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleBrand.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleBrand.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleBrand.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;separatorH.Name" xml:space="preserve">
-    <value>separatorH</value>
-  </data>
-  <data name="&gt;&gt;separatorH.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;separatorH.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;separatorH.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;separatorV.Name" xml:space="preserve">
-    <value>separatorV</value>
-  </data>
-  <data name="&gt;&gt;separatorV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;separatorV.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;separatorV.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;iconImgTpmVersion.Name" xml:space="preserve">
-    <value>iconImgTpmVersion</value>
-  </data>
-  <data name="&gt;&gt;iconImgTpmVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgTpmVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgTpmVersion.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;iconImgSmartStatus.Name" xml:space="preserve">
-    <value>iconImgSmartStatus</value>
-  </data>
-  <data name="&gt;&gt;iconImgSmartStatus.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgSmartStatus.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgSmartStatus.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;lblSmartStatus.Name" xml:space="preserve">
-    <value>lblSmartStatus</value>
-  </data>
-  <data name="&gt;&gt;lblSmartStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSmartStatus.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblSmartStatus.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;lblTpmVersion.Name" xml:space="preserve">
-    <value>lblTpmVersion</value>
-  </data>
-  <data name="&gt;&gt;lblTpmVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblTpmVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblTpmVersion.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSmartStatus.Name" xml:space="preserve">
-    <value>lblFixedSmartStatus</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSmartStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSmartStatus.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSmartStatus.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;iconImgVirtualizationTechnology.Name" xml:space="preserve">
-    <value>iconImgVirtualizationTechnology</value>
-  </data>
-  <data name="&gt;&gt;iconImgVirtualizationTechnology.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgVirtualizationTechnology.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgVirtualizationTechnology.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTpmVersion.Name" xml:space="preserve">
-    <value>lblFixedTpmVersion</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTpmVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTpmVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTpmVersion.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Name" xml:space="preserve">
-    <value>progressBar1</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;lblProgressBarPercent.Name" xml:space="preserve">
-    <value>lblProgressBarPercent</value>
-  </data>
-  <data name="&gt;&gt;lblProgressBarPercent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblProgressBarPercent.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblProgressBarPercent.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;lblVirtualizationTechnology.Name" xml:space="preserve">
-    <value>lblVirtualizationTechnology</value>
-  </data>
-  <data name="&gt;&gt;lblVirtualizationTechnology.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVirtualizationTechnology.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblVirtualizationTechnology.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVirtualizationTechnology.Name" xml:space="preserve">
-    <value>lblFixedVirtualizationTechnology</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVirtualizationTechnology.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVirtualizationTechnology.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVirtualizationTechnology.ZOrder" xml:space="preserve">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;iconImgBrand.Name" xml:space="preserve">
-    <value>iconImgBrand</value>
-  </data>
-  <data name="&gt;&gt;iconImgBrand.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgBrand.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgBrand.ZOrder" xml:space="preserve">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;iconImgSecureBoot.Name" xml:space="preserve">
-    <value>iconImgSecureBoot</value>
-  </data>
-  <data name="&gt;&gt;iconImgSecureBoot.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgSecureBoot.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgSecureBoot.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwVersion.Name" xml:space="preserve">
-    <value>iconImgFwVersion</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwVersion.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwVersion.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwType.Name" xml:space="preserve">
-    <value>iconImgFwType</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgFwType.ZOrder" xml:space="preserve">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;iconImgIpAddress.Name" xml:space="preserve">
-    <value>iconImgIpAddress</value>
-  </data>
-  <data name="&gt;&gt;iconImgIpAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgIpAddress.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgIpAddress.ZOrder" xml:space="preserve">
-    <value>36</value>
-  </data>
-  <data name="&gt;&gt;iconImgMacAddress.Name" xml:space="preserve">
-    <value>iconImgMacAddress</value>
-  </data>
-  <data name="&gt;&gt;iconImgMacAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgMacAddress.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgMacAddress.ZOrder" xml:space="preserve">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;iconImgHostname.Name" xml:space="preserve">
-    <value>iconImgHostname</value>
-  </data>
-  <data name="&gt;&gt;iconImgHostname.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgHostname.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgHostname.ZOrder" xml:space="preserve">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;iconImgOperatingSystem.Name" xml:space="preserve">
-    <value>iconImgOperatingSystem</value>
-  </data>
-  <data name="&gt;&gt;iconImgOperatingSystem.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgOperatingSystem.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgOperatingSystem.ZOrder" xml:space="preserve">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;iconImgVideoCard.Name" xml:space="preserve">
-    <value>iconImgVideoCard</value>
-  </data>
-  <data name="&gt;&gt;iconImgVideoCard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgVideoCard.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgVideoCard.ZOrder" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="&gt;&gt;iconImgMediaOperationMode.Name" xml:space="preserve">
-    <value>iconImgMediaOperationMode</value>
-  </data>
-  <data name="&gt;&gt;iconImgMediaOperationMode.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgMediaOperationMode.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgMediaOperationMode.ZOrder" xml:space="preserve">
-    <value>41</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageType.Name" xml:space="preserve">
-    <value>iconImgStorageType</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageType.ZOrder" xml:space="preserve">
-    <value>42</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Name" xml:space="preserve">
-    <value>iconImgStorageSize</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.ZOrder" xml:space="preserve">
-    <value>43</value>
-  </data>
-  <data name="&gt;&gt;iconImgRam.Name" xml:space="preserve">
-    <value>iconImgRam</value>
-  </data>
-  <data name="&gt;&gt;iconImgRam.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgRam.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgRam.ZOrder" xml:space="preserve">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;iconImgProcessor.Name" xml:space="preserve">
-    <value>iconImgProcessor</value>
-  </data>
-  <data name="&gt;&gt;iconImgProcessor.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgProcessor.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgProcessor.ZOrder" xml:space="preserve">
-    <value>45</value>
-  </data>
-  <data name="&gt;&gt;iconImgSerialNumber.Name" xml:space="preserve">
-    <value>iconImgSerialNumber</value>
-  </data>
-  <data name="&gt;&gt;iconImgSerialNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgSerialNumber.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgSerialNumber.ZOrder" xml:space="preserve">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;iconImgModel.Name" xml:space="preserve">
-    <value>iconImgModel</value>
-  </data>
-  <data name="&gt;&gt;iconImgModel.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgModel.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;iconImgModel.ZOrder" xml:space="preserve">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;lblSecureBoot.Name" xml:space="preserve">
-    <value>lblSecureBoot</value>
-  </data>
-  <data name="&gt;&gt;lblSecureBoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblSecureBoot.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblSecureBoot.ZOrder" xml:space="preserve">
-    <value>48</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSecureBoot.Name" xml:space="preserve">
-    <value>lblFixedSecureBoot</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSecureBoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSecureBoot.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedSecureBoot.ZOrder" xml:space="preserve">
-    <value>49</value>
-  </data>
-  <data name="&gt;&gt;lblMediaOperationMode.Name" xml:space="preserve">
-    <value>lblMediaOperationMode</value>
-  </data>
-  <data name="&gt;&gt;lblMediaOperationMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMediaOperationMode.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblMediaOperationMode.ZOrder" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMediaOperationMode.Name" xml:space="preserve">
-    <value>lblFixedMediaOperationMode</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMediaOperationMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMediaOperationMode.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMediaOperationMode.ZOrder" xml:space="preserve">
-    <value>51</value>
-  </data>
-  <data name="&gt;&gt;lblVideoCard.Name" xml:space="preserve">
-    <value>lblVideoCard</value>
-  </data>
-  <data name="&gt;&gt;lblVideoCard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblVideoCard.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblVideoCard.ZOrder" xml:space="preserve">
-    <value>52</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVideoCard.Name" xml:space="preserve">
-    <value>lblFixedVideoCard</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVideoCard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVideoCard.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedVideoCard.ZOrder" xml:space="preserve">
-    <value>53</value>
-  </data>
-  <data name="&gt;&gt;lblStorageType.Name" xml:space="preserve">
-    <value>lblStorageType</value>
-  </data>
-  <data name="&gt;&gt;lblStorageType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblStorageType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblStorageType.ZOrder" xml:space="preserve">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;lblFixedStorageType.Name" xml:space="preserve">
-    <value>lblFixedStorageType</value>
-  </data>
-  <data name="&gt;&gt;lblFixedStorageType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedStorageType.Parent" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;lblFixedStorageType.ZOrder" xml:space="preserve">
-    <value>55</value>
-  </data>
-  <data name="groupBoxHwData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 89</value>
-  </data>
-  <data name="groupBoxHwData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 566</value>
-  </data>
-  <data name="groupBoxHwData.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
-  </data>
-  <data name="groupBoxHwData.Text" xml:space="preserve">
-    <value>Computer data</value>
-  </data>
-  <data name="&gt;&gt;groupBoxHwData.Name" xml:space="preserve">
-    <value>groupBoxHwData</value>
-  </data>
-  <data name="&gt;&gt;groupBoxHwData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxHwData.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxHwData.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="loadingCircleTpmVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 482</value>
   </data>
@@ -2068,7 +1372,7 @@
     <value>loadingCircleTpmVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleTpmVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2089,7 +1393,7 @@
     <value>loadingCircleVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;loadingCircleVirtualizationTechnology.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2110,7 +1414,7 @@
     <value>loadingCircleSecureBoot</value>
   </data>
   <data name="&gt;&gt;loadingCircleSecureBoot.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2131,7 +1435,7 @@
     <value>loadingCircleFwVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleFwVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2152,7 +1456,7 @@
     <value>loadingCircleFwType</value>
   </data>
   <data name="&gt;&gt;loadingCircleFwType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2173,7 +1477,7 @@
     <value>loadingCircleIpAddress</value>
   </data>
   <data name="&gt;&gt;loadingCircleIpAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2194,7 +1498,7 @@
     <value>loadingCircleMacAddress</value>
   </data>
   <data name="&gt;&gt;loadingCircleMacAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleMacAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2215,7 +1519,7 @@
     <value>loadingCircleHostname</value>
   </data>
   <data name="&gt;&gt;loadingCircleHostname.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2236,7 +1540,7 @@
     <value>loadingCircleOperatingSystem</value>
   </data>
   <data name="&gt;&gt;loadingCircleOperatingSystem.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2257,7 +1561,7 @@
     <value>loadingCircleVideoCard</value>
   </data>
   <data name="&gt;&gt;loadingCircleVideoCard.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2278,7 +1582,7 @@
     <value>loadingCircleMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;loadingCircleMediaOperationMode.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2299,7 +1603,7 @@
     <value>loadingCircleStorageType</value>
   </data>
   <data name="&gt;&gt;loadingCircleStorageType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2320,7 +1624,7 @@
     <value>loadingCircleSmartStatus</value>
   </data>
   <data name="&gt;&gt;loadingCircleSmartStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleSmartStatus.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2341,7 +1645,7 @@
     <value>loadingCircleStorageSize</value>
   </data>
   <data name="&gt;&gt;loadingCircleStorageSize.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleStorageSize.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2362,7 +1666,7 @@
     <value>loadingCircleRam</value>
   </data>
   <data name="&gt;&gt;loadingCircleRam.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2383,7 +1687,7 @@
     <value>loadingCircleProcessor</value>
   </data>
   <data name="&gt;&gt;loadingCircleProcessor.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2404,7 +1708,7 @@
     <value>loadingCircleSerialNumber</value>
   </data>
   <data name="&gt;&gt;loadingCircleSerialNumber.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2425,7 +1729,7 @@
     <value>loadingCircleModel</value>
   </data>
   <data name="&gt;&gt;loadingCircleModel.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2446,7 +1750,7 @@
     <value>loadingCircleBrand</value>
   </data>
   <data name="&gt;&gt;loadingCircleBrand.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2527,7 +1831,7 @@
     <value>iconImgTpmVersion</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2554,7 +1858,7 @@
     <value>iconImgSmartStatus</value>
   </data>
   <data name="&gt;&gt;iconImgSmartStatus.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSmartStatus.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2671,7 +1975,7 @@
     <value>iconImgVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2733,23 +2037,23 @@
   <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="lblProgressBarPercent.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="lblProgressBarPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblProgressBarPercent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 517</value>
+    <value>6, 517</value>
   </data>
   <data name="lblProgressBarPercent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
+    <value>470, 13</value>
   </data>
   <data name="lblProgressBarPercent.TabIndex" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
   <data name="lblProgressBarPercent.Text" xml:space="preserve">
     <value>-</value>
+  </data>
+  <data name="lblProgressBarPercent.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;lblProgressBarPercent.Name" xml:space="preserve">
     <value>lblProgressBarPercent</value>
@@ -2842,7 +2146,7 @@
     <value>iconImgBrand</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2869,7 +2173,7 @@
     <value>iconImgSecureBoot</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2896,7 +2200,7 @@
     <value>iconImgFwVersion</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2923,7 +2227,7 @@
     <value>iconImgFwType</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2950,7 +2254,7 @@
     <value>iconImgIpAddress</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2977,7 +2281,7 @@
     <value>iconImgMacAddress</value>
   </data>
   <data name="&gt;&gt;iconImgMacAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgMacAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3004,7 +2308,7 @@
     <value>iconImgHostname</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3031,7 +2335,7 @@
     <value>iconImgOperatingSystem</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3058,7 +2362,7 @@
     <value>iconImgVideoCard</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3085,7 +2389,7 @@
     <value>iconImgMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3112,7 +2416,7 @@
     <value>iconImgStorageType</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3139,7 +2443,7 @@
     <value>iconImgStorageSize</value>
   </data>
   <data name="&gt;&gt;iconImgStorageSize.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStorageSize.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3166,7 +2470,7 @@
     <value>iconImgRam</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3193,7 +2497,7 @@
     <value>iconImgProcessor</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3220,7 +2524,7 @@
     <value>iconImgSerialNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3247,7 +2551,7 @@
     <value>iconImgModel</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3498,6 +2802,30 @@
   <data name="&gt;&gt;lblFixedStorageType.ZOrder" xml:space="preserve">
     <value>55</value>
   </data>
+  <data name="groupBoxHwData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 89</value>
+  </data>
+  <data name="groupBoxHwData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 566</value>
+  </data>
+  <data name="groupBoxHwData.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
+  <data name="groupBoxHwData.Text" xml:space="preserve">
+    <value>Computer data</value>
+  </data>
+  <data name="&gt;&gt;groupBoxHwData.Name" xml:space="preserve">
+    <value>groupBoxHwData</value>
+  </data>
+  <data name="&gt;&gt;groupBoxHwData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxHwData.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBoxHwData.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="comboBoxBatteryChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3514,7 +2842,7 @@
     <value>comboBoxBatteryChange</value>
   </data>
   <data name="&gt;&gt;comboBoxBatteryChange.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxBatteryChange.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3538,7 +2866,7 @@
     <value>comboBoxStandard</value>
   </data>
   <data name="&gt;&gt;comboBoxStandard.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxStandard.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3565,7 +2893,7 @@
     <value>comboBoxActiveDirectory</value>
   </data>
   <data name="&gt;&gt;comboBoxActiveDirectory.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxActiveDirectory.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3589,7 +2917,7 @@
     <value>comboBoxTag</value>
   </data>
   <data name="&gt;&gt;comboBoxTag.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxTag.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3613,7 +2941,7 @@
     <value>comboBoxInUse</value>
   </data>
   <data name="&gt;&gt;comboBoxInUse.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxInUse.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3637,7 +2965,7 @@
     <value>comboBoxHwType</value>
   </data>
   <data name="&gt;&gt;comboBoxHwType.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxHwType.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3661,7 +2989,7 @@
     <value>comboBoxBuilding</value>
   </data>
   <data name="&gt;&gt;comboBoxBuilding.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.1.0.2307, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxBuilding.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3748,7 +3076,7 @@
     <value>iconImgTicketNumber</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3829,7 +3157,7 @@
     <value>iconImgBatteryChange</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4126,7 +3454,7 @@
     <value>iconImgRoomLetter</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4153,7 +3481,7 @@
     <value>iconImgHwType</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4180,7 +3508,7 @@
     <value>iconImgTag</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4207,7 +3535,7 @@
     <value>iconImgInUse</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4234,7 +3562,7 @@
     <value>iconImgServiceDate</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4261,7 +3589,7 @@
     <value>iconImgStandard</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4288,7 +3616,7 @@
     <value>iconImgAdRegistered</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4315,7 +3643,7 @@
     <value>iconImgBuilding</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4342,7 +3670,7 @@
     <value>iconImgRoomNumber</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4369,7 +3697,7 @@
     <value>iconImgSealNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4396,7 +3724,7 @@
     <value>iconImgAssetNumber</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4425,53 +3753,23 @@
   <data name="&gt;&gt;dateTimePickerServiceDate.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Name" xml:space="preserve">
-    <value>loadingCircleMaintenance</value>
+  <data name="lblFixedMandatoryServiceType.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+  <data name="lblFixedMandatoryServiceType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
+  <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>68, 0</value>
   </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="lblFixedMandatoryServiceType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Name" xml:space="preserve">
-    <value>loadingCircleFormatting</value>
+  <data name="lblFixedMandatoryServiceType.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
   </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Name" xml:space="preserve">
-    <value>lblMaintenanceSince</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Name" xml:space="preserve">
-    <value>lblInstallSince</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="lblFixedMandatoryServiceType.Text" xml:space="preserve">
+    <value>✱</value>
   </data>
   <data name="&gt;&gt;lblFixedMandatoryServiceType.Name" xml:space="preserve">
     <value>lblFixedMandatoryServiceType</value>
@@ -4483,7 +3781,25 @@
     <value>groupBoxServiceType</value>
   </data>
   <data name="&gt;&gt;lblFixedMandatoryServiceType.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 39</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 16</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="textBoxFixedFormattingRadio.Text" xml:space="preserve">
+    <value>Option when computer is formatted or reset</value>
   </data>
   <data name="&gt;&gt;textBoxFixedFormattingRadio.Name" xml:space="preserve">
     <value>textBoxFixedFormattingRadio</value>
@@ -4495,7 +3811,25 @@
     <value>groupBoxServiceType</value>
   </data>
   <data name="&gt;&gt;textBoxFixedFormattingRadio.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 39</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 42</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="textBoxFixedMaintenanceRadio.Text" xml:space="preserve">
+    <value>Option when the computer undergoes preventive maintenance, without the need for formatting or reset</value>
   </data>
   <data name="&gt;&gt;textBoxFixedMaintenanceRadio.Name" xml:space="preserve">
     <value>textBoxFixedMaintenanceRadio</value>
@@ -4507,7 +3841,25 @@
     <value>groupBoxServiceType</value>
   </data>
   <data name="&gt;&gt;textBoxFixedMaintenanceRadio.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
+  </data>
+  <data name="radioButtonFormatting.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonFormatting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonFormatting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="radioButtonFormatting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="radioButtonFormatting.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="radioButtonFormatting.Text" xml:space="preserve">
+    <value>Formatting</value>
   </data>
   <data name="&gt;&gt;radioButtonFormatting.Name" xml:space="preserve">
     <value>radioButtonFormatting</value>
@@ -4519,7 +3871,25 @@
     <value>groupBoxServiceType</value>
   </data>
   <data name="&gt;&gt;radioButtonFormatting.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
+  </data>
+  <data name="radioButtonMaintenance.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonMaintenance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonMaintenance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 20</value>
+  </data>
+  <data name="radioButtonMaintenance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="radioButtonMaintenance.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="radioButtonMaintenance.Text" xml:space="preserve">
+    <value>Maintenance</value>
   </data>
   <data name="&gt;&gt;radioButtonMaintenance.Name" xml:space="preserve">
     <value>radioButtonMaintenance</value>
@@ -4531,13 +3901,13 @@
     <value>groupBoxServiceType</value>
   </data>
   <data name="&gt;&gt;radioButtonMaintenance.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="groupBoxServiceType.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 228</value>
   </data>
   <data name="groupBoxServiceType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 118</value>
+    <value>438, 85</value>
   </data>
   <data name="groupBoxServiceType.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
@@ -4621,7 +3991,7 @@
     <value>520, 89</value>
   </data>
   <data name="groupBoxAssetData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 351</value>
+    <value>450, 319</value>
   </data>
   <data name="groupBoxAssetData.TabIndex" type="System.Int32, mscorlib">
     <value>66</value>
@@ -4639,259 +4009,61 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxAssetData.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="loadingCircleMaintenance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 57</value>
-  </data>
-  <data name="loadingCircleMaintenance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="loadingCircleMaintenance.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Name" xml:space="preserve">
-    <value>loadingCircleMaintenance</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleMaintenance.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="loadingCircleFormatting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 16</value>
-  </data>
-  <data name="loadingCircleFormatting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="loadingCircleFormatting.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Name" xml:space="preserve">
-    <value>loadingCircleFormatting</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleFormatting.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lblMaintenanceSince.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblMaintenanceSince.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblMaintenanceSince.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 61</value>
-  </data>
-  <data name="lblMaintenanceSince.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblMaintenanceSince.TabIndex" type="System.Int32, mscorlib">
-    <value>121</value>
-  </data>
-  <data name="lblMaintenanceSince.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Name" xml:space="preserve">
-    <value>lblMaintenanceSince</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblMaintenanceSince.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="lblInstallSince.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblInstallSince.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblInstallSince.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 22</value>
-  </data>
-  <data name="lblInstallSince.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 13</value>
-  </data>
-  <data name="lblInstallSince.TabIndex" type="System.Int32, mscorlib">
-    <value>120</value>
-  </data>
-  <data name="lblInstallSince.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Name" xml:space="preserve">
-    <value>lblInstallSince</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblInstallSince.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 0</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.TabIndex" type="System.Int32, mscorlib">
-    <value>113</value>
-  </data>
-  <data name="lblFixedMandatoryServiceType.Text" xml:space="preserve">
-    <value>✱</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMandatoryServiceType.Name" xml:space="preserve">
-    <value>lblFixedMandatoryServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMandatoryServiceType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMandatoryServiceType.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;lblFixedMandatoryServiceType.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 38</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>391, 19</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Text" xml:space="preserve">
-    <value>Option when computer is formatted or reset</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedFormattingRadio.Name" xml:space="preserve">
-    <value>textBoxFixedFormattingRadio</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedFormattingRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedFormattingRadio.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedFormattingRadio.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 78</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>391, 25</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="textBoxFixedMaintenanceRadio.Text" xml:space="preserve">
-    <value>Option when the computer undergoes preventive maintenance, without the need for formatting or reset</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedMaintenanceRadio.Name" xml:space="preserve">
-    <value>textBoxFixedMaintenanceRadio</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedMaintenanceRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedMaintenanceRadio.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;textBoxFixedMaintenanceRadio.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="radioButtonFormatting.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="loadingCircleLastService.Location" type="System.Drawing.Point, System.Drawing">
+    <value>726, 509</value>
   </data>
-  <data name="radioButtonFormatting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="loadingCircleLastService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 25</value>
+  </data>
+  <data name="loadingCircleLastService.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="&gt;&gt;loadingCircleLastService.Name" xml:space="preserve">
+    <value>loadingCircleLastService</value>
+  </data>
+  <data name="&gt;&gt;loadingCircleLastService.Type" xml:space="preserve">
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;loadingCircleLastService.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loadingCircleLastService.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblLastService.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 12pt</value>
+  </data>
+  <data name="lblLastService.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="radioButtonFormatting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 20</value>
+  <data name="lblLastService.Location" type="System.Drawing.Point, System.Drawing">
+    <value>532, 509</value>
   </data>
-  <data name="radioButtonFormatting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+  <data name="lblLastService.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 24</value>
   </data>
-  <data name="radioButtonFormatting.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+  <data name="lblLastService.TabIndex" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
-  <data name="radioButtonFormatting.Text" xml:space="preserve">
-    <value>Formatting</value>
+  <data name="lblLastService.Text" xml:space="preserve">
+    <value>-</value>
   </data>
-  <data name="&gt;&gt;radioButtonFormatting.Name" xml:space="preserve">
-    <value>radioButtonFormatting</value>
+  <data name="lblLastService.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;radioButtonFormatting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblLastService.Name" xml:space="preserve">
+    <value>lblLastService</value>
   </data>
-  <data name="&gt;&gt;radioButtonFormatting.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
+  <data name="&gt;&gt;lblLastService.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButtonFormatting.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;lblLastService.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="radioButtonMaintenance.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonMaintenance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonMaintenance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 59</value>
-  </data>
-  <data name="radioButtonMaintenance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 17</value>
-  </data>
-  <data name="radioButtonMaintenance.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="radioButtonMaintenance.Text" xml:space="preserve">
-    <value>Maintenance</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMaintenance.Name" xml:space="preserve">
-    <value>radioButtonMaintenance</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMaintenance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMaintenance.Parent" xml:space="preserve">
-    <value>groupBoxServiceType</value>
-  </data>
-  <data name="&gt;&gt;radioButtonMaintenance.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;lblLastService.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="lblAgentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5082,6 +4254,48 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>18, 11</value>
   </metadata>
+  <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="toolStripAutoTheme.Text" xml:space="preserve">
+    <value>Automatic (System Theme)</value>
+  </data>
+  <data name="toolStripLightTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="toolStripLightTheme.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="toolStripDarkTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="toolStripDarkTheme.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="comboBoxThemeButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 22</value>
+  </data>
+  <data name="comboBoxThemeButton.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="logLabelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 19</value>
+  </data>
+  <data name="logLabelButton.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 19</value>
+  </data>
+  <data name="aboutLabelButton.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>850, 19</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 673</value>
   </data>
@@ -5104,49 +4318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="comboBoxThemeButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
-  </data>
-  <data name="comboBoxThemeButton.Text" xml:space="preserve">
-    <value>Theme</value>
-  </data>
-  <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="toolStripAutoTheme.Text" xml:space="preserve">
-    <value>Automatic (System Theme)</value>
-  </data>
-  <data name="toolStripLightTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="toolStripLightTheme.Text" xml:space="preserve">
-    <value>Light</value>
-  </data>
-  <data name="toolStripDarkTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="toolStripDarkTheme.Text" xml:space="preserve">
-    <value>Dark</value>
-  </data>
-  <data name="logLabelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 19</value>
-  </data>
-  <data name="logLabelButton.Text" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 19</value>
-  </data>
-  <data name="aboutLabelButton.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>850, 19</value>
+    <value>11</value>
   </data>
   <metadata name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 9</value>
@@ -5172,11 +4344,20 @@
   <metadata name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 48</value>
   </metadata>
+  <data name="webView2Control.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 13</value>
+  </data>
+  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 48</value>
+  </data>
+  <data name="webView2Control.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;webView2Control.Name" xml:space="preserve">
     <value>webView2Control</value>
   </data>
   <data name="&gt;&gt;webView2Control.Type" xml:space="preserve">
-    <value>Microsoft.Web.WebView2.WinForms.WebView2, Microsoft.Web.WebView2.WinForms, Version=1.0.1722.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e</value>
+    <value>Microsoft.Web.WebView2.WinForms.WebView2, Microsoft.Web.WebView2.WinForms, Version=1.0.1823.32, Culture=neutral, PublicKeyToken=2a8ab48044d2601e</value>
   </data>
   <data name="&gt;&gt;webView2Control.Parent" xml:space="preserve">
     <value>groupBoxRegistryStatus</value>
@@ -5206,28 +4387,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxRegistryStatus.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="webView2Control.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 13</value>
-  </data>
-  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 48</value>
-  </data>
-  <data name="webView2Control.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;webView2Control.Name" xml:space="preserve">
-    <value>webView2Control</value>
-  </data>
-  <data name="&gt;&gt;webView2Control.Type" xml:space="preserve">
-    <value>Microsoft.Web.WebView2.WinForms.WebView2, Microsoft.Web.WebView2.WinForms, Version=1.0.1722.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e</value>
-  </data>
-  <data name="&gt;&gt;webView2Control.Parent" xml:space="preserve">
-    <value>groupBoxRegistryStatus</value>
-  </data>
-  <data name="&gt;&gt;webView2Control.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>5</value>
   </data>
   <metadata name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 48</value>
@@ -5263,13 +4423,13 @@
     <value>imgTopBanner</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="loadingCircleCollectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 602</value>
@@ -5287,13 +4447,13 @@
     <value>loadingCircleCollectButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="loadingCircleRegisterButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>704, 602</value>
@@ -5311,19 +4471,28 @@
     <value>loadingCircleRegisterButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 50</value>
+  </data>
+  <data name="loadingCircleServerOperationalStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 25</value>
+  </data>
+  <data name="loadingCircleServerOperationalStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Name" xml:space="preserve">
     <value>loadingCircleServerOperationalStatus</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8586.24577, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Parent" xml:space="preserve">
     <value>groupBoxServerStatus</value>
@@ -5332,7 +4501,7 @@
     <value>0</value>
   </data>
   <data name="groupBoxServerStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>520, 440</value>
+    <value>520, 408</value>
   </data>
   <data name="groupBoxServerStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 94</value>
@@ -5353,28 +4522,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBoxServerStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 50</value>
-  </data>
-  <data name="loadingCircleServerOperationalStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="loadingCircleServerOperationalStatus.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleServerOperationalStatus.Name" xml:space="preserve">
-    <value>loadingCircleServerOperationalStatus</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleServerOperationalStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleServerOperationalStatus.Parent" xml:space="preserve">
-    <value>groupBoxServerStatus</value>
-  </data>
-  <data name="&gt;&gt;loadingCircleServerOperationalStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <metadata name="timerOSLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>533, 48</value>
