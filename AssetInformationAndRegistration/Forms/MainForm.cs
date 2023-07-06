@@ -8,6 +8,7 @@ using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Web.WebView2.WinForms;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using MRG.Controls.UI;
 using System;
@@ -16,6 +17,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,6 +43,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly List<string[]> parametersList, jsonServerSettings;
         private readonly List<string> enforcementList, orgDataList;
         private readonly Octokit.GitHubClient ghc;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Main form constructor
@@ -53,10 +56,36 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="enforcementList">List containing data from [Enforcement]</param>
         /// <param name="orgDataList">List containing data from [OrgData]</param>
-        internal MainForm(Octokit.GitHubClient ghc, bool offlineMode, string[] agentData, string serverIP, string serverPort, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
+        internal MainForm(Octokit.GitHubClient ghc, bool offlineMode, string[] agentData, string serverIP, string serverPort, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList, bool themeBool)
         {
             //Inits WinForms components
             InitializeComponent();
+
+            //Define theming according to ini file provided info
+            int themeFileSet = MiscMethods.GetFileThemeMode(parametersList, themeBool);
+            switch (themeFileSet)
+            {
+                case 0:
+                    DarkTheme();
+                    break;
+                case 1:
+                    LightTheme();
+                    break;
+                case 2:
+                    LightTheme();
+                    themeBool = false;
+                    comboBoxThemeButton.Enabled = false;
+                    break;
+                case 3:
+                    DarkTheme();
+                    themeBool = true;
+                    comboBoxThemeButton.Enabled = false;
+                    break;
+            }
+
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            this.Disposed += new EventHandler(MainForm_Disposed);
 
             //Program version
 #if DEBUG
@@ -64,47 +93,6 @@ namespace AssetInformationAndRegistration.Forms
 #else
             toolStripVersionText.Text = MiscMethods.Version(); //Release/Final version
 #endif
-            //Define theming according to ini file provided info
-            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
-            {
-                themeBool = MiscMethods.ThemeInit();
-                if (themeBool)
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                    }
-                    DarkTheme();
-                }
-                else
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                    }
-                    LightTheme();
-                }
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
-            {
-                comboBoxThemeButton.Enabled = false;
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                }
-                LightTheme();
-                themeBool = false;
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
-            {
-                comboBoxThemeButton.Enabled = false;
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                }
-                DarkTheme();
-                themeBool = true;
-            }
 
             this.ghc = ghc;
             this.serverIP = serverIP;
@@ -115,6 +103,7 @@ namespace AssetInformationAndRegistration.Forms
             this.enforcementList = enforcementList;
             this.orgDataList = orgDataList;
             this.agentData = agentData;
+            this.themeBool = themeBool;
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
@@ -2055,7 +2044,7 @@ namespace AssetInformationAndRegistration.Forms
 
         }
 
-        #region Variables being declared
+        #region Variable declaration
         private Label lblBrand;
         private Label lblModel;
         private Label lblSerialNumber;
@@ -2263,30 +2252,6 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Method for auto selecting the app theme
-        /// </summary>
-        private void ComboBoxThemeInit()
-        {
-            themeBool = MiscMethods.ThemeInit();
-            if (themeBool)
-            {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10)) //If Windows 10/11
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark); //Sets context menus to dark
-                }
-                DarkTheme(); //Sets dark theme
-            }
-            else
-            {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10)) //If Windows 10/11
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light); //Sets context menus to light
-                }
-                LightTheme(); //Sets light theme
-            }
-        }
-
-        /// <summary> 
         /// Method for setting the auto theme via toolStrip
         /// </summary>
         /// <param name="sender"></param>
@@ -2294,7 +2259,7 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            ComboBoxThemeInit();
+            ToggleTheme();
         }
 
         /// <summary> 
@@ -2305,10 +2270,6 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_LIGHTMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-            {
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-            }
             LightTheme();
             themeBool = false;
         }
@@ -2321,10 +2282,6 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_DARKMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-            {
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-            }
             DarkTheme();
             themeBool = true;
         }
@@ -2556,6 +2513,11 @@ namespace AssetInformationAndRegistration.Forms
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_LIGHT_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_LIGHT_PATH));
             iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TICKET_LIGHT_PATH));
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+            }
         }
 
         public void DarkTheme()
@@ -2778,6 +2740,41 @@ namespace AssetInformationAndRegistration.Forms
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_DARK_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_DARK_PATH));
             iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TICKET_DARK_PATH));
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+            }
+        }
+
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
+        private void ToggleTheme()
+        {
+            if (MiscMethods.GetSystemThemeMode())
+            {
+                DarkTheme();
+                themeBool = true;
+            }
+            else
+            {
+                LightTheme();
+                themeBool = false;
+            }
+        }
+
+        /// <summary>
+        /// Allows the theme to change automatically according to the system one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+            {
+                ToggleTheme();
+            }
         }
 
         /// <summary> 
@@ -4002,7 +3999,7 @@ namespace AssetInformationAndRegistration.Forms
             //If stats in non-offline mode, instantiates WebView2 and show a Busy form until loading is complete
             if (!offlineMode)
             {
-                bw = new BusyForm(themeBool)
+                bw = new BusyForm(parametersList, themeBool)
                 {
                     Visible = true,
                 };
@@ -4079,6 +4076,16 @@ namespace AssetInformationAndRegistration.Forms
             FormClosing += MainForm_Closing; //Handles Form closing
             tbProgMain = TaskbarManager.Instance; //Handles taskbar progress bar
             CollectButton_Click(sender, e); //Start collecting
+        }
+
+        /// <summary>
+        /// Free resources
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Disposed(object sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
         }
 
         /// <summary> 

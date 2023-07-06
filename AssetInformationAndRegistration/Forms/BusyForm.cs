@@ -3,7 +3,9 @@ using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
+using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
@@ -13,28 +15,31 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     internal partial class BusyForm : Form, ITheming
     {
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
+
         /// <summary> 
         /// Busy form constructor
         /// </summary>
         /// <param name="themeBool">Theme mode</param>
-        internal BusyForm(bool themeBool)
+        internal BusyForm(List<string[]> parametersList, bool themeBool)
         {
             InitializeComponent();
-            if (themeBool)
+
+            int themeFileSet = MiscMethods.GetFileThemeMode(parametersList, themeBool);
+            switch (themeFileSet)
             {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                }
-                DarkTheme();
-            }
-            else
-            {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                }
-                LightTheme();
+                case 0:
+                    DarkTheme();
+                    break;
+                case 1:
+                    LightTheme();
+                    break;
+                case 2:
+                    LightTheme();
+                    break;
+                case 3:
+                    DarkTheme();
+                    break;
             }
 
             loadingCircleLoading.Enabled = true;
@@ -109,18 +114,70 @@ namespace AssetInformationAndRegistration.Forms
 
             loadingCircleLoading.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleLoading.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
+
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            this.Disposed += new EventHandler(LoginForm_Disposed);
         }
 
         public void LightTheme()
         {
             lblFixedLoading.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+            }
         }
 
         public void DarkTheme()
         {
             lblFixedLoading.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             BackColor = StringsAndConstants.DARK_BACKGROUND;
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+            }
+        }
+
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
+        private void ToggleTheme()
+        {
+            if (MiscMethods.GetSystemThemeMode())
+            {
+                DarkTheme();
+            }
+            else
+            {
+                LightTheme();
+            }
+        }
+
+        /// <summary>
+        /// Allows the theme to change automatically according to the system one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+            {
+                ToggleTheme();
+            }
+        }
+
+        /// <summary>
+        /// Free resources
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginForm_Disposed(object sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
         }
     }
 }

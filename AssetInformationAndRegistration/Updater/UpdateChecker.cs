@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Forms;
+using AssetInformationAndRegistration.Misc;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
@@ -41,7 +42,7 @@ namespace AssetInformationAndRegistration.Updater
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="themeBool">Theme mode</param>
         /// <param name="autoCheck">Toggle for update autocheck</param>
-        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool themeBool, bool autoCheck, bool cliMode)
+        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool autoCheck, bool cliMode, bool themeBool)
         {
             try
             {
@@ -85,13 +86,13 @@ namespace AssetInformationAndRegistration.Updater
 
                 if (!cliMode)
                 {
-                    UpdateCheckerForm uForm = new UpdateCheckerForm(log, parametersList, themeBool, ui);
-                    bool isUpdated = uForm.IsThereANewVersion();
+                    UpdateCheckerForm uForm = new UpdateCheckerForm(log, parametersList, ui, themeBool);
+                    bool isNotUpdated = uForm.IsThereANewVersion();
                     if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
                     }
-                    if ((!isUpdated && !autoCheck) || isUpdated)
+                    if (isNotUpdated && autoCheck)
                     {
                         _ = uForm.ShowDialog();
                     }

@@ -5,6 +5,7 @@ using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -18,6 +19,7 @@ namespace AssetInformationAndRegistration.Forms
     {
         private readonly string currentVersion, newVersion, changelog, url;
         private readonly LogGenerator log;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Updater form constructor
@@ -25,9 +27,26 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="themeBool">Theme mode</param>
         /// <param name="releases">GitHub release information</param>
-        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, bool themeBool, UpdateInfo ui)
+        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool themeBool)
         {
             InitializeComponent();
+
+            int themeFileSet = MiscMethods.GetFileThemeMode(parametersList, themeBool);
+            switch (themeFileSet)
+            {
+                case 0:
+                    DarkTheme();
+                    break;
+                case 1:
+                    LightTheme();
+                    break;
+                case 2:
+                    LightTheme();
+                    break;
+                case 3:
+                    DarkTheme();
+                    break;
+            }
 
             if (ui != null)
             {
@@ -38,33 +57,9 @@ namespace AssetInformationAndRegistration.Forms
             currentVersion = MiscMethods.Version();
             this.log = log;
 
-            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
-            {
-                if (themeBool)
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                    }
-                    DarkTheme();
-                }
-                else
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                    }
-                    LightTheme();
-                }
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
-            {
-                LightTheme();
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
-            {
-                DarkTheme();
-            }
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            this.Disposed += new EventHandler(UpdateCheckerForm_Disposed);
         }
 
         /// <summary> 
@@ -134,6 +129,11 @@ namespace AssetInformationAndRegistration.Forms
 
             changelogTextBox.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             changelogTextBox.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+            }
         }
 
         public void DarkTheme()
@@ -158,6 +158,49 @@ namespace AssetInformationAndRegistration.Forms
 
             changelogTextBox.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             changelogTextBox.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+            }
+        }
+
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
+        private void ToggleTheme()
+        {
+            if (MiscMethods.GetSystemThemeMode())
+            {
+                DarkTheme();
+            }
+            else
+            {
+                LightTheme();
+            }
+        }
+
+        /// <summary>
+        /// Allows the theme to change automatically according to the system one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+            {
+                ToggleTheme();
+            }
+        }
+
+        /// <summary>
+        /// Free resources
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateCheckerForm_Disposed(object sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
         }
     }
 }

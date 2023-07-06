@@ -95,7 +95,7 @@
             // okButton
             // 
             resources.ApplyResources(this.okButton, "okButton");
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okButton.Name = "okButton";
             this.okButton.UseVisualStyleBackColor = true;
             // 
@@ -107,7 +107,6 @@
             // checkUpdateButton
             // 
             resources.ApplyResources(this.checkUpdateButton, "checkUpdateButton");
-            this.checkUpdateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.checkUpdateButton.Name = "checkUpdateButton";
             this.checkUpdateButton.UseVisualStyleBackColor = true;
             this.checkUpdateButton.Click += new System.EventHandler(this.CheckUpdateButton_Click);

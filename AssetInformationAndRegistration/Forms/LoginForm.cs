@@ -6,11 +6,14 @@ using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
+using MRG.Controls.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -21,7 +24,7 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     internal partial class LoginForm : Form, ITheming
     {
-        private readonly bool themeBool;
+        private bool themeBool;
         private string[] agentsJsonStr = { };
         private readonly LogGenerator log;
         private readonly List<string[]> parametersList;
@@ -29,6 +32,7 @@ namespace AssetInformationAndRegistration.Forms
         private TaskbarManager tbProgLogin;
         private MainForm mForm;
         private readonly Octokit.GitHubClient ghc;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Login form constructor
@@ -37,16 +41,36 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="enforcementList">List containing data from [Enforcement]</param>
         /// <param name="orgDataList">List containing data from [OrgData]</param>
-        internal LoginForm(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList)
+        internal LoginForm(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList, bool themeBool)
         {
             //Inits WinForms components
             InitializeComponent();
+
+            //Define theming according to ini file provided info
+            //themeBool = MiscMethods.GetSystemThemeMode();
+            int themeFileSet = MiscMethods.GetFileThemeMode(parametersList, themeBool);
+            switch (themeFileSet)
+            {
+                case 0:
+                    DarkTheme();
+                    break;
+                case 1:
+                    LightTheme();
+                    break;
+                case 2:
+                    LightTheme();
+                    break;
+                case 3:
+                    DarkTheme();
+                    break;
+            }
 
             this.ghc = ghc;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
             this.orgDataList = orgDataList;
             this.log = log;
+            this.themeBool = themeBool;
 
             //Sets status bar text according to info provided in the ini file
             string[] oList = new string[6];
@@ -57,48 +81,7 @@ namespace AssetInformationAndRegistration.Forms
                     oList[i] = orgDataList[i].ToString() + " - ";
                 }
             }
-
             toolStripStatusBarText.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
-
-            //Define theming according to ini file provided info
-            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
-            {
-                themeBool = MiscMethods.ThemeInit();
-                if (themeBool)
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                    }
-                    DarkTheme();
-                }
-                else
-                {
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    {
-                        DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                    }
-                    LightTheme();
-                }
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
-            {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-                }
-                LightTheme();
-                themeBool = false;
-            }
-            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
-            {
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                {
-                    DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-                }
-                DarkTheme();
-                themeBool = true;
-            }
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_THEME, themeBool.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
@@ -115,7 +98,6 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-            UpdateChecker.Check(ghc, log, parametersList, themeBool, true, false);
         }
 
         public void LightTheme()
@@ -172,6 +154,11 @@ namespace AssetInformationAndRegistration.Forms
             iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PASSWORD_LIGHT_PATH));
             iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SERVER_LIGHT_PATH));
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_LIGHT_PATH));
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+            }
         }
 
         public void DarkTheme()
@@ -226,6 +213,41 @@ namespace AssetInformationAndRegistration.Forms
             iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PASSWORD_DARK_PATH));
             iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SERVER_DARK_PATH));
             iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_DARK_PATH));
+
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            {
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+            }
+        }
+
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
+        private void ToggleTheme()
+        {
+            if (MiscMethods.GetSystemThemeMode())
+            {
+                DarkTheme();
+                themeBool = true;
+            }
+            else
+            {
+                LightTheme();
+                themeBool = false;
+            }
+        }
+
+        /// <summary>
+        /// Allows the theme to change automatically according to the system one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+            {
+                ToggleTheme();
+            }
         }
 
         /// <summary> 
@@ -309,6 +331,9 @@ namespace AssetInformationAndRegistration.Forms
             #endregion
 
             FormClosing += LoginForm_Closing;
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            this.Disposed += new EventHandler(LoginForm_Disposed);
             tbProgLogin = TaskbarManager.Instance;
         }
 
@@ -333,6 +358,16 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
+        /// <summary>
+        /// Free resources
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginForm_Disposed(object sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
+        }
+
         /// <summary> 
         /// Checks the username/password and shows the main form
         /// </summary>
@@ -348,7 +383,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(ghc, true, offStr, null, null, log, parametersList, enforcementList, orgDataList);
+                mForm = new MainForm(ghc, true, offStr, null, null, log, parametersList, enforcementList, orgDataList, themeBool);
                 if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                 {
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
@@ -395,7 +430,7 @@ namespace AssetInformationAndRegistration.Forms
                     else //If Login Json file does exist and agent logs in
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        MainForm mForm = new MainForm(ghc, false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList);
+                        MainForm mForm = new MainForm(ghc, false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList, themeBool);
                         if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                         {
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);

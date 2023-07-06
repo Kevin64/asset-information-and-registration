@@ -26,7 +26,6 @@ namespace AssetInformationAndRegistration.Forms
         private bool[] serverAlertBool;
         private string[] serverArgs, serverAlert;
         private WebView2 webView2Control;
-        private readonly GitHubClient ghc;
         private readonly LogGenerator log;
         private readonly List<string[]> parametersList;
         private List<string[]> jsonServerSettings;
@@ -79,7 +78,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="log">Log file object</param>
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="enforcementList">List containing data from [Enforcement]</param>
-        internal CLIRegister(GitHubClient ghc, string[] argsArray, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
+        internal CLIRegister(string[] argsArray, string[] agentData, LogGenerator log, List<string[]> parametersList, List<string> enforcementList)
         {
             InitializeComponent();
 
@@ -103,7 +102,6 @@ namespace AssetInformationAndRegistration.Forms
             this.log = log;
             this.parametersList = parametersList;
             this.enforcementList = enforcementList;
-            this.ghc = ghc;
 
             InitProc(serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, this.agentData, standard, inUse, sealNumber, tag, hwType);
         }

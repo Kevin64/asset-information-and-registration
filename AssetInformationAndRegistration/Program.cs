@@ -28,7 +28,7 @@ namespace AssetInformationAndRegistration
     /// </summary>
     public partial class Program
     {
-        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
+        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, checkUpdatesStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
         private static string[] logLocationSection, serverIPListSection, serverPortListSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
 
         private static bool showCLIOutput;
@@ -121,7 +121,9 @@ namespace AssetInformationAndRegistration
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    Application.Run(new CLIRegister(ghc, argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection));
+                    CLIRegister cr = new CLIRegister(argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection);
+                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), true, true);
+                    Application.Run(cr);
                 }
                 else
                 {
@@ -153,10 +155,6 @@ namespace AssetInformationAndRegistration
 
             ghc = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR));
 
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-            {
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Auto);
-            }
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
@@ -197,6 +195,7 @@ namespace AssetInformationAndRegistration
                 secureBootEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_7];
                 vtEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_8];
                 tpmEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_9];
+                checkUpdatesStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_10];
 
                 //Reads the INI file OrgData section
                 orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_1];
@@ -241,7 +240,8 @@ namespace AssetInformationAndRegistration
                     firmwareVersionEnforcementStr,
                     secureBootEnforcementStr,
                     vtEnforcementStr,
-                    tpmEnforcementStr
+                    tpmEnforcementStr,
+                    checkUpdatesStr,
                 };
 
                 //[OrgData] ini section
@@ -278,12 +278,10 @@ namespace AssetInformationAndRegistration
 #if DEBUG
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.DEV_STATUS, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
-                UpdateChecker.Check(ghc, log, parametersListSection, false, false, true);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
-                UpdateChecker.Check(ghc, log, parametersListSection, false, false, true);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)
@@ -318,13 +316,38 @@ namespace AssetInformationAndRegistration
                 if (args.Length == 0)
                 {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, showCLIOutput);
+
                     FreeConsole();
-                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection);
+
+                    bool themeBool = MiscMethods.GetSystemThemeMode();
+                    int themeFileSet = MiscMethods.GetFileThemeMode(parametersListSection, themeBool);
+                    bool initialTheme = false;
+
+                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection, themeBool);
+
                     if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
-                        DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Auto);
+                        switch (themeFileSet)
+                        {
+                            case 0:
+                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Dark);
+                                initialTheme = true;
+                                break;
+                            case 1:
+                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Light);
+                                initialTheme = false;
+                                break;
+                            case 2:
+                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Light);
+                                initialTheme = false;
+                                break;
+                            case 3:
+                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Dark);
+                                initialTheme = true;
+                                break;
+                        }
                     }
-
+                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, initialTheme);
                     Application.Run(lForm);
                 }
                 else //If given args, hides password from Console and Log file and runs CLIRegister
