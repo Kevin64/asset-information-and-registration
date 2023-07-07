@@ -112,6 +112,11 @@ namespace AssetInformationAndRegistration.Forms
             Close();
         }
 
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdaterCheckerForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -169,6 +174,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
+        /// <summary> 
+        /// Loads the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateCheckerForm_Load(object sender, EventArgs e)
         {
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);

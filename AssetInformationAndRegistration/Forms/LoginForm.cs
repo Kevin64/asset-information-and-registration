@@ -257,7 +257,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Loads the form, sets some combobox values
+        /// Loads the form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

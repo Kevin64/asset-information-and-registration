@@ -186,7 +186,7 @@ namespace AssetInformationAndRegistration.Forms
                     }
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                    
+
                     //Feches asset number data from server
                     string[] assetJsonStr = JsonFileReaderDLL.AssetFileReader.FetchInfoST(assetNumber, serverIP, serverPort);
 
