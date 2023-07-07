@@ -130,17 +130,14 @@
   <data name="AUTH_INVALID" xml:space="preserve">
     <value>Invalid credentials. Try again.</value>
   </data>
-  <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value> (Outdated firmware)</value>
-  </data>
-  <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>Firmware version:</value>
-  </data>
   <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
     <value>Database connectivity: </value>
   </data>
   <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
     <value>Firmware type: </value>
+  </data>
+  <data name="CLI_FIRMWARE_VERSION_ALERT" xml:space="preserve">
+    <value>Firmware version:</value>
   </data>
   <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
     <value>Hostname: </value>
@@ -270,6 +267,9 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
     <value> (Incorrect firmware type)</value>
   </data>
+  <data name="FIRMWARE_VERSION_ALERT" xml:space="preserve">
+    <value> (Outdated firmware)</value>
+  </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
     <value>Fix the following issues before proceeding:</value>
   </data>
@@ -287,6 +287,9 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   </data>
   <data name="LOG_AD_REGISTERED" xml:space="preserve">
     <value>Active Directory registered</value>
+  </data>
+  <data name="LOG_APCS_REGISTERING" xml:space="preserve">
+    <value>Registering on the APCS Server</value>
   </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Automatically selecting theme</value>
@@ -309,10 +312,10 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="LOG_CLOSING_CLI" xml:space="preserve">
     <value>Ending program sequence</value>
   </data>
-  <data name="LOG_CLOSING_LOGINFORM" xml:space="preserve">
+  <data name="LOG_CLOSING_LOGIN_FORM" xml:space="preserve">
     <value>Finalizing login form</value>
   </data>
-  <data name="LOG_CLOSING_MAINFORM" xml:space="preserve">
+  <data name="LOG_CLOSING_MAIN_FORM" xml:space="preserve">
     <value>Finalizing main form</value>
   </data>
   <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
@@ -324,11 +327,14 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
     <value>WebView2 Runtime loading finished</value>
   </data>
-  <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
-    <value>Getting file with hardware model information</value>
+  <data name="LOG_FETCHING_ASSET_FILE" xml:space="preserve">
+    <value>Getting file with asset information</value>
   </data>
   <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
     <value>Searching available buildings and types of hardware in the local file</value>
+  </data>
+  <data name="LOG_FETCHING_MODEL_FILE" xml:space="preserve">
+    <value>Getting file with hardware model information</value>
   </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Searching available buildings and types of hardware</value>
@@ -399,17 +405,11 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="LOG_PROCNAME" xml:space="preserve">
     <value>Processor and number of cores</value>
   </data>
-  <data name="LOG_REGISTERING" xml:space="preserve">
-    <value>Registering on the Asset Control Server</value>
-  </data>
   <data name="LOG_REGISTRY_FINISHED" xml:space="preserve">
     <value>Registration finished</value>
   </data>
-  <data name="LOG_RESETTING_INSTALLDATE" xml:space="preserve">
-    <value>Recalculating last formatting date</value>
-  </data>
-  <data name="LOG_RESETTING_MAINTENANCEDATE" xml:space="preserve">
-    <value>Recalculating last maintenance date</value>
+  <data name="LOG_RESETTING_LASTSERVICE_DATE" xml:space="preserve">
+    <value>Recalculating last service date</value>
   </data>
   <data name="LOG_SAMEWORD_NOFIRSTREGISTRY" xml:space="preserve">
     <value>One or more 'same' arguments detected, however there is no existing record for the current asset. Computer must be registered first via GUI or via CLI with all command line options correctly filled in</value>
@@ -432,11 +432,11 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="LOG_START_COLLECTING" xml:space="preserve">
     <value>Collecting hardware</value>
   </data>
+  <data name="LOG_START_COLLECT_THREAD" xml:space="preserve">
+    <value>Initializing collection procedure thread</value>
+  </data>
   <data name="LOG_START_LOADING_WEBVIEW2" xml:space="preserve">
     <value>Starting loading of WebView2 Runtime</value>
-  </data>
-  <data name="LOG_START_THREAD" xml:space="preserve">
-    <value>Initializing collection procedure thread</value>
   </data>
   <data name="LOG_THEME" xml:space="preserve">
     <value>Using dark theme</value>

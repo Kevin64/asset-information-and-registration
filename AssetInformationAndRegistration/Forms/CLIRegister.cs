@@ -130,7 +130,7 @@ namespace AssetInformationAndRegistration.Forms
             serverAlert[1] = Strings.CLI_MEDIA_OPERATION_ALERT;
             serverAlert[2] = Strings.CLI_SECURE_BOOT_ALERT;
             serverAlert[3] = Strings.CLI_DATABASE_REACH_ERROR;
-            serverAlert[4] = Strings.CLI_BIOS_VERSION_ALERT;
+            serverAlert[4] = Strings.CLI_FIRMWARE_VERSION_ALERT;
             serverAlert[5] = Strings.CLI_FIRMWARE_TYPE_ALERT;
             serverAlert[6] = Strings.CLI_NETWORK_IP_ERROR;
             serverAlert[7] = Strings.CLI_NETWORK_MAC_ERROR;
@@ -179,15 +179,17 @@ namespace AssetInformationAndRegistration.Forms
 
                     CollectThread();
 
-                    //log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), MiscMethods.SinceLabelUpdate(true), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    //log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), MiscMethods.SinceLabelUpdate(false), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                     //assetNumber
                     if (assetNumber.Equals(string.Empty))
                     {
                         assetNumber = HardwareInfo.GetHostname().Substring(3);
                     }
 
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    
+                    //Feches asset number data from server
                     string[] assetJsonStr = JsonFileReaderDLL.AssetFileReader.FetchInfoST(assetNumber, serverIP, serverPort);
+
                     //If asset Json does not exist and there are some 'same' cmd switch word
                     if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                     {
@@ -197,6 +199,8 @@ namespace AssetInformationAndRegistration.Forms
                     }
                     else if (assetJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If asset Json does not exist
                     {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), MiscMethods.SinceLabelUpdate(string.Empty), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+
                         //serviceType
                         if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
                         {
@@ -249,6 +253,8 @@ namespace AssetInformationAndRegistration.Forms
                     }
                     else //If asset Json does exist
                     {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), MiscMethods.SinceLabelUpdate(assetJsonStr[10]), string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+
                         //If asset is discarded
                         if (assetJsonStr[9] == "1")
                         {
@@ -513,12 +519,12 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void PrintHardwareData()
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-
             pass = true;
 
             try
             {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_MODEL_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+
                 //Feches model info from server
                 string[] modelJsonStr = JsonFileReaderDLL.ModelFileReader.FetchInfoST(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
 
@@ -556,7 +562,7 @@ namespace AssetInformationAndRegistration.Forms
                     if (!modelJsonStr[0].Equals("-1"))
                     {
                         pass = false;
-                        serverAlert[4] += fwVersion + Strings.BIOS_VERSION_ALERT;
+                        serverAlert[4] += fwVersion + Strings.FIRMWARE_VERSION_ALERT;
                         serverAlertBool[4] = true;
                     }
                 }

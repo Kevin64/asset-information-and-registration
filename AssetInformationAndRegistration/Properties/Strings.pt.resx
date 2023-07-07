@@ -130,17 +130,14 @@
   <data name="AUTH_INVALID" xml:space="preserve">
     <value>Credenciais inválidas. Tente novamente.</value>
   </data>
-  <data name="BIOS_VERSION_ALERT" xml:space="preserve">
-    <value> (Firmware desatualizado)</value>
-  </data>
-  <data name="CLI_BIOS_VERSION_ALERT" xml:space="preserve">
-    <value>Versão do firmware: </value>
-  </data>
   <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
     <value>Conectividade com o banco de dados: </value>
   </data>
   <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
     <value>Tipo de firmware: </value>
+  </data>
+  <data name="CLI_FIRMWARE_VERSION_ALERT" xml:space="preserve">
+    <value>Versão do firmware: </value>
   </data>
   <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
     <value>Hostname: </value>
@@ -270,6 +267,9 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
     <value> (Tipo de firmware incorreto)</value>
   </data>
+  <data name="FIRMWARE_VERSION_ALERT" xml:space="preserve">
+    <value> (Firmware desatualizado)</value>
+  </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
     <value>Corrija os problemas a seguir antes de prosseguir:</value>
   </data>
@@ -287,6 +287,9 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   </data>
   <data name="LOG_AD_REGISTERED" xml:space="preserve">
     <value>Registrado no Active Directory</value>
+  </data>
+  <data name="LOG_APCS_REGISTERING" xml:space="preserve">
+    <value>Registrando no servidor APCS</value>
   </data>
   <data name="LOG_AUTOTHEME_CHANGE" xml:space="preserve">
     <value>Selecionando tema automaticamente</value>
@@ -309,10 +312,10 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="LOG_CLOSING_CLI" xml:space="preserve">
     <value>Finalizando sequência do programa</value>
   </data>
-  <data name="LOG_CLOSING_LOGINFORM" xml:space="preserve">
+  <data name="LOG_CLOSING_LOGIN_FORM" xml:space="preserve">
     <value>Finalizando form de login</value>
   </data>
-  <data name="LOG_CLOSING_MAINFORM" xml:space="preserve">
+  <data name="LOG_CLOSING_MAIN_FORM" xml:space="preserve">
     <value>Finalizando form principal</value>
   </data>
   <data name="LOG_DARKMODE_CHANGE" xml:space="preserve">
@@ -324,11 +327,14 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
     <value>Carregamento do WebView2 Runtime finalizado</value>
   </data>
-  <data name="LOG_FETCHING_BIOSFILE" xml:space="preserve">
-    <value>Obtendo arquivo com informações de modelo de hardware</value>
+  <data name="LOG_FETCHING_ASSET_FILE" xml:space="preserve">
+    <value>Obtendo arquivo com informações de ativo</value>
   </data>
   <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>
+  </data>
+  <data name="LOG_FETCHING_MODEL_FILE" xml:space="preserve">
+    <value>Obtendo arquivo com informações de modelo de hardware</value>
   </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>
@@ -399,17 +405,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="LOG_PROCNAME" xml:space="preserve">
     <value>Processador e nº de núcleos</value>
   </data>
-  <data name="LOG_REGISTERING" xml:space="preserve">
-    <value>Registrando no servidor de controle patrimonial</value>
-  </data>
   <data name="LOG_REGISTRY_FINISHED" xml:space="preserve">
     <value>Registro finalizado</value>
   </data>
-  <data name="LOG_RESETTING_INSTALLDATE" xml:space="preserve">
-    <value>Recalculando data da última formatação</value>
-  </data>
-  <data name="LOG_RESETTING_MAINTENANCEDATE" xml:space="preserve">
-    <value>Recalculando data da última manutenção</value>
+  <data name="LOG_RESETTING_LASTSERVICE_DATE" xml:space="preserve">
+    <value>Recalculando data do último serviço</value>
   </data>
   <data name="LOG_SAMEWORD_NOFIRSTREGISTRY" xml:space="preserve">
     <value>Um ou mais argumentos 'same' detectados, porém não há registro existente para o ativo atual. Computador deve ser registrado primeiramente via GUI ou via CLI com todas as opções de linha de comando corretamente preenchidas</value>
@@ -432,11 +432,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="LOG_START_COLLECTING" xml:space="preserve">
     <value>Coletando hardware</value>
   </data>
+  <data name="LOG_START_COLLECT_THREAD" xml:space="preserve">
+    <value>Inicializando thread de procedimento de coleta</value>
+  </data>
   <data name="LOG_START_LOADING_WEBVIEW2" xml:space="preserve">
     <value>Iniciando carregamento do WebView2 Runtime</value>
-  </data>
-  <data name="LOG_START_THREAD" xml:space="preserve">
-    <value>Inicializando thread de procedimento de coleta</value>
   </data>
   <data name="LOG_THEME" xml:space="preserve">
     <value>Usando tema escuro</value>

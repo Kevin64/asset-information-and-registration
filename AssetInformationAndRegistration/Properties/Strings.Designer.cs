@@ -97,24 +97,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Outdated firmware).
-        /// </summary>
-        internal static string BIOS_VERSION_ALERT {
-            get {
-                return ResourceManager.GetString("BIOS_VERSION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware version:.
-        /// </summary>
-        internal static string CLI_BIOS_VERSION_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_BIOS_VERSION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Database connectivity: .
         /// </summary>
         internal static string CLI_DATABASE_REACH_ERROR {
@@ -129,6 +111,15 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string CLI_FIRMWARE_TYPE_ALERT {
             get {
                 return ResourceManager.GetString("CLI_FIRMWARE_TYPE_ALERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware version:.
+        /// </summary>
+        internal static string CLI_FIRMWARE_VERSION_ALERT {
+            get {
+                return ResourceManager.GetString("CLI_FIRMWARE_VERSION_ALERT", resourceCulture);
             }
         }
         
@@ -284,6 +275,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Outdated firmware).
+        /// </summary>
+        internal static string FIRMWARE_VERSION_ALERT {
+            get {
+                return ResourceManager.GetString("FIRMWARE_VERSION_ALERT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Fix the following issues before proceeding:.
         /// </summary>
         internal static string FIX_PROBLEMS {
@@ -334,6 +334,15 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string LOG_AD_REGISTERED {
             get {
                 return ResourceManager.GetString("LOG_AD_REGISTERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Registering on the APCS Server.
+        /// </summary>
+        internal static string LOG_APCS_REGISTERING {
+            get {
+                return ResourceManager.GetString("LOG_APCS_REGISTERING", resourceCulture);
             }
         }
         
@@ -403,18 +412,18 @@ namespace AssetInformationAndRegistration.Properties {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Finalizing login form.
         /// </summary>
-        internal static string LOG_CLOSING_LOGINFORM {
+        internal static string LOG_CLOSING_LOGIN_FORM {
             get {
-                return ResourceManager.GetString("LOG_CLOSING_LOGINFORM", resourceCulture);
+                return ResourceManager.GetString("LOG_CLOSING_LOGIN_FORM", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Finalizing main form.
         /// </summary>
-        internal static string LOG_CLOSING_MAINFORM {
+        internal static string LOG_CLOSING_MAIN_FORM {
             get {
-                return ResourceManager.GetString("LOG_CLOSING_MAINFORM", resourceCulture);
+                return ResourceManager.GetString("LOG_CLOSING_MAIN_FORM", resourceCulture);
             }
         }
         
@@ -446,11 +455,11 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Getting file with hardware model information.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Getting file with asset information.
         /// </summary>
-        internal static string LOG_FETCHING_BIOSFILE {
+        internal static string LOG_FETCHING_ASSET_FILE {
             get {
-                return ResourceManager.GetString("LOG_FETCHING_BIOSFILE", resourceCulture);
+                return ResourceManager.GetString("LOG_FETCHING_ASSET_FILE", resourceCulture);
             }
         }
         
@@ -460,6 +469,15 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string LOG_FETCHING_LOCAL_DATA {
             get {
                 return ResourceManager.GetString("LOG_FETCHING_LOCAL_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Getting file with hardware model information.
+        /// </summary>
+        internal static string LOG_FETCHING_MODEL_FILE {
+            get {
+                return ResourceManager.GetString("LOG_FETCHING_MODEL_FILE", resourceCulture);
             }
         }
         
@@ -671,15 +689,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Registering on the Asset Control Server.
-        /// </summary>
-        internal static string LOG_REGISTERING {
-            get {
-                return ResourceManager.GetString("LOG_REGISTERING", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Registration finished.
         /// </summary>
         internal static string LOG_REGISTRY_FINISHED {
@@ -689,20 +698,11 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Recalculating last formatting date.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Recalculating last service date.
         /// </summary>
-        internal static string LOG_RESETTING_INSTALLDATE {
+        internal static string LOG_RESETTING_LASTSERVICE_DATE {
             get {
-                return ResourceManager.GetString("LOG_RESETTING_INSTALLDATE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Recalculating last maintenance date.
-        /// </summary>
-        internal static string LOG_RESETTING_MAINTENANCEDATE {
-            get {
-                return ResourceManager.GetString("LOG_RESETTING_MAINTENANCEDATE", resourceCulture);
+                return ResourceManager.GetString("LOG_RESETTING_LASTSERVICE_DATE", resourceCulture);
             }
         }
         
@@ -761,6 +761,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Initializing collection procedure thread.
+        /// </summary>
+        internal static string LOG_START_COLLECT_THREAD {
+            get {
+                return ResourceManager.GetString("LOG_START_COLLECT_THREAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Collecting hardware.
         /// </summary>
         internal static string LOG_START_COLLECTING {
@@ -775,15 +784,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string LOG_START_LOADING_WEBVIEW2 {
             get {
                 return ResourceManager.GetString("LOG_START_LOADING_WEBVIEW2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Initializing collection procedure thread.
-        /// </summary>
-        internal static string LOG_START_THREAD {
-            get {
-                return ResourceManager.GetString("LOG_START_THREAD", resourceCulture);
             }
         }
         

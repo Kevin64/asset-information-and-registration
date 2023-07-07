@@ -67,8 +67,8 @@
             // 
             // changelogTextBox
             // 
-            resources.ApplyResources(this.changelogTextBox, "changelogTextBox");
             this.changelogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.changelogTextBox, "changelogTextBox");
             this.changelogTextBox.Name = "changelogTextBox";
             this.changelogTextBox.ReadOnly = true;
             this.changelogTextBox.TabStop = false;
@@ -111,6 +111,7 @@
             this.MinimizeBox = false;
             this.Name = "UpdateCheckerForm";
             this.ShowInTaskbar = false;
+            this.Load += new System.EventHandler(this.UpdateCheckerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -2987,7 +2987,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_MAINFORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_MAIN_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
             //Deletes downloaded json files
@@ -4586,31 +4586,34 @@ namespace AssetInformationAndRegistration.Forms
 
             pass = true;
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblLastService.Text, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-
-            
-
             try
             {
                 if (!offlineMode)
                 {
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
                     //Feches asset number data from server
                     assetJsonStr = await JsonFileReaderDLL.AssetFileReader.FetchInfoMT(textBoxAssetNumber.Text, serverIP, serverPort);
 
-                    if (assetJsonStr[0] != "false")
+                    //If asset exists, prints amount of days since last service
+                    if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
                     {
                         lblLastService.Text = MiscMethods.SinceLabelUpdate(assetJsonStr[10]);
                         lblLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblLastService.Text, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     }
-                    else
+                    else //If asset doesn't exists, prints text that could not determine last service date
                     {
                         lblLastService.Text = MiscMethods.SinceLabelUpdate(string.Empty);
                         lblLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblLastService.Text, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     }
                     loadingCircleLastService.Visible = false;
                     loadingCircleLastService.Active = false;
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_BIOSFILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    
+
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_MODEL_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                     //Feches model info from server
                     modelJsonStr = await JsonFileReaderDLL.ModelFileReader.FetchInfoMT(brand, model, fwType, tpmVersion, mediaOperationMode, serverIP, serverPort);
@@ -4656,9 +4659,9 @@ namespace AssetInformationAndRegistration.Forms
                     if (!modelJsonStr[0].Equals("-1"))
                     {
                         pass = false;
-                        lblFwVersion.Text += Strings.BIOS_VERSION_ALERT;
+                        lblFwVersion.Text += Strings.FIRMWARE_VERSION_ALERT;
                         timerAlertFwVersion.Enabled = true;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.BIOS_VERSION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.FIRMWARE_VERSION_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     }
                 }
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
@@ -4759,7 +4762,7 @@ namespace AssetInformationAndRegistration.Forms
             ApcsButton.Enabled = false;
             registerButton.Enabled = false;
             collectButton.Enabled = false;
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_THREAD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_COLLECT_THREAD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             StartAsync(sender, e);
         }
 
@@ -4969,7 +4972,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleLastService.Active = true;
             lblLastService.Text = ConstantsDLL.Properties.Resources.DASH;
             assetJsonStr = await JsonFileReaderDLL.AssetFileReader.FetchInfoMT(textBoxAssetNumber.Text, serverIP, serverPort);
-            if (assetJsonStr[0] != "false")
+            if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
             {
                 lblLastService.Text = MiscMethods.SinceLabelUpdate(assetJsonStr[10]);
                 lblLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;

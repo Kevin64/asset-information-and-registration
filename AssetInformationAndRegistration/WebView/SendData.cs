@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration.WebView
         /// <param name="webView2Control">Webview2 control</param>
         internal static void ServerSendInfo(string[] serverArgs, LogGenerator log, bool consoleOut, WebView2 webView2Control)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTERING, string.Empty, consoleOut);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, consoleOut);
             webView2Control.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[6] + ".php"
                 + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[2]
                 + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[3]

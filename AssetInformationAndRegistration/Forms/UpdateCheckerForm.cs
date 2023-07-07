@@ -21,7 +21,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly string currentVersion, newVersion, changelog, url;
         private readonly List<string[]> parametersList;
         private readonly LogGenerator log;
-        private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// Updater form constructor
@@ -60,10 +60,6 @@ namespace AssetInformationAndRegistration.Forms
             this.log = log;
             this.themeBool = themeBool;
             this.parametersList = parametersList;
-
-            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
-            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            Disposed += new EventHandler(UpdateCheckerForm_Disposed);
         }
 
         /// <summary> 
@@ -77,7 +73,7 @@ namespace AssetInformationAndRegistration.Forms
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
@@ -85,7 +81,7 @@ namespace AssetInformationAndRegistration.Forms
                     downloadButton.Visible = true;
                     return true;
                 default:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.LOG_CHECKING_FOR_UPDATES, ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NO_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;
@@ -113,8 +109,12 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             Close();
+        }
+
+        private void UpdaterCheckerForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
         }
 
         public void LightTheme()
@@ -167,6 +167,14 @@ namespace AssetInformationAndRegistration.Forms
             {
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
             }
+        }
+
+        private void UpdateCheckerForm_Load(object sender, EventArgs e)
+        {
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            Disposed += new EventHandler(UpdateCheckerForm_Disposed);
+            FormClosing += UpdaterCheckerForm_Closing;
         }
 
         /// <summary> 

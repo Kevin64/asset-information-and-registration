@@ -117,167 +117,278 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblNewVersion.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="downloadButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblFixedOldVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;changelogTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lblNewVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblOldVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblFixedChangelogLatestVersion.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblUpdateAnnoucement.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblUpdateAnnoucement.Name" xml:space="preserve">
-    <value>lblUpdateAnnoucement</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblUpdateAnnoucement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblFixedOldVersion.Text" xml:space="preserve">
-    <value>Current version:</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblUpdateAnnoucement.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
-  <data name="&gt;&gt;lblUpdateAnnoucement.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;lblNewVersion.Name" xml:space="preserve">
-    <value>lblNewVersion</value>
-  </data>
-  <data name="&gt;&gt;lblOldVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblUpdateAnnoucement.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;lblFixedNewVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="changelogTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="&gt;&gt;changelogTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="changelogTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="lblFixedNewVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="changelogTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 125</value>
-  </data>
-  <data name="&gt;&gt;lblFixedNewVersion.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="changelogTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 179</value>
+  <data name="lblUpdateAnnoucement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
   </data>
   <data name="lblUpdateAnnoucement.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 25</value>
   </data>
-  <data name="lblOldVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 15</value>
+  <data name="lblUpdateAnnoucement.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="lblFixedChangelogLatestVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 107</value>
+  <data name="lblUpdateAnnoucement.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;lblUpdateAnnoucement.Name" xml:space="preserve">
+    <value>lblUpdateAnnoucement</value>
+  </data>
+  <data name="&gt;&gt;lblUpdateAnnoucement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUpdateAnnoucement.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblUpdateAnnoucement.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="lblOldVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblFixedNewVersion.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="lblOldVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblOldVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 50</value>
   </data>
-  <data name="&gt;&gt;lblFixedNewVersion.Type" xml:space="preserve">
+  <data name="lblOldVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 15</value>
+  </data>
+  <data name="lblOldVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblOldVersion.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;lblOldVersion.Name" xml:space="preserve">
+    <value>lblOldVersion</value>
+  </data>
+  <data name="&gt;&gt;lblOldVersion.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblNewVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lblUpdateAnnoucement.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changelogTextBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblOldVersion.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblFixedChangelogLatestVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblUpdateAnnoucement.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Updater</value>
-  </data>
-  <data name="&gt;&gt;lblNewVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblOldVersion.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblFixedNewVersion.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblNewVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;changelogTextBox.Name" xml:space="preserve">
-    <value>changelogTextBox</value>
-  </data>
-  <data name="&gt;&gt;lblFixedOldVersion.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;lblUpdateAnnoucement.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedOldVersion.Name" xml:space="preserve">
-    <value>lblFixedOldVersion</value>
   </data>
   <data name="lblNewVersion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 77</value>
-  </data>
   <data name="lblNewVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 77</value>
   </data>
-  <data name="changelogTextBox.Text" xml:space="preserve">
-    <value>changelog</value>
+  <data name="lblNewVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 15</value>
+  </data>
+  <data name="lblNewVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblNewVersion.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;lblNewVersion.Name" xml:space="preserve">
+    <value>lblNewVersion</value>
+  </data>
+  <data name="&gt;&gt;lblNewVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblNewVersion.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;lblNewVersion.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="lblFixedOldVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedOldVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblFixedOldVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 50</value>
+  </data>
+  <data name="lblFixedOldVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 15</value>
+  </data>
+  <data name="lblFixedOldVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="lblFixedOldVersion.Text" xml:space="preserve">
+    <value>Current version:</value>
+  </data>
+  <data name="&gt;&gt;lblFixedOldVersion.Name" xml:space="preserve">
+    <value>lblFixedOldVersion</value>
+  </data>
+  <data name="&gt;&gt;lblFixedOldVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedOldVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedOldVersion.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="lblFixedNewVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedNewVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblFixedNewVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 77</value>
+  </data>
+  <data name="lblFixedNewVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="lblFixedNewVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="lblFixedNewVersion.Text" xml:space="preserve">
+    <value>New version:</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewVersion.Name" xml:space="preserve">
+    <value>lblFixedNewVersion</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewVersion.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="changelogTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 125</value>
+  </data>
+  <data name="changelogTextBox.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="changelogTextBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="changelogTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 179</value>
+  </data>
+  <data name="changelogTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="changelogTextBox.Text" xml:space="preserve">
+    <value>changelog</value>
+  </data>
+  <data name="&gt;&gt;changelogTextBox.Name" xml:space="preserve">
+    <value>changelogTextBox</value>
+  </data>
+  <data name="&gt;&gt;changelogTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changelogTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;changelogTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 77</value>
+  </data>
+  <data name="downloadButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="downloadButton.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="downloadButton.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="&gt;&gt;downloadButton.Name" xml:space="preserve">
+    <value>downloadButton</value>
+  </data>
+  <data name="&gt;&gt;downloadButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;downloadButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;downloadButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 77</value>
+  </data>
+  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="closeButton.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
+    <value>closeButton</value>
+  </data>
+  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 107</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 15</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblFixedChangelogLatestVersion.Text" xml:space="preserve">
+    <value>Changelog from the latest version:</value>
+  </data>
   <data name="&gt;&gt;lblFixedChangelogLatestVersion.Name" xml:space="preserve">
     <value>lblFixedChangelogLatestVersion</value>
+  </data>
+  <data name="&gt;&gt;lblFixedChangelogLatestVersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedChangelogLatestVersion.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedChangelogLatestVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>96, 96</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>451, 316</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1151,127 +1262,16 @@
         AQAA+B8AAPAPAADgBwAAwAMAAIABAACAAQAAgAEAAPgfAAD4HwAA+B8AAPgfAAD4HwAA+B8AAA==
 </value>
   </data>
-  <data name="lblFixedNewVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 77</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
-  <data name="&gt;&gt;lblFixedNewVersion.Name" xml:space="preserve">
-    <value>lblFixedNewVersion</value>
-  </data>
-  <data name="lblUpdateAnnoucement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
-  <data name="&gt;&gt;lblOldVersion.Name" xml:space="preserve">
-    <value>lblOldVersion</value>
-  </data>
-  <data name="&gt;&gt;lblFixedChangelogLatestVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;downloadButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="changelogTextBox.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;lblNewVersion.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.Text" xml:space="preserve">
-    <value>Changelog from the latest version:</value>
-  </data>
-  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="lblFixedNewVersion.Text" xml:space="preserve">
-    <value>New version:</value>
-  </data>
-  <data name="&gt;&gt;lblFixedOldVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;downloadButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="lblFixedOldVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 50</value>
-  </data>
-  <data name="lblFixedNewVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 15</value>
-  </data>
-  <data name="&gt;&gt;downloadButton.Name" xml:space="preserve">
-    <value>downloadButton</value>
-  </data>
-  <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
-    <value>closeButton</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Updater</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UpdateCheckerForm</value>
   </data>
-  <data name="closeButton.Text" xml:space="preserve">
-    <value>Close</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblOldVersion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblFixedOldVersion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>451, 316</value>
-  </data>
-  <data name="lblOldVersion.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="downloadButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;lblFixedOldVersion.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="lblFixedOldVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="lblNewVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 15</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="lblOldVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="lblUpdateAnnoucement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 15.75pt</value>
-  </data>
-  <data name="downloadButton.Text" xml:space="preserve">
-    <value>Download</value>
-  </data>
-  <data name="lblFixedOldVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 15</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 15</value>
-  </data>
-  <data name="lblFixedChangelogLatestVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="&gt;&gt;downloadButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>356, 77</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

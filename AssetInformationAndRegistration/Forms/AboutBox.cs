@@ -23,7 +23,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly LogGenerator log;
         private readonly Octokit.GitHubClient ghc;
         private bool themeBool;
-        private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
         /// About form constructor
@@ -69,9 +69,6 @@ namespace AssetInformationAndRegistration.Forms
             labelCompanyName.Text = AssemblyCompany;
             textBoxDescription.Text = Strings.DESCRIPTION;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
-            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
-            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            Disposed += new EventHandler(AboutBox_Disposed);
         }
 
         public void LightTheme()
@@ -189,6 +186,24 @@ namespace AssetInformationAndRegistration.Forms
         private void CheckUpdateButton_Click(object sender, System.EventArgs e)
         {
             UpdateChecker.Check(ghc, log, parametersList, true, true, false, themeBool);
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void AboutBox_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_ABOUTBOX, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+        }
+
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
+            Disposed += new EventHandler(AboutBox_Disposed);
+            FormClosing += AboutBox_Closing;
         }
 
         #region Acessório de Atributos do Assembly
