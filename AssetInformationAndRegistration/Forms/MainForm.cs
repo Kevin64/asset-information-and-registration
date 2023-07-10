@@ -2234,6 +2234,7 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
             ToggleTheme();
         }
 
@@ -2245,6 +2246,7 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_LIGHTMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
             LightTheme();
             themeBool = false;
         }
@@ -2257,6 +2259,7 @@ namespace AssetInformationAndRegistration.Forms
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_DARKMODE_CHANGE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
             DarkTheme();
             themeBool = true;
         }

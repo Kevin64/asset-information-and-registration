@@ -86,7 +86,7 @@ namespace AssetInformationAndRegistration.Updater
 
                     if (!cliMode)
                     {
-                        UpdateCheckerForm uForm = new UpdateCheckerForm(log, parametersList, ui, themeBool);
+                        UpdaterForm uForm = new UpdaterForm(log, parametersList, ui, themeBool);
                         bool isNotUpdated = uForm.IsThereANewVersion();
                         if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                         {

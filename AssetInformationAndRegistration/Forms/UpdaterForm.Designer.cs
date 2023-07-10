@@ -1,6 +1,6 @@
 ﻿namespace AssetInformationAndRegistration.Forms
 {
-    partial class UpdateCheckerForm
+    partial class UpdaterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateCheckerForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdaterForm));
             this.lblUpdateAnnoucement = new System.Windows.Forms.Label();
             this.lblOldVersion = new System.Windows.Forms.Label();
             this.lblNewVersion = new System.Windows.Forms.Label();

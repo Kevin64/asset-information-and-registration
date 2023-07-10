@@ -15,7 +15,7 @@ namespace AssetInformationAndRegistration.Forms
     /// <summary> 
     /// Class for handling Updater window
     /// </summary>
-    public partial class UpdateCheckerForm : Form, ITheming
+    public partial class UpdaterForm : Form, ITheming
     {
         private bool themeBool;
         private readonly string currentVersion, newVersion, changelog, url;
@@ -29,7 +29,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="themeBool">Theme mode</param>
         /// <param name="releases">GitHub release information</param>
-        public UpdateCheckerForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool themeBool)
+        public UpdaterForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool themeBool)
         {
             InitializeComponent();
 

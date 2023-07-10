@@ -124,11 +124,11 @@
     <Compile Include="Forms\BusyForm.Designer.cs">
       <DependentUpon>BusyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UpdateCheckerForm.cs">
+    <Compile Include="Forms\UpdaterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UpdateCheckerForm.Designer.cs">
-      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
+    <Compile Include="Forms\UpdaterForm.Designer.cs">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CustomColors.cs" />
     <Compile Include="Misc\CustomFlatCombo.cs">
@@ -202,11 +202,11 @@
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdateCheckerForm.pt.resx">
-      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\UpdaterForm.pt.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdateCheckerForm.resx">
-      <DependentUpon>UpdateCheckerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\UpdaterForm.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
