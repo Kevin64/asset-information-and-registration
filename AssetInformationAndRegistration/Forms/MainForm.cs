@@ -4906,7 +4906,7 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     if (serverOnline && serverPort != string.Empty) //If server is online and port is not null
                     {
-                        try //Tries to get the laster register date from the asset number to check if the chosen date is adequate
+                        try //Tries to get the latest register date from the asset number to check if the chosen date is adequate
                         {
                             DateTime registerDate = DateTime.ParseExact(serverArgs[5], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
                             DateTime lastRegisterDate = DateTime.ParseExact(assetJsonStr[10], ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
@@ -4917,7 +4917,7 @@ namespace AssetInformationAndRegistration.Forms
                                 SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control); //Send info to server
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                                await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 3);
+                                await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 2);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
@@ -4934,7 +4934,7 @@ namespace AssetInformationAndRegistration.Forms
                             SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control); //Send info to server
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                            await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 3);
+                            await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 2);
                             tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                         }
                     }
@@ -4962,17 +4962,11 @@ namespace AssetInformationAndRegistration.Forms
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             }
 
-            //When finished registering, resets control states
-            loadingCircleRegisterButton.Visible = false;
-            loadingCircleRegisterButton.Active = false;
-            registerButton.Text = Strings.REGISTER_AGAIN;
-            registerButton.Enabled = true;
-            ApcsButton.Enabled = true;
-            collectButton.Enabled = true;
-
             //Feches asset number data from server to update the label
             loadingCircleLastService.Visible = true;
             loadingCircleLastService.Active = true;
+            loadingCircleRegisterButton.Visible = true;
+            loadingCircleRegisterButton.Active = true;
             lblLastService.Text = ConstantsDLL.Properties.Resources.DASH;
             assetJsonStr = await JsonFileReaderDLL.AssetFileReader.FetchInfoMT(textBoxAssetNumber.Text, serverIP, serverPort);
             if (assetJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
@@ -4987,6 +4981,16 @@ namespace AssetInformationAndRegistration.Forms
             }
             loadingCircleLastService.Visible = false;
             loadingCircleLastService.Active = false;
+            loadingCircleRegisterButton.Visible = false;
+            loadingCircleRegisterButton.Active = false;
+
+            //When finished registering, resets control states
+            loadingCircleRegisterButton.Visible = false;
+            loadingCircleRegisterButton.Active = false;
+            registerButton.Text = Strings.REGISTER_AGAIN;
+            registerButton.Enabled = true;
+            ApcsButton.Enabled = true;
+            collectButton.Enabled = true;
         }
     }
 }
