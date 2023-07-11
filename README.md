@@ -32,15 +32,15 @@ After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-
 
 ### Main window in dark mode (light mode available):
 
-![AIR-v4 0 0 2306_HtGbuHjpNz](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/9945a21b-4e83-4cfe-8957-5a962302fa7d)
+![AIR_1deAWyhaBO](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/c22e0039-ab42-4062-a15e-3abfb50d69ce)
 
 ### When some specifications are not compliant:
 
-![AIR_AGkqyPkVKi](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/a823e28b-8334-4c69-b077-33137591d770)
+![AIR_TdRtWRvLjo](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/c5758954-aa54-4b82-8e4c-cd642ddf22f3)
 
 ### CLI switches
 
-![cmd_cYxsfZnoZH](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/e7c7bd6f-815f-4567-bcbb-78c3343b1834)
+![WindowsTerminal_GzmCl3uaTG](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1d14b89c-b0c5-4e50-b2b3-a69887bdee68)
 
 ## Offline mode
 
@@ -85,6 +85,15 @@ FirmwareVersionEnforcement=true
 SecureBootEnforcement=true
 VirtualizationTechnologyEnforcement=true
 TpmEnforcement=true
+```
+
+### Automatic update checking
+
+AIR will check for updates when the program is launched, and via 'Check for updates' button in the About window. To disable auto update checks, edit the 'definitions.ini' file and modify the key `CheckForUpdates` inside `[Enforcement]`.
+
+```ini
+[Enforcement]
+CheckForUpdates=false
 ```
 
 ## Output in APCS
