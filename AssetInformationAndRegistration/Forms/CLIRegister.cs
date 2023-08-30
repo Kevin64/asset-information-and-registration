@@ -664,11 +664,11 @@ namespace AssetInformationAndRegistration.Forms
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_PM, ram, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Storage size
-            storageSize = HardwareInfo.GetStorageSize();
+            storageSize = HardwareInfo.GetStorageTotalSize();
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_HDSIZE, storageSize, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Storage type
-            storageType = HardwareInfo.GetStorageType();
+            //storageType = HardwareInfo.GetStorageType();
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MEDIATYPE, storageType, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for Media Operation (IDE/AHCI/NVME)

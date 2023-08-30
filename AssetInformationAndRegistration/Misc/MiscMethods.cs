@@ -1,10 +1,12 @@
 ﻿using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
+using Microsoft.Web.WebView2.Core;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -89,15 +91,11 @@ namespace AssetInformationAndRegistration.Misc
         /// <returns>The WebView2 runtime version, or an empty string if inexistent</returns>
         internal static string GetWebView2Version()
         {
-            RegistryKey rk = Environment.Is64BitOperatingSystem
-                ? Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.WEBVIEW2_REG_PATH_X64, true)
-                : Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.WEBVIEW2_REG_PATH_X86, true);
-            if (rk != null)
+            try
             {
-                object o = rk.GetValue("pv");
-                return o != null ? o.ToString() : string.Empty;
+                return CoreWebView2Environment.GetAvailableBrowserVersionString();
             }
-            else
+            catch
             {
                 return string.Empty;
             }
@@ -205,6 +203,18 @@ namespace AssetInformationAndRegistration.Misc
         internal static int GetWindowsScaling()
         {
             return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
+        }
+
+        internal static List<List<T>> Transpose<T>(List<List<T>> lists)
+        {
+            var longest = lists.Any() ? lists.Max(l => l.Count) : 0;
+            List<List<T>> outer = new List<List<T>>(longest);
+            for (int i = 0; i < longest; i++)
+                outer.Add(new List<T>(lists.Count));
+            for (int j = 0; j < lists.Count; j++)
+                for (int i = 0; i < longest; i++)
+                    outer[i].Add(lists[j].Count > i ? lists[j][i] : default(T));
+            return outer;
         }
 
         /// <summary> 
