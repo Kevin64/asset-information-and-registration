@@ -257,6 +257,9 @@
   <data name="lblFixedFwVersion.Text" xml:space="preserve">
     <value>Versão do firmware:</value>
   </data>
+  <data name="apcsButton.Text" xml:space="preserve">
+    <value>Acessar APCS</value>
+  </data>
   <data name="lblFixedFwType.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 13</value>
   </data>
