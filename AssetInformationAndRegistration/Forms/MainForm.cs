@@ -45,6 +45,11 @@ namespace AssetInformationAndRegistration.Forms
         private List<List<string>> storageDetail, storageType;
         private readonly Octokit.GitHubClient ghc;
         private Button storageDetailsButton;
+        private LoadingCircle loadingCircleCompliant;
+        private Label vSeparator2;
+        private Label lblCompliant;
+        private Label vSeparator1;
+        private Label hSeparator2;
         private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
 
         /// <summary> 
@@ -214,7 +219,7 @@ namespace AssetInformationAndRegistration.Forms
             this.lblFixedRoomLetter = new System.Windows.Forms.Label();
             this.lblFixedFwVersion = new System.Windows.Forms.Label();
             this.lblFwVersion = new System.Windows.Forms.Label();
-            this.ApcsButton = new System.Windows.Forms.Button();
+            this.apcsButton = new System.Windows.Forms.Button();
             this.lblFixedFwType = new System.Windows.Forms.Label();
             this.lblFwType = new System.Windows.Forms.Label();
             this.groupBoxHwData = new System.Windows.Forms.GroupBox();
@@ -231,20 +236,16 @@ namespace AssetInformationAndRegistration.Forms
             this.loadingCircleVideoCard = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleMediaOperationMode = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleStorageType = new MRG.Controls.UI.LoadingCircle();
-            this.loadingCircleSmartStatus = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleStorageSize = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleRam = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleProcessor = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleSerialNumber = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleModel = new MRG.Controls.UI.LoadingCircle();
             this.loadingCircleBrand = new MRG.Controls.UI.LoadingCircle();
-            this.separatorH = new System.Windows.Forms.Label();
-            this.separatorV = new System.Windows.Forms.Label();
+            this.hSeparator1 = new System.Windows.Forms.Label();
+            this.vSeparator3 = new System.Windows.Forms.Label();
             this.iconImgTpmVersion = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.iconImgSmartStatus = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.lblSmartStatus = new System.Windows.Forms.Label();
             this.lblTpmVersion = new System.Windows.Forms.Label();
-            this.lblFixedSmartStatus = new System.Windows.Forms.Label();
             this.iconImgVirtualizationTechnology = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.lblFixedTpmVersion = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -357,9 +358,13 @@ namespace AssetInformationAndRegistration.Forms
             this.timerVideoCardLabelScroll = new System.Windows.Forms.Timer(this.components);
             this.timerRamLabelScroll = new System.Windows.Forms.Timer(this.components);
             this.timerProcessorLabelScroll = new System.Windows.Forms.Timer(this.components);
+            this.hSeparator2 = new System.Windows.Forms.Label();
+            this.vSeparator1 = new System.Windows.Forms.Label();
+            this.vSeparator2 = new System.Windows.Forms.Label();
+            this.loadingCircleCompliant = new MRG.Controls.UI.LoadingCircle();
+            this.lblCompliant = new System.Windows.Forms.Label();
             this.groupBoxHwData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgTpmVersion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconImgSmartStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgVirtualizationTechnology)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgBrand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgSecureBoot)).BeginInit();
@@ -539,34 +544,34 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // textBoxAssetNumber
             // 
-            resources.ApplyResources(this.textBoxAssetNumber, "textBoxAssetNumber");
             this.textBoxAssetNumber.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxAssetNumber.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxAssetNumber, "textBoxAssetNumber");
             this.textBoxAssetNumber.Name = "textBoxAssetNumber";
             this.textBoxAssetNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxSealNumber
             // 
-            resources.ApplyResources(this.textBoxSealNumber, "textBoxSealNumber");
             this.textBoxSealNumber.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxSealNumber.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxSealNumber, "textBoxSealNumber");
             this.textBoxSealNumber.Name = "textBoxSealNumber";
             this.textBoxSealNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxRoomNumber
             // 
-            resources.ApplyResources(this.textBoxRoomNumber, "textBoxRoomNumber");
             this.textBoxRoomNumber.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxRoomNumber.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxRoomNumber, "textBoxRoomNumber");
             this.textBoxRoomNumber.Name = "textBoxRoomNumber";
             this.textBoxRoomNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // textBoxRoomLetter
             // 
-            resources.ApplyResources(this.textBoxRoomLetter, "textBoxRoomLetter");
             this.textBoxRoomLetter.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxRoomLetter.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxRoomLetter.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxRoomLetter, "textBoxRoomLetter");
             this.textBoxRoomLetter.Name = "textBoxRoomLetter";
             this.textBoxRoomLetter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCharsOnly_KeyPress);
             // 
@@ -584,8 +589,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // registerButton
             // 
-            resources.ApplyResources(this.registerButton, "registerButton");
             this.registerButton.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.registerButton, "registerButton");
             this.registerButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.registerButton.Name = "registerButton";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -623,9 +628,9 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // collectButton
             // 
-            resources.ApplyResources(this.collectButton, "collectButton");
             this.collectButton.BackColor = System.Drawing.SystemColors.Control;
             this.collectButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.collectButton, "collectButton");
             this.collectButton.Name = "collectButton";
             this.collectButton.UseVisualStyleBackColor = true;
             this.collectButton.Click += new System.EventHandler(this.CollectButton_Click);
@@ -648,14 +653,14 @@ namespace AssetInformationAndRegistration.Forms
             this.lblFwVersion.ForeColor = System.Drawing.Color.Silver;
             this.lblFwVersion.Name = "lblFwVersion";
             // 
-            // ApcsButton
+            // apcsButton
             // 
-            resources.ApplyResources(this.ApcsButton, "ApcsButton");
-            this.ApcsButton.BackColor = System.Drawing.SystemColors.Control;
-            this.ApcsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ApcsButton.Name = "ApcsButton";
-            this.ApcsButton.UseVisualStyleBackColor = true;
-            this.ApcsButton.Click += new System.EventHandler(this.ApcsButton_Click);
+            this.apcsButton.BackColor = System.Drawing.SystemColors.Control;
+            this.apcsButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.apcsButton, "apcsButton");
+            this.apcsButton.Name = "apcsButton";
+            this.apcsButton.UseVisualStyleBackColor = true;
+            this.apcsButton.Click += new System.EventHandler(this.ApcsButton_Click);
             // 
             // lblFixedFwType
             // 
@@ -671,7 +676,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // groupBoxHwData
             // 
-            resources.ApplyResources(this.groupBoxHwData, "groupBoxHwData");
+            this.groupBoxHwData.Controls.Add(this.loadingCircleCompliant);
+            this.groupBoxHwData.Controls.Add(this.vSeparator2);
+            this.groupBoxHwData.Controls.Add(this.lblCompliant);
+            this.groupBoxHwData.Controls.Add(this.vSeparator1);
+            this.groupBoxHwData.Controls.Add(this.hSeparator2);
             this.groupBoxHwData.Controls.Add(this.storageDetailsButton);
             this.groupBoxHwData.Controls.Add(this.loadingCircleTpmVersion);
             this.groupBoxHwData.Controls.Add(this.loadingCircleVirtualizationTechnology);
@@ -685,20 +694,16 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxHwData.Controls.Add(this.loadingCircleVideoCard);
             this.groupBoxHwData.Controls.Add(this.loadingCircleMediaOperationMode);
             this.groupBoxHwData.Controls.Add(this.loadingCircleStorageType);
-            this.groupBoxHwData.Controls.Add(this.loadingCircleSmartStatus);
             this.groupBoxHwData.Controls.Add(this.loadingCircleStorageSize);
             this.groupBoxHwData.Controls.Add(this.loadingCircleRam);
             this.groupBoxHwData.Controls.Add(this.loadingCircleProcessor);
             this.groupBoxHwData.Controls.Add(this.loadingCircleSerialNumber);
             this.groupBoxHwData.Controls.Add(this.loadingCircleModel);
             this.groupBoxHwData.Controls.Add(this.loadingCircleBrand);
-            this.groupBoxHwData.Controls.Add(this.separatorH);
-            this.groupBoxHwData.Controls.Add(this.separatorV);
+            this.groupBoxHwData.Controls.Add(this.hSeparator1);
+            this.groupBoxHwData.Controls.Add(this.vSeparator3);
             this.groupBoxHwData.Controls.Add(this.iconImgTpmVersion);
-            this.groupBoxHwData.Controls.Add(this.iconImgSmartStatus);
-            this.groupBoxHwData.Controls.Add(this.lblSmartStatus);
             this.groupBoxHwData.Controls.Add(this.lblTpmVersion);
-            this.groupBoxHwData.Controls.Add(this.lblFixedSmartStatus);
             this.groupBoxHwData.Controls.Add(this.iconImgVirtualizationTechnology);
             this.groupBoxHwData.Controls.Add(this.lblFixedTpmVersion);
             this.groupBoxHwData.Controls.Add(this.progressBar1);
@@ -754,6 +759,7 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxHwData.Controls.Add(this.lblFixedMacAddress);
             this.groupBoxHwData.Controls.Add(this.lblFixedIpAddress);
             this.groupBoxHwData.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.groupBoxHwData, "groupBoxHwData");
             this.groupBoxHwData.Name = "groupBoxHwData";
             this.groupBoxHwData.TabStop = false;
             // 
@@ -766,11 +772,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleTpmVersion
             // 
-            resources.ApplyResources(this.loadingCircleTpmVersion, "loadingCircleTpmVersion");
             this.loadingCircleTpmVersion.Active = false;
             this.loadingCircleTpmVersion.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleTpmVersion.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleTpmVersion.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleTpmVersion, "loadingCircleTpmVersion");
             this.loadingCircleTpmVersion.Name = "loadingCircleTpmVersion";
             this.loadingCircleTpmVersion.NumberSpoke = 12;
             this.loadingCircleTpmVersion.OuterCircleRadius = 11;
@@ -780,11 +786,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleVirtualizationTechnology
             // 
-            resources.ApplyResources(this.loadingCircleVirtualizationTechnology, "loadingCircleVirtualizationTechnology");
             this.loadingCircleVirtualizationTechnology.Active = false;
             this.loadingCircleVirtualizationTechnology.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleVirtualizationTechnology.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleVirtualizationTechnology.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleVirtualizationTechnology, "loadingCircleVirtualizationTechnology");
             this.loadingCircleVirtualizationTechnology.Name = "loadingCircleVirtualizationTechnology";
             this.loadingCircleVirtualizationTechnology.NumberSpoke = 12;
             this.loadingCircleVirtualizationTechnology.OuterCircleRadius = 11;
@@ -794,11 +800,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleSecureBoot
             // 
-            resources.ApplyResources(this.loadingCircleSecureBoot, "loadingCircleSecureBoot");
             this.loadingCircleSecureBoot.Active = false;
             this.loadingCircleSecureBoot.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleSecureBoot.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleSecureBoot.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleSecureBoot, "loadingCircleSecureBoot");
             this.loadingCircleSecureBoot.Name = "loadingCircleSecureBoot";
             this.loadingCircleSecureBoot.NumberSpoke = 12;
             this.loadingCircleSecureBoot.OuterCircleRadius = 11;
@@ -808,11 +814,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleFwVersion
             // 
-            resources.ApplyResources(this.loadingCircleFwVersion, "loadingCircleFwVersion");
             this.loadingCircleFwVersion.Active = false;
             this.loadingCircleFwVersion.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleFwVersion.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleFwVersion.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleFwVersion, "loadingCircleFwVersion");
             this.loadingCircleFwVersion.Name = "loadingCircleFwVersion";
             this.loadingCircleFwVersion.NumberSpoke = 12;
             this.loadingCircleFwVersion.OuterCircleRadius = 11;
@@ -822,11 +828,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleFwType
             // 
-            resources.ApplyResources(this.loadingCircleFwType, "loadingCircleFwType");
             this.loadingCircleFwType.Active = false;
             this.loadingCircleFwType.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleFwType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleFwType.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleFwType, "loadingCircleFwType");
             this.loadingCircleFwType.Name = "loadingCircleFwType";
             this.loadingCircleFwType.NumberSpoke = 12;
             this.loadingCircleFwType.OuterCircleRadius = 11;
@@ -836,11 +842,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleIpAddress
             // 
-            resources.ApplyResources(this.loadingCircleIpAddress, "loadingCircleIpAddress");
             this.loadingCircleIpAddress.Active = false;
             this.loadingCircleIpAddress.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleIpAddress.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleIpAddress.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleIpAddress, "loadingCircleIpAddress");
             this.loadingCircleIpAddress.Name = "loadingCircleIpAddress";
             this.loadingCircleIpAddress.NumberSpoke = 12;
             this.loadingCircleIpAddress.OuterCircleRadius = 11;
@@ -850,11 +856,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleMacAddress
             // 
-            resources.ApplyResources(this.loadingCircleMacAddress, "loadingCircleMacAddress");
             this.loadingCircleMacAddress.Active = false;
             this.loadingCircleMacAddress.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleMacAddress.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleMacAddress.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleMacAddress, "loadingCircleMacAddress");
             this.loadingCircleMacAddress.Name = "loadingCircleMacAddress";
             this.loadingCircleMacAddress.NumberSpoke = 12;
             this.loadingCircleMacAddress.OuterCircleRadius = 11;
@@ -864,11 +870,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleHostname
             // 
-            resources.ApplyResources(this.loadingCircleHostname, "loadingCircleHostname");
             this.loadingCircleHostname.Active = false;
             this.loadingCircleHostname.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleHostname.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleHostname.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleHostname, "loadingCircleHostname");
             this.loadingCircleHostname.Name = "loadingCircleHostname";
             this.loadingCircleHostname.NumberSpoke = 12;
             this.loadingCircleHostname.OuterCircleRadius = 11;
@@ -878,11 +884,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleOperatingSystem
             // 
-            resources.ApplyResources(this.loadingCircleOperatingSystem, "loadingCircleOperatingSystem");
             this.loadingCircleOperatingSystem.Active = false;
             this.loadingCircleOperatingSystem.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleOperatingSystem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleOperatingSystem.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleOperatingSystem, "loadingCircleOperatingSystem");
             this.loadingCircleOperatingSystem.Name = "loadingCircleOperatingSystem";
             this.loadingCircleOperatingSystem.NumberSpoke = 12;
             this.loadingCircleOperatingSystem.OuterCircleRadius = 11;
@@ -892,11 +898,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleVideoCard
             // 
-            resources.ApplyResources(this.loadingCircleVideoCard, "loadingCircleVideoCard");
             this.loadingCircleVideoCard.Active = false;
             this.loadingCircleVideoCard.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleVideoCard.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleVideoCard.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleVideoCard, "loadingCircleVideoCard");
             this.loadingCircleVideoCard.Name = "loadingCircleVideoCard";
             this.loadingCircleVideoCard.NumberSpoke = 12;
             this.loadingCircleVideoCard.OuterCircleRadius = 11;
@@ -906,11 +912,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleMediaOperationMode
             // 
-            resources.ApplyResources(this.loadingCircleMediaOperationMode, "loadingCircleMediaOperationMode");
             this.loadingCircleMediaOperationMode.Active = false;
             this.loadingCircleMediaOperationMode.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleMediaOperationMode.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleMediaOperationMode.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleMediaOperationMode, "loadingCircleMediaOperationMode");
             this.loadingCircleMediaOperationMode.Name = "loadingCircleMediaOperationMode";
             this.loadingCircleMediaOperationMode.NumberSpoke = 12;
             this.loadingCircleMediaOperationMode.OuterCircleRadius = 11;
@@ -920,11 +926,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleStorageType
             // 
-            resources.ApplyResources(this.loadingCircleStorageType, "loadingCircleStorageType");
             this.loadingCircleStorageType.Active = false;
             this.loadingCircleStorageType.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleStorageType.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleStorageType.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleStorageType, "loadingCircleStorageType");
             this.loadingCircleStorageType.Name = "loadingCircleStorageType";
             this.loadingCircleStorageType.NumberSpoke = 12;
             this.loadingCircleStorageType.OuterCircleRadius = 11;
@@ -932,27 +938,13 @@ namespace AssetInformationAndRegistration.Forms
             this.loadingCircleStorageType.SpokeThickness = 2;
             this.loadingCircleStorageType.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
-            // loadingCircleSmartStatus
-            // 
-            resources.ApplyResources(this.loadingCircleSmartStatus, "loadingCircleSmartStatus");
-            this.loadingCircleSmartStatus.Active = false;
-            this.loadingCircleSmartStatus.Color = System.Drawing.Color.LightSlateGray;
-            this.loadingCircleSmartStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loadingCircleSmartStatus.InnerCircleRadius = 5;
-            this.loadingCircleSmartStatus.Name = "loadingCircleSmartStatus";
-            this.loadingCircleSmartStatus.NumberSpoke = 12;
-            this.loadingCircleSmartStatus.OuterCircleRadius = 11;
-            this.loadingCircleSmartStatus.RotationSpeed = 1;
-            this.loadingCircleSmartStatus.SpokeThickness = 2;
-            this.loadingCircleSmartStatus.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
-            // 
             // loadingCircleStorageSize
             // 
-            resources.ApplyResources(this.loadingCircleStorageSize, "loadingCircleStorageSize");
             this.loadingCircleStorageSize.Active = false;
             this.loadingCircleStorageSize.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleStorageSize.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleStorageSize.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleStorageSize, "loadingCircleStorageSize");
             this.loadingCircleStorageSize.Name = "loadingCircleStorageSize";
             this.loadingCircleStorageSize.NumberSpoke = 12;
             this.loadingCircleStorageSize.OuterCircleRadius = 11;
@@ -962,11 +954,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleRam
             // 
-            resources.ApplyResources(this.loadingCircleRam, "loadingCircleRam");
             this.loadingCircleRam.Active = false;
             this.loadingCircleRam.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleRam.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleRam.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleRam, "loadingCircleRam");
             this.loadingCircleRam.Name = "loadingCircleRam";
             this.loadingCircleRam.NumberSpoke = 12;
             this.loadingCircleRam.OuterCircleRadius = 11;
@@ -976,11 +968,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleProcessor
             // 
-            resources.ApplyResources(this.loadingCircleProcessor, "loadingCircleProcessor");
             this.loadingCircleProcessor.Active = false;
             this.loadingCircleProcessor.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleProcessor.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleProcessor.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleProcessor, "loadingCircleProcessor");
             this.loadingCircleProcessor.Name = "loadingCircleProcessor";
             this.loadingCircleProcessor.NumberSpoke = 12;
             this.loadingCircleProcessor.OuterCircleRadius = 11;
@@ -990,11 +982,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleSerialNumber
             // 
-            resources.ApplyResources(this.loadingCircleSerialNumber, "loadingCircleSerialNumber");
             this.loadingCircleSerialNumber.Active = false;
             this.loadingCircleSerialNumber.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleSerialNumber.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleSerialNumber.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleSerialNumber, "loadingCircleSerialNumber");
             this.loadingCircleSerialNumber.Name = "loadingCircleSerialNumber";
             this.loadingCircleSerialNumber.NumberSpoke = 12;
             this.loadingCircleSerialNumber.OuterCircleRadius = 11;
@@ -1004,11 +996,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleModel
             // 
-            resources.ApplyResources(this.loadingCircleModel, "loadingCircleModel");
             this.loadingCircleModel.Active = false;
             this.loadingCircleModel.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleModel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleModel.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleModel, "loadingCircleModel");
             this.loadingCircleModel.Name = "loadingCircleModel";
             this.loadingCircleModel.NumberSpoke = 12;
             this.loadingCircleModel.OuterCircleRadius = 11;
@@ -1018,11 +1010,11 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleBrand
             // 
-            resources.ApplyResources(this.loadingCircleBrand, "loadingCircleBrand");
             this.loadingCircleBrand.Active = false;
             this.loadingCircleBrand.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleBrand.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleBrand.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleBrand, "loadingCircleBrand");
             this.loadingCircleBrand.Name = "loadingCircleBrand";
             this.loadingCircleBrand.NumberSpoke = 12;
             this.loadingCircleBrand.OuterCircleRadius = 11;
@@ -1030,41 +1022,26 @@ namespace AssetInformationAndRegistration.Forms
             this.loadingCircleBrand.SpokeThickness = 2;
             this.loadingCircleBrand.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
             // 
-            // separatorH
+            // hSeparator1
             // 
-            resources.ApplyResources(this.separatorH, "separatorH");
-            this.separatorH.BackColor = System.Drawing.Color.DimGray;
-            this.separatorH.Name = "separatorH";
+            this.hSeparator1.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.hSeparator1, "hSeparator1");
+            this.hSeparator1.Name = "hSeparator1";
             // 
-            // separatorV
+            // vSeparator3
             // 
-            resources.ApplyResources(this.separatorV, "separatorV");
-            this.separatorV.BackColor = System.Drawing.Color.DimGray;
-            this.separatorV.Name = "separatorV";
+            this.vSeparator3.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.vSeparator3, "vSeparator3");
+            this.vSeparator3.Name = "vSeparator3";
             // 
             // iconImgTpmVersion
             // 
-            resources.ApplyResources(this.iconImgTpmVersion, "iconImgTpmVersion");
             this.iconImgTpmVersion.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgTpmVersion, "iconImgTpmVersion");
             this.iconImgTpmVersion.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgTpmVersion.Name = "iconImgTpmVersion";
             this.iconImgTpmVersion.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.iconImgTpmVersion.TabStop = false;
-            // 
-            // iconImgSmartStatus
-            // 
-            resources.ApplyResources(this.iconImgSmartStatus, "iconImgSmartStatus");
-            this.iconImgSmartStatus.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            this.iconImgSmartStatus.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.iconImgSmartStatus.Name = "iconImgSmartStatus";
-            this.iconImgSmartStatus.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.iconImgSmartStatus.TabStop = false;
-            // 
-            // lblSmartStatus
-            // 
-            resources.ApplyResources(this.lblSmartStatus, "lblSmartStatus");
-            this.lblSmartStatus.ForeColor = System.Drawing.Color.Silver;
-            this.lblSmartStatus.Name = "lblSmartStatus";
             // 
             // lblTpmVersion
             // 
@@ -1072,16 +1049,10 @@ namespace AssetInformationAndRegistration.Forms
             this.lblTpmVersion.ForeColor = System.Drawing.Color.Silver;
             this.lblTpmVersion.Name = "lblTpmVersion";
             // 
-            // lblFixedSmartStatus
-            // 
-            resources.ApplyResources(this.lblFixedSmartStatus, "lblFixedSmartStatus");
-            this.lblFixedSmartStatus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFixedSmartStatus.Name = "lblFixedSmartStatus";
-            // 
             // iconImgVirtualizationTechnology
             // 
-            resources.ApplyResources(this.iconImgVirtualizationTechnology, "iconImgVirtualizationTechnology");
             this.iconImgVirtualizationTechnology.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgVirtualizationTechnology, "iconImgVirtualizationTechnology");
             this.iconImgVirtualizationTechnology.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgVirtualizationTechnology.Name = "iconImgVirtualizationTechnology";
             this.iconImgVirtualizationTechnology.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1100,9 +1071,9 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // lblProgressBarPercent
             // 
-            resources.ApplyResources(this.lblProgressBarPercent, "lblProgressBarPercent");
             this.lblProgressBarPercent.BackColor = System.Drawing.Color.Transparent;
             this.lblProgressBarPercent.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.lblProgressBarPercent, "lblProgressBarPercent");
             this.lblProgressBarPercent.Name = "lblProgressBarPercent";
             // 
             // lblVirtualizationTechnology
@@ -1119,8 +1090,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgBrand
             // 
-            resources.ApplyResources(this.iconImgBrand, "iconImgBrand");
             this.iconImgBrand.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgBrand, "iconImgBrand");
             this.iconImgBrand.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgBrand.Name = "iconImgBrand";
             this.iconImgBrand.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1128,8 +1099,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgSecureBoot
             // 
-            resources.ApplyResources(this.iconImgSecureBoot, "iconImgSecureBoot");
             this.iconImgSecureBoot.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgSecureBoot, "iconImgSecureBoot");
             this.iconImgSecureBoot.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgSecureBoot.Name = "iconImgSecureBoot";
             this.iconImgSecureBoot.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1137,8 +1108,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgFwVersion
             // 
-            resources.ApplyResources(this.iconImgFwVersion, "iconImgFwVersion");
             this.iconImgFwVersion.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgFwVersion, "iconImgFwVersion");
             this.iconImgFwVersion.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgFwVersion.Name = "iconImgFwVersion";
             this.iconImgFwVersion.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1146,8 +1117,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgFwType
             // 
-            resources.ApplyResources(this.iconImgFwType, "iconImgFwType");
             this.iconImgFwType.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgFwType, "iconImgFwType");
             this.iconImgFwType.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgFwType.Name = "iconImgFwType";
             this.iconImgFwType.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1155,8 +1126,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgIpAddress
             // 
-            resources.ApplyResources(this.iconImgIpAddress, "iconImgIpAddress");
             this.iconImgIpAddress.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgIpAddress, "iconImgIpAddress");
             this.iconImgIpAddress.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgIpAddress.Name = "iconImgIpAddress";
             this.iconImgIpAddress.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1164,8 +1135,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgMacAddress
             // 
-            resources.ApplyResources(this.iconImgMacAddress, "iconImgMacAddress");
             this.iconImgMacAddress.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgMacAddress, "iconImgMacAddress");
             this.iconImgMacAddress.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgMacAddress.Name = "iconImgMacAddress";
             this.iconImgMacAddress.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1173,8 +1144,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgHostname
             // 
-            resources.ApplyResources(this.iconImgHostname, "iconImgHostname");
             this.iconImgHostname.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgHostname, "iconImgHostname");
             this.iconImgHostname.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgHostname.Name = "iconImgHostname";
             this.iconImgHostname.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1182,8 +1153,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgOperatingSystem
             // 
-            resources.ApplyResources(this.iconImgOperatingSystem, "iconImgOperatingSystem");
             this.iconImgOperatingSystem.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgOperatingSystem, "iconImgOperatingSystem");
             this.iconImgOperatingSystem.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgOperatingSystem.Name = "iconImgOperatingSystem";
             this.iconImgOperatingSystem.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1191,8 +1162,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgVideoCard
             // 
-            resources.ApplyResources(this.iconImgVideoCard, "iconImgVideoCard");
             this.iconImgVideoCard.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgVideoCard, "iconImgVideoCard");
             this.iconImgVideoCard.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgVideoCard.Name = "iconImgVideoCard";
             this.iconImgVideoCard.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1200,8 +1171,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgMediaOperationMode
             // 
-            resources.ApplyResources(this.iconImgMediaOperationMode, "iconImgMediaOperationMode");
             this.iconImgMediaOperationMode.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgMediaOperationMode, "iconImgMediaOperationMode");
             this.iconImgMediaOperationMode.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgMediaOperationMode.Name = "iconImgMediaOperationMode";
             this.iconImgMediaOperationMode.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1209,8 +1180,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgStorageType
             // 
-            resources.ApplyResources(this.iconImgStorageType, "iconImgStorageType");
             this.iconImgStorageType.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgStorageType, "iconImgStorageType");
             this.iconImgStorageType.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgStorageType.Name = "iconImgStorageType";
             this.iconImgStorageType.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1218,8 +1189,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgStorageSize
             // 
-            resources.ApplyResources(this.iconImgStorageSize, "iconImgStorageSize");
             this.iconImgStorageSize.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgStorageSize, "iconImgStorageSize");
             this.iconImgStorageSize.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgStorageSize.Name = "iconImgStorageSize";
             this.iconImgStorageSize.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1227,8 +1198,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgRam
             // 
-            resources.ApplyResources(this.iconImgRam, "iconImgRam");
             this.iconImgRam.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgRam, "iconImgRam");
             this.iconImgRam.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgRam.Name = "iconImgRam";
             this.iconImgRam.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1236,8 +1207,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgProcessor
             // 
-            resources.ApplyResources(this.iconImgProcessor, "iconImgProcessor");
             this.iconImgProcessor.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgProcessor, "iconImgProcessor");
             this.iconImgProcessor.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgProcessor.Name = "iconImgProcessor";
             this.iconImgProcessor.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1245,8 +1216,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgSerialNumber
             // 
-            resources.ApplyResources(this.iconImgSerialNumber, "iconImgSerialNumber");
             this.iconImgSerialNumber.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgSerialNumber, "iconImgSerialNumber");
             this.iconImgSerialNumber.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgSerialNumber.Name = "iconImgSerialNumber";
             this.iconImgSerialNumber.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1254,8 +1225,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgModel
             // 
-            resources.ApplyResources(this.iconImgModel, "iconImgModel");
             this.iconImgModel.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgModel, "iconImgModel");
             this.iconImgModel.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgModel.Name = "iconImgModel";
             this.iconImgModel.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1311,7 +1282,6 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // groupBoxAssetData
             // 
-            resources.ApplyResources(this.groupBoxAssetData, "groupBoxAssetData");
             this.groupBoxAssetData.Controls.Add(this.comboBoxBatteryChange);
             this.groupBoxAssetData.Controls.Add(this.comboBoxStandard);
             this.groupBoxAssetData.Controls.Add(this.comboBoxActiveDirectory);
@@ -1363,76 +1333,77 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxAssetData.Controls.Add(this.lblFixedInUse);
             this.groupBoxAssetData.Controls.Add(this.lblFixedTag);
             this.groupBoxAssetData.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.groupBoxAssetData, "groupBoxAssetData");
             this.groupBoxAssetData.Name = "groupBoxAssetData";
             this.groupBoxAssetData.TabStop = false;
             // 
             // comboBoxBatteryChange
             // 
-            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
             this.comboBoxBatteryChange.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxBatteryChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxBatteryChange.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBatteryChange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
             this.comboBoxBatteryChange.FormattingEnabled = true;
             this.comboBoxBatteryChange.Name = "comboBoxBatteryChange";
             // 
             // comboBoxStandard
             // 
-            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
             this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
             this.comboBoxStandard.FormattingEnabled = true;
             this.comboBoxStandard.Name = "comboBoxStandard";
             // 
             // comboBoxActiveDirectory
             // 
-            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
             this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxActiveDirectory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
             this.comboBoxActiveDirectory.FormattingEnabled = true;
             this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
             // 
             // comboBoxTag
             // 
-            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
             this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
             this.comboBoxTag.FormattingEnabled = true;
             this.comboBoxTag.Name = "comboBoxTag";
             // 
             // comboBoxInUse
             // 
-            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
             this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
             this.comboBoxInUse.FormattingEnabled = true;
             this.comboBoxInUse.Name = "comboBoxInUse";
             // 
             // comboBoxHwType
             // 
-            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
             this.comboBoxHwType.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxHwType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxHwType.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
             this.comboBoxHwType.FormattingEnabled = true;
             this.comboBoxHwType.Name = "comboBoxHwType";
             // 
             // comboBoxBuilding
             // 
-            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
             this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
             this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
             this.comboBoxBuilding.FormattingEnabled = true;
             this.comboBoxBuilding.Name = "comboBoxBuilding";
             // 
@@ -1450,8 +1421,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgTicketNumber
             // 
-            resources.ApplyResources(this.iconImgTicketNumber, "iconImgTicketNumber");
             this.iconImgTicketNumber.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgTicketNumber, "iconImgTicketNumber");
             this.iconImgTicketNumber.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgTicketNumber.Name = "iconImgTicketNumber";
             this.iconImgTicketNumber.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1465,16 +1436,16 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // textBoxTicketNumber
             // 
-            resources.ApplyResources(this.textBoxTicketNumber, "textBoxTicketNumber");
             this.textBoxTicketNumber.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxTicketNumber.ForeColor = System.Drawing.SystemColors.WindowText;
+            resources.ApplyResources(this.textBoxTicketNumber, "textBoxTicketNumber");
             this.textBoxTicketNumber.Name = "textBoxTicketNumber";
             this.textBoxTicketNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxNumbersOnly_KeyPress);
             // 
             // iconImgBatteryChange
             // 
-            resources.ApplyResources(this.iconImgBatteryChange, "iconImgBatteryChange");
             this.iconImgBatteryChange.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgBatteryChange, "iconImgBatteryChange");
             this.iconImgBatteryChange.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgBatteryChange.Name = "iconImgBatteryChange";
             this.iconImgBatteryChange.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1536,8 +1507,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgRoomLetter
             // 
-            resources.ApplyResources(this.iconImgRoomLetter, "iconImgRoomLetter");
             this.iconImgRoomLetter.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgRoomLetter, "iconImgRoomLetter");
             this.iconImgRoomLetter.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgRoomLetter.Name = "iconImgRoomLetter";
             this.iconImgRoomLetter.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1545,8 +1516,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgHwType
             // 
-            resources.ApplyResources(this.iconImgHwType, "iconImgHwType");
             this.iconImgHwType.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgHwType, "iconImgHwType");
             this.iconImgHwType.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgHwType.Name = "iconImgHwType";
             this.iconImgHwType.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1554,8 +1525,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgTag
             // 
-            resources.ApplyResources(this.iconImgTag, "iconImgTag");
             this.iconImgTag.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgTag, "iconImgTag");
             this.iconImgTag.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgTag.Name = "iconImgTag";
             this.iconImgTag.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1563,8 +1534,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgInUse
             // 
-            resources.ApplyResources(this.iconImgInUse, "iconImgInUse");
             this.iconImgInUse.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgInUse, "iconImgInUse");
             this.iconImgInUse.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgInUse.Name = "iconImgInUse";
             this.iconImgInUse.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1572,8 +1543,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgServiceDate
             // 
-            resources.ApplyResources(this.iconImgServiceDate, "iconImgServiceDate");
             this.iconImgServiceDate.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgServiceDate, "iconImgServiceDate");
             this.iconImgServiceDate.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgServiceDate.Name = "iconImgServiceDate";
             this.iconImgServiceDate.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1581,8 +1552,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgStandard
             // 
-            resources.ApplyResources(this.iconImgStandard, "iconImgStandard");
             this.iconImgStandard.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgStandard, "iconImgStandard");
             this.iconImgStandard.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgStandard.Name = "iconImgStandard";
             this.iconImgStandard.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1590,8 +1561,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgAdRegistered
             // 
-            resources.ApplyResources(this.iconImgAdRegistered, "iconImgAdRegistered");
             this.iconImgAdRegistered.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgAdRegistered, "iconImgAdRegistered");
             this.iconImgAdRegistered.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgAdRegistered.Name = "iconImgAdRegistered";
             this.iconImgAdRegistered.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1599,8 +1570,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgBuilding
             // 
-            resources.ApplyResources(this.iconImgBuilding, "iconImgBuilding");
             this.iconImgBuilding.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgBuilding, "iconImgBuilding");
             this.iconImgBuilding.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgBuilding.Name = "iconImgBuilding";
             this.iconImgBuilding.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1608,8 +1579,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgRoomNumber
             // 
-            resources.ApplyResources(this.iconImgRoomNumber, "iconImgRoomNumber");
             this.iconImgRoomNumber.CompositingQuality = null;
+            resources.ApplyResources(this.iconImgRoomNumber, "iconImgRoomNumber");
             this.iconImgRoomNumber.InterpolationMode = null;
             this.iconImgRoomNumber.Name = "iconImgRoomNumber";
             this.iconImgRoomNumber.SmoothingMode = null;
@@ -1617,8 +1588,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgSealNumber
             // 
-            resources.ApplyResources(this.iconImgSealNumber, "iconImgSealNumber");
             this.iconImgSealNumber.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgSealNumber, "iconImgSealNumber");
             this.iconImgSealNumber.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgSealNumber.Name = "iconImgSealNumber";
             this.iconImgSealNumber.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1626,8 +1597,8 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // iconImgAssetNumber
             // 
-            resources.ApplyResources(this.iconImgAssetNumber, "iconImgAssetNumber");
             this.iconImgAssetNumber.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgAssetNumber, "iconImgAssetNumber");
             this.iconImgAssetNumber.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             this.iconImgAssetNumber.Name = "iconImgAssetNumber";
             this.iconImgAssetNumber.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -1635,19 +1606,19 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // dateTimePickerServiceDate
             // 
-            resources.ApplyResources(this.dateTimePickerServiceDate, "dateTimePickerServiceDate");
             this.dateTimePickerServiceDate.CalendarTitleForeColor = System.Drawing.SystemColors.ControlLightLight;
+            resources.ApplyResources(this.dateTimePickerServiceDate, "dateTimePickerServiceDate");
             this.dateTimePickerServiceDate.Name = "dateTimePickerServiceDate";
             // 
             // groupBoxServiceType
             // 
-            resources.ApplyResources(this.groupBoxServiceType, "groupBoxServiceType");
             this.groupBoxServiceType.Controls.Add(this.lblFixedMandatoryServiceType);
             this.groupBoxServiceType.Controls.Add(this.textBoxFixedFormattingRadio);
             this.groupBoxServiceType.Controls.Add(this.textBoxFixedMaintenanceRadio);
             this.groupBoxServiceType.Controls.Add(this.radioButtonFormatting);
             this.groupBoxServiceType.Controls.Add(this.radioButtonMaintenance);
             this.groupBoxServiceType.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.groupBoxServiceType, "groupBoxServiceType");
             this.groupBoxServiceType.Name = "groupBoxServiceType";
             this.groupBoxServiceType.TabStop = false;
             // 
@@ -1659,18 +1630,18 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // textBoxFixedFormattingRadio
             // 
-            resources.ApplyResources(this.textBoxFixedFormattingRadio, "textBoxFixedFormattingRadio");
             this.textBoxFixedFormattingRadio.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxFixedFormattingRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxFixedFormattingRadio, "textBoxFixedFormattingRadio");
             this.textBoxFixedFormattingRadio.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxFixedFormattingRadio.Name = "textBoxFixedFormattingRadio";
             this.textBoxFixedFormattingRadio.ReadOnly = true;
             // 
             // textBoxFixedMaintenanceRadio
             // 
-            resources.ApplyResources(this.textBoxFixedMaintenanceRadio, "textBoxFixedMaintenanceRadio");
             this.textBoxFixedMaintenanceRadio.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxFixedMaintenanceRadio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxFixedMaintenanceRadio, "textBoxFixedMaintenanceRadio");
             this.textBoxFixedMaintenanceRadio.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxFixedMaintenanceRadio.Name = "textBoxFixedMaintenanceRadio";
             this.textBoxFixedMaintenanceRadio.ReadOnly = true;
@@ -1705,10 +1676,10 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleLastService
             // 
-            resources.ApplyResources(this.loadingCircleLastService, "loadingCircleLastService");
             this.loadingCircleLastService.Active = false;
             this.loadingCircleLastService.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleLastService.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleLastService, "loadingCircleLastService");
             this.loadingCircleLastService.Name = "loadingCircleLastService";
             this.loadingCircleLastService.NumberSpoke = 12;
             this.loadingCircleLastService.OuterCircleRadius = 11;
@@ -1761,15 +1732,14 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // toolStripVersionText
             // 
-            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
             this.toolStripVersionText.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripVersionText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripVersionText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripVersionText.Name = "toolStripVersionText";
+            resources.ApplyResources(this.toolStripVersionText, "toolStripVersionText");
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1778,12 +1748,12 @@ namespace AssetInformationAndRegistration.Forms
             this.aboutLabelButton,
             this.toolStripStatusBarText,
             this.toolStripVersionText});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
             // comboBoxThemeButton
             // 
-            resources.ApplyResources(this.comboBoxThemeButton, "comboBoxThemeButton");
             this.comboBoxThemeButton.BackColor = System.Drawing.SystemColors.Control;
             this.comboBoxThemeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.comboBoxThemeButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1791,63 +1761,64 @@ namespace AssetInformationAndRegistration.Forms
             this.toolStripLightTheme,
             this.toolStripDarkTheme});
             this.comboBoxThemeButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.comboBoxThemeButton, "comboBoxThemeButton");
             this.comboBoxThemeButton.Name = "comboBoxThemeButton";
             // 
             // toolStripAutoTheme
             // 
-            resources.ApplyResources(this.toolStripAutoTheme, "toolStripAutoTheme");
             this.toolStripAutoTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripAutoTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripAutoTheme.Name = "toolStripAutoTheme";
+            resources.ApplyResources(this.toolStripAutoTheme, "toolStripAutoTheme");
             this.toolStripAutoTheme.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
             // 
             // toolStripLightTheme
             // 
-            resources.ApplyResources(this.toolStripLightTheme, "toolStripLightTheme");
             this.toolStripLightTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripLightTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripLightTheme.Name = "toolStripLightTheme";
+            resources.ApplyResources(this.toolStripLightTheme, "toolStripLightTheme");
             this.toolStripLightTheme.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
             // toolStripDarkTheme
             // 
-            resources.ApplyResources(this.toolStripDarkTheme, "toolStripDarkTheme");
             this.toolStripDarkTheme.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripDarkTheme.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripDarkTheme.Name = "toolStripDarkTheme";
+            resources.ApplyResources(this.toolStripDarkTheme, "toolStripDarkTheme");
             this.toolStripDarkTheme.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
             // 
             // logLabelButton
             // 
-            resources.ApplyResources(this.logLabelButton, "logLabelButton");
             this.logLabelButton.BackColor = System.Drawing.SystemColors.Control;
             this.logLabelButton.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.logLabelButton.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.logLabelButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.logLabelButton.Name = "logLabelButton";
+            resources.ApplyResources(this.logLabelButton, "logLabelButton");
             this.logLabelButton.Click += new System.EventHandler(this.LogLabelButton_Click);
             this.logLabelButton.MouseEnter += new System.EventHandler(this.LogLabel_MouseEnter);
             this.logLabelButton.MouseLeave += new System.EventHandler(this.LogLabel_MouseLeave);
             // 
             // aboutLabelButton
             // 
-            resources.ApplyResources(this.aboutLabelButton, "aboutLabelButton");
             this.aboutLabelButton.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.aboutLabelButton.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.aboutLabelButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.aboutLabelButton.Name = "aboutLabelButton";
+            resources.ApplyResources(this.aboutLabelButton, "aboutLabelButton");
             this.aboutLabelButton.Click += new System.EventHandler(this.AboutLabelButton_Click);
             this.aboutLabelButton.MouseEnter += new System.EventHandler(this.AboutLabel_MouseEnter);
             this.aboutLabelButton.MouseLeave += new System.EventHandler(this.AboutLabel_MouseLeave);
             // 
             // toolStripStatusBarText
             // 
-            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
             this.toolStripStatusBarText.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripStatusBarText.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.toolStripStatusBarText.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.toolStripStatusBarText.ForeColor = System.Drawing.SystemColors.ControlText;
             this.toolStripStatusBarText.Name = "toolStripStatusBarText";
+            resources.ApplyResources(this.toolStripStatusBarText, "toolStripStatusBarText");
             this.toolStripStatusBarText.Spring = true;
             // 
             // timerAlertHostname
@@ -1856,18 +1827,18 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // groupBoxRegistryStatus
             // 
-            resources.ApplyResources(this.groupBoxRegistryStatus, "groupBoxRegistryStatus");
             this.groupBoxRegistryStatus.Controls.Add(this.webView2Control);
             this.groupBoxRegistryStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.groupBoxRegistryStatus, "groupBoxRegistryStatus");
             this.groupBoxRegistryStatus.Name = "groupBoxRegistryStatus";
             this.groupBoxRegistryStatus.TabStop = false;
             // 
             // webView2Control
             // 
-            resources.ApplyResources(this.webView2Control, "webView2Control");
             this.webView2Control.AllowExternalDrop = true;
             this.webView2Control.CreationProperties = null;
             this.webView2Control.DefaultBackgroundColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.webView2Control, "webView2Control");
             this.webView2Control.Name = "webView2Control";
             this.webView2Control.ZoomFactor = 1D;
             // 
@@ -1882,12 +1853,12 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleCollectButton
             // 
-            resources.ApplyResources(this.loadingCircleCollectButton, "loadingCircleCollectButton");
             this.loadingCircleCollectButton.Active = false;
             this.loadingCircleCollectButton.BackColor = System.Drawing.SystemColors.Control;
             this.loadingCircleCollectButton.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleCollectButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleCollectButton.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleCollectButton, "loadingCircleCollectButton");
             this.loadingCircleCollectButton.Name = "loadingCircleCollectButton";
             this.loadingCircleCollectButton.NumberSpoke = 12;
             this.loadingCircleCollectButton.OuterCircleRadius = 11;
@@ -1898,12 +1869,12 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // loadingCircleRegisterButton
             // 
-            resources.ApplyResources(this.loadingCircleRegisterButton, "loadingCircleRegisterButton");
             this.loadingCircleRegisterButton.Active = false;
             this.loadingCircleRegisterButton.BackColor = System.Drawing.SystemColors.Control;
             this.loadingCircleRegisterButton.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleRegisterButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.loadingCircleRegisterButton.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleRegisterButton, "loadingCircleRegisterButton");
             this.loadingCircleRegisterButton.Name = "loadingCircleRegisterButton";
             this.loadingCircleRegisterButton.NumberSpoke = 12;
             this.loadingCircleRegisterButton.OuterCircleRadius = 11;
@@ -1913,7 +1884,6 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // groupBoxServerStatus
             // 
-            resources.ApplyResources(this.groupBoxServerStatus, "groupBoxServerStatus");
             this.groupBoxServerStatus.Controls.Add(this.loadingCircleServerOperationalStatus);
             this.groupBoxServerStatus.Controls.Add(this.lblFixedServerIP);
             this.groupBoxServerStatus.Controls.Add(this.lblFixedServerOperationalStatus);
@@ -1924,15 +1894,16 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxServerStatus.Controls.Add(this.lblFixedAgentName);
             this.groupBoxServerStatus.Controls.Add(this.lblAgentName);
             this.groupBoxServerStatus.ForeColor = System.Drawing.SystemColors.ControlText;
+            resources.ApplyResources(this.groupBoxServerStatus, "groupBoxServerStatus");
             this.groupBoxServerStatus.Name = "groupBoxServerStatus";
             this.groupBoxServerStatus.TabStop = false;
             // 
             // loadingCircleServerOperationalStatus
             // 
-            resources.ApplyResources(this.loadingCircleServerOperationalStatus, "loadingCircleServerOperationalStatus");
             this.loadingCircleServerOperationalStatus.Active = false;
             this.loadingCircleServerOperationalStatus.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleServerOperationalStatus.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleServerOperationalStatus, "loadingCircleServerOperationalStatus");
             this.loadingCircleServerOperationalStatus.Name = "loadingCircleServerOperationalStatus";
             this.loadingCircleServerOperationalStatus.NumberSpoke = 12;
             this.loadingCircleServerOperationalStatus.OuterCircleRadius = 11;
@@ -1960,6 +1931,43 @@ namespace AssetInformationAndRegistration.Forms
             // 
             this.timerProcessorLabelScroll.Tick += new System.EventHandler(this.TimerProcessorLabelScroll_Tick);
             // 
+            // hSeparator2
+            // 
+            this.hSeparator2.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.hSeparator2, "hSeparator2");
+            this.hSeparator2.Name = "hSeparator2";
+            // 
+            // vSeparator1
+            // 
+            this.vSeparator1.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.vSeparator1, "vSeparator1");
+            this.vSeparator1.Name = "vSeparator1";
+            // 
+            // vSeparator2
+            // 
+            this.vSeparator2.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.vSeparator2, "vSeparator2");
+            this.vSeparator2.Name = "vSeparator2";
+            // 
+            // loadingCircleCompliant
+            // 
+            this.loadingCircleCompliant.Active = false;
+            this.loadingCircleCompliant.Color = System.Drawing.Color.LightSlateGray;
+            this.loadingCircleCompliant.InnerCircleRadius = 5;
+            resources.ApplyResources(this.loadingCircleCompliant, "loadingCircleCompliant");
+            this.loadingCircleCompliant.Name = "loadingCircleCompliant";
+            this.loadingCircleCompliant.NumberSpoke = 12;
+            this.loadingCircleCompliant.OuterCircleRadius = 11;
+            this.loadingCircleCompliant.RotationSpeed = 1;
+            this.loadingCircleCompliant.SpokeThickness = 2;
+            this.loadingCircleCompliant.StylePreset = MRG.Controls.UI.LoadingCircle.StylePresets.MacOSX;
+            // 
+            // lblCompliant
+            // 
+            resources.ApplyResources(this.lblCompliant, "lblCompliant");
+            this.lblCompliant.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblCompliant.Name = "lblCompliant";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -1974,7 +1982,7 @@ namespace AssetInformationAndRegistration.Forms
             this.Controls.Add(this.groupBoxAssetData);
             this.Controls.Add(this.groupBoxHwData);
             this.Controls.Add(this.imgTopBanner);
-            this.Controls.Add(this.ApcsButton);
+            this.Controls.Add(this.apcsButton);
             this.Controls.Add(this.collectButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.registerButton);
@@ -1985,7 +1993,6 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxHwData.ResumeLayout(false);
             this.groupBoxHwData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgTpmVersion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconImgSmartStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgVirtualizationTechnology)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgBrand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgSecureBoot)).EndInit();
@@ -2086,7 +2093,7 @@ namespace AssetInformationAndRegistration.Forms
         private Label lblFixedRoomLetter;
         private Label lblFixedFwVersion;
         private Label lblFwVersion;
-        private Button ApcsButton;
+        private Button apcsButton;
         private ProgressBar progressBar1;
         private Label lblProgressBarPercent;
         private Label lblSecureBoot;
@@ -2142,9 +2149,6 @@ namespace AssetInformationAndRegistration.Forms
         private Label lblFixedMandatoryMain;
         private Label lblFixedMandatoryServiceType;
         private Timer timerAlertVirtualizationTechnology;
-        private ConfigurableQualityPictureBox iconImgSmartStatus;
-        private Label lblSmartStatus;
-        private Label lblFixedSmartStatus;
         private Timer timerAlertSmartStatus;
         private Label lblFixedServerPort;
         private ConfigurableQualityPictureBox iconImgTpmVersion;
@@ -2171,8 +2175,8 @@ namespace AssetInformationAndRegistration.Forms
         private ConfigurableQualityPictureBox iconImgAdRegistered;
         private Label lblFixedAdRegistered;
         private Label lblFixedStandard;
-        private Label separatorV;
-        private Label separatorH;
+        private Label vSeparator3;
+        private Label hSeparator1;
         private CustomFlatComboBox comboBoxBuilding;
         private CustomFlatComboBox comboBoxStandard;
         private CustomFlatComboBox comboBoxActiveDirectory;
@@ -2192,7 +2196,6 @@ namespace AssetInformationAndRegistration.Forms
         private LoadingCircle loadingCircleVideoCard;
         private LoadingCircle loadingCircleMediaOperationMode;
         private LoadingCircle loadingCircleStorageType;
-        private LoadingCircle loadingCircleSmartStatus;
         private LoadingCircle loadingCircleStorageSize;
         private LoadingCircle loadingCircleRam;
         private LoadingCircle loadingCircleProcessor;
@@ -2308,7 +2311,7 @@ namespace AssetInformationAndRegistration.Forms
             lblSecureBoot.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             lblVideoCard.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             lblVirtualizationTechnology.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-            lblSmartStatus.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            lblCompliant.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             lblServerIP.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             lblServerPort.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
             lblAgentName.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
@@ -2354,7 +2357,7 @@ namespace AssetInformationAndRegistration.Forms
             lblFixedMandatoryTag.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
             lblFixedMandatoryWho.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
             lblFixedMandatoryServiceType.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-            lblFixedSmartStatus.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            lblCompliant.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedTpmVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedBatteryChange.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             lblFixedMandatoryBatteryChange.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
@@ -2435,10 +2438,10 @@ namespace AssetInformationAndRegistration.Forms
             collectButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             collectButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
             collectButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            ApcsButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            ApcsButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            ApcsButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-            ApcsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            apcsButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            apcsButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            apcsButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+            apcsButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             storageDetailsButton.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
             storageDetailsButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             storageDetailsButton.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -2453,8 +2456,8 @@ namespace AssetInformationAndRegistration.Forms
             groupBoxServiceType.Paint += CustomColors.GroupBox_PaintLightTheme;
             groupBoxRegistryStatus.Paint += CustomColors.GroupBox_PaintLightTheme;
             groupBoxServerStatus.Paint += CustomColors.GroupBox_PaintLightTheme;
-            separatorH.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-            separatorV.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
+            hSeparator1.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
+            vSeparator3.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
 
             toolStripStatusBarText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             toolStripStatusBarText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -2511,7 +2514,6 @@ namespace AssetInformationAndRegistration.Forms
             iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_STICKER_LIGHT_PATH));
             iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TYPE_LIGHT_PATH));
             iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_VT_X_LIGHT_PATH));
-            iconImgSmartStatus.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SMART_LIGHT_PATH));
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_LIGHT_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_LIGHT_PATH));
             iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TICKET_LIGHT_PATH));
@@ -2545,7 +2547,7 @@ namespace AssetInformationAndRegistration.Forms
             lblSecureBoot.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
             lblVideoCard.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
             lblVirtualizationTechnology.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-            lblSmartStatus.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            lblCompliant.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
             lblServerIP.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
             lblServerPort.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
             lblAgentName.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
@@ -2591,7 +2593,7 @@ namespace AssetInformationAndRegistration.Forms
             lblFixedMandatoryTag.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
             lblFixedMandatoryWho.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
             lblFixedMandatoryServiceType.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-            lblFixedSmartStatus.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            lblCompliant.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedTpmVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedBatteryChange.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             lblFixedMandatoryBatteryChange.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
@@ -2665,10 +2667,10 @@ namespace AssetInformationAndRegistration.Forms
             collectButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             collectButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
             collectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            ApcsButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            ApcsButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            ApcsButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-            ApcsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            apcsButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+            apcsButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            apcsButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+            apcsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             storageDetailsButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
             storageDetailsButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             storageDetailsButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
@@ -2683,8 +2685,8 @@ namespace AssetInformationAndRegistration.Forms
             groupBoxServiceType.Paint += CustomColors.GroupBox_PaintDarkTheme;
             groupBoxRegistryStatus.Paint += CustomColors.GroupBox_PaintDarkTheme;
             groupBoxServerStatus.Paint += CustomColors.GroupBox_PaintDarkTheme;
-            separatorH.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-            separatorV.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
+            hSeparator1.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
+            vSeparator3.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
 
             toolStripStatusBarText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             toolStripStatusBarText.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -2741,7 +2743,6 @@ namespace AssetInformationAndRegistration.Forms
             iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_STICKER_DARK_PATH));
             iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TYPE_DARK_PATH));
             iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_VT_X_DARK_PATH));
-            iconImgSmartStatus.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SMART_DARK_PATH));
             iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TPM_DARK_PATH));
             iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_CMOS_BATTERY_DARK_PATH));
             iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_TICKET_DARK_PATH));
@@ -3056,7 +3057,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
@@ -3079,7 +3080,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
@@ -3102,7 +3103,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
@@ -3125,7 +3126,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
@@ -3151,7 +3152,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
@@ -3174,7 +3175,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
@@ -3197,7 +3198,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
@@ -3220,7 +3221,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
@@ -3246,7 +3247,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
@@ -3269,7 +3270,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
@@ -3292,7 +3293,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
@@ -3315,7 +3316,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
@@ -3341,7 +3342,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
@@ -3364,7 +3365,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
@@ -3387,7 +3388,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
@@ -3410,7 +3411,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
@@ -3436,7 +3437,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
@@ -3459,7 +3460,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
@@ -3482,7 +3483,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
@@ -3505,7 +3506,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
@@ -3531,7 +3532,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
@@ -3554,7 +3555,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
@@ -3577,7 +3578,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
@@ -3600,7 +3601,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
@@ -3626,7 +3627,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
@@ -3649,7 +3650,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
@@ -3672,7 +3673,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
@@ -3695,7 +3696,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
@@ -3721,7 +3722,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
@@ -3744,7 +3745,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
@@ -3767,7 +3768,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
@@ -3790,7 +3791,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
@@ -3816,7 +3817,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
                     loadingCircleRam.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
                     loadingCircleStorageSize.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
-                    loadingCircleSmartStatus.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
+                    loadingCircleCompliant.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
                     loadingCircleStorageType.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
                     loadingCircleMediaOperationMode.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
                     loadingCircleVideoCard.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
@@ -3839,7 +3840,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
                     loadingCircleRam.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
                     loadingCircleStorageSize.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
-                    loadingCircleSmartStatus.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
+                    loadingCircleCompliant.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
                     loadingCircleStorageType.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
                     loadingCircleMediaOperationMode.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
                     loadingCircleVideoCard.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
@@ -3862,7 +3863,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
                     loadingCircleRam.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
                     loadingCircleStorageSize.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
-                    loadingCircleSmartStatus.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
+                    loadingCircleCompliant.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
                     loadingCircleStorageType.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
                     loadingCircleMediaOperationMode.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
                     loadingCircleVideoCard.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
@@ -3885,7 +3886,7 @@ namespace AssetInformationAndRegistration.Forms
                     loadingCircleProcessor.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
                     loadingCircleRam.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
                     loadingCircleStorageSize.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
-                    loadingCircleSmartStatus.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
+                    loadingCircleCompliant.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
                     loadingCircleStorageType.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
                     loadingCircleMediaOperationMode.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
                     loadingCircleVideoCard.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
@@ -3912,7 +3913,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleRam.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleStorageSize.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
-            loadingCircleSmartStatus.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
+            loadingCircleCompliant.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleStorageType.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleMediaOperationMode.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
             loadingCircleVideoCard.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
@@ -3935,7 +3936,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
             loadingCircleRam.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
             loadingCircleStorageSize.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
-            loadingCircleSmartStatus.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
+            loadingCircleCompliant.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
             loadingCircleStorageType.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
             loadingCircleMediaOperationMode.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
             loadingCircleVideoCard.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
@@ -3957,7 +3958,7 @@ namespace AssetInformationAndRegistration.Forms
             #endregion
 
             //Sets current and maximum values for the progressbar
-            progressBar1.Maximum = 19;
+            progressBar1.Maximum = 18;
             progressBar1.Value = 0;
 
             //Sets label position for their default positions
@@ -4030,7 +4031,7 @@ namespace AssetInformationAndRegistration.Forms
             lblProcessor.SendToBack();
             timerProcessorLabelScroll.Start();
 
-            separatorV.BringToFront();
+            vSeparator3.BringToFront();
 
             try
             {
@@ -4153,9 +4154,9 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="myEventArgs"></param>
         private void AlertFlashTextSmartStatus(object myobject, EventArgs myEventArgs)
         {
-            lblSmartStatus.ForeColor = lblSmartStatus.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
+            lblCompliant.ForeColor = lblCompliant.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == true
                 ? StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR
-                : lblSmartStatus.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false
+                : lblCompliant.ForeColor == StringsAndConstants.ALERT_COLOR && themeBool == false
                 ? StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR
                 : StringsAndConstants.ALERT_COLOR;
         }
@@ -4254,7 +4255,7 @@ namespace AssetInformationAndRegistration.Forms
             lblProcessor.Text = ConstantsDLL.Properties.Resources.DASH;
             lblRam.Text = ConstantsDLL.Properties.Resources.DASH;
             lblStorageSize.Text = ConstantsDLL.Properties.Resources.DASH;
-            lblSmartStatus.Text = ConstantsDLL.Properties.Resources.DASH;
+            lblCompliant.Text = ConstantsDLL.Properties.Resources.DASH;
             lblStorageType.Text = ConstantsDLL.Properties.Resources.DASH;
             lblMediaOperationMode.Text = ConstantsDLL.Properties.Resources.DASH;
             lblVideoCard.Text = ConstantsDLL.Properties.Resources.DASH;
@@ -4278,7 +4279,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.Visible = true;
             loadingCircleRam.Visible = true;
             loadingCircleStorageSize.Visible = true;
-            loadingCircleSmartStatus.Visible = true;
+            loadingCircleCompliant.Visible = true;
             loadingCircleStorageType.Visible = true;
             loadingCircleMediaOperationMode.Visible = true;
             loadingCircleVideoCard.Visible = true;
@@ -4299,7 +4300,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.Active = true;
             loadingCircleRam.Active = true;
             loadingCircleStorageSize.Active = true;
-            loadingCircleSmartStatus.Active = true;
+            loadingCircleCompliant.Active = true;
             loadingCircleStorageType.Active = true;
             loadingCircleMediaOperationMode.Active = true;
             loadingCircleVideoCard.Active = true;
@@ -4373,7 +4374,7 @@ namespace AssetInformationAndRegistration.Forms
                 lblFwVersion.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                 lblFwType.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                 lblVirtualizationTechnology.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-                lblSmartStatus.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+                lblCompliant.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                 lblRam.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                 lblTpmVersion.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
                 lblMacAddress.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
@@ -4387,7 +4388,7 @@ namespace AssetInformationAndRegistration.Forms
                 lblFwVersion.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 lblFwType.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 lblVirtualizationTechnology.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-                lblSmartStatus.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+                lblCompliant.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 lblRam.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 lblTpmVersion.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
                 lblMacAddress.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
@@ -4464,12 +4465,6 @@ namespace AssetInformationAndRegistration.Forms
             worker.ReportProgress(ProgressAuxFunction(i));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_HDSIZE, storageSize, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-            //Scans for SMART status
-            smartStatus = HardwareInfo.GetSMARTStatus();
-            i++;
-            worker.ReportProgress(ProgressAuxFunction(i));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SMART, smartStatus, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-
             //Scans for Storage type
             storageSummary = HardwareInfo.GetStorageSummary();
             storageDetail = new List<List<string>>
@@ -4477,7 +4472,8 @@ namespace AssetInformationAndRegistration.Forms
                 HardwareInfo.GetStorageTypeList(),
                 HardwareInfo.GetStorageSizeList(),
                 HardwareInfo.GetStorageModelList(),
-                HardwareInfo.GetStorageSerialNumberList()
+                HardwareInfo.GetStorageSerialNumberList(),
+                HardwareInfo.GetStorageSmartList()
             };
             storageDetail = MiscMethods.Transpose(storageDetail);
             i++;
@@ -4566,7 +4562,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.Visible = false;
             loadingCircleRam.Visible = false;
             loadingCircleStorageSize.Visible = false;
-            loadingCircleSmartStatus.Visible = false;
+            loadingCircleCompliant.Visible = false;
             loadingCircleStorageType.Visible = false;
             loadingCircleMediaOperationMode.Visible = false;
             loadingCircleVideoCard.Visible = false;
@@ -4585,7 +4581,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleProcessor.Active = false;
             loadingCircleRam.Active = false;
             loadingCircleStorageSize.Active = false;
-            loadingCircleSmartStatus.Active = false;
+            loadingCircleCompliant.Active = false;
             loadingCircleStorageType.Active = false;
             loadingCircleMediaOperationMode.Active = false;
             loadingCircleVideoCard.Active = false;
@@ -4607,7 +4603,7 @@ namespace AssetInformationAndRegistration.Forms
             lblProcessor.Text = processor;
             lblRam.Text = ram;
             lblStorageSize.Text = storageSize;
-            lblSmartStatus.Text = smartStatus;
+            lblCompliant.Text = smartStatus;
             lblStorageType.Text = storageSummary;
             lblVideoCard.Text = videoCard;
             lblOperatingSystem.Text = operatingSystem;
@@ -4737,14 +4733,14 @@ namespace AssetInformationAndRegistration.Forms
                     timerAlertVirtualizationTechnology.Enabled = true;
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.VT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
-                //If Smart status is not OK and its enforcement is enabled
-                if (enforcementList[1] == ConstantsDLL.Properties.Resources.TRUE && !smartStatus.Contains(ConstantsDLL.Properties.Resources.OK))
-                {
-                    pass = false;
-                    lblSmartStatus.Text += Strings.SMART_FAIL;
-                    timerAlertSmartStatus.Enabled = true;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.SMART_FAIL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                }
+                ////If Smart status is not OK and its enforcement is enabled
+                //if (enforcementList[1] == ConstantsDLL.Properties.Resources.TRUE && !smartStatus.Contains(ConstantsDLL.Properties.Resources.OK))
+                //{
+                //    pass = false;
+                //    lblCompliant.Text += Strings.SMART_FAIL;
+                //    timerAlertSmartStatus.Enabled = true;
+                //    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.SMART_FAIL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                //}
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
                 if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelJsonStr != null && modelJsonStr[2].Equals(ConstantsDLL.Properties.Resources.FALSE))
                 {
@@ -4799,7 +4795,7 @@ namespace AssetInformationAndRegistration.Forms
             tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             webView2Control.Visible = false;
             Collecting();
-            ApcsButton.Enabled = false;
+            apcsButton.Enabled = false;
             registerButton.Enabled = false;
             collectButton.Enabled = false;
             storageDetailsButton.Visible = false;
@@ -4857,7 +4853,7 @@ namespace AssetInformationAndRegistration.Forms
 
             if (!offlineMode)
             {
-                ApcsButton.Enabled = true; //Enables accessSystem button
+                apcsButton.Enabled = true; //Enables accessSystem button
                 registerButton.Enabled = true; //Enables register button
             }
             //Hides loading circle
@@ -4907,7 +4903,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleRegisterButton.Active = true;
             registerButton.Text = ConstantsDLL.Properties.Resources.DASH;
             registerButton.Enabled = false;
-            ApcsButton.Enabled = false;
+            apcsButton.Enabled = false;
             collectButton.Enabled = false;
             AttrHardwareData();
 
@@ -5028,7 +5024,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleRegisterButton.Active = false;
             registerButton.Text = Strings.REGISTER_AGAIN;
             registerButton.Enabled = true;
-            ApcsButton.Enabled = true;
+            apcsButton.Enabled = true;
             collectButton.Enabled = true;
         }
     }

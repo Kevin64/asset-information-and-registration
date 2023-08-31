@@ -34,26 +34,29 @@
             this.storageSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageSmart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.storageType,
             this.storageSize,
             this.storageModel,
-            this.storageSerialNumber});
+            this.storageSerialNumber,
+            this.storageSmart});
             this.dataGridView1.EnableHeadersVisualStyles = false;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -84,6 +87,12 @@
             this.storageSerialNumber.Name = "storageSerialNumber";
             this.storageSerialNumber.ReadOnly = true;
             // 
+            // storageSmart
+            // 
+            resources.ApplyResources(this.storageSmart, "storageSmart");
+            this.storageSmart.Name = "storageSmart";
+            this.storageSmart.ReadOnly = true;
+            // 
             // StorageDetailForm
             // 
             resources.ApplyResources(this, "$this");
@@ -106,5 +115,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn storageSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageSerialNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageSmart;
     }
 }

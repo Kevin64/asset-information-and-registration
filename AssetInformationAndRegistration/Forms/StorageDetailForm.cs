@@ -3,16 +3,9 @@ using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Serialization;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace AssetInformationAndRegistration.Forms
 {
@@ -24,7 +17,7 @@ namespace AssetInformationAndRegistration.Forms
 
             foreach (List<string> s in str)
             {
-                dataGridView1.Rows.Add(s.ToArray());
+                _ = dataGridView1.Rows.Add(s.ToArray());
             }
 
             //Define theming according to ini file provided info
@@ -44,6 +37,16 @@ namespace AssetInformationAndRegistration.Forms
                 case 3:
                     DarkTheme();
                     break;
+            }
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                DataGridViewCell cell = row.Cells[4];
+                if (cell.Value != null && cell.Value.Equals(ConstantsDLL.Properties.Resources.PRED_FAIL))
+                {
+                    cell.Style.BackColor = Color.Red;
+                    cell.Style.ForeColor = Color.White;
+                }
             }
         }
 
