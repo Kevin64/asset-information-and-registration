@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="lblUpdateAnnoucement.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblUpdateAnnoucement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -149,6 +152,9 @@
   <data name="&gt;&gt;lblUpdateAnnoucement.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="lblOldVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblOldVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -179,6 +185,9 @@
   <data name="&gt;&gt;lblOldVersion.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="lblNewVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblNewVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -209,6 +218,9 @@
   <data name="&gt;&gt;lblNewVersion.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="lblFixedOldVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedOldVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -239,6 +251,9 @@
   <data name="&gt;&gt;lblFixedOldVersion.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="lblFixedNewVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedNewVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -269,6 +284,9 @@
   <data name="&gt;&gt;lblFixedNewVersion.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="changelogTextBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="changelogTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 125</value>
   </data>
@@ -300,6 +318,9 @@
   <data name="&gt;&gt;changelogTextBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="downloadButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 77</value>
   </data>
@@ -324,6 +345,9 @@
   <data name="&gt;&gt;downloadButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="closeButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>356, 77</value>
   </data>
@@ -348,6 +372,9 @@
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="lblFixedChangelogLatestVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedChangelogLatestVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -382,6 +409,9 @@
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
@@ -1269,7 +1299,7 @@
     <value>Updater</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UpdateCheckerForm</value>
+    <value>UpdaterForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

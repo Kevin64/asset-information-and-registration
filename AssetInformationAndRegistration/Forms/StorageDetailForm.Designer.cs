@@ -32,6 +32,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.storageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.storageConnection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSmart = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +53,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.storageType,
             this.storageSize,
+            this.storageConnection,
             this.storageModel,
             this.storageSerialNumber,
             this.storageSmart});
@@ -74,6 +76,12 @@
             resources.ApplyResources(this.storageSize, "storageSize");
             this.storageSize.Name = "storageSize";
             this.storageSize.ReadOnly = true;
+            // 
+            // storageConnection
+            // 
+            resources.ApplyResources(this.storageConnection, "storageConnection");
+            this.storageConnection.Name = "storageConnection";
+            this.storageConnection.ReadOnly = true;
             // 
             // storageModel
             // 
@@ -113,6 +121,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageType;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storageConnection;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageSerialNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn storageSmart;

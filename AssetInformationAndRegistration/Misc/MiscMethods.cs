@@ -205,15 +205,27 @@ namespace AssetInformationAndRegistration.Misc
             return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
+        /// <summary>
+        /// Transpose an List object that containing Lists, inverting its rows and columns
+        /// </summary>
+        /// <typeparam name="T">Object type</typeparam>
+        /// <param name="lists">List of Lists</param>
+        /// <returns>The list of lists transposed</returns>
         internal static List<List<T>> Transpose<T>(List<List<T>> lists)
         {
-            var longest = lists.Any() ? lists.Max(l => l.Count) : 0;
+            int longest = lists.Any() ? lists.Max(l => l.Count) : 0;
             List<List<T>> outer = new List<List<T>>(longest);
             for (int i = 0; i < longest; i++)
+            {
                 outer.Add(new List<T>(lists.Count));
+            }
             for (int j = 0; j < lists.Count; j++)
+            {
                 for (int i = 0; i < longest; i++)
-                    outer[i].Add(lists[j].Count > i ? lists[j][i] : default(T));
+                {
+                    outer[i].Add(lists[j].Count > i ? lists[j][i] : default);
+                }
+            }
             return outer;
         }
 

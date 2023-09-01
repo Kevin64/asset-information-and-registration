@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="textBoxUsername.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 177</value>
@@ -140,6 +143,9 @@
   <data name="&gt;&gt;textBoxUsername.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
+  <metadata name="textBoxPassword.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 202</value>
   </data>
@@ -161,6 +167,9 @@
   <data name="&gt;&gt;textBoxPassword.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <metadata name="lblFixedUsername.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedUsername.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -188,6 +197,9 @@
   <data name="&gt;&gt;lblFixedUsername.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <metadata name="lblFixedPassword.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedPassword.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -215,6 +227,9 @@
   <data name="&gt;&gt;lblFixedPassword.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <metadata name="AuthButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="AuthButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -244,6 +259,9 @@
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="statusStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 17</value>
@@ -281,6 +299,9 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="imgTopBanner.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="imgTopBanner.Location" type="System.Drawing.Point, System.Drawing">
     <value>-5, -1</value>
   </data>
@@ -298,7 +319,7 @@
     <value>imgTopBanner</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Parent" xml:space="preserve">
     <value>$this</value>
@@ -306,6 +327,9 @@
   <data name="&gt;&gt;imgTopBanner.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="lblFixedServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServerPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -333,6 +357,9 @@
   <data name="&gt;&gt;lblFixedServerPort.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="lblFixedServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServerIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -360,6 +387,9 @@
   <data name="&gt;&gt;lblFixedServerIP.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="checkBoxOfflineMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="checkBoxOfflineMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -387,6 +417,9 @@
   <data name="&gt;&gt;checkBoxOfflineMode.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="loadingCircleAuthButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleAuthButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 305</value>
   </data>
@@ -403,7 +436,7 @@
     <value>loadingCircleAuthButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -411,6 +444,9 @@
   <data name="&gt;&gt;loadingCircleAuthButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="iconImgUsername.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 173</value>
   </data>
@@ -427,7 +463,7 @@
     <value>iconImgUsername</value>
   </data>
   <data name="&gt;&gt;iconImgUsername.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgUsername.Parent" xml:space="preserve">
     <value>$this</value>
@@ -435,6 +471,9 @@
   <data name="&gt;&gt;iconImgUsername.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="iconImgServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgServerPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 251</value>
   </data>
@@ -451,7 +490,7 @@
     <value>iconImgServerPort</value>
   </data>
   <data name="&gt;&gt;iconImgServerPort.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServerPort.Parent" xml:space="preserve">
     <value>$this</value>
@@ -459,6 +498,9 @@
   <data name="&gt;&gt;iconImgServerPort.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="iconImgServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgServerIP.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 225</value>
   </data>
@@ -475,7 +517,7 @@
     <value>iconImgServerIP</value>
   </data>
   <data name="&gt;&gt;iconImgServerIP.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServerIP.Parent" xml:space="preserve">
     <value>$this</value>
@@ -483,6 +525,9 @@
   <data name="&gt;&gt;iconImgServerIP.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="iconImgPassword.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgPassword.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 199</value>
   </data>
@@ -499,7 +544,7 @@
     <value>iconImgPassword</value>
   </data>
   <data name="&gt;&gt;iconImgPassword.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgPassword.Parent" xml:space="preserve">
     <value>$this</value>
@@ -507,6 +552,9 @@
   <data name="&gt;&gt;iconImgPassword.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="comboBoxServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxServerPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 255</value>
   </data>
@@ -520,7 +568,7 @@
     <value>comboBoxServerPort</value>
   </data>
   <data name="&gt;&gt;comboBoxServerPort.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.2.0.2309, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxServerPort.Parent" xml:space="preserve">
     <value>$this</value>
@@ -528,6 +576,9 @@
   <data name="&gt;&gt;comboBoxServerPort.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="comboBoxServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxServerIP.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 228</value>
   </data>
@@ -541,7 +592,7 @@
     <value>comboBoxServerIP</value>
   </data>
   <data name="&gt;&gt;comboBoxServerIP.Type" xml:space="preserve">
-    <value>CustomFlatComboBox, AIR, Version=4.0.0.2306, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=4.2.0.2309, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxServerIP.Parent" xml:space="preserve">
     <value>$this</value>
@@ -549,6 +600,9 @@
   <data name="&gt;&gt;comboBoxServerIP.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="textBoxFixedLoginIntro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxFixedLoginIntro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -583,6 +637,9 @@
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
@@ -2076,6 +2133,9 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

@@ -30,7 +30,24 @@ namespace AssetInformationAndRegistration.Forms
         private readonly List<string> enforcementList;
         private readonly string serverIP, serverPort, assetNumber, building, roomNumber, serviceDate, serviceType, batteryChange, ticketNumber, standard, inUse, sealNumber, tag, hwType;
         private readonly string[] agentData;
-        private string brand, model, serialNumber, processor, ram, storageSize, storageType, mediaOperationMode, videoCard, operatingSystem, hostname, fwType, fwVersion, secureBoot, virtualizationTechnology, tpmVersion, macAddress, ipAddress;
+        private string brand;
+        private string model;
+        private string serialNumber;
+        private string processor;
+        private string ram;
+        private string storageSize;
+        private readonly string storageType;
+        private string mediaOperationMode;
+        private string videoCard;
+        private string operatingSystem;
+        private string hostname;
+        private string fwType;
+        private string fwVersion;
+        private string secureBoot;
+        private string virtualizationTechnology;
+        private string tpmVersion;
+        private string macAddress;
+        private string ipAddress;
 
         private void InitializeComponent()
         {
@@ -55,6 +72,7 @@ namespace AssetInformationAndRegistration.Forms
             ClientSize = new System.Drawing.Size(158, 53);
             ControlBox = false;
             Controls.Add(webView2Control);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;

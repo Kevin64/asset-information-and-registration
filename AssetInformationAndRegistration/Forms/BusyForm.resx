@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="lblFixedLoading.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblFixedLoading.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -149,6 +152,9 @@
   <data name="&gt;&gt;lblFixedLoading.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="loadingCircleLoading.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleLoading.Location" type="System.Drawing.Point, System.Drawing">
     <value>38, 7</value>
   </data>
@@ -162,7 +168,7 @@
     <value>loadingCircleLoading</value>
   </data>
   <data name="&gt;&gt;loadingCircleLoading.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8549.14089, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleLoading.Parent" xml:space="preserve">
     <value>$this</value>
@@ -171,6 +177,9 @@
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">

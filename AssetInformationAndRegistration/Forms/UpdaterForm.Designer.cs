@@ -92,7 +92,7 @@
             resources.ApplyResources(this.lblFixedChangelogLatestVersion, "lblFixedChangelogLatestVersion");
             this.lblFixedChangelogLatestVersion.Name = "lblFixedChangelogLatestVersion";
             // 
-            // UpdateCheckerForm
+            // UpdaterForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -109,7 +109,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UpdateCheckerForm";
+            this.Name = "UpdaterForm";
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.UpdateCheckerForm_Load);
             this.ResumeLayout(false);

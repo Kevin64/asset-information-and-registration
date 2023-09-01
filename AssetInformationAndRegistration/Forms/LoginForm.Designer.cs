@@ -49,8 +49,8 @@ namespace AssetInformationAndRegistration.Forms
             this.iconImgServerPort = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.iconImgServerIP = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.iconImgPassword = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
-            this.comboBoxServerPort = new CustomFlatComboBox();
-            this.comboBoxServerIP = new CustomFlatComboBox();
+            this.comboBoxServerPort = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxServerIP = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.textBoxFixedLoginIntro = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).BeginInit();

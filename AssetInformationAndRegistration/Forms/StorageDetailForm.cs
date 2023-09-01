@@ -41,7 +41,7 @@ namespace AssetInformationAndRegistration.Forms
 
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                DataGridViewCell cell = row.Cells[4];
+                DataGridViewCell cell = row.Cells[5];
                 if (cell.Value != null && cell.Value.Equals(ConstantsDLL.Properties.Resources.PRED_FAIL))
                 {
                     cell.Style.BackColor = Color.Red;

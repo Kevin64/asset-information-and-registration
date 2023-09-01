@@ -123,6 +123,9 @@
   <data name="storageSize.HeaderText" xml:space="preserve">
     <value>Tamanho</value>
   </data>
+  <data name="storageConnection.HeaderText" xml:space="preserve">
+    <value>Conexão</value>
+  </data>
   <data name="storageModel.HeaderText" xml:space="preserve">
     <value>Modelo</value>
   </data>
