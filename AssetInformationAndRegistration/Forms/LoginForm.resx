@@ -227,34 +227,34 @@
   <data name="&gt;&gt;lblFixedPassword.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <metadata name="AuthButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="authButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="AuthButton.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="authButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
-  <data name="AuthButton.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="authButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 303</value>
   </data>
-  <data name="AuthButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="authButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 48</value>
   </data>
-  <data name="AuthButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="authButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="AuthButton.Text" xml:space="preserve">
+  <data name="authButton.Text" xml:space="preserve">
     <value>Authenticate</value>
   </data>
-  <data name="&gt;&gt;AuthButton.Name" xml:space="preserve">
-    <value>AuthButton</value>
+  <data name="&gt;&gt;authButton.Name" xml:space="preserve">
+    <value>authButton</value>
   </data>
-  <data name="&gt;&gt;AuthButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;authButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;AuthButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;authButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;AuthButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;authButton.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -263,18 +263,6 @@
   <metadata name="statusStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
-  </data>
-  <data name="aboutLabelButton.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 17</value>
-  </data>
-  <data name="toolStripVersionText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>4, 17</value>
-  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 365</value>
   </data>
@@ -298,6 +286,18 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="aboutLabelButton.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 17</value>
+  </data>
+  <data name="toolStripVersionText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>4, 17</value>
   </data>
   <metadata name="imgTopBanner.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -421,10 +421,10 @@
     <value>True</value>
   </metadata>
   <data name="loadingCircleAuthButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 305</value>
+    <value>14, 306</value>
   </data>
   <data name="loadingCircleAuthButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 44</value>
+    <value>213, 42</value>
   </data>
   <data name="loadingCircleAuthButton.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -436,7 +436,7 @@
     <value>loadingCircleAuthButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8643.14159, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8647.15864, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleAuthButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -555,6 +555,9 @@
   <metadata name="comboBoxServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="comboBoxServerPort.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="comboBoxServerPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 255</value>
   </data>
@@ -579,6 +582,9 @@
   <metadata name="comboBoxServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="comboBoxServerIP.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
   <data name="comboBoxServerIP.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 228</value>
   </data>
@@ -600,40 +606,40 @@
   <data name="&gt;&gt;comboBoxServerIP.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="textBoxFixedLoginIntro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="textBoxInactiveLoginIntro.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="textBoxFixedLoginIntro.Enabled" type="System.Boolean, mscorlib">
+  <data name="textBoxInactiveLoginIntro.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="textBoxFixedLoginIntro.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="textBoxInactiveLoginIntro.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 136</value>
   </data>
-  <data name="textBoxFixedLoginIntro.Multiline" type="System.Boolean, mscorlib">
+  <data name="textBoxInactiveLoginIntro.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxFixedLoginIntro.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxInactiveLoginIntro.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 33</value>
   </data>
-  <data name="textBoxFixedLoginIntro.TabIndex" type="System.Int32, mscorlib">
+  <data name="textBoxInactiveLoginIntro.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
   </data>
-  <data name="textBoxFixedLoginIntro.Text" xml:space="preserve">
+  <data name="textBoxInactiveLoginIntro.Text" xml:space="preserve">
     <value>Type your APCS system credentials and click Authenticate:</value>
   </data>
-  <data name="textBoxFixedLoginIntro.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="textBoxInactiveLoginIntro.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;textBoxFixedLoginIntro.Name" xml:space="preserve">
-    <value>textBoxFixedLoginIntro</value>
+  <data name="&gt;&gt;textBoxInactiveLoginIntro.Name" xml:space="preserve">
+    <value>textBoxInactiveLoginIntro</value>
   </data>
-  <data name="&gt;&gt;textBoxFixedLoginIntro.Type" xml:space="preserve">
+  <data name="&gt;&gt;textBoxInactiveLoginIntro.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBoxFixedLoginIntro.Parent" xml:space="preserve">
+  <data name="&gt;&gt;textBoxInactiveLoginIntro.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBoxFixedLoginIntro.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;textBoxInactiveLoginIntro.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -2133,9 +2139,6 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

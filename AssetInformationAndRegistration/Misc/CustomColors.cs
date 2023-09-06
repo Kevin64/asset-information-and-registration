@@ -80,13 +80,9 @@ namespace AssetInformationAndRegistration.Misc
         protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
         {
             if (e.ToolStrip is StatusStrip)
-            {
                 e.Graphics.DrawLine(Pens.Gray, 0, 0, e.ToolStrip.Width, 0);
-            }
             else
-            {
                 base.OnRenderToolStripBorder(e);
-            }
         }
 
         protected override void OnRenderLabelBackground(ToolStripItemRenderEventArgs e)
@@ -111,13 +107,9 @@ namespace AssetInformationAndRegistration.Misc
         protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
         {
             if (e.ToolStrip is StatusStrip)
-            {
                 e.Graphics.DrawLine(Pens.Gray, 0, 0, e.ToolStrip.Width, 0);
-            }
             else
-            {
                 base.OnRenderToolStripBorder(e);
-            }
         }
 
         protected override void OnRenderLabelBackground(ToolStripItemRenderEventArgs e)
@@ -137,33 +129,93 @@ namespace AssetInformationAndRegistration.Misc
     public class ModifiedColorsDarkTheme : ProfessionalColorTable
     {
         //Sets left border color
-        public override Color ImageMarginGradientBegin => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color ImageMarginGradientBegin
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets dropdown menu background color
-        public override Color MenuItemSelected => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color MenuItemSelected
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets dropdown menu background color
-        public override Color MenuItemBorder => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color MenuItemBorder
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets dropdown menu border color
-        public override Color ToolStripDropDownBackground => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color ToolStripDropDownBackground
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets dropdown menu border color
-        public override Color MenuBorder => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color MenuBorder
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets menu button border color
-        public override Color ButtonSelectedBorder => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color ButtonSelectedBorder
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets menu button up color
-        public override Color ButtonSelectedGradientBegin => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color ButtonSelectedGradientBegin
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets menu button down color
-        public override Color ButtonSelectedGradientEnd => StringsAndConstants.DARK_BACKCOLOR;
+        public override Color ButtonSelectedGradientEnd
+        {
+            get
+            {
+                return StringsAndConstants.DARK_BACKCOLOR;
+            }
+        }
 
         //Sets dropdown menu up color when pressed
-        public override Color MenuItemPressedGradientBegin => StringsAndConstants.PRESSED_STRIP_BUTTON;
+        public override Color MenuItemPressedGradientBegin
+        {
+            get
+            {
+                return StringsAndConstants.PRESSED_STRIP_BUTTON;
+            }
+        }
 
         //Sets dropdown menu up color when pressed
-        public override Color MenuItemPressedGradientEnd => StringsAndConstants.PRESSED_STRIP_BUTTON;
+        public override Color MenuItemPressedGradientEnd
+        {
+            get
+            {
+                return StringsAndConstants.PRESSED_STRIP_BUTTON;
+            }
+        }
     }
 }

@@ -36,7 +36,12 @@ namespace AssetInformationAndRegistration.Misc
         /// <param name="ui">An UpdateInfo object to write into the registry</param>
         internal static void RegCreateUpdateData(UpdateInfo ui)
         {
-            RegistryKey rk = Registry.LocalMachine.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
+            RegistryKey rk;
+            if (Environment.Is64BitOperatingSystem)
+                rk = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64);
+            else
+                rk = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
+            rk = rk.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
             rk.SetValue(ConstantsDLL.Properties.Resources.ETAG, ui.ETag, RegistryValueKind.String);
             rk.SetValue(ConstantsDLL.Properties.Resources.TAG_NAME, ui.TagName, RegistryValueKind.String);
             rk.SetValue(ConstantsDLL.Properties.Resources.BODY, ui.Body, RegistryValueKind.String);
@@ -52,7 +57,12 @@ namespace AssetInformationAndRegistration.Misc
             UpdateInfo ui = new UpdateInfo();
             try
             {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH);
+                RegistryKey rk;
+                if (Environment.Is64BitOperatingSystem)
+                    rk = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64);
+                else
+                    rk = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32);
+                rk = rk.CreateSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH, true);
                 ui.ETag = rk.GetValue(ConstantsDLL.Properties.Resources.ETAG).ToString();
                 ui.TagName = rk.GetValue(ConstantsDLL.Properties.Resources.TAG_NAME).ToString();
                 ui.Body = rk.GetValue(ConstantsDLL.Properties.Resources.BODY).ToString();
@@ -62,26 +72,6 @@ namespace AssetInformationAndRegistration.Misc
             catch
             {
                 return null;
-            }
-        }
-
-        /// <summary> 
-        /// Checks the registry for a installation/maintenance date
-        /// </summary>
-        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        /// <returns>The amount of days since the service date, or '-1' if an exception occur</returns>
-        internal static double RegCheckDateData(bool mode)
-        {
-            try
-            {
-                RegistryKey rk = Registry.LocalMachine.OpenSubKey(ConstantsDLL.Properties.Resources.HWINFO_REG_PATH);
-                DateTime li = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.LAST_INSTALL).ToString());
-                DateTime lm = Convert.ToDateTime(rk.GetValue(ConstantsDLL.Properties.Resources.LAST_MAINTENANCE).ToString());
-                return mode ? (DateTime.Today - li).TotalDays : (DateTime.Today - lm).TotalDays;
-            }
-            catch
-            {
-                return -1;
             }
         }
 
@@ -165,15 +155,29 @@ namespace AssetInformationAndRegistration.Misc
         /// Gets theme setting from definition file
         /// </summary>
         /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="themeBool">Theme mode</param>
-        /// <returns>0 or 3 for dark mode, 1 or 2 for light mode</returns>
-        internal static int GetFileThemeMode(List<string[]> parametersList, bool themeBool)
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
+        /// <returns>0 for light mode, 1 for dark mode, true for allow theme edit, false otherwise</returns>
+        internal static (int themeFileSet, bool themeEditable) GetFileThemeMode(List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
-            return StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0])
-                ? themeBool ? 0 : 1
-                : parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1])
-                    ? 2
-                    : parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]) ? 3 : 1;
+            if (StringsAndConstants.LIST_THEME_GUI.Contains(parametersList[3][0].ToString()) && parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[0]))
+            {
+                if (isSystemDarkModeEnabled)
+                    return (1, true);
+                else
+                    return (0, true);
+            }
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[1]))
+            {
+                return (0, false);
+            }
+            else if (parametersList[3][0].ToString().Equals(StringsAndConstants.LIST_THEME_GUI[2]))
+            {
+                return (1, false);
+            }
+            else
+            {
+                return (0, false);
+            }
         }
 
         /// <summary> 
@@ -192,7 +196,6 @@ namespace AssetInformationAndRegistration.Misc
             {
                 return Strings.SINCE_UNKNOWN;
             }
-
         }
 
         /// <summary> 
@@ -216,16 +219,13 @@ namespace AssetInformationAndRegistration.Misc
             int longest = lists.Any() ? lists.Max(l => l.Count) : 0;
             List<List<T>> outer = new List<List<T>>(longest);
             for (int i = 0; i < longest; i++)
-            {
                 outer.Add(new List<T>(lists.Count));
-            }
             for (int j = 0; j < lists.Count; j++)
             {
                 for (int i = 0; i < longest; i++)
-                {
                     outer[i].Add(lists[j].Count > i ? lists[j][i] : default);
-                }
             }
+
             return outer;
         }
 

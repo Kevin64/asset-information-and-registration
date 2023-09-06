@@ -12,7 +12,11 @@ namespace AssetInformationAndRegistration.Misc
         [DefaultValue(typeof(Color), "Gray")]
         public Color BorderColor
         {
-            get => borderColor;
+            get
+            {
+                return borderColor;
+            }
+
             set
             {
                 if (borderColor != value)
@@ -28,7 +32,11 @@ namespace AssetInformationAndRegistration.Misc
         [DefaultValue(typeof(Color), "LightGray")]
         public Color ButtonColor
         {
-            get => buttonColor;
+            get
+            {
+                return buttonColor;
+            }
+
             set
             {
                 if (buttonColor != value)
@@ -112,9 +120,7 @@ namespace AssetInformationAndRegistration.Misc
                     }
                 }
                 if (shoulEndPaint)
-                {
                     _ = EndPaint(Handle, ref ps);
-                }
 
                 _ = DeleteObject(rgn);
             }

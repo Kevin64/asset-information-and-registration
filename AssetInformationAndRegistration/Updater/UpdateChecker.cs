@@ -38,9 +38,9 @@ namespace AssetInformationAndRegistration.Updater
         /// <param name="client">Octokit GitHub object</param>
         /// <param name="log">Log file object</param>
         /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="themeBool">Theme mode</param>
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         /// <param name="autoCheck">Toggle for update autocheck</param>
-        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool autoCheck, bool manualCheck, bool cliMode, bool themeBool)
+        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool autoCheck, bool manualCheck, bool cliMode, bool isSystemDarkModeEnabled)
         {
             try
             {
@@ -50,16 +50,12 @@ namespace AssetInformationAndRegistration.Updater
 
                     httpHeader = new HttpClient();
                     if (HardwareInfo.GetWinVersion() == ConstantsDLL.Properties.Resources.WINDOWS_7)
-                    {
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    }
                     request = new HttpRequestMessage(HttpMethod.Head, ConstantsDLL.Properties.Resources.AIR_API_URL);
                     request.Headers.Add("User-Agent", "Other");
                     ui = Misc.MiscMethods.RegCheckUpdateData();
                     if (ui != null)
-                    {
                         request.Headers.Add("If-None-Match", "\"" + ui.ETag + "\"");
-                    }
                     response = await httpHeader.SendAsync(request);
                     if (!((int)response.StatusCode).Equals(304))
                     {
@@ -86,16 +82,12 @@ namespace AssetInformationAndRegistration.Updater
 
                     if (!cliMode)
                     {
-                        UpdaterForm uForm = new UpdaterForm(log, parametersList, ui, themeBool);
+                        UpdaterForm uForm = new UpdaterForm(log, parametersList, ui, isSystemDarkModeEnabled);
                         bool isNotUpdated = uForm.IsThereANewVersion();
                         if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                        {
                             DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
-                        }
                         if ((autoCheck && isNotUpdated) || manualCheck)
-                        {
                             _ = uForm.ShowDialog();
-                        }
                     }
                     else
                     {

@@ -104,14 +104,9 @@ namespace AssetInformationAndRegistration
         private static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
-            {
                 opts.ServerIP = serverIPListSection[0];
-            }
-
             if (opts.ServerPort == null)
-            {
                 opts.ServerPort = serverPortListSection[0];
-            }
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             string[] agentsJsonStr = JsonFileReaderDLL.CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
@@ -209,9 +204,7 @@ namespace AssetInformationAndRegistration
                 buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
 
                 if (!StringsAndConstants.LIST_THEME_GUI.Contains(themeSection[0]))
-                {
                     throw new FormatException();
-                }
 
                 //[Parameters] ini section
                 parametersListSection = new List<string[]>
@@ -272,9 +265,7 @@ namespace AssetInformationAndRegistration
 
                 //If args has a --help switch, do not show log output
                 if (!args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
-                {
                     showCLIOutput = true;
-                }
 #if DEBUG
                 //Create a new log file (or append to a existing one)
                 log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.DEV_STATUS, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
@@ -285,13 +276,9 @@ namespace AssetInformationAndRegistration
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)
-                {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOGFILE_NOTEXISTS, string.Empty, showCLIOutput);
-                }
                 else
-                {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
-                }
 
                 //Installs WebView2 Runtime if not found
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CHECKING_WEBVIEW2, string.Empty, showCLIOutput);
@@ -319,29 +306,21 @@ namespace AssetInformationAndRegistration
 
                     FreeConsole();
 
-                    bool themeBool = MiscMethods.GetSystemThemeMode();
-                    int themeFileSet = MiscMethods.GetFileThemeMode(parametersListSection, themeBool);
+                    bool isSystemDarkModeEnabled = MiscMethods.GetSystemThemeMode();
+                    (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersListSection, isSystemDarkModeEnabled);
                     bool initialTheme = false;
 
-                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection, themeBool);
+                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection, isSystemDarkModeEnabled);
 
                     if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     {
                         switch (themeFileSet)
                         {
                             case 0:
-                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Dark);
-                                initialTheme = true;
+                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Light);
+                                initialTheme = false;
                                 break;
                             case 1:
-                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Light);
-                                initialTheme = false;
-                                break;
-                            case 2:
-                                DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Light);
-                                initialTheme = false;
-                                break;
-                            case 3:
                                 DarkNet.Instance.SetWindowThemeForms(lForm, Theme.Dark);
                                 initialTheme = true;
                                 break;
@@ -358,9 +337,7 @@ namespace AssetInformationAndRegistration
                     {
                         index = Array.FindIndex(argsLog, x => x.StartsWith(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
                         if (index != -1)
-                        {
                             argsLog[index] = ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
-                        }
                     }
                     else
                     {

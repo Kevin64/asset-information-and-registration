@@ -16,9 +16,7 @@ namespace AssetInformationAndRegistration.Forms
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
@@ -35,7 +33,7 @@ namespace AssetInformationAndRegistration.Forms
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.lblFixedUsername = new System.Windows.Forms.Label();
             this.lblFixedPassword = new System.Windows.Forms.Label();
-            this.AuthButton = new System.Windows.Forms.Button();
+            this.authButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.aboutLabelButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusBarText = new System.Windows.Forms.ToolStripStatusLabel();
@@ -51,7 +49,7 @@ namespace AssetInformationAndRegistration.Forms
             this.iconImgPassword = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.comboBoxServerPort = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.comboBoxServerIP = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.textBoxFixedLoginIntro = new System.Windows.Forms.TextBox();
+            this.textBoxInactiveLoginIntro = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgTopBanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgUsername)).BeginInit();
@@ -87,14 +85,14 @@ namespace AssetInformationAndRegistration.Forms
             this.lblFixedPassword.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblFixedPassword.Name = "lblFixedPassword";
             // 
-            // AuthButton
+            // authButton
             // 
-            this.AuthButton.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.AuthButton, "AuthButton");
-            this.AuthButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AuthButton.Name = "AuthButton";
-            this.AuthButton.UseVisualStyleBackColor = true;
-            this.AuthButton.Click += new System.EventHandler(this.AuthButton_Click);
+            this.authButton.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.authButton, "authButton");
+            this.authButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.authButton.Name = "authButton";
+            this.authButton.UseVisualStyleBackColor = true;
+            this.authButton.Click += new System.EventHandler(this.AuthButton_Click);
             // 
             // statusStrip1
             // 
@@ -165,7 +163,7 @@ namespace AssetInformationAndRegistration.Forms
             // loadingCircleAuthButton
             // 
             this.loadingCircleAuthButton.Active = false;
-            this.loadingCircleAuthButton.BackColor = System.Drawing.SystemColors.Control;
+            this.loadingCircleAuthButton.BackColor = System.Drawing.Color.Transparent;
             this.loadingCircleAuthButton.Color = System.Drawing.Color.LightSlateGray;
             this.loadingCircleAuthButton.InnerCircleRadius = 5;
             resources.ApplyResources(this.loadingCircleAuthButton, "loadingCircleAuthButton");
@@ -217,8 +215,8 @@ namespace AssetInformationAndRegistration.Forms
             this.comboBoxServerPort.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerPort.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerPort.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxServerPort.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxServerPort, "comboBoxServerPort");
+            this.comboBoxServerPort.FormattingEnabled = true;
             this.comboBoxServerPort.Name = "comboBoxServerPort";
             // 
             // comboBoxServerIP
@@ -226,24 +224,24 @@ namespace AssetInformationAndRegistration.Forms
             this.comboBoxServerIP.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxServerIP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
             this.comboBoxServerIP.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxServerIP.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxServerIP, "comboBoxServerIP");
+            this.comboBoxServerIP.FormattingEnabled = true;
             this.comboBoxServerIP.Name = "comboBoxServerIP";
             // 
-            // textBoxFixedLoginIntro
+            // textBoxInactiveLoginIntro
             // 
-            this.textBoxFixedLoginIntro.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.textBoxFixedLoginIntro, "textBoxFixedLoginIntro");
-            this.textBoxFixedLoginIntro.Name = "textBoxFixedLoginIntro";
-            this.textBoxFixedLoginIntro.ReadOnly = true;
+            this.textBoxInactiveLoginIntro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.textBoxInactiveLoginIntro, "textBoxInactiveLoginIntro");
+            this.textBoxInactiveLoginIntro.Name = "textBoxInactiveLoginIntro";
+            this.textBoxInactiveLoginIntro.ReadOnly = true;
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.AuthButton;
+            this.AcceptButton = this.authButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.textBoxFixedLoginIntro);
+            this.Controls.Add(this.textBoxInactiveLoginIntro);
             this.Controls.Add(this.iconImgUsername);
             this.Controls.Add(this.iconImgServerPort);
             this.Controls.Add(this.iconImgServerIP);
@@ -256,7 +254,7 @@ namespace AssetInformationAndRegistration.Forms
             this.Controls.Add(this.lblFixedServerIP);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.imgTopBanner);
-            this.Controls.Add(this.AuthButton);
+            this.Controls.Add(this.authButton);
             this.Controls.Add(this.lblFixedPassword);
             this.Controls.Add(this.lblFixedUsername);
             this.Controls.Add(this.textBoxPassword);
@@ -283,7 +281,7 @@ namespace AssetInformationAndRegistration.Forms
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label lblFixedUsername;
         private System.Windows.Forms.Label lblFixedPassword;
-        private System.Windows.Forms.Button AuthButton;
+        private System.Windows.Forms.Button authButton;
         private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox imgTopBanner;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripVersionText;
@@ -299,6 +297,6 @@ namespace AssetInformationAndRegistration.Forms
         private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgServerIP;
         private ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox iconImgPassword;
         private System.Windows.Forms.ToolStripStatusLabel aboutLabelButton;
-        private System.Windows.Forms.TextBox textBoxFixedLoginIntro;
+        private System.Windows.Forms.TextBox textBoxInactiveLoginIntro;
     }
 }

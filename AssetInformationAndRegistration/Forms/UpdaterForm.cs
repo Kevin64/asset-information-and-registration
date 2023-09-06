@@ -8,6 +8,7 @@ using LogGeneratorDLL;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
@@ -17,7 +18,7 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     public partial class UpdaterForm : Form, ITheming
     {
-        private bool themeBool;
+        private bool isSystemDarkModeEnabled;
         private readonly string currentVersion, newVersion, changelog, url;
         private readonly List<string[]> parametersList;
         private readonly LogGenerator log;
@@ -27,25 +28,19 @@ namespace AssetInformationAndRegistration.Forms
         /// Updater form constructor
         /// </summary>
         /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="themeBool">Theme mode</param>
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         /// <param name="releases">GitHub release information</param>
-        public UpdaterForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool themeBool)
+        public UpdaterForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
 
-            int themeFileSet = MiscMethods.GetFileThemeMode(parametersList, themeBool);
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
             switch (themeFileSet)
             {
                 case 0:
-                    DarkTheme();
+                    LightTheme();
                     break;
                 case 1:
-                    LightTheme();
-                    break;
-                case 2:
-                    LightTheme();
-                    break;
-                case 3:
                     DarkTheme();
                     break;
             }
@@ -58,7 +53,7 @@ namespace AssetInformationAndRegistration.Forms
             }
             currentVersion = MiscMethods.Version();
             this.log = log;
-            this.themeBool = themeBool;
+            this.isSystemDarkModeEnabled = isSystemDarkModeEnabled;
             this.parametersList = parametersList;
         }
 
@@ -124,53 +119,129 @@ namespace AssetInformationAndRegistration.Forms
 
         public void LightTheme()
         {
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+
             BackColor = StringsAndConstants.LIGHT_BACKGROUND;
 
-            lblUpdateAnnoucement.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblFixedOldVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblFixedNewVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblOldVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblNewVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            lblFixedChangelogLatestVersion.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-
-            downloadButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            closeButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-
-            changelogTextBox.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            changelogTextBox.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            foreach (Button b in Controls.OfType<Button>())
             {
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
+                b.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                b.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                b.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
+                b.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            }
+            foreach (CheckBox cb in Controls.OfType<CheckBox>())
+            {
+                cb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                cb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            }
+            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
+            {
+                cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+                cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
+            }
+            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
+            {
+                dgv.BackgroundColor = StringsAndConstants.LIGHT_BACKGROUND;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                dgv.DefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            }
+            foreach (Label l in Controls.OfType<Label>())
+            {
+                if (l.Name.Contains("Separator"))
+                    l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
+                else if (l.Name.Contains("Mandatory"))
+                    l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+                else if (l.Name.Contains("Fixed"))
+                    l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                else if (!l.Name.Contains("Color"))
+                    l.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
+            }
+            foreach (RadioButton rb in Controls.OfType<RadioButton>())
+            {
+                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            }
+            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
+            {
+                rtb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                rtb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            }
+            foreach (TextBox tb in Controls.OfType<TextBox>())
+            {
+                tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                if (tb.Name.Contains("Inactive"))
+                    tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             }
         }
 
         public void DarkTheme()
         {
+            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+
             BackColor = StringsAndConstants.DARK_BACKGROUND;
 
-            lblUpdateAnnoucement.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblFixedOldVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblFixedNewVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblOldVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblNewVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            lblFixedChangelogLatestVersion.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-
-            downloadButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            downloadButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            downloadButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-            downloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            closeButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            closeButton.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            closeButton.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-            closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-
-            changelogTextBox.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-            changelogTextBox.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            foreach (Button b in Controls.OfType<Button>())
             {
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
+                b.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                b.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                b.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
+                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            }
+            foreach (CheckBox cb in Controls.OfType<CheckBox>())
+            {
+                cb.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                cb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            }
+            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
+            {
+                cfcb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                cfcb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                cfcb.BorderColor = StringsAndConstants.DARK_FORECOLOR;
+                cfcb.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
+            }
+            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
+            {
+                dgv.BackgroundColor = StringsAndConstants.DARK_BACKGROUND;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                dgv.DefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            }
+            foreach (Label l in Controls.OfType<Label>())
+            {
+                if (l.Name.Contains("Separator"))
+                    l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
+                else if (l.Name.Contains("Mandatory"))
+                    l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+                else if (l.Name.Contains("Fixed"))
+                    l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                else if (!l.Name.Contains("Color"))
+                    l.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
+            }
+            foreach (RadioButton rb in Controls.OfType<RadioButton>())
+            {
+                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            }
+            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
+            {
+                rtb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                rtb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            }
+            foreach (TextBox tb in Controls.OfType<TextBox>())
+            {
+                tb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+                if (tb.Name.Contains("Inactive"))
+                    tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
             }
         }
 
@@ -192,23 +263,16 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            switch (MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode()))
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode());
+            switch (themeFileSet)
             {
                 case 0:
-                    DarkTheme();
-                    themeBool = true;
+                    LightTheme();
+                    isSystemDarkModeEnabled = false;
                     break;
                 case 1:
-                    LightTheme();
-                    themeBool = false;
-                    break;
-                case 2:
-                    LightTheme();
-                    themeBool = false;
-                    break;
-                case 3:
                     DarkTheme();
-                    themeBool = true;
+                    isSystemDarkModeEnabled = true;
                     break;
             }
         }
@@ -221,9 +285,7 @@ namespace AssetInformationAndRegistration.Forms
         private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
         {
             if (e.Category == UserPreferenceCategory.General)
-            {
                 ToggleTheme();
-            }
         }
 
         /// <summary>

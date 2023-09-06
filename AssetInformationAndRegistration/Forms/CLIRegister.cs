@@ -199,9 +199,7 @@ namespace AssetInformationAndRegistration.Forms
 
                     //assetNumber
                     if (assetNumber.Equals(string.Empty))
-                    {
                         assetNumber = HardwareInfo.GetHostname().Substring(3);
-                    }
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_FILE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
@@ -221,51 +219,31 @@ namespace AssetInformationAndRegistration.Forms
 
                         //serviceType
                         if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
-                        {
                             serviceType = ConstantsDLL.Properties.Resources.FORMAT_URL;
-                        }
                         else if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
-                        {
                             serviceType = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
-                        }
                         //building
                         building = Array.IndexOf(parametersList[4], building).ToString();
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                        {
                             standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                        {
                             standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //batteryChange
                         if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //inUse
                         if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //tag
                         if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //hwType
                         hwType = Array.IndexOf(parametersList[5], hwType).ToString();
                     }
@@ -282,79 +260,51 @@ namespace AssetInformationAndRegistration.Forms
                         }
                         //serviceType
                         if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_0))
-                        {
                             serviceType = ConstantsDLL.Properties.Resources.FORMAT_URL;
-                        }
                         else if (serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
-                        {
                             serviceType = ConstantsDLL.Properties.Resources.MAINTENANCE_URL;
-                        }
                         //sealNumber
                         if (sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
                             sealNumber = assetJsonStr[6];
-                        }
                         //roomNumber
                         if (roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
                             roomNumber = assetJsonStr[2];
-                        }
                         //building
-                        building = building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
-                            ? assetJsonStr[1]
-                            : Array.IndexOf(parametersList[4], building).ToString();
+                        if (building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                            building = assetJsonStr[1];
+                        else
+                            building = Array.IndexOf(parametersList[4], building).ToString();
                         //standard
                         if (standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
                             standard = assetJsonStr[3];
-                        }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                        {
                             standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                        {
                             standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //batteryChange
                         if (batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //inUse
                         if (inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
                             inUse = assetJsonStr[5];
-                        }
                         else if (inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //tag
                         if (tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
-                        {
                             tag = assetJsonStr[7];
-                        }
                         else if (tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                        {
                             tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                        }
                         else if (tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                        {
                             tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
-                        }
                         //hwType
-                        hwType = hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)
-                            ? assetJsonStr[8]
-                            : Array.IndexOf(parametersList[5], hwType).ToString();
+                        if (hwType.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
+                            hwType = assetJsonStr[8];
+                        else
+                            hwType = Array.IndexOf(parametersList[5], hwType).ToString();
                     }
                     PrintHardwareData();
 
@@ -485,10 +435,9 @@ namespace AssetInformationAndRegistration.Forms
                         for (int i = 0; i < serverAlert.Length; i++)
                         {
                             if (serverAlertBool[i])
-                            {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), serverAlert[i], string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                            }
                         }
+
                         webView2Control.Dispose(); //Kills WebView2 instance
                         Environment.Exit(Convert.ToInt32(ExitCodes.WARNING)); //Exits
                     }
@@ -631,9 +580,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlertBool[10] = true;
                 }
                 if (pass)
-                {
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                }
             }
             catch (Exception e)
             {
@@ -651,9 +598,7 @@ namespace AssetInformationAndRegistration.Forms
             //Scans for PC maker
             brand = HardwareInfo.GetBrand();
             if (brand == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || brand == string.Empty)
-            {
                 brand = HardwareInfo.GetBrandAlt();
-            }
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_BM, brand, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
             //Scans for PC model
@@ -662,9 +607,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 model = HardwareInfo.GetModelAlt();
                 if (model == ConstantsDLL.Properties.Resources.TO_BE_FILLED_BY_OEM || model == string.Empty)
-                {
                     model = ConstantsDLL.Properties.Strings.UNKNOWN;
-                }
             }
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MODEL, model, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
