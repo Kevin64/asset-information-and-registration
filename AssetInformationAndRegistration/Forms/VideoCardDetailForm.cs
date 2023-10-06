@@ -3,50 +3,22 @@ using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using MS.WindowsAPICodePack.Internal;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    internal partial class StorageDetailForm : Form, ITheming
+    internal partial class VideoCardDetailForm : Form, ITheming
     {
-        static double totalSize = 0;
-        public StorageDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
+        public VideoCardDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
-            double individualSize;
-            string totalSizeStr, individualSizeStr;
             InitializeComponent();
-            
-            //Converts storage raw byte count into a more readable value and adds to the DataGridView
+
             foreach (List<string> s in str)
-            {
-                if (Convert.ToDouble(s[2].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1024)
-                {
-                    individualSize = Convert.ToInt64(s[2]);
-                    individualSize = Math.Round(individualSize / 1000000000, 0);
-                    individualSizeStr = Math.Log10(individualSize) > 2.9999
-                        ? Convert.ToString(Math.Round(individualSize / 1000, 1)) + " " + ConstantsDLL.Properties.Resources.TB
-                        : individualSize + " " + ConstantsDLL.Properties.Resources.GB;
-                    s[2] = individualSizeStr;
-                    totalSize += individualSize;
-                }
                 _ = dataGridView1.Rows.Add(s.ToArray());
-            }
-            //Shows the total storage size
-            totalSizeStr = Math.Log10(totalSize) > 2.9999
-                ? Convert.ToString(Math.Round(totalSize / 1000, 1)) + " " + ConstantsDLL.Properties.Resources.TB
-                : totalSize + " " + ConstantsDLL.Properties.Resources.GB;
-            lblTotalSize.Text = totalSizeStr;
-            
-            //Sorts the ID column
-            dataGridView1.Sort(dataGridView1.Columns["storageId"], ListSortDirection.Ascending);
+            dataGridView1.Sort(dataGridView1.Columns["videoCardId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
             (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
@@ -58,17 +30,6 @@ namespace AssetInformationAndRegistration.Forms
                 case 1:
                     DarkTheme();
                     break;
-            }
-
-            //Paints cell in red if SMART status equals a 'Pred Fail'
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                DataGridViewCell cell = row.Cells[6];
-                if (cell.Value != null && cell.Value.Equals(ConstantsDLL.Properties.Resources.PRED_FAIL))
-                {
-                    cell.Style.BackColor = Color.Red;
-                    cell.Style.ForeColor = Color.White;
-                }
             }
         }
 
@@ -132,8 +93,6 @@ namespace AssetInformationAndRegistration.Forms
                 t.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
                 t.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_LIGHT_PATH));
         }
 
         public void DarkTheme()
@@ -196,8 +155,6 @@ namespace AssetInformationAndRegistration.Forms
                 t.BackColor = StringsAndConstants.DARK_BACKCOLOR;
                 t.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_DARK_PATH));
         }
     }
 }

@@ -1,10 +1,6 @@
-﻿using AssetInformationAndRegistration.Misc;
-using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Properties;
 using LogGeneratorDLL;
-using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.WinForms;
 using System;
-using System.Threading.Tasks;
 
 namespace AssetInformationAndRegistration.WebView
 {
@@ -57,58 +53,42 @@ namespace AssetInformationAndRegistration.WebView
         /// <param name="log">Log file object</param>
         /// <param name="consoleOut">Toggle for CLI output</param>
         /// <param name="webView2Control">Webview2 control</param>
-        internal static void ServerSendInfo(string[] serverArgs, LogGenerator log, bool consoleOut, WebView2 webView2Control)
+        internal static void ServerSendInfo(string[] serverArgs, LogGenerator log, bool consoleOut/*, WebView2 webView2Control*/)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, consoleOut);
-            webView2Control.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[6] + ".php"
-                + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[2]
-                + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[3]
-                + ConstantsDLL.Properties.Resources.PHP_ROOM + serverArgs[4]
-                + ConstantsDLL.Properties.Resources.PHP_SERVICE_DATE + serverArgs[5]
-                + ConstantsDLL.Properties.Resources.PHP_PREVIOUS_SERVICE_DATES + serverArgs[5]
-                + ConstantsDLL.Properties.Resources.PHP_BATTERY_CHANGE + serverArgs[7]
-                + ConstantsDLL.Properties.Resources.PHP_TICKET_NUMBER + serverArgs[8]
-                + ConstantsDLL.Properties.Resources.PHP_AGENT + serverArgs[9]
-                + ConstantsDLL.Properties.Resources.PHP_STANDARD + serverArgs[10]
-                + ConstantsDLL.Properties.Resources.PHP_AD_REGISTERED + serverArgs[11]
-                + ConstantsDLL.Properties.Resources.PHP_BRAND + serverArgs[12]
-                + ConstantsDLL.Properties.Resources.PHP_MODEL + serverArgs[13]
-                + ConstantsDLL.Properties.Resources.PHP_SERIAL_NUMBER + serverArgs[14]
-                + ConstantsDLL.Properties.Resources.PHP_PROCESSOR + serverArgs[15]
-                + ConstantsDLL.Properties.Resources.PHP_RAM + serverArgs[16]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_SIZE + serverArgs[17]
-                + ConstantsDLL.Properties.Resources.PHP_STORAGE_TYPE + serverArgs[18]
-                + ConstantsDLL.Properties.Resources.PHP_MEDIA_OPERATION_MODE + serverArgs[19]
-                + ConstantsDLL.Properties.Resources.PHP_VIDEO_CARD + serverArgs[20]
-                + ConstantsDLL.Properties.Resources.PHP_OPERATING_SYSTEM + serverArgs[21]
-                + ConstantsDLL.Properties.Resources.PHP_HOSTNAME + serverArgs[22]
-                + ConstantsDLL.Properties.Resources.PHP_FW_TYPE + serverArgs[23]
-                + ConstantsDLL.Properties.Resources.PHP_FW_VERSION + serverArgs[24]
-                + ConstantsDLL.Properties.Resources.PHP_SECURE_BOOT + serverArgs[25]
-                + ConstantsDLL.Properties.Resources.PHP_VIRTUALIZATION_TECHNOLOGY + serverArgs[26]
-                + ConstantsDLL.Properties.Resources.PHP_TPM_VERSION + serverArgs[27]
-                + ConstantsDLL.Properties.Resources.PHP_MAC_ADDRESS + serverArgs[28]
-                + ConstantsDLL.Properties.Resources.PHP_IP_ADDRESS + serverArgs[29]
-                + ConstantsDLL.Properties.Resources.PHP_IN_USE + serverArgs[30]
-                + ConstantsDLL.Properties.Resources.PHP_SEAL_NUMBER + serverArgs[31]
-                + ConstantsDLL.Properties.Resources.PHP_TAG + serverArgs[32]
-                + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[33]);
-        }
-
-        /// <summary> 
-        /// Loads webView2 component
-        /// </summary>
-        /// <returns>Returns a asynchronous task</returns>
-        internal static async Task LoadWebView2(LogGenerator log, bool consoleOut, WebView2 webView2Control)
-        {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_START_LOADING_WEBVIEW2, string.Empty, consoleOut);
-            CoreWebView2Environment webView2Environment = Environment.Is64BitOperatingSystem
-                ? await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version(), System.IO.Path.GetTempPath())
-                : await CoreWebView2Environment.CreateAsync(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version(), System.IO.Path.GetTempPath());
-            await webView2Control.EnsureCoreWebView2Async(webView2Environment);
-            webView2Control.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            webView2Control.CoreWebView2.Settings.AreBrowserAcceleratorKeysEnabled = false;
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_END_LOADING_WEBVIEW2, string.Empty, consoleOut);
+            //webView2Control.CoreWebView2.Navigate(ConstantsDLL.Properties.Resources.HTTP + serverArgs[0] + ":" + serverArgs[1] + "/" + serverArgs[6] + ".php"
+            //    + ConstantsDLL.Properties.Resources.PHP_ASSET_NUMBER + serverArgs[2]
+            //    + ConstantsDLL.Properties.Resources.PHP_BUILDING + serverArgs[3]
+            //    + ConstantsDLL.Properties.Resources.PHP_ROOM + serverArgs[4]
+            //    + ConstantsDLL.Properties.Resources.PHP_SERVICE_DATE + serverArgs[5]
+            //    + ConstantsDLL.Properties.Resources.PHP_PREVIOUS_SERVICE_DATES + serverArgs[5]
+            //    + ConstantsDLL.Properties.Resources.PHP_BATTERY_CHANGE + serverArgs[7]
+            //    + ConstantsDLL.Properties.Resources.PHP_TICKET_NUMBER + serverArgs[8]
+            //    + ConstantsDLL.Properties.Resources.PHP_AGENT + serverArgs[9]
+            //    + ConstantsDLL.Properties.Resources.PHP_STANDARD + serverArgs[10]
+            //    + ConstantsDLL.Properties.Resources.PHP_AD_REGISTERED + serverArgs[11]
+            //    + ConstantsDLL.Properties.Resources.PHP_BRAND + serverArgs[12]
+            //    + ConstantsDLL.Properties.Resources.PHP_MODEL + serverArgs[13]
+            //    + ConstantsDLL.Properties.Resources.PHP_SERIAL_NUMBER + serverArgs[14]
+            //    + ConstantsDLL.Properties.Resources.PHP_PROCESSOR + serverArgs[15]
+            //    + ConstantsDLL.Properties.Resources.PHP_RAM + serverArgs[16]
+            //    + ConstantsDLL.Properties.Resources.PHP_STORAGE_SIZE + serverArgs[17]
+            //    + ConstantsDLL.Properties.Resources.PHP_STORAGE_TYPE + serverArgs[18]
+            //    + ConstantsDLL.Properties.Resources.PHP_MEDIA_OPERATION_MODE + serverArgs[19]
+            //    + ConstantsDLL.Properties.Resources.PHP_VIDEO_CARD + serverArgs[20]
+            //    + ConstantsDLL.Properties.Resources.PHP_OPERATING_SYSTEM + serverArgs[21]
+            //    + ConstantsDLL.Properties.Resources.PHP_HOSTNAME + serverArgs[22]
+            //    + ConstantsDLL.Properties.Resources.PHP_FW_TYPE + serverArgs[23]
+            //    + ConstantsDLL.Properties.Resources.PHP_FW_VERSION + serverArgs[24]
+            //    + ConstantsDLL.Properties.Resources.PHP_SECURE_BOOT + serverArgs[25]
+            //    + ConstantsDLL.Properties.Resources.PHP_VIRTUALIZATION_TECHNOLOGY + serverArgs[26]
+            //    + ConstantsDLL.Properties.Resources.PHP_TPM_VERSION + serverArgs[27]
+            //    + ConstantsDLL.Properties.Resources.PHP_MAC_ADDRESS + serverArgs[28]
+            //    + ConstantsDLL.Properties.Resources.PHP_IP_ADDRESS + serverArgs[29]
+            //    + ConstantsDLL.Properties.Resources.PHP_IN_USE + serverArgs[30]
+            //    + ConstantsDLL.Properties.Resources.PHP_SEAL_NUMBER + serverArgs[31]
+            //    + ConstantsDLL.Properties.Resources.PHP_TAG + serverArgs[32]
+            //    + ConstantsDLL.Properties.Resources.PHP_HW_TYPE + serverArgs[33]);
         }
     }
 }

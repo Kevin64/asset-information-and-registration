@@ -327,14 +327,14 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
     <value>WebView2 Runtime loading finished</value>
   </data>
-  <data name="LOG_FETCHING_ASSET_FILE" xml:space="preserve">
-    <value>Getting file with asset information</value>
+  <data name="LOG_FETCHING_ASSET_DATA" xml:space="preserve">
+    <value>Searching asset information</value>
   </data>
   <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
     <value>Searching available buildings and types of hardware in the local file</value>
   </data>
-  <data name="LOG_FETCHING_MODEL_FILE" xml:space="preserve">
-    <value>Getting file with hardware model information</value>
+  <data name="LOG_FETCHING_MODEL_DATA" xml:space="preserve">
+    <value>Searching hardware model information</value>
   </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Searching available buildings and types of hardware</value>

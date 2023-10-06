@@ -87,9 +87,7 @@ namespace AssetInformationAndRegistration.Forms
             // 
             // authButton
             // 
-            this.authButton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.authButton, "authButton");
-            this.authButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.authButton.Name = "authButton";
             this.authButton.UseVisualStyleBackColor = true;
             this.authButton.Click += new System.EventHandler(this.AuthButton_Click);
@@ -240,7 +238,6 @@ namespace AssetInformationAndRegistration.Forms
             this.AcceptButton = this.authButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.textBoxInactiveLoginIntro);
             this.Controls.Add(this.iconImgUsername);
             this.Controls.Add(this.iconImgServerPort);

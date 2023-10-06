@@ -4,6 +4,7 @@ using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
+using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
@@ -13,6 +14,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -24,7 +27,7 @@ namespace AssetInformationAndRegistration.Forms
     internal partial class LoginForm : Form, ITheming
     {
         private bool isSystemDarkModeEnabled;
-        private string[] agentsJsonStr = { };
+        private readonly string[] agentsJsonStr = { };
         private readonly LogGenerator log;
         private readonly List<string[]> parametersList;
         private readonly List<string> enforcementList, orgDataList;
@@ -32,6 +35,8 @@ namespace AssetInformationAndRegistration.Forms
         private MainForm mForm;
         private readonly Octokit.GitHubClient ghc;
         private UserPreferenceChangedEventHandler UserPreferenceChanged;
+        private Agent agent;
+        private HttpClient client;
 
         /// <summary> 
         /// Login form constructor
@@ -46,7 +51,7 @@ namespace AssetInformationAndRegistration.Forms
             InitializeComponent();
 
             //Define theming according to ini file provided info
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
+            (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
             switch (themeFileSet)
             {
                 case 0:
@@ -81,7 +86,7 @@ namespace AssetInformationAndRegistration.Forms
 
             //Program version
 #if DEBUG
-            toolStripVersionText.Text = MiscMethods.Version(Resources.DEV_STATUS);
+            toolStripVersionText.Text = Misc.MiscMethods.Version(Resources.DEV_STATUS);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
@@ -258,7 +263,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         private void ToggleTheme()
         {
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode());
+            (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersList, Misc.MiscMethods.GetSystemThemeMode());
             switch (themeFileSet)
             {
                 case 0:
@@ -292,7 +297,7 @@ namespace AssetInformationAndRegistration.Forms
         {
             #region Define loading circle parameters
 
-            switch (MiscMethods.GetWindowsScaling())
+            switch (Misc.MiscMethods.GetWindowsScaling())
             {
                 case 100:
                     //Init loading circles parameters for 100% scaling
@@ -534,15 +539,25 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private async void AuthButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                client = new HttpClient();
+                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch
+            {
+
+            }
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             loadingCircleAuthButton.Visible = true;
             loadingCircleAuthButton.Active = true;
             aboutLabelButton.Enabled = false;
             if (checkBoxOfflineMode.Checked)
             {
-                string[] offStr = { Strings.OFFLINE_MODE_ACTIVATED };
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(ghc, true, offStr, null, null, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
+                mForm = new MainForm(ghc, true, null, null, null, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
                 if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                     DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
 
@@ -566,19 +581,19 @@ namespace AssetInformationAndRegistration.Forms
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                 //Feches login data from server
-                agentsJsonStr = await JsonFileReaderDLL.CredentialsFileReader.FetchInfoMT(textBoxUsername.Text, textBoxPassword.Text, comboBoxServerIP.Text, comboBoxServerPort.Text);
+                agent = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + ConstantsDLL.Properties.Resources.GET_AGENT_URL + textBoxUsername.Text);
 
                 //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
                 {
                     //If Login Json file does not exist, there is no internet connection
-                    if (agentsJsonStr == null)
+                    if (agent == null)
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                         _ = MessageBox.Show(ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     }
-                    else if (agentsJsonStr[0] == ConstantsDLL.Properties.Resources.FALSE) //If Login Json file does exist, but the agent do not exist
+                    else if (agent.username == string.Empty) //If Login Json file does exist, but the agent do not exist
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                         _ = MessageBox.Show(Strings.AUTH_INVALID, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -587,7 +602,7 @@ namespace AssetInformationAndRegistration.Forms
                     else //If Login Json file does exist and agent logs in
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        MainForm mForm = new MainForm(ghc, false, agentsJsonStr, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
+                        MainForm mForm = new MainForm(ghc, false, agent, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
                         if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
                             DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
 

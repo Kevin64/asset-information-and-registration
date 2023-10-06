@@ -455,11 +455,11 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Getting file with asset information.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Searching asset information.
         /// </summary>
-        internal static string LOG_FETCHING_ASSET_FILE {
+        internal static string LOG_FETCHING_ASSET_DATA {
             get {
-                return ResourceManager.GetString("LOG_FETCHING_ASSET_FILE", resourceCulture);
+                return ResourceManager.GetString("LOG_FETCHING_ASSET_DATA", resourceCulture);
             }
         }
         
@@ -473,11 +473,11 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Getting file with hardware model information.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Searching hardware model information.
         /// </summary>
-        internal static string LOG_FETCHING_MODEL_FILE {
+        internal static string LOG_FETCHING_MODEL_DATA {
             get {
-                return ResourceManager.GetString("LOG_FETCHING_MODEL_FILE", resourceCulture);
+                return ResourceManager.GetString("LOG_FETCHING_MODEL_DATA", resourceCulture);
             }
         }
         

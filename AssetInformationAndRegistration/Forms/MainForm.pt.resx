@@ -266,6 +266,9 @@
   <data name="lblFixedFwType.Text" xml:space="preserve">
     <value>Tipo de firmware:</value>
   </data>
+  <data name="videoCardDetailsButton.Text" xml:space="preserve">
+    <value>Detalhes...</value>
+  </data>
   <data name="storageDetailsButton.Text" xml:space="preserve">
     <value>Detalhes...</value>
   </data>
@@ -281,17 +284,23 @@
   <data name="lblFixedVirtualizationTechnology.Text" xml:space="preserve">
     <value>Tecnologia de Virtualização:</value>
   </data>
+  <data name="lblFixedSecureBoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
+  </data>
+  <data name="lblFixedSecureBoot.Text" xml:space="preserve">
+    <value>Boot seguro:</value>
+  </data>
   <data name="lblFixedMediaOperationMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 13</value>
   </data>
   <data name="lblFixedMediaOperationMode.Text" xml:space="preserve">
     <value>Modo de operação SATA/M.2:</value>
   </data>
-  <data name="lblFixedVideoCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 37, 0</value>
+  <data name="lblFixedVideoCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 13</value>
   </data>
   <data name="lblFixedVideoCard.Text" xml:space="preserve">
-    <value>Placa de Vídeo e vRAM:</value>
+    <value>Placa de vídeo primária e vRAM:</value>
   </data>
   <data name="lblFixedStorageType.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 13</value>
@@ -350,16 +359,37 @@
   <data name="lblFixedMandatoryMain.Text" xml:space="preserve">
     <value>✱ = Preenchimento obrigatório</value>
   </data>
+  <data name="lblFixedAdRegistered.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 13</value>
+  </data>
+  <data name="lblFixedAdRegistered.Text" xml:space="preserve">
+    <value>Cadastrado no servidor AD:</value>
+  </data>
+  <data name="lblFixedStandard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 13</value>
+  </data>
+  <data name="lblFixedStandard.Text" xml:space="preserve">
+    <value>Padrão:</value>
+  </data>
+  <data name="groupBoxAssetData.Text" xml:space="preserve">
+    <value>Dados do ativo, manutenção e de localização</value>
+  </data>
+  <data name="textBoxInactiveUpdateDataRadio.Text" xml:space="preserve">
+    <value>Opção para quando os dados do computador mudaram, sem formatação ou manutenção</value>
+  </data>
+  <data name="radioButtonUpdateData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="radioButtonUpdateData.Text" xml:space="preserve">
+    <value>Atualizar dados apenas</value>
+  </data>
   <data name="lblFixedMandatoryServiceType.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 0</value>
   </data>
-  <data name="textBoxFixedFormattingRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 26</value>
-  </data>
-  <data name="textBoxFixedFormattingRadio.Text" xml:space="preserve">
+  <data name="textBoxInactiveFormattingRadio.Text" xml:space="preserve">
     <value>Opção para quando o PC passar por formatação ou reset</value>
   </data>
-  <data name="textBoxFixedMaintenanceRadio.Text" xml:space="preserve">
+  <data name="textBoxInactiveMaintenanceRadio.Text" xml:space="preserve">
     <value>Opção para quando o PC passar por manutenção preventiva, sem a necessidade de formatação ou reset</value>
   </data>
   <data name="radioButtonFormatting.Size" type="System.Drawing.Size, System.Drawing">
@@ -376,21 +406,6 @@
   </data>
   <data name="groupBoxServiceType.Text" xml:space="preserve">
     <value>Tipo de serviço</value>
-  </data>
-  <data name="lblFixedAdRegistered.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 13</value>
-  </data>
-  <data name="lblFixedAdRegistered.Text" xml:space="preserve">
-    <value>Cadastrado no servidor AD:</value>
-  </data>
-  <data name="lblFixedStandard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 13</value>
-  </data>
-  <data name="lblFixedStandard.Text" xml:space="preserve">
-    <value>Padrão:</value>
-  </data>
-  <data name="groupBoxAssetData.Text" xml:space="preserve">
-    <value>Dados do ativo, manutenção e de localização</value>
   </data>
   <data name="lblFixedAgentName.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
@@ -437,20 +452,26 @@
   <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
     <value>861, 19</value>
   </data>
-  <data name="webView2Control.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 50</value>
-  </data>
-  <data name="groupBoxRegistryStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>450, 64</value>
-  </data>
-  <data name="groupBoxRegistryStatus.Text" xml:space="preserve">
-    <value>Status do cadastro</value>
-  </data>
   <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 50</value>
+    <value>103, 50</value>
   </data>
   <data name="groupBoxServerStatus.Text" xml:space="preserve">
     <value>Servidor APCS</value>
+  </data>
+  <data name="serviceDate.HeaderText" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="serviceType.HeaderText" xml:space="preserve">
+    <value>Serviço</value>
+  </data>
+  <data name="agentUsername.HeaderText" xml:space="preserve">
+    <value>Agente</value>
+  </data>
+  <data name="lblThereIsNothingHere.Text" xml:space="preserve">
+    <value>Não há nada aqui</value>
+  </data>
+  <data name="groupBoxTableMaintenances.Text" xml:space="preserve">
+    <value>Manutenções anteriores</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

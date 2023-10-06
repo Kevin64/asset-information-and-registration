@@ -321,6 +321,9 @@
   <metadata name="downloadButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="downloadButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
   <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 77</value>
   </data>
@@ -348,6 +351,9 @@
   <metadata name="closeButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="closeButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>356, 77</value>
   </data>

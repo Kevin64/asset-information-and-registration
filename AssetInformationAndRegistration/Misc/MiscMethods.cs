@@ -1,8 +1,9 @@
 ﻿using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
-using Microsoft.Web.WebView2.Core;
+using LogGeneratorDLL;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -72,22 +73,6 @@ namespace AssetInformationAndRegistration.Misc
             catch
             {
                 return null;
-            }
-        }
-
-        /// <summary> 
-        /// Fetches the WebView2 systemwide version
-        /// </summary>
-        /// <returns>The WebView2 runtime version, or an empty string if inexistent</returns>
-        internal static string GetWebView2Version()
-        {
-            try
-            {
-                return CoreWebView2Environment.GetAvailableBrowserVersionString();
-            }
-            catch
-            {
-                return string.Empty;
             }
         }
 

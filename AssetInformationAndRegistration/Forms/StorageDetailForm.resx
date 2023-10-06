@@ -120,11 +120,24 @@
   <metadata name="dataGridView1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="storageId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="storageId.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="storageId.Width" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
   <metadata name="storageType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="storageType.HeaderText" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="storageType.Width" type="System.Int32, mscorlib">
+    <value>55</value>
   </data>
   <metadata name="storageSize.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -132,17 +145,26 @@
   <data name="storageSize.HeaderText" xml:space="preserve">
     <value>Size</value>
   </data>
+  <data name="storageSize.Width" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
   <metadata name="storageConnection.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="storageConnection.HeaderText" xml:space="preserve">
     <value>Connection</value>
   </data>
+  <data name="storageConnection.Width" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
   <metadata name="storageModel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="storageModel.HeaderText" xml:space="preserve">
     <value>Model</value>
+  </data>
+  <data name="storageModel.Width" type="System.Int32, mscorlib">
+    <value>60</value>
   </data>
   <metadata name="storageSerialNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -156,14 +178,16 @@
   <data name="storageSmart.HeaderText" xml:space="preserve">
     <value>S.M.A.R.T.</value>
   </data>
+  <data name="storageSmart.Width" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>737, 137</value>
+    <value>737, 89</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -177,6 +201,106 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="lblFixedTotalSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblFixedTotalSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedTotalSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <data name="lblFixedTotalSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 109</value>
+  </data>
+  <data name="lblFixedTotalSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 16</value>
+  </data>
+  <data name="lblFixedTotalSize.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="lblFixedTotalSize.Text" xml:space="preserve">
+    <value>Total size:</value>
+  </data>
+  <data name="&gt;&gt;lblFixedTotalSize.Name" xml:space="preserve">
+    <value>lblFixedTotalSize</value>
+  </data>
+  <data name="&gt;&gt;lblFixedTotalSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedTotalSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedTotalSize.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="lblTotalSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblTotalSize.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblTotalSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblTotalSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblTotalSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 109</value>
+  </data>
+  <data name="lblTotalSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 16</value>
+  </data>
+  <data name="lblTotalSize.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="lblTotalSize.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;lblTotalSize.Name" xml:space="preserve">
+    <value>lblTotalSize</value>
+  </data>
+  <data name="&gt;&gt;lblTotalSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblTotalSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblTotalSize.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="iconImgStorageSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="iconImgStorageSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="iconImgStorageSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 104</value>
+  </data>
+  <data name="iconImgStorageSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="iconImgStorageSize.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="iconImgStorageSize.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="&gt;&gt;iconImgStorageSize.Name" xml:space="preserve">
+    <value>iconImgStorageSize</value>
+  </data>
+  <data name="&gt;&gt;iconImgStorageSize.Type" xml:space="preserve">
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8651.36755, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;iconImgStorageSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;iconImgStorageSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -189,14 +313,19 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>761, 161</value>
+    <value>761, 132</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Fixed storage media list</value>
+  </data>
+  <data name="&gt;&gt;storageId.Name" xml:space="preserve">
+    <value>storageId</value>
+  </data>
+  <data name="&gt;&gt;storageId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;storageType.Name" xml:space="preserve">
     <value>storageType</value>

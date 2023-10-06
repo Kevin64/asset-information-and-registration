@@ -160,7 +160,7 @@
   <data name="lblFixedLoginIntro.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 13</value>
   </data>
-  <data name="textBoxFixedLoginIntro.Text" xml:space="preserve">
+  <data name="textBoxInactiveLoginIntro.Text" xml:space="preserve">
     <value>Digite suas credenciais do sistema APCS e clique em Autenticar:</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

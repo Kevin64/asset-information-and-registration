@@ -327,14 +327,14 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="LOG_END_LOADING_WEBVIEW2" xml:space="preserve">
     <value>Carregamento do WebView2 Runtime finalizado</value>
   </data>
-  <data name="LOG_FETCHING_ASSET_FILE" xml:space="preserve">
-    <value>Obtendo arquivo com informações de ativo</value>
+  <data name="LOG_FETCHING_ASSET_DATA" xml:space="preserve">
+    <value>Buscando informações do ativo</value>
   </data>
   <data name="LOG_FETCHING_LOCAL_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>
   </data>
-  <data name="LOG_FETCHING_MODEL_FILE" xml:space="preserve">
-    <value>Obtendo arquivo com informações de modelo de hardware</value>
+  <data name="LOG_FETCHING_MODEL_DATA" xml:space="preserve">
+    <value>Buscando arquivo com informações de modelo de hardware</value>
   </data>
   <data name="LOG_FETCHING_SERVER_DATA" xml:space="preserve">
     <value>Buscando prédios e tipos de hardware disponíveis</value>

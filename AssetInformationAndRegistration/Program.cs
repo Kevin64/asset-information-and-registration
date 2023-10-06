@@ -10,12 +10,15 @@ using HardwareInfoDLL;
 using IniParser;
 using IniParser.Exceptions;
 using IniParser.Model;
+using JsonFileReaderDLL;
 using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -36,6 +39,8 @@ namespace AssetInformationAndRegistration
         private static List<string> orgDataListSection, enforcementListSection;
         private static LogGenerator log;
         private static Octokit.GitHubClient ghc;
+        private static HttpClient client;
+        private static Agent agent;
 
         /// <summary> 
         /// Command line switch options specification
@@ -101,24 +106,36 @@ namespace AssetInformationAndRegistration
         /// Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         /// </summary>
         /// <param name="opts">Argument list</param>
-        private static void RunOptions(Options opts)
+        private static async void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
                 opts.ServerIP = serverIPListSection[0];
             if (opts.ServerPort == null)
                 opts.ServerPort = serverPortListSection[0];
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            string[] agentsJsonStr = JsonFileReaderDLL.CredentialsFileReader.FetchInfoST(opts.Username, opts.Password, opts.ServerIP, opts.ServerPort);
             try
             {
-                if (agentsJsonStr[0] != ConstantsDLL.Properties.Resources.FALSE)
+                client = new HttpClient();
+                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            catch
+            {
+
+            }
+
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            agent = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + ConstantsDLL.Properties.Resources.GET_AGENT_URL + opts.Username);
+            try
+            {
+                if (agent != null)
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    CLIRegister cr = new CLIRegister(argsArray, agentsJsonStr, log, parametersListSection, enforcementListSection);
+                    //CLIRegister cr = new CLIRegister(argsArray, agent, log, parametersListSection, enforcementListSection);
                     UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, true, true);
-                    Application.Run(cr);
+                    //Application.Run(cr);
                 }
                 else
                 {
@@ -261,7 +278,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
 
-                bool fileExists = bool.Parse(MiscMethods.CheckIfLogExists(logLocationStr));
+                bool fileExists = bool.Parse(Misc.MiscMethods.CheckIfLogExists(logLocationStr));
 
                 //If args has a --help switch, do not show log output
                 if (!args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
@@ -280,25 +297,6 @@ namespace AssetInformationAndRegistration
                 else
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
 
-                //Installs WebView2 Runtime if not found
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CHECKING_WEBVIEW2, string.Empty, showCLIOutput);
-                if ((!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X64 + MiscMethods.GetWebView2Version())) && (!Directory.Exists(ConstantsDLL.Properties.Resources.WEBVIEW2_SYSTEM_PATH_X86 + MiscMethods.GetWebView2Version())))
-                {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.LOG_WEBVIEW2_NOT_FOUND, string.Empty, showCLIOutput);
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_INSTALLING_WEBVIEW2, string.Empty, showCLIOutput);
-                    string returnCode = WebView2Installer.Install();
-                    if (!int.TryParse(returnCode, out int returnCodeInt))
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.LOG_WEBVIEW2_INSTALL_FAILED, returnCode, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
-                    }
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_WEBVIEW2_INSTALLED, string.Empty, showCLIOutput);
-                }
-                else
-                {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_WEBVIEW2_ALREADY_INSTALLED, string.Empty, showCLIOutput);
-                }
-
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
                 {
@@ -306,8 +304,8 @@ namespace AssetInformationAndRegistration
 
                     FreeConsole();
 
-                    bool isSystemDarkModeEnabled = MiscMethods.GetSystemThemeMode();
-                    (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersListSection, isSystemDarkModeEnabled);
+                    bool isSystemDarkModeEnabled = Misc.MiscMethods.GetSystemThemeMode();
+                    (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersListSection, isSystemDarkModeEnabled);
                     bool initialTheme = false;
 
                     Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection, isSystemDarkModeEnabled);
