@@ -6,48 +6,38 @@ using HardwareInfoDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
-    internal partial class StorageDetailForm : Form, ITheming
+    internal partial class ProcessorDetailForm : Form, ITheming
     {
-        private static double totalSize = 0;
-        public StorageDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
+        public ProcessorDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
-            double individualSize;
-            string individualSizeStr, totalSizeStr;
+            double individualCache;
+            string individualCacheStr;
             InitializeComponent();
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
             {
-                if (Convert.ToDouble(s[2].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1000)
+                if (Convert.ToDouble(s[5].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1024)
                 {
-                    individualSize = Convert.ToInt64(s[2]);
-                    if (individualSize / 1000 / 1000 / 1000 >= 1000)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.TB;
-                    else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.GB;
+                    individualCache = Convert.ToInt64(s[5]);
+                    if (individualCache / 1024 / 1024 / 1024 >= 1024)
+                        individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.TB;
+                    else if (individualCache / 1024 / 1024 / 1024 < 1024 && individualCache / 1024 / 1024 / 1024 >= 1)
+                        individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.GB;
                     else
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.MB;
-                    s[2] = individualSizeStr;
-                    totalSize += individualSize;
+                        individualCacheStr = Math.Round(individualCache / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.MB;
+                    s[5] = individualCacheStr;
                 }
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
-            //Shows the total storage size
-            totalSizeStr = Math.Log10(totalSize) > 2.9999
-                ? Convert.ToString(Math.Round(totalSize / 1000, 1)) + " " + ConstantsDLL.Properties.Resources.TB
-                : totalSize + " " + ConstantsDLL.Properties.Resources.GB;
-            lblTotalSize.Text = totalSizeStr;
 
             //Sorts the ID column
-            dataGridView1.Sort(dataGridView1.Columns["storageId"], ListSortDirection.Ascending);
+            dataGridView1.Sort(dataGridView1.Columns["processorId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
             (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
@@ -59,17 +49,6 @@ namespace AssetInformationAndRegistration.Forms
                 case 1:
                     DarkTheme();
                     break;
-            }
-
-            //Paints cell in red if SMART status equals a 'Pred Fail'
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                DataGridViewCell cell = row.Cells[6];
-                if (cell.Value != null && cell.Value.Equals(ConstantsDLL.Properties.Resources.PRED_FAIL))
-                {
-                    cell.Style.BackColor = Color.Red;
-                    cell.Style.ForeColor = Color.White;
-                }
             }
         }
 
@@ -133,8 +112,6 @@ namespace AssetInformationAndRegistration.Forms
                 t.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
                 t.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_LIGHT_PATH));
         }
 
         public void DarkTheme()
@@ -197,8 +174,6 @@ namespace AssetInformationAndRegistration.Forms
                 t.BackColor = StringsAndConstants.DARK_BACKCOLOR;
                 t.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_DARK_PATH));
         }
     }
 }

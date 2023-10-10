@@ -3,6 +3,7 @@ using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,10 +15,28 @@ namespace AssetInformationAndRegistration.Forms
     {
         public VideoCardDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
+            double individualRam;
+            string individualRamStr;
             InitializeComponent();
 
+            //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
+            {
+                if (Convert.ToDouble(s[2].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1024)
+                {
+                    individualRam = Convert.ToInt64(s[2]);
+                    if (individualRam / 1024 / 1024 / 1024 >= 1024)
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.TB;
+                    else if (individualRam / 1024 / 1024 / 1024 < 1024 && individualRam / 1024 / 1024 / 1024 >= 1)
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.GB;
+                    else
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.MB;
+                    s[2] = individualRamStr;
+                }
                 _ = dataGridView1.Rows.Add(s.ToArray());
+            }
+
+            //Sorts the ID column
             dataGridView1.Sort(dataGridView1.Columns["videoCardId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info

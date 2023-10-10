@@ -28,9 +28,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StorageDetailForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lblFixedTotalSize = new System.Windows.Forms.Label();
-            this.lblTotalSize = new System.Windows.Forms.Label();
-            this.iconImgStorageSize = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             this.storageId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +35,9 @@
             this.storageModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSerialNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storageSmart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFixedTotalSize = new System.Windows.Forms.Label();
+            this.lblTotalSize = new System.Windows.Forms.Label();
+            this.iconImgStorageSize = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgStorageSize)).BeginInit();
             this.SuspendLayout();
@@ -68,25 +68,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            // 
-            // lblFixedTotalSize
-            // 
-            resources.ApplyResources(this.lblFixedTotalSize, "lblFixedTotalSize");
-            this.lblFixedTotalSize.Name = "lblFixedTotalSize";
-            // 
-            // lblTotalSize
-            // 
-            resources.ApplyResources(this.lblTotalSize, "lblTotalSize");
-            this.lblTotalSize.Name = "lblTotalSize";
-            // 
-            // iconImgStorageSize
-            // 
-            this.iconImgStorageSize.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            resources.ApplyResources(this.iconImgStorageSize, "iconImgStorageSize");
-            this.iconImgStorageSize.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            this.iconImgStorageSize.Name = "iconImgStorageSize";
-            this.iconImgStorageSize.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.iconImgStorageSize.TabStop = false;
             // 
             // storageId
             // 
@@ -143,6 +124,25 @@
             resources.ApplyResources(this.storageSmart, "storageSmart");
             this.storageSmart.Name = "storageSmart";
             this.storageSmart.ReadOnly = true;
+            // 
+            // lblFixedTotalSize
+            // 
+            resources.ApplyResources(this.lblFixedTotalSize, "lblFixedTotalSize");
+            this.lblFixedTotalSize.Name = "lblFixedTotalSize";
+            // 
+            // lblTotalSize
+            // 
+            resources.ApplyResources(this.lblTotalSize, "lblTotalSize");
+            this.lblTotalSize.Name = "lblTotalSize";
+            // 
+            // iconImgStorageSize
+            // 
+            this.iconImgStorageSize.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            resources.ApplyResources(this.iconImgStorageSize, "iconImgStorageSize");
+            this.iconImgStorageSize.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            this.iconImgStorageSize.Name = "iconImgStorageSize";
+            this.iconImgStorageSize.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.iconImgStorageSize.TabStop = false;
             // 
             // StorageDetailForm
             // 

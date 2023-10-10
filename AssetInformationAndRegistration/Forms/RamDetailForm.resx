@@ -120,66 +120,63 @@
   <metadata name="dataGridView1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="storageId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramSlot.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageId.HeaderText" xml:space="preserve">
-    <value>ID</value>
+  <data name="ramSlot.HeaderText" xml:space="preserve">
+    <value>Slot</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="storageId.Width" type="System.Int32, mscorlib">
-    <value>42</value>
+  <data name="ramSlot.Width" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
-  <metadata name="storageType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramAmount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageType.HeaderText" xml:space="preserve">
+  <data name="ramAmount.HeaderText" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ramAmount.Width" type="System.Int32, mscorlib">
+    <value>67</value>
+  </data>
+  <metadata name="ramType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="ramType.HeaderText" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="storageType.Width" type="System.Int32, mscorlib">
+  <data name="ramType.Width" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <metadata name="storageSize.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramFrequency.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageSize.HeaderText" xml:space="preserve">
-    <value>Size</value>
+  <data name="ramFrequency.HeaderText" xml:space="preserve">
+    <value>Frequency</value>
   </data>
-  <data name="storageSize.Width" type="System.Int32, mscorlib">
-    <value>51</value>
+  <data name="ramFrequency.Width" type="System.Int32, mscorlib">
+    <value>81</value>
   </data>
-  <metadata name="storageConnection.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramManufacturer.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageConnection.HeaderText" xml:space="preserve">
-    <value>Connection</value>
+  <data name="ramManufacturer.HeaderText" xml:space="preserve">
+    <value>Manufacturer</value>
   </data>
-  <data name="storageConnection.Width" type="System.Int32, mscorlib">
-    <value>85</value>
+  <data name="ramManufacturer.Width" type="System.Int32, mscorlib">
+    <value>94</value>
   </data>
-  <metadata name="storageModel.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramSerialNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageModel.HeaderText" xml:space="preserve">
-    <value>Model</value>
-  </data>
-  <data name="storageModel.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <metadata name="storageSerialNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="storageSerialNumber.HeaderText" xml:space="preserve">
+  <data name="ramSerialNumber.HeaderText" xml:space="preserve">
     <value>Serial Number</value>
   </data>
-  <metadata name="storageSmart.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ramPartNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="storageSmart.HeaderText" xml:space="preserve">
-    <value>S.M.A.R.T.</value>
-  </data>
-  <data name="storageSmart.Width" type="System.Int32, mscorlib">
-    <value>84</value>
+  <data name="ramPartNumber.HeaderText" xml:space="preserve">
+    <value>Part Number</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
@@ -201,106 +198,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <metadata name="lblFixedTotalSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="lblFixedTotalSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblFixedTotalSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <data name="lblFixedTotalSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 109</value>
-  </data>
-  <data name="lblFixedTotalSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 16</value>
-  </data>
-  <data name="lblFixedTotalSize.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="lblFixedTotalSize.Text" xml:space="preserve">
-    <value>Total size:</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTotalSize.Name" xml:space="preserve">
-    <value>lblFixedTotalSize</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTotalSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTotalSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblFixedTotalSize.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="lblTotalSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="lblTotalSize.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblTotalSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblTotalSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lblTotalSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 109</value>
-  </data>
-  <data name="lblTotalSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 16</value>
-  </data>
-  <data name="lblTotalSize.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblTotalSize.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;lblTotalSize.Name" xml:space="preserve">
-    <value>lblTotalSize</value>
-  </data>
-  <data name="&gt;&gt;lblTotalSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblTotalSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblTotalSize.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="iconImgStorageSize.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="iconImgStorageSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="iconImgStorageSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 104</value>
-  </data>
-  <data name="iconImgStorageSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="iconImgStorageSize.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="iconImgStorageSize.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Name" xml:space="preserve">
-    <value>iconImgStorageSize</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.23692, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;iconImgStorageSize.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -313,58 +210,59 @@
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>805, 132</value>
+    <value>805, 113</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Fixed storage media list</value>
+    <value>RAM module list</value>
   </data>
-  <data name="&gt;&gt;storageId.Name" xml:space="preserve">
-    <value>storageId</value>
+  <data name="&gt;&gt;ramSlot.Name" xml:space="preserve">
+    <value>ramSlot</value>
   </data>
-  <data name="&gt;&gt;storageId.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramSlot.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageType.Name" xml:space="preserve">
-    <value>storageType</value>
+  <data name="&gt;&gt;ramAmount.Name" xml:space="preserve">
+    <value>ramAmount</value>
   </data>
-  <data name="&gt;&gt;storageType.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramAmount.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageSize.Name" xml:space="preserve">
-    <value>storageSize</value>
+  <data name="&gt;&gt;ramType.Name" xml:space="preserve">
+    <value>ramType</value>
   </data>
-  <data name="&gt;&gt;storageSize.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramType.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageConnection.Name" xml:space="preserve">
-    <value>storageConnection</value>
+  <data name="&gt;&gt;ramFrequency.Name" xml:space="preserve">
+    <value>ramFrequency</value>
   </data>
-  <data name="&gt;&gt;storageConnection.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramFrequency.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageModel.Name" xml:space="preserve">
-    <value>storageModel</value>
+  <data name="&gt;&gt;ramManufacturer.Name" xml:space="preserve">
+    <value>ramManufacturer</value>
   </data>
-  <data name="&gt;&gt;storageModel.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramManufacturer.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageSerialNumber.Name" xml:space="preserve">
-    <value>storageSerialNumber</value>
+  <data name="&gt;&gt;ramSerialNumber.Name" xml:space="preserve">
+    <value>ramSerialNumber</value>
   </data>
-  <data name="&gt;&gt;storageSerialNumber.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramSerialNumber.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;storageSmart.Name" xml:space="preserve">
-    <value>storageSmart</value>
+  <data name="&gt;&gt;ramPartNumber.Name" xml:space="preserve">
+    <value>ramPartNumber</value>
   </data>
-  <data name="&gt;&gt;storageSmart.Type" xml:space="preserve">
+  <data name="&gt;&gt;ramPartNumber.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>StorageDetailForm</value>
+    <value>RamDetailForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

@@ -109,6 +109,18 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RamDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RamDetailForm.Designer.cs">
+      <DependentUpon>RamDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProcessorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessorForm.Designer.cs">
+      <DependentUpon>ProcessorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\VideoCardDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +202,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RamDetailForm.pt.resx">
+      <DependentUpon>RamDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RamDetailForm.resx">
+      <DependentUpon>RamDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessorForm.pt.resx">
+      <DependentUpon>ProcessorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessorForm.resx">
+      <DependentUpon>ProcessorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VideoCardDetailForm.pt.resx">
       <DependentUpon>VideoCardDetailForm.cs</DependentUpon>
