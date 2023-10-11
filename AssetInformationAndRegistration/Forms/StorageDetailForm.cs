@@ -41,9 +41,12 @@ namespace AssetInformationAndRegistration.Forms
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
             //Shows the total storage size
-            totalSizeStr = Math.Log10(totalSize) > 2.9999
-                ? Convert.ToString(Math.Round(totalSize / 1000, 1)) + " " + ConstantsDLL.Properties.Resources.TB
-                : totalSize + " " + ConstantsDLL.Properties.Resources.GB;
+            if (totalSize / 1000 / 1000 / 1000 >= 1000)
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.TB;
+            else if (totalSize / 1000 / 1000 / 1000 < 1000 && totalSize / 1000 / 1000 / 1000 >= 1)
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.GB;
+            else
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.MB;
             lblTotalSize.Text = totalSizeStr;
 
             //Sorts the ID column

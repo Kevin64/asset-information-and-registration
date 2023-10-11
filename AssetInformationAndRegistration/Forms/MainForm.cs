@@ -44,24 +44,199 @@ namespace AssetInformationAndRegistration.Forms
         private readonly List<string[]> parametersList, jsonServerSettings;
         private readonly List<string> enforcementList, orgDataList;
         private List<List<string>> videoCardDetailPrev, storageDetailPrev, ramDetailPrev, processorDetailPrev, videoCardDetail, storageDetail, ramDetail, processorDetail;
-        private readonly List<List<string>> storageType;
-        private readonly Octokit.GitHubClient ghc;
+
         private HttpClient client;
+        private readonly LogGenerator log;
+        private readonly Octokit.GitHubClient ghc;
         private readonly UserPreferenceChangedEventHandler UserPreferenceChanged;
-        private Model modelTemplate;
+        private readonly BackgroundWorker backgroundWorker1;
+
         private Agent agent, agentMaintenances;
-        
+        private Model modelTemplate;
+
         private Asset existingAsset, newAsset;
-        private firmware existingFirmware, newFirmware;
-        private hardware existingHardware, newHardware;
-        private List<processor> existingProcessor, newProcessor;
-        private List<ram> existingRam, newRam;
-        private List<storage> existingStorage, newStorage;
-        private List<videoCard> existingVideoCard, newVideoCard;
-        private List<maintenances> existingMaintenances, newMaintenances;
-        private location existingLocation, newLocation;
-        private network existingNetwork, newNetwork;
-        private operatingSystem existingOperatingSystem, newOperatingSystem;
+        private readonly firmware existingFirmware, newFirmware;
+        private readonly hardware existingHardware, newHardware;
+        private readonly List<processor> existingProcessor, newProcessor;
+        private readonly List<ram> existingRam, newRam;
+        private readonly List<storage> existingStorage, newStorage;
+        private readonly List<videoCard> existingVideoCard, newVideoCard;
+        private readonly List<maintenances> existingMaintenances, newMaintenances;
+        private readonly location existingLocation, newLocation;
+        private readonly network existingNetwork, newNetwork;
+        private readonly operatingSystem existingOperatingSystem, newOperatingSystem;
+
+        #region Form variable declaration
+
+        private Button storageDetailsButton;
+        private LoadingCircle loadingCircleCompliant;
+        private TextBox textBoxInactiveUpdateDataRadio;
+        private RadioButton radioButtonUpdateData;
+        private Button videoCardDetailsButton;
+        private GroupBox groupBoxTableMaintenances;
+        private DataGridView tableMaintenances;
+        private Label lblColorCompliant;
+        private Label lblThereIsNothingHere;
+        private Label lblBrand;
+        private Label lblModel;
+        private Label lblSerialNumber;
+        private Label lblProcessor;
+        private Label lblRam;
+        private Label lblHostname;
+        private Label lblIpAddress;
+        private Label lblFixedBrand;
+        private Label lblFixedModel;
+        private Label lblFixedSerialNumber;
+        private Label lblFixedProcessor;
+        private Label lblFixedRam;
+        private Label lblFixedOperatingSystem;
+        private Label lblFixedHostname;
+        private Label lblFixedIpAddress;
+        private Label lblFixedAssetNumber;
+        private Label lblFixedSealNumber;
+        private Label lblFixedBuilding;
+        private TextBox textBoxAssetNumber;
+        private TextBox textBoxSealNumber;
+        private TextBox textBoxRoomNumber;
+        private TextBox textBoxRoomLetter;
+        private Label lblFixedRoomNumber;
+        private Label lblFixedServiceDate;
+        private Label lblOperatingSystem;
+        private Label lblFixedInUse;
+        private Label lblFixedTag;
+        private Button registerButton;
+        private Label lblFixedHwType;
+        private Label lblFixedServerOperationalStatus;
+        private Label lblFixedFwType;
+        private Label lblFwType;
+        private GroupBox groupBoxHwData;
+        private GroupBox groupBoxAssetData;
+        private Label lblStorageType;
+        private Label lblFixedStorageType;
+        private Label lblVideoCard;
+        private Label lblFixedVideoCard;
+        private Timer timerAlertHostname, timerAlertMediaOperationMode, timerAlertSecureBoot, timerAlertFwVersion, timerAlertNetConnectivity, timerAlertFwType;
+        private IContainer components;
+        private ToolStripStatusLabel toolStripVersionText;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusBarText;
+        private Button collectButton;
+        private Label lblFixedRoomLetter;
+        private Label lblFixedFwVersion;
+        private Label lblFwVersion;
+        private Button apcsButton;
+        private ProgressBar progressBar1;
+        private Label lblSecureBoot;
+        private Label lblFixedSecureBoot;
+        private RadioButton radioButtonMaintenance;
+        private RadioButton radioButtonFormatting;
+        private GroupBox groupBoxServiceType;
+        private TextBox textBoxInactiveFormattingRadio;
+        private TextBox textBoxInactiveMaintenanceRadio;
+        private ToolStripDropDownButton comboBoxThemeButton;
+        private ToolStripMenuItem toolStripAutoTheme;
+        private ToolStripMenuItem toolStripLightTheme;
+        private ToolStripMenuItem toolStripDarkTheme;
+        private Label lblColorServerOperationalStatus;
+        private DateTimePicker dateTimePickerServiceDate;
+        private ConfigurableQualityPictureBox imgTopBanner;
+        private ConfigurableQualityPictureBox iconImgBrand;
+        private ConfigurableQualityPictureBox iconImgModel;
+        private ConfigurableQualityPictureBox iconImgSerialNumber;
+        private ConfigurableQualityPictureBox iconImgProcessor;
+        private ConfigurableQualityPictureBox iconImgRam;
+        private ConfigurableQualityPictureBox iconImgStorageType;
+        private ConfigurableQualityPictureBox iconImgVideoCard;
+        private ConfigurableQualityPictureBox iconImgOperatingSystem;
+        private ConfigurableQualityPictureBox iconImgHostname;
+        private ConfigurableQualityPictureBox iconImgIpAddress;
+        private ConfigurableQualityPictureBox iconImgFwType;
+        private ConfigurableQualityPictureBox iconImgFwVersion;
+        private ConfigurableQualityPictureBox iconImgSecureBoot;
+        private ConfigurableQualityPictureBox iconImgAssetNumber;
+        private ConfigurableQualityPictureBox iconImgSealNumber;
+        private ConfigurableQualityPictureBox iconImgRoomNumber;
+        private ConfigurableQualityPictureBox iconImgBuilding;
+        private ConfigurableQualityPictureBox iconImgServiceDate;
+        private ConfigurableQualityPictureBox iconImgRoomLetter;
+        private ConfigurableQualityPictureBox iconImgInUse;
+        private ConfigurableQualityPictureBox iconImgTag;
+        private ConfigurableQualityPictureBox iconImgHwType;
+        private ConfigurableQualityPictureBox iconImgVirtualizationTechnology;
+        private Label lblVirtualizationTechnology;
+        private Label lblFixedVirtualizationTechnology;
+        private Label lblFixedMandatoryWho;
+        private Label lblFixedMandatoryTag;
+        private Label lblFixedMandatoryHwType;
+        private Label lblFixedMandatoryInUse;
+        private Label lblFixedMandatoryBuilding;
+        private Label lblFixedMandatoryRoomNumber;
+        private Label lblFixedMandatoryAssetNumber;
+        private Label lblFixedMandatoryMain;
+        private Label lblFixedMandatoryServiceType;
+        private Timer timerAlertVirtualizationTechnology;
+        private Timer timerAlertSmartStatus;
+        private Label lblFixedServerPort;
+        private ConfigurableQualityPictureBox iconImgTpmVersion;
+        private Label lblTpmVersion;
+        private Label lblFixedTpmVersion;
+        private ConfigurableQualityPictureBox iconImgBatteryChange;
+        private Label lblFixedBatteryChange;
+        private ConfigurableQualityPictureBox iconImgTicketNumber;
+        private Label lblFixedTicketNumber;
+        private TextBox textBoxTicketNumber;
+        private Label lblFixedMandatoryTicketNumber;
+        private Label lblFixedMandatoryBatteryChange;
+        private Label lblFixedServerIP;
+        private Label lblColorLastService;
+        private Label lblServerPort;
+        private Label lblServerIP;
+        private Label lblAgentName;
+        private Label lblFixedAgentName;
+        private Timer timerAlertTpmVersion;
+        private Timer timerAlertRamAmount;
+        private ConfigurableQualityPictureBox iconImgStandard;
+        private ConfigurableQualityPictureBox iconImgAdRegistered;
+        private Label lblFixedAdRegistered;
+        private Label lblFixedStandard;
+        private Label vSeparator1;
+        private CustomFlatComboBox comboBoxBuilding;
+        private CustomFlatComboBox comboBoxStandard;
+        private CustomFlatComboBox comboBoxActiveDirectory;
+        private CustomFlatComboBox comboBoxTag;
+        private CustomFlatComboBox comboBoxInUse;
+        private CustomFlatComboBox comboBoxHwType;
+        private CustomFlatComboBox comboBoxBatteryChange;
+        private LoadingCircle loadingCircleScanTpmVersion;
+        private LoadingCircle loadingCircleScanVirtualizationTechnology;
+        private LoadingCircle loadingCircleScanSecureBoot;
+        private LoadingCircle loadingCircleScanFwVersion;
+        private LoadingCircle loadingCircleScanFwType;
+        private LoadingCircle loadingCircleScanIpAddress;
+        private LoadingCircle loadingCircleScanHostname;
+        private LoadingCircle loadingCircleScanOperatingSystem;
+        private LoadingCircle loadingCircleScanVideoCard;
+        private LoadingCircle loadingCircleScanMediaOperationMode;
+        private LoadingCircle loadingCircleScanStorageType;
+        private LoadingCircle loadingCircleScanRam;
+        private LoadingCircle loadingCircleScanProcessor;
+        private LoadingCircle loadingCircleScanSerialNumber;
+        private LoadingCircle loadingCircleScanModel;
+        private LoadingCircle loadingCircleScanBrand;
+        private LoadingCircle loadingCircleLastService;
+        private LoadingCircle loadingCircleCollectButton;
+        private LoadingCircle loadingCircleRegisterButton;
+        private LoadingCircle loadingCircleTableMaintenances;
+        private ToolStripStatusLabel aboutLabelButton;
+        private GroupBox groupBoxServerStatus;
+        private LoadingCircle loadingCircleServerOperationalStatus;
+        private ToolStripStatusLabel logLabelButton;
+        private TaskbarManager tbProgMain;
+        private Timer timerFwVersionLabelScroll;
+        private Timer timerVideoCardLabelScroll;
+        private Timer timerRamLabelScroll;
+        private Timer timerProcessorLabelScroll;
+        private Timer timerOSLabelScroll;
         private DataGridViewTextBoxColumn serviceDate;
         private DataGridViewTextBoxColumn serviceType;
         private Button processorDetailsButton;
@@ -85,6 +260,7 @@ namespace AssetInformationAndRegistration.Forms
         private Label vSeparator5;
         private DataGridViewTextBoxColumn agentUsername;
 
+        #endregion
 
         /// <summary> 
         /// Main form constructor
@@ -2182,181 +2358,6 @@ namespace AssetInformationAndRegistration.Forms
 
         }
 
-        #region Variable declaration
-        private Button storageDetailsButton;
-        private LoadingCircle loadingCircleCompliant;
-        private TextBox textBoxInactiveUpdateDataRadio;
-        private RadioButton radioButtonUpdateData;
-        private Button videoCardDetailsButton;
-        private GroupBox groupBoxTableMaintenances;
-        private DataGridView tableMaintenances;
-        private Label lblColorCompliant;
-        private Label lblThereIsNothingHere;
-        private Label lblBrand;
-        private Label lblModel;
-        private Label lblSerialNumber;
-        private Label lblProcessor;
-        private Label lblRam;
-        private Label lblHostname;
-        private Label lblIpAddress;
-        private Label lblFixedBrand;
-        private Label lblFixedModel;
-        private Label lblFixedSerialNumber;
-        private Label lblFixedProcessor;
-        private Label lblFixedRam;
-        private Label lblFixedOperatingSystem;
-        private Label lblFixedHostname;
-        private Label lblFixedIpAddress;
-        private Label lblFixedAssetNumber;
-        private Label lblFixedSealNumber;
-        private Label lblFixedBuilding;
-        private TextBox textBoxAssetNumber;
-        private TextBox textBoxSealNumber;
-        private TextBox textBoxRoomNumber;
-        private TextBox textBoxRoomLetter;
-        private Label lblFixedRoomNumber;
-        private Label lblFixedServiceDate;
-        private Label lblOperatingSystem;
-        private Label lblFixedInUse;
-        private Label lblFixedTag;
-        private Button registerButton;
-        private Label lblFixedHwType;
-        private Label lblFixedServerOperationalStatus;
-        private Label lblFixedFwType;
-        private Label lblFwType;
-        private GroupBox groupBoxHwData;
-        private GroupBox groupBoxAssetData;
-        private Label lblStorageType;
-        private Label lblFixedStorageType;
-        private Label lblVideoCard;
-        private Label lblFixedVideoCard;
-        private Timer timerAlertHostname, timerAlertMediaOperationMode, timerAlertSecureBoot, timerAlertFwVersion, timerAlertNetConnectivity, timerAlertFwType;
-        private IContainer components;
-        private ToolStripStatusLabel toolStripVersionText;
-        private StatusStrip statusStrip1;
-        private ToolStripStatusLabel toolStripStatusBarText;
-        private Button collectButton;
-        private Label lblFixedRoomLetter;
-        private Label lblFixedFwVersion;
-        private Label lblFwVersion;
-        private Button apcsButton;
-        private ProgressBar progressBar1;
-        private Label lblSecureBoot;
-        private Label lblFixedSecureBoot;
-        private RadioButton radioButtonMaintenance;
-        private RadioButton radioButtonFormatting;
-        private GroupBox groupBoxServiceType;
-        private TextBox textBoxInactiveFormattingRadio;
-        private TextBox textBoxInactiveMaintenanceRadio;
-        private ToolStripDropDownButton comboBoxThemeButton;
-        private ToolStripMenuItem toolStripAutoTheme;
-        private ToolStripMenuItem toolStripLightTheme;
-        private ToolStripMenuItem toolStripDarkTheme;
-        private Label lblColorServerOperationalStatus;
-        private DateTimePicker dateTimePickerServiceDate;
-        private ConfigurableQualityPictureBox imgTopBanner;
-        private ConfigurableQualityPictureBox iconImgBrand;
-        private ConfigurableQualityPictureBox iconImgModel;
-        private ConfigurableQualityPictureBox iconImgSerialNumber;
-        private ConfigurableQualityPictureBox iconImgProcessor;
-        private ConfigurableQualityPictureBox iconImgRam;
-        private ConfigurableQualityPictureBox iconImgStorageType;
-        private ConfigurableQualityPictureBox iconImgVideoCard;
-        private ConfigurableQualityPictureBox iconImgOperatingSystem;
-        private ConfigurableQualityPictureBox iconImgHostname;
-        private ConfigurableQualityPictureBox iconImgIpAddress;
-        private ConfigurableQualityPictureBox iconImgFwType;
-        private ConfigurableQualityPictureBox iconImgFwVersion;
-        private ConfigurableQualityPictureBox iconImgSecureBoot;
-        private ConfigurableQualityPictureBox iconImgAssetNumber;
-        private ConfigurableQualityPictureBox iconImgSealNumber;
-        private ConfigurableQualityPictureBox iconImgRoomNumber;
-        private ConfigurableQualityPictureBox iconImgBuilding;
-        private ConfigurableQualityPictureBox iconImgServiceDate;
-        private ConfigurableQualityPictureBox iconImgRoomLetter;
-        private ConfigurableQualityPictureBox iconImgInUse;
-        private ConfigurableQualityPictureBox iconImgTag;
-        private ConfigurableQualityPictureBox iconImgHwType;
-        private ConfigurableQualityPictureBox iconImgVirtualizationTechnology;
-        private Label lblVirtualizationTechnology;
-        private Label lblFixedVirtualizationTechnology;
-        private Label lblFixedMandatoryWho;
-        private Label lblFixedMandatoryTag;
-        private Label lblFixedMandatoryHwType;
-        private Label lblFixedMandatoryInUse;
-        private Label lblFixedMandatoryBuilding;
-        private Label lblFixedMandatoryRoomNumber;
-        private Label lblFixedMandatoryAssetNumber;
-        private Label lblFixedMandatoryMain;
-        private Label lblFixedMandatoryServiceType;
-        private Timer timerAlertVirtualizationTechnology;
-        private Timer timerAlertSmartStatus;
-        private Label lblFixedServerPort;
-        private ConfigurableQualityPictureBox iconImgTpmVersion;
-        private Label lblTpmVersion;
-        private Label lblFixedTpmVersion;
-        private ConfigurableQualityPictureBox iconImgBatteryChange;
-        private Label lblFixedBatteryChange;
-        private ConfigurableQualityPictureBox iconImgTicketNumber;
-        private Label lblFixedTicketNumber;
-        private TextBox textBoxTicketNumber;
-        private Label lblFixedMandatoryTicketNumber;
-        private Label lblFixedMandatoryBatteryChange;
-        private Label lblFixedServerIP;
-        private Label lblColorLastService;
-        private Label lblServerPort;
-        private Label lblServerIP;
-        private Label lblAgentName;
-        private Label lblFixedAgentName;
-        private Timer timerAlertTpmVersion;
-        private Timer timerAlertRamAmount;
-        private ConfigurableQualityPictureBox iconImgStandard;
-        private ConfigurableQualityPictureBox iconImgAdRegistered;
-        private Label lblFixedAdRegistered;
-        private Label lblFixedStandard;
-        private Label vSeparator1;
-        private CustomFlatComboBox comboBoxBuilding;
-        private CustomFlatComboBox comboBoxStandard;
-        private CustomFlatComboBox comboBoxActiveDirectory;
-        private CustomFlatComboBox comboBoxTag;
-        private CustomFlatComboBox comboBoxInUse;
-        private CustomFlatComboBox comboBoxHwType;
-        private CustomFlatComboBox comboBoxBatteryChange;
-        private LoadingCircle loadingCircleScanTpmVersion;
-        private LoadingCircle loadingCircleScanVirtualizationTechnology;
-        private LoadingCircle loadingCircleScanSecureBoot;
-        private LoadingCircle loadingCircleScanFwVersion;
-        private LoadingCircle loadingCircleScanFwType;
-        private LoadingCircle loadingCircleScanIpAddress;
-        private LoadingCircle loadingCircleScanHostname;
-        private LoadingCircle loadingCircleScanOperatingSystem;
-        private LoadingCircle loadingCircleScanVideoCard;
-        private LoadingCircle loadingCircleScanMediaOperationMode;
-        private LoadingCircle loadingCircleScanStorageType;
-        private LoadingCircle loadingCircleScanRam;
-        private LoadingCircle loadingCircleScanProcessor;
-        private LoadingCircle loadingCircleScanSerialNumber;
-        private LoadingCircle loadingCircleScanModel;
-        private LoadingCircle loadingCircleScanBrand;
-        private LoadingCircle loadingCircleLastService;
-        private LoadingCircle loadingCircleCollectButton;
-        private LoadingCircle loadingCircleRegisterButton;
-        private LoadingCircle loadingCircleTableMaintenances;
-        private ToolStripStatusLabel aboutLabelButton;
-        private GroupBox groupBoxServerStatus;
-        private LoadingCircle loadingCircleServerOperationalStatus;
-        private readonly BackgroundWorker backgroundWorker1;
-        private ToolStripStatusLabel logLabelButton;
-        private readonly LogGenerator log;
-        private TaskbarManager tbProgMain;
-        private Timer timerFwVersionLabelScroll;
-        private Timer timerVideoCardLabelScroll;
-        private Timer timerRamLabelScroll;
-        private Timer timerProcessorLabelScroll;
-        private Timer timerOSLabelScroll;
-
-        #endregion
-
         /// <summary> 
         /// Sets service mode to format
         /// </summary>
@@ -2415,6 +2416,11 @@ namespace AssetInformationAndRegistration.Forms
             _ = videoCardForm.ShowDialog();
         }
 
+        /// <summary> 
+        /// Method for opening the RAM list form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ramDetailsButton_Click(object sender, EventArgs e)
         {
             RamDetailForm ramForm = new RamDetailForm(ramDetail, parametersList, isSystemDarkModeEnabled);
@@ -2423,6 +2429,11 @@ namespace AssetInformationAndRegistration.Forms
             _ = ramForm.ShowDialog();
         }
 
+        /// <summary> 
+        /// Method for opening the Processor list form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void processorDetailsButton_Click(object sender, EventArgs e)
         {
             ProcessorDetailForm processorForm = new ProcessorDetailForm(processorDetail, parametersList, isSystemDarkModeEnabled);
@@ -2456,8 +2467,6 @@ namespace AssetInformationAndRegistration.Forms
             DarkTheme();
             isSystemDarkModeEnabled = true;
         }
-
-        
 
         /// <summary> 
         /// Method for auto selecting the app theme
@@ -4034,8 +4043,11 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                    
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    
                     _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_DROPPED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                 }
                 else //If not discarded
@@ -4049,50 +4061,43 @@ namespace AssetInformationAndRegistration.Forms
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
-                                await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset);
-                                //SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control); //Send info to server
+                                await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                                await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 2);
-                                tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                _ = Task.Factory.StartNew(() =>
-                                {
-                                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                });
+                                tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
                                 _ = MessageBox.Show(Strings.INCORRECT_REGISTER_DATE, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                
                                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
 
-                                _ = Task.Factory.StartNew(() =>
-                                {
-                                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_ADDED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                });
+                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_ADDED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
-                            await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset);
-                            //SendData.ServerSendInfo(serverArgs, log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI), webView2Control); //Send info to server
+                            await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                            await Task.Delay(Convert.ToInt32(ConstantsDLL.Properties.Resources.TIMER_INTERVAL) * 2);
-                            tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                            _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            _ = Task.Factory.StartNew(() =>
-                            {
-                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            });
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                         }
                     }
                     else //If the server is out of reach
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.SERVER_NOT_FOUND_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
                         _ = MessageBox.Show(ConstantsDLL.Properties.Strings.SERVER_NOT_FOUND_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
                         tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                     }
@@ -4101,14 +4106,18 @@ namespace AssetInformationAndRegistration.Forms
             else if (!pass) //If there are pendencies in the PC config
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.PENDENCY_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                
                 _ = MessageBox.Show(Strings.PENDENCY_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
             }
             else //If all fields are not filled
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.MANDATORY_FIELD, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                
                 _ = MessageBox.Show(Strings.MANDATORY_FIELD, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
             }
