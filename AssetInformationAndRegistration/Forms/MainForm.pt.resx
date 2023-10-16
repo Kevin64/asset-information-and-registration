@@ -381,7 +381,7 @@
     <value>Tipo de serviço</value>
   </data>
   <data name="textBoxInactiveUpdateDataRadio.Text" xml:space="preserve">
-    <value>Opção para quando os dados do computador mudaram, sem formatação ou manutenção</value>
+    <value>Opção para quando os dados do computador registrado mudaram, sem formatação ou manutenção</value>
   </data>
   <data name="radioButtonUpdateData.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 17</value>
