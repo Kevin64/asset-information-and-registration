@@ -56,16 +56,16 @@ namespace AssetInformationAndRegistration.Forms
         private Model modelTemplate;
 
         private Asset existingAsset, newAsset;
-        private readonly firmware existingFirmware, newFirmware;
-        private readonly hardware existingHardware, newHardware;
-        private readonly List<processor> existingProcessor, newProcessor;
-        private readonly List<ram> existingRam, newRam;
-        private readonly List<storage> existingStorage, newStorage;
-        private readonly List<videoCard> existingVideoCard, newVideoCard;
-        private readonly List<maintenances> existingMaintenances, newMaintenances;
-        private readonly location existingLocation, newLocation;
-        private readonly network existingNetwork, newNetwork;
-        private readonly operatingSystem existingOperatingSystem, newOperatingSystem;
+        private readonly firmware newFirmware;
+        private readonly hardware newHardware;
+        private readonly List<processor> newProcessor;
+        private readonly List<ram> newRam;
+        private readonly List<storage> newStorage;
+        private readonly List<videoCard> newVideoCard;
+        private readonly List<maintenances> newMaintenances;
+        private readonly location newLocation;
+        private readonly network newNetwork;
+        private readonly operatingSystem newOperatingSystem;
 
         #region Form variable declaration
 
@@ -4075,6 +4075,7 @@ namespace AssetInformationAndRegistration.Forms
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                                 await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
 
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4097,6 +4098,7 @@ namespace AssetInformationAndRegistration.Forms
                         }
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                             await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
 
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
@@ -4179,6 +4181,8 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleRegisterButton.Active = false;
             loadingCircleTableMaintenances.Visible = false;
             loadingCircleTableMaintenances.Active = false;
+            loadingCircleLastService.Visible = false;
+            loadingCircleLastService.Active = false;
             registerButton.Text = Strings.REGISTER_AGAIN;
             registerButton.Enabled = true;
             apcsButton.Enabled = true;

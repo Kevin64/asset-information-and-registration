@@ -172,9 +172,7 @@
       <DependentUpon>Strings.pt.resx</DependentUpon>
     </Compile>
     <Compile Include="Updater\UpdateChecker.cs" />
-    <Compile Include="WebView\SendData.cs" />
     <Compile Include="Interfaces\ITheming.cs" />
-    <Compile Include="WebView\WebView2Installer.cs" />
     <EmbeddedResource Include="Forms\AboutBox.pt.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>

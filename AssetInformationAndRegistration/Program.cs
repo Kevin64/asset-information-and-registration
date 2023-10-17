@@ -1,8 +1,6 @@
 ﻿using AssetInformationAndRegistration.Forms;
-using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
-using AssetInformationAndRegistration.WebView;
 using CommandLine;
 using ConstantsDLL;
 using Dark.Net;
@@ -106,36 +104,32 @@ namespace AssetInformationAndRegistration
         /// Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         /// </summary>
         /// <param name="opts">Argument list</param>
-        private static async void RunOptions(Options opts)
+        private static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
                 opts.ServerIP = serverIPListSection[0];
             if (opts.ServerPort == null)
                 opts.ServerPort = serverPortListSection[0];
 
-            try
-            {
-                client = new HttpClient();
-                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }
-            catch
-            {
-
-            }
+            client = new HttpClient();
+            client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            agent = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + ConstantsDLL.Properties.Resources.GET_AGENT_URL + opts.Username);
+
+            var v = JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + ConstantsDLL.Properties.Resources.GET_AGENT_URL + opts.Username);
+            v.Wait();
+            agent = v.Result;
+
             try
             {
                 if (agent != null)
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    //CLIRegister cr = new CLIRegister(argsArray, agent, log, parametersListSection, enforcementListSection);
+                    CLIRegister cr = new CLIRegister(argsArray, agent, log, parametersListSection, enforcementListSection);
                     UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, true, true);
-                    //Application.Run(cr);
                 }
                 else
                 {
@@ -345,8 +339,8 @@ namespace AssetInformationAndRegistration
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLI_MODE, string.Join(" ", argsLog), showCLIOutput);
 
                     //Parses the args
-                    Parser.Default.ParseArguments<Options>(args)
-                       .WithParsed(RunOptions);
+                    Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions);
+
                     if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
