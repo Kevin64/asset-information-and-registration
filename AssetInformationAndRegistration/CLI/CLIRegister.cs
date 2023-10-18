@@ -1,7 +1,7 @@
 ﻿using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
 using HardwareInfoDLL;
-using JsonFileReaderDLL;
+using RestApiDLL;
 using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,12 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace AssetInformationAndRegistration.Forms
 {
     /// <summary> 
-    /// Class for CLI asset registering
+    /// Class for asset registering via CLI
     /// </summary>
     internal class CLIRegister
     {
@@ -43,6 +44,8 @@ namespace AssetInformationAndRegistration.Forms
         private readonly location newLocation;
         private readonly network newNetwork;
         private readonly operatingSystem newOperatingSystem;
+
+        private ServerParam serverParam;
 
         /// <summary> 
         /// CLI constructor
@@ -115,23 +118,11 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Method that allocates a WebView2 instance and checks if args are within standard, then passes them to register method
+        /// Method that checks if args are compliant, then passes them to register method
         /// </summary>
         /// <param name="serverIP">Server IP address</param>
         /// <param name="serverPort">Server port</param>
-        /// <param name="assetNumber">Asset number</param>
-        /// <param name="building">Building name</param>
-        /// <param name="roomNumber">Room number</param>
-        /// <param name="serviceDate">Date of service</param>
-        /// <param name="serviceType">Type of service</param>
-        /// <param name="batteryChange">If there was a CMOS battery change</param>
-        /// <param name="ticketNumber">Helpdesk ticket number</param>
-        /// <param name="agentData">Agent username and ID</param>
-        /// <param name="standard">Image standard</param>
-        /// <param name="inUse">If the asset is in use</param>
-        /// <param name="sealNumber">Seal number</param>
-        /// <param name="tag">If the asset has a tag</param>
-        /// <param name="hwType">hardware type of the asset</param>
+        /// <param name="newAsset">Asset object</param>
         private void InitProc(string serverIP, string serverPort, Asset newAsset)
         {
             serverAlert = new string[11];
@@ -150,17 +141,23 @@ namespace AssetInformationAndRegistration.Forms
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-            jsonServerSettings = JsonFileReaderDLL.ConfigFileReader.FetchInfoST(serverIP, serverPort);
-            parametersList[4] = jsonServerSettings[0]; //Buildings
-            parametersList[5] = jsonServerSettings[1]; //Hw Types
-            parametersList[6] = jsonServerSettings[2]; //Firmware Types
-            parametersList[7] = jsonServerSettings[3]; //Tpm Types
-            parametersList[8] = jsonServerSettings[4]; //Media Op Types
-            parametersList[9] = jsonServerSettings[5]; //Secure Boot States
-            parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
-
-            //await SendData.LoadWebView2(log, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI), webView2Control);
-
+            var v1 = ParameterHandler.GetParameterAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_PARAMETERS_URL);
+            v1.Wait();
+            Parameters newParam = new Parameters()
+            {
+                Buildings = v1.Result.Parameters.Buildings,
+                HardwareTypes = v1.Result.Parameters.HardwareTypes,
+                FirmwareTypes = v1.Result.Parameters.FirmwareTypes,
+                TpmTypes = v1.Result.Parameters.TpmTypes,
+                MediaOperationTypes = v1.Result.Parameters.MediaOperationTypes,
+                RamTypes = v1.Result.Parameters.RamTypes,
+                SecureBootStates = v1.Result.Parameters.SecureBootStates,
+                VirtualizationTechnologyStates = v1.Result.Parameters.VirtualizationTechnologyStates
+            };
+            serverParam = new ServerParam()
+            {
+                Parameters = newParam,
+            };
             string[] dateFormat = new string[] { ConstantsDLL.Properties.Resources.DATE_FORMAT };
 
             if (serverIP.Length <= 15 && serverIP.Length > 6 && //serverIP
@@ -201,7 +198,7 @@ namespace AssetInformationAndRegistration.Forms
                         client.DefaultRequestHeaders.Accept.Clear();
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                        var v = JsonFileReaderDLL.AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_ASSET_URL + newAsset.assetNumber);
+                        var v = AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + newAsset.assetNumber);
                         v.Wait();
                         existingAsset = v.Result;
                     }
@@ -330,13 +327,13 @@ namespace AssetInformationAndRegistration.Forms
 
                         try //If there is database record of the asset number
                         {
-                            //If chosen date is 'hoje'
+                            //If chosen date is 'today'
                             if (newAsset.maintenances[0].serviceDate.Equals(ConstantsDLL.Properties.Resources.TODAY))
                             {
                                 newAsset.maintenances[0].serviceDate = DateTime.Today.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                                 tDay = true;
                             }
-                            else //If chosen date is not 'hoje'
+                            else //If chosen date is not 'today'
                             {
                                 d = DateTime.Parse(newAsset.maintenances[0].serviceDate);
                                 newAsset.maintenances[0].serviceDate = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT);
@@ -364,10 +361,8 @@ namespace AssetInformationAndRegistration.Forms
                                     Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                                 }
 
-                                //serverArgs[5] = serviceDate;
-
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                                var v = JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+                                var v = AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
                                 v.Wait();
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                             }
@@ -389,10 +384,8 @@ namespace AssetInformationAndRegistration.Forms
                                 newAsset.maintenances[0].serviceDate = d.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
                             }
 
-                            //serverArgs[5] = serviceDate;
-
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                            var v = JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+                            var v = AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
                             v.Wait();
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
                         }
@@ -422,11 +415,6 @@ namespace AssetInformationAndRegistration.Forms
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_CLI, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
 
-            //Deletes downloaded json files
-            File.Delete(StringsAndConstants.MODEL_FILE_PATH);
-            File.Delete(StringsAndConstants.CREDENTIALS_FILE_PATH);
-            File.Delete(StringsAndConstants.ASSET_FILE_PATH);
-            File.Delete(StringsAndConstants.CONFIG_FILE_PATH);
             Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS)); //Exits
         }
 
@@ -440,12 +428,12 @@ namespace AssetInformationAndRegistration.Forms
             try
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Feches model info from server
-                var v = JsonFileReaderDLL.ModelHandler.GetModelAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_MODEL_URL + newAsset.hardware.model);
+                var v = ModelHandler.GetModelAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_MODEL_URL + newAsset.hardware.model);
                 v.Wait();
                 modelTemplate = v.Result;
-
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If hostname is the default one and its enforcement is enabled
                 if (enforcementList[3] == ConstantsDLL.Properties.Resources.TRUE && newAsset.network.hostname.Equals(Strings.DEFAULT_HOSTNAME))
                 {
@@ -453,6 +441,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[0] += newAsset.network.hostname + Strings.HOSTNAME_ALERT;
                     serverAlertBool[0] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
                 if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode)
                 {
@@ -460,6 +449,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[1] += newAsset.firmware.mediaOperationMode + Strings.MEDIA_OPERATION_ALERT;
                     serverAlertBool[1] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
                 if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && newAsset.firmware.secureBoot.Equals(ConstantsDLL.Properties.Strings.DEACTIVATED))
                 {
@@ -467,6 +457,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[2] += newAsset.firmware.secureBoot + Strings.SECURE_BOOT_ALERT;
                     serverAlertBool[2] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does not exist and server is unreachable
                 if (modelTemplate == null)
                 {
@@ -474,6 +465,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[3] += Strings.DATABASE_REACH_ERROR;
                     serverAlertBool[3] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
                 if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion))
                 {
@@ -481,6 +473,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[4] += newAsset.firmware.version + Strings.FIRMWARE_VERSION_ALERT;
                     serverAlertBool[4] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
                 if (enforcementList[4] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type)
                 {
@@ -488,6 +481,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[5] += newAsset.firmware.type + Strings.FIRMWARE_TYPE_ALERT;
                     serverAlertBool[5] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If there is no MAC address assigned
                 if (newAsset.network.macAddress == string.Empty)
                 {
@@ -497,6 +491,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlertBool[6] = true;
                     serverAlertBool[7] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
                 if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && newAsset.firmware.virtualizationTechnology == ConstantsDLL.Properties.Strings.DEACTIVATED)
                 {
@@ -504,6 +499,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[8] += newAsset.firmware.virtualizationTechnology + Strings.VT_ALERT;
                     serverAlertBool[8] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
                 if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion)
                 {
@@ -511,6 +507,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[9] += newAsset.firmware.tpmVersion + Strings.TPM_ERROR;
                     serverAlertBool[9] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
@@ -527,6 +524,7 @@ namespace AssetInformationAndRegistration.Forms
                     serverAlert[10] += newAsset.hardware.ram + Strings.TOO_MUCH_MEMORY;
                     serverAlertBool[10] = true;
                 }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 if (pass)
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
             }
@@ -537,7 +535,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables, while reporting the progress to the progressbar
+        /// Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables
         /// </summary>
         private void CollectThread()
         {

@@ -5,7 +5,7 @@ using ConfigurableQualityPictureBoxDLL;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using JsonFileReaderDLL;
+using RestApiDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
@@ -66,6 +66,8 @@ namespace AssetInformationAndRegistration.Forms
         private readonly location newLocation;
         private readonly network newNetwork;
         private readonly operatingSystem newOperatingSystem;
+
+        private ServerParam serverParam;
 
         #region Form variable declaration
 
@@ -263,21 +265,30 @@ namespace AssetInformationAndRegistration.Forms
 
         #endregion
 
-        /// <summary> 
+        /// <summary>
         /// Main form constructor
         /// </summary>
+        /// <param name="ghc">GitHub client object</param>
         /// <param name="offlineMode">Offline mode set</param>
-        /// <param name="agentData">Agent name and id gotten from the Login form</param>
+        /// <param name="agent">Agent object</param>
         /// <param name="serverIP">Server IP address</param>
         /// <param name="serverPort">Server port</param>
         /// <param name="log">Log file object</param>
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="enforcementList">List containing data from [Enforcement]</param>
         /// <param name="orgDataList">List containing data from [OrgData]</param>
+        /// <param name="isSystemDarkModeEnabled">Theme state</param>
         internal MainForm(Octokit.GitHubClient ghc, bool offlineMode, Agent agent, string serverIP, string serverPort, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList, bool isSystemDarkModeEnabled)
         {
             //Inits WinForms components
             InitializeComponent();
+
+            //Initializes HTTP client, estabilishing a connection with the remote server
+            client = new HttpClient();
+            client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
             //Creates a new Asset object and subobjects
             newFirmware = new firmware();
             newProcessor = new List<processor>();
@@ -351,47 +362,7 @@ namespace AssetInformationAndRegistration.Forms
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-            if (!offlineMode)
-            {
-                //Fetch building and hw types info from the specified server
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                jsonServerSettings = JsonFileReaderDLL.ConfigFileReader.FetchInfoST(serverIP, serverPort);
-                parametersList[4] = jsonServerSettings[0]; //Buildings
-                parametersList[5] = jsonServerSettings[1]; //Hw Types
-                parametersList[6] = jsonServerSettings[2]; //Firmware Types
-                parametersList[7] = jsonServerSettings[3]; //Tpm Types
-                parametersList[8] = jsonServerSettings[4]; //Media Op Types
-                parametersList[9] = jsonServerSettings[5]; //Secure Boot States
-                parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
-                comboBoxBuilding.Items.AddRange(parametersList[4]);
-                comboBoxHwType.Items.AddRange(parametersList[5]);
-            }
-            else
-            {
-                //Fetch building and hw types info from the local file
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                jsonServerSettings = JsonFileReaderDLL.ConfigFileReader.GetOfflineModeConfigFile();
-                parametersList[4] = jsonServerSettings[0]; //Buildings
-                parametersList[5] = jsonServerSettings[1]; //Hw Types
-                parametersList[6] = jsonServerSettings[2]; //Firmware Types
-                parametersList[7] = jsonServerSettings[3]; //Tpm Types
-                parametersList[8] = jsonServerSettings[4]; //Media Op Types
-                parametersList[9] = jsonServerSettings[5]; //Secure Boot States
-                parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
-                comboBoxBuilding.Items.AddRange(parametersList[4]);
-                comboBoxHwType.Items.AddRange(parametersList[5]);
-            }
-
-            //Fills controls with provided info from ini file and constants dll
-            comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.LIST_ACTIVE_DIRECTORY_GUI.ToArray());
-            comboBoxStandard.Items.AddRange(StringsAndConstants.LIST_STANDARD_GUI.ToArray());
-            comboBoxInUse.Items.AddRange(StringsAndConstants.LIST_IN_USE_GUI.ToArray());
-            comboBoxTag.Items.AddRange(StringsAndConstants.LIST_TAG_GUI.ToArray());
-            comboBoxBatteryChange.Items.AddRange(StringsAndConstants.LIST_BATTERY_GUI.ToArray());
-            if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN))
-                textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(3);
-            else
-                textBoxAssetNumber.Text = string.Empty;
+            
 
             //Inits thread worker for parallelism
             backgroundWorker1 = new BackgroundWorker();
@@ -1084,21 +1055,21 @@ namespace AssetInformationAndRegistration.Forms
             resources.ApplyResources(this.processorDetailsButton, "processorDetailsButton");
             this.processorDetailsButton.Name = "processorDetailsButton";
             this.processorDetailsButton.UseVisualStyleBackColor = true;
-            this.processorDetailsButton.Click += new System.EventHandler(this.processorDetailsButton_Click);
+            this.processorDetailsButton.Click += new System.EventHandler(this.ProcessorDetailsButton_Click);
             // 
             // ramDetailsButton
             // 
             resources.ApplyResources(this.ramDetailsButton, "ramDetailsButton");
             this.ramDetailsButton.Name = "ramDetailsButton";
             this.ramDetailsButton.UseVisualStyleBackColor = true;
-            this.ramDetailsButton.Click += new System.EventHandler(this.ramDetailsButton_Click);
+            this.ramDetailsButton.Click += new System.EventHandler(this.RamDetailsButton_Click);
             // 
             // videoCardDetailsButton
             // 
             resources.ApplyResources(this.videoCardDetailsButton, "videoCardDetailsButton");
             this.videoCardDetailsButton.Name = "videoCardDetailsButton";
             this.videoCardDetailsButton.UseVisualStyleBackColor = true;
-            this.videoCardDetailsButton.Click += new System.EventHandler(this.videoCardDetailsButton_Click);
+            this.videoCardDetailsButton.Click += new System.EventHandler(this.VideoCardDetailsButton_Click);
             // 
             // loadingCircleCompliant
             // 
@@ -1866,7 +1837,7 @@ namespace AssetInformationAndRegistration.Forms
             this.radioButtonUpdateData.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButtonUpdateData.Name = "radioButtonUpdateData";
             this.radioButtonUpdateData.UseVisualStyleBackColor = true;
-            this.radioButtonUpdateData.CheckedChanged += new System.EventHandler(this.radioButtonUpdateData_CheckedChanged);
+            this.radioButtonUpdateData.CheckedChanged += new System.EventHandler(this.RadioButtonUpdateData_CheckedChanged);
             // 
             // lblFixedMandatoryServiceType
             // 
@@ -1898,7 +1869,7 @@ namespace AssetInformationAndRegistration.Forms
             this.radioButtonFormatting.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButtonFormatting.Name = "radioButtonFormatting";
             this.radioButtonFormatting.UseVisualStyleBackColor = true;
-            this.radioButtonFormatting.CheckedChanged += new System.EventHandler(this.radioButtonFormatting_CheckedChanged);
+            this.radioButtonFormatting.CheckedChanged += new System.EventHandler(this.RadioButtonFormatting_CheckedChanged);
             // 
             // radioButtonMaintenance
             // 
@@ -1906,7 +1877,7 @@ namespace AssetInformationAndRegistration.Forms
             this.radioButtonMaintenance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radioButtonMaintenance.Name = "radioButtonMaintenance";
             this.radioButtonMaintenance.UseVisualStyleBackColor = true;
-            this.radioButtonMaintenance.CheckedChanged += new System.EventHandler(this.radioButtonMaintenance_CheckedChanged);
+            this.radioButtonMaintenance.CheckedChanged += new System.EventHandler(this.RadioButtonMaintenance_CheckedChanged);
             // 
             // loadingCircleLastService
             // 
@@ -2361,11 +2332,11 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Sets service mode to format
+        /// Sets service mode to formatting
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonFormatting_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonFormatting_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeRadio = 0;
         }
@@ -2375,7 +2346,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonMaintenance_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonMaintenance_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeRadio = 1;
         }
@@ -2385,7 +2356,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButtonUpdateData_CheckedChanged(object sender, EventArgs e)
+        private void RadioButtonUpdateData_CheckedChanged(object sender, EventArgs e)
         {
             serviceTypeRadio = 2;
         }
@@ -2420,7 +2391,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void videoCardDetailsButton_Click(object sender, EventArgs e)
+        private void VideoCardDetailsButton_Click(object sender, EventArgs e)
         {
             VideoCardDetailForm videoCardForm = new VideoCardDetailForm(videoCardDetail, parametersList, isSystemDarkModeEnabled);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
@@ -2433,7 +2404,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ramDetailsButton_Click(object sender, EventArgs e)
+        private void RamDetailsButton_Click(object sender, EventArgs e)
         {
             RamDetailForm ramForm = new RamDetailForm(ramDetail, parametersList, isSystemDarkModeEnabled);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
@@ -2446,7 +2417,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void processorDetailsButton_Click(object sender, EventArgs e)
+        private void ProcessorDetailsButton_Click(object sender, EventArgs e)
         {
             ProcessorDetailForm processorForm = new ProcessorDetailForm(processorDetail, parametersList, isSystemDarkModeEnabled);
             if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
@@ -2699,9 +2670,9 @@ namespace AssetInformationAndRegistration.Forms
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 #if DEBUG
-            System.Diagnostics.Process.Start(parametersList[2][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(parametersList[2][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
-            System.Diagnostics.Process.Start(parametersList[2][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(parametersList[2][0] + ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #endif
         }
 
@@ -2719,7 +2690,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Opens the selected webpage, according to the IP and port specified in the comboboxes
+        /// Opens the APCS homepage for the selected address
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2739,23 +2710,16 @@ namespace AssetInformationAndRegistration.Forms
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_MAIN_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-            //Deletes downloaded json files
-            File.Delete(StringsAndConstants.MODEL_FILE_PATH);
-            File.Delete(StringsAndConstants.CREDENTIALS_FILE_PATH);
-            File.Delete(StringsAndConstants.ASSET_FILE_PATH);
-            File.Delete(StringsAndConstants.CONFIG_FILE_PATH);
-
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
         }
 
         /// <summary> 
-        /// Loads the form, sets some combobox values, create timers (1000 ms cadence), and triggers a hardware collection
+        /// Loads the form, sets some combobox values, create timers (1000 ms cadence), initializes HTTP client, and triggers a hardware collection
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// <returns>Returns a asynchronous task</returns>
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             #region Define loading circle parameters
 
@@ -2959,6 +2923,56 @@ namespace AssetInformationAndRegistration.Forms
 
             #endregion
 
+            if (!offlineMode)
+            {
+                //Fetch building and hw types info from the specified server
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                var v = await ParameterHandler.GetParameterAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_PARAMETERS_URL);
+                Parameters newParam = new Parameters()
+                {
+                    Buildings = v.Parameters.Buildings,
+                    HardwareTypes = v.Parameters.HardwareTypes,
+                    FirmwareTypes = v.Parameters.FirmwareTypes,
+                    TpmTypes = v.Parameters.TpmTypes,
+                    MediaOperationTypes = v.Parameters.MediaOperationTypes,
+                    RamTypes = v.Parameters.RamTypes,
+                    SecureBootStates = v.Parameters.SecureBootStates,
+                    VirtualizationTechnologyStates = v.Parameters.VirtualizationTechnologyStates
+                };
+                serverParam = new ServerParam()
+                {
+                    Parameters = newParam,
+                };
+                comboBoxBuilding.Items.AddRange(serverParam.Parameters.Buildings.ToArray());
+                comboBoxHwType.Items.AddRange(serverParam.Parameters.HardwareTypes.ToArray());
+            }
+            else
+            {
+                //Fetch building and hw types info from the local file
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                //jsonServerSettings = ParameterHandler.GetOfflineModeConfigFile();
+                //parametersList[4] = jsonServerSettings[0]; //Buildings
+                //parametersList[5] = jsonServerSettings[1]; //Hw Types
+                //parametersList[6] = jsonServerSettings[2]; //Firmware Types
+                //parametersList[7] = jsonServerSettings[3]; //Tpm Types
+                //parametersList[8] = jsonServerSettings[4]; //Media Op Types
+                //parametersList[9] = jsonServerSettings[5]; //Secure Boot States
+                //parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
+                //comboBoxBuilding.Items.AddRange(parametersList[4]);
+                //comboBoxHwType.Items.AddRange(parametersList[5]);
+            }
+
+            //Fills controls with provided info from ini file and constants dll
+            comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.LIST_ACTIVE_DIRECTORY_GUI.ToArray());
+            comboBoxStandard.Items.AddRange(StringsAndConstants.LIST_STANDARD_GUI.ToArray());
+            comboBoxInUse.Items.AddRange(StringsAndConstants.LIST_IN_USE_GUI.ToArray());
+            comboBoxTag.Items.AddRange(StringsAndConstants.LIST_TAG_GUI.ToArray());
+            comboBoxBatteryChange.Items.AddRange(StringsAndConstants.LIST_BATTERY_GUI.ToArray());
+            if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(ConstantsDLL.Properties.Resources.HOSTNAME_PATTERN))
+                textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(3);
+            else
+                textBoxAssetNumber.Text = string.Empty;
+
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 17;
             progressBar1.Value = 0;
@@ -3037,11 +3051,6 @@ namespace AssetInformationAndRegistration.Forms
             
             if (!offlineMode)
             {
-                //Initializes HTTP client, estabilishing a connection with the remote server
-                client = new HttpClient();
-                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 agentMaintenances = new Agent();
                 lblAgentName.Text = agent.name + " " + agent.surname; //Prints agent name
             }
@@ -3065,7 +3074,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Restricts textbox4 only with chars
+        /// Restricts textbox only with chars
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -3143,7 +3152,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Sets the SMART label to flash in red
+        /// Sets the storage button to flash in red
         /// </summary>
         /// <param name="myObject"></param>
         /// <param name="myEventArgs"></param>
@@ -3171,7 +3180,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Sets the Mac and IP labels to flash in red
+        /// Sets the IP label to flash in red
         /// </summary>
         /// <param name="myObject"></param>
         /// <param name="myEventArgs"></param>
@@ -3235,9 +3244,8 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Starts the collection process
+        /// Prepares for the collection process
         /// </summary>
-        /// <returns>Returns a asynchronous task</returns>
         private void Collecting()
         {
             #region Writes a dash in the labels, while scanning the hardware
@@ -3315,7 +3323,7 @@ namespace AssetInformationAndRegistration.Forms
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                 //Feches model info from server
-                serverOnline = JsonFileReaderDLL.ModelHandler.CheckHost(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_MODEL_URL);
+                serverOnline = ModelHandler.CheckHost(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_MODEL_URL);
 
                 loadingCircleServerOperationalStatus.Visible = false;
                 loadingCircleServerOperationalStatus.Active = false;
@@ -3549,7 +3557,7 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_MEDIAOP, serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Video Card information
             videoCardDetailPrev = new List<List<string>>
@@ -3616,13 +3624,13 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.type = HardwareInfo.GetFwType();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_BIOSTYPE, serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Secure Boot status
             newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware version
             newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
@@ -3634,13 +3642,13 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for TPM status
             newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_TPM, parametersList[7][Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_TPM, serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
         }
@@ -3687,11 +3695,11 @@ namespace AssetInformationAndRegistration.Forms
             lblIpAddress.Text = newAsset.network.ipAddress;
             lblFwVersion.Text = newAsset.firmware.version;
 
-            lblMediaOperationMode.Text = parametersList[8][Convert.ToInt32(newAsset.firmware.mediaOperationMode)];
-            lblFwType.Text = parametersList[6][Convert.ToInt32(newAsset.firmware.type)];
-            lblSecureBoot.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(newAsset.firmware.secureBoot)])];
-            lblVirtualizationTechnology.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])];
-            lblTpmVersion.Text = parametersList[7][Convert.ToInt32(newAsset.firmware.tpmVersion)];
+            lblMediaOperationMode.Text = serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)];
+            lblFwType.Text = serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)];
+            lblSecureBoot.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])];
+            lblVirtualizationTechnology.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])];
+            lblTpmVersion.Text = serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)];
 
             #endregion
 
@@ -3705,12 +3713,12 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                     //Feches asset data from server
-                    existingAsset = await JsonFileReaderDLL.AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_ASSET_URL + textBoxAssetNumber.Text);
+                    existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                     //Feches model info from server
-                    modelTemplate = await JsonFileReaderDLL.ModelHandler.GetModelAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_MODEL_URL + lblModel.Text);
+                    modelTemplate = await ModelHandler.GetModelAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_MODEL_URL + lblModel.Text);
 
                     loadingCircleLastService.Visible = false;
                     loadingCircleLastService.Active = false;
@@ -3725,7 +3733,7 @@ namespace AssetInformationAndRegistration.Forms
                         for (int i = 0; i < existingAsset.maintenances.Count; i++)
                         {
                             //Feches agent names from server
-                            agentMaintenances = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + "/api/getAgentName/" + existingAsset.maintenances[i].agentId);
+                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                             if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                                 _ = tableMaintenances.Rows.Add(existingAsset.maintenances[i].serviceDate, StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
                         }
@@ -3973,7 +3981,6 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        /// <returns>Returns a asynchronous task</returns>
         private async void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Task p = PrintHardwareData();
@@ -3996,7 +4003,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Runs the registration for the website
+        /// Runs the registration process
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -4027,7 +4034,7 @@ namespace AssetInformationAndRegistration.Forms
                 //Attribute variables to a previously created new Asset, which will be sent to the server
                 location l = new location
                 {
-                    building = Array.IndexOf(parametersList[4], comboBoxBuilding.SelectedItem.ToString()).ToString(),
+                    building = Array.IndexOf(serverParam.Parameters.Buildings.ToArray(), comboBoxBuilding.SelectedItem.ToString()).ToString(),
                     roomNumber = textBoxRoomLetter.Text != string.Empty ? textBoxRoomNumber.Text + textBoxRoomLetter.Text : textBoxRoomNumber.Text,
                 };
 
@@ -4038,14 +4045,16 @@ namespace AssetInformationAndRegistration.Forms
                 newAsset.standard = comboBoxStandard.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_STANDARD_GUI_EMPLOYEE) ? Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                 newAsset.tag = comboBoxTag.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                 newAsset.adRegistered = comboBoxActiveDirectory.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                newAsset.hardware.type = Array.IndexOf(parametersList[5], comboBoxHwType.SelectedItem.ToString()).ToString();
+                newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), comboBoxHwType.SelectedItem.ToString()).ToString();
                 newAsset.location = l;
-                maintenances m = new maintenances();
-                m.agentId = agent.id;
-                m.batteryChange = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
-                m.serviceDate = dateTimePickerServiceDate.Value.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10);
-                m.serviceType = serviceTypeRadio.ToString();
-                m.ticketNumber = textBoxTicketNumber.Text;
+                maintenances m = new maintenances
+                {
+                    agentId = agent.id,
+                    batteryChange = comboBoxBatteryChange.SelectedItem.ToString().Equals(ConstantsDLL.Properties.Strings.LIST_YES_0) ? Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString(),
+                    serviceDate = dateTimePickerServiceDate.Value.ToString(ConstantsDLL.Properties.Resources.DATE_FORMAT).Substring(0, 10),
+                    serviceType = serviceTypeRadio.ToString(),
+                    ticketNumber = textBoxTicketNumber.Text
+                };
                 newMaintenances.Clear();
                 newMaintenances.Add(m);
 
@@ -4076,7 +4085,7 @@ namespace AssetInformationAndRegistration.Forms
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                                await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+                                await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
@@ -4099,7 +4108,7 @@ namespace AssetInformationAndRegistration.Forms
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                            await JsonFileReaderDLL.AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.SET_ASSET_URL, newAsset); //Send info to server
+                            await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
@@ -4148,7 +4157,7 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleTableMaintenances.Visible = true;
             loadingCircleTableMaintenances.Active = true;
             lblColorLastService.Text = ConstantsDLL.Properties.Resources.DASH;
-            existingAsset = await JsonFileReaderDLL.AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.GET_ASSET_URL + textBoxAssetNumber.Text);
+            existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
             if (existingAsset != null)
             {
                 radioButtonUpdateData.Enabled = true;
@@ -4161,7 +4170,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int i = 0; i < existingAsset.maintenances.Count; i++)
                 {
                     //Feches agent names from server
-                    agentMaintenances = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + "/api/getAgentName/" + existingAsset.maintenances[i].agentId);
+                    agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                     if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                         _ = tableMaintenances.Rows.Add(existingAsset.maintenances[i].serviceDate, StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
                 }

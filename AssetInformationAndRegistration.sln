@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConstantsDLL", "..\Dependen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareInfoDLL", "..\Dependencies\HardwareInfoDLL\HardwareInfoDLL.csproj", "{694029BB-A10F-4149-A5CE-D0EFFA645834}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonFileReaderDLL", "..\Dependencies\JsonFileReaderDLL\JsonFileReaderDLL.csproj", "{A325C892-1FFE-4102-BD42-E8F299AF2710}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiDLL", "..\Dependencies\RestApiDLL\RestApiDLL.csproj", "{A325C892-1FFE-4102-BD42-E8F299AF2710}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurableQualityPictureBoxDLL", "..\Dependencies\ConfigurableQualityPictureBoxDLL\ConfigurableQualityPictureBoxDLL.csproj", "{458D9023-0FE0-48B0-8E26-ECAECD15CB9C}"
 EndProject

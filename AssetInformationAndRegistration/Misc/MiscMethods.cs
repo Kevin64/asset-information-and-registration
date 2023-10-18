@@ -89,10 +89,10 @@ namespace AssetInformationAndRegistration.Misc
             {
 #if DEBUG
                 //Checks if log directory exists
-                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #else
                 //Checks if log directory exists
-                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_CP + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
+                b = File.Exists(path + ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT);
 #endif
                 //If not, creates a new directory
                 if (!b)

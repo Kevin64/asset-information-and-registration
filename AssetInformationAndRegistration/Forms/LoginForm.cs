@@ -4,7 +4,7 @@ using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
 using Dark.Net;
 using HardwareInfoDLL;
-using JsonFileReaderDLL;
+using RestApiDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
@@ -513,11 +513,6 @@ namespace AssetInformationAndRegistration.Forms
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-            //Deletes downloaded json files
-            File.Delete(StringsAndConstants.MODEL_FILE_PATH);
-            File.Delete(StringsAndConstants.CREDENTIALS_FILE_PATH);
-            File.Delete(StringsAndConstants.ASSET_FILE_PATH);
-            File.Delete(StringsAndConstants.CONFIG_FILE_PATH);
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
         }
@@ -581,7 +576,7 @@ namespace AssetInformationAndRegistration.Forms
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                 //Feches login data from server
-                agent = await JsonFileReaderDLL.AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + ConstantsDLL.Properties.Resources.GET_AGENT_URL + textBoxUsername.Text);
+                agent = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + ConstantsDLL.Properties.Resources.API_AGENT_URL + textBoxUsername.Text);
 
                 //If all the mandatory fields are filled
                 if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))

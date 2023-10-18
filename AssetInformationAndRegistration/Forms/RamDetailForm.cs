@@ -13,14 +13,17 @@ namespace AssetInformationAndRegistration.Forms
 {
     internal partial class RamDetailForm : Form, ITheming
     {
+        static List<List<string>> auxList;
+
         public RamDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
             double individualRam;
             string individualRamStr;
+            auxList = str;
             InitializeComponent();
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
-            foreach (List<string> s in str)
+            foreach (List<string> s in auxList)
             {
                 if (Convert.ToDouble(s[1].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1024)
                 {
@@ -32,7 +35,15 @@ namespace AssetInformationAndRegistration.Forms
                     else
                         individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + ConstantsDLL.Properties.Resources.MB;
                     s[1] = individualRamStr;
+
+                    if(s[2] == ConstantsDLL.Properties.Resources.DDR4_SMBIOS)
+                        s[2] = ConstantsDLL.Properties.Resources.DDR4;
+                    else if (s[2] == ConstantsDLL.Properties.Resources.DDR3_SMBIOS)
+                        s[2] = ConstantsDLL.Properties.Resources.DDR3;
+                    else
+                        s[2] = ConstantsDLL.Properties.Resources.DDR2;
                 }
+
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
 
