@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblBrand.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblBrand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -153,9 +153,9 @@
   <data name="&gt;&gt;lblBrand.ZOrder" xml:space="preserve">
     <value>75</value>
   </data>
-  <data name="lblModel.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -186,9 +186,9 @@
   <data name="&gt;&gt;lblModel.ZOrder" xml:space="preserve">
     <value>73</value>
   </data>
-  <data name="lblSerialNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblSerialNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -219,9 +219,9 @@
   <data name="&gt;&gt;lblSerialNumber.ZOrder" xml:space="preserve">
     <value>71</value>
   </data>
-  <data name="lblProcessor.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblProcessor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -252,9 +252,9 @@
   <data name="&gt;&gt;lblProcessor.ZOrder" xml:space="preserve">
     <value>70</value>
   </data>
-  <data name="lblRam.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblRam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -285,9 +285,9 @@
   <data name="&gt;&gt;lblRam.ZOrder" xml:space="preserve">
     <value>69</value>
   </data>
-  <data name="lblOperatingSystem.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblOperatingSystem.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -318,9 +318,9 @@
   <data name="&gt;&gt;lblOperatingSystem.ZOrder" xml:space="preserve">
     <value>85</value>
   </data>
-  <data name="lblHostname.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblHostname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -351,9 +351,9 @@
   <data name="&gt;&gt;lblHostname.ZOrder" xml:space="preserve">
     <value>76</value>
   </data>
-  <data name="lblIpAddress.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblIpAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -384,9 +384,9 @@
   <data name="&gt;&gt;lblIpAddress.ZOrder" xml:space="preserve">
     <value>77</value>
   </data>
-  <data name="lblFixedBrand.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedBrand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -417,9 +417,9 @@
   <data name="&gt;&gt;lblFixedBrand.ZOrder" xml:space="preserve">
     <value>66</value>
   </data>
-  <data name="lblFixedModel.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -450,9 +450,9 @@
   <data name="&gt;&gt;lblFixedModel.ZOrder" xml:space="preserve">
     <value>78</value>
   </data>
-  <data name="lblFixedSerialNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedSerialNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -483,9 +483,9 @@
   <data name="&gt;&gt;lblFixedSerialNumber.ZOrder" xml:space="preserve">
     <value>79</value>
   </data>
-  <data name="lblFixedProcessor.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedProcessor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -519,9 +519,9 @@
   <data name="&gt;&gt;lblFixedProcessor.ZOrder" xml:space="preserve">
     <value>80</value>
   </data>
-  <data name="lblFixedRam.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedRam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -555,9 +555,9 @@
   <data name="&gt;&gt;lblFixedRam.ZOrder" xml:space="preserve">
     <value>81</value>
   </data>
-  <data name="lblFixedOperatingSystem.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedOperatingSystem.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -591,9 +591,9 @@
   <data name="&gt;&gt;lblFixedOperatingSystem.ZOrder" xml:space="preserve">
     <value>82</value>
   </data>
-  <data name="lblFixedHostname.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedHostname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -624,9 +624,9 @@
   <data name="&gt;&gt;lblFixedHostname.ZOrder" xml:space="preserve">
     <value>83</value>
   </data>
-  <data name="lblFixedIpAddress.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedIpAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -657,9 +657,9 @@
   <data name="&gt;&gt;lblFixedIpAddress.ZOrder" xml:space="preserve">
     <value>84</value>
   </data>
-  <data name="lblFixedAssetNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedAssetNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -690,9 +690,9 @@
   <data name="&gt;&gt;lblFixedAssetNumber.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <data name="lblFixedSealNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedSealNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -723,9 +723,9 @@
   <data name="&gt;&gt;lblFixedSealNumber.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
-  <data name="lblFixedBuilding.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedBuilding.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -756,9 +756,9 @@
   <data name="&gt;&gt;lblFixedBuilding.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
-  <data name="textBoxAssetNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxAssetNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 17</value>
   </data>
@@ -783,9 +783,9 @@
   <data name="&gt;&gt;textBoxAssetNumber.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <data name="textBoxSealNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxSealNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 43</value>
   </data>
@@ -810,9 +810,9 @@
   <data name="&gt;&gt;textBoxSealNumber.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
-  <data name="textBoxRoomNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxRoomNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 69</value>
   </data>
@@ -837,9 +837,9 @@
   <data name="&gt;&gt;textBoxRoomNumber.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <data name="textBoxRoomLetter.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxRoomLetter.Location" type="System.Drawing.Point, System.Drawing">
     <value>419, 69</value>
   </data>
@@ -864,9 +864,9 @@
   <data name="&gt;&gt;textBoxRoomLetter.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
-  <data name="lblFixedRoomNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedRoomNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -897,9 +897,9 @@
   <data name="&gt;&gt;lblFixedRoomNumber.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
-  <data name="lblFixedServiceDate.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedServiceDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -930,9 +930,9 @@
   <data name="&gt;&gt;lblFixedServiceDate.ZOrder" xml:space="preserve">
     <value>43</value>
   </data>
-  <data name="registerButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="registerButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="registerButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -966,9 +966,9 @@
   <data name="&gt;&gt;registerButton.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lblFixedInUse.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedInUse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -999,9 +999,9 @@
   <data name="&gt;&gt;lblFixedInUse.ZOrder" xml:space="preserve">
     <value>47</value>
   </data>
-  <data name="lblFixedTag.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedTag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1032,9 +1032,9 @@
   <data name="&gt;&gt;lblFixedTag.ZOrder" xml:space="preserve">
     <value>48</value>
   </data>
-  <data name="lblFixedHwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedHwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1065,9 +1065,9 @@
   <data name="&gt;&gt;lblFixedHwType.ZOrder" xml:space="preserve">
     <value>44</value>
   </data>
-  <data name="lblFixedServerOperationalStatus.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedServerOperationalStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1098,9 +1098,9 @@
   <data name="&gt;&gt;lblFixedServerOperationalStatus.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="lblFixedServerPort.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedServerPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1131,9 +1131,9 @@
   <data name="&gt;&gt;lblFixedServerPort.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="collectButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="collectButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="collectButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -1164,9 +1164,9 @@
   <data name="&gt;&gt;collectButton.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="lblFixedRoomLetter.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedRoomLetter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1197,9 +1197,9 @@
   <data name="&gt;&gt;lblFixedRoomLetter.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
-  <data name="lblFixedFwVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedFwVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1233,9 +1233,9 @@
   <data name="&gt;&gt;lblFixedFwVersion.ZOrder" xml:space="preserve">
     <value>74</value>
   </data>
-  <data name="lblFwVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFwVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1266,9 +1266,9 @@
   <data name="&gt;&gt;lblFwVersion.ZOrder" xml:space="preserve">
     <value>72</value>
   </data>
-  <data name="apcsButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="apcsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="apcsButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -1299,9 +1299,9 @@
   <data name="&gt;&gt;apcsButton.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="lblFixedFwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedFwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1332,9 +1332,9 @@
   <data name="&gt;&gt;lblFixedFwType.ZOrder" xml:space="preserve">
     <value>68</value>
   </data>
-  <data name="lblFwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1365,12 +1365,12 @@
   <data name="&gt;&gt;lblFwType.ZOrder" xml:space="preserve">
     <value>67</value>
   </data>
-  <data name="groupBoxHwData.Locked" type="System.Boolean, mscorlib">
+  <metadata name="groupBoxHwData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="vSeparator5.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="vSeparator5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="vSeparator5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1398,9 +1398,9 @@
   <data name="&gt;&gt;vSeparator5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="vSeparator4.Locked" type="System.Boolean, mscorlib">
+  <metadata name="vSeparator4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="vSeparator4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1428,9 +1428,9 @@
   <data name="&gt;&gt;vSeparator4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="vSeparator3.Locked" type="System.Boolean, mscorlib">
+  <metadata name="vSeparator3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="vSeparator3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1458,9 +1458,9 @@
   <data name="&gt;&gt;vSeparator3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="vSeparator2.Locked" type="System.Boolean, mscorlib">
+  <metadata name="vSeparator2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="vSeparator2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1488,9 +1488,9 @@
   <data name="&gt;&gt;vSeparator2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="vSeparator1.Locked" type="System.Boolean, mscorlib">
+  <metadata name="vSeparator1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="vSeparator1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1518,9 +1518,9 @@
   <data name="&gt;&gt;vSeparator1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="hSeparator5.Locked" type="System.Boolean, mscorlib">
+  <metadata name="hSeparator5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="hSeparator5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1548,9 +1548,9 @@
   <data name="&gt;&gt;hSeparator5.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label5.Locked" type="System.Boolean, mscorlib">
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1581,9 +1581,9 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="hSeparator1.Locked" type="System.Boolean, mscorlib">
+  <metadata name="hSeparator1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="hSeparator1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1611,9 +1611,9 @@
   <data name="&gt;&gt;hSeparator1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="hSeparator4.Locked" type="System.Boolean, mscorlib">
+  <metadata name="hSeparator4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="hSeparator4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1641,9 +1641,9 @@
   <data name="&gt;&gt;hSeparator4.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="lblInactiveFirmware.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblInactiveFirmware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblInactiveFirmware.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1674,9 +1674,9 @@
   <data name="&gt;&gt;lblInactiveFirmware.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="hSeparator3.Locked" type="System.Boolean, mscorlib">
+  <metadata name="hSeparator3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="hSeparator3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1704,9 +1704,9 @@
   <data name="&gt;&gt;hSeparator3.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="lblInactiveNetwork.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblInactiveNetwork.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblInactiveNetwork.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1737,9 +1737,9 @@
   <data name="&gt;&gt;lblInactiveNetwork.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="hSeparator2.Locked" type="System.Boolean, mscorlib">
+  <metadata name="hSeparator2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="hSeparator2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1767,9 +1767,9 @@
   <data name="&gt;&gt;hSeparator2.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lblInactiveHardware.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblInactiveHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblInactiveHardware.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1800,9 +1800,9 @@
   <data name="&gt;&gt;lblInactiveHardware.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="lblFixedProgressBarPercent.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedProgressBarPercent.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedProgressBarPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1833,9 +1833,9 @@
   <data name="&gt;&gt;lblFixedProgressBarPercent.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="progressBar1.Locked" type="System.Boolean, mscorlib">
+  <metadata name="progressBar1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1860,9 +1860,9 @@
   <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="processorDetailsButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="processorDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="processorDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1890,9 +1890,9 @@
   <data name="&gt;&gt;processorDetailsButton.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="ramDetailsButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="ramDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="ramDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1920,9 +1920,9 @@
   <data name="&gt;&gt;ramDetailsButton.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="videoCardDetailsButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="videoCardDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="videoCardDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1950,9 +1950,9 @@
   <data name="&gt;&gt;videoCardDetailsButton.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="loadingCircleCompliant.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleCompliant.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleCompliant.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 507</value>
   </data>
@@ -1966,7 +1966,7 @@
     <value>loadingCircleCompliant</value>
   </data>
   <data name="&gt;&gt;loadingCircleCompliant.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleCompliant.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -1974,9 +1974,9 @@
   <data name="&gt;&gt;loadingCircleCompliant.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="lblColorCompliant.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblColorCompliant.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblColorCompliant.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -2010,9 +2010,9 @@
   <data name="&gt;&gt;lblColorCompliant.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="storageDetailsButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="storageDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="storageDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2040,9 +2040,9 @@
   <data name="&gt;&gt;storageDetailsButton.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="loadingCircleScanTpmVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanTpmVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 406</value>
   </data>
@@ -2056,7 +2056,7 @@
     <value>loadingCircleScanTpmVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanTpmVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2064,9 +2064,9 @@
   <data name="&gt;&gt;loadingCircleScanTpmVersion.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="loadingCircleScanVirtualizationTechnology.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanVirtualizationTechnology.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 380</value>
   </data>
@@ -2080,7 +2080,7 @@
     <value>loadingCircleScanVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2088,9 +2088,9 @@
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <data name="loadingCircleScanSecureBoot.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanSecureBoot.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 354</value>
   </data>
@@ -2104,7 +2104,7 @@
     <value>loadingCircleScanSecureBoot</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSecureBoot.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2112,9 +2112,9 @@
   <data name="&gt;&gt;loadingCircleScanSecureBoot.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="loadingCircleScanFwVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanFwVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 328</value>
   </data>
@@ -2128,7 +2128,7 @@
     <value>loadingCircleScanFwVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2136,9 +2136,9 @@
   <data name="&gt;&gt;loadingCircleScanFwVersion.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="loadingCircleScanFwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanFwType.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 302</value>
   </data>
@@ -2152,7 +2152,7 @@
     <value>loadingCircleScanFwType</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2160,9 +2160,9 @@
   <data name="&gt;&gt;loadingCircleScanFwType.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="loadingCircleScanIpAddress.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanIpAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 258</value>
   </data>
@@ -2176,7 +2176,7 @@
     <value>loadingCircleScanIpAddress</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanIpAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2184,9 +2184,9 @@
   <data name="&gt;&gt;loadingCircleScanIpAddress.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <data name="loadingCircleScanHostname.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanHostname.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 232</value>
   </data>
@@ -2200,7 +2200,7 @@
     <value>loadingCircleScanHostname</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanHostname.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2208,9 +2208,9 @@
   <data name="&gt;&gt;loadingCircleScanHostname.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="loadingCircleScanOperatingSystem.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanOperatingSystem.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 476</value>
   </data>
@@ -2224,7 +2224,7 @@
     <value>loadingCircleScanOperatingSystem</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2232,9 +2232,9 @@
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <data name="loadingCircleScanVideoCard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanVideoCard.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 188</value>
   </data>
@@ -2248,7 +2248,7 @@
     <value>loadingCircleScanVideoCard</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVideoCard.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2256,9 +2256,9 @@
   <data name="&gt;&gt;loadingCircleScanVideoCard.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <data name="loadingCircleScanMediaOperationMode.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanMediaOperationMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 432</value>
   </data>
@@ -2272,7 +2272,7 @@
     <value>loadingCircleScanMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2280,9 +2280,9 @@
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <data name="loadingCircleScanStorageType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanStorageType.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 162</value>
   </data>
@@ -2296,7 +2296,7 @@
     <value>loadingCircleScanStorageType</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanStorageType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2304,9 +2304,9 @@
   <data name="&gt;&gt;loadingCircleScanStorageType.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <data name="loadingCircleScanRam.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanRam.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 136</value>
   </data>
@@ -2320,7 +2320,7 @@
     <value>loadingCircleScanRam</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanRam.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2328,9 +2328,9 @@
   <data name="&gt;&gt;loadingCircleScanRam.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="loadingCircleScanProcessor.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanProcessor.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 110</value>
   </data>
@@ -2344,7 +2344,7 @@
     <value>loadingCircleScanProcessor</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanProcessor.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2352,9 +2352,9 @@
   <data name="&gt;&gt;loadingCircleScanProcessor.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <data name="loadingCircleScanSerialNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanSerialNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 66</value>
   </data>
@@ -2368,7 +2368,7 @@
     <value>loadingCircleScanSerialNumber</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSerialNumber.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2376,9 +2376,9 @@
   <data name="&gt;&gt;loadingCircleScanSerialNumber.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
-  <data name="loadingCircleScanModel.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanModel.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 40</value>
   </data>
@@ -2392,7 +2392,7 @@
     <value>loadingCircleScanModel</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanModel.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2400,9 +2400,9 @@
   <data name="&gt;&gt;loadingCircleScanModel.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
-  <data name="loadingCircleScanBrand.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleScanBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleScanBrand.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 14</value>
   </data>
@@ -2416,7 +2416,7 @@
     <value>loadingCircleScanBrand</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanBrand.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2424,9 +2424,9 @@
   <data name="&gt;&gt;loadingCircleScanBrand.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <data name="iconImgTpmVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgTpmVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2446,7 +2446,7 @@
     <value>iconImgTpmVersion</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2454,9 +2454,9 @@
   <data name="&gt;&gt;iconImgTpmVersion.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
-  <data name="lblTpmVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblTpmVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2487,9 +2487,9 @@
   <data name="&gt;&gt;lblTpmVersion.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
-  <data name="iconImgVirtualizationTechnology.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgVirtualizationTechnology.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2509,7 +2509,7 @@
     <value>iconImgVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2517,9 +2517,9 @@
   <data name="&gt;&gt;iconImgVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <data name="lblFixedTpmVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedTpmVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2550,9 +2550,9 @@
   <data name="&gt;&gt;lblFixedTpmVersion.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
-  <data name="lblVirtualizationTechnology.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblVirtualizationTechnology.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2583,9 +2583,9 @@
   <data name="&gt;&gt;lblVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
-  <data name="lblFixedVirtualizationTechnology.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedVirtualizationTechnology.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2616,9 +2616,9 @@
   <data name="&gt;&gt;lblFixedVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>43</value>
   </data>
-  <data name="iconImgBrand.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgBrand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2638,7 +2638,7 @@
     <value>iconImgBrand</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2646,9 +2646,9 @@
   <data name="&gt;&gt;iconImgBrand.ZOrder" xml:space="preserve">
     <value>44</value>
   </data>
-  <data name="iconImgSecureBoot.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgSecureBoot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2668,7 +2668,7 @@
     <value>iconImgSecureBoot</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2676,9 +2676,9 @@
   <data name="&gt;&gt;iconImgSecureBoot.ZOrder" xml:space="preserve">
     <value>45</value>
   </data>
-  <data name="iconImgFwVersion.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgFwVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2698,7 +2698,7 @@
     <value>iconImgFwVersion</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2706,9 +2706,9 @@
   <data name="&gt;&gt;iconImgFwVersion.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
-  <data name="iconImgFwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgFwType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2728,7 +2728,7 @@
     <value>iconImgFwType</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2736,9 +2736,9 @@
   <data name="&gt;&gt;iconImgFwType.ZOrder" xml:space="preserve">
     <value>47</value>
   </data>
-  <data name="iconImgIpAddress.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgIpAddress.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2758,7 +2758,7 @@
     <value>iconImgIpAddress</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2766,9 +2766,9 @@
   <data name="&gt;&gt;iconImgIpAddress.ZOrder" xml:space="preserve">
     <value>48</value>
   </data>
-  <data name="iconImgHostname.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgHostname.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2788,7 +2788,7 @@
     <value>iconImgHostname</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2796,9 +2796,9 @@
   <data name="&gt;&gt;iconImgHostname.ZOrder" xml:space="preserve">
     <value>49</value>
   </data>
-  <data name="iconImgOperatingSystem.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgOperatingSystem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2818,7 +2818,7 @@
     <value>iconImgOperatingSystem</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2826,9 +2826,9 @@
   <data name="&gt;&gt;iconImgOperatingSystem.ZOrder" xml:space="preserve">
     <value>50</value>
   </data>
-  <data name="iconImgVideoCard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgVideoCard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2848,7 +2848,7 @@
     <value>iconImgVideoCard</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2856,9 +2856,9 @@
   <data name="&gt;&gt;iconImgVideoCard.ZOrder" xml:space="preserve">
     <value>51</value>
   </data>
-  <data name="iconImgMediaOperationMode.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgMediaOperationMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2878,7 +2878,7 @@
     <value>iconImgMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2886,9 +2886,9 @@
   <data name="&gt;&gt;iconImgMediaOperationMode.ZOrder" xml:space="preserve">
     <value>52</value>
   </data>
-  <data name="iconImgStorageType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgStorageType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2908,7 +2908,7 @@
     <value>iconImgStorageType</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2916,9 +2916,9 @@
   <data name="&gt;&gt;iconImgStorageType.ZOrder" xml:space="preserve">
     <value>53</value>
   </data>
-  <data name="iconImgRam.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgRam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2938,7 +2938,7 @@
     <value>iconImgRam</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2946,9 +2946,9 @@
   <data name="&gt;&gt;iconImgRam.ZOrder" xml:space="preserve">
     <value>54</value>
   </data>
-  <data name="iconImgProcessor.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgProcessor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2968,7 +2968,7 @@
     <value>iconImgProcessor</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2976,9 +2976,9 @@
   <data name="&gt;&gt;iconImgProcessor.ZOrder" xml:space="preserve">
     <value>55</value>
   </data>
-  <data name="iconImgSerialNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgSerialNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2998,7 +2998,7 @@
     <value>iconImgSerialNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3006,9 +3006,9 @@
   <data name="&gt;&gt;iconImgSerialNumber.ZOrder" xml:space="preserve">
     <value>56</value>
   </data>
-  <data name="iconImgModel.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3028,7 +3028,7 @@
     <value>iconImgModel</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3036,9 +3036,9 @@
   <data name="&gt;&gt;iconImgModel.ZOrder" xml:space="preserve">
     <value>57</value>
   </data>
-  <data name="lblSecureBoot.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblSecureBoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3069,9 +3069,9 @@
   <data name="&gt;&gt;lblSecureBoot.ZOrder" xml:space="preserve">
     <value>58</value>
   </data>
-  <data name="lblFixedSecureBoot.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedSecureBoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3102,9 +3102,9 @@
   <data name="&gt;&gt;lblFixedSecureBoot.ZOrder" xml:space="preserve">
     <value>59</value>
   </data>
-  <data name="lblMediaOperationMode.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblMediaOperationMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3135,9 +3135,9 @@
   <data name="&gt;&gt;lblMediaOperationMode.ZOrder" xml:space="preserve">
     <value>60</value>
   </data>
-  <data name="lblFixedMediaOperationMode.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMediaOperationMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3168,9 +3168,9 @@
   <data name="&gt;&gt;lblFixedMediaOperationMode.ZOrder" xml:space="preserve">
     <value>61</value>
   </data>
-  <data name="lblVideoCard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblVideoCard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3201,9 +3201,9 @@
   <data name="&gt;&gt;lblVideoCard.ZOrder" xml:space="preserve">
     <value>62</value>
   </data>
-  <data name="lblFixedVideoCard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedVideoCard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3237,9 +3237,9 @@
   <data name="&gt;&gt;lblFixedVideoCard.ZOrder" xml:space="preserve">
     <value>63</value>
   </data>
-  <data name="lblStorageType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblStorageType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3270,9 +3270,9 @@
   <data name="&gt;&gt;lblStorageType.ZOrder" xml:space="preserve">
     <value>64</value>
   </data>
-  <data name="lblFixedStorageType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedStorageType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3327,12 +3327,12 @@
   <data name="&gt;&gt;groupBoxHwData.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBoxAssetData.Locked" type="System.Boolean, mscorlib">
+  <metadata name="groupBoxAssetData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="comboBoxBatteryChange.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="comboBoxBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxBatteryChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3357,9 +3357,9 @@
   <data name="&gt;&gt;comboBoxBatteryChange.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="comboBoxStandard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxStandard.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3384,9 +3384,9 @@
   <data name="&gt;&gt;comboBoxStandard.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="comboBoxActiveDirectory.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxActiveDirectory.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxActiveDirectory.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3414,9 +3414,9 @@
   <data name="&gt;&gt;comboBoxActiveDirectory.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="comboBoxTag.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxTag.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3441,9 +3441,9 @@
   <data name="&gt;&gt;comboBoxTag.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="comboBoxInUse.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxInUse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3468,9 +3468,9 @@
   <data name="&gt;&gt;comboBoxInUse.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="comboBoxHwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxHwType.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3495,9 +3495,9 @@
   <data name="&gt;&gt;comboBoxHwType.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="comboBoxBuilding.Locked" type="System.Boolean, mscorlib">
+  <metadata name="comboBoxBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="comboBoxBuilding.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3522,9 +3522,9 @@
   <data name="&gt;&gt;comboBoxBuilding.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblFixedMandatoryTicketNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryTicketNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3555,9 +3555,9 @@
   <data name="&gt;&gt;lblFixedMandatoryTicketNumber.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblFixedMandatoryBatteryChange.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryBatteryChange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3588,9 +3588,9 @@
   <data name="&gt;&gt;lblFixedMandatoryBatteryChange.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="iconImgTicketNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgTicketNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3610,7 +3610,7 @@
     <value>iconImgTicketNumber</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3618,9 +3618,9 @@
   <data name="&gt;&gt;iconImgTicketNumber.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="lblFixedTicketNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedTicketNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3651,9 +3651,9 @@
   <data name="&gt;&gt;lblFixedTicketNumber.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="textBoxTicketNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 199</value>
   </data>
@@ -3678,9 +3678,9 @@
   <data name="&gt;&gt;textBoxTicketNumber.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="iconImgBatteryChange.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgBatteryChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3700,7 +3700,7 @@
     <value>iconImgBatteryChange</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3708,9 +3708,9 @@
   <data name="&gt;&gt;iconImgBatteryChange.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="lblFixedMandatoryWho.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryWho.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryWho.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3741,9 +3741,9 @@
   <data name="&gt;&gt;lblFixedMandatoryWho.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="lblFixedMandatoryTag.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryTag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3774,9 +3774,9 @@
   <data name="&gt;&gt;lblFixedMandatoryTag.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="lblFixedBatteryChange.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedBatteryChange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3807,9 +3807,9 @@
   <data name="&gt;&gt;lblFixedBatteryChange.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <data name="lblFixedMandatoryHwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryHwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3840,9 +3840,9 @@
   <data name="&gt;&gt;lblFixedMandatoryHwType.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="lblFixedMandatoryInUse.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryInUse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3873,9 +3873,9 @@
   <data name="&gt;&gt;lblFixedMandatoryInUse.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="lblFixedMandatoryBuilding.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryBuilding.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3906,9 +3906,9 @@
   <data name="&gt;&gt;lblFixedMandatoryBuilding.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="lblFixedMandatoryRoomNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryRoomNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3939,9 +3939,9 @@
   <data name="&gt;&gt;lblFixedMandatoryRoomNumber.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <data name="lblFixedMandatoryAssetNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryAssetNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3972,9 +3972,9 @@
   <data name="&gt;&gt;lblFixedMandatoryAssetNumber.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <data name="lblFixedMandatoryMain.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryMain.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryMain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4005,9 +4005,9 @@
   <data name="&gt;&gt;lblFixedMandatoryMain.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="iconImgRoomLetter.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgRoomLetter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4027,7 +4027,7 @@
     <value>iconImgRoomLetter</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4035,9 +4035,9 @@
   <data name="&gt;&gt;iconImgRoomLetter.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="iconImgHwType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgHwType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4057,7 +4057,7 @@
     <value>iconImgHwType</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4065,9 +4065,9 @@
   <data name="&gt;&gt;iconImgHwType.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <data name="iconImgTag.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgTag.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4087,7 +4087,7 @@
     <value>iconImgTag</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4095,9 +4095,9 @@
   <data name="&gt;&gt;iconImgTag.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="iconImgInUse.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgInUse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4117,7 +4117,7 @@
     <value>iconImgInUse</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4125,9 +4125,9 @@
   <data name="&gt;&gt;iconImgInUse.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="iconImgServiceDate.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgServiceDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4147,7 +4147,7 @@
     <value>iconImgServiceDate</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4155,9 +4155,9 @@
   <data name="&gt;&gt;iconImgServiceDate.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
-  <data name="iconImgStandard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgStandard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4177,7 +4177,7 @@
     <value>iconImgStandard</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4185,9 +4185,9 @@
   <data name="&gt;&gt;iconImgStandard.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
-  <data name="iconImgAdRegistered.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgAdRegistered.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgAdRegistered.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4207,7 +4207,7 @@
     <value>iconImgAdRegistered</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4215,9 +4215,9 @@
   <data name="&gt;&gt;iconImgAdRegistered.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="iconImgBuilding.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgBuilding.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4237,7 +4237,7 @@
     <value>iconImgBuilding</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4245,9 +4245,9 @@
   <data name="&gt;&gt;iconImgBuilding.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <data name="iconImgRoomNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgRoomNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4267,7 +4267,7 @@
     <value>iconImgRoomNumber</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4275,9 +4275,9 @@
   <data name="&gt;&gt;iconImgRoomNumber.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <data name="iconImgSealNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgSealNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4297,7 +4297,7 @@
     <value>iconImgSealNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4305,9 +4305,9 @@
   <data name="&gt;&gt;iconImgSealNumber.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <data name="iconImgAssetNumber.Locked" type="System.Boolean, mscorlib">
+  <metadata name="iconImgAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="iconImgAssetNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -4327,7 +4327,7 @@
     <value>iconImgAssetNumber</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4335,9 +4335,9 @@
   <data name="&gt;&gt;iconImgAssetNumber.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <data name="dateTimePickerServiceDate.Locked" type="System.Boolean, mscorlib">
+  <metadata name="dateTimePickerServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="dateTimePickerServiceDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 174</value>
   </data>
@@ -4359,9 +4359,9 @@
   <data name="&gt;&gt;dateTimePickerServiceDate.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <data name="lblFixedAdRegistered.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedAdRegistered.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedAdRegistered.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4392,9 +4392,9 @@
   <data name="&gt;&gt;lblFixedAdRegistered.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
-  <data name="lblFixedStandard.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedStandard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4449,12 +4449,12 @@
   <data name="&gt;&gt;groupBoxAssetData.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="groupBoxServiceType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="groupBoxServiceType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="textBoxInactiveUpdateDataRadio.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="textBoxInactiveUpdateDataRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxInactiveUpdateDataRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4485,9 +4485,9 @@
   <data name="&gt;&gt;textBoxInactiveUpdateDataRadio.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="radioButtonUpdateData.Locked" type="System.Boolean, mscorlib">
+  <metadata name="radioButtonUpdateData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="radioButtonUpdateData.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4518,9 +4518,9 @@
   <data name="&gt;&gt;radioButtonUpdateData.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblFixedMandatoryServiceType.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedMandatoryServiceType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedMandatoryServiceType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4551,9 +4551,9 @@
   <data name="&gt;&gt;lblFixedMandatoryServiceType.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="textBoxInactiveFormattingRadio.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxInactiveFormattingRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxInactiveFormattingRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4584,9 +4584,9 @@
   <data name="&gt;&gt;textBoxInactiveFormattingRadio.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="textBoxInactiveMaintenanceRadio.Locked" type="System.Boolean, mscorlib">
+  <metadata name="textBoxInactiveMaintenanceRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="textBoxInactiveMaintenanceRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4617,9 +4617,9 @@
   <data name="&gt;&gt;textBoxInactiveMaintenanceRadio.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="radioButtonFormatting.Locked" type="System.Boolean, mscorlib">
+  <metadata name="radioButtonFormatting.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="radioButtonFormatting.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4650,9 +4650,9 @@
   <data name="&gt;&gt;radioButtonFormatting.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="radioButtonMaintenance.Locked" type="System.Boolean, mscorlib">
+  <metadata name="radioButtonMaintenance.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="radioButtonMaintenance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4707,9 +4707,9 @@
   <data name="&gt;&gt;groupBoxServiceType.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="loadingCircleLastService.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleLastService.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleLastService.Location" type="System.Drawing.Point, System.Drawing">
     <value>726, 560</value>
   </data>
@@ -4723,7 +4723,7 @@
     <value>loadingCircleLastService</value>
   </data>
   <data name="&gt;&gt;loadingCircleLastService.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleLastService.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4731,9 +4731,9 @@
   <data name="&gt;&gt;loadingCircleLastService.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="lblColorLastService.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblColorLastService.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblColorLastService.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -4767,9 +4767,9 @@
   <data name="&gt;&gt;lblColorLastService.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblAgentName.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblAgentName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblAgentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4800,9 +4800,9 @@
   <data name="&gt;&gt;lblAgentName.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="lblFixedAgentName.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedAgentName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedAgentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4833,9 +4833,9 @@
   <data name="&gt;&gt;lblFixedAgentName.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="lblServerPort.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblServerPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4866,9 +4866,9 @@
   <data name="&gt;&gt;lblServerPort.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="lblServerIP.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblServerIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4899,9 +4899,9 @@
   <data name="&gt;&gt;lblServerIP.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="lblFixedServerIP.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblFixedServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblFixedServerIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4932,9 +4932,9 @@
   <data name="&gt;&gt;lblFixedServerIP.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblColorServerOperationalStatus.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblColorServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblColorServerOperationalStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4971,12 +4971,12 @@
   <data name="toolStripVersionText.Size" type="System.Drawing.Size, System.Drawing">
     <value>4, 19</value>
   </data>
-  <data name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>18, 11</value>
-  </data>
-  <data name="statusStrip1.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="statusStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
@@ -5043,39 +5043,39 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="timerAlertHostname.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 9</value>
-  </data>
-  <data name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertMediaOperationMode.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>295, 9</value>
-  </data>
-  <data name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertSecureBoot.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>522, 9</value>
-  </data>
-  <data name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertFwVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>690, 9</value>
-  </data>
-  <data name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertNetConnectivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>852, 9</value>
-  </data>
-  <data name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertFwType.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1045, 9</value>
-  </data>
-  <data name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertVirtualizationTechnology.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1192, 9</value>
-  </data>
-  <data name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertSmartStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 48</value>
-  </data>
-  <data name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertTpmVersion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 48</value>
-  </data>
-  <data name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>359, 48</value>
-  </data>
-  <data name="imgTopBanner.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="imgTopBanner.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="imgTopBanner.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -5104,7 +5104,7 @@
     <value>imgTopBanner</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5112,9 +5112,9 @@
   <data name="&gt;&gt;imgTopBanner.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="loadingCircleCollectButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleCollectButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleCollectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 591</value>
   </data>
@@ -5131,7 +5131,7 @@
     <value>loadingCircleCollectButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5139,9 +5139,9 @@
   <data name="&gt;&gt;loadingCircleCollectButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="loadingCircleRegisterButton.Locked" type="System.Boolean, mscorlib">
+  <metadata name="loadingCircleRegisterButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleRegisterButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>711, 591</value>
   </data>
@@ -5158,7 +5158,7 @@
     <value>loadingCircleRegisterButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5166,14 +5166,14 @@
   <data name="&gt;&gt;loadingCircleRegisterButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="groupBoxServerStatus.Locked" type="System.Boolean, mscorlib">
+  <metadata name="groupBoxServerStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="loadingCircleServerOperationalStatus.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="loadingCircleServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 56</value>
+    <value>99, 58</value>
   </data>
   <data name="loadingCircleServerOperationalStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 25</value>
@@ -5185,7 +5185,7 @@
     <value>loadingCircleServerOperationalStatus</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Parent" xml:space="preserve">
     <value>groupBoxServerStatus</value>
@@ -5217,27 +5217,27 @@
   <data name="&gt;&gt;groupBoxServerStatus.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="timerOSLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="timerOSLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>533, 48</value>
-  </data>
-  <data name="timerFwVersionLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerFwVersionLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>688, 48</value>
-  </data>
-  <data name="timerVideoCardLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerVideoCardLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>883, 48</value>
-  </data>
-  <data name="timerRamLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerRamLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1079, 48</value>
-  </data>
-  <data name="timerProcessorLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="timerProcessorLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1242, 48</value>
-  </data>
-  <data name="groupBoxTableMaintenances.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="groupBoxTableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="loadingCircleTableMaintenances.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="loadingCircleTableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="loadingCircleTableMaintenances.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 47</value>
   </data>
@@ -5251,7 +5251,7 @@
     <value>loadingCircleTableMaintenances</value>
   </data>
   <data name="&gt;&gt;loadingCircleTableMaintenances.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8683.29237, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8691.13563, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleTableMaintenances.Parent" xml:space="preserve">
     <value>groupBoxTableMaintenances</value>
@@ -5259,30 +5259,30 @@
   <data name="&gt;&gt;loadingCircleTableMaintenances.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tableMaintenances.Locked" type="System.Boolean, mscorlib">
+  <metadata name="tableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="serviceDate.UserAddedColumn" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="serviceDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="serviceDate.HeaderText" xml:space="preserve">
     <value>Date</value>
   </data>
   <data name="serviceDate.Width" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="serviceType.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="serviceType.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="serviceType.HeaderText" xml:space="preserve">
     <value>Service</value>
   </data>
   <data name="serviceType.Width" type="System.Int32, mscorlib">
     <value>67</value>
   </data>
-  <data name="agentUsername.UserAddedColumn" type="System.Boolean, mscorlib">
+  <metadata name="agentUsername.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="agentUsername.HeaderText" xml:space="preserve">
     <value>Agent</value>
   </data>
@@ -5310,9 +5310,9 @@
   <data name="&gt;&gt;tableMaintenances.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblThereIsNothingHere.Locked" type="System.Boolean, mscorlib">
+  <metadata name="lblThereIsNothingHere.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="lblThereIsNothingHere.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
@@ -5373,15 +5373,15 @@
   <data name="&gt;&gt;groupBoxTableMaintenances.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="$this.Locked" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>102</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
@@ -6879,9 +6879,6 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>

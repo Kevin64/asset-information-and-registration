@@ -497,6 +497,13 @@ namespace AssetInformationAndRegistration.Forms
             this.lblStorageType = new System.Windows.Forms.Label();
             this.lblFixedStorageType = new System.Windows.Forms.Label();
             this.groupBoxAssetData = new System.Windows.Forms.GroupBox();
+            this.comboBoxBatteryChange = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxStandard = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxTag = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxInUse = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxHwType = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxBuilding = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.lblFixedMandatoryTicketNumber = new System.Windows.Forms.Label();
             this.lblFixedMandatoryBatteryChange = new System.Windows.Forms.Label();
             this.iconImgTicketNumber = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -578,13 +585,6 @@ namespace AssetInformationAndRegistration.Forms
             this.serviceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agentUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblThereIsNothingHere = new System.Windows.Forms.Label();
-            this.comboBoxBatteryChange = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxStandard = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxTag = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxInUse = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxHwType = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxBuilding = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.groupBoxHwData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgTpmVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgVirtualizationTechnology)).BeginInit();
@@ -1596,6 +1596,75 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxAssetData.Name = "groupBoxAssetData";
             this.groupBoxAssetData.TabStop = false;
             // 
+            // comboBoxBatteryChange
+            // 
+            this.comboBoxBatteryChange.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBatteryChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBatteryChange.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBatteryChange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
+            this.comboBoxBatteryChange.FormattingEnabled = true;
+            this.comboBoxBatteryChange.Name = "comboBoxBatteryChange";
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Name = "comboBoxTag";
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            // 
+            // comboBoxHwType
+            // 
+            this.comboBoxHwType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxHwType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxHwType.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
+            this.comboBoxHwType.FormattingEnabled = true;
+            this.comboBoxHwType.Name = "comboBoxHwType";
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            // 
             // lblFixedMandatoryTicketNumber
             // 
             resources.ApplyResources(this.lblFixedMandatoryTicketNumber, "lblFixedMandatoryTicketNumber");
@@ -2194,75 +2263,6 @@ namespace AssetInformationAndRegistration.Forms
             resources.ApplyResources(this.lblThereIsNothingHere, "lblThereIsNothingHere");
             this.lblThereIsNothingHere.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.lblThereIsNothingHere.Name = "lblThereIsNothingHere";
-            // 
-            // comboBoxBatteryChange
-            // 
-            this.comboBoxBatteryChange.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBatteryChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBatteryChange.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBatteryChange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
-            this.comboBoxBatteryChange.FormattingEnabled = true;
-            this.comboBoxBatteryChange.Name = "comboBoxBatteryChange";
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Name = "comboBoxTag";
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            // 
-            // comboBoxHwType
-            // 
-            this.comboBoxHwType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxHwType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxHwType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
-            this.comboBoxHwType.FormattingEnabled = true;
-            this.comboBoxHwType.Name = "comboBoxHwType";
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
             // 
             // MainForm
             // 
@@ -3242,7 +3242,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <summary> 
         /// Prepares for the collection process
         /// </summary>
-        private void Collecting()
+        private async void Collecting()
         {
             #region Writes a dash in the labels, while scanning the hardware
             lblColorLastService.Text = ConstantsDLL.Properties.Resources.DASH;
@@ -3318,8 +3318,8 @@ namespace AssetInformationAndRegistration.Forms
 
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                //Feches model info from server
-                serverOnline = ModelHandler.CheckHost(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_MODEL_URL);
+                //Checks if server is alive
+                serverOnline = await ModelHandler.CheckHost(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
 
                 loadingCircleServerOperationalStatus.Visible = false;
                 loadingCircleServerOperationalStatus.Active = false;
@@ -3335,10 +3335,25 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                     lblColorServerOperationalStatus.Text = Strings.OFFLINE;
                     lblColorServerOperationalStatus.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    loadingCircleServerOperationalStatus.Visible = false;
+                    loadingCircleServerOperationalStatus.Active = false;
+                    loadingCircleLastService.Visible = false;
+                    loadingCircleLastService.Active = false;
+                    loadingCircleTableMaintenances.Visible = false;
+                    loadingCircleTableMaintenances.Active = false;
+                    loadingCircleCompliant.Visible = false;
+                    loadingCircleCompliant.Active = false;
+                    lblThereIsNothingHere.Visible = true;
                 }
             }
             else
             {
+                lblServerIP.Text = lblServerPort.Text = lblAgentName.Text = lblColorServerOperationalStatus.Text = lblColorLastService.Text = lblColorCompliant.Text = Strings.OFFLINE_MODE_ACTIVATED;
+                lblServerIP.ForeColor = lblServerPort.ForeColor = lblAgentName.ForeColor = lblColorServerOperationalStatus.ForeColor = lblColorLastService.ForeColor = lblColorCompliant.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 loadingCircleServerOperationalStatus.Visible = false;
                 loadingCircleServerOperationalStatus.Active = false;
                 loadingCircleLastService.Visible = false;
@@ -3347,8 +3362,6 @@ namespace AssetInformationAndRegistration.Forms
                 loadingCircleTableMaintenances.Active = false;
                 loadingCircleCompliant.Visible = false;
                 loadingCircleCompliant.Active = false;
-                lblServerIP.Text = lblServerPort.Text = lblAgentName.Text = lblColorServerOperationalStatus.Text = lblColorLastService.Text = lblColorCompliant.Text = Strings.OFFLINE_MODE_ACTIVATED;
-                lblServerIP.ForeColor = lblServerPort.ForeColor = lblAgentName.ForeColor = lblColorServerOperationalStatus.ForeColor = lblColorLastService.ForeColor = lblColorCompliant.ForeColor = StringsAndConstants.OFFLINE_ALERT;
                 lblThereIsNothingHere.Visible = true;
             }
 
@@ -3699,12 +3712,15 @@ namespace AssetInformationAndRegistration.Forms
 
             #endregion
 
-            pass = true;
+            if(serverOnline)
+                pass = true;
+            else
+                pass = false;
 
             try
             {
                 nonCompliantCount = 0;
-                if (!offlineMode)
+                if (!offlineMode && serverOnline)
                 {
                     if (textBoxAssetNumber.Text != string.Empty)
                     {
@@ -3766,7 +3782,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
-                if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode)
+                if (enforcementList[2] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblMediaOperationMode.Text += Strings.MEDIA_OPERATION_ALERT;
@@ -3776,7 +3792,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)] == ConstantsDLL.Properties.Strings.DEACTIVATED && !offlineMode)
+                if (enforcementList[6] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)] == ConstantsDLL.Properties.Strings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblSecureBoot.Text += Strings.SECURE_BOOT_ALERT;
@@ -3786,7 +3802,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion) && !offlineMode)
+                if (enforcementList[5] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion) && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblFwVersion.Text += Strings.FIRMWARE_VERSION_ALERT;
@@ -3823,7 +3839,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)] == ConstantsDLL.Properties.Strings.DEACTIVATED && !offlineMode)
+                if (enforcementList[7] == ConstantsDLL.Properties.Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)] == ConstantsDLL.Properties.Strings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblVirtualizationTechnology.Text += Strings.VT_ALERT;
@@ -3833,7 +3849,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Smart status is not OK and its enforcement is enabled
-                if (enforcementList[1] == ConstantsDLL.Properties.Resources.TRUE && storageDetailPrev[6].Contains(ConstantsDLL.Properties.Resources.PRED_FAIL) && !offlineMode)
+                if (enforcementList[1] == ConstantsDLL.Properties.Resources.TRUE && storageDetailPrev[6].Contains(ConstantsDLL.Properties.Resources.PRED_FAIL) && !offlineMode && serverOnline)
                 {
                     pass = false;
                     //lblStorageType.Text += Strings.SMART_FAIL;
@@ -3843,7 +3859,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
-                if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode)
+                if (enforcementList[8] == ConstantsDLL.Properties.Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblTpmVersion.Text += Strings.TPM_ERROR;
@@ -3855,7 +3871,7 @@ namespace AssetInformationAndRegistration.Forms
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem && !offlineMode)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblRam.Text += Strings.NOT_ENOUGH_MEMORY;
@@ -3864,7 +3880,7 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
-                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem && !offlineMode)
+                if (enforcementList[0] == ConstantsDLL.Properties.Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblRam.Text += Strings.TOO_MUCH_MEMORY;
@@ -3873,7 +3889,7 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                if (pass && !offlineMode)
+                if (pass && !offlineMode && serverOnline)
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                 //If there are compliance errors, colors taskbar's progress bar red
@@ -3883,7 +3899,7 @@ namespace AssetInformationAndRegistration.Forms
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
                 }
 
-                if (!offlineMode)
+                if (!offlineMode && serverOnline)
                 {
                     if (nonCompliantCount == 0)
                     {
@@ -4076,35 +4092,58 @@ namespace AssetInformationAndRegistration.Forms
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                                await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                                var v = await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
-                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_UPDATED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if(v != null)
+                                {
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
+                                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_UPDATED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
+                                    tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+
+                                    _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_ADDED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                                _ = MessageBox.Show(Strings.INCORRECT_REGISTER_DATE, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                
                                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
 
+                                _ = MessageBox.Show(Strings.INCORRECT_REGISTER_DATE, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_UPDATED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                            await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
-                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                            var v = await AssetHandler.SetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL, newAsset); //Send info to server
 
-                            _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if(v != null)
+                            {
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
+                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_ADDED, ConstantsDLL.Properties.Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+
+                                tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+
+                                _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_ADDED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                         }
                     }
@@ -4148,7 +4187,17 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleTableMaintenances.Visible = true;
             loadingCircleTableMaintenances.Active = true;
             lblColorLastService.Text = ConstantsDLL.Properties.Resources.DASH;
-            existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+
+            if (serverOnline)
+            {
+                existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+            }
+            else
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             if (existingAsset != null)
             {
                 radioButtonUpdateData.Enabled = true;
