@@ -1,4 +1,6 @@
-﻿namespace AssetInformationAndRegistration.Forms
+﻿using System.Windows.Forms;
+
+namespace AssetInformationAndRegistration.Forms
 {
     partial class AboutBox
     {
@@ -117,6 +119,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutBox";

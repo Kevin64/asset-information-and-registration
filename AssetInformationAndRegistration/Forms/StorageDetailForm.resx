@@ -295,7 +295,7 @@
     <value>iconImgStorageSize</value>
   </data>
   <data name="&gt;&gt;iconImgStorageSize.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8683.23692, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8691.13564, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStorageSize.Parent" xml:space="preserve">
     <value>$this</value>

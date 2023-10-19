@@ -33,6 +33,7 @@ namespace AssetInformationAndRegistration.Forms
         public UpdaterForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
+            this.KeyDown += UpdaterForm_KeyDown;
 
             (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
             switch (themeFileSet)
@@ -112,9 +113,17 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UpdaterCheckerForm_Closing(object sender, FormClosingEventArgs e)
+        private void UpdaterForm_Closing(object sender, FormClosingEventArgs e)
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+        }
+
+        private void UpdaterForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         public void LightTheme()
@@ -250,12 +259,12 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UpdateCheckerForm_Load(object sender, EventArgs e)
+        private void UpdaterForm_Load(object sender, EventArgs e)
         {
             UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
-            Disposed += new EventHandler(UpdateCheckerForm_Disposed);
-            FormClosing += UpdaterCheckerForm_Closing;
+            Disposed += new EventHandler(UpdaterForm_Disposed);
+            FormClosing += UpdaterForm_Closing;
         }
 
         /// <summary> 
@@ -293,7 +302,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UpdateCheckerForm_Disposed(object sender, EventArgs e)
+        private void UpdaterForm_Disposed(object sender, EventArgs e)
         {
             SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
         }

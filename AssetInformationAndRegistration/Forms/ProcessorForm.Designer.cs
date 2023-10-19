@@ -1,4 +1,6 @@
-﻿namespace AssetInformationAndRegistration.Forms
+﻿using System.Windows.Forms;
+
+namespace AssetInformationAndRegistration.Forms
 {
     partial class ProcessorDetailForm
     {
@@ -111,6 +113,7 @@
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProcessorDetailForm";
@@ -118,7 +121,6 @@
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion

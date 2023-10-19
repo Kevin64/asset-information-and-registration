@@ -22,6 +22,7 @@ namespace AssetInformationAndRegistration.Forms
             double individualSize;
             string individualSizeStr, totalSizeStr;
             InitializeComponent();
+            this.KeyDown += StorageDetailForm_KeyDown;
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
@@ -49,7 +50,7 @@ namespace AssetInformationAndRegistration.Forms
                 totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.MB;
             lblTotalSize.Text = totalSizeStr;
 
-            //Sorts the ID column
+            //Sorts by ID column
             dataGridView1.Sort(dataGridView1.Columns["storageId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
@@ -73,6 +74,14 @@ namespace AssetInformationAndRegistration.Forms
                     cell.Style.BackColor = Color.Red;
                     cell.Style.ForeColor = Color.White;
                 }
+            }
+        }
+
+        private void StorageDetailForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
 

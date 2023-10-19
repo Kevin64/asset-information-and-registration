@@ -34,6 +34,7 @@ namespace AssetInformationAndRegistration.Forms
         internal AboutBox(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
+            this.KeyDown += AboutBox_KeyDown;
 
             (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
             switch (themeFileSet)
@@ -64,6 +65,14 @@ namespace AssetInformationAndRegistration.Forms
             labelCompanyName.Text = AssemblyCompany;
             textBoxDescription.Text = Strings.DESCRIPTION;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
+        }
+
+        private void AboutBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         public void LightTheme()

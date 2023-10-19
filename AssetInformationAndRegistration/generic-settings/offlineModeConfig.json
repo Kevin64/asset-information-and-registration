@@ -38,6 +38,18 @@
         "ServiceTypes": [
             0,
             1
+        ],
+        "OperatingSystemArchTypes": [
+            32,
+            64
+        ],
+        "StorageTypes": [
+            "HDD",
+            "SSD"
+        ],
+        "ConnectionTypes": [
+            "SATA",
+            "PCI-E"
         ]
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace AssetInformationAndRegistration.Forms
+﻿using System.Windows.Forms;
+
+namespace AssetInformationAndRegistration.Forms
 {
     partial class StorageDetailForm
     {
@@ -152,6 +154,7 @@
             this.Controls.Add(this.lblFixedTotalSize);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StorageDetailForm";

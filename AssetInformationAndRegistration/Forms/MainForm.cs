@@ -283,11 +283,14 @@ namespace AssetInformationAndRegistration.Forms
             //Inits WinForms components
             InitializeComponent();
 
-            //Initializes HTTP client, estabilishing a connection with the remote server
-            client = new HttpClient();
-            client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            if(!offlineMode)
+            {
+                //Initializes HTTP client, estabilishing a connection with the remote server
+                client = new HttpClient();
+                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
 
             //Creates a new Asset object and subobjects
             newFirmware = new firmware();
@@ -2923,44 +2926,37 @@ namespace AssetInformationAndRegistration.Forms
 
             #endregion
 
+            ServerParam sp = new ServerParam();
             if (!offlineMode)
             {
                 //Fetch building and hw types info from the specified server
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                var v = await ParameterHandler.GetParameterAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_PARAMETERS_URL);
-                Parameters newParam = new Parameters()
-                {
-                    Buildings = v.Parameters.Buildings,
-                    HardwareTypes = v.Parameters.HardwareTypes,
-                    FirmwareTypes = v.Parameters.FirmwareTypes,
-                    TpmTypes = v.Parameters.TpmTypes,
-                    MediaOperationTypes = v.Parameters.MediaOperationTypes,
-                    RamTypes = v.Parameters.RamTypes,
-                    SecureBootStates = v.Parameters.SecureBootStates,
-                    VirtualizationTechnologyStates = v.Parameters.VirtualizationTechnologyStates
-                };
-                serverParam = new ServerParam()
-                {
-                    Parameters = newParam,
-                };
-                comboBoxBuilding.Items.AddRange(serverParam.Parameters.Buildings.ToArray());
-                comboBoxHwType.Items.AddRange(serverParam.Parameters.HardwareTypes.ToArray());
+                sp = await ParameterHandler.GetParameterAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_PARAMETERS_URL);
             }
             else
             {
                 //Fetch building and hw types info from the local file
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                //jsonServerSettings = ParameterHandler.GetOfflineModeConfigFile();
-                //parametersList[4] = jsonServerSettings[0]; //Buildings
-                //parametersList[5] = jsonServerSettings[1]; //Hw Types
-                //parametersList[6] = jsonServerSettings[2]; //Firmware Types
-                //parametersList[7] = jsonServerSettings[3]; //Tpm Types
-                //parametersList[8] = jsonServerSettings[4]; //Media Op Types
-                //parametersList[9] = jsonServerSettings[5]; //Secure Boot States
-                //parametersList[10] = jsonServerSettings[6]; //Virtualization Technology States
-                //comboBoxBuilding.Items.AddRange(parametersList[4]);
-                //comboBoxHwType.Items.AddRange(parametersList[5]);
+                sp = ParameterHandler.GetOfflineModeConfigFile();
             }
+            //Attributes fetching data to an object
+            Parameters newParam = new Parameters()
+            {
+                Buildings = sp.Parameters.Buildings,
+                HardwareTypes = sp.Parameters.HardwareTypes,
+                FirmwareTypes = sp.Parameters.FirmwareTypes,
+                TpmTypes = sp.Parameters.TpmTypes,
+                MediaOperationTypes = sp.Parameters.MediaOperationTypes,
+                RamTypes = sp.Parameters.RamTypes,
+                SecureBootStates = sp.Parameters.SecureBootStates,
+                VirtualizationTechnologyStates = sp.Parameters.VirtualizationTechnologyStates
+            };
+            serverParam = new ServerParam()
+            {
+                Parameters = newParam,
+            };
+            comboBoxBuilding.Items.AddRange(serverParam.Parameters.Buildings.ToArray());
+            comboBoxHwType.Items.AddRange(serverParam.Parameters.HardwareTypes.ToArray());
 
             //Fills controls with provided info from ini file and constants dll
             comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.LIST_ACTIVE_DIRECTORY_GUI.ToArray());
@@ -3710,11 +3706,13 @@ namespace AssetInformationAndRegistration.Forms
                 nonCompliantCount = 0;
                 if (!offlineMode)
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+                    if (textBoxAssetNumber.Text != string.Empty)
+                    {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
-                    //Feches asset data from server
-                    existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
-
+                        //Feches asset data from server
+                        existingAsset = await AssetHandler.GetAssetAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+                    }
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
 
                     //Feches model info from server
@@ -3722,6 +3720,7 @@ namespace AssetInformationAndRegistration.Forms
 
                     loadingCircleLastService.Visible = false;
                     loadingCircleLastService.Active = false;
+
                     //If asset exists on the database
                     if (existingAsset != null)
                     {
@@ -3735,7 +3734,10 @@ namespace AssetInformationAndRegistration.Forms
                             //Feches agent names from server
                             agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                             if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
-                                _ = tableMaintenances.Rows.Add(existingAsset.maintenances[i].serviceDate, StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                            {
+                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(ConstantsDLL.Properties.Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                            }
+                                
                         }
                         tableMaintenances.Visible = true;
                         tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
@@ -3781,17 +3783,6 @@ namespace AssetInformationAndRegistration.Forms
                     timerAlertSecureBoot.Enabled = true;
                     nonCompliantCount++;
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), Strings.SECURE_BOOT_ALERT, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does not exist and server is unreachable
-                if (modelTemplate == null)
-                {
-                    if (!offlineMode)
-                    {
-                        pass = false;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        _ = MessageBox.Show(Strings.DATABASE_REACH_ERROR, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
@@ -4102,7 +4093,7 @@ namespace AssetInformationAndRegistration.Forms
                                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
 
-                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_ADDED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.ASSET_NOT_UPDATED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch //If can't retrieve (asset number non existent in the database), register normally
@@ -4172,7 +4163,9 @@ namespace AssetInformationAndRegistration.Forms
                     //Feches agent names from server
                     agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + serverIP + ":" + serverPort + ConstantsDLL.Properties.Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                     if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
-                        _ = tableMaintenances.Rows.Add(existingAsset.maintenances[i].serviceDate, StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                    {
+                        _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, ConstantsDLL.Properties.Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(ConstantsDLL.Properties.Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                    }
                 }
                 tableMaintenances.Visible = true;
                 tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);

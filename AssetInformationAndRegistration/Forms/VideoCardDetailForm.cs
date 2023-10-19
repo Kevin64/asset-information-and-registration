@@ -18,6 +18,7 @@ namespace AssetInformationAndRegistration.Forms
             double individualRam;
             string individualRamStr;
             InitializeComponent();
+            this.KeyDown += VideoCardDetailForm_KeyDown;
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
@@ -36,7 +37,7 @@ namespace AssetInformationAndRegistration.Forms
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
 
-            //Sorts the ID column
+            //Sorts the by column
             dataGridView1.Sort(dataGridView1.Columns["videoCardId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
@@ -49,6 +50,14 @@ namespace AssetInformationAndRegistration.Forms
                 case 1:
                     DarkTheme();
                     break;
+            }
+        }
+
+        private void VideoCardDetailForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
 

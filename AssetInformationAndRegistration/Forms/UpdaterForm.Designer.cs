@@ -1,4 +1,6 @@
-﻿namespace AssetInformationAndRegistration.Forms
+﻿using System.Windows.Forms;
+
+namespace AssetInformationAndRegistration.Forms
 {
     partial class UpdaterForm
     {
@@ -105,11 +107,12 @@
             this.Controls.Add(this.lblUpdateAnnoucement);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdaterForm";
             this.ShowInTaskbar = false;
-            this.Load += new System.EventHandler(this.UpdateCheckerForm_Load);
+            this.Load += new System.EventHandler(this.UpdaterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -21,6 +21,7 @@ namespace AssetInformationAndRegistration.Forms
             string individualRamStr;
             auxList = str;
             InitializeComponent();
+            this.KeyDown += RamDetailForm_KeyDown;
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in auxList)
@@ -42,12 +43,14 @@ namespace AssetInformationAndRegistration.Forms
                         s[2] = ConstantsDLL.Properties.Resources.DDR3;
                     else
                         s[2] = ConstantsDLL.Properties.Resources.DDR2;
+
+                    s[3] = s[3] + " " + ConstantsDLL.Properties.Resources.MHZ;
                 }
 
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
 
-            //Sorts the ID column
+            //Sorts by slot column
             dataGridView1.Sort(dataGridView1.Columns["ramSlot"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
@@ -60,6 +63,14 @@ namespace AssetInformationAndRegistration.Forms
                 case 1:
                     DarkTheme();
                     break;
+            }
+        }
+
+        private void RamDetailForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
 
