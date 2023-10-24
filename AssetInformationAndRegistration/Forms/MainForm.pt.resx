@@ -459,7 +459,7 @@
     <value>Servidor APCS</value>
   </data>
   <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 50</value>
+    <value>100, 56</value>
   </data>
   <data name="groupBoxTableMaintenances.Text" xml:space="preserve">
     <value>Manutenções anteriores</value>

@@ -2,12 +2,12 @@
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
+using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,29 +20,38 @@ namespace AssetInformationAndRegistration.Forms
     {
         private bool isSystemDarkModeEnabled;
         private readonly string currentVersion, newVersion, changelog, url;
-        private readonly List<string[]> parametersList;
+        private readonly Program.Definitions definitions;
         private readonly LogGenerator log;
         private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
-        /// <summary> 
+        /// <summary>
         /// Updater form constructor
         /// </summary>
-        /// <param name="parametersList">List containing data from [Parameters]</param>
+        /// <param name="log">Log file object</param>
+        /// <param name="definitions">Definition object</param>
+        /// <param name="ui">Update details object</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
-        /// <param name="releases">GitHub release information</param>
-        public UpdaterForm(LogGenerator log, List<string[]> parametersList, UpdateInfo ui, bool isSystemDarkModeEnabled)
+        public UpdaterForm(LogGenerator log, Program.Definitions definitions, UpdateInfo ui, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
-            this.KeyDown += UpdaterForm_KeyDown;
+            KeyDown += UpdaterForm_KeyDown;
 
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
+            currentVersion = MiscMethods.Version();
+            this.log = log;
+            this.isSystemDarkModeEnabled = isSystemDarkModeEnabled;
+            this.definitions = definitions;
+
+            //Define theming according to JSON file provided info
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(definitions, isSystemDarkModeEnabled);
             switch (themeFileSet)
             {
                 case 0:
-                    LightTheme();
+                    MiscMethods.LightThemeAllControls(this);
+                    LightThemeSpecificControls();
                     break;
                 case 1:
-                    DarkTheme();
+                    MiscMethods.DarkThemeAllControls(this);
+                    DarkThemeSpecificControls();
                     break;
             }
 
@@ -52,10 +61,6 @@ namespace AssetInformationAndRegistration.Forms
                 changelog = ui.Body;
                 url = ui.HtmlUrl;
             }
-            currentVersion = MiscMethods.Version();
-            this.log = log;
-            this.isSystemDarkModeEnabled = isSystemDarkModeEnabled;
-            this.parametersList = parametersList;
         }
 
         /// <summary> 
@@ -69,188 +74,21 @@ namespace AssetInformationAndRegistration.Forms
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                    lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE;
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    lblUpdateAnnoucement.Text = Strings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
                     lblNewVersion.Visible = true;
                     downloadButton.Visible = true;
                     return true;
                 default:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                    lblUpdateAnnoucement.Text = ConstantsDLL.Properties.Strings.NO_NEW_VERSION_AVAILABLE;
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    lblUpdateAnnoucement.Text = Strings.NO_NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;
                     lblNewVersion.Visible = false;
                     downloadButton.Visible = false;
                     return false;
-            }
-        }
-
-        /// <summary> 
-        /// Opens the GitHub url in the browser
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DownloadButton_Click(object sender, EventArgs e)
-        {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            _ = System.Diagnostics.Process.Start(url);
-        }
-
-        /// <summary> 
-        /// Closes the window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        /// <summary> 
-        /// Handles the closing of the current form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UpdaterForm_Closing(object sender, FormClosingEventArgs e)
-        {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-        }
-
-        private void UpdaterForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
-        }
-
-        public void LightTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-
-            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
-            {
-                cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-                else if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                else if (!l.Name.Contains("Color"))
-                    l.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (TextBox tb in Controls.OfType<TextBox>())
-            {
-                tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                if (tb.Name.Contains("Inactive"))
-                    tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            }
-        }
-
-        public void DarkTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-
-            BackColor = StringsAndConstants.DARK_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
-            {
-                cfcb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                cfcb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                cfcb.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                cfcb.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-                else if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                else if (!l.Name.Contains("Color"))
-                    l.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (TextBox tb in Controls.OfType<TextBox>())
-            {
-                tb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                if (tb.Name.Contains("Inactive"))
-                    tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
             }
         }
 
@@ -268,22 +106,75 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdaterForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+        }
+
+        /// <summary>
+        /// Free resources
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdaterForm_Disposed(object sender, EventArgs e)
+        {
+            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
+        }
+
+        /// <summary> 
+        /// Closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary> 
+        /// Opens the GitHub url in the browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DownloadButton_Click(object sender, EventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            _ = System.Diagnostics.Process.Start(url);
+        }
+
+        /// <summary> 
         /// Method for auto selecting the app theme
         /// </summary>
         private void ToggleTheme()
         {
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, MiscMethods.GetSystemThemeMode());
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(definitions, MiscMethods.GetSystemThemeMode());
             switch (themeFileSet)
             {
                 case 0:
-                    LightTheme();
+                    MiscMethods.LightThemeAllControls(this);
+                    LightThemeSpecificControls();
                     isSystemDarkModeEnabled = false;
                     break;
                 case 1:
-                    DarkTheme();
+                    MiscMethods.DarkThemeAllControls(this);
+                    DarkThemeSpecificControls();
                     isSystemDarkModeEnabled = true;
                     break;
             }
+        }
+
+        public void LightThemeSpecificControls()
+        {
+
+        }
+
+        public void DarkThemeSpecificControls()
+        {
+
         }
 
         /// <summary>
@@ -298,13 +189,16 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary>
-        /// Free resources
+        /// Closes the form when Escape is pressed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UpdaterForm_Disposed(object sender, EventArgs e)
+        private void UpdaterForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
         }
     }
 }

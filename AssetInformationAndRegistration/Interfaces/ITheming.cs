@@ -3,13 +3,13 @@
     internal interface ITheming
     {
         /// <summary> 
-        /// Sets a light theme for the UI
+        /// Sets a light theme for specific controls in the UI
         /// </summary>
-        void LightTheme();
+        void LightThemeSpecificControls();
 
         /// <summary> 
-        /// Sets a dark theme for the UI
+        /// Sets a dark theme for specific controls in the UI
         /// </summary>
-        void DarkTheme();
+        void DarkThemeSpecificControls();
     }
 }

@@ -1,0 +1,34 @@
+{
+    "Definitions": {
+        "LogLocation": "C:\\AppLog\\",
+        "ServerIP": [
+            "192.168.1.1",
+            "localhost"
+        ],
+        "ServerPort": [
+            "8080",
+            "80"
+        ],
+        "ThemeUI": "Auto"
+    },
+    "Enforcement": {
+        "RamLimit": true,
+        "SmartStatus": true,
+        "MediaOperationMode": true,
+        "Hostname": true,
+        "FirmwareType": true,
+        "FirmwareVersion": true,
+        "SecureBoot": true,
+        "VirtualizationTechnology": true,
+        "Tpm": true,
+        "CheckForUpdates": true
+    },
+    "OrgData": {
+        "OrganizationFullName": "Company Name",
+        "OrganizationAcronym": "Co",
+        "DepartamentFullName": "Department Name",
+        "DepartamentAcronym": "Dep",
+        "SubDepartamentFullName": "Subdepartment Name",
+        "SubDepartamentAcronym": "SubDep"
+    }
+}

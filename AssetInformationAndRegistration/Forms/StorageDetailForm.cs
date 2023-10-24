@@ -1,6 +1,7 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
+using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
 using System;
@@ -14,15 +15,25 @@ using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
 {
+    /// <summary>
+    /// Class for Storage Form
+    /// </summary>
     internal partial class StorageDetailForm : Form, ITheming
     {
         private static double totalSize = 0;
-        public StorageDetailForm(List<List<string>> str, List<string[]> parametersList, bool isSystemDarkModeEnabled)
+
+        /// <summary>
+        /// Storage form constructor
+        /// </summary>
+        /// <param name="str">Storage detail matrix</param>
+        /// <param name="definitions">Definition object</param>
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
+        public StorageDetailForm(List<List<string>> str, Program.Definitions definitions, bool isSystemDarkModeEnabled)
         {
             double individualSize;
             string individualSizeStr, totalSizeStr;
             InitializeComponent();
-            this.KeyDown += StorageDetailForm_KeyDown;
+            KeyDown += StorageDetailForm_KeyDown;
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
@@ -31,11 +42,11 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     individualSize = Convert.ToInt64(s[2]);
                     if (individualSize / 1000 / 1000 / 1000 >= 1000)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.TB;
+                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + Resources.TB;
                     else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.GB;
+                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + Resources.GB;
                     else
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + ConstantsDLL.Properties.Resources.MB;
+                        individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + Resources.MB;
                     s[2] = individualSizeStr;
                     totalSize += individualSize;
                 }
@@ -43,25 +54,27 @@ namespace AssetInformationAndRegistration.Forms
             }
             //Shows the total storage size
             if (totalSize / 1000 / 1000 / 1000 >= 1000)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.TB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + Resources.TB;
             else if (totalSize / 1000 / 1000 / 1000 < 1000 && totalSize / 1000 / 1000 / 1000 >= 1)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.GB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + Resources.GB;
             else
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + ConstantsDLL.Properties.Resources.MB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + Resources.MB;
             lblTotalSize.Text = totalSizeStr;
 
             //Sorts by ID column
             dataGridView1.Sort(dataGridView1.Columns["storageId"], ListSortDirection.Ascending);
 
             //Define theming according to ini file provided info
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(definitions, isSystemDarkModeEnabled);
             switch (themeFileSet)
             {
                 case 0:
-                    LightTheme();
+                    MiscMethods.LightThemeAllControls(this);
+                    LightThemeSpecificControls();
                     break;
                 case 1:
-                    DarkTheme();
+                    MiscMethods.DarkThemeAllControls(this);
+                    DarkThemeSpecificControls();
                     break;
             }
 
@@ -69,7 +82,7 @@ namespace AssetInformationAndRegistration.Forms
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 DataGridViewCell cell = row.Cells[6];
-                if (cell.Value != null && cell.Value.Equals(ConstantsDLL.Properties.Resources.PRED_FAIL))
+                if (cell.Value != null && cell.Value.Equals(Resources.PRED_FAIL))
                 {
                     cell.Style.BackColor = Color.Red;
                     cell.Style.ForeColor = Color.White;
@@ -77,140 +90,27 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
+        public void LightThemeSpecificControls()
+        {
+            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DISK_SIZE_LIGHT_PATH));
+        }
+
+        public void DarkThemeSpecificControls()
+        {
+            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DISK_SIZE_DARK_PATH));
+        }
+
+        /// <summary>
+        /// Closes the form when Escape is pressed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StorageDetailForm_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                Close();
             }
-        }
-
-        public void LightTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-
-            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox c in Controls.OfType<CustomFlatComboBox>())
-            {
-                c.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                c.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                c.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                c.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-                if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                else
-                    l.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (TextBox t in Controls.OfType<TextBox>())
-            {
-                t.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                t.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_LIGHT_PATH));
-        }
-
-        public void DarkTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-
-            BackColor = StringsAndConstants.DARK_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox c in Controls.OfType<CustomFlatComboBox>())
-            {
-                c.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                c.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                c.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                c.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-                if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                else
-                    l.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (TextBox t in Controls.OfType<TextBox>())
-            {
-                t.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                t.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_DISK_SIZE_DARK_PATH));
         }
     }
 }

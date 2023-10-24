@@ -1,10 +1,10 @@
 ﻿using AssetInformationAndRegistration.Forms;
+using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Octokit;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -40,18 +40,18 @@ namespace AssetInformationAndRegistration.Updater
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         /// <param name="autoCheck">Toggle for update autocheck</param>
-        internal static async void Check(GitHubClient client, LogGenerator log, List<string[]> parametersList, bool autoCheck, bool manualCheck, bool cliMode, bool isSystemDarkModeEnabled)
+        internal static async void Check(GitHubClient client, LogGenerator log, Program.Definitions definitions, bool autoCheck, bool manualCheck, bool cliMode, bool isSystemDarkModeEnabled)
         {
             try
             {
                 if (autoCheck || manualCheck)
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.LOG_CONNECTING_GITHUB, string.Empty, cliMode);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_CONNECTING_GITHUB, string.Empty, cliMode);
 
                     httpHeader = new HttpClient();
-                    if (HardwareInfo.GetWinVersion() == ConstantsDLL.Properties.Resources.WINDOWS_7)
+                    if (HardwareInfo.GetWinVersion() == Resources.WINDOWS_7)
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    request = new HttpRequestMessage(HttpMethod.Head, ConstantsDLL.Properties.Resources.AIR_API_URL);
+                    request = new HttpRequestMessage(HttpMethod.Head, Resources.AIR_API_URL);
                     request.Headers.Add("User-Agent", "Other");
                     ui = Misc.MiscMethods.RegCheckUpdateData();
                     if (ui != null)
@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration.Updater
                     response = await httpHeader.SendAsync(request);
                     if (!((int)response.StatusCode).Equals(304))
                     {
-                        releases = await client.Repository.Release.GetLatest(ConstantsDLL.Properties.Resources.GITHUB_OWNER_AIR, ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR);
+                        releases = await client.Repository.Release.GetLatest(Resources.GITHUB_OWNER_AIR, Resources.GITHUB_REPO_AIR);
                         ui = new UpdateInfo
                         {
                             ETag = response.Headers.ETag.ToString().Substring(3, response.Headers.ETag.ToString().Length - 4),
@@ -82,9 +82,9 @@ namespace AssetInformationAndRegistration.Updater
 
                     if (!cliMode)
                     {
-                        UpdaterForm uForm = new UpdaterForm(log, parametersList, ui, isSystemDarkModeEnabled);
+                        UpdaterForm uForm = new UpdaterForm(log, definitions, ui, isSystemDarkModeEnabled);
                         bool isNotUpdated = uForm.IsThereANewVersion();
-                        if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                        if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
                             DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
                         if ((autoCheck && isNotUpdated) || manualCheck)
                             _ = uForm.ShowDialog();
@@ -100,10 +100,10 @@ namespace AssetInformationAndRegistration.Updater
                         switch (newVersion.CompareTo(currentVersion))
                         {
                             case 1:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                                 break;
                             default:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                                 break;
                         }
                     }
@@ -111,9 +111,9 @@ namespace AssetInformationAndRegistration.Updater
             }
             catch (Exception e) when (e is ApiException || e is HttpRequestException)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.LOG_GITHUB_UNREACHABLE, e.Message, cliMode);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Strings.LOG_UPDATE_CHECK_IMPOSSIBLE, string.Empty, cliMode);
-                _ = MessageBox.Show(ConstantsDLL.Properties.Strings.LOG_UPDATE_CHECK_IMPOSSIBLE, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_GITHUB_UNREACHABLE, e.Message, cliMode);
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_UPDATE_CHECK_IMPOSSIBLE, string.Empty, cliMode);
+                _ = MessageBox.Show(LogStrings.LOG_UPDATE_CHECK_IMPOSSIBLE, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

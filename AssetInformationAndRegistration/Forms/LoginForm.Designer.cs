@@ -156,7 +156,7 @@ namespace AssetInformationAndRegistration.Forms
             this.checkBoxOfflineMode.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBoxOfflineMode.Name = "checkBoxOfflineMode";
             this.checkBoxOfflineMode.UseVisualStyleBackColor = true;
-            this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            this.checkBoxOfflineMode.CheckedChanged += new System.EventHandler(this.OfflineModeCheckBox_CheckedChanged);
             // 
             // loadingCircleAuthButton
             // 

@@ -3,13 +3,13 @@ using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using CommandLine;
 using ConstantsDLL;
+using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
-using IniParser;
-using IniParser.Exceptions;
-using IniParser.Model;
-using RestApiDLL;
 using LogGeneratorDLL;
+using Newtonsoft.Json;
+using Octokit;
+using RestApiDLL;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,8 +19,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace AssetInformationAndRegistration
 {
@@ -29,16 +29,18 @@ namespace AssetInformationAndRegistration
     /// </summary>
     public partial class Program
     {
-        private static string logLocationStr, serverIPStr, serverPortStr, themeStr, checkUpdatesStr, secureBootEnforcementStr, vtEnforcementStr, tpmEnforcementStr, firmwareVersionEnforcementStr, firmwareTypeEnforcementStr, hostnameEnforcementStr, mediaOperationModeEnforcementStr, smartStatusEnforcementStr, ramLimitEnforcementStr, orgFullNameStr, orgAcronymStr, depFullNameStr, depAcronymStr, subDepFullNameStr, subDepAcronymStr;
-        private static string[] logLocationSection, serverIPListSection, serverPortListSection, themeSection, buildings, hardwareTypes, firmwareTypes, tpmTypes, mediaOperationTypes, secureBootStates, virtualizationTechnologyStates;
-
         private static bool showCLIOutput;
-        private static List<string[]> parametersListSection;
-        private static List<string> orgDataListSection, enforcementListSection;
-        private static LogGenerator log;
-        private static Octokit.GitHubClient ghc;
-        private static HttpClient client;
+        private static string jsonFile;
+
         private static Agent agent;
+        private static ConfigurationOptions configOptions;
+        private static Definitions definitions;
+        private static Enforcement enforcement;
+        private static GitHubClient ghc;
+        private static HttpClient client;
+        private static LogGenerator log;
+        private static OrgData orgData;
+        private static StreamReader fileC;
 
         /// <summary> 
         /// Command line switch options specification
@@ -94,6 +96,45 @@ namespace AssetInformationAndRegistration
             public string Password { get; set; }
         }
 
+        public class ConfigurationOptions
+        {
+            public Definitions Definitions { get; set; }
+            public Enforcement Enforcement { get; set; }
+            public OrgData OrgData { get; set; }
+        }
+
+        public class Definitions
+        {
+            public string LogLocation { get; set; }
+            public List<string> ServerIP { get; set; }
+            public List<string> ServerPort { get; set; }
+            public string ThemeUI { get; set; }
+        }
+
+        public class Enforcement
+        {
+            public bool RamLimit { get; set; }
+            public bool SmartStatus { get; set; }
+            public bool MediaOperationMode { get; set; }
+            public bool Hostname { get; set; }
+            public bool FirmwareType { get; set; }
+            public bool FirmwareVersion { get; set; }
+            public bool SecureBoot { get; set; }
+            public bool VirtualizationTechnology { get; set; }
+            public bool Tpm { get; set; }
+            public bool CheckForUpdates { get; set; }
+        }
+
+        public class OrgData
+        {
+            public string OrganizationFullName { get; set; }
+            public string OrganizationAcronym { get; set; }
+            public string DepartamentFullName { get; set; }
+            public string DepartamentAcronym { get; set; }
+            public string SubDepartamentFullName { get; set; }
+            public string SubDepartamentAcronym { get; set; }
+        }
+
         public enum SpecBinaryStates
         {
             DISABLED,
@@ -107,18 +148,20 @@ namespace AssetInformationAndRegistration
         private static void RunOptions(Options opts)
         {
             if (opts.ServerIP == null)
-                opts.ServerIP = serverIPListSection[0];
+                opts.ServerIP = configOptions.Definitions.ServerIP[0];
             if (opts.ServerPort == null)
-                opts.ServerPort = serverPortListSection[0];
+                opts.ServerPort = configOptions.Definitions.ServerPort[0];
 
-            client = new HttpClient();
-            client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort);
+            client = new HttpClient
+            {
+                BaseAddress = new Uri(Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort)
+            };
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(Resources.HTTP_CONTENT_TYPE_JSON));
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
 
-            var v = AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + ConstantsDLL.Properties.Resources.API_AGENT_URL + opts.Username);
+            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + Resources.API_AGENT_URL + opts.Username);
             v.Wait();
             agent = v.Result;
 
@@ -127,19 +170,19 @@ namespace AssetInformationAndRegistration
                 if (agent != null)
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
-                    CLIRegister cr = new CLIRegister(argsArray, agent, log, parametersListSection, enforcementListSection);
-                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, true, true);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                    CLIRegister cr = new CLIRegister(argsArray, agent, log, configOptions);
+                    UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
                 }
                 else
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.AUTH_ERROR, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                     Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                 }
             }
             catch
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
@@ -154,157 +197,110 @@ namespace AssetInformationAndRegistration
         [STAThread]
         private static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             //Code for testing string localization for other languages
             //var culture = System.Globalization.CultureInfo.GetCultureInfo("en");
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            ghc = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(ConstantsDLL.Properties.Resources.GITHUB_REPO_AIR));
+            ghc = new GitHubClient(new Octokit.ProductHeaderValue(Resources.GITHUB_REPO_AIR));
 
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
-                MessageBox.Show(ConstantsDLL.Properties.Strings.ALREADY_RUNNING, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.ALREADY_RUNNING, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
             string[] argsLog = new string[args.Length];
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
             try
             {
-                IniData def = null;
-                FileIniDataParser parser = new FileIniDataParser();
-                //Parses the INI file
-                def = parser.ReadFile(ConstantsDLL.Properties.Resources.DEF_FILE, Encoding.UTF8);
+                fileC = new StreamReader(Resources.CONFIG_FILE);
+                jsonFile = fileC.ReadToEnd();
+                ConfigurationOptions jsonParse = JsonConvert.DeserializeObject<ConfigurationOptions>(@jsonFile);
+                fileC.Close();
 
-                //Reads the INI file Parameters section
-                logLocationStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_9];
-                serverIPStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_11];
-                serverPortStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_12];
-                themeStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_1][ConstantsDLL.Properties.Resources.INI_SECTION_1_15];
+                //Creates 'Definitions' JSON section object
+                definitions = new Definitions()
+                {
+                    LogLocation = jsonParse.Definitions.LogLocation,
+                    ServerIP = jsonParse.Definitions.ServerIP,
+                    ServerPort = jsonParse.Definitions.ServerPort,
+                    ThemeUI = jsonParse.Definitions.ThemeUI,
+                };
+                //Creates 'Enforcement' JSON section object
+                enforcement = new Enforcement()
+                {
+                    RamLimit = jsonParse.Enforcement.RamLimit,
+                    SmartStatus = jsonParse.Enforcement.SmartStatus,
+                    MediaOperationMode = jsonParse.Enforcement.MediaOperationMode,
+                    Hostname = jsonParse.Enforcement.FirmwareType,
+                    FirmwareType = jsonParse.Enforcement.FirmwareType,
+                    FirmwareVersion = jsonParse.Enforcement.FirmwareVersion,
+                    SecureBoot = jsonParse.Enforcement.VirtualizationTechnology,
+                    VirtualizationTechnology = jsonParse.Enforcement.VirtualizationTechnology,
+                    Tpm = jsonParse.Enforcement.Tpm,
+                    CheckForUpdates = jsonParse.Enforcement.CheckForUpdates
+                };
+                //Creates 'OrgData' JSON section object
+                orgData = new OrgData()
+                {
+                    OrganizationFullName = jsonParse.OrgData.OrganizationFullName,
+                    OrganizationAcronym = jsonParse.OrgData.OrganizationAcronym,
+                    DepartamentFullName = jsonParse.OrgData.DepartamentFullName,
+                    DepartamentAcronym = jsonParse.OrgData.DepartamentAcronym,
+                    SubDepartamentFullName = jsonParse.OrgData.SubDepartamentFullName,
+                    SubDepartamentAcronym = jsonParse.OrgData.SubDepartamentAcronym
+                };
+                //Creates general JSON structure object
+                configOptions = new ConfigurationOptions()
+                {
+                    Definitions = definitions,
+                    Enforcement = enforcement,
+                    OrgData = orgData
+                };
 
-                logLocationSection = logLocationStr.Split().ToArray();
-                serverIPListSection = serverIPStr.Split(',').ToArray();
-                serverPortListSection = serverPortStr.Split(',').ToArray();
-                themeSection = themeStr.Split().ToArray();
-
-                //Reads the INI file Enforcement section
-                ramLimitEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_1];
-                smartStatusEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_2];
-                mediaOperationModeEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_3];
-                hostnameEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_4];
-                firmwareTypeEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_5];
-                firmwareVersionEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_6];
-                secureBootEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_7];
-                vtEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_8];
-                tpmEnforcementStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_9];
-                checkUpdatesStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_2][ConstantsDLL.Properties.Resources.INI_SECTION_2_10];
-
-                //Reads the INI file OrgData section
-                orgFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_1];
-                orgAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_2];
-                depFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_3];
-                depAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_4];
-                subDepFullNameStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_5];
-                subDepAcronymStr = def[ConstantsDLL.Properties.Resources.INI_SECTION_3][ConstantsDLL.Properties.Resources.INI_SECTION_3_6];
-
-                //Assigns null to allow to pass as argument and be filled later
-                buildings = hardwareTypes = firmwareTypes = tpmTypes = mediaOperationTypes = secureBootStates = virtualizationTechnologyStates = null;
-
-                if (!StringsAndConstants.LIST_THEME_GUI.Contains(themeSection[0]))
+                //Check if theme set in parameters file is valid
+                if (!StringsAndConstants.LIST_THEME_GUI.Contains(configOptions.Definitions.ThemeUI))
                     throw new FormatException();
 
-                //[Parameters] ini section
-                parametersListSection = new List<string[]>
-                {
-                    serverIPListSection,
-                    serverPortListSection,
-                    logLocationSection,
-                    themeSection,
-                    buildings,
-                    hardwareTypes,
-                    firmwareTypes,
-                    tpmTypes,
-                    mediaOperationTypes,
-                    secureBootStates,
-                    virtualizationTechnologyStates
-                };
-
-                //[Enforcement] ini section
-                enforcementListSection = new List<string>
-                {
-                    ramLimitEnforcementStr,
-                    smartStatusEnforcementStr,
-                    mediaOperationModeEnforcementStr,
-                    hostnameEnforcementStr,
-                    firmwareTypeEnforcementStr,
-                    firmwareVersionEnforcementStr,
-                    secureBootEnforcementStr,
-                    vtEnforcementStr,
-                    tpmEnforcementStr,
-                    checkUpdatesStr,
-                };
-
-                //[OrgData] ini section
-                orgDataListSection = new List<string>
-                {
-                    orgFullNameStr,
-                    orgAcronymStr,
-                    depFullNameStr,
-                    depAcronymStr,
-                    subDepFullNameStr,
-                    subDepAcronymStr
-                };
-
-                //Checks if [Enforcement] bool values are valid
-                foreach (string s in enforcementListSection)
-                {
-                    try
-                    {
-                        bool.Parse(s);
-                    }
-                    catch
-                    {
-                        throw new FormatException();
-                    }
-                }
-
-                bool fileExists = bool.Parse(Misc.MiscMethods.CheckIfLogExists(logLocationStr));
+                //Check if log file exists
+                bool fileExists = bool.Parse(Misc.MiscMethods.CheckIfLogExists(configOptions.Definitions.LogLocation));
 
                 //If args has a --help switch, do not show log output
-                if (!args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                if (!args.Contains(Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     showCLIOutput = true;
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + Resources.DEV_STATUS, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + Resources.DEV_STATUS + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS, configOptions.Definitions.LogLocation, Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + Resources.LOG_FILE_EXT, showCLIOutput);
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, logLocationStr, ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, configOptions.Definitions.LogLocation, ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOGFILE_NOTEXISTS, string.Empty, showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOGFILE_NOTEXISTS, string.Empty, showCLIOutput);
                 else
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
 
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_GUI_MODE, string.Empty, showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_GUI_MODE, string.Empty, showCLIOutput);
 
                     FreeConsole();
 
                     bool isSystemDarkModeEnabled = Misc.MiscMethods.GetSystemThemeMode();
-                    (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersListSection, isSystemDarkModeEnabled);
+                    (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(configOptions.Definitions, isSystemDarkModeEnabled);
                     bool initialTheme = false;
 
-                    Form lForm = new LoginForm(ghc, log, parametersListSection, enforcementListSection, orgDataListSection, isSystemDarkModeEnabled);
+                    Form lForm = new LoginForm(ghc, log, configOptions, isSystemDarkModeEnabled);
 
-                    if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
                     {
                         switch (themeFileSet)
                         {
@@ -318,52 +314,54 @@ namespace AssetInformationAndRegistration
                                 break;
                         }
                     }
-                    UpdateChecker.Check(ghc, log, parametersListSection, Convert.ToBoolean(enforcementListSection[9]), false, false, initialTheme);
+                    UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, false, initialTheme);
                     Application.Run(lForm);
                 }
                 else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
-                    int index = Array.IndexOf(argsLog, ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
+                    int index = Array.IndexOf(argsLog, Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
                     if (index == -1)
                     {
-                        index = Array.FindIndex(argsLog, x => x.StartsWith(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
+                        index = Array.FindIndex(argsLog, x => x.StartsWith(Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
                         if (index != -1)
-                            argsLog[index] = ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + Resources.LOG_PASSWORD_PLACEHOLDER;
                     }
                     else
                     {
-                        argsLog[index + 1] = ConstantsDLL.Properties.Resources.LOG_PASSWORD_PLACEHOLDER;
+                        argsLog[index + 1] = Resources.LOG_PASSWORD_PLACEHOLDER;
                     }
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLI_MODE, string.Join(" ", argsLog), showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLI_MODE, string.Join(" ", argsLog), showCLIOutput);
 
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions);
 
-                    if (args.Length == 1 && args.Contains(ConstantsDLL.Properties.Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                    if (args.Length == 1 && args.Contains(Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
                         Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));
                     }
                     else
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.ARGS_ERROR, string.Empty, showCLIOutput);
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.ARGS_ERROR, string.Empty, showCLIOutput);
                         Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                 }
             }
-            catch (ParsingException e) //If definition file was not found
+            //If config file was not found or is malformed
+            catch (Exception e) when (e is JsonReaderException || e is JsonSerializationException || e is FormatException)
             {
-                Console.WriteLine(ConstantsDLL.Properties.Strings.LOG_DEFFILE_NOT_FOUND + ": " + e.Message);
-                Console.WriteLine(ConstantsDLL.Properties.Strings.KEY_FINISH);
+                Console.WriteLine(Strings.PARAMETER_ERROR + ": " + e.Message);
+                Console.WriteLine(Strings.KEY_FINISH);
                 Console.ReadLine();
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
-            catch (FormatException e) //If definition file was malformed, but the logfile is not created (log path is undefined)
+            //If config file is not found
+            catch(FileNotFoundException e)
             {
-                Console.WriteLine(ConstantsDLL.Properties.Strings.PARAMETER_ERROR + ": " + e.Message);
-                Console.WriteLine(ConstantsDLL.Properties.Strings.KEY_FINISH);
+                Console.WriteLine(LogStrings.LOG_PARAMETER_FILE_NOT_FOUND + ": " + e.Message);
+                Console.WriteLine(Strings.KEY_FINISH);
                 Console.ReadLine();
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }

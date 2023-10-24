@@ -2,13 +2,15 @@
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
+using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
-using RestApiDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
 using MRG.Controls.UI;
+using Octokit;
+using RestApiDLL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,6 +20,9 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
+using Label = System.Windows.Forms.Label;
+using MiscMethods = AssetInformationAndRegistration.Misc.MiscMethods;
 
 namespace AssetInformationAndRegistration.Forms
 {
@@ -27,66 +32,65 @@ namespace AssetInformationAndRegistration.Forms
     internal partial class LoginForm : Form, ITheming
     {
         private bool isSystemDarkModeEnabled;
-        private readonly string[] agentsJsonStr = { };
-        private readonly LogGenerator log;
-        private readonly List<string[]> parametersList;
-        private readonly List<string> enforcementList, orgDataList;
-        private TaskbarManager tbProgLogin;
-        private MainForm mForm;
-        private readonly Octokit.GitHubClient ghc;
-        private UserPreferenceChangedEventHandler UserPreferenceChanged;
         private Agent agent;
+        private readonly Program.ConfigurationOptions configOptions;
+        private readonly GitHubClient ghc;
         private HttpClient client;
+        private readonly LogGenerator log;
+        private MainForm mForm;
+        private TaskbarManager tbProgLogin;
+        private UserPreferenceChangedEventHandler UserPreferenceChanged;
 
-        /// <summary> 
+        /// <summary>
         /// Login form constructor
         /// </summary>
+        /// <param name="ghc">GitHub client object</param>
         /// <param name="log">Log file object</param>
-        /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="enforcementList">List containing data from [Enforcement]</param>
-        /// <param name="orgDataList">List containing data from [OrgData]</param>
-        internal LoginForm(Octokit.GitHubClient ghc, LogGenerator log, List<string[]> parametersList, List<string> enforcementList, List<string> orgDataList, bool isSystemDarkModeEnabled)
+        /// <param name="configOptions">Configuration object</param>
+        /// <param name="isSystemDarkModeEnabled">System dark mode status</param>
+        internal LoginForm(GitHubClient ghc, LogGenerator log, Program.ConfigurationOptions configOptions, bool isSystemDarkModeEnabled)
         {
             //Inits WinForms components
             InitializeComponent();
 
-            //Define theming according to ini file provided info
-            (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersList, isSystemDarkModeEnabled);
+            this.ghc = ghc;
+            this.log = log;
+            this.configOptions = configOptions;
+            this.isSystemDarkModeEnabled = isSystemDarkModeEnabled;
+
+            comboBoxServerIP.Items.AddRange(this.configOptions.Definitions.ServerIP.ToArray());
+            comboBoxServerPort.Items.AddRange(this.configOptions.Definitions.ServerPort.ToArray());
+
+            //Define theming according to JSON file provided info
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(this.configOptions.Definitions, this.isSystemDarkModeEnabled);
             switch (themeFileSet)
             {
                 case 0:
-                    LightTheme();
+                    MiscMethods.LightThemeAllControls(this);
+                    LightThemeSpecificControls();
                     break;
                 case 1:
-                    DarkTheme();
+                    MiscMethods.DarkThemeAllControls(this);
+                    DarkThemeSpecificControls();
                     break;
             }
 
-            this.ghc = ghc;
-            this.parametersList = parametersList;
-            this.enforcementList = enforcementList;
-            this.orgDataList = orgDataList;
-            this.log = log;
-            this.isSystemDarkModeEnabled = isSystemDarkModeEnabled;
-
-            //Sets status bar text according to info provided in the ini file
-            string[] oList = new string[6];
-            for (int i = 0; i < orgDataList.Count; i++)
+            //Sets status bar text according to info provided in the JSON file
+            List<string> oList = new List<string>();
+            foreach (PropertyInfo pi in configOptions.OrgData.GetType().GetProperties())
             {
-                if (!orgDataList[i].Equals(string.Empty))
-                    oList[i] = orgDataList[i].ToString() + " - ";
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(configOptions.OrgData);
+                    if (!string.IsNullOrEmpty(value))
+                        oList.Add(value + " - ");
+                }
             }
-
             toolStripStatusBarText.Text = oList[3] + oList[1].Substring(0, oList[1].Length - 2);
-
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_THEME, isSystemDarkModeEnabled.ToString(), Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-
-            comboBoxServerIP.Items.AddRange(parametersList[0]);
-            comboBoxServerPort.Items.AddRange(parametersList[1]);
 
             //Program version
 #if DEBUG
-            toolStripVersionText.Text = Misc.MiscMethods.Version(Resources.DEV_STATUS);
+            toolStripVersionText.Text = MiscMethods.Version(AirResources.DEV_STATUS);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
@@ -94,198 +98,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-        }
-
-        public void LightTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
-
-            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.LIGHT_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
-            {
-                cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
-                cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
-                else if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                else if (!l.Name.Contains("Color"))
-                    l.ForeColor = StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            }
-            foreach (TextBox tb in Controls.OfType<TextBox>())
-            {
-                tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
-                tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                if (tb.Name.Contains("Inactive"))
-                    tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            }
-
-            BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-
-            aboutLabelButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            aboutLabelButton.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            toolStripStatusBarText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            toolStripVersionText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-            toolStripStatusBarText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            toolStripVersionText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
-            statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
-
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_ABOUT_LIGHT_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.LOGIN_BANNER_LIGHT_PATH));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_AGENT_LIGHT_PATH));
-            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PASSWORD_LIGHT_PATH));
-            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SERVER_LIGHT_PATH));
-            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_LIGHT_PATH));
-        }
-
-        public void DarkTheme()
-        {
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
-
-            BackColor = StringsAndConstants.DARK_BACKGROUND;
-
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                b.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                b.FlatAppearance.BorderColor = StringsAndConstants.DARK_BACKGROUND;
-                b.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            }
-            foreach (CheckBox cb in Controls.OfType<CheckBox>())
-            {
-                cb.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                cb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (CustomFlatComboBox cfcb in Controls.OfType<CustomFlatComboBox>())
-            {
-                cfcb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                cfcb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                cfcb.BorderColor = StringsAndConstants.DARK_FORECOLOR;
-                cfcb.ButtonColor = StringsAndConstants.DARK_BACKCOLOR;
-            }
-            foreach (DataGridView dgv in Controls.OfType<DataGridView>())
-            {
-                dgv.BackgroundColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKGROUND;
-                dgv.ColumnHeadersDefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                dgv.DefaultCellStyle.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                dgv.DefaultCellStyle.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (Label l in Controls.OfType<Label>())
-            {
-                if (l.Name.Contains("Separator"))
-                    l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
-                else if (l.Name.Contains("Mandatory"))
-                    l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
-                else if (l.Name.Contains("Fixed"))
-                    l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                else if (!l.Name.Contains("Color"))
-                    l.ForeColor = StringsAndConstants.DARK_SUBTLE_LIGHTCOLOR;
-            }
-            foreach (RadioButton rb in Controls.OfType<RadioButton>())
-            {
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                rb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (RichTextBox rtb in Controls.OfType<RichTextBox>())
-            {
-                rtb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                rtb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            }
-            foreach (TextBox tb in Controls.OfType<TextBox>())
-            {
-                tb.BackColor = StringsAndConstants.DARK_BACKCOLOR;
-                tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-                if (tb.Name.Contains("Inactive"))
-                    tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            }
-
-            aboutLabelButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            aboutLabelButton.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            toolStripStatusBarText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            toolStripVersionText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
-            toolStripStatusBarText.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            toolStripVersionText.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
-            statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
-
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_ABOUT_DARK_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.LOGIN_BANNER_DARK_PATH));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_AGENT_DARK_PATH));
-            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PASSWORD_DARK_PATH));
-            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_SERVER_DARK_PATH));
-            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ConstantsDLL.Properties.Resources.ICON_PORT_DARK_PATH));
-        }
-
-        /// <summary> 
-        /// Method for auto selecting the app theme
-        /// </summary>
-        private void ToggleTheme()
-        {
-            (int themeFileSet, bool _) = Misc.MiscMethods.GetFileThemeMode(parametersList, Misc.MiscMethods.GetSystemThemeMode());
-            switch (themeFileSet)
-            {
-                case 0:
-                    LightTheme();
-                    isSystemDarkModeEnabled = false;
-                    break;
-                case 1:
-                    DarkTheme();
-                    isSystemDarkModeEnabled = true;
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Allows the theme to change automatically according to the system one
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
-        {
-            if (e.Category == UserPreferenceCategory.General)
-                ToggleTheme();
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, isSystemDarkModeEnabled.ToString(), Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
         }
 
         /// <summary> 
@@ -295,212 +108,13 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            #region Define loading circle parameters
-
-            switch (Misc.MiscMethods.GetWindowsScaling())
-            {
-                case 100:
-                    //Init loading circles parameters for 100% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_100);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_100);
-                    }
-
-                    break;
-                case 125:
-                    //Init loading circles parameters for 125% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_125);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_125);
-                    }
-                    break;
-                case 150:
-                    //Init loading circles parameters for 150% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_150);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_150);
-                    }
-                    break;
-                case 175:
-                    //Init loading circles parameters for 175% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_175);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_175);
-                    }
-                    break;
-                case 200:
-                    //Init loading circles parameters for 200% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_200);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_200);
-                    }
-                    break;
-                case 225:
-                    //Init loading circles parameters for 225% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_225);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_225);
-                    }
-                    break;
-                case 250:
-                    //Init loading circles parameters for 250% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_250);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_250);
-                    }
-                    break;
-                case 300:
-                    //Init loading circles parameters for 300% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_300);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_300);
-                    }
-                    break;
-                case 350:
-                    //Init loading circles parameters for 350% scaling
-                    foreach (GroupBox gb in Controls.OfType<GroupBox>())
-                    {
-                        foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                        {
-                            lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
-                            lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
-                            lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
-                            lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
-                        }
-                    }
-                    foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-                    {
-                        lc.NumberSpoke = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
-                        lc.SpokeThickness = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
-                        lc.InnerCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_INNER_RADIUS_350);
-                        lc.OuterCircleRadius = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_OUTER_RADIUS_350);
-                    }
-                    break;
-            }
-            foreach (GroupBox gb in Controls.OfType<GroupBox>())
-            {
-                foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
-                {
-                    lc.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
-                    lc.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
-                }
-            }
-            foreach (LoadingCircle lc in Controls.OfType<LoadingCircle>())
-            {
-                lc.RotationSpeed = Convert.ToInt32(ConstantsDLL.Properties.Resources.ROTATING_CIRCLE_ROTATION_SPEED);
-                lc.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
-            }
-            #endregion
+            MiscMethods.SetLoadingCircles(this);
 
             FormClosing += LoginForm_Closing;
-            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
-            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
             Disposed += new EventHandler(LoginForm_Disposed);
             tbProgLogin = TaskbarManager.Instance;
+            UserPreferenceChanged = new UserPreferenceChangedEventHandler(SystemEvents_UserPreferenceChanged);
+            SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
         }
 
         /// <summary> 
@@ -510,8 +124,8 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), ConstantsDLL.Properties.Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
 
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
@@ -536,88 +150,92 @@ namespace AssetInformationAndRegistration.Forms
         {
             try
             {
-                client = new HttpClient();
-                client.BaseAddress = new Uri(ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }
-            catch
-            {
-
-            }
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-            loadingCircleAuthButton.Visible = true;
-            loadingCircleAuthButton.Active = true;
-            aboutLabelButton.Enabled = false;
-            if (checkBoxOfflineMode.Checked)
-            {
-                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                mForm = new MainForm(ghc, true, null, null, null, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
-                if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                    DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
-
-                Hide();
-                textBoxUsername.Text = null;
-                textBoxPassword.Text = null;
-                textBoxUsername.Select();
-                _ = mForm.ShowDialog();
-                mForm.Close();
-                mForm.Dispose();
-                Show();
-            }
-            else
-            {
-                textBoxUsername.Enabled = false;
-                textBoxPassword.Enabled = false;
-                comboBoxServerIP.Enabled = false;
-                comboBoxServerPort.Enabled = false;
-                checkBoxOfflineMode.Enabled = false;
-                tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOG_SERVER_DETAIL, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-
-                //Feches login data from server
-                agent = await AuthenticationHandler.GetAgentAsync(client, ConstantsDLL.Properties.Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + ConstantsDLL.Properties.Resources.API_AGENT_URL + textBoxUsername.Text);
-
-                //If all the mandatory fields are filled
-                if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
+                //If offline mode is checked
+                if (checkBoxOfflineMode.Checked)
                 {
-                    //If Login Json file does not exist, there is no internet connection
-                    if (agent == null)
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        _ = MessageBox.Show(ConstantsDLL.Properties.Strings.INTRANET_REQUIRED, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                    }
-                    else if (agent.username == string.Empty) //If Login Json file does exist, but the agent do not exist
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.LOG_LOGIN_FAILED, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        _ = MessageBox.Show(Strings.AUTH_INVALID, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
-                    }
-                    else //If Login Json file does exist and agent logs in
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), ConstantsDLL.Properties.Strings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                        MainForm mForm = new MainForm(ghc, false, agent, comboBoxServerIP.Text, comboBoxServerPort.Text, log, parametersList, enforcementList, orgDataList, isSystemDarkModeEnabled);
-                        if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
-                            DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
+                    tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+                    mForm = new MainForm(null, ghc, log, configOptions, null, null, null, true, isSystemDarkModeEnabled);
+                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                        DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
+                    Hide();
+                    textBoxUsername.Text = null;
+                    textBoxPassword.Text = null;
+                    textBoxUsername.Select();
+                    _ = mForm.ShowDialog();
+                    mForm.Close();
+                    mForm.Dispose();
+                    Show();
+                }
+                //If not in offline mode and all the mandatory fields are filled
+                else if (!string.IsNullOrWhiteSpace(textBoxUsername.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
+                {
+                    tbProgLogin.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
+                    loadingCircleAuthButton.Visible = true;
+                    loadingCircleAuthButton.Active = true;
+                    aboutLabelButton.Enabled = false;
+                    textBoxUsername.Enabled = false;
+                    textBoxPassword.Enabled = false;
+                    comboBoxServerIP.Enabled = false;
+                    comboBoxServerPort.Enabled = false;
+                    checkBoxOfflineMode.Enabled = false;
 
-                        Hide();
-                        textBoxUsername.Text = null;
-                        textBoxPassword.Text = null;
-                        textBoxUsername.Select();
-                        _ = mForm.ShowDialog();
-                        mForm.Close();
-                        mForm.Dispose();
-                        Show();
-                    }
+                    client = new HttpClient
+                    {
+                        BaseAddress = new Uri(Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text)
+                    };
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(Resources.HTTP_CONTENT_TYPE_JSON));
+
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVER_DATA, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                    //Feches login data from server
+                    agent = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + Resources.API_AGENT_URL + textBoxUsername.Text);
+
+                    //If Agent does exist and is retrieved
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    MainForm mForm = new MainForm(client, ghc, log, configOptions, agent, comboBoxServerIP.Text, comboBoxServerPort.Text, false, isSystemDarkModeEnabled);
+                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                        DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
+
+                    Hide();
+                    textBoxUsername.Text = null;
+                    textBoxPassword.Text = null;
+                    textBoxUsername.Select();
+                    _ = mForm.ShowDialog();
+                    mForm.Close();
+                    mForm.Dispose();
+                    Show();
                 }
                 else //If all the mandatory fields are not filled
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ConstantsDLL.Properties.Strings.NO_AUTH, string.Empty, Convert.ToBoolean(ConstantsDLL.Properties.Resources.CONSOLE_OUT_GUI));
-                    _ = MessageBox.Show(ConstantsDLL.Properties.Strings.NO_AUTH, ConstantsDLL.Properties.Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.FILL_IN_YOUR_CREDENTIALS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    _ = MessageBox.Show(Strings.FILL_IN_YOUR_CREDENTIALS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
                 aboutLabelButton.Enabled = true;
+            }
+            //If URI is invalid
+            catch (UriFormatException ex)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(Strings.FILL_IN_SERVER_DETAILS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+            }
+            //If Agent does not exist because there is no internet connection
+            catch (HttpRequestException ex)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(Strings.INTRANET_REQUIRED, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+            }
+            //If Agent does not exist, but the connection succeeded
+            catch (InvalidAgentException ex)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(Strings.INVALID_CREDENTIALS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
 
             //Enables controls if login is not successful
@@ -637,7 +255,7 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void OfflineModeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOfflineMode.Checked)
             {
@@ -662,10 +280,80 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
-            AboutBox aForm = new AboutBox(ghc, log, parametersList, isSystemDarkModeEnabled);
-            if (HardwareInfo.GetWinVersion().Equals(ConstantsDLL.Properties.Resources.WINDOWS_10))
+            AboutBox aForm = new AboutBox(ghc, log, configOptions.Definitions, isSystemDarkModeEnabled);
+            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(aForm, Theme.Auto);
             _ = aForm.ShowDialog();
+        }
+
+        /// <summary> 
+        /// Method for auto selecting the app theme
+        /// </summary>
+        private void ToggleTheme()
+        {
+            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(configOptions.Definitions, MiscMethods.GetSystemThemeMode());
+            switch (themeFileSet)
+            {
+                case 0:
+                    MiscMethods.LightThemeAllControls(this);
+                    LightThemeSpecificControls();
+                    isSystemDarkModeEnabled = false;
+                    break;
+                case 1:
+                    MiscMethods.DarkThemeAllControls(this);
+                    DarkThemeSpecificControls();
+                    isSystemDarkModeEnabled = true;
+                    break;
+            }
+        }
+
+        public void LightThemeSpecificControls()
+        {
+            aboutLabelButton.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            aboutLabelButton.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripStatusBarText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripVersionText.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+            toolStripStatusBarText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            toolStripVersionText.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
+
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_LIGHT_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.LOGIN_BANNER_LIGHT_PATH));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AGENT_LIGHT_PATH));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PASSWORD_LIGHT_PATH));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_LIGHT_PATH));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PORT_LIGHT_PATH));
+        }
+
+        public void DarkThemeSpecificControls()
+        {
+            aboutLabelButton.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            aboutLabelButton.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripStatusBarText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripVersionText.ForeColor = StringsAndConstants.DARK_FORECOLOR;
+            toolStripStatusBarText.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            toolStripVersionText.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
+
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_DARK_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.LOGIN_BANNER_DARK_PATH));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AGENT_DARK_PATH));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PASSWORD_DARK_PATH));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_DARK_PATH));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PORT_DARK_PATH));
+        }
+
+        /// <summary>
+        /// Allows the theme to change automatically according to the system one
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SystemEvents_UserPreferenceChanged(object sender, UserPreferenceChangedEventArgs e)
+        {
+            if (e.Category == UserPreferenceCategory.General)
+                ToggleTheme();
         }
     }
 }
