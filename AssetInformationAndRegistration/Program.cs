@@ -171,7 +171,7 @@ namespace AssetInformationAndRegistration
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-                    CLIRegister cr = new CLIRegister(argsArray, agent, log, configOptions);
+                    CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
                     UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
                 }
                 else
@@ -349,7 +349,7 @@ namespace AssetInformationAndRegistration
                     }
                 }
             }
-            //If config file was not found or is malformed
+            //If config file is malformed
             catch (Exception e) when (e is JsonReaderException || e is JsonSerializationException || e is FormatException)
             {
                 Console.WriteLine(Strings.PARAMETER_ERROR + ": " + e.Message);

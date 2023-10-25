@@ -46,8 +46,8 @@ namespace AssetInformationAndRegistration.Forms
         /// </summary>
         /// <param name="ghc">GitHub client object</param>
         /// <param name="log">Log file object</param>
-        /// <param name="configOptions">Configuration object</param>
-        /// <param name="isSystemDarkModeEnabled">System dark mode status</param>
+        /// <param name="configOptions">Config file object</param>
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         internal LoginForm(GitHubClient ghc, LogGenerator log, Program.ConfigurationOptions configOptions, bool isSystemDarkModeEnabled)
         {
             //Inits WinForms components

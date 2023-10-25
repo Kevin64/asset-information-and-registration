@@ -19,8 +19,10 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
@@ -269,16 +271,15 @@ namespace AssetInformationAndRegistration.Forms
         /// <summary>
         /// Main form constructor
         /// </summary>
+        /// <param name="client">HTTP client object</param>
         /// <param name="ghc">GitHub client object</param>
-        /// <param name="offlineMode">Offline mode set</param>
+        /// <param name="log">Log file object</param>
+        /// <param name="configOptions">Config file object</param>
         /// <param name="agent">Agent object</param>
         /// <param name="serverIP">Server IP address</param>
         /// <param name="serverPort">Server port</param>
-        /// <param name="log">Log file object</param>
-        /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="enforcementList">List containing data from [Enforcement]</param>
-        /// <param name="orgDataList">List containing data from [OrgData]</param>
-        /// <param name="isSystemDarkModeEnabled">Theme state</param>
+        /// <param name="offlineMode">Offline mode set</param>
+        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         internal MainForm(HttpClient client, GitHubClient ghc, LogGenerator log, Program.ConfigurationOptions configOptions, Agent agent, string serverIP, string serverPort, bool offlineMode, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
@@ -352,7 +353,7 @@ namespace AssetInformationAndRegistration.Forms
 #if DEBUG
             toolStripVersionText.Text = Misc.MiscMethods.Version(AirResources.DEV_STATUS); //Debug/Beta version
 #else
-            toolStripVersionText.Text = MiscMethods.Version(); //Release/Final version
+            toolStripVersionText.Text = Misc.MiscMethods.Version(); //Release/Final version
 #endif
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
@@ -390,35 +391,21 @@ namespace AssetInformationAndRegistration.Forms
         {
             Misc.MiscMethods.SetLoadingCircles(this);
 
-            ServerParam sp = new ServerParam();
+            //Attributes fetching data to an object
+            serverParam = new ServerParam();
             if (!offlineMode)
             {
                 //Fetch building and hw types info from the specified server
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                sp = await ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
+                serverParam = await ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
             }
             else
             {
                 //Fetch building and hw types info from the local file
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                sp = ParameterHandler.GetOfflineModeConfigFile();
+                serverParam = ParameterHandler.GetOfflineModeConfigFile();
             }
-            //Attributes fetching data to an object
-            Parameters newParam = new Parameters()
-            {
-                Buildings = sp.Parameters.Buildings,
-                HardwareTypes = sp.Parameters.HardwareTypes,
-                FirmwareTypes = sp.Parameters.FirmwareTypes,
-                TpmTypes = sp.Parameters.TpmTypes,
-                MediaOperationTypes = sp.Parameters.MediaOperationTypes,
-                RamTypes = sp.Parameters.RamTypes,
-                SecureBootStates = sp.Parameters.SecureBootStates,
-                VirtualizationTechnologyStates = sp.Parameters.VirtualizationTechnologyStates
-            };
-            serverParam = new ServerParam()
-            {
-                Parameters = newParam,
-            };
+            
             comboBoxBuilding.Items.AddRange(serverParam.Parameters.Buildings.ToArray());
             comboBoxHwType.Items.AddRange(serverParam.Parameters.HardwareTypes.ToArray());
 
@@ -1026,49 +1013,79 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     if (textBoxAssetNumber.Text != string.Empty)
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-
-                        //Feches asset data from server
-                        existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
-                    }
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-
-                    //Feches model info from server
-                    modelTemplate = await ModelHandler.GetModelAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_MODEL_URL + lblModel.Text);
-
-                    loadingCircleLastService.Visible = false;
-                    loadingCircleLastService.Active = false;
-
-                    //If asset exists on the database
-                    if (existingAsset != null)
-                    {
-                        radioButtonUpdateData.Enabled = true;
-                        lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
-                        lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-
-                        for (int i = 0; i < existingAsset.maintenances.Count; i++)
+                        try
                         {
-                            //Feches agent names from server
-                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
-                            if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
-                            {
-                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
-                            }
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            //Feches model info from server
+                            modelTemplate = await ModelHandler.GetModelAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_MODEL_URL + lblModel.Text);
+                        }
+                        catch (InvalidModelException)
+                        {
 
                         }
-                        tableMaintenances.Visible = true;
-                        tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
+                        catch (HttpRequestException)
+                        {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+
+                            _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        try
+                        {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            existingAsset = null;
+
+                            //Feches asset data from server
+                            existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+
+                            loadingCircleLastService.Visible = false;
+                            loadingCircleLastService.Active = false;
+
+                            radioButtonUpdateData.Enabled = true;
+                            lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
+                            lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            for (int i = 0; i < existingAsset.maintenances.Count; i++)
+                            {
+                                //Feches agent names from server
+                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                                if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
+                                {
+                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                                }
+
+                            }
+                            tableMaintenances.Visible = true;
+                            tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
+                        }
+                        //If asset does not exist on the database
+                        catch (InvalidAssetException)
+                        {
+                            loadingCircleLastService.Visible = false;
+                            loadingCircleLastService.Active = false;
+
+                            radioButtonUpdateData.Enabled = false;
+                            lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
+                            lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                            lblThereIsNothingHere.Visible = true;
+                        }
+                        //If server is unreachable
+                        catch (HttpRequestException)
+                        {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+
+                            _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    //If asset does not exist on the database
-                    else
-                    {
-                        radioButtonUpdateData.Enabled = false;
-                        lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
-                        lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                        lblThereIsNothingHere.Visible = true;
-                    }
+
                     loadingCircleTableMaintenances.Visible = false;
                     loadingCircleTableMaintenances.Active = false;
                 }
@@ -1230,15 +1247,6 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private async void RegisterButton_ClickAsync(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-            tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
-            loadingCircleRegisterButton.Visible = true;
-            loadingCircleRegisterButton.Active = true;
-            registerButton.Text = Resources.DASH;
-            registerButton.Enabled = false;
-            apcsButton.Enabled = false;
-            collectButton.Enabled = false;
-
             //If all the mandatory fields are filled and there are no pendencies
             if (!string.IsNullOrWhiteSpace(textBoxAssetNumber.Text) &&
                 !string.IsNullOrWhiteSpace(textBoxRoomNumber.Text) &&
@@ -1252,6 +1260,15 @@ namespace AssetInformationAndRegistration.Forms
                 (radioButtonFormatting.Checked || radioButtonMaintenance.Checked || radioButtonUpdateData.Checked) &&
                 pass == true)
             {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
+                loadingCircleRegisterButton.Visible = true;
+                loadingCircleRegisterButton.Active = true;
+                registerButton.Text = Resources.DASH;
+                registerButton.Enabled = false;
+                apcsButton.Enabled = false;
+                collectButton.Enabled = false;
+
                 //Attribute variables to a previously created new Asset, which will be sent to the server
                 location l = new location
                 {
@@ -1295,7 +1312,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 else //If not discarded
                 {
-                    if (serverOnline && serverPort != string.Empty) //If server is online and port is not null
+                    if (serverOnline) //If server is online
                     {
                         try //Tries to get the latest register date from the asset number to check if the chosen date is adequate
                         {
@@ -1304,17 +1321,18 @@ namespace AssetInformationAndRegistration.Forms
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-
-                                Uri v = await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
-
-                                if (v != null)
+                                try
                                 {
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                                    //Send info to server
+                                    await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset);
+
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
 
                                     _ = MessageBox.Show(Strings.ASSET_UPDATED, Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-                                else
+                                catch (HttpRequestException)
                                 {
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
 
@@ -1323,7 +1341,6 @@ namespace AssetInformationAndRegistration.Forms
                                     _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     _ = MessageBox.Show(Strings.ASSET_NOT_ADDED, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
@@ -1339,17 +1356,18 @@ namespace AssetInformationAndRegistration.Forms
                         }
                         catch //If can't retrieve (asset number non existent in the database), register normally
                         {
-                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-
-                            Uri v = await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
-
-                            if (v != null)
+                            try
                             {
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                                //Send info to server
+                                await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset);
+
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
 
                                 _ = MessageBox.Show(Strings.ASSET_ADDED, Strings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            else
+                            catch (HttpRequestException)
                             {
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
 
@@ -1370,6 +1388,71 @@ namespace AssetInformationAndRegistration.Forms
                         tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                     }
+
+
+                    //Feches asset number data from server to update the label
+                    loadingCircleLastService.Visible = true;
+                    loadingCircleLastService.Active = true;
+                    loadingCircleRegisterButton.Visible = true;
+                    loadingCircleRegisterButton.Active = true;
+                    lblThereIsNothingHere.Visible = false;
+                    tableMaintenances.Visible = false;
+                    loadingCircleTableMaintenances.Visible = true;
+                    loadingCircleTableMaintenances.Active = true;
+                    lblColorLastService.Text = Resources.DASH;
+
+                    if (serverOnline)
+                    {
+                        try
+                        {
+                            existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+
+                            radioButtonUpdateData.Enabled = true;
+                            loadingCircleLastService.Visible = false;
+                            loadingCircleLastService.Active = false;
+                            lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
+                            lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
+
+                            tableMaintenances.Rows.Clear();
+                            for (int i = 0; i < existingAsset.maintenances.Count; i++)
+                            {
+                                //Feches agent names from server
+                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                                if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
+                                {
+                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                                }
+                            }
+                            tableMaintenances.Visible = true;
+                            tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
+                        }
+                        //If asset does not exist on the database
+                        catch (InvalidAssetException)
+                        {
+                            loadingCircleLastService.Visible = false;
+                            loadingCircleLastService.Active = false;
+
+                            radioButtonUpdateData.Enabled = false;
+                            lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
+                            lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                            lblThereIsNothingHere.Visible = true;
+                        }
+                        //If server is unreachable
+                        catch (HttpRequestException)
+                        {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+
+                            _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else if (!pass) //If there are pendencies in the PC config
@@ -1389,56 +1472,6 @@ namespace AssetInformationAndRegistration.Forms
 
                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
-            }
-
-            //Feches asset number data from server to update the label
-            loadingCircleLastService.Visible = true;
-            loadingCircleLastService.Active = true;
-            loadingCircleRegisterButton.Visible = true;
-            loadingCircleRegisterButton.Active = true;
-            lblThereIsNothingHere.Visible = false;
-            tableMaintenances.Visible = false;
-            loadingCircleTableMaintenances.Visible = true;
-            loadingCircleTableMaintenances.Active = true;
-            lblColorLastService.Text = Resources.DASH;
-
-            if (serverOnline)
-            {
-                existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
-            }
-            else
-            {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                _ = MessageBox.Show(AirStrings.DATABASE_REACH_ERROR, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (existingAsset != null)
-            {
-                radioButtonUpdateData.Enabled = true;
-                loadingCircleLastService.Visible = false;
-                loadingCircleLastService.Active = false;
-                lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
-                lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-
-                tableMaintenances.Rows.Clear();
-                for (int i = 0; i < existingAsset.maintenances.Count; i++)
-                {
-                    //Feches agent names from server
-                    agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
-                    if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
-                    {
-                        _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
-                    }
-                }
-                tableMaintenances.Visible = true;
-                tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
-            }
-            else
-            {
-                radioButtonUpdateData.Enabled = false;
-                lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
-                lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                lblThereIsNothingHere.Visible = true;
             }
 
             //When finished registering, resets control states
@@ -1865,7 +1898,7 @@ namespace AssetInformationAndRegistration.Forms
 #if DEBUG
             System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + Resources.LOG_FILE_EXT);
 #else
-            System.Diagnostics.Process.Start(parametersList[2][0] + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + Resources.LOG_FILE_EXT);
 #endif
         }
 

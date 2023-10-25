@@ -1,6 +1,4 @@
-﻿using AssetInformationAndRegistration.Forms;
-using AssetInformationAndRegistration.Interfaces;
-using AssetInformationAndRegistration.Properties;
+﻿using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using Dark.Net;
@@ -12,9 +10,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using static AssetInformationAndRegistration.Program;
 using Resources = ConstantsDLL.Properties.Resources;
@@ -699,12 +695,11 @@ namespace AssetInformationAndRegistration.Misc
         /// </summary>
         /// <param name="path">File path</param>
         /// <returns>'true' if log exists, 'false' if not</returns>
-        ///<exception cref="Exception">Thrown when there is a problem with the query</exception>
         internal static string CheckIfLogExists(string path)
         {
-            bool b;
             try
             {
+                bool b;
 #if DEBUG
                 //Checks if log directory exists
                 b = File.Exists(path + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + Resources.LOG_FILE_EXT);
@@ -724,7 +719,6 @@ namespace AssetInformationAndRegistration.Misc
             {
                 return e.Message;
             }
-
         }
 
         /// <summary> 
@@ -755,7 +749,7 @@ namespace AssetInformationAndRegistration.Misc
         }
 
         /// <summary>
-        /// Gets theme setting from definition file
+        /// Gets theme setting from config file
         /// </summary>
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
@@ -786,8 +780,8 @@ namespace AssetInformationAndRegistration.Misc
         /// <summary> 
         /// Updates the 'last installed' or 'last maintenance' labels
         /// </summary>
-        /// <param name="mode">Service type, 'true' for formatting, 'false' for maintenance</param>
-        /// <returns>Text which will be shown inside the program, with number of days since the last formatting/maintenance</returns>
+        /// <param name="date">Last service date</param>
+        /// <returns>Text which will be shown inside the program, with number of days since the last service</returns>
         internal static string SinceLabelUpdate(string date)
         {
             if (date != string.Empty)
@@ -803,7 +797,6 @@ namespace AssetInformationAndRegistration.Misc
 
         /// <summary> 
         /// Fetches the screen scale
-        /// 
         /// </summary>
         /// <returns>The current window scaling</returns>
         internal static int GetWindowsScaling()
@@ -828,13 +821,11 @@ namespace AssetInformationAndRegistration.Misc
                 for (int i = 0; i < longest; i++)
                     outer[i].Add(lists[j].Count > i ? lists[j][i] : default);
             }
-
             return outer;
         }
 
         /// <summary> 
         /// Fetches the program's binary version
-        /// 
         /// </summary>
         /// <returns>The current application version in the format 'v0.0.0.0'</returns>
         internal static string Version()

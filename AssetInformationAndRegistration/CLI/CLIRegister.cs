@@ -8,30 +8,45 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using static AssetInformationAndRegistration.Program;
+using System.Reflection;
 using Resources = ConstantsDLL.Properties.Resources;
 
 namespace AssetInformationAndRegistration.Forms
 {
+    /// <summary>
+    /// Class for CLI alerts
+    /// </summary>
+    public class ServerAlert
+    {
+        public string HostnameAlert { get; set; }
+        public string MediaOperationModeAlert { get; set; }
+        public string SecureBootAlert { get; set; }
+        public string FirmwareVersionAlert { get; set; }
+        public string FirmwareTypeAlert { get; set; }
+        public string NetworkIpError { get; set; }
+        public string NetworkMacError { get; set; }
+        public string VirtualizationTechnologyAlert { get; set; }
+        public string TpmAlert { get; set; }
+        public string RamAlert { get; set; }
+        public string DatabaseReachError { get; set; }
+    }
     /// <summary> 
     /// Class for asset registering via CLI
     /// </summary>
     internal class CLIRegister
     {
         public bool pass, serverOnline;
-        private bool[] serverAlertBool;
         private readonly string[] serverArgs;
-        private string[] serverAlert;
         private readonly LogGenerator log;
-        private readonly List<string[]> parametersList;
         private List<List<string>> videoCardDetailPrev, storageDetailPrev, ramDetailPrev, processorDetailPrev, videoCardDetail, storageDetail, ramDetail, processorDetail;
         private string processorSummary, ramSummary, storageSummary, videoCardSummary, operatingSystemSummary;
         private readonly string serverIP, serverPort;
 
         private HttpClient client;
-        private readonly ConfigurationOptions configOptions;
+        private readonly Program.ConfigurationOptions configOptions;
 
         private Model modelTemplate;
         private Asset existingAsset;
@@ -46,17 +61,23 @@ namespace AssetInformationAndRegistration.Forms
         private readonly location newLocation;
         private readonly network newNetwork;
         private readonly operatingSystem newOperatingSystem;
+        private readonly ServerAlert sA;
+        private ServerParam serverParam;
 
-        /// <summary> 
+        /// <summary>
         /// CLI constructor
         /// </summary>
-        /// <param name="argsArray">Arguments array</param>
+        /// <param name="client">HTTP client object</param>
         /// <param name="agent">Agent object</param>
         /// <param name="log">Log file object</param>
-        /// <param name="parametersList">List containing data from [Parameters]</param>
-        /// <param name="enforcementList">List containing data from [Enforcement]</param>
-        internal CLIRegister(string[] argsArray, Agent agent, LogGenerator log, ConfigurationOptions configOptions)
+        /// <param name="configOptions">Config file object</param>
+        /// <param name="argsArray">CLI args passed by entry point</param>
+        internal CLIRegister(HttpClient client, Agent agent, LogGenerator log, Program.ConfigurationOptions configOptions, string[] argsArray)
         {
+            this.log = log;
+            this.configOptions = configOptions;
+            this.client = client;
+
             //Creates a new Asset object and subobjects
             newFirmware = new firmware();
             newProcessor = new List<processor>();
@@ -105,13 +126,12 @@ namespace AssetInformationAndRegistration.Forms
                 operatingSystem = newOperatingSystem
             };
 
+            sA = new ServerAlert();
+
             serverArgs = argsArray;
 
             serverIP = argsArray[0];
             serverPort = argsArray[1];
-
-            this.log = log;
-            this.configOptions = configOptions;
 
             InitProc(serverIP, serverPort, newAsset);
         }
@@ -124,42 +144,31 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="newAsset">Asset object</param>
         private void InitProc(string serverIP, string serverPort, Asset newAsset)
         {
-            serverAlert = new string[11];
-            serverAlertBool = new bool[11];
-            serverAlert[0] = AirStrings.CLI_HOSTNAME_ALERT;
-            serverAlert[1] = AirStrings.CLI_MEDIA_OPERATION_ALERT;
-            serverAlert[2] = AirStrings.CLI_SECURE_BOOT_ALERT;
-            serverAlert[3] = AirStrings.CLI_DATABASE_REACH_ERROR;
-            serverAlert[4] = AirStrings.CLI_FIRMWARE_VERSION_ALERT;
-            serverAlert[5] = AirStrings.CLI_FIRMWARE_TYPE_ALERT;
-            serverAlert[6] = AirStrings.CLI_NETWORK_IP_ERROR;
-            serverAlert[7] = AirStrings.CLI_NETWORK_MAC_ERROR;
-            serverAlert[8] = AirStrings.CLI_VT_ALERT;
-            serverAlert[9] = AirStrings.CLI_TPM_ALERT;
-            serverAlert[10] = AirStrings.CLI_MEMORY_ALERT;
+            sA.HostnameAlert = AirStrings.CLI_HOSTNAME_ALERT;
+            sA.MediaOperationModeAlert = AirStrings.CLI_MEDIA_OPERATION_ALERT;
+            sA.SecureBootAlert = AirStrings.CLI_SECURE_BOOT_ALERT;
+            sA.DatabaseReachError = AirStrings.CLI_DATABASE_REACH_ERROR;
+            sA.FirmwareVersionAlert = AirStrings.CLI_FIRMWARE_VERSION_ALERT;
+            sA.FirmwareTypeAlert = AirStrings.CLI_FIRMWARE_TYPE_ALERT;
+            sA.NetworkIpError = AirStrings.CLI_NETWORK_IP_ERROR;
+            sA.NetworkMacError = AirStrings.CLI_NETWORK_MAC_ERROR;
+            sA.VirtualizationTechnologyAlert = AirStrings.CLI_VT_ALERT;
+            sA.TpmAlert = AirStrings.CLI_TPM_ALERT;
+            sA.RamAlert = AirStrings.CLI_MEMORY_ALERT;
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-            System.Threading.Tasks.Task<ServerParam> v1 = ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
-            v1.Wait();
-            Parameters newParam = new Parameters()
-            {
-                Buildings = v1.Result.Parameters.Buildings,
-                HardwareTypes = v1.Result.Parameters.HardwareTypes,
-                FirmwareTypes = v1.Result.Parameters.FirmwareTypes,
-                TpmTypes = v1.Result.Parameters.TpmTypes,
-                MediaOperationTypes = v1.Result.Parameters.MediaOperationTypes,
-                RamTypes = v1.Result.Parameters.RamTypes,
-                SecureBootStates = v1.Result.Parameters.SecureBootStates,
-                VirtualizationTechnologyStates = v1.Result.Parameters.VirtualizationTechnologyStates
-            };
+            var sp = ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
+            sp.Wait();
+
+            serverParam = sp.Result;
 
             string[] dateFormat = new string[] { Resources.DATE_FORMAT };
 
             if (serverIP.Length <= 15 && serverIP.Length > 6 && //serverIP
                 serverPort.Length <= 5 && serverPort.All(char.IsDigit) && //serverPort
                 newAsset.assetNumber.Length <= 6 && newAsset.assetNumber.Length >= 0 && newAsset.assetNumber.All(char.IsDigit) && //assetNumber
-                (parametersList[4].Contains(newAsset.location.building) || newAsset.location.building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
+                (serverParam.Parameters.Buildings.Contains(newAsset.location.building) || newAsset.location.building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
                 ((newAsset.location.roomNumber.Length <= 4 && newAsset.location.roomNumber.Length > 0 && newAsset.location.roomNumber.All(char.IsDigit)) || newAsset.location.roomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
                 ((newAsset.maintenances[0].serviceDate.Length == 10 && DateTime.TryParseExact(newAsset.maintenances[0].serviceDate, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || newAsset.maintenances[0].serviceDate.Equals(Resources.TODAY)) && //serviceDate
                 StringsAndConstants.LIST_MODE_CLI.Contains(newAsset.maintenances[0].serviceType) && //serviceType
@@ -169,7 +178,7 @@ namespace AssetInformationAndRegistration.Forms
                 (StringsAndConstants.LIST_IN_USE_CLI.Contains(newAsset.inUse) || newAsset.inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //inUse
                 ((newAsset.sealNumber.Length <= 10 && newAsset.sealNumber.All(char.IsDigit)) || newAsset.sealNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //sealNumber
                 (StringsAndConstants.LIST_TAG_CLI.Contains(newAsset.tag) || newAsset.tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //tag
-                (parametersList[5].Contains(newAsset.hardware.type) || newAsset.hardware.type.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
+                (serverParam.Parameters.HardwareTypes.Contains(newAsset.hardware.type) || newAsset.hardware.type.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))) //hwType
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                 serverOnline = true; /* await JsonFileReaderDLL.ModelFileReader.CheckHostMT(serverIP, serverPort);*/
@@ -189,13 +198,6 @@ namespace AssetInformationAndRegistration.Forms
                     //Feches asset number data from server
                     try
                     {
-                        client = new HttpClient
-                        {
-                            BaseAddress = new Uri(Resources.HTTP + serverIP + ":" + serverPort)
-                        };
-                        client.DefaultRequestHeaders.Accept.Clear();
-                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(Resources.HTTP_CONTENT_TYPE_JSON));
-
                         System.Threading.Tasks.Task<Asset> v = AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + newAsset.assetNumber);
                         v.Wait();
                         existingAsset = v.Result;
@@ -204,7 +206,6 @@ namespace AssetInformationAndRegistration.Forms
                     {
 
                     }
-
 
                     //If asset Json does not exist and there are some 'same' cmd switch word
                     if (existingAsset == null && serverArgs.Contains(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
@@ -222,29 +223,29 @@ namespace AssetInformationAndRegistration.Forms
                         else if (newAsset.maintenances[0].serviceType.Equals(StringsAndConstants.CLI_SERVICE_TYPE_1))
                             newAsset.maintenances[0].serviceType = "1";
                         //building
-                        newAsset.location.building = Array.IndexOf(parametersList[4], newAsset.location.building).ToString();
+                        newAsset.location.building = Array.IndexOf(serverParam.Parameters.Buildings.ToArray(), newAsset.location.building).ToString();
                         //standard
                         if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                            newAsset.standard = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                            newAsset.standard = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //batteryChange
                         if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //inUse
                         if (newAsset.inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //tag
                         if (newAsset.tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.tag = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.tag = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //hwType
-                        newAsset.hardware.type = Array.IndexOf(parametersList[5], newAsset.hardware.type).ToString();
+                        newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), newAsset.hardware.type).ToString();
                     }
                     else //If asset Json does exist
                     {
@@ -271,40 +272,40 @@ namespace AssetInformationAndRegistration.Forms
                         if (newAsset.location.building.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.location.building = existingAsset.location.building;
                         else
-                            newAsset.location.building = Array.IndexOf(parametersList[4], newAsset.location.building).ToString();
+                            newAsset.location.building = Array.IndexOf(serverParam.Parameters.Buildings.ToArray(), newAsset.location.building).ToString();
                         //standard
                         if (newAsset.standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.standard = existingAsset.standard;
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                            newAsset.standard = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                            newAsset.standard = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //batteryChange
                         if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //inUse
                         if (newAsset.inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.inUse = existingAsset.inUse;
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //tag
                         if (newAsset.tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.tag = existingAsset.tag;
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.tag = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.tag = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         //hwType
                         if (newAsset.hardware.type.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.hardware.type = existingAsset.hardware.type;
                         else
-                            newAsset.hardware.type = Array.IndexOf(parametersList[5], newAsset.hardware.type).ToString();
+                            newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), newAsset.hardware.type).ToString();
                     }
-                    PrintHardwareData();
+                    ProcessCollectedData();
 
                     //If there are no pendencies
                     if (pass)
@@ -316,11 +317,11 @@ namespace AssetInformationAndRegistration.Forms
                         try
                         {
                             _ = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
-                            newAsset.adRegistered = Convert.ToInt32(SpecBinaryStates.ENABLED).ToString();
+                            newAsset.adRegistered = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
                         }
                         catch
                         {
-                            newAsset.adRegistered = Convert.ToInt32(SpecBinaryStates.DISABLED).ToString();
+                            newAsset.adRegistered = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
                         }
 
                         try //If there is database record of the asset number
@@ -360,7 +361,7 @@ namespace AssetInformationAndRegistration.Forms
                                 }
 
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-                                System.Threading.Tasks.Task<Uri> v = AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
+                                System.Threading.Tasks.Task<HttpStatusCode> v = AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
                                 v.Wait();
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                             }
@@ -383,7 +384,7 @@ namespace AssetInformationAndRegistration.Forms
                             }
 
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-                            System.Threading.Tasks.Task<Uri> v = AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
+                            System.Threading.Tasks.Task<HttpStatusCode> v = AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset); //Send info to server
                             v.Wait();
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                         }
@@ -391,10 +392,14 @@ namespace AssetInformationAndRegistration.Forms
                     else //If there are pendencies
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirStrings.FIX_PROBLEMS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-                        for (int i = 0; i < serverAlert.Length; i++)
+                        foreach (PropertyInfo pi in sA.GetType().GetProperties())
                         {
-                            if (serverAlertBool[i])
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), serverAlert[i], string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                            if (pi.PropertyType == typeof(string))
+                            {
+                                string value = (string)pi.GetValue(sA);
+                                if (value.Contains("(") || value.Contains(")"))
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), value, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                            }
                         }
                         Environment.Exit(Convert.ToInt32(ExitCodes.WARNING)); //Exits
                     }
@@ -417,123 +422,7 @@ namespace AssetInformationAndRegistration.Forms
         }
 
         /// <summary> 
-        /// Prints the collected data into the form labels, warning the agent when there are forbidden modes
-        /// </summary>
-        private void PrintHardwareData()
-        {
-            pass = true;
-
-            try
-            {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //Feches model info from server
-                System.Threading.Tasks.Task<Model> v = ModelHandler.GetModelAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_MODEL_URL + newAsset.hardware.model);
-                v.Wait();
-                modelTemplate = v.Result;
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If hostname is the default one and its enforcement is enabled
-                if (configOptions.Enforcement.Hostname.ToString() == Resources.TRUE && newAsset.network.hostname.Equals(AirStrings.DEFAULT_HOSTNAME))
-                {
-                    pass = false;
-                    serverAlert[0] += newAsset.network.hostname + AirStrings.HOSTNAME_ALERT;
-                    serverAlertBool[0] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
-                if (configOptions.Enforcement.MediaOperationMode.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode)
-                {
-                    pass = false;
-                    serverAlert[1] += newAsset.firmware.mediaOperationMode + AirStrings.MEDIA_OPERATION_ALERT;
-                    serverAlertBool[1] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (configOptions.Enforcement.SecureBoot.ToString() == Resources.TRUE && newAsset.firmware.secureBoot.Equals(Strings.DEACTIVATED))
-                {
-                    pass = false;
-                    serverAlert[2] += newAsset.firmware.secureBoot + AirStrings.SECURE_BOOT_ALERT;
-                    serverAlertBool[2] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does not exist and server is unreachable
-                if (modelTemplate == null)
-                {
-                    pass = false;
-                    serverAlert[3] += AirStrings.DATABASE_REACH_ERROR;
-                    serverAlertBool[3] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (configOptions.Enforcement.FirmwareVersion.ToString() == Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion))
-                {
-                    pass = false;
-                    serverAlert[4] += newAsset.firmware.version + AirStrings.FIRMWARE_VERSION_ALERT;
-                    serverAlertBool[4] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
-                if (configOptions.Enforcement.FirmwareType.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type)
-                {
-                    pass = false;
-                    serverAlert[5] += newAsset.firmware.type + AirStrings.FIRMWARE_TYPE_ALERT;
-                    serverAlertBool[5] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If there is no MAC address assigned
-                if (newAsset.network.macAddress == string.Empty)
-                {
-                    pass = false;
-                    serverAlert[6] += newAsset.network.macAddress + AirStrings.NETWORK_ERROR; //Prints a network error
-                    serverAlert[7] += newAsset.network.ipAddress + AirStrings.NETWORK_ERROR; //Prints a network error
-                    serverAlertBool[6] = true;
-                    serverAlertBool[7] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (configOptions.Enforcement.VirtualizationTechnology.ToString() == Resources.TRUE && newAsset.firmware.virtualizationTechnology == Strings.DEACTIVATED)
-                {
-                    pass = false;
-                    serverAlert[8] += newAsset.firmware.virtualizationTechnology + AirStrings.VT_ALERT;
-                    serverAlertBool[8] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
-                if (configOptions.Enforcement.Tpm.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion)
-                {
-                    pass = false;
-                    serverAlert[9] += newAsset.firmware.tpmVersion + AirStrings.TPM_ERROR;
-                    serverAlertBool[9] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                //Checks for RAM amount
-                double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
-                //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
-                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
-                {
-                    pass = false;
-                    serverAlert[10] += newAsset.hardware.ram + AirStrings.NOT_ENOUGH_MEMORY;
-                    serverAlertBool[10] = true;
-                }
-                //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
-                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
-                {
-                    pass = false;
-                    serverAlert[10] += newAsset.hardware.ram + AirStrings.TOO_MUCH_MEMORY;
-                    serverAlertBool[10] = true;
-                }
-                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-                if (pass)
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-            }
-            catch (Exception e)
-            {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-            }
-        }
-
-        /// <summary> 
-        /// Runs on a separate thread, calling methods from the HardwareInfo class, and setting the variables
+        /// Calls methods from the HardwareInfo class, and setting the variables
         /// </summary>
         private void CollectThread()
         {
@@ -666,7 +555,7 @@ namespace AssetInformationAndRegistration.Forms
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Media Operation (IDE/AHCI/NVME)
             newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_MEDIAOP, parametersList[8][Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_MEDIAOP, serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for GPU information
             videoCardDetailPrev = new List<List<string>>
@@ -720,11 +609,11 @@ namespace AssetInformationAndRegistration.Forms
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware type
             newAsset.firmware.type = HardwareInfo.GetFwType();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_BIOSTYPE, parametersList[6][Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_BIOSTYPE, serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Secure Boot status
             newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[9][Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SECBOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware version
             newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
@@ -732,13 +621,117 @@ namespace AssetInformationAndRegistration.Forms
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for VT status
             newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(parametersList[10][Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for TPM status
             newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_TPM, parametersList[7][Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_TPM, serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+        }
+
+        /// <summary> 
+        /// Prints the collected data into the console, warning the agent when there are forbidden modes
+        /// </summary>
+        private void ProcessCollectedData()
+        {
+            pass = true;
+
+            try
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Feches model info from server
+                System.Threading.Tasks.Task<Model> v = ModelHandler.GetModelAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_MODEL_URL + newAsset.hardware.model);
+                v.Wait();
+                modelTemplate = v.Result;
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If hostname is the default one and its enforcement is enabled
+                if (configOptions.Enforcement.Hostname.ToString() == Resources.TRUE && newAsset.network.hostname.Equals(AirStrings.DEFAULT_HOSTNAME))
+                {
+                    pass = false;
+                    sA.HostnameAlert += newAsset.network.hostname + AirStrings.HOSTNAME_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
+                if (configOptions.Enforcement.MediaOperationMode.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode)
+                {
+                    pass = false;
+                    sA.MediaOperationModeAlert += serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)] + AirStrings.MEDIA_OPERATION_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
+                if (configOptions.Enforcement.SecureBoot.ToString() == Resources.TRUE && newAsset.firmware.secureBoot.Equals(Strings.DEACTIVATED))
+                {
+                    pass = false;
+                    sA.SecureBootAlert += newAsset.firmware.secureBoot + AirStrings.SECURE_BOOT_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If model Json file does not exist and server is unreachable
+                if (modelTemplate == null)
+                {
+                    pass = false;
+                    sA.DatabaseReachError += AirStrings.DATABASE_REACH_ERROR;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
+                if (configOptions.Enforcement.FirmwareVersion.ToString() == Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion))
+                {
+                    pass = false;
+                    sA.FirmwareVersionAlert += newAsset.firmware.version + AirStrings.FIRMWARE_VERSION_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
+                if (configOptions.Enforcement.FirmwareType.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type)
+                {
+                    pass = false;
+                    sA.FirmwareTypeAlert += serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)] + AirStrings.FIRMWARE_TYPE_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If there is no MAC address assigned
+                if (newAsset.network.macAddress == string.Empty)
+                {
+                    pass = false;
+                    sA.NetworkMacError += newAsset.network.macAddress + AirStrings.NETWORK_ERROR; //Prints a network error
+                    sA.NetworkIpError += newAsset.network.ipAddress + AirStrings.NETWORK_ERROR; //Prints a network error
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
+                if (configOptions.Enforcement.VirtualizationTechnology.ToString() == Resources.TRUE && newAsset.firmware.virtualizationTechnology == Strings.DEACTIVATED)
+                {
+                    pass = false;
+                    sA.VirtualizationTechnologyAlert += newAsset.firmware.virtualizationTechnology + AirStrings.VT_ALERT;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
+                if (configOptions.Enforcement.Tpm.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion)
+                {
+                    pass = false;
+                    sA.TpmAlert += serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)] + AirStrings.TPM_ERROR;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Checks for RAM amount
+                double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
+                //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
+                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
+                {
+                    pass = false;
+                    sA.RamAlert += newAsset.hardware.ram + AirStrings.NOT_ENOUGH_MEMORY;
+                }
+                //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
+                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
+                {
+                    pass = false;
+                    sA.RamAlert += newAsset.hardware.ram + AirStrings.TOO_MUCH_MEMORY;
+                }
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                if (pass)
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            }
+            catch (Exception e)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            }
         }
     }
 }
