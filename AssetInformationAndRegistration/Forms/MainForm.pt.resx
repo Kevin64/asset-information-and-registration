@@ -133,21 +133,15 @@
   <data name="lblFixedSerialNumber.Text" xml:space="preserve">
     <value>Número Serial:</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblFixedProcessor.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 55, 0</value>
+  <data name="lblFixedProcessor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 13</value>
   </data>
   <data name="lblFixedProcessor.Text" xml:space="preserve">
     <value>Processador primário:</value>
   </data>
-  <data name="lblFixedRam.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 25, 0</value>
-  </data>
-  <data name="lblFixedRam.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblFixedOperatingSystem.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 30, 0</value>
+    <value>0, 0, 50, 0</value>
   </data>
   <data name="lblFixedOperatingSystem.Text" xml:space="preserve">
     <value>Versão, build e arquitetura:</value>
@@ -237,7 +231,7 @@
     <value>Letra (se houver):</value>
   </data>
   <data name="lblFixedFwVersion.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 120, 0</value>
+    <value>0, 0, 140, 0</value>
   </data>
   <data name="lblFixedFwVersion.Text" xml:space="preserve">
     <value>Versão:</value>
@@ -254,6 +248,18 @@
   <data name="groupBoxHwData.Text" xml:space="preserve">
     <value>Dados do computador</value>
   </data>
+  <data name="processorDetailsButton.Text" xml:space="preserve">
+    <value>Mais...</value>
+  </data>
+  <data name="ramDetailsButton.Text" xml:space="preserve">
+    <value>Mais...</value>
+  </data>
+  <data name="videoCardDetailsButton.Text" xml:space="preserve">
+    <value>Mais...</value>
+  </data>
+  <data name="storageDetailsButton.Text" xml:space="preserve">
+    <value>Mais...</value>
+  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 13</value>
   </data>
@@ -265,18 +271,6 @@
   </data>
   <data name="lblInactiveNetwork.Text" xml:space="preserve">
     <value>Rede</value>
-  </data>
-  <data name="processorDetailsButton.Text" xml:space="preserve">
-    <value>Detalhes...</value>
-  </data>
-  <data name="ramDetailsButton.Text" xml:space="preserve">
-    <value>Detalhes...</value>
-  </data>
-  <data name="videoCardDetailsButton.Text" xml:space="preserve">
-    <value>Detalhes...</value>
-  </data>
-  <data name="storageDetailsButton.Text" xml:space="preserve">
-    <value>Detalhes...</value>
   </data>
   <data name="lblFixedTpmVersion.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 13</value>
@@ -302,17 +296,17 @@
   <data name="lblFixedMediaOperationMode.Text" xml:space="preserve">
     <value>Modo de operação SATA/M.2:</value>
   </data>
-  <data name="lblFixedVideoCard.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 41, 0</value>
-  </data>
-  <data name="lblFixedVideoCard.Text" xml:space="preserve">
-    <value>Placa de vídeo primária:</value>
-  </data>
   <data name="lblFixedStorageType.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 13</value>
   </data>
   <data name="lblFixedStorageType.Text" xml:space="preserve">
     <value>Armazenamento:</value>
+  </data>
+  <data name="lblFixedVideoCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 13</value>
+  </data>
+  <data name="lblFixedVideoCard.Text" xml:space="preserve">
+    <value>Placa de vídeo primária:</value>
   </data>
   <data name="groupBoxAssetData.Text" xml:space="preserve">
     <value>Dados do ativo, manutenção e de localização</value>
@@ -1961,5 +1955,8 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
 </root>

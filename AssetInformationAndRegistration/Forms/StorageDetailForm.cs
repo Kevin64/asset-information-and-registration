@@ -1,15 +1,11 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
-using ConstantsDLL;
 using ConstantsDLL.Properties;
-using Dark.Net;
-using HardwareInfoDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -20,38 +16,44 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     internal partial class StorageDetailForm : Form, ITheming
     {
-        private static double totalSize = 0;
-
         /// <summary>
         /// Storage form constructor
+        /// </summary>
+        public StorageDetailForm()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Treats collected Storage data
         /// </summary>
         /// <param name="str">Storage detail matrix</param>
         /// <param name="definitions">Definition object</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
-        public StorageDetailForm(List<List<string>> str, Program.Definitions definitions, bool isSystemDarkModeEnabled)
+        public void TreatData(List<List<string>> str)
         {
+            double totalSize = 0;
             double individualSize;
             string individualSizeStr, totalSizeStr;
-            InitializeComponent();
+            dataGridView1.Rows.Clear();
             KeyDown += StorageDetailForm_KeyDown;
 
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
             {
-                if (Convert.ToDouble(s[2].TrimEnd('K', 'M', 'G', 'T', 'B')) > 1000)
-                {
-                    individualSize = Convert.ToInt64(s[2]);
-                    if (individualSize / 1000 / 1000 / 1000 >= 1000)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + Resources.TB;
-                    else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + Resources.GB;
-                    else
-                        individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + Resources.MB;
-                    s[2] = individualSizeStr;
-                    totalSize += individualSize;
-                }
+                individualSize = Convert.ToInt64(s[2]);
+                if (individualSize / 1000 / 1000 / 1000 >= 1000)
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + Resources.TB;
+                else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + Resources.GB;
+                else
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + Resources.MB;
+                s[2] = individualSizeStr;
+                totalSize += individualSize;
+
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
+
             //Shows the total storage size
             if (totalSize / 1000 / 1000 / 1000 >= 1000)
                 totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + Resources.TB;
@@ -63,20 +65,6 @@ namespace AssetInformationAndRegistration.Forms
 
             //Sorts by ID column
             dataGridView1.Sort(dataGridView1.Columns["storageId"], ListSortDirection.Ascending);
-
-            //Define theming according to ini file provided info
-            (int themeFileSet, bool _) = MiscMethods.GetFileThemeMode(definitions, isSystemDarkModeEnabled);
-            switch (themeFileSet)
-            {
-                case 0:
-                    MiscMethods.LightThemeAllControls(this);
-                    LightThemeSpecificControls();
-                    break;
-                case 1:
-                    MiscMethods.DarkThemeAllControls(this);
-                    DarkThemeSpecificControls();
-                    break;
-            }
 
             //Paints cell in red if SMART status equals a 'Pred Fail'
             foreach (DataGridViewRow row in dataGridView1.Rows)
