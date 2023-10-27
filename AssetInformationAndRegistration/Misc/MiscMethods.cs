@@ -789,11 +789,11 @@ namespace AssetInformationAndRegistration.Misc
             if (date != string.Empty)
             {
                 DateTime d = Convert.ToDateTime(date);
-                return (DateTime.Today - d).TotalDays + AirStrings.DAYS_PASSED_TEXT + AirStrings.SERVICE_TEXT;
+                return (DateTime.Today - d).TotalDays + AirUIStrings.DAYS_PASSED_TEXT + AirUIStrings.SERVICE_TEXT;
             }
             else
             {
-                return AirStrings.SINCE_UNKNOWN;
+                return AirUIStrings.SINCE_UNKNOWN;
             }
         }
 

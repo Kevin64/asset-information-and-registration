@@ -43,7 +43,7 @@ namespace AssetInformationAndRegistration.Forms
                     individualCacheStr = Math.Round(individualCache / 1024 / 1024, 0) + " " + Resources.MB;
                 s[5] = individualCacheStr;
 
-                if (!s[2].Contains(Strings.UNKNOWN))
+                if (!s[2].Contains(UIStrings.UNKNOWN))
                     s[2] = s[2] + " " + Resources.MHZ;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());

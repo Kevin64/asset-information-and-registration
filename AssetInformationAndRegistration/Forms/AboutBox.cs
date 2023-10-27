@@ -70,7 +70,7 @@ namespace AssetInformationAndRegistration.Forms
 #endif
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
-            textBoxDescription.Text = AirStrings.DESCRIPTION;
+            textBoxDescription.Text = AirUIStrings.DESCRIPTION;
             textBoxDescription.LinkClicked += TextBoxDescription_LinkClicked;
         }
 

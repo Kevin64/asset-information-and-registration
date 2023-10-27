@@ -74,16 +74,16 @@ namespace AssetInformationAndRegistration.Forms
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                    lblUpdateAnnoucement.Text = Strings.NEW_VERSION_AVAILABLE;
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    lblUpdateAnnoucement.Text = UIStrings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
                     lblNewVersion.Visible = true;
                     downloadButton.Visible = true;
                     return true;
                 default:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                    lblUpdateAnnoucement.Text = Strings.NO_NEW_VERSION_AVAILABLE;
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    lblUpdateAnnoucement.Text = UIStrings.NO_NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;
                     lblNewVersion.Visible = false;

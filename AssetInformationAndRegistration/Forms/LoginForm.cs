@@ -95,7 +95,10 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, isSystemDarkModeEnabled.ToString(), Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            if(isSystemDarkModeEnabled)
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_DARK, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            else
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_LIGHT, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
         }
 
         /// <summary> 
@@ -207,8 +210,8 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 else //If all the mandatory fields are not filled
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.FILL_IN_YOUR_CREDENTIALS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                    _ = MessageBox.Show(Strings.FILL_IN_YOUR_CREDENTIALS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.FILL_IN_YOUR_CREDENTIALS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    _ = MessageBox.Show(UIStrings.FILL_IN_YOUR_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
                 aboutLabelButton.Enabled = true;
@@ -217,21 +220,21 @@ namespace AssetInformationAndRegistration.Forms
             catch (UriFormatException ex)
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                _ = MessageBox.Show(Strings.FILL_IN_SERVER_DETAILS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(UIStrings.FILL_IN_SERVER_DETAILS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
             //If Agent does not exist because there is no internet connection
             catch (HttpRequestException ex)
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                _ = MessageBox.Show(Strings.INTRANET_REQUIRED, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(UIStrings.INTRANET_REQUIRED, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
             //If Agent does not exist, but the connection succeeded
             catch (InvalidAgentException ex)
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                _ = MessageBox.Show(Strings.INVALID_CREDENTIALS, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
 

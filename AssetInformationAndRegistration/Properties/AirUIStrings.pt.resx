@@ -119,7 +119,7 @@
   </resheader>
   <data name="aaaPROJECTaaa" xml:space="preserve">
     <value />
-    <comment>AssetInformationAndRegistration.Strings.PT</comment>
+    <comment>AssetInformationAndRegistration.UIStrings.PT</comment>
   </data>
   <data name="ARGS_ERROR" xml:space="preserve">
     <value>Um ou mais argumentos contém erros! Saindo do programa</value>

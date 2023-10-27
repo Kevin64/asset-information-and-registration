@@ -119,7 +119,7 @@
   </resheader>
   <data name="aaaPROJECTaaa" xml:space="preserve">
     <value />
-    <comment>AssetInformationAndRegistration.Strings.Generic</comment>
+    <comment>AssetInformationAndRegistration.UIStrings.Generic</comment>
   </data>
   <data name="ARGS_ERROR" xml:space="preserve">
     <value>One or more arguments contain errors! Exiting the program</value>

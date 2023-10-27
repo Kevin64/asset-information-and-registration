@@ -100,10 +100,10 @@ namespace AssetInformationAndRegistration.Updater
                         switch (newVersion.CompareTo(currentVersion))
                         {
                             case 1:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                                 break;
                             default:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Strings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                                 break;
                         }
                     }
@@ -113,7 +113,7 @@ namespace AssetInformationAndRegistration.Updater
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_GITHUB_UNREACHABLE, e.Message, cliMode);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_UPDATE_CHECK_IMPOSSIBLE, string.Empty, cliMode);
-                _ = MessageBox.Show(LogStrings.LOG_UPDATE_CHECK_IMPOSSIBLE, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _ = MessageBox.Show(LogStrings.LOG_UPDATE_CHECK_IMPOSSIBLE, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

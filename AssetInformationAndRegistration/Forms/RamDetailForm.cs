@@ -39,7 +39,7 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in auxList)
             {
-                if (!s.Contains(Strings.FREE))
+                if (!s.Contains(UIStrings.FREE))
                 {
                     individualRam = Convert.ToInt64(s[1]);
                     if (individualRam / 1024 / 1024 / 1024 >= 1024)
@@ -50,13 +50,13 @@ namespace AssetInformationAndRegistration.Forms
                         individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + Resources.MB;
                     s[1] = individualRamStr;
 
-                    if (!s[3].Contains(Strings.UNKNOWN))
+                    if (!s[3].Contains(UIStrings.UNKNOWN))
                         s[3] = s[3] + " " + Resources.MHZ;
                 }
 
                 if (s[2] == "0")
                 {
-                    s[2] = Strings.UNKNOWN;
+                    s[2] = UIStrings.UNKNOWN;
                 }
                 else if (s[2] == Resources.DDR4_SMBIOS)
                 {
@@ -66,7 +66,7 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     s[2] = Resources.DDR3;
                 }
-                else if (s[2] == Strings.FREE)
+                else if (s[2] == UIStrings.FREE)
                 {
                     ;
                 }
@@ -86,7 +86,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.Value != null && cell.Value.Equals(Strings.FREE))
+                    if (cell.Value != null && cell.Value.Equals(UIStrings.FREE))
                     {
                         if (isSystemDarkModeEnabled == false)
                             cell.Style.ForeColor = StringsAndConstants.LIGHT_INACTIVE_CAPTION_COLOR;

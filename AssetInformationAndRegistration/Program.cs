@@ -170,13 +170,13 @@ namespace AssetInformationAndRegistration
                 }
                 else
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                     Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                 }
             }
             catch
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), Strings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
@@ -204,7 +204,7 @@ namespace AssetInformationAndRegistration
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
             {
-                MessageBox.Show(Strings.ALREADY_RUNNING, Strings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(UIStrings.ALREADY_RUNNING, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Process.GetCurrentProcess().Kill();
             }
 
@@ -277,9 +277,9 @@ namespace AssetInformationAndRegistration
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOGFILE_NOTEXISTS, string.Empty, showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), UIStrings.LOGFILE_NOTEXISTS, string.Empty, showCLIOutput);
                 else
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), Strings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), UIStrings.LOGFILE_EXISTS, string.Empty, showCLIOutput);
 
                 //If given no args, runs LoginForm
                 if (args.Length == 0)
@@ -338,7 +338,7 @@ namespace AssetInformationAndRegistration
                     }
                     else
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirStrings.ARGS_ERROR, string.Empty, showCLIOutput);
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.ARGS_ERROR, string.Empty, showCLIOutput);
                         Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                 }
@@ -346,8 +346,8 @@ namespace AssetInformationAndRegistration
             //If config file is malformed
             catch (Exception e) when (e is JsonReaderException || e is JsonSerializationException || e is FormatException)
             {
-                Console.WriteLine(Strings.PARAMETER_ERROR + ": " + e.Message);
-                Console.WriteLine(Strings.KEY_FINISH);
+                Console.WriteLine(UIStrings.PARAMETER_ERROR + ": " + e.Message);
+                Console.WriteLine(UIStrings.KEY_FINISH);
                 Console.ReadLine();
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
@@ -355,7 +355,7 @@ namespace AssetInformationAndRegistration
             catch (FileNotFoundException e)
             {
                 Console.WriteLine(LogStrings.LOG_PARAMETER_FILE_NOT_FOUND + ": " + e.Message);
-                Console.WriteLine(Strings.KEY_FINISH);
+                Console.WriteLine(UIStrings.KEY_FINISH);
                 Console.ReadLine();
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
