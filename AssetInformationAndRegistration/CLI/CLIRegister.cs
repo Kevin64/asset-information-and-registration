@@ -225,24 +225,24 @@ namespace AssetInformationAndRegistration.Forms
                         newAsset.location.building = Array.IndexOf(serverParam.Parameters.Buildings.ToArray(), newAsset.location.building).ToString();
                         //standard
                         if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //batteryChange
                         if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //inUse
                         if (newAsset.inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //tag
                         if (newAsset.tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //hwType
                         newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), newAsset.hardware.type).ToString();
                     }
@@ -276,28 +276,28 @@ namespace AssetInformationAndRegistration.Forms
                         if (newAsset.standard.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.standard = existingAsset.standard;
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_0))
-                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.standard.Equals(StringsAndConstants.CLI_EMPLOYEE_TYPE_1))
-                            newAsset.standard = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.standard = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //batteryChange
                         if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.maintenances[0].batteryChange.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.maintenances[0].batteryChange = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //inUse
                         if (newAsset.inUse.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.inUse = existingAsset.inUse;
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.inUse.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.inUse = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.inUse = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //tag
                         if (newAsset.tag.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.tag = existingAsset.tag;
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_NO_ABBREV))
-                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         else if (newAsset.tag.Equals(StringsAndConstants.LIST_YES_ABBREV))
-                            newAsset.tag = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.tag = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         //hwType
                         if (newAsset.hardware.type.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED))
                             newAsset.hardware.type = existingAsset.hardware.type;
@@ -316,11 +316,11 @@ namespace AssetInformationAndRegistration.Forms
                         try
                         {
                             _ = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
-                            newAsset.adRegistered = Convert.ToInt32(Program.SpecBinaryStates.ENABLED).ToString();
+                            newAsset.adRegistered = Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString();
                         }
                         catch
                         {
-                            newAsset.adRegistered = Convert.ToInt32(Program.SpecBinaryStates.DISABLED).ToString();
+                            newAsset.adRegistered = Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                         }
 
                         try //If there is database record of the asset number

@@ -135,12 +135,6 @@ namespace AssetInformationAndRegistration
             public string SubDepartamentAcronym { get; set; }
         }
 
-        public enum SpecBinaryStates
-        {
-            DISABLED,
-            ENABLED
-        }
-
         /// <summary> 
         /// Passes args to auth method and then to register class, otherwise informs auth error and closes the program
         /// </summary>
