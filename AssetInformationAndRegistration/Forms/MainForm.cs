@@ -807,6 +807,9 @@ namespace AssetInformationAndRegistration.Forms
                     if (processorDetail[i][j] == null)
                         processorDetail[i][j] = Strings.UNKNOWN;
                 }
+                processorDetail[i][1] = processorDetail[i][1].Replace("(R)", string.Empty);
+                processorDetail[i][1] = processorDetail[i][1].Replace("(TM)", string.Empty);
+                processorDetail[i][1] = processorDetail[i][1].Replace("(tm)", string.Empty);
                 processor p = new processor
                 {
                     processorId = processorDetail[i][0],
@@ -922,6 +925,9 @@ namespace AssetInformationAndRegistration.Forms
                     if (videoCardDetail[i][j] == null)
                         videoCardDetail[i][j] = Strings.UNKNOWN;
                 }
+                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(R)", string.Empty);
+                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(TM)", string.Empty);
+                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(tm)", string.Empty);
                 videoCard v = new videoCard
                 {
                     gpuId = videoCardDetail[i][0],
@@ -929,9 +935,6 @@ namespace AssetInformationAndRegistration.Forms
                     vRam = videoCardDetail[i][2],
                 };
                 newHardware.videoCard.Add(v);
-                newHardware.videoCard[i].name = newHardware.videoCard[i].name.Replace("(R)", string.Empty);
-                newHardware.videoCard[i].name = newHardware.videoCard[i].name.Replace("(TM)", string.Empty);
-                newHardware.videoCard[i].name = newHardware.videoCard[i].name.Replace("(tm)", string.Empty);
             }
             videoCardForm.TreatData(videoCardDetail);
             videoCardSummary = videoCardDetail[0][1];
