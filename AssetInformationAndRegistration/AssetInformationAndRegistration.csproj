@@ -137,6 +137,9 @@
     <Compile Include="Forms\UpdaterForm.Designer.cs">
       <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs" >
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Misc\CustomColors.cs" />
     <Compile Include="Misc\CustomFlatCombo.cs">
       <SubType>Component</SubType>
