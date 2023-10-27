@@ -8,20 +8,17 @@ using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
-using MRG.Controls.UI;
 using Octokit;
 using RestApiDLL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
-using Label = System.Windows.Forms.Label;
 using MiscMethods = AssetInformationAndRegistration.Misc.MiscMethods;
 
 namespace AssetInformationAndRegistration.Forms

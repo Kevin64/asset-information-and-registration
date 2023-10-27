@@ -83,6 +83,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <summary>
         /// Hides Loading Circles
         /// </summary>
+        /// <param name="form">Target form where controls will be changed</param>
         internal static void HideLoadingCircles(Form form)
         {
             foreach (System.Windows.Forms.GroupBox gb in form.Controls.OfType<System.Windows.Forms.GroupBox>())
@@ -109,6 +110,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <summary>
         /// Sets Loading Circles parameters
         /// </summary>
+        /// <param name="form">Target form where controls will be changed</param>
         public static void SetLoadingCircles(Form form)
         {
             switch (GetWindowsScaling())
@@ -314,7 +316,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <summary>
         /// Sets all controls from form in light theme, recursively
         /// </summary>
-        /// <param name="form">Form where controls will be changed</param>
+        /// <param name="form">Target form where controls will be changed</param>
         internal static void LightThemeAllControls(Form form)
         {
             if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
@@ -504,7 +506,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <summary>
         /// Sets all controls from form in dark theme, recursively
         /// </summary>
-        /// <param name="form">Form where controls will be changed</param>
+        /// <param name="form">Target form where controls will be changed</param>
         internal static void DarkThemeAllControls(Form form)
         {
             if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))

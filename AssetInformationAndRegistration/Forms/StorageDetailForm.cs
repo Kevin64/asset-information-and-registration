@@ -1,5 +1,4 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
-using AssetInformationAndRegistration.Misc;
 using ConstantsDLL.Properties;
 using System;
 using System.Collections.Generic;
@@ -28,8 +27,6 @@ namespace AssetInformationAndRegistration.Forms
         /// Treats collected Storage data
         /// </summary>
         /// <param name="str">Storage detail matrix</param>
-        /// <param name="definitions">Definition object</param>
-        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         public void TreatData(List<List<string>> str)
         {
             double totalSize = 0;

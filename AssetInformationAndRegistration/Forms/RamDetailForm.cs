@@ -1,12 +1,9 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
-using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
@@ -30,7 +27,6 @@ namespace AssetInformationAndRegistration.Forms
         /// Treats collected Ram data
         /// </summary>
         /// <param name="str">Ram detail matrix</param>
-        /// <param name="definitions">Definition object</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         public void TreatData(List<List<string>> str, bool isSystemDarkModeEnabled)
         {
@@ -59,17 +55,25 @@ namespace AssetInformationAndRegistration.Forms
                 }
 
                 if (s[2] == "0")
+                {
                     s[2] = Strings.UNKNOWN;
+                }
                 else if (s[2] == Resources.DDR4_SMBIOS)
+                {
                     s[2] = Resources.DDR4;
+                }
                 else if (s[2] == Resources.DDR3_SMBIOS)
+                {
                     s[2] = Resources.DDR3;
+                }
                 else if (s[2] == Strings.FREE)
                 {
                     ;
                 }
                 else
+                {
                     s[2] = Resources.DDR2;
+                }
 
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
@@ -80,7 +84,7 @@ namespace AssetInformationAndRegistration.Forms
             //Paints cell in gray if slot is free
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                foreach(DataGridViewCell cell in row.Cells)
+                foreach (DataGridViewCell cell in row.Cells)
                 {
                     if (cell.Value != null && cell.Value.Equals(Strings.FREE))
                     {

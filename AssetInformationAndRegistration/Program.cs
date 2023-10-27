@@ -237,10 +237,10 @@ namespace AssetInformationAndRegistration
                     RamLimit = jsonParse.Enforcement.RamLimit,
                     SmartStatus = jsonParse.Enforcement.SmartStatus,
                     MediaOperationMode = jsonParse.Enforcement.MediaOperationMode,
-                    Hostname = jsonParse.Enforcement.FirmwareType,
+                    Hostname = jsonParse.Enforcement.Hostname,
                     FirmwareType = jsonParse.Enforcement.FirmwareType,
                     FirmwareVersion = jsonParse.Enforcement.FirmwareVersion,
-                    SecureBoot = jsonParse.Enforcement.VirtualizationTechnology,
+                    SecureBoot = jsonParse.Enforcement.SecureBoot,
                     VirtualizationTechnology = jsonParse.Enforcement.VirtualizationTechnology,
                     Tpm = jsonParse.Enforcement.Tpm,
                     CheckForUpdates = jsonParse.Enforcement.CheckForUpdates
@@ -358,7 +358,7 @@ namespace AssetInformationAndRegistration
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
             //If config file is not found
-            catch(FileNotFoundException e)
+            catch (FileNotFoundException e)
             {
                 Console.WriteLine(LogStrings.LOG_PARAMETER_FILE_NOT_FOUND + ": " + e.Message);
                 Console.WriteLine(Strings.KEY_FINISH);

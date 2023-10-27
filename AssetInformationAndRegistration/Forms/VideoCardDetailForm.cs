@@ -1,5 +1,4 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
-using AssetInformationAndRegistration.Misc;
 using ConstantsDLL.Properties;
 using System;
 using System.Collections.Generic;
@@ -25,8 +24,6 @@ namespace AssetInformationAndRegistration.Forms
         /// Treats collected Video Card data
         /// </summary>
         /// <param name="str">Video card detail matrix</param>
-        /// <param name="definitions">Definition object</param>
-        /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         public void TreatData(List<List<string>> str)
         {
             double individualRam;
@@ -49,7 +46,7 @@ namespace AssetInformationAndRegistration.Forms
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
 
-            //Sorts the by column
+            //Sorts by ID columnn
             dataGridView1.Sort(dataGridView1.Columns["videoCardId"], ListSortDirection.Ascending);
         }
 

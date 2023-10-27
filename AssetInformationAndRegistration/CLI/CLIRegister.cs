@@ -10,7 +10,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
 using Resources = ConstantsDLL.Properties.Resources;
 
@@ -45,7 +44,7 @@ namespace AssetInformationAndRegistration.Forms
         private string processorSummary, ramSummary, storageSummary, videoCardSummary, operatingSystemSummary;
         private readonly string serverIP, serverPort;
 
-        private HttpClient client;
+        private readonly HttpClient client;
         private readonly Program.ConfigurationOptions configOptions;
 
         private Model modelTemplate;
@@ -158,7 +157,7 @@ namespace AssetInformationAndRegistration.Forms
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
-            var sp = ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
+            System.Threading.Tasks.Task<ServerParam> sp = ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
             sp.Wait();
 
             serverParam = sp.Result;
