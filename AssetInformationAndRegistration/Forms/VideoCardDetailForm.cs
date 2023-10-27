@@ -36,11 +36,11 @@ namespace AssetInformationAndRegistration.Forms
             {
                 individualRam = Convert.ToInt64(s[2]);
                 if (individualRam / 1024 / 1024 / 1024 >= 1024)
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + Resources.TB;
+                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
                 else if (individualRam / 1024 / 1024 / 1024 < 1024 && individualRam / 1024 / 1024 / 1024 >= 1)
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + Resources.GB;
+                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
                 else
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + Resources.MB;
+                    individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + GenericResources.MB;
                 s[2] = individualRamStr;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());

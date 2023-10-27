@@ -148,14 +148,14 @@ namespace AssetInformationAndRegistration
 
             client = new HttpClient
             {
-                BaseAddress = new Uri(Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort)
+                BaseAddress = new Uri(GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort)
             };
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(Resources.HTTP_CONTENT_TYPE_JSON));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(GenericResources.HTTP_CONTENT_TYPE_JSON));
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 
-            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + opts.ServerIP + ":" + opts.ServerPort + Resources.API_AGENT_URL + opts.Username);
+            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.API_AGENT_URL + opts.Username);
             v.Wait();
             agent = v.Result;
 
@@ -164,19 +164,19 @@ namespace AssetInformationAndRegistration
                 if (agent != null)
                 {
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                     CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
                     UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
                 }
                 else
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                     Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                 }
             }
             catch
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
@@ -199,7 +199,7 @@ namespace AssetInformationAndRegistration
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-            ghc = new GitHubClient(new Octokit.ProductHeaderValue(Resources.GITHUB_REPO_AIR));
+            ghc = new GitHubClient(new Octokit.ProductHeaderValue(GenericResources.GITHUB_REPO_AIR));
 
             //Check if application is running
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
@@ -212,7 +212,7 @@ namespace AssetInformationAndRegistration
 
             try
             {
-                fileC = new StreamReader(Resources.CONFIG_FILE);
+                fileC = new StreamReader(GenericResources.CONFIG_FILE);
                 jsonFile = fileC.ReadToEnd();
                 ConfigurationOptions jsonParse = JsonConvert.DeserializeObject<ConfigurationOptions>(@jsonFile);
                 fileC.Close();
@@ -265,15 +265,15 @@ namespace AssetInformationAndRegistration
                 bool fileExists = bool.Parse(Misc.MiscMethods.CheckIfLogExists(configOptions.Definitions.LogLocation));
 
                 //If args has a --help switch, do not show log output
-                if (!args.Contains(Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                if (!args.Contains(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     showCLIOutput = true;
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS, configOptions.Definitions.LogLocation, Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + Resources.LOG_FILE_EXT, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS, configOptions.Definitions.LogLocation, GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + GenericResources.LOG_FILE_EXT, showCLIOutput);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, configOptions.Definitions.LogLocation, ConstantsDLL.Properties.Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.Resources.LOG_FILE_EXT, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion, configOptions.Definitions.LogLocation, ConstantsDLL.Properties.GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + ConstantsDLL.Properties.GenericResources.LOG_FILE_EXT, showCLIOutput);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RELEASE_MODE, string.Empty, showCLIOutput);
 #endif
                 if (!fileExists)
@@ -294,7 +294,7 @@ namespace AssetInformationAndRegistration
 
                     Form lForm = new LoginForm(ghc, log, configOptions, isSystemDarkModeEnabled);
 
-                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                    if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                     {
                         switch (themeFileSet)
                         {
@@ -314,16 +314,16 @@ namespace AssetInformationAndRegistration
                 else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
-                    int index = Array.IndexOf(argsLog, Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
+                    int index = Array.IndexOf(argsLog, GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
                     if (index == -1)
                     {
-                        index = Array.FindIndex(argsLog, x => x.StartsWith(Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
+                        index = Array.FindIndex(argsLog, x => x.StartsWith(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
                         if (index != -1)
-                            argsLog[index] = Resources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + Resources.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + GenericResources.LOG_PASSWORD_PLACEHOLDER;
                     }
                     else
                     {
-                        argsLog[index + 1] = Resources.LOG_PASSWORD_PLACEHOLDER;
+                        argsLog[index + 1] = GenericResources.LOG_PASSWORD_PLACEHOLDER;
                     }
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLI_MODE, string.Join(" ", argsLog), showCLIOutput);
@@ -331,7 +331,7 @@ namespace AssetInformationAndRegistration
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions);
 
-                    if (args.Length == 1 && args.Contains(Resources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                    if (args.Length == 1 && args.Contains(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
                         Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));

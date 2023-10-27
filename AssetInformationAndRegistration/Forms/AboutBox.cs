@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration.Forms
                     break;
             }
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_ABOUTBOX, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_ABOUTBOX, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
@@ -94,7 +94,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void AboutBox_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_ABOUTBOX, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_ABOUTBOX, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary>

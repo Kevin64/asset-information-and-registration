@@ -74,7 +74,7 @@ namespace AssetInformationAndRegistration.Forms
             switch (newVersion.CompareTo(currentVersion))
             {
                 case 1:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = UIStrings.NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = true;
@@ -82,7 +82,7 @@ namespace AssetInformationAndRegistration.Forms
                     downloadButton.Visible = true;
                     return true;
                 default:
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     lblUpdateAnnoucement.Text = UIStrings.NO_NEW_VERSION_AVAILABLE;
                     changelogTextBox.Text = changelog;
                     lblFixedNewVersion.Visible = false;
@@ -112,7 +112,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void UpdaterForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_UPDATER_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void DownloadButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_GITHUB, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = System.Diagnostics.Process.Start(url);
         }
 

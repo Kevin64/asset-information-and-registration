@@ -40,11 +40,11 @@ namespace AssetInformationAndRegistration.Forms
             {
                 individualSize = Convert.ToInt64(s[2]);
                 if (individualSize / 1000 / 1000 / 1000 >= 1000)
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + Resources.TB;
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + GenericResources.TB;
                 else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + Resources.GB;
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + GenericResources.GB;
                 else
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + Resources.MB;
+                    individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + GenericResources.MB;
                 s[2] = individualSizeStr;
                 totalSize += individualSize;
 
@@ -53,11 +53,11 @@ namespace AssetInformationAndRegistration.Forms
 
             //Shows the total storage size
             if (totalSize / 1000 / 1000 / 1000 >= 1000)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + Resources.TB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + GenericResources.TB;
             else if (totalSize / 1000 / 1000 / 1000 < 1000 && totalSize / 1000 / 1000 / 1000 >= 1)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + Resources.GB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + GenericResources.GB;
             else
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + Resources.MB;
+                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + GenericResources.MB;
             lblTotalSize.Text = totalSizeStr;
 
             //Sorts by ID column
@@ -67,7 +67,7 @@ namespace AssetInformationAndRegistration.Forms
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 DataGridViewCell cell = row.Cells[6];
-                if (cell.Value != null && cell.Value.Equals(Resources.PRED_FAIL))
+                if (cell.Value != null && cell.Value.Equals(GenericResources.PRED_FAIL))
                 {
                     cell.Style.BackColor = Color.Red;
                     cell.Style.ForeColor = Color.White;
@@ -77,12 +77,12 @@ namespace AssetInformationAndRegistration.Forms
 
         public void LightThemeSpecificControls()
         {
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DISK_SIZE_LIGHT_PATH));
+            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_DISK_SIZE_LIGHT_PATH));
         }
 
         public void DarkThemeSpecificControls()
         {
-            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DISK_SIZE_DARK_PATH));
+            iconImgStorageSize.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_DISK_SIZE_DARK_PATH));
         }
 
         /// <summary>

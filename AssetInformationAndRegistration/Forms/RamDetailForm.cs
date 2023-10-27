@@ -43,28 +43,28 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     individualRam = Convert.ToInt64(s[1]);
                     if (individualRam / 1024 / 1024 / 1024 >= 1024)
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + Resources.TB;
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
                     else if (individualRam / 1024 / 1024 / 1024 < 1024 && individualRam / 1024 / 1024 / 1024 >= 1)
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + Resources.GB;
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
                     else
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + Resources.MB;
+                        individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + GenericResources.MB;
                     s[1] = individualRamStr;
 
                     if (!s[3].Contains(UIStrings.UNKNOWN))
-                        s[3] = s[3] + " " + Resources.MHZ;
+                        s[3] = s[3] + " " + GenericResources.MHZ;
                 }
 
                 if (s[2] == "0")
                 {
                     s[2] = UIStrings.UNKNOWN;
                 }
-                else if (s[2] == Resources.DDR4_SMBIOS)
+                else if (s[2] == GenericResources.DDR4_SMBIOS)
                 {
-                    s[2] = Resources.DDR4;
+                    s[2] = GenericResources.DDR4;
                 }
-                else if (s[2] == Resources.DDR3_SMBIOS)
+                else if (s[2] == GenericResources.DDR3_SMBIOS)
                 {
-                    s[2] = Resources.DDR3;
+                    s[2] = GenericResources.DDR3;
                 }
                 else if (s[2] == UIStrings.FREE)
                 {
@@ -72,7 +72,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 else
                 {
-                    s[2] = Resources.DDR2;
+                    s[2] = GenericResources.DDR2;
                 }
 
                 _ = dataGridView1.Rows.Add(s.ToArray());

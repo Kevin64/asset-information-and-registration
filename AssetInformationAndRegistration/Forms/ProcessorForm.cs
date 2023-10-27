@@ -36,15 +36,15 @@ namespace AssetInformationAndRegistration.Forms
             {
                 individualCache = Convert.ToInt64(s[5]);
                 if (individualCache / 1024 / 1024 / 1024 >= 1024)
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024 / 1024, 0) + " " + Resources.TB;
+                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
                 else if (individualCache / 1024 / 1024 / 1024 < 1024 && individualCache / 1024 / 1024 / 1024 >= 1)
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024, 0) + " " + Resources.GB;
+                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
                 else
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024, 0) + " " + Resources.MB;
+                    individualCacheStr = Math.Round(individualCache / 1024 / 1024, 0) + " " + GenericResources.MB;
                 s[5] = individualCacheStr;
 
                 if (!s[2].Contains(UIStrings.UNKNOWN))
-                    s[2] = s[2] + " " + Resources.MHZ;
+                    s[2] = s[2] + " " + GenericResources.MHZ;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }

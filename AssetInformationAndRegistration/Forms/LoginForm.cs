@@ -96,9 +96,9 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerPort.SelectedIndex = 0;
 #endif
             if(isSystemDarkModeEnabled)
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_DARK, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_DARK, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             else
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_LIGHT, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_LIGHT, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary> 
@@ -124,8 +124,8 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
@@ -155,7 +155,7 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                     mForm = new MainForm(null, ghc, log, configOptions, null, null, null, true, isSystemDarkModeEnabled);
-                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                    if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                         DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
                     Hide();
                     textBoxUsername.Text = null;
@@ -181,22 +181,22 @@ namespace AssetInformationAndRegistration.Forms
 
                     client = new HttpClient
                     {
-                        BaseAddress = new Uri(Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text)
+                        BaseAddress = new Uri(GenericResources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text)
                     };
                     client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(Resources.HTTP_CONTENT_TYPE_JSON));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(GenericResources.HTTP_CONTENT_TYPE_JSON));
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVER_DATA, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVER_DATA, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                     //Feches login data from server
-                    agent = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + Resources.API_AGENT_URL + textBoxUsername.Text);
+                    agent = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + GenericResources.API_AGENT_URL + textBoxUsername.Text);
 
                     //If Agent does exist and is retrieved
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     MainForm mForm = new MainForm(client, ghc, log, configOptions, agent, comboBoxServerIP.Text, comboBoxServerPort.Text, false, isSystemDarkModeEnabled);
-                    if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                    if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                         DarkNet.Instance.SetWindowThemeForms(mForm, Theme.Auto);
 
                     Hide();
@@ -210,7 +210,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 else //If all the mandatory fields are not filled
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.FILL_IN_YOUR_CREDENTIALS, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.FILL_IN_YOUR_CREDENTIALS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     _ = MessageBox.Show(UIStrings.FILL_IN_YOUR_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
                 }
@@ -219,21 +219,21 @@ namespace AssetInformationAndRegistration.Forms
             //If URI is invalid
             catch (UriFormatException ex)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 _ = MessageBox.Show(UIStrings.FILL_IN_SERVER_DETAILS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
             //If Agent does not exist because there is no internet connection
             catch (HttpRequestException ex)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 _ = MessageBox.Show(UIStrings.INTRANET_REQUIRED, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
             //If Agent does not exist, but the connection succeeded
             catch (InvalidAgentException ex)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
@@ -281,7 +281,7 @@ namespace AssetInformationAndRegistration.Forms
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
             AboutBox aForm = new AboutBox(ghc, log, configOptions.Definitions, isSystemDarkModeEnabled);
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(aForm, Theme.Auto);
             _ = aForm.ShowDialog();
         }
@@ -318,12 +318,12 @@ namespace AssetInformationAndRegistration.Forms
             statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_LIGHT_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.LOGIN_BANNER_LIGHT_PATH));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AGENT_LIGHT_PATH));
-            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PASSWORD_LIGHT_PATH));
-            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_LIGHT_PATH));
-            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PORT_LIGHT_PATH));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ABOUT_LIGHT_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.LOGIN_BANNER_LIGHT_PATH));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AGENT_LIGHT_PATH));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_PASSWORD_LIGHT_PATH));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVER_LIGHT_PATH));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_PORT_LIGHT_PATH));
         }
 
         public void DarkThemeSpecificControls()
@@ -337,12 +337,12 @@ namespace AssetInformationAndRegistration.Forms
             statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_DARK_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.LOGIN_BANNER_DARK_PATH));
-            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AGENT_DARK_PATH));
-            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PASSWORD_DARK_PATH));
-            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_DARK_PATH));
-            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_PORT_DARK_PATH));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ABOUT_DARK_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.LOGIN_BANNER_DARK_PATH));
+            iconImgUsername.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AGENT_DARK_PATH));
+            iconImgPassword.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_PASSWORD_DARK_PATH));
+            iconImgServerIP.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVER_DARK_PATH));
+            iconImgServerPort.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_PORT_DARK_PATH));
         }
 
         /// <summary>

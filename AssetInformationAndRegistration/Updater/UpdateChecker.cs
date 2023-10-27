@@ -49,9 +49,9 @@ namespace AssetInformationAndRegistration.Updater
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), LogStrings.LOG_CONNECTING_GITHUB, string.Empty, cliMode);
 
                     httpHeader = new HttpClient();
-                    if (HardwareInfo.GetWinVersion() == Resources.WINDOWS_7)
+                    if (HardwareInfo.GetWinVersion() == GenericResources.WINDOWS_7)
                         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                    request = new HttpRequestMessage(HttpMethod.Head, Resources.AIR_API_URL);
+                    request = new HttpRequestMessage(HttpMethod.Head, GenericResources.AIR_API_URL);
                     request.Headers.Add("User-Agent", "Other");
                     ui = Misc.MiscMethods.RegCheckUpdateData();
                     if (ui != null)
@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration.Updater
                     response = await httpHeader.SendAsync(request);
                     if (!((int)response.StatusCode).Equals(304))
                     {
-                        releases = await client.Repository.Release.GetLatest(Resources.GITHUB_OWNER_AIR, Resources.GITHUB_REPO_AIR);
+                        releases = await client.Repository.Release.GetLatest(GenericResources.GITHUB_OWNER_AIR, GenericResources.GITHUB_REPO_AIR);
                         ui = new UpdateInfo
                         {
                             ETag = response.Headers.ETag.ToString().Substring(3, response.Headers.ETag.ToString().Length - 4),
@@ -84,7 +84,7 @@ namespace AssetInformationAndRegistration.Updater
                     {
                         UpdaterForm uForm = new UpdaterForm(log, definitions, ui, isSystemDarkModeEnabled);
                         bool isNotUpdated = uForm.IsThereANewVersion();
-                        if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+                        if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                             DarkNet.Instance.SetWindowThemeForms(uForm, Theme.Auto);
                         if ((autoCheck && isNotUpdated) || manualCheck)
                             _ = uForm.ShowDialog();
@@ -100,10 +100,10 @@ namespace AssetInformationAndRegistration.Updater
                         switch (newVersion.CompareTo(currentVersion))
                         {
                             case 1:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NEW_VERSION_AVAILABLE, newVersion, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                                 break;
                             default:
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_CLI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), UIStrings.NO_NEW_VERSION_AVAILABLE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                                 break;
                         }
                     }

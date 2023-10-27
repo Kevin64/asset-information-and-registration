@@ -186,7 +186,7 @@ namespace AssetInformationAndRegistration.Forms
             toolStripVersionText.Text = Misc.MiscMethods.Version(); //Release/Final version
 #endif
 
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OFFLINE_MODE, offlineMode.ToString(), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             //Sets status bar text according to info provided in the ini file
             List<string> oList = new List<string>();
@@ -226,13 +226,13 @@ namespace AssetInformationAndRegistration.Forms
             if (!offlineMode)
             {
                 //Fetch building and hw types info from the specified server
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                serverParam = await ParameterHandler.GetParameterAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_PARAMETERS_URL);
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                serverParam = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_PARAMETERS_URL);
             }
             else
             {
                 //Fetch building and hw types info from the local file
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 serverParam = ParameterHandler.GetOfflineModeConfigFile();
             }
 
@@ -245,7 +245,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxInUse.Items.AddRange(StringsAndConstants.LIST_IN_USE_GUI.ToArray());
             comboBoxTag.Items.AddRange(StringsAndConstants.LIST_TAG_GUI.ToArray());
             comboBoxBatteryChange.Items.AddRange(StringsAndConstants.LIST_BATTERY_GUI.ToArray());
-            if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(Resources.HOSTNAME_PATTERN))
+            if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(GenericResources.HOSTNAME_PATTERN))
                 textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(3);
             else
                 textBoxAssetNumber.Text = string.Empty;
@@ -278,16 +278,16 @@ namespace AssetInformationAndRegistration.Forms
             timerAlertTpmVersion.Tick += new EventHandler(AlertFlashTextTpmVersion);
             timerAlertRamAmount.Tick += new EventHandler(AlertFlashTextRamAmount);
 
-            timerAlertHostname.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertMediaOperationMode.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertSecureBoot.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertFwVersion.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertNetConnectivity.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertFwType.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertVirtualizationTechnology.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertSmartStatus.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertTpmVersion.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
-            timerAlertRamAmount.Interval = Convert.ToInt32(Resources.TIMER_INTERVAL);
+            timerAlertHostname.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertMediaOperationMode.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertSecureBoot.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertFwVersion.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertNetConnectivity.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertFwType.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertVirtualizationTechnology.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertSmartStatus.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertTpmVersion.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
+            timerAlertRamAmount.Interval = Convert.ToInt32(GenericResources.TIMER_INTERVAL);
             #endregion
 
             leftBound = lblOperatingSystem.Location.X;
@@ -324,7 +324,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 comboBoxActiveDirectory.SelectedIndex = 1;
             }
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AD_REGISTERED, comboBoxActiveDirectory.SelectedItem.ToString(), Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AD_REGISTERED, comboBoxActiveDirectory.SelectedItem.ToString(), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             if (!offlineMode)
             {
@@ -347,8 +347,8 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_MAIN_FORM, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), Resources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_MAIN_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             if (e.CloseReason == CloseReason.UserClosing)
                 Application.Exit();
@@ -385,7 +385,7 @@ namespace AssetInformationAndRegistration.Forms
                 lblThereIsNothingHere.Visible = false;
             tableMaintenances.Visible = false;
             tableMaintenances.Rows.Clear();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECT_THREAD, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECT_THREAD, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             StartAsync(sender, e);
         }
 
@@ -395,26 +395,26 @@ namespace AssetInformationAndRegistration.Forms
         private async void CollectPreparation()
         {
             #region Writes a dash in the labels, while scanning the hardware
-            lblColorLastService.Text = Resources.DASH;
-            lblBrand.Text = Resources.DASH;
-            lblModel.Text = Resources.DASH;
-            lblSerialNumber.Text = Resources.DASH;
-            lblProcessor.Text = Resources.DASH;
-            lblRam.Text = Resources.DASH;
-            lblColorCompliant.Text = Resources.DASH;
-            lblStorageType.Text = Resources.DASH;
-            lblMediaOperationMode.Text = Resources.DASH;
-            lblVideoCard.Text = Resources.DASH;
-            lblOperatingSystem.Text = Resources.DASH;
-            lblHostname.Text = Resources.DASH;
-            lblIpAddress.Text = Resources.DASH;
-            lblFwVersion.Text = Resources.DASH;
-            lblFwType.Text = Resources.DASH;
-            lblSecureBoot.Text = Resources.DASH;
-            lblVirtualizationTechnology.Text = Resources.DASH;
-            lblTpmVersion.Text = Resources.DASH;
-            collectButton.Text = Resources.DASH;
-            lblColorServerOperationalStatus.Text = Resources.DASH;
+            lblColorLastService.Text = GenericResources.DASH;
+            lblBrand.Text = GenericResources.DASH;
+            lblModel.Text = GenericResources.DASH;
+            lblSerialNumber.Text = GenericResources.DASH;
+            lblProcessor.Text = GenericResources.DASH;
+            lblRam.Text = GenericResources.DASH;
+            lblColorCompliant.Text = GenericResources.DASH;
+            lblStorageType.Text = GenericResources.DASH;
+            lblMediaOperationMode.Text = GenericResources.DASH;
+            lblVideoCard.Text = GenericResources.DASH;
+            lblOperatingSystem.Text = GenericResources.DASH;
+            lblHostname.Text = GenericResources.DASH;
+            lblIpAddress.Text = GenericResources.DASH;
+            lblFwVersion.Text = GenericResources.DASH;
+            lblFwType.Text = GenericResources.DASH;
+            lblSecureBoot.Text = GenericResources.DASH;
+            lblVirtualizationTechnology.Text = GenericResources.DASH;
+            lblTpmVersion.Text = GenericResources.DASH;
+            collectButton.Text = GenericResources.DASH;
+            lblColorServerOperationalStatus.Text = GenericResources.DASH;
             #endregion
 
             #region Show loading circles while scanning the hardware
@@ -466,27 +466,27 @@ namespace AssetInformationAndRegistration.Forms
                 loadingCircleServerOperationalStatus.Visible = true;
                 loadingCircleServerOperationalStatus.Active = true;
 
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PINGGING_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                 //Checks if server is alive
-                serverOnline = await ModelHandler.CheckHost(client, Resources.HTTP + serverIP + ":" + serverPort);
+                serverOnline = await ModelHandler.CheckHost(client, GenericResources.HTTP + serverIP + ":" + serverPort);
 
                 loadingCircleServerOperationalStatus.Visible = false;
                 loadingCircleServerOperationalStatus.Active = false;
 
                 if (serverOnline && serverPort != string.Empty)
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     lblColorServerOperationalStatus.Text = AirUIStrings.ONLINE;
                     lblColorServerOperationalStatus.ForeColor = StringsAndConstants.ONLINE_ALERT;
                 }
                 else
                 {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OFFLINE_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     lblColorServerOperationalStatus.Text = AirUIStrings.OFFLINE;
                     lblColorServerOperationalStatus.ForeColor = StringsAndConstants.OFFLINE_ALERT;
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     _ = MessageBox.Show(AirUIStrings.DATABASE_REACH_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     loadingCircleServerOperationalStatus.Visible = false;
@@ -562,35 +562,35 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="worker"></param>
         private void CollectThread(BackgroundWorker worker)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
             progressbarCount = 0;
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for PC maker
             newAsset.hardware.brand = HardwareInfo.GetBrand();
-            if (newAsset.hardware.brand == Resources.TO_BE_FILLED_BY_OEM || newAsset.hardware.brand == string.Empty)
+            if (newAsset.hardware.brand == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.brand == string.Empty)
                 newAsset.hardware.brand = HardwareInfo.GetBrandAlt();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_BRAND, newAsset.hardware.brand, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_BRAND, newAsset.hardware.brand, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for PC model
             newAsset.hardware.model = HardwareInfo.GetModel();
-            if (newAsset.hardware.model == Resources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
+            if (newAsset.hardware.model == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
             {
                 newAsset.hardware.model = HardwareInfo.GetModelAlt();
-                if (newAsset.hardware.model == Resources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
+                if (newAsset.hardware.model == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
                     newAsset.hardware.model = UIStrings.UNKNOWN;
             }
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_MODEL, newAsset.hardware.model, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_MODEL, newAsset.hardware.model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for motherboard Serial number
             newAsset.hardware.serialNumber = HardwareInfo.GetSerialNumber();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_SERIAL_NUMBER, newAsset.hardware.serialNumber, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_SERIAL_NUMBER, newAsset.hardware.serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for CPU information
             processorDetailPrev = new List<List<string>>()
@@ -624,16 +624,15 @@ namespace AssetInformationAndRegistration.Forms
                     cache = processorDetail[i][5]
                 };
                 newHardware.processor.Add(p);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].name, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].processorId, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].frequency, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].numberOfCores, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].numberOfThreads, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, newHardware.processor[i].cache, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_FREQUENCY + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CORES + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfCores, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_THREADS + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfThreads, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CACHE + " [" + newHardware.processor[i].processorId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.processor[i].cache)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
             processorForm.TreatData(processorDetail);
             processorSummary = processorDetail[0][1];
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR, processorSummary, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR, processorSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -668,19 +667,18 @@ namespace AssetInformationAndRegistration.Forms
                     manufacturer = ramDetail[i][6]
                 };
                 newHardware.ram.Add(r);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SLOT, newHardware.ram[i].slot, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE, newHardware.ram[i].type, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT, newHardware.ram[i].amount, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_FREQUENCY, newHardware.ram[i].frequency, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_MANUFACTURER, newHardware.ram[i].manufacturer, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SERIAL_NUMBER, newHardware.ram[i].serialNumber, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_PART_NUMBER, newHardware.ram[i].partNumber, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(newHardware.ram[i].type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.ram[i].amount)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_FREQUENCY + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_MANUFACTURER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].manufacturer, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SERIAL_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_PART_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].partNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
             ramForm.TreatData(ramDetail, isSystemDarkModeEnabled);
             ramSummary = HardwareInfo.GetRamSummary();
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM, ramSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM, ramSummary, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Storage data
             storageDetailPrev = new List<List<string>>
@@ -713,17 +711,16 @@ namespace AssetInformationAndRegistration.Forms
                     smartStatus = storageDetail[i][6]
                 };
                 newHardware.storage.Add(s);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_ID, newHardware.storage[i].storageId, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_TYPE, newHardware.storage[i].type, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE, newHardware.storage[i].size, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_CONNECTION, newHardware.storage[i].connection, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_MODEL, newHardware.storage[i].model, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SERIAL_NUMBER, newHardware.storage[i].serialNumber, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SMART_STATUS, newHardware.storage[i].smartStatus, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_TYPE + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE + " [" + newHardware.storage[i].storageId + "]", Misc.MiscMethods.FriendlySizeDecimal(Convert.ToInt64(newHardware.storage[i].size)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_CONNECTION + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].connection, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_MODEL + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SERIAL_NUMBER + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SMART_STATUS + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].smartStatus, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
             storageForm.TreatData(storageDetail);
             storageSummary = HardwareInfo.GetStorageSummary();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE, storageSummary, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE, storageSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -731,7 +728,7 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Video Card information
             videoCardDetailPrev = new List<List<string>>
@@ -759,13 +756,12 @@ namespace AssetInformationAndRegistration.Forms
                     vRam = videoCardDetail[i][2],
                 };
                 newHardware.videoCard.Add(v);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_ID, newHardware.videoCard[i].gpuId, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME, newHardware.videoCard[i].name, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM, newHardware.videoCard[i].vRam, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].vRam, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
             videoCardForm.TreatData(videoCardDetail);
             videoCardSummary = videoCardDetail[0][1];
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -777,57 +773,57 @@ namespace AssetInformationAndRegistration.Forms
             operatingSystemSummary = HardwareInfo.GetOSSummary();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPERATING_SYSTEM, operatingSystemSummary, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPERATING_SYSTEM, operatingSystemSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Hostname
             newAsset.network.hostname = HardwareInfo.GetHostname();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_HOSTNAME, newAsset.network.hostname, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_HOSTNAME, newAsset.network.hostname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for MAC Address
             newAsset.network.macAddress = HardwareInfo.GetMacAddress();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_MAC_ADDRESS, newAsset.network.macAddress, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_MAC_ADDRESS, newAsset.network.macAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for IP Address
             newAsset.network.ipAddress = HardwareInfo.GetIpAddress();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_IP_ADDRESS, newAsset.network.ipAddress, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_IP_ADDRESS, newAsset.network.ipAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware type
             newAsset.firmware.type = HardwareInfo.GetFwType();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Secure Boot status
             newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware version
             newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VERSION, newAsset.firmware.version, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VERSION, newAsset.firmware.version, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for VT status
             newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for TPM status
             newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary> 
@@ -871,10 +867,10 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     try
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         //Feches model info from server
-                        modelTemplate = await ModelHandler.GetModelAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_MODEL_URL + lblModel.Text);
+                        modelTemplate = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_MODEL_URL + lblModel.Text);
                     }
                     catch (InvalidModelException)
                     {
@@ -882,7 +878,7 @@ namespace AssetInformationAndRegistration.Forms
                     }
                     catch (HttpRequestException)
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
@@ -891,12 +887,12 @@ namespace AssetInformationAndRegistration.Forms
 
                     try
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         existingAsset = null;
 
                         //Feches asset data from server
-                        existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL + textBoxAssetNumber.Text);
 
                         loadingCircleLastService.Visible = false;
                         loadingCircleLastService.Active = false;
@@ -904,15 +900,15 @@ namespace AssetInformationAndRegistration.Forms
                         radioButtonUpdateData.Enabled = true;
                         lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
                         lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         for (int i = 0; i < existingAsset.maintenances.Count; i++)
                         {
                             //Feches agent names from server
-                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                             if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                             {
-                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
                             }
 
                         }
@@ -928,13 +924,13 @@ namespace AssetInformationAndRegistration.Forms
                         radioButtonUpdateData.Enabled = false;
                         lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
                         lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         lblThereIsNothingHere.Visible = true;
                     }
                     //If server is unreachable
                     catch (HttpRequestException)
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
@@ -946,53 +942,53 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If hostname is the default one and its enforcement is enabled
-                if (configOptions.Enforcement.Hostname.ToString() == Resources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME) && !offlineMode)
+                if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME) && !offlineMode)
                 {
                     pass = false;
                     lblHostname.Text += AirUIStrings.HOSTNAME_ALERT;
                     timerAlertHostname.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.HOSTNAME_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.HOSTNAME_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
-                if (configOptions.Enforcement.MediaOperationMode.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.MediaOperationMode.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblMediaOperationMode.Text += AirUIStrings.MEDIA_OPERATION_ALERT;
                     timerAlertMediaOperationMode.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
-                if (configOptions.Enforcement.SecureBoot.ToString() == Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.SecureBoot.ToString() == GenericResources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblSecureBoot.Text += AirUIStrings.SECURE_BOOT_ALERT;
                     timerAlertSecureBoot.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.SECURE_BOOT_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.SECURE_BOOT_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
-                if (configOptions.Enforcement.FirmwareVersion.ToString() == Resources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion) && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.FirmwareVersion.ToString() == GenericResources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion) && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblFwVersion.Text += AirUIStrings.FIRMWARE_VERSION_ALERT;
                     timerAlertFwVersion.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_VERSION_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_VERSION_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
-                if (configOptions.Enforcement.FirmwareType.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type && !offlineMode)
+                if (configOptions.Enforcement.FirmwareType.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type && !offlineMode)
                 {
                     pass = false;
                     lblFwType.Text += AirUIStrings.FIRMWARE_TYPE_ALERT;
                     timerAlertFwType.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If there is no MAC address assigned
@@ -1004,7 +1000,7 @@ namespace AssetInformationAndRegistration.Forms
                         lblIpAddress.Text = AirUIStrings.NETWORK_ERROR; //Prints a network error
                         timerAlertNetConnectivity.Enabled = true;
                         nonCompliantCount++;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NETWORK_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NETWORK_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     else //If it's in offline mode
                     {
@@ -1013,58 +1009,58 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
-                if (configOptions.Enforcement.VirtualizationTechnology.ToString() == Resources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.VirtualizationTechnology.ToString() == GenericResources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblVirtualizationTechnology.Text += AirUIStrings.VT_ALERT;
                     timerAlertVirtualizationTechnology.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.VT_ALERT, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.VT_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Smart status is not OK and its enforcement is enabled
-                if (configOptions.Enforcement.SmartStatus.ToString() == Resources.TRUE && storageDetailPrev[6].Contains(Resources.PRED_FAIL) && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.SmartStatus.ToString() == GenericResources.TRUE && storageDetailPrev[6].Contains(GenericResources.PRED_FAIL) && !offlineMode && serverOnline)
                 {
                     pass = false;
                     //lblStorageType.Text += UIStrings.SMART_FAIL;
                     timerAlertSmartStatus.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.SMART_FAIL, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.SMART_FAIL, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
-                if (configOptions.Enforcement.Tpm.ToString() == Resources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.Tpm.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblTpmVersion.Text += AirUIStrings.TPM_ERROR;
                     timerAlertTpmVersion.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TPM_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TPM_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Checks for RAM amount
                 double d = Convert.ToDouble(HardwareInfo.GetRamAlt(), CultureInfo.CurrentCulture.NumberFormat);
                 //If RAM is less than 4GB and OS is x64, and its limit enforcement is enabled, shows an alert
-                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblRam.Text += AirUIStrings.NOT_ENOUGH_MEMORY;
                     timerAlertRamAmount.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
-                if (configOptions.Enforcement.RamLimit.ToString() == Resources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
                     lblRam.Text += AirUIStrings.TOO_MUCH_MEMORY;
                     timerAlertRamAmount.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 if (pass && !offlineMode && serverOnline)
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                 //If there are compliance errors, colors taskbar's progress bar red
                 if (!pass)
@@ -1091,7 +1087,7 @@ namespace AssetInformationAndRegistration.Forms
             }
             catch (Exception e)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
         }
 
@@ -1115,11 +1111,11 @@ namespace AssetInformationAndRegistration.Forms
                 (radioButtonFormatting.Checked || radioButtonMaintenance.Checked || radioButtonUpdateData.Checked) &&
                 pass == true)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_REGISTRY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 tbProgMain.SetProgressState(TaskbarProgressBarState.Indeterminate, Handle);
                 loadingCircleRegisterButton.Visible = true;
                 loadingCircleRegisterButton.Active = true;
-                registerButton.Text = Resources.DASH;
+                registerButton.Text = GenericResources.DASH;
                 registerButton.Enabled = false;
                 apcsButton.Enabled = false;
                 collectButton.Enabled = false;
@@ -1135,7 +1131,7 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     agentId = agent.id,
                     batteryChange = comboBoxBatteryChange.SelectedItem.ToString().Equals(UIStrings.LIST_YES_0) ? Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString(),
-                    serviceDate = dateTimePickerServiceDate.Value.ToString(Resources.DATE_FORMAT).Substring(0, 10),
+                    serviceDate = dateTimePickerServiceDate.Value.ToString(GenericResources.DATE_FORMAT).Substring(0, 10),
                     serviceType = serviceTypeRadio.ToString(),
                     ticketNumber = textBoxTicketNumber.Text
                 };
@@ -1159,7 +1155,7 @@ namespace AssetInformationAndRegistration.Forms
                     tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.ASSET_DROPPED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                     _ = MessageBox.Show(UIStrings.ASSET_DROPPED, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1171,25 +1167,25 @@ namespace AssetInformationAndRegistration.Forms
                     {
                         try //Tries to get the latest register date from the asset number to check if the chosen date is adequate
                         {
-                            DateTime registerDate = DateTime.ParseExact(newAsset.maintenances[0].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
-                            DateTime lastRegisterDate = DateTime.ParseExact(existingAsset.maintenances[0].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture);
+                            DateTime registerDate = DateTime.ParseExact(newAsset.maintenances[0].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture);
+                            DateTime lastRegisterDate = DateTime.ParseExact(existingAsset.maintenances[0].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture);
 
                             if (registerDate >= lastRegisterDate) //If chosen date is greater or equal than the last format/maintenance date of the PC, let proceed
                             {
                                 try
                                 {
-                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                     //Send info to server
-                                    _ = await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset);
+                                    _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL, newAsset);
 
-                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                     _ = MessageBox.Show(UIStrings.ASSET_UPDATED, UIStrings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 catch (HttpRequestException)
                                 {
-                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
@@ -1200,7 +1196,7 @@ namespace AssetInformationAndRegistration.Forms
                             }
                             else //If chosen date is before the last format/maintenance date of the PC, shows an error
                             {
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.INCORRECT_REGISTER_DATE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 tbProgMain.SetProgressValue(percent, progressBar1.Maximum);
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
@@ -1213,18 +1209,18 @@ namespace AssetInformationAndRegistration.Forms
                         {
                             try
                             {
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 //Send info to server
-                                _ = await AssetHandler.SetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL, newAsset);
+                                _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL, newAsset);
 
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 _ = MessageBox.Show(UIStrings.ASSET_ADDED, UIStrings.SUCCESS_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             catch (HttpRequestException)
                             {
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
@@ -1236,7 +1232,7 @@ namespace AssetInformationAndRegistration.Forms
                     }
                     else //If the server is out of reach
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.SERVER_NOT_FOUND_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.SERVER_NOT_FOUND_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         _ = MessageBox.Show(UIStrings.SERVER_NOT_FOUND_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1254,13 +1250,13 @@ namespace AssetInformationAndRegistration.Forms
                     tableMaintenances.Visible = false;
                     loadingCircleTableMaintenances.Visible = true;
                     loadingCircleTableMaintenances.Active = true;
-                    lblColorLastService.Text = Resources.DASH;
+                    lblColorLastService.Text = GenericResources.DASH;
 
                     if (serverOnline)
                     {
                         try
                         {
-                            existingAsset = await AssetHandler.GetAssetAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_ASSET_URL + textBoxAssetNumber.Text);
+                            existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL + textBoxAssetNumber.Text);
 
                             radioButtonUpdateData.Enabled = true;
                             loadingCircleLastService.Visible = false;
@@ -1272,10 +1268,10 @@ namespace AssetInformationAndRegistration.Forms
                             for (int i = 0; i < existingAsset.maintenances.Count; i++)
                             {
                                 //Feches agent names from server
-                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, Resources.HTTP + serverIP + ":" + serverPort + Resources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                                 if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                                 {
-                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, Resources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(Resources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
                                 }
                             }
                             tableMaintenances.Visible = true;
@@ -1290,13 +1286,13 @@ namespace AssetInformationAndRegistration.Forms
                             radioButtonUpdateData.Enabled = false;
                             lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
                             lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                             lblThereIsNothingHere.Visible = true;
                         }
                         //If server is unreachable
                         catch (HttpRequestException)
                         {
-                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                             tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
 
@@ -1305,14 +1301,14 @@ namespace AssetInformationAndRegistration.Forms
                     }
                     else
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         _ = MessageBox.Show(AirUIStrings.DATABASE_REACH_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else if (!pass) //If there are pendencies in the PC config
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.PENDENCY_ERROR, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.PENDENCY_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                 _ = MessageBox.Show(AirUIStrings.PENDENCY_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1321,7 +1317,7 @@ namespace AssetInformationAndRegistration.Forms
             }
             else //If all fields are not filled
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.MANDATORY_FIELD, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.MANDATORY_FIELD, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                 _ = MessageBox.Show(AirUIStrings.MANDATORY_FIELD, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1454,7 +1450,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ToolStripMenuAutoTheme_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTOTHEME_CHANGE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             SystemEvents.UserPreferenceChanged += UserPreferenceChanged;
             ToggleTheme();
         }
@@ -1466,7 +1462,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ToolStripMenuLightTheme_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LIGHT_THEME_CHANGE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LIGHT_THEME_CHANGE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
             Misc.MiscMethods.LightThemeAllControls(this);
             LightThemeSpecificControls();
@@ -1488,7 +1484,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ToolStripMenuDarkTheme_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_DARK_THEME_CHANGE, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_DARK_THEME_CHANGE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             SystemEvents.UserPreferenceChanged -= UserPreferenceChanged;
             Misc.MiscMethods.DarkThemeAllControls(this);
             DarkThemeSpecificControls();
@@ -1510,8 +1506,9 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void StorageDetailsButton_Click(object sender, EventArgs e)
         {
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(storageForm, Theme.Auto);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_STORAGE_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = storageForm.ShowDialog();
         }
 
@@ -1522,8 +1519,9 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void VideoCardDetailsButton_Click(object sender, EventArgs e)
         {
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(videoCardForm, Theme.Auto);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_VIDEO_CARD_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = videoCardForm.ShowDialog();
         }
 
@@ -1534,8 +1532,9 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void RamDetailsButton_Click(object sender, EventArgs e)
         {
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(ramForm, Theme.Auto);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_RAM_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = ramForm.ShowDialog();
         }
 
@@ -1546,8 +1545,9 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ProcessorDetailsButton_Click(object sender, EventArgs e)
         {
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(processorForm, Theme.Auto);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_PROCESSOR_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = processorForm.ShowDialog();
         }
 
@@ -1572,7 +1572,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosOS + lblOperatingSystem.Width > rightBound && invertOSScroll == false)
             {
                 lblOperatingSystem.Location = new Point(xPosOS, yPosOS);
-                xPosOS -= Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosOS -= Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1582,7 +1582,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosOS < leftBound && invertOSScroll == true)
             {
                 lblOperatingSystem.Location = new Point(xPosOS, yPosOS);
-                xPosOS += Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosOS += Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1600,7 +1600,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosFwVersion + lblFwVersion.Width > rightBound && invertFwVersionScroll == false)
             {
                 lblFwVersion.Location = new Point(xPosFwVersion, yPosFwVersion);
-                xPosFwVersion -= Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosFwVersion -= Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1610,7 +1610,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosFwVersion < leftBound && invertFwVersionScroll == true)
             {
                 lblFwVersion.Location = new Point(xPosFwVersion, yPosFwVersion);
-                xPosFwVersion += Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosFwVersion += Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1628,7 +1628,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosVideoCard + lblVideoCard.Width > rightBound && invertVideoCardScroll == false)
             {
                 lblVideoCard.Location = new Point(xPosVideoCard, yPosVideoCard);
-                xPosVideoCard -= Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosVideoCard -= Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1638,7 +1638,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosVideoCard < leftBound && invertVideoCardScroll == true)
             {
                 lblVideoCard.Location = new Point(xPosVideoCard, yPosVideoCard);
-                xPosVideoCard += Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosVideoCard += Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1656,7 +1656,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosRam + lblRam.Width > rightBound && invertRamScroll == false)
             {
                 lblRam.Location = new Point(xPosRam, yPosRam);
-                xPosRam -= Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosRam -= Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1666,7 +1666,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosRam < leftBound && invertRamScroll == true)
             {
                 lblRam.Location = new Point(xPosRam, yPosRam);
-                xPosRam += Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosRam += Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1684,7 +1684,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosProcessor + lblProcessor.Width > rightBound && invertProcessorScroll == false)
             {
                 lblProcessor.Location = new Point(xPosProcessor, yPosProcessor);
-                xPosProcessor -= Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosProcessor -= Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1694,7 +1694,7 @@ namespace AssetInformationAndRegistration.Forms
             if (xPosProcessor < leftBound && invertProcessorScroll == true)
             {
                 lblProcessor.Location = new Point(xPosProcessor, yPosProcessor);
-                xPosProcessor += Convert.ToInt32(Resources.LABEL_SCROLL_SPEED);
+                xPosProcessor += Convert.ToInt32(GenericResources.LABEL_SCROLL_SPEED);
             }
             else
             {
@@ -1730,7 +1730,7 @@ namespace AssetInformationAndRegistration.Forms
         private void AboutLabelButton_Click(object sender, EventArgs e)
         {
             AboutBox aboutForm = new AboutBox(ghc, log, configOptions.Definitions, isSystemDarkModeEnabled);
-            if (HardwareInfo.GetWinVersion().Equals(Resources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(aboutForm, Theme.Auto);
             _ = aboutForm.ShowDialog();
         }
@@ -1762,11 +1762,11 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void LogLabelButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 #if DEBUG
-            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + GenericResources.LOG_FILE_EXT);
 #else
-            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + Resources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + Resources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + GenericResources.LOG_FILE_EXT);
 #endif
         }
 
@@ -1777,8 +1777,8 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ApcsButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(Resources.CONSOLE_OUT_GUI));
-            _ = System.Diagnostics.Process.Start(Resources.HTTP + serverIP + ":" + serverPort);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            _ = System.Diagnostics.Process.Start(GenericResources.HTTP + serverIP + ":" + serverPort);
         }
 
         /// <summary> 
@@ -2020,42 +2020,42 @@ namespace AssetInformationAndRegistration.Forms
             statusStrip1.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
             statusStrip1.Renderer = new ModifiedToolStripProfessionalLightTheme();
 
-            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AUTOTHEME_LIGHT_PATH));
-            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LIGHTTHEME_LIGHT_PATH));
-            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DARKTHEME_LIGHT_PATH));
-            comboBoxThemeButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AUTOTHEME_LIGHT_PATH));
-            logLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LOG_LIGHT_PATH));
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_LIGHT_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.MAIN_BANNER_LIGHT_PATH));
-            iconImgBrand.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BRAND_LIGHT_PATH));
-            iconImgModel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_MODEL_LIGHT_PATH));
-            iconImgSerialNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERIAL_NUMBER_LIGHT_PATH));
-            iconImgProcessor.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_CPU_LIGHT_PATH));
-            iconImgRam.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_RAM_LIGHT_PATH));
-            iconImgStorageType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_HDD_LIGHT_PATH));
-            iconImgMediaOperationMode.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AHCI_LIGHT_PATH));
-            iconImgVideoCard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_GPU_LIGHT_PATH));
-            iconImgOperatingSystem.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_WINDOWS_LIGHT_PATH));
-            iconImgHostname.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_HOSTNAME_LIGHT_PATH));
-            iconImgIpAddress.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_IP_LIGHT_PATH));
-            iconImgFwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BIOS_LIGHT_PATH));
-            iconImgFwVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BIOS_VERSION_LIGHT_PATH));
-            iconImgSecureBoot.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SECURE_BOOT_LIGHT_PATH));
-            iconImgAssetNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ASSET_LIGHT_PATH));
-            iconImgSealNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SEAL_LIGHT_PATH));
-            iconImgRoomNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ROOM_LIGHT_PATH));
-            iconImgBuilding.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BUILDING_LIGHT_PATH));
-            iconImgAdRegistered.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_LIGHT_PATH));
-            iconImgStandard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_STANDARD_LIGHT_PATH));
-            iconImgServiceDate.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVICE_LIGHT_PATH));
-            iconImgRoomLetter.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LETTER_LIGHT_PATH));
-            iconImgInUse.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_IN_USE_LIGHT_PATH));
-            iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_STICKER_LIGHT_PATH));
-            iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TYPE_LIGHT_PATH));
-            iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_VT_X_LIGHT_PATH));
-            iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TPM_LIGHT_PATH));
-            iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_CMOS_BATTERY_LIGHT_PATH));
-            iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TICKET_LIGHT_PATH));
+            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AUTOTHEME_LIGHT_PATH));
+            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LIGHTTHEME_LIGHT_PATH));
+            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_DARKTHEME_LIGHT_PATH));
+            comboBoxThemeButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AUTOTHEME_LIGHT_PATH));
+            logLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LOG_LIGHT_PATH));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ABOUT_LIGHT_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.MAIN_BANNER_LIGHT_PATH));
+            iconImgBrand.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BRAND_LIGHT_PATH));
+            iconImgModel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_MODEL_LIGHT_PATH));
+            iconImgSerialNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERIAL_NUMBER_LIGHT_PATH));
+            iconImgProcessor.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_CPU_LIGHT_PATH));
+            iconImgRam.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_RAM_LIGHT_PATH));
+            iconImgStorageType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_HDD_LIGHT_PATH));
+            iconImgMediaOperationMode.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AHCI_LIGHT_PATH));
+            iconImgVideoCard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_GPU_LIGHT_PATH));
+            iconImgOperatingSystem.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_WINDOWS_LIGHT_PATH));
+            iconImgHostname.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_HOSTNAME_LIGHT_PATH));
+            iconImgIpAddress.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_IP_LIGHT_PATH));
+            iconImgFwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BIOS_LIGHT_PATH));
+            iconImgFwVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BIOS_VERSION_LIGHT_PATH));
+            iconImgSecureBoot.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SECURE_BOOT_LIGHT_PATH));
+            iconImgAssetNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ASSET_LIGHT_PATH));
+            iconImgSealNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SEAL_LIGHT_PATH));
+            iconImgRoomNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ROOM_LIGHT_PATH));
+            iconImgBuilding.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BUILDING_LIGHT_PATH));
+            iconImgAdRegistered.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVER_LIGHT_PATH));
+            iconImgStandard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_STANDARD_LIGHT_PATH));
+            iconImgServiceDate.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVICE_LIGHT_PATH));
+            iconImgRoomLetter.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LETTER_LIGHT_PATH));
+            iconImgInUse.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_IN_USE_LIGHT_PATH));
+            iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_STICKER_LIGHT_PATH));
+            iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TYPE_LIGHT_PATH));
+            iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_VT_X_LIGHT_PATH));
+            iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TPM_LIGHT_PATH));
+            iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_CMOS_BATTERY_LIGHT_PATH));
+            iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TICKET_LIGHT_PATH));
         }
 
         public void DarkThemeSpecificControls()
@@ -2090,42 +2090,42 @@ namespace AssetInformationAndRegistration.Forms
             statusStrip1.BackColor = StringsAndConstants.DARK_BACKGROUND;
             statusStrip1.Renderer = new ModifiedToolStripProfessionalDarkTheme();
 
-            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AUTOTHEME_DARK_PATH));
-            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LIGHTTHEME_DARK_PATH));
-            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_DARKTHEME_DARK_PATH));
-            comboBoxThemeButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AUTOTHEME_DARK_PATH));
-            logLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LOG_DARK_PATH));
-            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ABOUT_DARK_PATH));
-            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.MAIN_BANNER_DARK_PATH));
-            iconImgBrand.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BRAND_DARK_PATH));
-            iconImgModel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_MODEL_DARK_PATH));
-            iconImgSerialNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERIAL_NUMBER_DARK_PATH));
-            iconImgProcessor.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_CPU_DARK_PATH));
-            iconImgRam.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_RAM_DARK_PATH));
-            iconImgStorageType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_HDD_DARK_PATH));
-            iconImgMediaOperationMode.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_AHCI_DARK_PATH));
-            iconImgVideoCard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_GPU_DARK_PATH));
-            iconImgOperatingSystem.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_WINDOWS_DARK_PATH));
-            iconImgHostname.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_HOSTNAME_DARK_PATH));
-            iconImgIpAddress.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_IP_DARK_PATH));
-            iconImgFwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BIOS_DARK_PATH));
-            iconImgFwVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BIOS_VERSION_DARK_PATH));
-            iconImgSecureBoot.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SECURE_BOOT_DARK_PATH));
-            iconImgAssetNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ASSET_DARK_PATH));
-            iconImgSealNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SEAL_DARK_PATH));
-            iconImgRoomNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_ROOM_DARK_PATH));
-            iconImgBuilding.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_BUILDING_DARK_PATH));
-            iconImgAdRegistered.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVER_DARK_PATH));
-            iconImgStandard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_STARDARD_DARK_PATH));
-            iconImgServiceDate.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_SERVICE_DARK_PATH));
-            iconImgRoomLetter.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_LETTER_DARK_PATH));
-            iconImgInUse.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_IN_USE_DARK_PATH));
-            iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_STICKER_DARK_PATH));
-            iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TYPE_DARK_PATH));
-            iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_VT_X_DARK_PATH));
-            iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TPM_DARK_PATH));
-            iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_CMOS_BATTERY_DARK_PATH));
-            iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), Resources.ICON_TICKET_DARK_PATH));
+            toolStripAutoTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AUTOTHEME_DARK_PATH));
+            toolStripLightTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LIGHTTHEME_DARK_PATH));
+            toolStripDarkTheme.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_DARKTHEME_DARK_PATH));
+            comboBoxThemeButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AUTOTHEME_DARK_PATH));
+            logLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LOG_DARK_PATH));
+            aboutLabelButton.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ABOUT_DARK_PATH));
+            imgTopBanner.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.MAIN_BANNER_DARK_PATH));
+            iconImgBrand.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BRAND_DARK_PATH));
+            iconImgModel.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_MODEL_DARK_PATH));
+            iconImgSerialNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERIAL_NUMBER_DARK_PATH));
+            iconImgProcessor.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_CPU_DARK_PATH));
+            iconImgRam.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_RAM_DARK_PATH));
+            iconImgStorageType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_HDD_DARK_PATH));
+            iconImgMediaOperationMode.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_AHCI_DARK_PATH));
+            iconImgVideoCard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_GPU_DARK_PATH));
+            iconImgOperatingSystem.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_WINDOWS_DARK_PATH));
+            iconImgHostname.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_HOSTNAME_DARK_PATH));
+            iconImgIpAddress.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_IP_DARK_PATH));
+            iconImgFwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BIOS_DARK_PATH));
+            iconImgFwVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BIOS_VERSION_DARK_PATH));
+            iconImgSecureBoot.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SECURE_BOOT_DARK_PATH));
+            iconImgAssetNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ASSET_DARK_PATH));
+            iconImgSealNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SEAL_DARK_PATH));
+            iconImgRoomNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_ROOM_DARK_PATH));
+            iconImgBuilding.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_BUILDING_DARK_PATH));
+            iconImgAdRegistered.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVER_DARK_PATH));
+            iconImgStandard.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_STARDARD_DARK_PATH));
+            iconImgServiceDate.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_SERVICE_DARK_PATH));
+            iconImgRoomLetter.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_LETTER_DARK_PATH));
+            iconImgInUse.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_IN_USE_DARK_PATH));
+            iconImgTag.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_STICKER_DARK_PATH));
+            iconImgHwType.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TYPE_DARK_PATH));
+            iconImgVirtualizationTechnology.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_VT_X_DARK_PATH));
+            iconImgTpmVersion.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TPM_DARK_PATH));
+            iconImgBatteryChange.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_CMOS_BATTERY_DARK_PATH));
+            iconImgTicketNumber.Image = Image.FromFile(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), GenericResources.ICON_TICKET_DARK_PATH));
         }
     }
 }
