@@ -88,10 +88,10 @@ namespace AssetInformationAndRegistration.Forms
         internal MainForm(HttpClient client, GitHubClient ghc, LogGenerator log, Program.ConfigurationOptions configOptions, Agent agent, string serverIP, string serverPort, bool offlineMode, bool isSystemDarkModeEnabled)
         {
             InitializeComponent();
-            processorForm = new ProcessorDetailForm();
-            ramForm = new RamDetailForm();
-            storageForm = new StorageDetailForm();
-            videoCardForm = new VideoCardDetailForm();
+            processorForm = new ProcessorDetailForm(log);
+            ramForm = new RamDetailForm(log);
+            storageForm = new StorageDetailForm(log);
+            videoCardForm = new VideoCardDetailForm(log);
 
             processorForm.Hide();
             ramForm.Hide();
@@ -227,7 +227,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 //Fetch building and hw types info from the specified server
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                serverParam = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_PARAMETERS_URL);
+                serverParam = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
             }
             else
             {
@@ -757,7 +757,7 @@ namespace AssetInformationAndRegistration.Forms
                 };
                 newHardware.videoCard.Add(v);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].vRam, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
             videoCardForm.TreatData(videoCardDetail);
             videoCardSummary = videoCardDetail[0][1];
@@ -870,7 +870,7 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         //Feches model info from server
-                        modelTemplate = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_MODEL_URL + lblModel.Text);
+                        modelTemplate = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_MODEL_URL + lblModel.Text);
                     }
                     catch (InvalidModelException)
                     {
@@ -891,8 +891,8 @@ namespace AssetInformationAndRegistration.Forms
 
                         existingAsset = null;
 
-                        //Feches asset data from server
-                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL + textBoxAssetNumber.Text);
+                        //Fetches existing asset data from server
+                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + textBoxAssetNumber.Text);
 
                         loadingCircleLastService.Visible = false;
                         loadingCircleLastService.Active = false;
@@ -901,16 +901,18 @@ namespace AssetInformationAndRegistration.Forms
                         lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
                         lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVICES_MADE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         for (int i = 0; i < existingAsset.maintenances.Count; i++)
                         {
                             //Feches agent names from server
-                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                             if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                             {
-                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
-                            }
+                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
 
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), "[" + i + "]" , DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY) + " - " + StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)] + " - " + agentMaintenances.name + " " + agentMaintenances.surname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                            }
                         }
                         tableMaintenances.Visible = true;
                         tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
@@ -924,7 +926,7 @@ namespace AssetInformationAndRegistration.Forms
                         radioButtonUpdateData.Enabled = false;
                         lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
                         lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_NOT_EXIST, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         lblThereIsNothingHere.Visible = true;
                     }
                     //If server is unreachable
@@ -1177,7 +1179,7 @@ namespace AssetInformationAndRegistration.Forms
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                     //Send info to server
-                                    _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL, newAsset);
+                                    _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL, newAsset);
 
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
@@ -1212,7 +1214,7 @@ namespace AssetInformationAndRegistration.Forms
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 //Send info to server
-                                _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL, newAsset);
+                                _ = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL, newAsset);
 
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
@@ -1240,7 +1242,6 @@ namespace AssetInformationAndRegistration.Forms
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Normal, Handle);
                     }
 
-
                     //Feches asset number data from server to update the label
                     loadingCircleLastService.Visible = true;
                     loadingCircleLastService.Active = true;
@@ -1256,7 +1257,7 @@ namespace AssetInformationAndRegistration.Forms
                     {
                         try
                         {
-                            existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_ASSET_URL + textBoxAssetNumber.Text);
+                            existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + textBoxAssetNumber.Text);
 
                             radioButtonUpdateData.Enabled = true;
                             loadingCircleLastService.Visible = false;
@@ -1268,10 +1269,10 @@ namespace AssetInformationAndRegistration.Forms
                             for (int i = 0; i < existingAsset.maintenances.Count; i++)
                             {
                                 //Feches agent names from server
-                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_AGENTS_URL + existingAsset.maintenances[i].agentId);
                                 if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                                 {
-                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_MODE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
                                 }
                             }
                             tableMaintenances.Visible = true;
@@ -1777,7 +1778,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void ApcsButton_Click(object sender, EventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIEW_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_ACCESS_APCS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             _ = System.Diagnostics.Process.Start(GenericResources.HTTP + serverIP + ":" + serverPort);
         }
 

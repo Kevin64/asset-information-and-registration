@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRG.Controls.UI", "..\Third
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogGeneratorDLL", "..\Dependencies\LogGeneratorDLL\LogGeneratorDLL.csproj", "{B1C36277-8EC3-4CD8-BFBB-6A48F0C703A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetInformationAndRegistrationTests", "AssetInformationAndRegistrationTests\AssetInformationAndRegistrationTests.csproj", "{829CF635-5473-4E5D-802A-71F74FE19876}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B1C36277-8EC3-4CD8-BFBB-6A48F0C703A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C36277-8EC3-4CD8-BFBB-6A48F0C703A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C36277-8EC3-4CD8-BFBB-6A48F0C703A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829CF635-5473-4E5D-802A-71F74FE19876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829CF635-5473-4E5D-802A-71F74FE19876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829CF635-5473-4E5D-802A-71F74FE19876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829CF635-5473-4E5D-802A-71F74FE19876}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -261,6 +261,3 @@ paket-files/
 __pycache__/
 *.pyc
 *.txt
-
-# Specific folders
-AssetInformationAndRegistrationTests/

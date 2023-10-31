@@ -1,6 +1,7 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
+using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +15,16 @@ namespace AssetInformationAndRegistration.Forms
     internal partial class RamDetailForm : Form, ITheming
     {
         private static List<List<string>> auxList;
+        private readonly LogGenerator log;
 
         /// <summary>
         /// Ram form constructor
         /// </summary>
-        public RamDetailForm()
+        public RamDetailForm(LogGenerator log)
         {
             InitializeComponent();
+            FormClosing += RamDetailForm_Closing;
+            this.log = log;
         }
 
         /// <summary>
@@ -118,6 +122,16 @@ namespace AssetInformationAndRegistration.Forms
             {
                 Close();
             }
+        }
+
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RamDetailForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_RAM_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
     }
 }

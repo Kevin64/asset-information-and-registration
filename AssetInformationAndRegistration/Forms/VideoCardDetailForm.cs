@@ -1,8 +1,10 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using ConstantsDLL.Properties;
+using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
@@ -12,12 +14,15 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     internal partial class VideoCardDetailForm : Form, ITheming
     {
+        private readonly LogGenerator log;
         /// <summary>
         /// Video card form constructor
         /// </summary>
-        public VideoCardDetailForm()
+        public VideoCardDetailForm(LogGenerator log)
         {
             InitializeComponent();
+            FormClosing += VideoCardDetailForm_Closing;
+            this.log = log;
         }
 
         /// <summary>
@@ -71,6 +76,16 @@ namespace AssetInformationAndRegistration.Forms
             {
                 Close();
             }
+        }
+
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VideoCardDetailForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_VIDEO_CARD_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
     }
 }

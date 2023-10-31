@@ -1,5 +1,6 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using ConstantsDLL.Properties;
+using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +13,16 @@ namespace AssetInformationAndRegistration.Forms
     /// </summary>
     internal partial class ProcessorDetailForm : Form, ITheming
     {
+        private readonly LogGenerator log;
+
         /// <summary>
         /// Processor form constructor
         /// </summary>
-        public ProcessorDetailForm()
+        public ProcessorDetailForm(LogGenerator log)
         {
             InitializeComponent();
+            FormClosing += ProcessorDetailForm_Closing;
+            this.log = log;
         }
 
         /// <summary>
@@ -74,6 +79,16 @@ namespace AssetInformationAndRegistration.Forms
             {
                 Close();
             }
+        }
+
+        /// <summary> 
+        /// Handles the closing of the current form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProcessorDetailForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_PROCESSOR_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
     }
 }

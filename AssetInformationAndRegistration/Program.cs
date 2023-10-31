@@ -155,7 +155,7 @@ namespace AssetInformationAndRegistration
 
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 
-            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.API_AGENT_URL + opts.Username);
+            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.V1_API_AGENT_URL + opts.Username);
             v.Wait();
             agent = v.Result;
 
@@ -166,7 +166,7 @@ namespace AssetInformationAndRegistration
                     string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                     CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
-                    UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
+                    //UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
                 }
                 else
                 {
@@ -199,14 +199,27 @@ namespace AssetInformationAndRegistration
             //System.Globalization.CultureInfo.DefaultThreadCurrentCulture = culture;
             //System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = culture;
 
+            Bootstrap(args);
+        }
+
+        public static void Bootstrap(string[] args)
+        {
             ghc = new GitHubClient(new Octokit.ProductHeaderValue(GenericResources.GITHUB_REPO_AIR));
 
-            //Check if application is running
-            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
+            try
             {
-                MessageBox.Show(UIStrings.ALREADY_RUNNING, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Process.GetCurrentProcess().Kill();
+                //Check if application is running
+                if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
+                {
+                    MessageBox.Show(UIStrings.ALREADY_RUNNING, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Process.GetCurrentProcess().Kill();
+                }
             }
+            catch(Exception e)
+            {
+                Console.WriteLine("This is a test " + e.Message);
+            }
+            
 
             string[] argsLog = new string[args.Length];
 
@@ -331,16 +344,16 @@ namespace AssetInformationAndRegistration
                     //Parses the args
                     Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions);
 
-                    if (args.Length == 1 && args.Contains(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));
-                    }
-                    else
-                    {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.ARGS_ERROR, string.Empty, showCLIOutput);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
-                    }
+                    //if (args.Length == 1 && args.Contains(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                    //{
+                    //    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SHOWING_HELP, string.Empty, showCLIOutput);
+                    //    Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));
+                    //}
+                    //else
+                    //{
+                    //    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.ARGS_ERROR, string.Empty, showCLIOutput);
+                    //    Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                    //}
                 }
             }
             //If config file is malformed
