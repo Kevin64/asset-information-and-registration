@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-10-31T17:09:21.254Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76" etag="3P6xZWP_DwB6x4etiEyk" version="22.0.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-10-31T17:18:49.770Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76" etag="a_y4CL2Qk402ObQ-Np2N" version="22.0.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1173" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -161,6 +161,11 @@
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-58" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BBrvKpnnRB6dyi7Tlnk0-32" target="BBrvKpnnRB6dyi7Tlnk0-57">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-75" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="BBrvKpnnRB6dyi7Tlnk0-58">
+          <mxGeometry x="-0.472" y="1" relative="1" as="geometry">
+            <mxPoint x="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-32" value="Agent exists&lt;br&gt;in database?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1190" y="407.5" width="130" height="130" as="geometry" />
         </mxCell>
@@ -230,8 +235,11 @@
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-59" value="Is in Offline mode?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1000" y="565" width="130" height="130" as="geometry" />
         </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BBrvKpnnRB6dyi7Tlnk0-61" target="BBrvKpnnRB6dyi7Tlnk0-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-61" value="Gets Offline Mode&lt;br&gt;Parameter file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1005" y="810" width="120" height="60" as="geometry" />
+          <mxGeometry x="1005" y="760" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BBrvKpnnRB6dyi7Tlnk0-67" target="BBrvKpnnRB6dyi7Tlnk0-71">
           <mxGeometry relative="1" as="geometry" />
@@ -245,8 +253,20 @@
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-68" value="Program launched" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="60" y="10" width="120" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BBrvKpnnRB6dyi7Tlnk0-71" target="BBrvKpnnRB6dyi7Tlnk0-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="BBrvKpnnRB6dyi7Tlnk0-71" value="CollectButton_Click" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="596.5" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BBrvKpnnRB6dyi7Tlnk0-73" target="BBrvKpnnRB6dyi7Tlnk0-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-73" value="Collects asset data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="396.5" y="600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BBrvKpnnRB6dyi7Tlnk0-76" value="Input asset details" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="386.5" y="740" width="140" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
