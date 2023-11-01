@@ -146,37 +146,29 @@ namespace AssetInformationAndRegistration
             if (opts.ServerPort == null)
                 opts.ServerPort = configOptions.Definitions.ServerPort[0];
 
-            client = new HttpClient
-            {
-                BaseAddress = new Uri(GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort)
-            };
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(GenericResources.HTTP_CONTENT_TYPE_JSON));
-
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-
-            System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.V1_API_AGENT_URL + opts.Username);
-            v.Wait();
-            agent = v.Result;
-
             try
             {
-                if (agent != null)
-                {
-                    string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                    CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
-                    //UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
-                }
-                else
-                {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.AUTH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                    Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
-                }
+                client = Misc.MiscMethods.SetHttpClient(opts.ServerIP, opts.ServerPort, GenericResources.HTTP_CONTENT_TYPE_JSON);
+
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+
+                System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.V1_API_AGENT_URL + opts.Username);
+                v.Wait();
+                agent = v.Result;
+
+                string[] argsArray = { opts.ServerIP, opts.ServerPort, opts.AssetNumber, opts.Building, opts.RoomNumber, opts.ServiceDate, opts.ServiceType, opts.BatteryChange, opts.TicketNumber, opts.Standard, opts.InUse, opts.SealNumber, opts.Tag, opts.HwType };
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
+                UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
             }
-            catch
+            catch(AggregateException e)
             {
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.INTRANET_REQUIRED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.InnerException.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+            }
+            catch(UriFormatException e)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
@@ -219,7 +211,6 @@ namespace AssetInformationAndRegistration
             {
                 Console.WriteLine("This is a test " + e.Message);
             }
-            
 
             string[] argsLog = new string[args.Length];
 

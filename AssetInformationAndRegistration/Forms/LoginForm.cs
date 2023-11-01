@@ -179,14 +179,9 @@ namespace AssetInformationAndRegistration.Forms
                     comboBoxServerPort.Enabled = false;
                     checkBoxOfflineMode.Enabled = false;
 
-                    client = new HttpClient
-                    {
-                        BaseAddress = new Uri(GenericResources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text)
-                    };
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(GenericResources.HTTP_CONTENT_TYPE_JSON));
+                    client = MiscMethods.SetHttpClient(comboBoxServerIP.Text, comboBoxServerPort.Text, GenericResources.HTTP_CONTENT_TYPE_JSON);
 
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_INIT_LOGIN, textBoxUsername.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, textBoxUsername.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVER_DATA, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 

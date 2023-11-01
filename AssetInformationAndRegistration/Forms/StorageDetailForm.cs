@@ -52,6 +52,11 @@ namespace AssetInformationAndRegistration.Forms
                 s[2] = individualSizeStr;
                 totalSize += individualSize;
 
+                if(s[1] == ((int)HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString())
+                    s[1] = (HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString();
+                else
+                    s[1] = (HardwareInfoDLL.HardwareInfo.StorageTypes.HDD).ToString();
+
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
 

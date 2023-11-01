@@ -36,26 +36,25 @@ namespace AssetInformationAndRegistrationTests
         private HttpClient client;
         private Arguments argsObj, existingAssetObj;
         private Asset vBefore, vAfter;
+        private ServerParam sp;
 
         [Theory]
+        
+        [InlineData("localhost", "8081", "999999", "Building0", "9999", "2023-10-30", "f", "y", "999999", "e", "y", "99999999", "y", "Tablet", "kevin1", "123")]
         [InlineData("localhost", "8081", "999999", "Building0", "9999", "2023-10-30", "f", "y", "999999", "e", "y", "99999999", "y", "Tablet", "kevin", "123")]
         [InlineData("localhost", "8081", "888888", "Building1", "8888", "2022-09-29", "m", "n", "888888", "s", "n", "88888888", "n", "Notebook/Laptop", "kevin", "123")]
         [InlineData("localhost", "8081", "777777", "Building0", "7777", "2021-08-28", "f", "n", "777777", "e", "n", "77777777", "y", "All-In-One", "kevin", "123")]
         [InlineData("localhost", "8081", "666666", "Building2", "6666", "2020-07-27", "m", "y", "666666", "s", "y", "66666666", "n", "Desktop", "kevin", "123")]
         [InlineData("192.168.79.54", "8081", "888888", "same", "same", "today", "f", "y", "555555", "e", "y", "same", "y", "same", "kevin", "123")]
+        
         public async void GivingAssetArgs_RegisterOnDb_ThenRetrieveDataToCompare(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string standard, string inUse, string sealNumber, string tag, string hwType, string username, string password)
         {
-            client = new HttpClient
-            {
-                BaseAddress = new Uri(GenericResources.HTTP + serverIP + ":" + serverPort)
-            };
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(GenericResources.HTTP_CONTENT_TYPE_JSON));
-
-            ServerParam sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
-
             try
             {
+                client = AssetInformationAndRegistration.Misc.MiscMethods.SetHttpClient(serverIP, serverPort, GenericResources.HTTP_CONTENT_TYPE_JSON);
+                
+                sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
+
                 vBefore = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + assetNumber);
 
                 existingAssetObj = new Arguments
@@ -73,37 +72,29 @@ namespace AssetInformationAndRegistrationTests
                     Tag = vBefore.tag,
                     HardwareType = vBefore.hardware.type
                 };
-            }
-            catch
-            {
+                string[] argsArray = { "--serverIP=" + serverIP, "--serverPort=" + serverPort, "--assetNumber=" + assetNumber, "--building=" + building, "--roomNumber=" + roomNumber, "--serviceDate=" + serviceDate, "--serviceType=" + serviceType, "--batteryChanged=" + batteryChange, "--ticketNumber=" + ticketNumber, "--standard=" + standard, "--inUse=" + inUse, "--sealNumber=" + sealNumber, "--tag=" + tag, "--hwType=" + hwType, "--username=" + username, "--password=" + password };
 
-            }
+                argsObj = new Arguments
+                {
+                    AssetNumber = assetNumber,
+                    Building = building,
+                    RoomNumber = roomNumber,
+                    ServiceDate = serviceDate,
+                    ServiceType = serviceType,
+                    BatteryChange = batteryChange,
+                    TicketNumber = ticketNumber,
+                    Standard = standard,
+                    InUse = inUse,
+                    SealNumber = sealNumber,
+                    Tag = tag,
+                    HardwareType = hwType
+                };
 
-            string[] argsArray = { "--serverIP=" + serverIP, "--serverPort=" + serverPort, "--assetNumber=" + assetNumber, "--building=" + building, "--roomNumber=" + roomNumber, "--serviceDate=" + serviceDate, "--serviceType=" + serviceType, "--batteryChanged=" + batteryChange, "--ticketNumber=" + ticketNumber, "--standard=" + standard, "--inUse=" + inUse, "--sealNumber=" + sealNumber, "--tag=" + tag, "--hwType=" + hwType, "--username=" + username, "--password=" + password };
+                Program.Bootstrap(argsArray);
 
-            argsObj = new Arguments
-            {
-                AssetNumber = assetNumber,
-                Building = building,
-                RoomNumber = roomNumber,
-                ServiceDate = serviceDate,
-                ServiceType = serviceType,
-                BatteryChange = batteryChange,
-                TicketNumber = ticketNumber,
-                Standard = standard,
-                InUse = inUse,
-                SealNumber = sealNumber,
-                Tag = tag,
-                HardwareType = hwType
-            };
-
-            Program.Bootstrap(argsArray);
-
-            try
-            {
                 vAfter = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + assetNumber);
             }
-            catch
+            catch (HttpRequestException)
             {
 
             }
@@ -151,6 +142,20 @@ namespace AssetInformationAndRegistrationTests
             Assert.Equal(argsObj.BatteryChange, StringsAndConstants.LIST_BATTERY_CLI[Convert.ToInt32(vAfter.maintenances[0].batteryChange)]);
             Assert.Equal(argsObj.TicketNumber, vAfter.maintenances[0].ticketNumber);
 
+        }
+
+        [Theory]
+        [InlineData("localhost", "gtr", "999999", "Building0", "9999", "2023-10-30", "f", "y", "999999", "e", "y", "99999999", "y", "Tablet", "kevin", "123")]
+        public void ThrowsExceptionForBadUri(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string standard, string inUse, string sealNumber, string tag, string hwType, string username, string password)
+        {
+            string[] argsArray = { "--serverIP=" + serverIP, "--serverPort=" + serverPort, "--assetNumber=" + assetNumber, "--building=" + building, "--roomNumber=" + roomNumber, "--serviceDate=" + serviceDate, "--serviceType=" + serviceType, "--batteryChanged=" + batteryChange, "--ticketNumber=" + ticketNumber, "--standard=" + standard, "--inUse=" + inUse, "--sealNumber=" + sealNumber, "--tag=" + tag, "--hwType=" + hwType, "--username=" + username, "--password=" + password };
+
+            Action act = () =>
+            {
+                Program.Bootstrap(argsArray);
+            };
+            var httpEx = Assert.Throws<UriFormatException>(act);
+            Assert.Equal("URI Inválido: Porta especificada inválida.", httpEx.Message);
         }
     }
 }

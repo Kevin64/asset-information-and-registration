@@ -1065,7 +1065,7 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_PASSED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                 //If there are compliance errors, colors taskbar's progress bar red
-                if (!pass)
+                if (!pass && !offlineMode)
                 {
                     progressBar1.SetState(2);
                     tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);

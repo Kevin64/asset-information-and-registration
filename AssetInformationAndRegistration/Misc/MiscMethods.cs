@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using static AssetInformationAndRegistration.Program;
@@ -33,7 +35,7 @@ namespace AssetInformationAndRegistration.Misc
     /// <summary> 
     /// Class for miscelaneous methods
     /// </summary>
-    internal static class MiscMethods
+    public static class MiscMethods
     {
         /// <summary> 
         /// Creates registrys keys when a successful update check is made
@@ -730,7 +732,9 @@ namespace AssetInformationAndRegistration.Misc
                 sufix = GenericResources.KB;
             }
             else
+            {
                 return bytes.ToString("0 B");
+            }
 
             friendly /= 1024;
             return friendly.ToString("0.## ") + sufix;
@@ -774,7 +778,9 @@ namespace AssetInformationAndRegistration.Misc
                 sufix = GenericResources.KB;
             }
             else
+            {
                 return bytes.ToString("0 B");
+            }
 
             friendly /= 1000;
             return friendly.ToString() + " " + sufix;
@@ -912,6 +918,24 @@ namespace AssetInformationAndRegistration.Misc
                     outer[i].Add(lists[j].Count > i ? lists[j][i] : default);
             }
             return outer;
+        }
+
+        /// <summary>
+        /// Sets the HTTP client used throughout the application 
+        /// </summary>
+        /// <param name="ip">Server IP</param>
+        /// <param name="port">Server Port</param>
+        /// <param name="mediaType">Content-Type HTTP header</param>
+        /// <returns></returns>
+        public static HttpClient SetHttpClient(string ip, string port, string mediaType)
+        {
+            HttpClient client = new HttpClient
+            {
+                BaseAddress = new Uri(GenericResources.HTTP + ip + ":" + port)
+            };
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+            return client;
         }
 
         /// <summary> 
