@@ -179,7 +179,7 @@ namespace AssetInformationAndRegistration.Forms
                     comboBoxServerPort.Enabled = false;
                     checkBoxOfflineMode.Enabled = false;
 
-                    client = MiscMethods.SetHttpClient(comboBoxServerIP.Text, comboBoxServerPort.Text, GenericResources.HTTP_CONTENT_TYPE_JSON);
+                    client = RestApiDLL.MiscMethods.SetHttpClient(comboBoxServerIP.Text, comboBoxServerPort.Text, GenericResources.HTTP_CONTENT_TYPE_JSON, textBoxUsername.Text, textBoxPassword.Text);
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, textBoxUsername.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 

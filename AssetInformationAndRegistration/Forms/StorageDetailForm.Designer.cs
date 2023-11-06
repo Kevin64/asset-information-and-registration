@@ -149,6 +149,7 @@ namespace AssetInformationAndRegistration.Forms
             // StorageDetailForm
             // 
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.iconImgStorageSize);
             this.Controls.Add(this.lblTotalSize);
             this.Controls.Add(this.lblFixedTotalSize);

@@ -148,7 +148,7 @@ namespace AssetInformationAndRegistration
 
             try
             {
-                client = Misc.MiscMethods.SetHttpClient(opts.ServerIP, opts.ServerPort, GenericResources.HTTP_CONTENT_TYPE_JSON);
+                client = MiscMethods.SetHttpClient(opts.ServerIP, opts.ServerPort, GenericResources.HTTP_CONTENT_TYPE_JSON, opts.Username, opts.Password);
 
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 

@@ -95,7 +95,7 @@ namespace AssetInformationAndRegistration.Forms
             // UpdaterForm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblFixedChangelogLatestVersion);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.downloadButton);

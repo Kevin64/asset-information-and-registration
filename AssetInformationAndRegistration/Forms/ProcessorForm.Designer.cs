@@ -111,6 +111,7 @@ namespace AssetInformationAndRegistration.Forms
             // ProcessorDetailForm
             // 
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
@@ -121,6 +122,7 @@ namespace AssetInformationAndRegistration.Forms
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion

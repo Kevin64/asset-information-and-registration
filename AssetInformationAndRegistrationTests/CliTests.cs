@@ -51,7 +51,7 @@ namespace AssetInformationAndRegistrationTests
         {
             try
             {
-                client = AssetInformationAndRegistration.Misc.MiscMethods.SetHttpClient(serverIP, serverPort, GenericResources.HTTP_CONTENT_TYPE_JSON);
+                client = MiscMethods.SetHttpClient(serverIP, serverPort, GenericResources.HTTP_CONTENT_TYPE_JSON, username, password);
                 
                 sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
 

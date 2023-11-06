@@ -237,7 +237,7 @@ namespace AssetInformationAndRegistration.Forms
             // 
             this.AcceptButton = this.authButton;
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxInactiveLoginIntro);
             this.Controls.Add(this.iconImgUsername);
             this.Controls.Add(this.iconImgServerPort);

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -920,23 +921,7 @@ namespace AssetInformationAndRegistration.Misc
             return outer;
         }
 
-        /// <summary>
-        /// Sets the HTTP client used throughout the application 
-        /// </summary>
-        /// <param name="ip">Server IP</param>
-        /// <param name="port">Server Port</param>
-        /// <param name="mediaType">Content-Type HTTP header</param>
-        /// <returns></returns>
-        public static HttpClient SetHttpClient(string ip, string port, string mediaType)
-        {
-            HttpClient client = new HttpClient
-            {
-                BaseAddress = new Uri(GenericResources.HTTP + ip + ":" + port)
-            };
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
-            return client;
-        }
+        
 
         /// <summary> 
         /// Fetches the program's binary version
