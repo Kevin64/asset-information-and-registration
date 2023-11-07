@@ -7,15 +7,16 @@ using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using MRG.Controls.UI;
+using Newtonsoft.Json;
+using RestApiDLL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using static AssetInformationAndRegistration.Program;
 
@@ -933,6 +934,41 @@ namespace AssetInformationAndRegistration.Misc
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, outputCLI);
 
             Environment.Exit(exitCode);
+        }
+
+        /// <summary>
+        /// Generates a unique SHA256 hash according to the asset hardware
+        /// </summary>
+        /// <param name="a">Asset object</param>
+        /// <returns>Hash string</returns>
+        internal static string HardwareSha256HashGenerator(Asset a)
+        {
+            Asset temp = a.ShallowCopy();
+
+            temp.discarded = null;
+            temp.inUse = null;
+            temp.note = null;
+            temp.sealNumber = null;
+            temp.standard = null;
+            temp.tag = null;
+            temp.adRegistered = null;
+            temp.hardware.type = null;
+            temp.hwUid = null;
+            temp.location = null;
+            temp.network = null;
+            temp.firmware = null;
+            temp.maintenances = null;
+            temp.operatingSystem = null;
+
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(temp)));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                    _ = builder.Append(bytes[i].ToString("x2"));
+                return builder.ToString();
+            }
         }
 
         /// <summary> 

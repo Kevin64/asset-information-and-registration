@@ -932,6 +932,15 @@ namespace AssetInformationAndRegistration.Forms
                         //Fetches existing asset data from server
                         existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + textBoxAssetNumber.Text);
 
+                        //If hardware signature changed, alerts the agent
+                        newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
+                        if (existingAsset.hwUid != string.Empty && existingAsset.hwUid != newAsset.hwUid)
+                        {
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_HARDWARE_MODIFIED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+
+                            _ = MessageBox.Show(UIStrings.ASSET_HARDWARE_MODIFIED, UIStrings.WARNING_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                         loadingCircleLastService.Visible = false;
                         loadingCircleLastService.Active = false;
 
@@ -1201,6 +1210,8 @@ namespace AssetInformationAndRegistration.Forms
                 newAsset.adRegistered = comboBoxActiveDirectory.SelectedItem.ToString().Equals(UIStrings.LIST_YES_0) ? Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                 newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), comboBoxHwType.SelectedItem.ToString()).ToString();
                 newAsset.location = l;
+                if(newAsset.hwUid == null)
+                    newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
 
                 newMaintenances.Clear();
                 newMaintenances.Add(m);
