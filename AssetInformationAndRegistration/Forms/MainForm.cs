@@ -225,14 +225,41 @@ namespace AssetInformationAndRegistration.Forms
             serverParam = new ServerParam();
             if (!offlineMode)
             {
-                //Fetch building and hw types info from the specified server
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                serverParam = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
+                try
+                {
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_PARAMETERS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+
+                    //Fetch building and hw types info from the specified server
+                    serverParam = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
+                }
+                catch (InvalidRestApiCallException ex)
+                {
+                    //Shows a message about an error in the APCS web service
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                }
+                catch (InvalidAgentException ex)
+                {
+                    //Shows a message about an error of the agent credentials
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                    _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                }
+                catch (HttpRequestException ex)
+                {
+                    //Shows a message about an error with APCS connection
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                    _ = MessageBox.Show(UIStrings.INTRANET_REQUIRED, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                }
             }
             else
             {
                 //Fetch building and hw types info from the local file
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_LOCAL_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_PARAMETERS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 serverParam = ParameterHandler.GetOfflineModeConfigFile();
             }
 
@@ -318,11 +345,11 @@ namespace AssetInformationAndRegistration.Forms
             try
             {
                 _ = System.DirectoryServices.ActiveDirectory.Domain.GetComputerDomain();
-                comboBoxActiveDirectory.SelectedIndex = 0;
+                comboBoxActiveDirectory.SelectedIndex = 1;
             }
             catch
             {
-                comboBoxActiveDirectory.SelectedIndex = 1;
+                comboBoxActiveDirectory.SelectedIndex = 0;
             }
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AD_REGISTERED, comboBoxActiveDirectory.SelectedItem.ToString(), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
@@ -347,11 +374,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_MAIN_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-
-            if (e.CloseReason == CloseReason.UserClosing)
-                Application.Exit();
+            Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.SUCCESS), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary>
@@ -872,6 +895,22 @@ namespace AssetInformationAndRegistration.Forms
                         //Feches model info from server
                         modelTemplate = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_MODEL_URL + lblModel.Text);
                     }
+                    catch (InvalidRestApiCallException ex)
+                    {
+                        //Shows a message about an error in the APCS web service
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                        _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                    }
+                    catch (InvalidAgentException ex)
+                    {
+                        //Shows a message about an error of the agent credentials
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                        _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                    }
                     catch (InvalidModelException)
                     {
 
@@ -918,7 +957,7 @@ namespace AssetInformationAndRegistration.Forms
                         tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                     }
                     //If asset does not exist on the database
-                    catch (InvalidAssetException)
+                    catch (InvalidAssetException ex)
                     {
                         loadingCircleLastService.Visible = false;
                         loadingCircleLastService.Active = false;
@@ -926,8 +965,24 @@ namespace AssetInformationAndRegistration.Forms
                         radioButtonUpdateData.Enabled = false;
                         lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
                         lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_NOT_EXIST, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         lblThereIsNothingHere.Visible = true;
+                    }
+                    catch (InvalidRestApiCallException ex)
+                    {
+                        //Shows a message about an error in the APCS web service
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                        _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                    }
+                    catch (InvalidAgentException ex)
+                    {
+                        //Shows a message about an error of the agent credentials
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                        _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                     }
                     //If server is unreachable
                     catch (HttpRequestException)
@@ -1279,7 +1334,7 @@ namespace AssetInformationAndRegistration.Forms
                             tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                         }
                         //If asset does not exist on the database
-                        catch (InvalidAssetException)
+                        catch (InvalidAssetException ex)
                         {
                             loadingCircleLastService.Visible = false;
                             loadingCircleLastService.Active = false;
@@ -1287,8 +1342,24 @@ namespace AssetInformationAndRegistration.Forms
                             radioButtonUpdateData.Enabled = false;
                             lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(string.Empty);
                             lblColorLastService.ForeColor = StringsAndConstants.OFFLINE_ALERT;
-                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                             lblThereIsNothingHere.Visible = true;
+                        }
+                        catch (InvalidRestApiCallException ex)
+                        {
+                            //Shows a message about an error in the APCS web service
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                            _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                        }
+                        catch (InvalidAgentException ex)
+                        {
+                            //Shows a message about an error of the agent credentials
+                            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                            tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
+                            _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
                         }
                         //If server is unreachable
                         catch (HttpRequestException)

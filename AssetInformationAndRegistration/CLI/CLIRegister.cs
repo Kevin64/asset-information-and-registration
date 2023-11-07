@@ -156,7 +156,7 @@ namespace AssetInformationAndRegistration.Forms
             sA.RamAlert = AirUIStrings.CLI_MEMORY_ALERT;
 
             //Fetch building and hw types info from the specified server
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_PARAMETERS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
             System.Threading.Tasks.Task<ServerParam> sp = ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
             sp.Wait();
 

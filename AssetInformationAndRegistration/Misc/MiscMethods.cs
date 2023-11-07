@@ -4,6 +4,7 @@ using ConstantsDLL;
 using ConstantsDLL.Properties;
 using Dark.Net;
 using HardwareInfoDLL;
+using LogGeneratorDLL;
 using Microsoft.Win32;
 using MRG.Controls.UI;
 using System;
@@ -921,7 +922,18 @@ namespace AssetInformationAndRegistration.Misc
             return outer;
         }
 
-        
+        /// <summary>
+        /// Closes the program, outputting info
+        /// </summary>
+        /// <param name="log">Log file object</param>
+        /// <param name="exitCode">Program exit code</param>
+        internal static void CloseProgram(LogGenerator log, int exitCode, bool outputCLI)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_FORM, string.Empty, outputCLI);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, outputCLI);
+
+            Environment.Exit(exitCode);
+        }
 
         /// <summary> 
         /// Fetches the program's binary version

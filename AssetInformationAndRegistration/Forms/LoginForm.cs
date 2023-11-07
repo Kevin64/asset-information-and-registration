@@ -124,11 +124,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void LoginForm_Closing(object sender, FormClosingEventArgs e)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_LOGIN_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_MISC), GenericResources.LOG_SEPARATOR_SMALL, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-
-            if (e.CloseReason == CloseReason.UserClosing)
-                Application.Exit();
+            MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.SUCCESS), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
 
         /// <summary>
@@ -230,6 +226,13 @@ namespace AssetInformationAndRegistration.Forms
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+            }
+            //If Rest call is invalid
+            catch (InvalidRestApiCallException ex)
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbProgLogin.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
             }
 
