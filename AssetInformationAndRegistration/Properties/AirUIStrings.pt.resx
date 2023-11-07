@@ -121,44 +121,74 @@
     <value />
     <comment>AssetInformationAndRegistration.UIStrings.PT</comment>
   </data>
+  <data name="ALERT_DATABASE_REACH_CLI_TITLE" xml:space="preserve">
+    <value>Conectividade com o banco de dados: </value>
+  </data>
+  <data name="ALERT_FIRMWARE_TYPE_CLI_TITLE" xml:space="preserve">
+    <value>Tipo de firmware: </value>
+  </data>
+  <data name="ALERT_FIRMWARE_TYPE_TO" xml:space="preserve">
+    <value>Alterar tipo de firmware para</value>
+  </data>
+  <data name="ALERT_FIRMWARE_VERSION_CLI_TITLE" xml:space="preserve">
+    <value>Versão do firmware: </value>
+  </data>
+  <data name="ALERT_FIRMWARE_VERSION_TO" xml:space="preserve">
+    <value>Atualizar firmware para</value>
+  </data>
+  <data name="ALERT_HOSTNAME" xml:space="preserve">
+    <value>Nome incorreto</value>
+  </data>
+  <data name="ALERT_HOSTNAME_CLI_TITLE" xml:space="preserve">
+    <value>Hostname: </value>
+  </data>
+  <data name="ALERT_MEDIA_OPERATION_CLI_TITLE" xml:space="preserve">
+    <value>Modo de operação SATA/M.2: </value>
+  </data>
+  <data name="ALERT_MEDIA_OPERATION_TO" xml:space="preserve">
+    <value>Alterar modo de operação para</value>
+  </data>
+  <data name="ALERT_MEMORY_CLI_TITLE" xml:space="preserve">
+    <value>Memória RAM e nº de slots: </value>
+  </data>
+  <data name="ALERT_NETWORK" xml:space="preserve">
+    <value>Computador sem conexão com a Intranet</value>
+  </data>
+  <data name="ALERT_NETWORK_IP_ERROR_CLI_TITLE" xml:space="preserve">
+    <value>Endereço IP: </value>
+  </data>
+  <data name="ALERT_NETWORK_MAC_ERROR_CLI_TITLE" xml:space="preserve">
+    <value>Endereço MAC: </value>
+  </data>
+  <data name="ALERT_NOT_ENOUGH_MEMORY" xml:space="preserve">
+    <value>Memória insuficiente</value>
+  </data>
+  <data name="ALERT_SECURE_BOOT" xml:space="preserve">
+    <value>Ativar Boot Seguro</value>
+  </data>
+  <data name="ALERT_SECURE_BOOT_CLI_TITLE" xml:space="preserve">
+    <value>Secure Boot: </value>
+  </data>
+  <data name="ALERT_TOO_MUCH_MEMORY" xml:space="preserve">
+    <value>Memória em excesso</value>
+  </data>
+  <data name="ALERT_TPM_CLI_TITLE" xml:space="preserve">
+    <value>Versão do TPM: </value>
+  </data>
+  <data name="ALERT_TPM_TO" xml:space="preserve">
+    <value>Alterar TPM para</value>
+  </data>
+  <data name="ALERT_VT" xml:space="preserve">
+    <value>Ativar Tecnologia de Virtualização</value>
+  </data>
+  <data name="ALERT_VT_CLI_TITLE" xml:space="preserve">
+    <value>Tecnologia de Virtualização: </value>
+  </data>
   <data name="ARGS_ERROR" xml:space="preserve">
     <value>Um ou mais argumentos contém erros! Saindo do programa</value>
   </data>
   <data name="AUTH_ERROR" xml:space="preserve">
     <value>Erro de autenticação! Saindo do programa</value>
-  </data>
-  <data name="CLI_DATABASE_REACH_ERROR" xml:space="preserve">
-    <value>Conectividade com o banco de dados: </value>
-  </data>
-  <data name="CLI_FIRMWARE_TYPE_ALERT" xml:space="preserve">
-    <value>Tipo de firmware: </value>
-  </data>
-  <data name="CLI_FIRMWARE_VERSION_ALERT" xml:space="preserve">
-    <value>Versão do firmware: </value>
-  </data>
-  <data name="CLI_HOSTNAME_ALERT" xml:space="preserve">
-    <value>Hostname: </value>
-  </data>
-  <data name="CLI_MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value>Modo de operação SATA/M.2: </value>
-  </data>
-  <data name="CLI_MEMORY_ALERT" xml:space="preserve">
-    <value>Memória RAM e nº de slots: </value>
-  </data>
-  <data name="CLI_NETWORK_IP_ERROR" xml:space="preserve">
-    <value>Endereço IP: </value>
-  </data>
-  <data name="CLI_NETWORK_MAC_ERROR" xml:space="preserve">
-    <value>Endereço MAC: </value>
-  </data>
-  <data name="CLI_SECURE_BOOT_ALERT" xml:space="preserve">
-    <value>Secure Boot: </value>
-  </data>
-  <data name="CLI_TPM_ALERT" xml:space="preserve">
-    <value>Versão do TPM: </value>
-  </data>
-  <data name="CLI_VT_ALERT" xml:space="preserve">
-    <value>Tecnologia de Virtualização: </value>
   </data>
   <data name="DATABASE_REACH_ERROR" xml:space="preserve">
     <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
@@ -261,20 +291,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="FETCH_AGAIN" xml:space="preserve">
     <value>Coletar Novamente</value>
   </data>
-  <data name="FIRMWARE_TYPE_ALERT" xml:space="preserve">
-    <value> (Tipo de firmware incorreto)</value>
-  </data>
-  <data name="FIRMWARE_VERSION_ALERT" xml:space="preserve">
-    <value> (Firmware desatualizado)</value>
-  </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
     <value>Corrija os problemas a seguir antes de prosseguir:</value>
   </data>
   <data name="FORMAT_TEXT" xml:space="preserve">
     <value>formatação</value>
-  </data>
-  <data name="HOSTNAME_ALERT" xml:space="preserve">
-    <value> (Nome incorreto)</value>
   </data>
   <data name="INCORRECT_FUTURE_REGISTER_DATE" xml:space="preserve">
     <value>Não é possível registrar para uma data no futuro.</value>
@@ -288,20 +309,11 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="MANDATORY_FIELD" xml:space="preserve">
     <value>Preencha os campos obrigatórios</value>
   </data>
-  <data name="MEDIA_OPERATION_ALERT" xml:space="preserve">
-    <value> (Modo de operação incorreto)</value>
-  </data>
   <data name="MEDIA_OPERATION_IDE_RAID" xml:space="preserve">
     <value>IDE/Legacy ou RAID</value>
   </data>
   <data name="MEDIA_OPERATION_NVME" xml:space="preserve">
     <value>NVMe</value>
-  </data>
-  <data name="NETWORK_ERROR" xml:space="preserve">
-    <value>Computador sem conexão com a Intranet</value>
-  </data>
-  <data name="NOT_ENOUGH_MEMORY" xml:space="preserve">
-    <value> (Memória insuficiente)</value>
   </data>
   <data name="OCCUPIED" xml:space="preserve">
     <value> ocupados</value>
@@ -330,9 +342,6 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="SAME_BATTERY" xml:space="preserve">
     <value>S/ troca de pilha</value>
   </data>
-  <data name="SECURE_BOOT_ALERT" xml:space="preserve">
-    <value> (Secure Boot desativado)</value>
-  </data>
   <data name="SERVER_PORT_ERROR" xml:space="preserve">
     <value>Para acessar, selecione o servidor e a porta!</value>
   </data>
@@ -346,18 +355,9 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value> slots de </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
-    <value> (Drive com falha iminente)</value>
+    <value>Drive com falha iminente</value>
   </data>
   <data name="STUDENT" xml:space="preserve">
     <value>Aluno</value>
-  </data>
-  <data name="TOO_MUCH_MEMORY" xml:space="preserve">
-    <value> (Memória em excesso)</value>
-  </data>
-  <data name="TPM_ERROR" xml:space="preserve">
-    <value> (TPM desativado/versão incorreta)</value>
-  </data>
-  <data name="VT_ALERT" xml:space="preserve">
-    <value> (Tecnologia de Virtualização desativada)</value>
   </data>
 </root>

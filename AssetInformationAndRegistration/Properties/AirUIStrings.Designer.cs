@@ -70,6 +70,195 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Database connectivity: .
+        /// </summary>
+        internal static string ALERT_DATABASE_REACH_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_DATABASE_REACH_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware type: .
+        /// </summary>
+        internal static string ALERT_FIRMWARE_TYPE_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_FIRMWARE_TYPE_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Change firmware type to.
+        /// </summary>
+        internal static string ALERT_FIRMWARE_TYPE_TO {
+            get {
+                return ResourceManager.GetString("ALERT_FIRMWARE_TYPE_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware version:.
+        /// </summary>
+        internal static string ALERT_FIRMWARE_VERSION_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_FIRMWARE_VERSION_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Update firmware to.
+        /// </summary>
+        internal static string ALERT_FIRMWARE_VERSION_TO {
+            get {
+                return ResourceManager.GetString("ALERT_FIRMWARE_VERSION_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Incorrect name.
+        /// </summary>
+        internal static string ALERT_HOSTNAME {
+            get {
+                return ResourceManager.GetString("ALERT_HOSTNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Hostname: .
+        /// </summary>
+        internal static string ALERT_HOSTNAME_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_HOSTNAME_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a SATA/M.2 operating mode: .
+        /// </summary>
+        internal static string ALERT_MEDIA_OPERATION_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_MEDIA_OPERATION_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Change operation mode to.
+        /// </summary>
+        internal static string ALERT_MEDIA_OPERATION_TO {
+            get {
+                return ResourceManager.GetString("ALERT_MEDIA_OPERATION_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a RAM amount and number of slots: .
+        /// </summary>
+        internal static string ALERT_MEMORY_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_MEMORY_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Computer not connected to the Intranet.
+        /// </summary>
+        internal static string ALERT_NETWORK {
+            get {
+                return ResourceManager.GetString("ALERT_NETWORK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a IP address: .
+        /// </summary>
+        internal static string ALERT_NETWORK_IP_ERROR_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_NETWORK_IP_ERROR_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a MAC address: .
+        /// </summary>
+        internal static string ALERT_NETWORK_MAC_ERROR_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_NETWORK_MAC_ERROR_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Insufficient memory.
+        /// </summary>
+        internal static string ALERT_NOT_ENOUGH_MEMORY {
+            get {
+                return ResourceManager.GetString("ALERT_NOT_ENOUGH_MEMORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Enable Secure Boot.
+        /// </summary>
+        internal static string ALERT_SECURE_BOOT {
+            get {
+                return ResourceManager.GetString("ALERT_SECURE_BOOT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Secure Boot: .
+        /// </summary>
+        internal static string ALERT_SECURE_BOOT_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_SECURE_BOOT_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Too much memory.
+        /// </summary>
+        internal static string ALERT_TOO_MUCH_MEMORY {
+            get {
+                return ResourceManager.GetString("ALERT_TOO_MUCH_MEMORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a TPM version: .
+        /// </summary>
+        internal static string ALERT_TPM_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_TPM_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Change TPM to.
+        /// </summary>
+        internal static string ALERT_TPM_TO {
+            get {
+                return ResourceManager.GetString("ALERT_TPM_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Enable Virtualization Technology.
+        /// </summary>
+        internal static string ALERT_VT {
+            get {
+                return ResourceManager.GetString("ALERT_VT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Virtualization Technology: .
+        /// </summary>
+        internal static string ALERT_VT_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_VT_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a One or more arguments contain errors! Exiting the program.
         /// </summary>
         internal static string ARGS_ERROR {
@@ -84,105 +273,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string AUTH_ERROR {
             get {
                 return ResourceManager.GetString("AUTH_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Database connectivity: .
-        /// </summary>
-        internal static string CLI_DATABASE_REACH_ERROR {
-            get {
-                return ResourceManager.GetString("CLI_DATABASE_REACH_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware type: .
-        /// </summary>
-        internal static string CLI_FIRMWARE_TYPE_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_FIRMWARE_TYPE_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Firmware version:.
-        /// </summary>
-        internal static string CLI_FIRMWARE_VERSION_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_FIRMWARE_VERSION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Hostname: .
-        /// </summary>
-        internal static string CLI_HOSTNAME_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_HOSTNAME_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a SATA/M.2 operating mode: .
-        /// </summary>
-        internal static string CLI_MEDIA_OPERATION_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_MEDIA_OPERATION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a RAM amount and number of slots: .
-        /// </summary>
-        internal static string CLI_MEMORY_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_MEMORY_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a IP address: .
-        /// </summary>
-        internal static string CLI_NETWORK_IP_ERROR {
-            get {
-                return ResourceManager.GetString("CLI_NETWORK_IP_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a MAC address: .
-        /// </summary>
-        internal static string CLI_NETWORK_MAC_ERROR {
-            get {
-                return ResourceManager.GetString("CLI_NETWORK_MAC_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Secure Boot: .
-        /// </summary>
-        internal static string CLI_SECURE_BOOT_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_SECURE_BOOT_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a TPM version: .
-        /// </summary>
-        internal static string CLI_TPM_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_TPM_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Virtualization Technology: .
-        /// </summary>
-        internal static string CLI_VT_ALERT {
-            get {
-                return ResourceManager.GetString("CLI_VT_ALERT", resourceCulture);
             }
         }
         
@@ -257,24 +347,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect firmware type).
-        /// </summary>
-        internal static string FIRMWARE_TYPE_ALERT {
-            get {
-                return ResourceManager.GetString("FIRMWARE_TYPE_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Outdated firmware).
-        /// </summary>
-        internal static string FIRMWARE_VERSION_ALERT {
-            get {
-                return ResourceManager.GetString("FIRMWARE_VERSION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Fix the following issues before proceeding:.
         /// </summary>
         internal static string FIX_PROBLEMS {
@@ -289,15 +361,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string FORMAT_TEXT {
             get {
                 return ResourceManager.GetString("FORMAT_TEXT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect name).
-        /// </summary>
-        internal static string HOSTNAME_ALERT {
-            get {
-                return ResourceManager.GetString("HOSTNAME_ALERT", resourceCulture);
             }
         }
         
@@ -338,15 +401,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Incorrect operation mode).
-        /// </summary>
-        internal static string MEDIA_OPERATION_ALERT {
-            get {
-                return ResourceManager.GetString("MEDIA_OPERATION_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a IDE/Legacy or RAID.
         /// </summary>
         internal static string MEDIA_OPERATION_IDE_RAID {
@@ -361,24 +415,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string MEDIA_OPERATION_NVME {
             get {
                 return ResourceManager.GetString("MEDIA_OPERATION_NVME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Computer not connected to the Intranet.
-        /// </summary>
-        internal static string NETWORK_ERROR {
-            get {
-                return ResourceManager.GetString("NETWORK_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Insufficient memory).
-        /// </summary>
-        internal static string NOT_ENOUGH_MEMORY {
-            get {
-                return ResourceManager.GetString("NOT_ENOUGH_MEMORY", resourceCulture);
             }
         }
         
@@ -464,15 +500,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Secure Boot disabled).
-        /// </summary>
-        internal static string SECURE_BOOT_ALERT {
-            get {
-                return ResourceManager.GetString("SECURE_BOOT_ALERT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a To access, select the server and the port!.
         /// </summary>
         internal static string SERVER_PORT_ERROR {
@@ -509,7 +536,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Drive with imminent failure).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Drive with imminent failure.
         /// </summary>
         internal static string SMART_FAIL {
             get {
@@ -523,33 +550,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string STUDENT {
             get {
                 return ResourceManager.GetString("STUDENT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Too much memory).
-        /// </summary>
-        internal static string TOO_MUCH_MEMORY {
-            get {
-                return ResourceManager.GetString("TOO_MUCH_MEMORY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (TPM disabled/incorrect version).
-        /// </summary>
-        internal static string TPM_ERROR {
-            get {
-                return ResourceManager.GetString("TPM_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a  (Virtualization Technology disabled).
-        /// </summary>
-        internal static string VT_ALERT {
-            get {
-                return ResourceManager.GetString("VT_ALERT", resourceCulture);
             }
         }
     }

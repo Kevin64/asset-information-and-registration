@@ -143,17 +143,17 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="newAsset">Asset object</param>
         private void InitProc(string serverIP, string serverPort, Asset newAsset)
         {
-            sA.HostnameAlert = AirUIStrings.CLI_HOSTNAME_ALERT;
-            sA.MediaOperationModeAlert = AirUIStrings.CLI_MEDIA_OPERATION_ALERT;
-            sA.SecureBootAlert = AirUIStrings.CLI_SECURE_BOOT_ALERT;
-            sA.DatabaseReachError = AirUIStrings.CLI_DATABASE_REACH_ERROR;
-            sA.FirmwareVersionAlert = AirUIStrings.CLI_FIRMWARE_VERSION_ALERT;
-            sA.FirmwareTypeAlert = AirUIStrings.CLI_FIRMWARE_TYPE_ALERT;
-            sA.NetworkIpError = AirUIStrings.CLI_NETWORK_IP_ERROR;
-            sA.NetworkMacError = AirUIStrings.CLI_NETWORK_MAC_ERROR;
-            sA.VirtualizationTechnologyAlert = AirUIStrings.CLI_VT_ALERT;
-            sA.TpmAlert = AirUIStrings.CLI_TPM_ALERT;
-            sA.RamAlert = AirUIStrings.CLI_MEMORY_ALERT;
+            sA.HostnameAlert = AirUIStrings.ALERT_HOSTNAME_CLI_TITLE;
+            sA.MediaOperationModeAlert = AirUIStrings.ALERT_MEDIA_OPERATION_CLI_TITLE;
+            sA.SecureBootAlert = AirUIStrings.ALERT_SECURE_BOOT_CLI_TITLE;
+            sA.DatabaseReachError = AirUIStrings.ALERT_DATABASE_REACH_CLI_TITLE;
+            sA.FirmwareVersionAlert = AirUIStrings.ALERT_FIRMWARE_VERSION_CLI_TITLE;
+            sA.FirmwareTypeAlert = AirUIStrings.ALERT_FIRMWARE_TYPE_CLI_TITLE;
+            sA.NetworkIpError = AirUIStrings.ALERT_NETWORK_IP_ERROR_CLI_TITLE;
+            sA.NetworkMacError = AirUIStrings.ALERT_NETWORK_MAC_ERROR_CLI_TITLE;
+            sA.VirtualizationTechnologyAlert = AirUIStrings.ALERT_VT_CLI_TITLE;
+            sA.TpmAlert = AirUIStrings.ALERT_TPM_CLI_TITLE;
+            sA.RamAlert = AirUIStrings.ALERT_MEMORY_CLI_TITLE;
 
             //Fetch building and hw types info from the specified server
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_SERVER_PARAMETERS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
@@ -205,8 +205,9 @@ namespace AssetInformationAndRegistration.Forms
                         existingAsset = v.Result;
                     }
                     //If asset does not exist on the database
-                    catch (InvalidAssetException)
+                    catch (UnregisteredAssetException)
                     {
+
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_NOT_EXIST, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     //If server is unreachable
@@ -680,21 +681,21 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME))
                 {
                     pass = false;
-                    sA.HostnameAlert += newAsset.network.hostname + AirUIStrings.HOSTNAME_ALERT;
+                    sA.HostnameAlert += newAsset.network.hostname + AirUIStrings.ALERT_HOSTNAME;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
                 if (configOptions.Enforcement.MediaOperationMode.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode)
                 {
                     pass = false;
-                    sA.MediaOperationModeAlert += serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)] + AirUIStrings.MEDIA_OPERATION_ALERT;
+                    sA.MediaOperationModeAlert += serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)] + AirUIStrings.ALERT_MEDIA_OPERATION_TO;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
                 if (configOptions.Enforcement.SecureBoot.ToString() == GenericResources.TRUE && newAsset.firmware.secureBoot.Equals(UIStrings.DEACTIVATED))
                 {
                     pass = false;
-                    sA.SecureBootAlert += newAsset.firmware.secureBoot + AirUIStrings.SECURE_BOOT_ALERT;
+                    sA.SecureBootAlert += newAsset.firmware.secureBoot + AirUIStrings.ALERT_SECURE_BOOT;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does not exist and server is unreachable
@@ -708,36 +709,36 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.FirmwareVersion.ToString() == GenericResources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion))
                 {
                     pass = false;
-                    sA.FirmwareVersionAlert += newAsset.firmware.version + AirUIStrings.FIRMWARE_VERSION_ALERT;
+                    sA.FirmwareVersionAlert += newAsset.firmware.version + AirUIStrings.ALERT_FIRMWARE_VERSION_TO;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
                 if (configOptions.Enforcement.FirmwareType.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type)
                 {
                     pass = false;
-                    sA.FirmwareTypeAlert += serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)] + AirUIStrings.FIRMWARE_TYPE_ALERT;
+                    sA.FirmwareTypeAlert += serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)] + AirUIStrings.ALERT_FIRMWARE_TYPE_TO;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If there is no MAC address assigned
                 if (newAsset.network.macAddress == string.Empty)
                 {
                     pass = false;
-                    sA.NetworkMacError += newAsset.network.macAddress + AirUIStrings.NETWORK_ERROR; //Prints a network error
-                    sA.NetworkIpError += newAsset.network.ipAddress + AirUIStrings.NETWORK_ERROR; //Prints a network error
+                    sA.NetworkMacError += newAsset.network.macAddress + AirUIStrings.ALERT_NETWORK; //Prints a network error
+                    sA.NetworkIpError += newAsset.network.ipAddress + AirUIStrings.ALERT_NETWORK; //Prints a network error
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Virtualization Technology is disabled for UEFI and its enforcement is enabled
                 if (configOptions.Enforcement.VirtualizationTechnology.ToString() == GenericResources.TRUE && newAsset.firmware.virtualizationTechnology == UIStrings.DEACTIVATED)
                 {
                     pass = false;
-                    sA.VirtualizationTechnologyAlert += newAsset.firmware.virtualizationTechnology + AirUIStrings.VT_ALERT;
+                    sA.VirtualizationTechnologyAlert += newAsset.firmware.virtualizationTechnology + AirUIStrings.ALERT_VT;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, TPM enforcement is enabled, and TPM version is incorrect
                 if (configOptions.Enforcement.Tpm.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion)
                 {
                     pass = false;
-                    sA.TpmAlert += serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)] + AirUIStrings.TPM_ERROR;
+                    sA.TpmAlert += serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)] + AirUIStrings.ALERT_TPM_TO;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Checks for RAM amount
@@ -746,13 +747,13 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    sA.RamAlert += newAsset.hardware.ram + AirUIStrings.NOT_ENOUGH_MEMORY;
+                    sA.RamAlert += newAsset.hardware.ram + AirUIStrings.ALERT_NOT_ENOUGH_MEMORY;
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
                 if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem)
                 {
                     pass = false;
-                    sA.RamAlert += newAsset.hardware.ram + AirUIStrings.TOO_MUCH_MEMORY;
+                    sA.RamAlert += newAsset.hardware.ram + AirUIStrings.ALERT_TOO_MUCH_MEMORY;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 if (pass)

@@ -891,7 +891,6 @@ namespace AssetInformationAndRegistration.Forms
                     try
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_MODEL_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-
                         //Feches model info from server
                         modelTemplate = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_MODEL_URL + lblModel.Text);
                     }
@@ -901,7 +900,7 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
                         _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                        Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     catch (InvalidAgentException ex)
                     {
@@ -909,18 +908,18 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
                         _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                        Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
-                    catch (InvalidModelException)
+                    catch (UnregisteredModelException ex)
                     {
-
+                        //Shows a message about a unregistered model
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        _ = MessageBox.Show(UIStrings.UNREGISTERED_MODEL, UIStrings.WARNING_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     catch (HttpRequestException)
                     {
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
-
                         _ = MessageBox.Show(AirUIStrings.DATABASE_REACH_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
@@ -950,14 +949,14 @@ namespace AssetInformationAndRegistration.Forms
                             {
                                 _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
 
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), "[" + i + "]" , DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY) + " - " + StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)] + " - " + agentMaintenances.name + " " + agentMaintenances.surname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), "[" + i + "]", DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY) + " - " + StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)] + " - " + agentMaintenances.name + " " + agentMaintenances.surname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                             }
                         }
                         tableMaintenances.Visible = true;
                         tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                     }
                     //If asset does not exist on the database
-                    catch (InvalidAssetException ex)
+                    catch (UnregisteredAssetException ex)
                     {
                         loadingCircleLastService.Visible = false;
                         loadingCircleLastService.Active = false;
@@ -974,7 +973,7 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
                         _ = MessageBox.Show(UIStrings.SERVER_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                        Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     catch (InvalidAgentException ex)
                     {
@@ -982,7 +981,7 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), ex.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         tbProgMain.SetProgressState(TaskbarProgressBarState.Error, Handle);
                         _ = MessageBox.Show(UIStrings.INVALID_CREDENTIALS, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
+                        Misc.MiscMethods.CloseProgram(log, Convert.ToInt32(ExitCodes.ERROR), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     //If server is unreachable
                     catch (HttpRequestException)
@@ -1002,50 +1001,50 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME) && !offlineMode)
                 {
                     pass = false;
-                    lblHostname.Text += AirUIStrings.HOSTNAME_ALERT;
+                    lblHostname.Text += " (" + AirUIStrings.ALERT_HOSTNAME + ")";
                     timerAlertHostname.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.HOSTNAME_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_HOSTNAME, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, mediaOpMode enforcement is enabled, and the mode is incorrect
                 if (configOptions.Enforcement.MediaOperationMode.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblMediaOperationMode.Text += AirUIStrings.MEDIA_OPERATION_ALERT;
+                    lblMediaOperationMode.Text += " (" + AirUIStrings.ALERT_MEDIA_OPERATION_TO + " " + serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(modelTemplate.mediaOperationMode)] + ")";
                     timerAlertMediaOperationMode.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.MEDIA_OPERATION_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_MEDIA_OPERATION_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //The section below contains the exception cases for Secure Boot enforcement, if it is enabled
                 if (configOptions.Enforcement.SecureBoot.ToString() == GenericResources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblSecureBoot.Text += AirUIStrings.SECURE_BOOT_ALERT;
+                    lblSecureBoot.Text += " (" + AirUIStrings.ALERT_SECURE_BOOT + ")";
                     timerAlertSecureBoot.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.SECURE_BOOT_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_SECURE_BOOT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
                 if (configOptions.Enforcement.FirmwareVersion.ToString() == GenericResources.TRUE && modelTemplate != null && !newAsset.firmware.version.Contains(modelTemplate.fwVersion) && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblFwVersion.Text += AirUIStrings.FIRMWARE_VERSION_ALERT;
+                    lblFwVersion.Text += " (" + AirUIStrings.ALERT_FIRMWARE_VERSION_TO + " " + modelTemplate.fwVersion + ")";
                     timerAlertFwVersion.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_VERSION_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_FIRMWARE_VERSION_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware type enforcement is enabled, and the type is incorrect
                 if (configOptions.Enforcement.FirmwareType.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type && !offlineMode)
                 {
                     pass = false;
-                    lblFwType.Text += AirUIStrings.FIRMWARE_TYPE_ALERT;
+                    lblFwType.Text += " (" + AirUIStrings.ALERT_FIRMWARE_TYPE_TO + " " + serverParam.Parameters.FirmwareTypes[Convert.ToInt32(modelTemplate.fwType)] + ")";
                     timerAlertFwType.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.FIRMWARE_TYPE_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_FIRMWARE_TYPE_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If there is no MAC address assigned
@@ -1054,10 +1053,10 @@ namespace AssetInformationAndRegistration.Forms
                     if (!offlineMode) //If it's not in offline mode
                     {
                         pass = false;
-                        lblIpAddress.Text = AirUIStrings.NETWORK_ERROR; //Prints a network error
+                        lblIpAddress.Text = " (" + AirUIStrings.ALERT_NETWORK + ")"; //Prints a network error
                         timerAlertNetConnectivity.Enabled = true;
                         nonCompliantCount++;
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NETWORK_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_NETWORK, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                     }
                     else //If it's in offline mode
                     {
@@ -1069,10 +1068,10 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.VirtualizationTechnology.ToString() == GenericResources.TRUE && StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)] == UIStrings.DEACTIVATED && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblVirtualizationTechnology.Text += AirUIStrings.VT_ALERT;
+                    lblVirtualizationTechnology.Text += " (" + AirUIStrings.ALERT_VT + ")";
                     timerAlertVirtualizationTechnology.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.VT_ALERT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_VT, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Smart status is not OK and its enforcement is enabled
@@ -1089,10 +1088,10 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.Tpm.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblTpmVersion.Text += AirUIStrings.TPM_ERROR;
+                    lblTpmVersion.Text += " (" + AirUIStrings.ALERT_TPM_TO + " " + serverParam.Parameters.TpmTypes[Convert.ToInt32(modelTemplate.tpmVersion)] + ")";
                     timerAlertTpmVersion.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TPM_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_TPM_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Checks for RAM amount
@@ -1101,19 +1100,19 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d < 4.0 && Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblRam.Text += AirUIStrings.NOT_ENOUGH_MEMORY;
+                    lblRam.Text += " (" + AirUIStrings.ALERT_NOT_ENOUGH_MEMORY + ")";
                     timerAlertRamAmount.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_NOT_ENOUGH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 //If RAM is more than 4GB and OS is x86, and its limit enforcement is enabled, shows an alert
                 if (configOptions.Enforcement.RamLimit.ToString() == GenericResources.TRUE && d > 4.0 && !Environment.Is64BitOperatingSystem && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblRam.Text += AirUIStrings.TOO_MUCH_MEMORY;
+                    lblRam.Text += " (" + AirUIStrings.ALERT_TOO_MUCH_MEMORY + ")";
                     timerAlertRamAmount.Enabled = true;
                     nonCompliantCount++;
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_TOO_MUCH_MEMORY, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 if (pass && !offlineMode && serverOnline)
@@ -1334,7 +1333,7 @@ namespace AssetInformationAndRegistration.Forms
                             tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                         }
                         //If asset does not exist on the database
-                        catch (InvalidAssetException ex)
+                        catch (UnregisteredAssetException ex)
                         {
                             loadingCircleLastService.Visible = false;
                             loadingCircleLastService.Active = false;
