@@ -245,6 +245,18 @@
   <data name="lblFixedFwType.Text" xml:space="preserve">
     <value>Tipo:</value>
   </data>
+  <data name="groupBoxHwData.Text" xml:space="preserve">
+    <value>Dados do computador</value>
+  </data>
+  <data name="lblNoticeHardwareChanged.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 0</value>
+  </data>
+  <data name="lblNoticeHardwareChanged.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 13</value>
+  </data>
+  <data name="lblNoticeHardwareChanged.Text" xml:space="preserve">
+    <value>⬤ = Hardware alterado desde o último serviço</value>
+  </data>
   <data name="processorDetailsButton.Text" xml:space="preserve">
     <value>Mais...</value>
   </data>
@@ -305,8 +317,8 @@
   <data name="lblFixedVideoCard.Text" xml:space="preserve">
     <value>Placa de vídeo primária:</value>
   </data>
-  <data name="groupBoxHwData.Text" xml:space="preserve">
-    <value>Dados do computador</value>
+  <data name="groupBoxAssetData.Text" xml:space="preserve">
+    <value>Dados do ativo, manutenção e de localização</value>
   </data>
   <data name="lblFixedMandatoryTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 202</value>
@@ -368,8 +380,8 @@
   <data name="lblFixedStandard.Text" xml:space="preserve">
     <value>Padrão:</value>
   </data>
-  <data name="groupBoxAssetData.Text" xml:space="preserve">
-    <value>Dados do ativo, manutenção e de localização</value>
+  <data name="groupBoxServiceType.Text" xml:space="preserve">
+    <value>Tipo de serviço</value>
   </data>
   <data name="textBoxInactiveUpdateDataRadio.Text" xml:space="preserve">
     <value>Opção para quando os dados do computador registrado mudaram, sem formatação ou manutenção</value>
@@ -401,9 +413,6 @@
   <data name="radioButtonMaintenance.Text" xml:space="preserve">
     <value>Manutenção</value>
   </data>
-  <data name="groupBoxServiceType.Text" xml:space="preserve">
-    <value>Tipo de serviço</value>
-  </data>
   <data name="lblFixedAgentName.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 13</value>
   </data>
@@ -415,6 +424,12 @@
   </data>
   <data name="lblFixedServerIP.Text" xml:space="preserve">
     <value>Endereço IP:</value>
+  </data>
+  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 22</value>
+  </data>
+  <data name="comboBoxThemeButton.Text" xml:space="preserve">
+    <value>Tema</value>
   </data>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -434,12 +449,6 @@
   <data name="toolStripDarkTheme.Text" xml:space="preserve">
     <value>Escuro</value>
   </data>
-  <data name="comboBoxThemeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
-  </data>
-  <data name="comboBoxThemeButton.Text" xml:space="preserve">
-    <value>Tema</value>
-  </data>
   <data name="aboutLabelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 19</value>
   </data>
@@ -449,11 +458,14 @@
   <data name="toolStripStatusBarText.Size" type="System.Drawing.Size, System.Drawing">
     <value>861, 19</value>
   </data>
+  <data name="groupBoxServerStatus.Text" xml:space="preserve">
+    <value>Servidor APCS</value>
+  </data>
   <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 56</value>
   </data>
-  <data name="groupBoxServerStatus.Text" xml:space="preserve">
-    <value>Servidor APCS</value>
+  <data name="groupBoxTableMaintenances.Text" xml:space="preserve">
+    <value>Manutenções anteriores</value>
   </data>
   <data name="serviceDate.HeaderText" xml:space="preserve">
     <value>Data</value>
@@ -466,9 +478,6 @@
   </data>
   <data name="lblThereIsNothingHere.Text" xml:space="preserve">
     <value>Não há nada aqui</value>
-  </data>
-  <data name="groupBoxTableMaintenances.Text" xml:space="preserve">
-    <value>Manutenções anteriores</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1955,8 +1964,5 @@
         AABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+AAA
         AA==
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>

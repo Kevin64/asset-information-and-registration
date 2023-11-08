@@ -72,6 +72,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly RamDetailForm ramForm;
         private readonly StorageDetailForm storageForm;
         private readonly VideoCardDetailForm videoCardForm;
+        private readonly HardwareChangeDetailForm hardwareChangeForm;
 
         /// <summary>
         /// Main form constructor
@@ -92,11 +93,12 @@ namespace AssetInformationAndRegistration.Forms
             ramForm = new RamDetailForm(log);
             storageForm = new StorageDetailForm(log);
             videoCardForm = new VideoCardDetailForm(log);
-
+            hardwareChangeForm = new HardwareChangeDetailForm(log);
             processorForm.Hide();
             ramForm.Hide();
             storageForm.Hide();
             videoCardForm.Hide();
+            hardwareChangeForm.Hide();
 
             this.client = client;
             this.ghc = ghc;
@@ -123,6 +125,8 @@ namespace AssetInformationAndRegistration.Forms
                     storageForm.LightThemeSpecificControls();
                     Misc.MiscMethods.LightThemeAllControls(videoCardForm);
                     videoCardForm.LightThemeSpecificControls();
+                    Misc.MiscMethods.LightThemeAllControls(hardwareChangeForm);
+                    hardwareChangeForm.LightThemeSpecificControls();
                     if (themeEditable == false)
                     {
                         isSystemDarkModeEnabled = false;
@@ -140,6 +144,8 @@ namespace AssetInformationAndRegistration.Forms
                     storageForm.DarkThemeSpecificControls();
                     Misc.MiscMethods.DarkThemeAllControls(videoCardForm);
                     videoCardForm.DarkThemeSpecificControls();
+                    Misc.MiscMethods.DarkThemeAllControls(hardwareChangeForm);
+                    hardwareChangeForm.DarkThemeSpecificControls();
                     if (themeEditable == false)
                     {
                         isSystemDarkModeEnabled = true;
@@ -404,8 +410,10 @@ namespace AssetInformationAndRegistration.Forms
             videoCardDetailsButton.Visible = false;
             ramDetailsButton.Visible = false;
             processorDetailsButton.Visible = false;
+            lblNoticeHardwareChanged.Visible = false;
             if (!offlineMode)
                 lblThereIsNothingHere.Visible = false;
+            lblNoticeHardwareChanged.MouseHover += new EventHandler(HwUidLabel_MouseHover);
             tableMaintenances.Visible = false;
             tableMaintenances.Rows.Clear();
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECT_THREAD, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
@@ -945,6 +953,7 @@ namespace AssetInformationAndRegistration.Forms
                         newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
                         if (existingAsset.hwUid != string.Empty && existingAsset.hwUid != newAsset.hwUid)
                         {
+                            lblNoticeHardwareChanged.Visible = true;
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_HARDWARE_MODIFIED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                             _ = MessageBox.Show(UIStrings.ASSET_HARDWARE_MODIFIED, UIStrings.WARNING_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1565,6 +1574,8 @@ namespace AssetInformationAndRegistration.Forms
             storageForm.LightThemeSpecificControls();
             Misc.MiscMethods.LightThemeAllControls(videoCardForm);
             videoCardForm.LightThemeSpecificControls();
+            Misc.MiscMethods.LightThemeAllControls(hardwareChangeForm);
+            hardwareChangeForm.LightThemeSpecificControls();
             isSystemDarkModeEnabled = false;
         }
 
@@ -1587,6 +1598,8 @@ namespace AssetInformationAndRegistration.Forms
             storageForm.DarkThemeSpecificControls();
             Misc.MiscMethods.DarkThemeAllControls(videoCardForm);
             videoCardForm.DarkThemeSpecificControls();
+            Misc.MiscMethods.DarkThemeAllControls(hardwareChangeForm);
+            hardwareChangeForm.DarkThemeSpecificControls();
             isSystemDarkModeEnabled = true;
         }
 
@@ -1651,6 +1664,15 @@ namespace AssetInformationAndRegistration.Forms
         {
             if (e.Category == UserPreferenceCategory.General)
                 ToggleTheme();
+        }
+
+        private void HardwareChangeButton_Click(object sender, EventArgs e)
+        {
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
+                DarkNet.Instance.SetWindowThemeForms(hardwareChangeForm, Theme.Auto);
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_HARDWARE_CHANGE_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            hardwareChangeForm.FillData(existingAsset.hardware, newAsset.hardware);
+            _ = hardwareChangeForm.ShowDialog();
         }
 
         /// <summary> 
@@ -1801,6 +1823,16 @@ namespace AssetInformationAndRegistration.Forms
         private void AboutLabel_MouseEnter(object sender, EventArgs e)
         {
             aboutLabelButton.ForeColor = StringsAndConstants.HIGHLIGHT_LABEL_COLOR;
+        }
+
+        /// <summary> 
+        /// Sets highlight HwUid label when hovering with the mouse
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HwUidLabel_MouseHover(object sender, EventArgs e)
+        {
+            hwUidToolTip.SetToolTip(lblNoticeHardwareChanged, "Database hardware ID: " + existingAsset.hwUid + "\n" + "Current hardware ID: " + newAsset.hwUid);
         }
 
         /// <summary> 
@@ -2061,6 +2093,8 @@ namespace AssetInformationAndRegistration.Forms
                     storageForm.LightThemeSpecificControls();
                     Misc.MiscMethods.LightThemeAllControls(videoCardForm);
                     videoCardForm.LightThemeSpecificControls();
+                    Misc.MiscMethods.LightThemeAllControls(hardwareChangeForm);
+                    hardwareChangeForm.LightThemeSpecificControls();
                     isSystemDarkModeEnabled = false;
                     break;
                 case 1:
@@ -2074,6 +2108,8 @@ namespace AssetInformationAndRegistration.Forms
                     storageForm.DarkThemeSpecificControls();
                     Misc.MiscMethods.DarkThemeAllControls(videoCardForm);
                     videoCardForm.DarkThemeSpecificControls();
+                    Misc.MiscMethods.DarkThemeAllControls(hardwareChangeForm);
+                    hardwareChangeForm.DarkThemeSpecificControls();
                     isSystemDarkModeEnabled = true;
                     break;
             }

@@ -362,6 +362,8 @@ namespace AssetInformationAndRegistration.Misc
                     l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
                 else if (l.Name.Contains("Mandatory"))
                     l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+                else if (l.Name.Contains("Notice"))
+                    l.ForeColor = StringsAndConstants.LIGHT_NOTICECOLOR;
                 else if (l.Name.Contains("Fixed"))
                     l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                 else if (!l.Name.Contains("Color"))
@@ -383,6 +385,11 @@ namespace AssetInformationAndRegistration.Misc
                 tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                 if (tb.Name.Contains("Inactive"))
                     tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+            }
+            foreach (System.Windows.Forms.TreeView tb in form.Controls.OfType<System.Windows.Forms.TreeView>())
+            {
+                tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
             }
 
             foreach (System.Windows.Forms.GroupBox gb in form.Controls.OfType<System.Windows.Forms.GroupBox>())
@@ -422,6 +429,8 @@ namespace AssetInformationAndRegistration.Misc
                         l.BackColor = StringsAndConstants.LIGHT_SUBTLE_DARKDARKCOLOR;
                     else if (l.Name.Contains("Mandatory"))
                         l.ForeColor = StringsAndConstants.LIGHT_ASTERISKCOLOR;
+                    else if (l.Name.Contains("Notice"))
+                        l.ForeColor = StringsAndConstants.LIGHT_NOTICECOLOR;
                     else if (l.Name.Contains("Fixed"))
                         l.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                     else if (!l.Name.Contains("Color"))
@@ -443,6 +452,11 @@ namespace AssetInformationAndRegistration.Misc
                     tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                     if (tb.Name.Contains("Inactive"))
                         tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
+                }
+                foreach (System.Windows.Forms.TreeView tb in gb.Controls.OfType<System.Windows.Forms.TreeView>())
+                {
+                    tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                    tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
                 }
             }
 
@@ -503,6 +517,11 @@ namespace AssetInformationAndRegistration.Misc
                     if (tb.Name.Contains("Inactive"))
                         tb.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
                 }
+                foreach (System.Windows.Forms.TreeView tb in tlp.Controls.OfType<System.Windows.Forms.TreeView>())
+                {
+                    tb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
+                    tb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
+                }
             }
 
             form.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -552,6 +571,8 @@ namespace AssetInformationAndRegistration.Misc
                     l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
                 else if (l.Name.Contains("Mandatory"))
                     l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+                else if (l.Name.Contains("Notice"))
+                    l.ForeColor = StringsAndConstants.DARK_NOTICECOLOR;
                 else if (l.Name.Contains("Fixed"))
                     l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 else if (!l.Name.Contains("Color"))
@@ -573,6 +594,11 @@ namespace AssetInformationAndRegistration.Misc
                 tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 if (tb.Name.Contains("Inactive"))
                     tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
+            }
+            foreach (System.Windows.Forms.TreeView tv in form.Controls.OfType<System.Windows.Forms.TreeView>())
+            {
+                tv.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                tv.ForeColor = StringsAndConstants.DARK_FORECOLOR;
             }
 
             foreach (System.Windows.Forms.GroupBox gb in form.Controls.OfType<System.Windows.Forms.GroupBox>())
@@ -613,6 +639,8 @@ namespace AssetInformationAndRegistration.Misc
                         l.BackColor = StringsAndConstants.DARK_SUBTLE_LIGHTLIGHTCOLOR;
                     else if (l.Name.Contains("Mandatory"))
                         l.ForeColor = StringsAndConstants.DARK_ASTERISKCOLOR;
+                    else if (l.Name.Contains("Notice"))
+                        l.ForeColor = StringsAndConstants.DARK_NOTICECOLOR;
                     else if (l.Name.Contains("Fixed"))
                         l.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                     else if (!l.Name.Contains("Color"))
@@ -634,6 +662,11 @@ namespace AssetInformationAndRegistration.Misc
                     tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                     if (tb.Name.Contains("Inactive"))
                         tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                }
+                foreach (System.Windows.Forms.TreeView tv in gb.Controls.OfType<System.Windows.Forms.TreeView>())
+                {
+                    tv.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                    tv.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 }
             }
 
@@ -693,6 +726,11 @@ namespace AssetInformationAndRegistration.Misc
                     tb.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                     if (tb.Name.Contains("Inactive"))
                         tb.BackColor = StringsAndConstants.DARK_BACKGROUND;
+                }
+                foreach (System.Windows.Forms.TreeView tv in tlp.Controls.OfType<System.Windows.Forms.TreeView>())
+                {
+                    tv.BackColor = StringsAndConstants.DARK_BACKCOLOR;
+                    tv.ForeColor = StringsAndConstants.DARK_FORECOLOR;
                 }
             }
         }
@@ -944,7 +982,7 @@ namespace AssetInformationAndRegistration.Misc
         internal static string HardwareSha256HashGenerator(Asset a)
         {
             Asset temp = a.ShallowCopy();
-
+            temp.assetNumber = null;
             temp.discarded = null;
             temp.inUse = null;
             temp.note = null;

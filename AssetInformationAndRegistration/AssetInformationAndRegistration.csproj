@@ -107,6 +107,12 @@
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\HardwareChangeDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HardwareChangeDetailForm.Designer.cs">
+      <DependentUpon>HardwareChangeDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RamDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CLI\CLIRegister.resx">
       <DependentUpon>CLIRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HardwareChangeDetailForm.pt.resx">
+      <DependentUpon>HardwareChangeDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HardwareChangeDetailForm.resx">
+      <DependentUpon>HardwareChangeDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.pt.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
