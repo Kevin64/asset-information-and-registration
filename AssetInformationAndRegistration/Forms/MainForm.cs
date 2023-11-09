@@ -640,7 +640,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < processorDetail[i].Count; j++)
                 {
                     if (processorDetail[i][j] == null)
-                        processorDetail[i][j] = UIStrings.UNKNOWN;
+                        processorDetail[i][j] = GenericResources.NOT_AVAILABLE;
                 }
                 processorDetail[i][1] = processorDetail[i][1].Replace("(R)", string.Empty);
                 processorDetail[i][1] = processorDetail[i][1].Replace("(TM)", string.Empty);
@@ -685,7 +685,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < ramDetail[i].Count; j++)
                 {
                     if (ramDetail[i][j] == null)
-                        ramDetail[i][j] = UIStrings.UNKNOWN;
+                        ramDetail[i][j] = GenericResources.NOT_AVAILABLE;
                 }
                 ram r = new ram
                 {
@@ -738,7 +738,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < storageDetail[i].Count; j++)
                 {
                     if (storageDetail[i][j] == null)
-                        storageDetail[i][j] = UIStrings.UNKNOWN;
+                        storageDetail[i][j] = GenericResources.NOT_AVAILABLE;
                 }
                 storage s = new storage
                 {
@@ -768,7 +768,7 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, Enum.GetName(typeof(HardwareInfo.MediaOperationTypes), Convert.ToInt32(newAsset.firmware.mediaOperationMode)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Video Card information
             videoCardDetailPrev = new List<List<string>>
@@ -784,7 +784,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < videoCardDetail[i].Count; j++)
                 {
                     if (videoCardDetail[i][j] == null)
-                        videoCardDetail[i][j] = UIStrings.UNKNOWN;
+                        videoCardDetail[i][j] = GenericResources.NOT_AVAILABLE;
                 }
                 videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(R)", string.Empty);
                 videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(TM)", string.Empty);
@@ -837,13 +837,13 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.type = HardwareInfo.GetFwType();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, Enum.GetName(typeof(HardwareInfo.FirmwareTypes), Convert.ToInt32(newAsset.firmware.type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for Secure Boot status
             newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for firmware version
             newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
@@ -855,13 +855,13 @@ namespace AssetInformationAndRegistration.Forms
             newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             //Scans for TPM status
             newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
             progressbarCount++;
             worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, StringsAndConstants.LIST_TPM_TYPES[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             /*-------------------------------------------------------------------------------------------------------------------------------------------*/
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
         }
@@ -887,11 +887,11 @@ namespace AssetInformationAndRegistration.Forms
             lblIpAddress.Text = newAsset.network.ipAddress;
             lblFwVersion.Text = newAsset.firmware.version;
 
-            lblMediaOperationMode.Text = serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(newAsset.firmware.mediaOperationMode)];
-            lblFwType.Text = serverParam.Parameters.FirmwareTypes[Convert.ToInt32(newAsset.firmware.type)];
-            lblSecureBoot.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.SecureBootStates[Convert.ToInt32(newAsset.firmware.secureBoot)])];
-            lblVirtualizationTechnology.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(serverParam.Parameters.VirtualizationTechnologyStates[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)])];
-            lblTpmVersion.Text = serverParam.Parameters.TpmTypes[Convert.ToInt32(newAsset.firmware.tpmVersion)];
+            lblMediaOperationMode.Text = Enum.GetName(typeof(HardwareInfo.MediaOperationTypes), Convert.ToInt32(newAsset.firmware.mediaOperationMode));
+            lblFwType.Text = Enum.GetName(typeof(HardwareInfo.FirmwareTypes), Convert.ToInt32(newAsset.firmware.type));
+            lblSecureBoot.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)];
+            lblVirtualizationTechnology.Text = StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)];
+            lblTpmVersion.Text = StringsAndConstants.LIST_TPM_TYPES[Convert.ToInt32(newAsset.firmware.tpmVersion)];
 
             #endregion
 
@@ -1038,7 +1038,7 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.MediaOperationMode.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.mediaOperationMode != newAsset.firmware.mediaOperationMode && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblMediaOperationMode.Text += " (" + AirUIStrings.ALERT_MEDIA_OPERATION_TO + " " + serverParam.Parameters.MediaOperationTypes[Convert.ToInt32(modelTemplate.mediaOperationMode)] + ")";
+                    lblMediaOperationMode.Text += " (" + AirUIStrings.ALERT_MEDIA_OPERATION_TO + " " + Enum.GetName(typeof(HardwareInfo.MediaOperationTypes), Convert.ToInt32(modelTemplate.mediaOperationMode)) + ")";
                     timerAlertMediaOperationMode.Enabled = true;
                     nonCompliantCount++;
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_MEDIA_OPERATION_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
@@ -1068,7 +1068,7 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.FirmwareType.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.fwType != newAsset.firmware.type && !offlineMode)
                 {
                     pass = false;
-                    lblFwType.Text += " (" + AirUIStrings.ALERT_FIRMWARE_TYPE_TO + " " + serverParam.Parameters.FirmwareTypes[Convert.ToInt32(modelTemplate.fwType)] + ")";
+                    lblFwType.Text += " (" + AirUIStrings.ALERT_FIRMWARE_TYPE_TO + " " + Enum.GetName(typeof(HardwareInfo.FirmwareTypes), Convert.ToInt32(modelTemplate.fwType)) + ")";
                     timerAlertFwType.Enabled = true;
                     nonCompliantCount++;
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_FIRMWARE_TYPE_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
@@ -1115,7 +1115,7 @@ namespace AssetInformationAndRegistration.Forms
                 if (configOptions.Enforcement.Tpm.ToString() == GenericResources.TRUE && modelTemplate != null && modelTemplate.tpmVersion != newAsset.firmware.tpmVersion && !offlineMode && serverOnline)
                 {
                     pass = false;
-                    lblTpmVersion.Text += " (" + AirUIStrings.ALERT_TPM_TO + " " + serverParam.Parameters.TpmTypes[Convert.ToInt32(modelTemplate.tpmVersion)] + ")";
+                    lblTpmVersion.Text += " (" + AirUIStrings.ALERT_TPM_TO + " " + StringsAndConstants.LIST_TPM_TYPES[Convert.ToInt32(modelTemplate.tpmVersion)] + ")";
                     timerAlertTpmVersion.Enabled = true;
                     nonCompliantCount++;
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), AirUIStrings.ALERT_TPM_TO, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));

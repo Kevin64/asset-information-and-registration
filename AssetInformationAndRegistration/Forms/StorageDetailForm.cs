@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
+using ConstantsDLL;
 using ConstantsDLL.Properties;
 using LogGeneratorDLL;
 using System;
@@ -52,10 +53,24 @@ namespace AssetInformationAndRegistration.Forms
                 s[2] = individualSizeStr;
                 totalSize += individualSize;
 
-                if(s[1] == ((int)HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString())
-                    s[1] = (HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString();
+                if (s[1] == ((int)HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString())
+                    s[1] = HardwareInfoDLL.HardwareInfo.StorageTypes.SSD.ToString();
                 else
-                    s[1] = (HardwareInfoDLL.HardwareInfo.StorageTypes.HDD).ToString();
+                    s[1] = HardwareInfoDLL.HardwareInfo.StorageTypes.HDD.ToString();
+
+                if (s[3] == ((int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.SATA).ToString())
+                    s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[(int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.SATA];
+                else if (s[3] == ((int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.PCI_E).ToString())
+                    s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[(int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.PCI_E];
+                else
+                    s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[(int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.IDE];
+
+                if (s[6] == GenericResources.OK)
+                    s[6] = GenericResources.OK_NAME;
+                else if (s[6] == GenericResources.PRED_FAIL)
+                    s[6] = GenericResources.PRED_FAIL_NAME;
+                else
+                    s[6] = GenericResources.NOT_AVAILABLE_NAME;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }
@@ -76,7 +91,7 @@ namespace AssetInformationAndRegistration.Forms
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 DataGridViewCell cell = row.Cells[6];
-                if (cell.Value != null && cell.Value.Equals(GenericResources.PRED_FAIL))
+                if (cell.Value != null && cell.Value.Equals(GenericResources.PRED_FAIL_NAME))
                 {
                     cell.Style.BackColor = Color.Red;
                     cell.Style.ForeColor = Color.White;

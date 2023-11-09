@@ -33,7 +33,7 @@ namespace AssetInformationAndRegistration.Forms
                 {
                     object propValue = pi.GetValue(item, null);
                     var elems = propValue as IList;
-                    childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name))];
+                    childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name + " - " + pi.GetValue(item)))];
                     if (elems != null)
                     {
                         foreach (var i in elems)
