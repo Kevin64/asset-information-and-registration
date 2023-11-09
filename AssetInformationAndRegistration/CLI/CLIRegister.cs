@@ -476,7 +476,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < processorDetail[i].Count; j++)
                 {
                     if (processorDetail[i][j] == null)
-                        processorDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                        processorDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
                 }
                 processorDetail[i][1] = processorDetail[i][1].Replace("(R)", string.Empty);
                 processorDetail[i][1] = processorDetail[i][1].Replace("(TM)", string.Empty);
@@ -495,7 +495,7 @@ namespace AssetInformationAndRegistration.Forms
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_FREQUENCY + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CORES + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfCores, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_THREADS + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfThreads, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CACHE + " [" + newHardware.processor[i].processorId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.processor[i].cache)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CACHE + " [" + newHardware.processor[i].processorId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.processor[i].cache), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
             }
             processorSummary = processorDetail[0][1];
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME, processorSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
@@ -518,7 +518,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < ramDetail[i].Count; j++)
                 {
                     if (ramDetail[i][j] == null)
-                        ramDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                        ramDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
                 }
                 ram r = new ram
                 {
@@ -532,7 +532,7 @@ namespace AssetInformationAndRegistration.Forms
                 };
                 newHardware.ram.Add(r);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(newHardware.ram[i].type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.ram[i].amount)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.ram[i].amount), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_FREQUENCY + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_MANUFACTURER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].manufacturer, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SERIAL_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
@@ -559,7 +559,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < storageDetail[i].Count; j++)
                 {
                     if (storageDetail[i][j] == null)
-                        storageDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                        storageDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
                 }
                 storage s = new storage
                 {
@@ -573,7 +573,7 @@ namespace AssetInformationAndRegistration.Forms
                 };
                 newHardware.storage.Add(s);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_TYPE + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE + " [" + newHardware.storage[i].storageId + "]", Misc.MiscMethods.FriendlySizeDecimal(Convert.ToInt64(newHardware.storage[i].size)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE + " [" + newHardware.storage[i].storageId + "]", Misc.MiscMethods.FriendlySizeDecimal(Convert.ToInt64(newHardware.storage[i].size), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_CONNECTION + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].connection, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_MODEL + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SERIAL_NUMBER + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
@@ -600,7 +600,7 @@ namespace AssetInformationAndRegistration.Forms
                 for (int j = 0; j < videoCardDetail[i].Count; j++)
                 {
                     if (videoCardDetail[i][j] == null)
-                        videoCardDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                        videoCardDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
                 }
                 videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(R)", string.Empty);
                 videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(TM)", string.Empty);
@@ -613,7 +613,7 @@ namespace AssetInformationAndRegistration.Forms
                 };
                 newHardware.videoCard.Add(v);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
             }
             videoCardSummary = videoCardDetail[0][1];
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));

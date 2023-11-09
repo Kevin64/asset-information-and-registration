@@ -593,38 +593,40 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="worker"></param>
         private void CollectThread(BackgroundWorker worker)
         {
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-
-            progressbarCount = 0;
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for PC maker
-            newAsset.hardware.brand = HardwareInfo.GetBrand();
-            if (newAsset.hardware.brand == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.brand == string.Empty)
-                newAsset.hardware.brand = HardwareInfo.GetBrandAlt();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_BRAND, newAsset.hardware.brand, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for PC model
-            newAsset.hardware.model = HardwareInfo.GetModel();
-            if (newAsset.hardware.model == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
+            try
             {
-                newAsset.hardware.model = HardwareInfo.GetModelAlt();
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_START_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+
+                progressbarCount = 0;
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for PC maker
+                newAsset.hardware.brand = HardwareInfo.GetBrand();
+                if (newAsset.hardware.brand == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.brand == string.Empty)
+                    newAsset.hardware.brand = HardwareInfo.GetBrandAlt();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_BRAND, newAsset.hardware.brand, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for PC model
+                newAsset.hardware.model = HardwareInfo.GetModel();
                 if (newAsset.hardware.model == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
-                    newAsset.hardware.model = UIStrings.UNKNOWN;
-            }
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_MODEL, newAsset.hardware.model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for motherboard Serial number
-            newAsset.hardware.serialNumber = HardwareInfo.GetSerialNumber();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_SERIAL_NUMBER, newAsset.hardware.serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for CPU information
-            processorDetailPrev = new List<List<string>>()
+                {
+                    newAsset.hardware.model = HardwareInfo.GetModelAlt();
+                    if (newAsset.hardware.model == GenericResources.TO_BE_FILLED_BY_OEM || newAsset.hardware.model == string.Empty)
+                        newAsset.hardware.model = UIStrings.UNKNOWN;
+                }
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_MODEL, newAsset.hardware.model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for motherboard Serial number
+                newAsset.hardware.serialNumber = HardwareInfo.GetSerialNumber();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_HARDWARE_SERIAL_NUMBER, newAsset.hardware.serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for CPU information
+                processorDetailPrev = new List<List<string>>()
             {
                 HardwareInfo.GetProcessorIdList(),
                 HardwareInfo.GetProcessorNameList(),
@@ -633,42 +635,42 @@ namespace AssetInformationAndRegistration.Forms
                 HardwareInfo.GetProcessorThreadsList(),
                 HardwareInfo.GetProcessorCacheList()
             };
-            processorDetail = Misc.MiscMethods.Transpose(processorDetailPrev);
-            newHardware.processor.Clear();
-            for (int i = 0; i < processorDetail.Count; i++)
-            {
-                for (int j = 0; j < processorDetail[i].Count; j++)
+                processorDetail = Misc.MiscMethods.Transpose(processorDetailPrev);
+                newHardware.processor.Clear();
+                for (int i = 0; i < processorDetail.Count; i++)
                 {
-                    if (processorDetail[i][j] == null)
-                        processorDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                    for (int j = 0; j < processorDetail[i].Count; j++)
+                    {
+                        if (processorDetail[i][j] == null)
+                            processorDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
+                    }
+                    processorDetail[i][1] = processorDetail[i][1].Replace("(R)", string.Empty);
+                    processorDetail[i][1] = processorDetail[i][1].Replace("(TM)", string.Empty);
+                    processorDetail[i][1] = processorDetail[i][1].Replace("(tm)", string.Empty);
+                    processor p = new processor
+                    {
+                        processorId = processorDetail[i][0],
+                        name = processorDetail[i][1],
+                        frequency = processorDetail[i][2],
+                        numberOfCores = processorDetail[i][3],
+                        numberOfThreads = processorDetail[i][4],
+                        cache = processorDetail[i][5]
+                    };
+                    newHardware.processor.Add(p);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_FREQUENCY + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CORES + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfCores, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_THREADS + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfThreads, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CACHE + " [" + newHardware.processor[i].processorId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.processor[i].cache), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
-                processorDetail[i][1] = processorDetail[i][1].Replace("(R)", string.Empty);
-                processorDetail[i][1] = processorDetail[i][1].Replace("(TM)", string.Empty);
-                processorDetail[i][1] = processorDetail[i][1].Replace("(tm)", string.Empty);
-                processor p = new processor
-                {
-                    processorId = processorDetail[i][0],
-                    name = processorDetail[i][1],
-                    frequency = processorDetail[i][2],
-                    numberOfCores = processorDetail[i][3],
-                    numberOfThreads = processorDetail[i][4],
-                    cache = processorDetail[i][5]
-                };
-                newHardware.processor.Add(p);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_NAME + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_FREQUENCY + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CORES + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfCores, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_THREADS + " [" + newHardware.processor[i].processorId + "]", newHardware.processor[i].numberOfThreads, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR_CACHE + " [" + newHardware.processor[i].processorId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.processor[i].cache)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            }
-            processorForm.TreatData(processorDetail);
-            processorSummary = processorDetail[0][1];
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR, processorSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for RAM amount and total number of slots
-            ramDetailPrev = new List<List<string>>()
+                processorForm.TreatData(processorDetail);
+                processorSummary = processorDetail[0][1];
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_PROCESSOR, processorSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for RAM amount and total number of slots
+                ramDetailPrev = new List<List<string>>()
             {
                 HardwareInfo.GetRamSlotList(),
                 HardwareInfo.GetRamAmountList(),
@@ -678,50 +680,50 @@ namespace AssetInformationAndRegistration.Forms
                 HardwareInfo.GetRamPartNumberList(),
                 HardwareInfo.GetRamManufacturerList()
             };
-            ramDetail = Misc.MiscMethods.Transpose(ramDetailPrev);
-            newHardware.ram.Clear();
-            for (int i = 0; i < ramDetail.Count; i++)
-            {
-                for (int j = 0; j < ramDetail[i].Count; j++)
+                ramDetail = Misc.MiscMethods.Transpose(ramDetailPrev);
+                newHardware.ram.Clear();
+                for (int i = 0; i < ramDetail.Count; i++)
                 {
-                    if (ramDetail[i][j] == null)
-                        ramDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                    for (int j = 0; j < ramDetail[i].Count; j++)
+                    {
+                        if (ramDetail[i][j] == null)
+                            ramDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
+                    }
+                    ram r = new ram
+                    {
+                        slot = ramDetail[i][0],
+                        amount = ramDetail[i][1],
+                        type = ramDetail[i][2],
+                        frequency = ramDetail[i][3],
+                        serialNumber = ramDetail[i][4],
+                        partNumber = ramDetail[i][5],
+                        manufacturer = ramDetail[i][6]
+                    };
+                    newHardware.ram.Add(r);
+                    try
+                    {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(newHardware.ram[i].type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.ram[i].amount), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    }
+                    catch
+                    {
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].amount, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+
+                    }
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_FREQUENCY + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_MANUFACTURER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].manufacturer, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SERIAL_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_PART_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].partNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
-                ram r = new ram
-                {
-                    slot = ramDetail[i][0],
-                    amount = ramDetail[i][1],
-                    type = ramDetail[i][2],
-                    frequency = ramDetail[i][3],
-                    serialNumber = ramDetail[i][4],
-                    partNumber = ramDetail[i][5],
-                    manufacturer = ramDetail[i][6]
-                };
-                newHardware.ram.Add(r);
-                try
-                {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(newHardware.ram[i].type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.ram[i].amount)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                }
-                catch
-                {
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_TYPE + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_AMOUNT + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].amount, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                    
-                }
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_FREQUENCY + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].frequency, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_MANUFACTURER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].manufacturer, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_SERIAL_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM_PART_NUMBER + " [" + newHardware.ram[i].slot + "]", newHardware.ram[i].partNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            }
-            ramForm.TreatData(ramDetail, isSystemDarkModeEnabled);
-            ramSummary = HardwareInfo.GetRamSummary();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM, ramSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for Storage data
-            storageDetailPrev = new List<List<string>>
+                ramForm.TreatData(ramDetail, isSystemDarkModeEnabled);
+                ramSummary = HardwareInfo.GetRamSummary();
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_RAM, ramSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for Storage data
+                storageDetailPrev = new List<List<string>>
             {
                 HardwareInfo.GetStorageIdsList(),
                 HardwareInfo.GetStorageTypeList(),
@@ -731,139 +733,146 @@ namespace AssetInformationAndRegistration.Forms
                 HardwareInfo.GetStorageSerialNumberList(),
                 HardwareInfo.GetStorageSmartList()
             };
-            storageDetail = Misc.MiscMethods.Transpose(storageDetailPrev);
-            newHardware.storage.Clear();
-            for (int i = 0; i < storageDetail.Count; i++)
-            {
-                for (int j = 0; j < storageDetail[i].Count; j++)
+                storageDetail = Misc.MiscMethods.Transpose(storageDetailPrev);
+                newHardware.storage.Clear();
+                for (int i = 0; i < storageDetail.Count; i++)
                 {
-                    if (storageDetail[i][j] == null)
-                        storageDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                    for (int j = 0; j < storageDetail[i].Count; j++)
+                    {
+                        if (storageDetail[i][j] == null)
+                            storageDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
+                    }
+                    storage s = new storage
+                    {
+                        storageId = storageDetail[i][0],
+                        type = storageDetail[i][1],
+                        size = storageDetail[i][2],
+                        connection = storageDetail[i][3],
+                        model = storageDetail[i][4],
+                        serialNumber = storageDetail[i][5],
+                        smartStatus = storageDetail[i][6]
+                    };
+                    newHardware.storage.Add(s);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_TYPE + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE + " [" + newHardware.storage[i].storageId + "]", Misc.MiscMethods.FriendlySizeDecimal(Convert.ToInt64(newHardware.storage[i].size), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_CONNECTION + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].connection, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_MODEL + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SERIAL_NUMBER + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SMART_STATUS + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].smartStatus, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
-                storage s = new storage
-                {
-                    storageId = storageDetail[i][0],
-                    type = storageDetail[i][1],
-                    size = storageDetail[i][2],
-                    connection = storageDetail[i][3],
-                    model = storageDetail[i][4],
-                    serialNumber = storageDetail[i][5],
-                    smartStatus = storageDetail[i][6]
-                };
-                newHardware.storage.Add(s);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_TYPE + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].type, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SIZE + " [" + newHardware.storage[i].storageId + "]", Misc.MiscMethods.FriendlySizeDecimal(Convert.ToInt64(newHardware.storage[i].size)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_CONNECTION + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].connection, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_MODEL + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].model, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SERIAL_NUMBER + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].serialNumber, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE_SMART_STATUS + " [" + newHardware.storage[i].storageId + "]", newHardware.storage[i].smartStatus, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            }
-            storageForm.TreatData(storageDetail);
-            storageSummary = HardwareInfo.GetStorageSummary();
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE, storageSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for Media Operation (IDE/AHCI/NVME)
-            newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, Enum.GetName(typeof(HardwareInfo.MediaOperationTypes), Convert.ToInt32(newAsset.firmware.mediaOperationMode)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for Video Card information
-            videoCardDetailPrev = new List<List<string>>
+                storageForm.TreatData(storageDetail);
+                storageSummary = HardwareInfo.GetStorageSummary();
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_STORAGE, storageSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for Media Operation (IDE/AHCI/NVME)
+                newAsset.firmware.mediaOperationMode = HardwareInfo.GetMediaOperationMode();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_MEDIA_OPERATION_TYPE, Enum.GetName(typeof(HardwareInfo.MediaOperationTypes), Convert.ToInt32(newAsset.firmware.mediaOperationMode)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for Video Card information
+                videoCardDetailPrev = new List<List<string>>
             {
                 HardwareInfo.GetVideoCardIdList(),
                 HardwareInfo.GetVideoCardNameList(),
                 HardwareInfo.GetVideoCardRamList()
             };
-            videoCardDetail = Misc.MiscMethods.Transpose(videoCardDetailPrev);
-            newHardware.videoCard.Clear();
-            for (int i = 0; i < videoCardDetail.Count; i++)
-            {
-                for (int j = 0; j < videoCardDetail[i].Count; j++)
+                videoCardDetail = Misc.MiscMethods.Transpose(videoCardDetailPrev);
+                newHardware.videoCard.Clear();
+                for (int i = 0; i < videoCardDetail.Count; i++)
                 {
-                    if (videoCardDetail[i][j] == null)
-                        videoCardDetail[i][j] = GenericResources.NOT_AVAILABLE;
+                    for (int j = 0; j < videoCardDetail[i].Count; j++)
+                    {
+                        if (videoCardDetail[i][j] == null)
+                            videoCardDetail[i][j] = GenericResources.NOT_AVAILABLE_CODE;
+                    }
+                    videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(R)", string.Empty);
+                    videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(TM)", string.Empty);
+                    videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(tm)", string.Empty);
+                    videoCard v = new videoCard
+                    {
+                        gpuId = videoCardDetail[i][0],
+                        name = videoCardDetail[i][1],
+                        vRam = videoCardDetail[i][2],
+                    };
+                    newHardware.videoCard.Add(v);
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
-                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(R)", string.Empty);
-                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(TM)", string.Empty);
-                videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(tm)", string.Empty);
-                videoCard v = new videoCard
-                {
-                    gpuId = videoCardDetail[i][0],
-                    name = videoCardDetail[i][1],
-                    vRam = videoCardDetail[i][2],
-                };
-                newHardware.videoCard.Add(v);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                videoCardForm.TreatData(videoCardDetail);
+                videoCardSummary = videoCardDetail[0][1];
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for OS infomation
+                newAsset.operatingSystem.arch = HardwareInfo.GetOSArchBinary();
+                newAsset.operatingSystem.build = HardwareInfo.GetOSBuildAndRevision();
+                newAsset.operatingSystem.name = HardwareInfo.GetOSName();
+                newAsset.operatingSystem.version = HardwareInfo.GetOSVersion();
+                operatingSystemSummary = HardwareInfo.GetOSSummary();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPERATING_SYSTEM, operatingSystemSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for Hostname
+                newAsset.network.hostname = HardwareInfo.GetHostname();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_HOSTNAME, newAsset.network.hostname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for MAC Address
+                newAsset.network.macAddress = HardwareInfo.GetMacAddress();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_MAC_ADDRESS, newAsset.network.macAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for IP Address
+                newAsset.network.ipAddress = HardwareInfo.GetIpAddress();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_IP_ADDRESS, newAsset.network.ipAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for firmware type
+                newAsset.firmware.type = HardwareInfo.GetFwType();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, Enum.GetName(typeof(HardwareInfo.FirmwareTypes), Convert.ToInt32(newAsset.firmware.type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for Secure Boot status
+                newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for firmware version
+                newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VERSION, newAsset.firmware.version, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for VT status
+                newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                //Scans for TPM status
+                newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
+                progressbarCount++;
+                worker.ReportProgress(ProgressAuxFunction(progressbarCount));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, StringsAndConstants.LIST_TPM_TYPES[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                /*-------------------------------------------------------------------------------------------------------------------------------------------*/
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             }
-            videoCardForm.TreatData(videoCardDetail);
-            videoCardSummary = videoCardDetail[0][1];
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for OS infomation
-            newAsset.operatingSystem.arch = HardwareInfo.GetOSArchBinary();
-            newAsset.operatingSystem.build = HardwareInfo.GetOSBuildAndRevision();
-            newAsset.operatingSystem.name = HardwareInfo.GetOSName();
-            newAsset.operatingSystem.version = HardwareInfo.GetOSVersion();
-            operatingSystemSummary = HardwareInfo.GetOSSummary();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPERATING_SYSTEM, operatingSystemSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for Hostname
-            newAsset.network.hostname = HardwareInfo.GetHostname();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_HOSTNAME, newAsset.network.hostname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for MAC Address
-            newAsset.network.macAddress = HardwareInfo.GetMacAddress();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_MAC_ADDRESS, newAsset.network.macAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for IP Address
-            newAsset.network.ipAddress = HardwareInfo.GetIpAddress();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_NETWORK_IP_ADDRESS, newAsset.network.ipAddress, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for firmware type
-            newAsset.firmware.type = HardwareInfo.GetFwType();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TYPE, Enum.GetName(typeof(HardwareInfo.FirmwareTypes), Convert.ToInt32(newAsset.firmware.type)), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for Secure Boot status
-            newAsset.firmware.secureBoot = HardwareInfo.GetSecureBoot();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_SECURE_BOOT, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.secureBoot)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for firmware version
-            newAsset.firmware.version = HardwareInfo.GetFirmwareVersion();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VERSION, newAsset.firmware.version, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for VT status
-            newAsset.firmware.virtualizationTechnology = HardwareInfo.GetVirtualizationTechnology();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_VIRTUALIZATION_TECHNOLOGY, StringsAndConstants.LIST_STATES[Convert.ToInt32(newAsset.firmware.virtualizationTechnology)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            //Scans for TPM status
-            newAsset.firmware.tpmVersion = HardwareInfo.GetTPMStatus();
-            progressbarCount++;
-            worker.ReportProgress(ProgressAuxFunction(progressbarCount));
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FIRMWARE_TPM, StringsAndConstants.LIST_TPM_TYPES[Convert.ToInt32(newAsset.firmware.tpmVersion)], Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            /*-------------------------------------------------------------------------------------------------------------------------------------------*/
-            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_END_COLLECTING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            catch
+            {
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), LogStrings.LOG_COLLECTION_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                _ = MessageBox.Show(UIStrings.COLLECTION_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit((int)ExitCodes.ERROR);
+            }
         }
 
         /// <summary> 
@@ -1102,7 +1111,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If Smart status is not OK and its enforcement is enabled
-                if (configOptions.Enforcement.SmartStatus.ToString() == GenericResources.TRUE && storageDetailPrev[6].Contains(GenericResources.PRED_FAIL) && !offlineMode && serverOnline)
+                if (configOptions.Enforcement.SmartStatus.ToString() == GenericResources.TRUE && storageDetailPrev[6].Contains(GenericResources.PRED_FAIL_CODE) && !offlineMode && serverOnline)
                 {
                     pass = false;
                     //lblStorageType.Text += UIStrings.SMART_FAIL;

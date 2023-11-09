@@ -1,6 +1,8 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
+using HardwareInfoDLL;
 using LogGeneratorDLL;
 using System;
 using System.Collections.Generic;
@@ -43,40 +45,25 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in auxList)
             {
-                if (!s.Contains(UIStrings.FREE))
+                if (!s.Contains(GenericResources.FREE_CODE))
                 {
-                    individualRam = Convert.ToInt64(s[1]);
-                    if (individualRam / 1024 / 1024 / 1024 >= 1024)
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
-                    else if (individualRam / 1024 / 1024 / 1024 < 1024 && individualRam / 1024 / 1024 / 1024 >= 1)
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
-                    else
-                        individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + GenericResources.MB;
+                    individualRamStr = MiscMethods.FriendlySizeBinary(Convert.ToInt64(s[1]), false);
+                    individualRam = Convert.ToInt64(individualRamStr.Substring(0, individualRamStr.Length - 3));
                     s[1] = individualRamStr;
 
-                    if (!s[3].Contains(UIStrings.UNKNOWN))
+                    if (!s[3].Contains(GenericResources.NOT_AVAILABLE_CODE))
                         s[3] = s[3] + " " + GenericResources.MHZ;
                 }
 
-                if (s[2] == "0")
+                if (s[2] != GenericResources.FREE_CODE)
+                    s[2] = Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(s[2]));
+
+                for (int i = 0; i < s.Count; i++)
                 {
-                    s[2] = UIStrings.UNKNOWN;
-                }
-                else if (s[2] == GenericResources.DDR4_SMBIOS)
-                {
-                    s[2] = GenericResources.DDR4;
-                }
-                else if (s[2] == GenericResources.DDR3_SMBIOS)
-                {
-                    s[2] = GenericResources.DDR3;
-                }
-                else if (s[2] == UIStrings.FREE)
-                {
-                    ;
-                }
-                else
-                {
-                    s[2] = GenericResources.DDR2;
+                    if (s[i] == GenericResources.FREE_CODE)
+                        s[i] = UIStrings.FREE;
+                    if (s[i] == GenericResources.NOT_AVAILABLE_CODE)
+                        s[i] = GenericResources.NOT_AVAILABLE_NAME;
                 }
 
                 _ = dataGridView1.Rows.Add(s.ToArray());

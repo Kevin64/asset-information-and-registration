@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
 using ConstantsDLL.Properties;
 using LogGeneratorDLL;
 using System;
@@ -39,13 +40,9 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
             {
-                individualCache = Convert.ToInt64(s[5]);
-                if (individualCache / 1024 / 1024 / 1024 >= 1024)
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
-                else if (individualCache / 1024 / 1024 / 1024 < 1024 && individualCache / 1024 / 1024 / 1024 >= 1)
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
-                else
-                    individualCacheStr = Math.Round(individualCache / 1024 / 1024, 0) + " " + GenericResources.MB;
+                individualCacheStr = MiscMethods.FriendlySizeBinary(Convert.ToInt64(s[5]), false);
+                if(!individualCacheStr.Contains("0 B"))
+                    individualCache = Convert.ToInt64(individualCacheStr.Substring(0, individualCacheStr.Length - 3));
                 s[5] = individualCacheStr;
 
                 if (!s[2].Contains(UIStrings.UNKNOWN))

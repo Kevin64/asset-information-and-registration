@@ -735,12 +735,12 @@ namespace AssetInformationAndRegistration.Misc
             }
         }
 
-        internal static string FriendlySizeBinary(long bytes)
+        internal static string FriendlySizeBinary(long bytes, bool hasDecimal)
         {
             if (bytes < 0) throw new ArgumentException("bytes");
 
-            double friendly;
-            string sufix;
+            double friendly = 0;
+            string sufix = "B";
 
             if (bytes >= 1152921504606846976L)
             {
@@ -772,21 +772,20 @@ namespace AssetInformationAndRegistration.Misc
                 friendly = bytes;
                 sufix = GenericResources.KB;
             }
-            else
-            {
-                return bytes.ToString("0 B");
-            }
 
             friendly /= 1024;
-            return friendly.ToString("0.## ") + sufix;
+            if (hasDecimal)
+                return friendly.ToString("0.##") + " " + sufix;
+            else
+                return (Convert.ToInt64(friendly)).ToString() + " " + sufix;
         }
 
-        internal static string FriendlySizeDecimal(long bytes)
+        internal static string FriendlySizeDecimal(long bytes, bool hasDecimal)
         {
             if (bytes < 0) throw new ArgumentException("bytes");
 
-            long friendly;
-            string sufix;
+            double friendly = 0;
+            string sufix = "B";
 
             if (bytes >= 1000000000000000000L)
             {
@@ -818,13 +817,12 @@ namespace AssetInformationAndRegistration.Misc
                 friendly = bytes;
                 sufix = GenericResources.KB;
             }
-            else
-            {
-                return bytes.ToString("0 B");
-            }
 
             friendly /= 1000;
-            return friendly.ToString() + " " + sufix;
+            if (hasDecimal)
+                return friendly.ToString("0.##") + " " + sufix;
+            else
+                return (Convert.ToInt64(friendly)).ToString() + " " + sufix;
         }
 
         /// <summary> 

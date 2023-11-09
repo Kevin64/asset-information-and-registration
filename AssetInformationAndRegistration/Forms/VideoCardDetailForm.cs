@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
 using ConstantsDLL.Properties;
 using LogGeneratorDLL;
 using System;
@@ -39,13 +40,8 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
             {
-                individualRam = Convert.ToInt64(s[2]);
-                if (individualRam / 1024 / 1024 / 1024 >= 1024)
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024 / 1024, 0) + " " + GenericResources.TB;
-                else if (individualRam / 1024 / 1024 / 1024 < 1024 && individualRam / 1024 / 1024 / 1024 >= 1)
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024 / 1024, 0) + " " + GenericResources.GB;
-                else
-                    individualRamStr = Math.Round(individualRam / 1024 / 1024, 0) + " " + GenericResources.MB;
+                individualRamStr = MiscMethods.FriendlySizeBinary(Convert.ToInt64(s[2]), false);
+                individualRam = Convert.ToInt64(individualRamStr.Substring(0, individualRamStr.Length - 3));
                 s[2] = individualRamStr;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());

@@ -1,4 +1,5 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
+using AssetInformationAndRegistration.Misc;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
 using LogGeneratorDLL;
@@ -43,15 +44,10 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in str)
             {
-                individualSize = Convert.ToInt64(s[2]);
-                if (individualSize / 1000 / 1000 / 1000 >= 1000)
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000 / 1000, 0) + " " + GenericResources.TB;
-                else if (individualSize / 1000 / 1000 / 1000 < 1000 && individualSize / 1000 / 1000 / 1000 >= 1)
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000 / 1000, 0) + " " + GenericResources.GB;
-                else
-                    individualSizeStr = Math.Round(individualSize / 1000 / 1000, 0) + " " + GenericResources.MB;
+                individualSizeStr = MiscMethods.FriendlySizeDecimal(Convert.ToInt64(s[2]), false);
+                individualSize = Convert.ToInt64(individualSizeStr.Substring(0, individualSizeStr.Length - 3));
+                totalSize += Convert.ToInt64(s[2]);
                 s[2] = individualSizeStr;
-                totalSize += individualSize;
 
                 if (s[1] == ((int)HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString())
                     s[1] = HardwareInfoDLL.HardwareInfo.StorageTypes.SSD.ToString();
@@ -65,9 +61,9 @@ namespace AssetInformationAndRegistration.Forms
                 else
                     s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[(int)HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.IDE];
 
-                if (s[6] == GenericResources.OK)
+                if (s[6] == GenericResources.OK_CODE)
                     s[6] = GenericResources.OK_NAME;
-                else if (s[6] == GenericResources.PRED_FAIL)
+                else if (s[6] == GenericResources.PRED_FAIL_CODE)
                     s[6] = GenericResources.PRED_FAIL_NAME;
                 else
                     s[6] = GenericResources.NOT_AVAILABLE_NAME;
@@ -76,12 +72,7 @@ namespace AssetInformationAndRegistration.Forms
             }
 
             //Shows the total storage size
-            if (totalSize / 1000 / 1000 / 1000 >= 1000)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000 / 1000, 2) + " " + GenericResources.TB;
-            else if (totalSize / 1000 / 1000 / 1000 < 1000 && totalSize / 1000 / 1000 / 1000 >= 1)
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000 / 1000, 2) + " " + GenericResources.GB;
-            else
-                totalSizeStr = Math.Round(totalSize / 1000 / 1000, 2) + " " + GenericResources.MB;
+            totalSizeStr = MiscMethods.FriendlySizeDecimal(Convert.ToInt64(totalSize), true);
             lblTotalSize.Text = totalSizeStr;
 
             //Sorts by ID column
