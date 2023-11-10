@@ -607,13 +607,13 @@ namespace AssetInformationAndRegistration.Forms
                 videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(tm)", string.Empty);
                 videoCard v = new videoCard
                 {
-                    gpuId = videoCardDetail[i][0],
+                    videoCardId = videoCardDetail[i][0],
                     name = videoCardDetail[i][1],
                     vRam = videoCardDetail[i][2],
                 };
                 newHardware.videoCard.Add(v);
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
-                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].videoCardId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].videoCardId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
             }
             videoCardSummary = videoCardDetail[0][1];
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD, videoCardSummary, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));

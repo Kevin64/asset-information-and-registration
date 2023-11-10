@@ -29,34 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HardwareChangeDetailForm));
-            this.groupBoxExistingHardware = new System.Windows.Forms.GroupBox();
-            this.treeViewExistingHardware = new System.Windows.Forms.TreeView();
-            this.groupBoxNewHardware = new System.Windows.Forms.GroupBox();
-            this.treeViewNewHardware = new System.Windows.Forms.TreeView();
-            this.groupBoxExistingHardware.SuspendLayout();
-            this.groupBoxNewHardware.SuspendLayout();
+            this.lblFixedExistingHardwareHashId = new System.Windows.Forms.Label();
+            this.lblFixedNewHardwareHashId = new System.Windows.Forms.Label();
+            this.textBoxExistingHardwareHashId = new System.Windows.Forms.TextBox();
+            this.textBoxNewHardwareHashId = new System.Windows.Forms.TextBox();
+            this.lblFixedExistingHardware = new System.Windows.Forms.Label();
+            this.lblFixedNewHardware = new System.Windows.Forms.Label();
+            this.treeViewExistingHardware = new AssetInformationAndRegistration.SyncTreeView();
+            this.treeViewNewHardware = new AssetInformationAndRegistration.SyncTreeView();
             this.SuspendLayout();
             // 
-            // groupBoxExistingHardware
+            // lblFixedExistingHardwareHashId
             // 
-            resources.ApplyResources(this.groupBoxExistingHardware, "groupBoxExistingHardware");
-            this.groupBoxExistingHardware.Controls.Add(this.treeViewExistingHardware);
-            this.groupBoxExistingHardware.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxExistingHardware.Name = "groupBoxExistingHardware";
-            this.groupBoxExistingHardware.TabStop = false;
+            resources.ApplyResources(this.lblFixedExistingHardwareHashId, "lblFixedExistingHardwareHashId");
+            this.lblFixedExistingHardwareHashId.Name = "lblFixedExistingHardwareHashId";
+            // 
+            // lblFixedNewHardwareHashId
+            // 
+            resources.ApplyResources(this.lblFixedNewHardwareHashId, "lblFixedNewHardwareHashId");
+            this.lblFixedNewHardwareHashId.Name = "lblFixedNewHardwareHashId";
+            // 
+            // textBoxExistingHardwareHashId
+            // 
+            this.textBoxExistingHardwareHashId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxExistingHardwareHashId, "textBoxExistingHardwareHashId");
+            this.textBoxExistingHardwareHashId.Name = "textBoxExistingHardwareHashId";
+            this.textBoxExistingHardwareHashId.ReadOnly = true;
+            // 
+            // textBoxNewHardwareHashId
+            // 
+            this.textBoxNewHardwareHashId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.textBoxNewHardwareHashId, "textBoxNewHardwareHashId");
+            this.textBoxNewHardwareHashId.Name = "textBoxNewHardwareHashId";
+            this.textBoxNewHardwareHashId.ReadOnly = true;
+            // 
+            // lblFixedExistingHardware
+            // 
+            resources.ApplyResources(this.lblFixedExistingHardware, "lblFixedExistingHardware");
+            this.lblFixedExistingHardware.Name = "lblFixedExistingHardware";
+            // 
+            // lblFixedNewHardware
+            // 
+            resources.ApplyResources(this.lblFixedNewHardware, "lblFixedNewHardware");
+            this.lblFixedNewHardware.Name = "lblFixedNewHardware";
             // 
             // treeViewExistingHardware
             // 
             resources.ApplyResources(this.treeViewExistingHardware, "treeViewExistingHardware");
             this.treeViewExistingHardware.Name = "treeViewExistingHardware";
-            // 
-            // groupBoxNewHardware
-            // 
-            resources.ApplyResources(this.groupBoxNewHardware, "groupBoxNewHardware");
-            this.groupBoxNewHardware.Controls.Add(this.treeViewNewHardware);
-            this.groupBoxNewHardware.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBoxNewHardware.Name = "groupBoxNewHardware";
-            this.groupBoxNewHardware.TabStop = false;
             // 
             // treeViewNewHardware
             // 
@@ -67,8 +87,14 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBoxNewHardware);
-            this.Controls.Add(this.groupBoxExistingHardware);
+            this.Controls.Add(this.treeViewExistingHardware);
+            this.Controls.Add(this.treeViewNewHardware);
+            this.Controls.Add(this.lblFixedNewHardware);
+            this.Controls.Add(this.lblFixedExistingHardware);
+            this.Controls.Add(this.textBoxNewHardwareHashId);
+            this.Controls.Add(this.textBoxExistingHardwareHashId);
+            this.Controls.Add(this.lblFixedNewHardwareHashId);
+            this.Controls.Add(this.lblFixedExistingHardwareHashId);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -76,17 +102,19 @@
             this.Name = "HardwareChangeDetailForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.groupBoxExistingHardware.ResumeLayout(false);
-            this.groupBoxNewHardware.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBoxExistingHardware;
-        private System.Windows.Forms.GroupBox groupBoxNewHardware;
-        private System.Windows.Forms.TreeView treeViewExistingHardware;
-        private System.Windows.Forms.TreeView treeViewNewHardware;
+        private System.Windows.Forms.Label lblFixedExistingHardwareHashId;
+        private System.Windows.Forms.Label lblFixedNewHardwareHashId;
+        private System.Windows.Forms.TextBox textBoxExistingHardwareHashId;
+        private System.Windows.Forms.TextBox textBoxNewHardwareHashId;
+        private System.Windows.Forms.Label lblFixedExistingHardware;
+        private System.Windows.Forms.Label lblFixedNewHardware;
+        private SyncTreeView treeViewNewHardware;
+        private SyncTreeView treeViewExistingHardware;
     }
 }

@@ -65,6 +65,9 @@
     <Reference Include="DarkNet, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DarkNet.2.3.0\lib\net452\DarkNet.dll</HintPath>
     </Reference>
+    <Reference Include="JsonDiffPatchDotNet, Version=2.3.0.0, Culture=neutral, PublicKeyToken=a407b9994a6d66d5, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonDiffPatch.Net.2.3.0\lib\net45\JsonDiffPatchDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
@@ -164,6 +167,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainForm.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Misc\SyncTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Misc\SyncTreeView.Designer.cs">
+      <DependentUpon>SyncTreeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Misc\MiscMethods.cs" />

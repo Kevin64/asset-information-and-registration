@@ -117,119 +117,248 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;groupBoxExistingHardware.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>773, 611</value>
-  </data>
-  <data name="&gt;&gt;treeViewExistingHardware.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBoxNewHardware.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBoxNewHardware.Text" xml:space="preserve">
-    <value>Current hardware after detection</value>
-  </data>
-  <data name="groupBoxNewHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 587</value>
-  </data>
+  <metadata name="lblFixedExistingHardwareHashId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblFixedExistingHardwareHashId.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="treeViewNewHardware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="lblFixedExistingHardwareHashId.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="groupBoxExistingHardware.Text" xml:space="preserve">
-    <value>Hardware recorded on database</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblFixedExistingHardwareHashId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 602</value>
   </data>
-  <data name="treeViewExistingHardware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+  <data name="lblFixedExistingHardwareHashId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 13</value>
   </data>
-  <data name="&gt;&gt;treeViewNewHardware.Parent" xml:space="preserve">
-    <value>groupBoxNewHardware</value>
+  <data name="lblFixedExistingHardwareHashId.TabIndex" type="System.Int32, mscorlib">
+    <value>68</value>
   </data>
-  <data name="&gt;&gt;treeViewNewHardware.Name" xml:space="preserve">
-    <value>treeViewNewHardware</value>
+  <data name="lblFixedExistingHardwareHashId.Text" xml:space="preserve">
+    <value>Existing hardware hash ID</value>
   </data>
-  <data name="groupBoxExistingHardware.TabIndex" type="System.Int32, mscorlib">
-    <value>66</value>
+  <data name="&gt;&gt;lblFixedExistingHardwareHashId.Name" xml:space="preserve">
+    <value>lblFixedExistingHardwareHashId</value>
   </data>
-  <data name="groupBoxExistingHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>371, 587</value>
+  <data name="&gt;&gt;lblFixedExistingHardwareHashId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxNewHardware.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblFixedExistingHardwareHashId.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Hardware comparison</value>
+  <data name="&gt;&gt;lblFixedExistingHardwareHashId.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>HardwareChangeDetailForm</value>
+  <metadata name="lblFixedNewHardwareHashId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblFixedNewHardwareHashId.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="groupBoxNewHardware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>389, 12</value>
+  <data name="lblFixedNewHardwareHashId.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;groupBoxExistingHardware.Name" xml:space="preserve">
-    <value>groupBoxExistingHardware</value>
+  <data name="lblFixedNewHardwareHashId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>471, 602</value>
   </data>
-  <data name="&gt;&gt;groupBoxExistingHardware.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblFixedNewHardwareHashId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 13</value>
   </data>
-  <data name="&gt;&gt;groupBoxNewHardware.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblFixedNewHardwareHashId.TabIndex" type="System.Int32, mscorlib">
+    <value>69</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblFixedNewHardwareHashId.Text" xml:space="preserve">
+    <value>New hardware hash ID</value>
   </data>
-  <data name="&gt;&gt;treeViewExistingHardware.Parent" xml:space="preserve">
-    <value>groupBoxExistingHardware</value>
+  <data name="&gt;&gt;lblFixedNewHardwareHashId.Name" xml:space="preserve">
+    <value>lblFixedNewHardwareHashId</value>
   </data>
-  <data name="&gt;&gt;treeViewNewHardware.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblFixedNewHardwareHashId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;lblFixedNewHardwareHashId.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="groupBoxExistingHardware.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;lblFixedNewHardwareHashId.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="treeViewNewHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 562</value>
+  <metadata name="textBoxExistingHardwareHashId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="textBoxExistingHardwareHashId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 8.25pt</value>
   </data>
-  <data name="&gt;&gt;groupBoxNewHardware.Name" xml:space="preserve">
-    <value>groupBoxNewHardware</value>
+  <data name="textBoxExistingHardwareHashId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 618</value>
+  </data>
+  <data name="textBoxExistingHardwareHashId.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="textBoxExistingHardwareHashId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 20</value>
+  </data>
+  <data name="textBoxExistingHardwareHashId.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingHardwareHashId.Name" xml:space="preserve">
+    <value>textBoxExistingHardwareHashId</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingHardwareHashId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingHardwareHashId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxExistingHardwareHashId.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="textBoxNewHardwareHashId.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="textBoxNewHardwareHashId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Courier New, 8.25pt</value>
+  </data>
+  <data name="textBoxNewHardwareHashId.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 618</value>
+  </data>
+  <data name="textBoxNewHardwareHashId.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="textBoxNewHardwareHashId.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 20</value>
+  </data>
+  <data name="textBoxNewHardwareHashId.TabIndex" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewHardwareHashId.Name" xml:space="preserve">
+    <value>textBoxNewHardwareHashId</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewHardwareHashId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewHardwareHashId.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxNewHardwareHashId.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="lblFixedExistingHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblFixedExistingHardware.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedExistingHardware.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFixedExistingHardware.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 9</value>
+  </data>
+  <data name="lblFixedExistingHardware.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
+  </data>
+  <data name="lblFixedExistingHardware.TabIndex" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="lblFixedExistingHardware.Text" xml:space="preserve">
+    <value>Hardware recorded on database</value>
+  </data>
+  <data name="&gt;&gt;lblFixedExistingHardware.Name" xml:space="preserve">
+    <value>lblFixedExistingHardware</value>
+  </data>
+  <data name="&gt;&gt;lblFixedExistingHardware.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedExistingHardware.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedExistingHardware.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="lblFixedNewHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="lblFixedNewHardware.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblFixedNewHardware.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblFixedNewHardware.Location" type="System.Drawing.Point, System.Drawing">
+    <value>471, 9</value>
+  </data>
+  <data name="lblFixedNewHardware.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 13</value>
+  </data>
+  <data name="lblFixedNewHardware.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="lblFixedNewHardware.Text" xml:space="preserve">
+    <value>Current hardware after collection</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewHardware.Name" xml:space="preserve">
+    <value>lblFixedNewHardware</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewHardware.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewHardware.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;lblFixedNewHardware.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="treeViewExistingHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="treeViewExistingHardware.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
   </data>
   <data name="treeViewExistingHardware.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 562</value>
+    <value>456, 571</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="&gt;&gt;treeViewExistingHardware.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBoxNewHardware.TabIndex" type="System.Int32, mscorlib">
-    <value>67</value>
-  </data>
-  <data name="&gt;&gt;treeViewNewHardware.ZOrder" xml:space="preserve">
+  <data name="treeViewExistingHardware.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;treeViewExistingHardware.Name" xml:space="preserve">
     <value>treeViewExistingHardware</value>
   </data>
+  <data name="&gt;&gt;treeViewExistingHardware.Type" xml:space="preserve">
+    <value>AssetInformationAndRegistration.SyncTreeView, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;treeViewExistingHardware.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;treeViewExistingHardware.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="treeViewNewHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="treeViewNewHardware.Location" type="System.Drawing.Point, System.Drawing">
+    <value>474, 25</value>
+  </data>
+  <data name="treeViewNewHardware.Size" type="System.Drawing.Size, System.Drawing">
+    <value>456, 571</value>
+  </data>
   <data name="treeViewNewHardware.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;groupBoxExistingHardware.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;treeViewNewHardware.Name" xml:space="preserve">
+    <value>treeViewNewHardware</value>
   </data>
-  <data name="treeViewExistingHardware.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;treeViewNewHardware.Type" xml:space="preserve">
+    <value>AssetInformationAndRegistration.SyncTreeView, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;treeViewNewHardware.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;treeViewNewHardware.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -237,4 +366,25 @@
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>943, 645</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Hardware comparison</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>HardwareChangeDetailForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

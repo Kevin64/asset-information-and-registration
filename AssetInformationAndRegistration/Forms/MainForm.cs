@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -627,14 +628,14 @@ namespace AssetInformationAndRegistration.Forms
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Scans for CPU information
                 processorDetailPrev = new List<List<string>>()
-            {
-                HardwareInfo.GetProcessorIdList(),
-                HardwareInfo.GetProcessorNameList(),
-                HardwareInfo.GetProcessorFrequencyList(),
-                HardwareInfo.GetProcessorCoresList(),
-                HardwareInfo.GetProcessorThreadsList(),
-                HardwareInfo.GetProcessorCacheList()
-            };
+                {
+                    HardwareInfo.GetProcessorIdList(),
+                    HardwareInfo.GetProcessorNameList(),
+                    HardwareInfo.GetProcessorFrequencyList(),
+                    HardwareInfo.GetProcessorCoresList(),
+                    HardwareInfo.GetProcessorThreadsList(),
+                    HardwareInfo.GetProcessorCacheList()
+                };
                 processorDetail = Misc.MiscMethods.Transpose(processorDetailPrev);
                 newHardware.processor.Clear();
                 for (int i = 0; i < processorDetail.Count; i++)
@@ -671,15 +672,15 @@ namespace AssetInformationAndRegistration.Forms
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Scans for RAM amount and total number of slots
                 ramDetailPrev = new List<List<string>>()
-            {
-                HardwareInfo.GetRamSlotList(),
-                HardwareInfo.GetRamAmountList(),
-                HardwareInfo.GetRamTypeList(),
-                HardwareInfo.GetRamFrequencyList(),
-                HardwareInfo.GetRamSerialNumberList(),
-                HardwareInfo.GetRamPartNumberList(),
-                HardwareInfo.GetRamManufacturerList()
-            };
+                {
+                    HardwareInfo.GetRamSlotList(),
+                    HardwareInfo.GetRamAmountList(),
+                    HardwareInfo.GetRamTypeList(),
+                    HardwareInfo.GetRamFrequencyList(),
+                    HardwareInfo.GetRamSerialNumberList(),
+                    HardwareInfo.GetRamPartNumberList(),
+                    HardwareInfo.GetRamManufacturerList()
+                };
                 ramDetail = Misc.MiscMethods.Transpose(ramDetailPrev);
                 newHardware.ram.Clear();
                 for (int i = 0; i < ramDetail.Count; i++)
@@ -724,15 +725,15 @@ namespace AssetInformationAndRegistration.Forms
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Scans for Storage data
                 storageDetailPrev = new List<List<string>>
-            {
-                HardwareInfo.GetStorageIdsList(),
-                HardwareInfo.GetStorageTypeList(),
-                HardwareInfo.GetStorageSizeList(),
-                HardwareInfo.GetStorageConnectionList(),
-                HardwareInfo.GetStorageModelList(),
-                HardwareInfo.GetStorageSerialNumberList(),
-                HardwareInfo.GetStorageSmartList()
-            };
+                {
+                    HardwareInfo.GetStorageIdsList(),
+                    HardwareInfo.GetStorageTypeList(),
+                    HardwareInfo.GetStorageSizeList(),
+                    HardwareInfo.GetStorageConnectionList(),
+                    HardwareInfo.GetStorageModelList(),
+                    HardwareInfo.GetStorageSerialNumberList(),
+                    HardwareInfo.GetStorageSmartList()
+                };
                 storageDetail = Misc.MiscMethods.Transpose(storageDetailPrev);
                 newHardware.storage.Clear();
                 for (int i = 0; i < storageDetail.Count; i++)
@@ -774,11 +775,11 @@ namespace AssetInformationAndRegistration.Forms
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //Scans for Video Card information
                 videoCardDetailPrev = new List<List<string>>
-            {
-                HardwareInfo.GetVideoCardIdList(),
-                HardwareInfo.GetVideoCardNameList(),
-                HardwareInfo.GetVideoCardRamList()
-            };
+                {
+                    HardwareInfo.GetVideoCardIdList(),
+                    HardwareInfo.GetVideoCardNameList(),
+                    HardwareInfo.GetVideoCardRamList()
+                };
                 videoCardDetail = Misc.MiscMethods.Transpose(videoCardDetailPrev);
                 newHardware.videoCard.Clear();
                 for (int i = 0; i < videoCardDetail.Count; i++)
@@ -793,13 +794,13 @@ namespace AssetInformationAndRegistration.Forms
                     videoCardDetail[i][1] = videoCardDetail[i][1].Replace("(tm)", string.Empty);
                     videoCard v = new videoCard
                     {
-                        gpuId = videoCardDetail[i][0],
+                        videoCardId = videoCardDetail[i][0],
                         name = videoCardDetail[i][1],
                         vRam = videoCardDetail[i][2],
                     };
                     newHardware.videoCard.Add(v);
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].gpuId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].gpuId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_NAME + " [" + newHardware.videoCard[i].videoCardId + "]", newHardware.videoCard[i].name, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_VIDEO_CARD_RAM + " [" + newHardware.videoCard[i].videoCardId + "]", Misc.MiscMethods.FriendlySizeBinary(Convert.ToInt64(newHardware.videoCard[i].vRam), false), Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 }
                 videoCardForm.TreatData(videoCardDetail);
                 videoCardSummary = videoCardDetail[0][1];
@@ -1237,7 +1238,7 @@ namespace AssetInformationAndRegistration.Forms
                 newAsset.adRegistered = comboBoxActiveDirectory.SelectedItem.ToString().Equals(UIStrings.LIST_YES_0) ? Convert.ToInt32(HardwareInfo.SpecBinaryStates.ENABLED).ToString() : Convert.ToInt32(HardwareInfo.SpecBinaryStates.DISABLED).ToString();
                 newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), comboBoxHwType.SelectedItem.ToString()).ToString();
                 newAsset.location = l;
-                if(newAsset.hwUid == null)
+                if (newAsset.hwUid == null)
                     newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
 
                 newMaintenances.Clear();
@@ -1680,7 +1681,7 @@ namespace AssetInformationAndRegistration.Forms
             if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
                 DarkNet.Instance.SetWindowThemeForms(hardwareChangeForm, Theme.Auto);
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_HARDWARE_CHANGE_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-            hardwareChangeForm.FillData(existingAsset.hardware, newAsset.hardware);
+            hardwareChangeForm.FillData(existingAsset, newAsset);
             _ = hardwareChangeForm.ShowDialog();
         }
 

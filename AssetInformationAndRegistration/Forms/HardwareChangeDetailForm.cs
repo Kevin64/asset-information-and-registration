@@ -1,11 +1,12 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using ConstantsDLL.Properties;
+using JsonDiffPatchDotNet;
 using LogGeneratorDLL;
+using Newtonsoft.Json;
 using RestApiDLL;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Management.Instrumentation;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -14,7 +15,6 @@ namespace AssetInformationAndRegistration.Forms
     public partial class HardwareChangeDetailForm : Form, ITheming
     {
         private readonly LogGenerator log;
-        private readonly List<string> attributes = new List<string>() { "processor", "ram", "storage", "videoCard", "cpu_id", "name", "frequency", "numberOfCores", "numberOfThreads", "cache", "amount", "manufacturer", "type", "serialNumber", "type", "connection", "model", "serialNumber", "size", "smartStatus", "storageId", "gpuId", "vRam" };
 
         public HardwareChangeDetailForm(LogGenerator log)
         {
@@ -22,33 +22,35 @@ namespace AssetInformationAndRegistration.Forms
             FormClosing += HardwareChangeForm_Closing;
             this.log = log;
 
+            treeViewExistingHardware.AddLinkedTreeView(treeViewNewHardware);
+            treeViewNewHardware.AddLinkedTreeView(treeViewExistingHardware);
         }
 
         public void PopulateTreeView<T>(TreeNode root, T item)
         {
-            TreeNode childNode;
+            TreeNode childNode, childNodeAux;
             try
             {
                 foreach (PropertyInfo pi in item.GetType().GetProperties())
                 {
+                    int index = 0;
                     object propValue = pi.GetValue(item, null);
-                    var elems = propValue as IList;
-                    childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name + " - " + pi.GetValue(item)))];
-                    if (elems != null)
+
+                    if (propValue is IList elems)
                     {
-                        foreach (var i in elems)
+                        childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name))];
+                        foreach (object i in elems)
                         {
-                            
-                            PopulateTreeView(childNode, i);
+                            childNodeAux = childNode.Nodes[childNode.Nodes.Add(new TreeNode(index.ToString()))];
+                            PopulateTreeView(childNodeAux, i);
+                            index++;
                         }
                     }
                     else
                     {
-                        // This will not cut-off System.Collections because of the first check
+                        childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name + " - " + pi.GetValue(item)))];
                         if (pi.PropertyType.Assembly == item.GetType().Assembly)
-                        {
                             PopulateTreeView(childNode, propValue);
-                        }
                     }
                 }
             }
@@ -56,27 +58,47 @@ namespace AssetInformationAndRegistration.Forms
             {
 
             }
-            //foreach (PropertyInfo pi in item.GetType().GetProperties())
-            //{
-            //    var childNode = root.Nodes[root.Nodes.Add(new TreeNode(pi.Name))];
-            //    childNode.Tag = pi;
-            //    PopulateTreeView(childNode, pi.GetValue(item));
-            //}
         }
 
-        public void FillData(hardware existingHardware, hardware newHardware)
+        public string CheckDifferences(string treeExisting, string treeNew)
+        {
+            var jdp = new JsonDiffPatch();
+            return jdp.Diff(treeExisting, treeNew);
+        }
+
+        public void FillData(Asset existingAsset, Asset newAsset)
         {
             treeViewExistingHardware.Nodes.Clear();
             treeViewNewHardware.Nodes.Clear();
 
-            _ = treeViewExistingHardware.Nodes.Add("PC");
-            _ = treeViewNewHardware.Nodes.Add("PC");
+            _ = treeViewExistingHardware.Nodes.Add(existingAsset.maintenances[0].serviceDate);
+            _ = treeViewNewHardware.Nodes.Add(DateTime.Today.ToString(GenericResources.DATE_FORMAT));
 
-            PopulateTreeView(treeViewExistingHardware.Nodes[0], existingHardware);
-            PopulateTreeView(treeViewNewHardware.Nodes[0], newHardware);
+            PopulateTreeView(treeViewExistingHardware.Nodes[0], existingAsset.hardware);
+            PopulateTreeView(treeViewNewHardware.Nodes[0], newAsset.hardware);
 
             treeViewExistingHardware.ExpandAll();
             treeViewNewHardware.ExpandAll();
+
+            textBoxExistingHardwareHashId.Text = existingAsset.hwUid;
+            textBoxNewHardwareHashId.Text = newAsset.hwUid;
+
+            string oldCpu = JsonConvert.SerializeObject(existingAsset.hardware.processor);
+            string newCpu = JsonConvert.SerializeObject(newAsset.hardware.processor);
+            string oldRam = JsonConvert.SerializeObject(existingAsset.hardware.ram);
+            string newRam = JsonConvert.SerializeObject(newAsset.hardware.ram);
+            string oldStorage = JsonConvert.SerializeObject(existingAsset.hardware.storage);
+            string newStorage = JsonConvert.SerializeObject(newAsset.hardware.storage);
+            string oldGpu = JsonConvert.SerializeObject(existingAsset.hardware.videoCard);
+            string newGpu = JsonConvert.SerializeObject(newAsset.hardware.videoCard);
+
+            string diffCpu = CheckDifferences(oldCpu, newCpu);
+            string diffRam = CheckDifferences(oldRam, newRam);
+            string diffStorage = CheckDifferences(oldStorage, newStorage);
+            string diffGpu = CheckDifferences(oldGpu, newGpu);
+
+            List<string> allDiff = new List<string>() { diffCpu, diffRam, diffStorage, diffGpu };
+
         }
 
         public void LightThemeSpecificControls()
