@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="lblBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblBrand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -150,6 +153,9 @@
   <data name="&gt;&gt;lblBrand.ZOrder" xml:space="preserve">
     <value>75</value>
   </data>
+  <metadata name="lblModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -180,6 +186,9 @@
   <data name="&gt;&gt;lblModel.ZOrder" xml:space="preserve">
     <value>73</value>
   </data>
+  <metadata name="lblSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblSerialNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -210,6 +219,9 @@
   <data name="&gt;&gt;lblSerialNumber.ZOrder" xml:space="preserve">
     <value>71</value>
   </data>
+  <metadata name="lblProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblProcessor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -240,6 +252,9 @@
   <data name="&gt;&gt;lblProcessor.ZOrder" xml:space="preserve">
     <value>70</value>
   </data>
+  <metadata name="lblRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblRam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -270,6 +285,9 @@
   <data name="&gt;&gt;lblRam.ZOrder" xml:space="preserve">
     <value>69</value>
   </data>
+  <metadata name="lblOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblOperatingSystem.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -300,6 +318,9 @@
   <data name="&gt;&gt;lblOperatingSystem.ZOrder" xml:space="preserve">
     <value>83</value>
   </data>
+  <metadata name="lblHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblHostname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -330,6 +351,9 @@
   <data name="&gt;&gt;lblHostname.ZOrder" xml:space="preserve">
     <value>76</value>
   </data>
+  <metadata name="lblIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblIpAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -360,6 +384,9 @@
   <data name="&gt;&gt;lblIpAddress.ZOrder" xml:space="preserve">
     <value>77</value>
   </data>
+  <metadata name="lblFixedBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedBrand.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -390,6 +417,9 @@
   <data name="&gt;&gt;lblFixedBrand.ZOrder" xml:space="preserve">
     <value>66</value>
   </data>
+  <metadata name="lblFixedModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedModel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -420,6 +450,9 @@
   <data name="&gt;&gt;lblFixedModel.ZOrder" xml:space="preserve">
     <value>78</value>
   </data>
+  <metadata name="lblFixedSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedSerialNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -450,6 +483,9 @@
   <data name="&gt;&gt;lblFixedSerialNumber.ZOrder" xml:space="preserve">
     <value>79</value>
   </data>
+  <metadata name="lblFixedProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedProcessor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -483,6 +519,9 @@
   <data name="&gt;&gt;lblFixedProcessor.ZOrder" xml:space="preserve">
     <value>87</value>
   </data>
+  <metadata name="lblFixedRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedRam.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -516,6 +555,9 @@
   <data name="&gt;&gt;lblFixedRam.ZOrder" xml:space="preserve">
     <value>86</value>
   </data>
+  <metadata name="lblFixedOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedOperatingSystem.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -549,6 +591,9 @@
   <data name="&gt;&gt;lblFixedOperatingSystem.ZOrder" xml:space="preserve">
     <value>80</value>
   </data>
+  <metadata name="lblFixedHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedHostname.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -579,6 +624,9 @@
   <data name="&gt;&gt;lblFixedHostname.ZOrder" xml:space="preserve">
     <value>81</value>
   </data>
+  <metadata name="lblFixedIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedIpAddress.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -609,6 +657,9 @@
   <data name="&gt;&gt;lblFixedIpAddress.ZOrder" xml:space="preserve">
     <value>82</value>
   </data>
+  <metadata name="lblFixedAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedAssetNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -639,6 +690,9 @@
   <data name="&gt;&gt;lblFixedAssetNumber.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
+  <metadata name="lblFixedSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedSealNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -669,6 +723,9 @@
   <data name="&gt;&gt;lblFixedSealNumber.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
+  <metadata name="lblFixedBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedBuilding.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -699,6 +756,9 @@
   <data name="&gt;&gt;lblFixedBuilding.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
+  <metadata name="textBoxAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxAssetNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 17</value>
   </data>
@@ -723,6 +783,9 @@
   <data name="&gt;&gt;textBoxAssetNumber.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
+  <metadata name="textBoxSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxSealNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 43</value>
   </data>
@@ -747,6 +810,9 @@
   <data name="&gt;&gt;textBoxSealNumber.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
+  <metadata name="textBoxRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxRoomNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 69</value>
   </data>
@@ -771,6 +837,9 @@
   <data name="&gt;&gt;textBoxRoomNumber.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
+  <metadata name="textBoxRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxRoomLetter.Location" type="System.Drawing.Point, System.Drawing">
     <value>419, 69</value>
   </data>
@@ -795,6 +864,9 @@
   <data name="&gt;&gt;textBoxRoomLetter.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
+  <metadata name="lblFixedRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedRoomNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -825,6 +897,9 @@
   <data name="&gt;&gt;lblFixedRoomNumber.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
+  <metadata name="lblFixedServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServiceDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -855,6 +930,9 @@
   <data name="&gt;&gt;lblFixedServiceDate.ZOrder" xml:space="preserve">
     <value>43</value>
   </data>
+  <metadata name="registerButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="registerButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -888,6 +966,9 @@
   <data name="&gt;&gt;registerButton.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="lblFixedInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedInUse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -918,6 +999,9 @@
   <data name="&gt;&gt;lblFixedInUse.ZOrder" xml:space="preserve">
     <value>47</value>
   </data>
+  <metadata name="lblFixedTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedTag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -948,6 +1032,9 @@
   <data name="&gt;&gt;lblFixedTag.ZOrder" xml:space="preserve">
     <value>48</value>
   </data>
+  <metadata name="lblFixedHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedHwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -978,6 +1065,9 @@
   <data name="&gt;&gt;lblFixedHwType.ZOrder" xml:space="preserve">
     <value>44</value>
   </data>
+  <metadata name="lblFixedServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServerOperationalStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1008,6 +1098,9 @@
   <data name="&gt;&gt;lblFixedServerOperationalStatus.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="lblFixedServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServerPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1038,6 +1131,9 @@
   <data name="&gt;&gt;lblFixedServerPort.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="collectButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="collectButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -1068,6 +1164,9 @@
   <data name="&gt;&gt;collectButton.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="lblFixedRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedRoomLetter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1098,6 +1197,9 @@
   <data name="&gt;&gt;lblFixedRoomLetter.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
+  <metadata name="lblFixedFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedFwVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1131,6 +1233,9 @@
   <data name="&gt;&gt;lblFixedFwVersion.ZOrder" xml:space="preserve">
     <value>74</value>
   </data>
+  <metadata name="lblFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFwVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1161,6 +1266,9 @@
   <data name="&gt;&gt;lblFwVersion.ZOrder" xml:space="preserve">
     <value>72</value>
   </data>
+  <metadata name="apcsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="apcsButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
@@ -1191,6 +1299,9 @@
   <data name="&gt;&gt;apcsButton.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="lblFixedFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedFwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1221,6 +1332,9 @@
   <data name="&gt;&gt;lblFixedFwType.ZOrder" xml:space="preserve">
     <value>68</value>
   </data>
+  <metadata name="lblFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1251,6 +1365,12 @@
   <data name="&gt;&gt;lblFwType.ZOrder" xml:space="preserve">
     <value>67</value>
   </data>
+  <metadata name="groupBoxHwData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="hardwareChangeButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hardwareChangeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1278,6 +1398,9 @@
   <data name="&gt;&gt;hardwareChangeButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="lblNoticeHardwareChanged.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblNoticeHardwareChanged.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1311,6 +1434,9 @@
   <data name="&gt;&gt;lblNoticeHardwareChanged.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="vSeparator2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="vSeparator2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1338,6 +1464,9 @@
   <data name="&gt;&gt;vSeparator2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="processorDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="processorDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1365,6 +1494,9 @@
   <data name="&gt;&gt;processorDetailsButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="ramDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="ramDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1392,6 +1524,9 @@
   <data name="&gt;&gt;ramDetailsButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="videoCardDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="videoCardDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1419,6 +1554,9 @@
   <data name="&gt;&gt;videoCardDetailsButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="storageDetailsButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="storageDetailsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1446,6 +1584,9 @@
   <data name="&gt;&gt;storageDetailsButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="vSeparator5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="vSeparator5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1473,6 +1614,9 @@
   <data name="&gt;&gt;vSeparator5.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="vSeparator4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="vSeparator4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1500,6 +1644,9 @@
   <data name="&gt;&gt;vSeparator4.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="vSeparator3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="vSeparator3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1527,6 +1674,9 @@
   <data name="&gt;&gt;vSeparator3.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="vSeparator1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="vSeparator1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1554,6 +1704,9 @@
   <data name="&gt;&gt;vSeparator1.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="hSeparator5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hSeparator5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1581,6 +1734,9 @@
   <data name="&gt;&gt;hSeparator5.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1611,6 +1767,9 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="hSeparator1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hSeparator1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1638,6 +1797,9 @@
   <data name="&gt;&gt;hSeparator1.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="hSeparator4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hSeparator4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1665,6 +1827,9 @@
   <data name="&gt;&gt;hSeparator4.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <metadata name="lblInactiveFirmware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblInactiveFirmware.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1695,6 +1860,9 @@
   <data name="&gt;&gt;lblInactiveFirmware.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <metadata name="hSeparator3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hSeparator3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1722,6 +1890,9 @@
   <data name="&gt;&gt;hSeparator3.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <metadata name="lblInactiveNetwork.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblInactiveNetwork.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1752,6 +1923,9 @@
   <data name="&gt;&gt;lblInactiveNetwork.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
+  <metadata name="hSeparator2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="hSeparator2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1779,6 +1953,9 @@
   <data name="&gt;&gt;hSeparator2.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <metadata name="lblInactiveHardware.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblInactiveHardware.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1809,6 +1986,9 @@
   <data name="&gt;&gt;lblInactiveHardware.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
+  <metadata name="lblFixedProgressBarPercent.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedProgressBarPercent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1839,6 +2019,9 @@
   <data name="&gt;&gt;lblFixedProgressBarPercent.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <metadata name="progressBar1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1863,6 +2046,9 @@
   <data name="&gt;&gt;progressBar1.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
+  <metadata name="loadingCircleCompliant.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleCompliant.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 507</value>
   </data>
@@ -1884,6 +2070,9 @@
   <data name="&gt;&gt;loadingCircleCompliant.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
+  <metadata name="lblColorCompliant.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblColorCompliant.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -1917,6 +2106,9 @@
   <data name="&gt;&gt;lblColorCompliant.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
+  <metadata name="loadingCircleScanTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanTpmVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 406</value>
   </data>
@@ -1938,6 +2130,9 @@
   <data name="&gt;&gt;loadingCircleScanTpmVersion.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
+  <metadata name="loadingCircleScanVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanVirtualizationTechnology.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 380</value>
   </data>
@@ -1959,6 +2154,9 @@
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
+  <metadata name="loadingCircleScanSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanSecureBoot.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 354</value>
   </data>
@@ -1980,6 +2178,9 @@
   <data name="&gt;&gt;loadingCircleScanSecureBoot.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
+  <metadata name="loadingCircleScanFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanFwVersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 328</value>
   </data>
@@ -2001,6 +2202,9 @@
   <data name="&gt;&gt;loadingCircleScanFwVersion.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
+  <metadata name="loadingCircleScanFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanFwType.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 302</value>
   </data>
@@ -2022,6 +2226,9 @@
   <data name="&gt;&gt;loadingCircleScanFwType.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
+  <metadata name="loadingCircleScanIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanIpAddress.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 258</value>
   </data>
@@ -2043,6 +2250,9 @@
   <data name="&gt;&gt;loadingCircleScanIpAddress.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
+  <metadata name="loadingCircleScanHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanHostname.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 232</value>
   </data>
@@ -2064,6 +2274,9 @@
   <data name="&gt;&gt;loadingCircleScanHostname.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
+  <metadata name="loadingCircleScanOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanOperatingSystem.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 476</value>
   </data>
@@ -2085,6 +2298,9 @@
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
+  <metadata name="loadingCircleScanVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanVideoCard.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 188</value>
   </data>
@@ -2106,6 +2322,9 @@
   <data name="&gt;&gt;loadingCircleScanVideoCard.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
+  <metadata name="loadingCircleScanMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanMediaOperationMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 432</value>
   </data>
@@ -2127,6 +2346,9 @@
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
+  <metadata name="loadingCircleScanStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanStorageType.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 162</value>
   </data>
@@ -2148,6 +2370,9 @@
   <data name="&gt;&gt;loadingCircleScanStorageType.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
+  <metadata name="loadingCircleScanRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanRam.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 136</value>
   </data>
@@ -2169,6 +2394,9 @@
   <data name="&gt;&gt;loadingCircleScanRam.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
+  <metadata name="loadingCircleScanProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanProcessor.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 110</value>
   </data>
@@ -2190,6 +2418,9 @@
   <data name="&gt;&gt;loadingCircleScanProcessor.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
+  <metadata name="loadingCircleScanSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanSerialNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 66</value>
   </data>
@@ -2211,6 +2442,9 @@
   <data name="&gt;&gt;loadingCircleScanSerialNumber.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
+  <metadata name="loadingCircleScanModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanModel.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 40</value>
   </data>
@@ -2232,6 +2466,9 @@
   <data name="&gt;&gt;loadingCircleScanModel.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
+  <metadata name="loadingCircleScanBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleScanBrand.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 14</value>
   </data>
@@ -2253,6 +2490,9 @@
   <data name="&gt;&gt;loadingCircleScanBrand.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
+  <metadata name="iconImgTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgTpmVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2280,6 +2520,9 @@
   <data name="&gt;&gt;iconImgTpmVersion.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
+  <metadata name="lblTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblTpmVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2310,6 +2553,9 @@
   <data name="&gt;&gt;lblTpmVersion.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
+  <metadata name="iconImgVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgVirtualizationTechnology.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2337,6 +2583,9 @@
   <data name="&gt;&gt;iconImgVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
+  <metadata name="lblFixedTpmVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedTpmVersion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2367,6 +2616,9 @@
   <data name="&gt;&gt;lblFixedTpmVersion.ZOrder" xml:space="preserve">
     <value>43</value>
   </data>
+  <metadata name="lblVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblVirtualizationTechnology.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2397,6 +2649,9 @@
   <data name="&gt;&gt;lblVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>44</value>
   </data>
+  <metadata name="lblFixedVirtualizationTechnology.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedVirtualizationTechnology.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2427,6 +2682,9 @@
   <data name="&gt;&gt;lblFixedVirtualizationTechnology.ZOrder" xml:space="preserve">
     <value>45</value>
   </data>
+  <metadata name="iconImgBrand.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgBrand.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2454,6 +2712,9 @@
   <data name="&gt;&gt;iconImgBrand.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
+  <metadata name="iconImgSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgSecureBoot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2481,6 +2742,9 @@
   <data name="&gt;&gt;iconImgSecureBoot.ZOrder" xml:space="preserve">
     <value>47</value>
   </data>
+  <metadata name="iconImgFwVersion.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgFwVersion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2508,6 +2772,9 @@
   <data name="&gt;&gt;iconImgFwVersion.ZOrder" xml:space="preserve">
     <value>48</value>
   </data>
+  <metadata name="iconImgFwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgFwType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2535,6 +2802,9 @@
   <data name="&gt;&gt;iconImgFwType.ZOrder" xml:space="preserve">
     <value>49</value>
   </data>
+  <metadata name="iconImgIpAddress.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgIpAddress.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2562,6 +2832,9 @@
   <data name="&gt;&gt;iconImgIpAddress.ZOrder" xml:space="preserve">
     <value>50</value>
   </data>
+  <metadata name="iconImgHostname.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgHostname.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2589,6 +2862,9 @@
   <data name="&gt;&gt;iconImgHostname.ZOrder" xml:space="preserve">
     <value>51</value>
   </data>
+  <metadata name="iconImgOperatingSystem.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgOperatingSystem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2616,6 +2892,9 @@
   <data name="&gt;&gt;iconImgOperatingSystem.ZOrder" xml:space="preserve">
     <value>52</value>
   </data>
+  <metadata name="iconImgVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgVideoCard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2643,6 +2922,9 @@
   <data name="&gt;&gt;iconImgVideoCard.ZOrder" xml:space="preserve">
     <value>53</value>
   </data>
+  <metadata name="iconImgMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgMediaOperationMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2670,6 +2952,9 @@
   <data name="&gt;&gt;iconImgMediaOperationMode.ZOrder" xml:space="preserve">
     <value>54</value>
   </data>
+  <metadata name="iconImgStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgStorageType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2697,6 +2982,9 @@
   <data name="&gt;&gt;iconImgStorageType.ZOrder" xml:space="preserve">
     <value>55</value>
   </data>
+  <metadata name="iconImgRam.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgRam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2724,6 +3012,9 @@
   <data name="&gt;&gt;iconImgRam.ZOrder" xml:space="preserve">
     <value>56</value>
   </data>
+  <metadata name="iconImgProcessor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgProcessor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2751,6 +3042,9 @@
   <data name="&gt;&gt;iconImgProcessor.ZOrder" xml:space="preserve">
     <value>57</value>
   </data>
+  <metadata name="iconImgSerialNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgSerialNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2778,6 +3072,9 @@
   <data name="&gt;&gt;iconImgSerialNumber.ZOrder" xml:space="preserve">
     <value>58</value>
   </data>
+  <metadata name="iconImgModel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgModel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -2805,6 +3102,9 @@
   <data name="&gt;&gt;iconImgModel.ZOrder" xml:space="preserve">
     <value>59</value>
   </data>
+  <metadata name="lblSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblSecureBoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2835,6 +3135,9 @@
   <data name="&gt;&gt;lblSecureBoot.ZOrder" xml:space="preserve">
     <value>60</value>
   </data>
+  <metadata name="lblFixedSecureBoot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedSecureBoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2865,6 +3168,9 @@
   <data name="&gt;&gt;lblFixedSecureBoot.ZOrder" xml:space="preserve">
     <value>61</value>
   </data>
+  <metadata name="lblMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblMediaOperationMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2895,6 +3201,9 @@
   <data name="&gt;&gt;lblMediaOperationMode.ZOrder" xml:space="preserve">
     <value>62</value>
   </data>
+  <metadata name="lblFixedMediaOperationMode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMediaOperationMode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2925,6 +3234,9 @@
   <data name="&gt;&gt;lblFixedMediaOperationMode.ZOrder" xml:space="preserve">
     <value>63</value>
   </data>
+  <metadata name="lblVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblVideoCard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2955,6 +3267,9 @@
   <data name="&gt;&gt;lblVideoCard.ZOrder" xml:space="preserve">
     <value>64</value>
   </data>
+  <metadata name="lblStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblStorageType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2985,6 +3300,9 @@
   <data name="&gt;&gt;lblStorageType.ZOrder" xml:space="preserve">
     <value>65</value>
   </data>
+  <metadata name="lblFixedStorageType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedStorageType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3015,6 +3333,9 @@
   <data name="&gt;&gt;lblFixedStorageType.ZOrder" xml:space="preserve">
     <value>84</value>
   </data>
+  <metadata name="lblFixedVideoCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedVideoCard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3072,6 +3393,12 @@
   <data name="&gt;&gt;groupBoxHwData.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="groupBoxAssetData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="comboBoxBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxBatteryChange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3096,6 +3423,9 @@
   <data name="&gt;&gt;comboBoxBatteryChange.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="comboBoxStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxStandard.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3120,6 +3450,9 @@
   <data name="&gt;&gt;comboBoxStandard.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="comboBoxActiveDirectory.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxActiveDirectory.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3147,6 +3480,9 @@
   <data name="&gt;&gt;comboBoxActiveDirectory.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="comboBoxTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxTag.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3171,6 +3507,9 @@
   <data name="&gt;&gt;comboBoxTag.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="comboBoxInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxInUse.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3195,6 +3534,9 @@
   <data name="&gt;&gt;comboBoxInUse.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="comboBoxHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxHwType.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3219,6 +3561,9 @@
   <data name="&gt;&gt;comboBoxHwType.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="comboBoxBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxBuilding.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -3243,6 +3588,9 @@
   <data name="&gt;&gt;comboBoxBuilding.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="lblFixedMandatoryTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryTicketNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3273,6 +3621,9 @@
   <data name="&gt;&gt;lblFixedMandatoryTicketNumber.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="lblFixedMandatoryBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryBatteryChange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3303,6 +3654,9 @@
   <data name="&gt;&gt;lblFixedMandatoryBatteryChange.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="iconImgTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgTicketNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3330,6 +3684,9 @@
   <data name="&gt;&gt;iconImgTicketNumber.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <metadata name="lblFixedTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedTicketNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3360,6 +3717,9 @@
   <data name="&gt;&gt;lblFixedTicketNumber.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <metadata name="textBoxTicketNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxTicketNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>394, 199</value>
   </data>
@@ -3384,6 +3744,9 @@
   <data name="&gt;&gt;textBoxTicketNumber.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <metadata name="iconImgBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgBatteryChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3411,6 +3774,9 @@
   <data name="&gt;&gt;iconImgBatteryChange.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <metadata name="lblFixedMandatoryWho.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryWho.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3441,6 +3807,9 @@
   <data name="&gt;&gt;lblFixedMandatoryWho.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="lblFixedMandatoryTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryTag.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3471,6 +3840,9 @@
   <data name="&gt;&gt;lblFixedMandatoryTag.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
+  <metadata name="lblFixedBatteryChange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedBatteryChange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3501,6 +3873,9 @@
   <data name="&gt;&gt;lblFixedBatteryChange.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <metadata name="lblFixedMandatoryHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryHwType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3531,6 +3906,9 @@
   <data name="&gt;&gt;lblFixedMandatoryHwType.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
+  <metadata name="lblFixedMandatoryInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryInUse.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3561,6 +3939,9 @@
   <data name="&gt;&gt;lblFixedMandatoryInUse.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
+  <metadata name="lblFixedMandatoryBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryBuilding.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3591,6 +3972,9 @@
   <data name="&gt;&gt;lblFixedMandatoryBuilding.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <metadata name="lblFixedMandatoryRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryRoomNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3621,6 +4005,9 @@
   <data name="&gt;&gt;lblFixedMandatoryRoomNumber.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
+  <metadata name="lblFixedMandatoryAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryAssetNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3651,6 +4038,9 @@
   <data name="&gt;&gt;lblFixedMandatoryAssetNumber.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <metadata name="lblFixedMandatoryMain.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryMain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3681,6 +4071,9 @@
   <data name="&gt;&gt;lblFixedMandatoryMain.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
+  <metadata name="iconImgRoomLetter.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgRoomLetter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3708,6 +4101,9 @@
   <data name="&gt;&gt;iconImgRoomLetter.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
+  <metadata name="iconImgHwType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgHwType.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3735,6 +4131,9 @@
   <data name="&gt;&gt;iconImgHwType.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
+  <metadata name="iconImgTag.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgTag.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3762,6 +4161,9 @@
   <data name="&gt;&gt;iconImgTag.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
+  <metadata name="iconImgInUse.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgInUse.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3789,6 +4191,9 @@
   <data name="&gt;&gt;iconImgInUse.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
+  <metadata name="iconImgServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgServiceDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3816,6 +4221,9 @@
   <data name="&gt;&gt;iconImgServiceDate.ZOrder" xml:space="preserve">
     <value>26</value>
   </data>
+  <metadata name="iconImgStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgStandard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3843,6 +4251,9 @@
   <data name="&gt;&gt;iconImgStandard.ZOrder" xml:space="preserve">
     <value>27</value>
   </data>
+  <metadata name="iconImgAdRegistered.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgAdRegistered.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3870,6 +4281,9 @@
   <data name="&gt;&gt;iconImgAdRegistered.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
+  <metadata name="iconImgBuilding.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgBuilding.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3897,6 +4311,9 @@
   <data name="&gt;&gt;iconImgBuilding.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
+  <metadata name="iconImgRoomNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgRoomNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3924,6 +4341,9 @@
   <data name="&gt;&gt;iconImgRoomNumber.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
+  <metadata name="iconImgSealNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgSealNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3951,6 +4371,9 @@
   <data name="&gt;&gt;iconImgSealNumber.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
+  <metadata name="iconImgAssetNumber.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="iconImgAssetNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3978,6 +4401,9 @@
   <data name="&gt;&gt;iconImgAssetNumber.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
+  <metadata name="dateTimePickerServiceDate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="dateTimePickerServiceDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 174</value>
   </data>
@@ -3999,6 +4425,9 @@
   <data name="&gt;&gt;dateTimePickerServiceDate.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
+  <metadata name="lblFixedAdRegistered.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedAdRegistered.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4029,6 +4458,9 @@
   <data name="&gt;&gt;lblFixedAdRegistered.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
+  <metadata name="lblFixedStandard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedStandard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4083,6 +4515,12 @@
   <data name="&gt;&gt;groupBoxAssetData.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="groupBoxServiceType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBoxInactiveUpdateDataRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxInactiveUpdateDataRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4113,6 +4551,9 @@
   <data name="&gt;&gt;textBoxInactiveUpdateDataRadio.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="radioButtonUpdateData.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="radioButtonUpdateData.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4143,6 +4584,9 @@
   <data name="&gt;&gt;radioButtonUpdateData.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="lblFixedMandatoryServiceType.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedMandatoryServiceType.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4173,6 +4617,9 @@
   <data name="&gt;&gt;lblFixedMandatoryServiceType.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="textBoxInactiveFormattingRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxInactiveFormattingRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4203,6 +4650,9 @@
   <data name="&gt;&gt;textBoxInactiveFormattingRadio.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="textBoxInactiveMaintenanceRadio.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="textBoxInactiveMaintenanceRadio.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4233,6 +4683,9 @@
   <data name="&gt;&gt;textBoxInactiveMaintenanceRadio.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="radioButtonFormatting.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="radioButtonFormatting.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4263,6 +4716,9 @@
   <data name="&gt;&gt;radioButtonFormatting.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="radioButtonMaintenance.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="radioButtonMaintenance.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4317,6 +4773,9 @@
   <data name="&gt;&gt;groupBoxServiceType.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="loadingCircleLastService.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleLastService.Location" type="System.Drawing.Point, System.Drawing">
     <value>730, 560</value>
   </data>
@@ -4338,6 +4797,9 @@
   <data name="&gt;&gt;loadingCircleLastService.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="lblColorLastService.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblColorLastService.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
@@ -4371,6 +4833,9 @@
   <data name="&gt;&gt;lblColorLastService.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="lblAgentName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblAgentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4401,6 +4866,9 @@
   <data name="&gt;&gt;lblAgentName.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="lblFixedAgentName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedAgentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4431,6 +4899,9 @@
   <data name="&gt;&gt;lblFixedAgentName.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <metadata name="lblServerPort.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblServerPort.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4461,6 +4932,9 @@
   <data name="&gt;&gt;lblServerPort.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="lblServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblServerIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4491,6 +4965,9 @@
   <data name="&gt;&gt;lblServerIP.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="lblFixedServerIP.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblFixedServerIP.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4521,6 +4998,9 @@
   <data name="&gt;&gt;lblFixedServerIP.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="lblColorServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblColorServerOperationalStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4559,6 +5039,9 @@
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>18, 11</value>
+  </metadata>
+  <metadata name="statusStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <data name="toolStripAutoTheme.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
@@ -4656,6 +5139,9 @@
   <metadata name="timerAlertRamAmount.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>359, 48</value>
   </metadata>
+  <metadata name="imgTopBanner.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="imgTopBanner.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -4692,6 +5178,9 @@
   <data name="&gt;&gt;imgTopBanner.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <metadata name="loadingCircleCollectButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleCollectButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>526, 591</value>
   </data>
@@ -4716,6 +5205,9 @@
   <data name="&gt;&gt;loadingCircleCollectButton.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="loadingCircleRegisterButton.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleRegisterButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>715, 591</value>
   </data>
@@ -4740,6 +5232,12 @@
   <data name="&gt;&gt;loadingCircleRegisterButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="groupBoxServerStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="loadingCircleServerOperationalStatus.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleServerOperationalStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 56</value>
   </data>
@@ -4800,6 +5298,12 @@
   <metadata name="timerProcessorLabelScroll.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1242, 48</value>
   </metadata>
+  <metadata name="groupBoxTableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="loadingCircleTableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="loadingCircleTableMaintenances.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 47</value>
   </data>
@@ -4821,6 +5325,9 @@
   <data name="&gt;&gt;loadingCircleTableMaintenances.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="tableMaintenances.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="serviceDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4869,6 +5376,9 @@
   <data name="&gt;&gt;tableMaintenances.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="lblThereIsNothingHere.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="lblThereIsNothingHere.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt</value>
   </data>
@@ -4933,6 +5443,9 @@
     <value>17, 85</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

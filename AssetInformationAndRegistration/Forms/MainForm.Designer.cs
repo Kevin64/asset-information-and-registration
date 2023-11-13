@@ -123,6 +123,13 @@ namespace AssetInformationAndRegistration.Forms
             this.lblFixedStorageType = new System.Windows.Forms.Label();
             this.lblFixedVideoCard = new System.Windows.Forms.Label();
             this.groupBoxAssetData = new System.Windows.Forms.GroupBox();
+            this.comboBoxBatteryChange = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxStandard = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxActiveDirectory = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxTag = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxInUse = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxHwType = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
+            this.comboBoxBuilding = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.lblFixedMandatoryTicketNumber = new System.Windows.Forms.Label();
             this.lblFixedMandatoryBatteryChange = new System.Windows.Forms.Label();
             this.iconImgTicketNumber = new ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox();
@@ -205,13 +212,6 @@ namespace AssetInformationAndRegistration.Forms
             this.agentUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblThereIsNothingHere = new System.Windows.Forms.Label();
             this.hwUidToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBoxBatteryChange = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxStandard = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxActiveDirectory = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxTag = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxInUse = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxHwType = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
-            this.comboBoxBuilding = new AssetInformationAndRegistration.Misc.CustomFlatComboBox();
             this.groupBoxHwData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgTpmVersion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconImgVirtualizationTechnology)).BeginInit();
@@ -1238,6 +1238,75 @@ namespace AssetInformationAndRegistration.Forms
             this.groupBoxAssetData.Name = "groupBoxAssetData";
             this.groupBoxAssetData.TabStop = false;
             // 
+            // comboBoxBatteryChange
+            // 
+            this.comboBoxBatteryChange.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBatteryChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBatteryChange.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBatteryChange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
+            this.comboBoxBatteryChange.FormattingEnabled = true;
+            this.comboBoxBatteryChange.Name = "comboBoxBatteryChange";
+            // 
+            // comboBoxStandard
+            // 
+            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
+            this.comboBoxStandard.FormattingEnabled = true;
+            this.comboBoxStandard.Name = "comboBoxStandard";
+            // 
+            // comboBoxActiveDirectory
+            // 
+            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
+            this.comboBoxActiveDirectory.FormattingEnabled = true;
+            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
+            // 
+            // comboBoxTag
+            // 
+            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
+            this.comboBoxTag.FormattingEnabled = true;
+            this.comboBoxTag.Name = "comboBoxTag";
+            // 
+            // comboBoxInUse
+            // 
+            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
+            this.comboBoxInUse.FormattingEnabled = true;
+            this.comboBoxInUse.Name = "comboBoxInUse";
+            // 
+            // comboBoxHwType
+            // 
+            this.comboBoxHwType.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxHwType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxHwType.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
+            this.comboBoxHwType.FormattingEnabled = true;
+            this.comboBoxHwType.Name = "comboBoxHwType";
+            // 
+            // comboBoxBuilding
+            // 
+            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
+            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
+            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
+            this.comboBoxBuilding.FormattingEnabled = true;
+            this.comboBoxBuilding.Name = "comboBoxBuilding";
+            // 
             // lblFixedMandatoryTicketNumber
             // 
             resources.ApplyResources(this.lblFixedMandatoryTicketNumber, "lblFixedMandatoryTicketNumber");
@@ -1841,75 +1910,6 @@ namespace AssetInformationAndRegistration.Forms
             // 
             this.hwUidToolTip.IsBalloon = true;
             this.hwUidToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Warning;
-            // 
-            // comboBoxBatteryChange
-            // 
-            this.comboBoxBatteryChange.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBatteryChange.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBatteryChange.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBatteryChange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBatteryChange, "comboBoxBatteryChange");
-            this.comboBoxBatteryChange.FormattingEnabled = true;
-            this.comboBoxBatteryChange.Name = "comboBoxBatteryChange";
-            // 
-            // comboBoxStandard
-            // 
-            this.comboBoxStandard.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxStandard.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxStandard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxStandard, "comboBoxStandard");
-            this.comboBoxStandard.FormattingEnabled = true;
-            this.comboBoxStandard.Name = "comboBoxStandard";
-            // 
-            // comboBoxActiveDirectory
-            // 
-            this.comboBoxActiveDirectory.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxActiveDirectory.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxActiveDirectory.ButtonColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.comboBoxActiveDirectory, "comboBoxActiveDirectory");
-            this.comboBoxActiveDirectory.FormattingEnabled = true;
-            this.comboBoxActiveDirectory.Name = "comboBoxActiveDirectory";
-            // 
-            // comboBoxTag
-            // 
-            this.comboBoxTag.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxTag.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxTag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxTag, "comboBoxTag");
-            this.comboBoxTag.FormattingEnabled = true;
-            this.comboBoxTag.Name = "comboBoxTag";
-            // 
-            // comboBoxInUse
-            // 
-            this.comboBoxInUse.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxInUse.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxInUse, "comboBoxInUse");
-            this.comboBoxInUse.FormattingEnabled = true;
-            this.comboBoxInUse.Name = "comboBoxInUse";
-            // 
-            // comboBoxHwType
-            // 
-            this.comboBoxHwType.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxHwType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxHwType.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxHwType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxHwType, "comboBoxHwType");
-            this.comboBoxHwType.FormattingEnabled = true;
-            this.comboBoxHwType.Name = "comboBoxHwType";
-            // 
-            // comboBoxBuilding
-            // 
-            this.comboBoxBuilding.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(122)))), ((int)(((byte)(122)))));
-            this.comboBoxBuilding.ButtonColor = System.Drawing.SystemColors.Window;
-            this.comboBoxBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
-            this.comboBoxBuilding.FormattingEnabled = true;
-            this.comboBoxBuilding.Name = "comboBoxBuilding";
             // 
             // MainForm
             // 

@@ -1334,6 +1334,8 @@ namespace AssetInformationAndRegistration.Forms
                     }
 
                     //Feches asset number data from server to update the label
+                    lblNoticeHardwareChanged.Visible = false;
+                    hardwareChangeButton.Visible = false;
                     loadingCircleLastService.Visible = true;
                     loadingCircleLastService.Active = true;
                     loadingCircleRegisterButton.Visible = true;
@@ -1434,8 +1436,6 @@ namespace AssetInformationAndRegistration.Forms
             }
 
             //When finished registering, resets control states
-            lblNoticeHardwareChanged.Visible = false;
-            hardwareChangeButton.Visible = false;
             loadingCircleRegisterButton.Visible = false;
             loadingCircleRegisterButton.Active = false;
             loadingCircleTableMaintenances.Visible = false;
