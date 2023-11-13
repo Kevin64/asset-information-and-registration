@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace AssetInformationAndRegistration.Forms
 {
@@ -47,6 +48,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly HttpClient client;
         private readonly Program.ConfigurationOptions configOptions;
 
+        private Regex hostnamePattern;
         private Model modelTemplate;
         private Asset existingAsset;
         private readonly Asset newAsset;
@@ -161,6 +163,7 @@ namespace AssetInformationAndRegistration.Forms
             sp.Wait();
 
             serverParam = sp.Result;
+            hostnamePattern = new Regex(serverParam.Parameters.HostnamePattern);
 
             string[] dateFormat = new string[] { GenericResources.DATE_FORMAT };
 
@@ -678,7 +681,7 @@ namespace AssetInformationAndRegistration.Forms
                 modelTemplate = v.Result;
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If hostname is the default one and its enforcement is enabled
-                if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME))
+                if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && !hostnamePattern.IsMatch(newAsset.network.hostname))
                 {
                     pass = false;
                     sA.HostnameAlert += newAsset.network.hostname + AirUIStrings.ALERT_HOSTNAME;

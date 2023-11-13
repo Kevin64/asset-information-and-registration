@@ -1381,7 +1381,7 @@
     <value>23, 23</value>
   </data>
   <data name="hardwareChangeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>153</value>
+    <value>58</value>
   </data>
   <data name="hardwareChangeButton.Text" xml:space="preserve">
     <value>?</value>
@@ -1477,7 +1477,7 @@
     <value>53, 25</value>
   </data>
   <data name="processorDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
+    <value>54</value>
   </data>
   <data name="processorDetailsButton.Text" xml:space="preserve">
     <value>More...</value>
@@ -1507,7 +1507,7 @@
     <value>53, 25</value>
   </data>
   <data name="ramDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
+    <value>55</value>
   </data>
   <data name="ramDetailsButton.Text" xml:space="preserve">
     <value>More...</value>
@@ -1537,7 +1537,7 @@
     <value>53, 25</value>
   </data>
   <data name="videoCardDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>137</value>
+    <value>57</value>
   </data>
   <data name="videoCardDetailsButton.Text" xml:space="preserve">
     <value>More...</value>
@@ -1567,7 +1567,7 @@
     <value>53, 25</value>
   </data>
   <data name="storageDetailsButton.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
+    <value>56</value>
   </data>
   <data name="storageDetailsButton.Text" xml:space="preserve">
     <value>More...</value>
@@ -3415,7 +3415,7 @@
     <value>comboBoxBatteryChange</value>
   </data>
   <data name="&gt;&gt;comboBoxBatteryChange.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxBatteryChange.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3442,7 +3442,7 @@
     <value>comboBoxStandard</value>
   </data>
   <data name="&gt;&gt;comboBoxStandard.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxStandard.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3472,7 +3472,7 @@
     <value>comboBoxActiveDirectory</value>
   </data>
   <data name="&gt;&gt;comboBoxActiveDirectory.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxActiveDirectory.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3499,7 +3499,7 @@
     <value>comboBoxTag</value>
   </data>
   <data name="&gt;&gt;comboBoxTag.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxTag.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3526,7 +3526,7 @@
     <value>comboBoxInUse</value>
   </data>
   <data name="&gt;&gt;comboBoxInUse.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxInUse.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3553,7 +3553,7 @@
     <value>comboBoxHwType</value>
   </data>
   <data name="&gt;&gt;comboBoxHwType.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxHwType.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3580,7 +3580,7 @@
     <value>comboBoxBuilding</value>
   </data>
   <data name="&gt;&gt;comboBoxBuilding.Type" xml:space="preserve">
-    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2310, Culture=neutral, PublicKeyToken=null</value>
+    <value>AssetInformationAndRegistration.Misc.CustomFlatComboBox, AIR, Version=5.0.0.2311, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxBuilding.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>

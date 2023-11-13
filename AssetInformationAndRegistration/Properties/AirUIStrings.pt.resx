@@ -291,6 +291,9 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
   <data name="EMPLOYEE" xml:space="preserve">
     <value>Funcionário</value>
   </data>
+  <data name="EXIT" xml:space="preserve">
+    <value>SAIR</value>
+  </data>
   <data name="FETCHING" xml:space="preserve">
     <value>Coletando...</value>
   </data>

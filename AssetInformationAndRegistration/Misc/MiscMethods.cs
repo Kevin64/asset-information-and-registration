@@ -345,7 +345,7 @@ namespace AssetInformationAndRegistration.Misc
             {
                 cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
                 cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+                cfcb.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
                 cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
             }
             foreach (DataGridView dgv in form.Controls.OfType<DataGridView>())
@@ -412,7 +412,7 @@ namespace AssetInformationAndRegistration.Misc
                 {
                     cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
                     cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                    cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    cfcb.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
                     cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
                 }
                 foreach (DataGridView dgv in gb.Controls.OfType<DataGridView>())
@@ -478,7 +478,7 @@ namespace AssetInformationAndRegistration.Misc
                 {
                     cfcb.BackColor = StringsAndConstants.LIGHT_BACKCOLOR;
                     cfcb.ForeColor = StringsAndConstants.LIGHT_FORECOLOR;
-                    cfcb.BorderColor = StringsAndConstants.LIGHT_FORECOLOR;
+                    cfcb.BorderColor = StringsAndConstants.LIGHT_DROPDOWN_BORDER;
                     cfcb.ButtonColor = StringsAndConstants.LIGHT_BACKCOLOR;
                 }
                 foreach (DataGridView dgv in tlp.Controls.OfType<DataGridView>())
@@ -837,7 +837,7 @@ namespace AssetInformationAndRegistration.Misc
                 bool b;
 #if DEBUG
                 //Checks if log directory exists
-                b = File.Exists(path + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + GenericResources.LOG_FILE_EXT);
+                b = File.Exists(path + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + GenericResources.DEV_STATUS_BETA + GenericResources.LOG_FILE_EXT);
 #else
                 //Checks if log directory exists
                 b = File.Exists(path + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + GenericResources.LOG_FILE_EXT);
@@ -972,33 +972,58 @@ namespace AssetInformationAndRegistration.Misc
             Environment.Exit(exitCode);
         }
 
+        internal static string HardwareSha256UniqueId(Asset a)
+        {
+            hardware hwTemp = new hardware();
+            network nwTemp = new network();
+            Asset assetTemp = new Asset()
+            {
+                hardware = hwTemp,
+                network = nwTemp,
+            };
+            assetTemp.hardware.brand = a.hardware.brand;
+            assetTemp.hardware.model = a.hardware.model;
+            assetTemp.hardware.serialNumber = a.hardware.serialNumber;
+            assetTemp.network.macAddress = a.network.macAddress;
+
+            using (SHA256 hash = SHA256.Create())
+            {
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(assetTemp)));
+
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                    _ = builder.Append(bytes[i].ToString("x2"));
+                return builder.ToString();
+            }
+        }
+
         /// <summary>
         /// Generates a unique SHA256 hash according to the asset hardware
         /// </summary>
         /// <param name="a">Asset object</param>
         /// <returns>Hash string</returns>
-        internal static string HardwareSha256HashGenerator(Asset a)
+        internal static string HardwareSha256Hash(Asset a)
         {
-            Asset temp = a.ShallowCopy();
-            temp.assetNumber = null;
-            temp.discarded = null;
-            temp.inUse = null;
-            temp.note = null;
-            temp.sealNumber = null;
-            temp.standard = null;
-            temp.tag = null;
-            temp.adRegistered = null;
-            temp.hardware.type = null;
-            temp.hwUid = null;
-            temp.location = null;
-            temp.network = null;
-            temp.firmware = null;
-            temp.maintenances = null;
-            temp.operatingSystem = null;
+            Asset assetTemp = a.ShallowCopy();
+            assetTemp.assetNumber = null;
+            assetTemp.discarded = null;
+            assetTemp.inUse = null;
+            assetTemp.note = null;
+            assetTemp.sealNumber = null;
+            assetTemp.standard = null;
+            assetTemp.tag = null;
+            assetTemp.adRegistered = null;
+            assetTemp.hardware.type = null;
+            assetTemp.hwHash = null;
+            assetTemp.location = null;
+            assetTemp.network = null;
+            assetTemp.firmware = null;
+            assetTemp.maintenances = null;
+            assetTemp.operatingSystem = null;
 
             using (SHA256 hash = SHA256.Create())
             {
-                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(temp)));
+                byte[] bytes = hash.ComputeHash(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(assetTemp)));
 
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)

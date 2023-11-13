@@ -18,6 +18,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
@@ -49,6 +50,7 @@ namespace AssetInformationAndRegistration.Forms
         private readonly BackgroundWorker backgroundWorker1;
 
         private readonly Program.ConfigurationOptions configOptions;
+        private Regex hostnamePattern;
         private readonly Agent agent;
         private Agent agentMaintenances;
         private Model modelTemplate;
@@ -184,7 +186,7 @@ namespace AssetInformationAndRegistration.Forms
 
             //Program version
 #if DEBUG
-            toolStripVersionText.Text = Misc.MiscMethods.Version(AirResources.DEV_STATUS); //Debug/Beta version
+            toolStripVersionText.Text = Misc.MiscMethods.Version(GenericResources.DEV_STATUS_BETA); //Debug/Beta version
 #else
             toolStripVersionText.Text = Misc.MiscMethods.Version(); //Release/Final version
 #endif
@@ -268,6 +270,11 @@ namespace AssetInformationAndRegistration.Forms
 
             comboBoxBuilding.Items.AddRange(serverParam.Parameters.Buildings.ToArray());
             comboBoxHwType.Items.AddRange(serverParam.Parameters.HardwareTypes.ToArray());
+            hostnamePattern = new Regex(serverParam.Parameters.HostnamePattern);
+            textBoxAssetNumber.MaxLength = serverParam.Parameters.AssetNumberDigitLimit;
+            textBoxSealNumber.MaxLength = serverParam.Parameters.SealNumberDigitLimit;
+            textBoxRoomNumber.MaxLength = serverParam.Parameters.RoomNumberDigitLimit;
+            textBoxTicketNumber.MaxLength = serverParam.Parameters.TicketNumberDigitLimit;
 
             //Fills controls with provided info from ini file and constants dll
             comboBoxActiveDirectory.Items.AddRange(StringsAndConstants.LIST_ACTIVE_DIRECTORY_GUI.ToArray());
@@ -275,10 +282,11 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxInUse.Items.AddRange(StringsAndConstants.LIST_IN_USE_GUI.ToArray());
             comboBoxTag.Items.AddRange(StringsAndConstants.LIST_TAG_GUI.ToArray());
             comboBoxBatteryChange.Items.AddRange(StringsAndConstants.LIST_BATTERY_GUI.ToArray());
-            if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(GenericResources.HOSTNAME_PATTERN))
-                textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(3);
-            else
-                textBoxAssetNumber.Text = string.Empty;
+            //if (HardwareInfo.GetHostname().Substring(0, 3).ToUpper().Equals(GenericResources.HOSTNAME_PATTERN))
+            //    textBoxAssetNumber.Text = HardwareInfo.GetHostname().Substring(3);
+            //else
+            //    textBoxAssetNumber.Text = string.Empty;
+
 
             //Sets current and maximum values for the progressbar
             progressBar1.Maximum = 17;
@@ -869,7 +877,7 @@ namespace AssetInformationAndRegistration.Forms
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), LogStrings.LOG_COLLECTION_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 _ = MessageBox.Show(UIStrings.COLLECTION_ERROR, UIStrings.ERROR_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit((int)ExitCodes.ERROR);
+                Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
         }
 
@@ -952,13 +960,14 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                         existingAsset = null;
-
-                        //Fetches existing asset data from server
-                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + textBoxAssetNumber.Text);
+                        2
+                        //Fetches existing asset data from server using a hrdware unique ID (hash calculated from Brand, Model, Serial Number and MAC Address)
+                        newAsset.hwUid = Misc.MiscMethods.HardwareSha256UniqueId(newAsset);
+                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_HWUID_URL + newAsset.hwUid);
 
                         //If hardware signature changed, alerts the agent
-                        newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
-                        if (existingAsset.hwUid != string.Empty && existingAsset.hwUid != newAsset.hwUid)
+                        newAsset.hwHash = Misc.MiscMethods.HardwareSha256Hash(newAsset);
+                        if (existingAsset.hwHash != string.Empty && existingAsset.hwHash != newAsset.hwHash)
                         {
                             lblNoticeHardwareChanged.Visible = true;
                             hardwareChangeButton.Visible = true;
@@ -1033,7 +1042,7 @@ namespace AssetInformationAndRegistration.Forms
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If hostname is the default one and its enforcement is enabled
-                if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && newAsset.network.hostname.Equals(AirUIStrings.DEFAULT_HOSTNAME) && !offlineMode)
+                if (configOptions.Enforcement.Hostname.ToString() == GenericResources.TRUE && !hostnamePattern.IsMatch(newAsset.network.hostname) && !offlineMode)
                 {
                     pass = false;
                     lblHostname.Text += " (" + AirUIStrings.ALERT_HOSTNAME + ")";
@@ -1237,7 +1246,9 @@ namespace AssetInformationAndRegistration.Forms
                 newAsset.hardware.type = Array.IndexOf(serverParam.Parameters.HardwareTypes.ToArray(), comboBoxHwType.SelectedItem.ToString()).ToString();
                 newAsset.location = l;
                 if (newAsset.hwUid == null)
-                    newAsset.hwUid = Misc.MiscMethods.HardwareSha256HashGenerator(newAsset);
+                    newAsset.hwUid = Misc.MiscMethods.HardwareSha256UniqueId(newAsset);
+                if (newAsset.hwHash == null)
+                    newAsset.hwHash = Misc.MiscMethods.HardwareSha256Hash(newAsset);
 
                 newMaintenances.Clear();
                 newMaintenances.Add(m);
@@ -1334,6 +1345,45 @@ namespace AssetInformationAndRegistration.Forms
                     }
 
                     //Feches asset number data from server to update the label
+                    textBoxAssetNumber.Enabled= false;
+                    textBoxSealNumber.Text = string.Empty;
+                    textBoxSealNumber.Enabled = false;
+                    textBoxRoomNumber.Text = string.Empty;
+                    textBoxRoomNumber.Enabled = false;
+                    textBoxRoomLetter.Text = string.Empty;
+                    textBoxRoomLetter.Enabled = false;
+                    textBoxTicketNumber.Text = string.Empty;
+                    textBoxTicketNumber.Enabled = false;
+                    comboBoxBuilding.ResetText();
+                    comboBoxBuilding.SelectedIndex = -1;
+                    comboBoxBuilding.Enabled = false;
+                    comboBoxInUse.ResetText();
+                    comboBoxInUse.SelectedIndex = -1;
+                    comboBoxInUse.Enabled = false;
+                    comboBoxHwType.ResetText();
+                    comboBoxHwType.SelectedIndex = -1;
+                    comboBoxHwType.Enabled = false;
+                    comboBoxTag.ResetText();
+                    comboBoxTag.SelectedIndex = -1;
+                    comboBoxTag.Enabled = false;
+                    comboBoxActiveDirectory.ResetText();
+                    comboBoxActiveDirectory.SelectedIndex = -1;
+                    comboBoxActiveDirectory.Enabled = false;
+                    comboBoxStandard.ResetText();
+                    comboBoxStandard.SelectedIndex = -1;
+                    comboBoxStandard.Enabled = false;
+                    comboBoxBatteryChange.ResetText();
+                    comboBoxBatteryChange.SelectedIndex = -1;
+                    comboBoxBatteryChange.Enabled = false;
+                    dateTimePickerServiceDate.Enabled = false;
+                    radioButtonFormatting.Enabled = false;
+                    radioButtonMaintenance.Enabled = false;
+                    radioButtonUpdateData.Enabled = false;
+                    collectButton.Enabled = false;
+                    registerButton.Text = AirUIStrings.EXIT;
+                    registerButton.Click -= RegisterButton_ClickAsync;
+                    registerButton.Click += ExitButton_ClickAsync;
+
                     lblNoticeHardwareChanged.Visible = false;
                     hardwareChangeButton.Visible = false;
                     loadingCircleLastService.Visible = true;
@@ -1352,7 +1402,7 @@ namespace AssetInformationAndRegistration.Forms
                         {
                             existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + textBoxAssetNumber.Text);
 
-                            radioButtonUpdateData.Enabled = true;
+                            //radioButtonUpdateData.Enabled = true;
                             loadingCircleLastService.Visible = false;
                             loadingCircleLastService.Active = false;
                             lblColorLastService.Text = Misc.MiscMethods.SinceLabelUpdate(existingAsset.maintenances[0].serviceDate);
@@ -1442,10 +1492,8 @@ namespace AssetInformationAndRegistration.Forms
             loadingCircleTableMaintenances.Active = false;
             loadingCircleLastService.Visible = false;
             loadingCircleLastService.Active = false;
-            registerButton.Text = AirUIStrings.REGISTER_AGAIN;
             registerButton.Enabled = true;
             apcsButton.Enabled = true;
-            collectButton.Enabled = true;
         }
 
         /*-------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -1676,6 +1724,11 @@ namespace AssetInformationAndRegistration.Forms
                 ToggleTheme();
         }
 
+        /// <summary>
+        /// Method for opening the Hardware Change comparison form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HardwareChangeButton_Click(object sender, EventArgs e)
         {
             if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
@@ -1842,7 +1895,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void HwUidLabel_MouseHover(object sender, EventArgs e)
         {
-            hwUidToolTip.SetToolTip(lblNoticeHardwareChanged, AirUIStrings.DATABASE_HARDWARE_ID + ": " + existingAsset.hwUid + "\n" + AirUIStrings.CURRENT_HARDWARE_ID + ": " + newAsset.hwUid);
+            hwUidToolTip.SetToolTip(lblNoticeHardwareChanged, AirUIStrings.DATABASE_HARDWARE_ID + ": " + existingAsset.hwHash + "\n" + AirUIStrings.CURRENT_HARDWARE_ID + ": " + newAsset.hwHash);
         }
 
         /// <summary> 
@@ -1897,7 +1950,7 @@ namespace AssetInformationAndRegistration.Forms
         {
             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_OPENING_LOG, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 #if DEBUG
-            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + GenericResources.LOG_FILE_EXT);
+            System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + GenericResources.DEV_STATUS_BETA + GenericResources.LOG_FILE_EXT);
 #else
             System.Diagnostics.Process.Start(configOptions.Definitions.LogLocation + GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + GenericResources.LOG_FILE_EXT);
 #endif
@@ -2082,6 +2135,17 @@ namespace AssetInformationAndRegistration.Forms
                 : lblTpmVersion.ForeColor == StringsAndConstants.ALERT_COLOR && isSystemDarkModeEnabled == false
                 ? StringsAndConstants.LIGHT_SUBTLE_DARKCOLOR
                 : StringsAndConstants.ALERT_COLOR;
+        }
+
+        /// <summary>
+        /// Exits the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitButton_ClickAsync(object sender, EventArgs e)
+        {
+            log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_CLOSING_FORM, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+            Environment.Exit(Convert.ToInt32(ExitCodes.SUCCESS));
         }
 
         /// <summary> 

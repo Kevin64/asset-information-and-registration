@@ -1,4 +1,7 @@
 {
+    "__comment1__": "ServiceTypes values are: 0 for 'Formatting' and 1 for 'Maintenance'",
+    "__comment2__": "HostnamePattern must follow .NET Regex rules specified on https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions",
+    "__comment3__": "AssetNumberDigitLimit, SealNumberDigitLimit, RoomNumberDigitLimit and TicketNumberDigitLimit must be adjusted to match your business rules",
     "Parameters": {
         "Buildings": [
             "Building0",
@@ -11,45 +14,14 @@
             "Notebook/Laptop",
             "Tablet"
         ],
-        "FirmwareTypes": [
-            "BIOS",
-            "UEFI"
-        ],
-        "TpmTypes": [
-            "N/A",
-            "1.2",
-            "2.0"
-        ],
-        "MediaOperationTypes": [
-            "IDE/RAID",
-            "AHCI",
-            "NVMe"
-        ],
-        "SecureBootStates": [
-            0,
-            1,
-            2
-        ],
-        "VirtualizationTechnologyStates": [
-            0,
-            1,
-            2
-        ],
+        "HostnamePattern": "^PC-[0-9]{6}$",
+        "AssetNumberDigitLimit": 6,
+        "SealNumberDigitLimit": 10,
+        "RoomNumberDigitLimit": 4,
+        "TicketNumberDigitLimit": 6,
         "ServiceTypes": [
             0,
             1
-        ],
-        "OperatingSystemArchTypes": [
-            32,
-            64
-        ],
-        "StorageTypes": [
-            "HDD",
-            "SSD"
-        ],
-        "ConnectionTypes": [
-            "SATA",
-            "PCI-E"
         ]
     }
 }

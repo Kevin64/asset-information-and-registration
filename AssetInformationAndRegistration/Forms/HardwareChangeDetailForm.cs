@@ -80,8 +80,8 @@ namespace AssetInformationAndRegistration.Forms
             treeViewExistingHardware.ExpandAll();
             treeViewNewHardware.ExpandAll();
 
-            textBoxExistingHardwareHashId.Text = existingAsset.hwUid;
-            textBoxNewHardwareHashId.Text = newAsset.hwUid;
+            textBoxExistingHardwareHashId.Text = existingAsset.hwHash;
+            textBoxNewHardwareHashId.Text = newAsset.hwHash;
 
             string oldCpu = JsonConvert.SerializeObject(existingAsset.hardware.processor);
             string newCpu = JsonConvert.SerializeObject(newAsset.hardware.processor);

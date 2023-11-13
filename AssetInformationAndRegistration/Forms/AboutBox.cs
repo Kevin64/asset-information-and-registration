@@ -59,7 +59,7 @@ namespace AssetInformationAndRegistration.Forms
             Text = string.Format("{0} {1}", labelFormTitle.Text, AssemblyTitle);
             labelProductName.Text = AssemblyProduct;
 #if DEBUG
-            labelVersion.Text = string.Format(labelVersion.Text + " {0}-{1}", AssemblyVersion, AirResources.DEV_STATUS);
+            labelVersion.Text = string.Format(labelVersion.Text + " {0}-{1}", AssemblyVersion, GenericResources.DEV_STATUS_BETA);
 #else
             labelVersion.Text = string.Format(labelVersion.Text + " {0}", AssemblyVersion);
 #endif

@@ -272,7 +272,7 @@ namespace AssetInformationAndRegistration
                     showCLIOutput = true;
 #if DEBUG
                 //Create a new log file (or append to a existing one)
-                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS, configOptions.Definitions.LogLocation, GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + AirResources.DEV_STATUS + GenericResources.LOG_FILE_EXT, showCLIOutput);
+                log = new LogGenerator(Application.ProductName + " - v" + Application.ProductVersion + "-" + GenericResources.DEV_STATUS_BETA, configOptions.Definitions.LogLocation, GenericResources.LOG_FILENAME_AIR + "-v" + Application.ProductVersion + "-" + GenericResources.DEV_STATUS_BETA + GenericResources.LOG_FILE_EXT, showCLIOutput);
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_DEBUG_MODE, string.Empty, showCLIOutput);
 #else
                 //Create a new log file (or append to a existing one)

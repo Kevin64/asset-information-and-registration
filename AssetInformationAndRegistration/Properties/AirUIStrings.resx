@@ -291,6 +291,9 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
   <data name="EMPLOYEE" xml:space="preserve">
     <value>Employee</value>
   </data>
+  <data name="EXIT" xml:space="preserve">
+    <value>EXIT</value>
+  </data>
   <data name="FETCHING" xml:space="preserve">
     <value>Collecting...</value>
   </data>

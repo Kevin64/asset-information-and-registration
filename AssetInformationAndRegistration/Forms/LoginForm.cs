@@ -85,7 +85,7 @@ namespace AssetInformationAndRegistration.Forms
 
             //Program version
 #if DEBUG
-            toolStripVersionText.Text = MiscMethods.Version(AirResources.DEV_STATUS);
+            toolStripVersionText.Text = MiscMethods.Version(GenericResources.DEV_STATUS_BETA);
             comboBoxServerIP.SelectedIndex = 1;
             comboBoxServerPort.SelectedIndex = 0;
 #else
@@ -144,6 +144,7 @@ namespace AssetInformationAndRegistration.Forms
         {
             try
             {
+                authButton.Enabled = false;
                 //If offline mode is checked
                 if (checkBoxOfflineMode.Checked)
                 {
@@ -244,6 +245,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerPort.Enabled = true;
             checkBoxOfflineMode.Enabled = true;
             checkBoxOfflineMode.Checked = false;
+            authButton.Enabled = true;
         }
 
         /// <summary> 

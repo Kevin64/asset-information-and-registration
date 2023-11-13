@@ -347,6 +347,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a EXIT.
+        /// </summary>
+        internal static string EXIT {
+            get {
+                return ResourceManager.GetString("EXIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Collect Again.
         /// </summary>
         internal static string FETCH_AGAIN {
