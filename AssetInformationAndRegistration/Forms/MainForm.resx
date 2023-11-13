@@ -1255,10 +1255,10 @@
     <value>NoControl</value>
   </data>
   <data name="hardwareChangeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>460, -1</value>
+    <value>467, 95</value>
   </data>
   <data name="hardwareChangeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>23, 23</value>
   </data>
   <data name="hardwareChangeButton.TabIndex" type="System.Int32, mscorlib">
     <value>153</value>
@@ -1285,7 +1285,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblNoticeHardwareChanged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 0</value>
+    <value>273, 100</value>
   </data>
   <data name="lblNoticeHardwareChanged.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 13</value>

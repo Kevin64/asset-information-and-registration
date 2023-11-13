@@ -277,6 +277,24 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Current hardware ID.
+        /// </summary>
+        internal static string CURRENT_HARDWARE_ID {
+            get {
+                return ResourceManager.GetString("CURRENT_HARDWARE_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Database hardware ID.
+        /// </summary>
+        internal static string DATABASE_HARDWARE_ID {
+            get {
+                return ResourceManager.GetString("DATABASE_HARDWARE_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Error contacting the database, check your intranet connection and that the web server is up!.
         /// </summary>
         internal static string DATABASE_REACH_ERROR {

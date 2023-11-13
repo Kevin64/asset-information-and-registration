@@ -412,6 +412,7 @@ namespace AssetInformationAndRegistration.Forms
             ramDetailsButton.Visible = false;
             processorDetailsButton.Visible = false;
             lblNoticeHardwareChanged.Visible = false;
+            hardwareChangeButton.Visible = false;
             if (!offlineMode)
                 lblThereIsNothingHere.Visible = false;
             lblNoticeHardwareChanged.MouseHover += new EventHandler(HwUidLabel_MouseHover);
@@ -964,6 +965,7 @@ namespace AssetInformationAndRegistration.Forms
                         if (existingAsset.hwUid != string.Empty && existingAsset.hwUid != newAsset.hwUid)
                         {
                             lblNoticeHardwareChanged.Visible = true;
+                            hardwareChangeButton.Visible = true;
                             log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_WARNING), LogStrings.LOG_ASSET_HARDWARE_MODIFIED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                             _ = MessageBox.Show(UIStrings.ASSET_HARDWARE_MODIFIED, UIStrings.WARNING_WINDOWTITLE, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1436,6 +1438,8 @@ namespace AssetInformationAndRegistration.Forms
             }
 
             //When finished registering, resets control states
+            lblNoticeHardwareChanged.Visible = false;
+            hardwareChangeButton.Visible = false;
             loadingCircleRegisterButton.Visible = false;
             loadingCircleRegisterButton.Active = false;
             loadingCircleTableMaintenances.Visible = false;
@@ -1842,7 +1846,7 @@ namespace AssetInformationAndRegistration.Forms
         /// <param name="e"></param>
         private void HwUidLabel_MouseHover(object sender, EventArgs e)
         {
-            hwUidToolTip.SetToolTip(lblNoticeHardwareChanged, "Database hardware ID: " + existingAsset.hwUid + "\n" + "Current hardware ID: " + newAsset.hwUid);
+            hwUidToolTip.SetToolTip(lblNoticeHardwareChanged, AirUIStrings.DATABASE_HARDWARE_ID + ": " + existingAsset.hwUid + "\n" + AirUIStrings.CURRENT_HARDWARE_ID + ": " + newAsset.hwUid);
         }
 
         /// <summary> 

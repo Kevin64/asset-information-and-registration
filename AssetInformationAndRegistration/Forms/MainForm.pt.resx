@@ -249,13 +249,13 @@
     <value>Dados do computador</value>
   </data>
   <data name="lblNoticeHardwareChanged.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 0</value>
+    <value>253, 100</value>
   </data>
   <data name="lblNoticeHardwareChanged.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 13</value>
+    <value>214, 13</value>
   </data>
   <data name="lblNoticeHardwareChanged.Text" xml:space="preserve">
-    <value>⬤ = Hardware alterado desde o último serviço</value>
+    <value>⬤ Hardware alterado desde o último serviço</value>
   </data>
   <data name="processorDetailsButton.Text" xml:space="preserve">
     <value>Mais...</value>
