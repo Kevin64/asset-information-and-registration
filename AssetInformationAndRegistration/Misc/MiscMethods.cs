@@ -777,7 +777,7 @@ namespace AssetInformationAndRegistration.Misc
             if (hasDecimal)
                 return friendly.ToString("0.##") + " " + sufix;
             else
-                return (Convert.ToInt64(friendly)).ToString() + " " + sufix;
+                return Convert.ToInt64(friendly).ToString() + " " + sufix;
         }
 
         internal static string FriendlySizeDecimal(long bytes, bool hasDecimal)
@@ -822,7 +822,7 @@ namespace AssetInformationAndRegistration.Misc
             if (hasDecimal)
                 return friendly.ToString("0.##") + " " + sufix;
             else
-                return (Convert.ToInt64(friendly)).ToString() + " " + sufix;
+                return Convert.ToInt64(friendly).ToString() + " " + sufix;
         }
 
         /// <summary> 

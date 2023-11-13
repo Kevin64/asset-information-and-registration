@@ -62,7 +62,7 @@ namespace AssetInformationAndRegistration.Forms
 
         public string CheckDifferences(string treeExisting, string treeNew)
         {
-            var jdp = new JsonDiffPatch();
+            JsonDiffPatch jdp = new JsonDiffPatch();
             return jdp.Diff(treeExisting, treeNew);
         }
 
@@ -96,8 +96,7 @@ namespace AssetInformationAndRegistration.Forms
             string diffRam = CheckDifferences(oldRam, newRam);
             string diffStorage = CheckDifferences(oldStorage, newStorage);
             string diffGpu = CheckDifferences(oldGpu, newGpu);
-
-            List<string> allDiff = new List<string>() { diffCpu, diffRam, diffStorage, diffGpu };
+            _ = new List<string>() { diffCpu, diffRam, diffStorage, diffGpu };
 
         }
 

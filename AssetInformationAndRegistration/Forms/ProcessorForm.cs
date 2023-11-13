@@ -41,7 +41,7 @@ namespace AssetInformationAndRegistration.Forms
             foreach (List<string> s in str)
             {
                 individualCacheStr = MiscMethods.FriendlySizeBinary(Convert.ToInt64(s[5]), false);
-                if(!individualCacheStr.Contains("0 B"))
+                if (!individualCacheStr.Contains("0 B"))
                     individualCache = Convert.ToInt64(individualCacheStr.Substring(0, individualCacheStr.Length - 3));
                 s[5] = individualCacheStr;
 

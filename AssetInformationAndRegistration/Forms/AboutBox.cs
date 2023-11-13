@@ -2,18 +2,13 @@
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
-using ConstantsDLL;
 using ConstantsDLL.Properties;
-using Dark.Net;
-using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Octokit;
 using System;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using Label = System.Windows.Forms.Label;
 
 namespace AssetInformationAndRegistration.Forms
 {

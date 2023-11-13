@@ -4,7 +4,6 @@ using ConstantsDLL.Properties;
 using RestApiDLL;
 using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using Xunit;
 
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
@@ -39,20 +38,20 @@ namespace AssetInformationAndRegistrationTests
         private ServerParam sp;
 
         [Theory]
-        
+
         [InlineData("localhost", "8081", "999999", "Building0", "9999", "2023-10-30", "f", "y", "999999", "e", "y", "99999999", "y", "Tablet", "kevin1", "123")]
         [InlineData("localhost", "8081", "999999", "Building0", "9999", "2023-10-30", "f", "y", "999999", "e", "y", "99999999", "y", "Tablet", "kevin", "123")]
         [InlineData("localhost", "8081", "888888", "Building1", "8888", "2022-09-29", "m", "n", "888888", "s", "n", "88888888", "n", "Notebook/Laptop", "kevin", "123")]
         [InlineData("localhost", "8081", "777777", "Building0", "7777", "2021-08-28", "f", "n", "777777", "e", "n", "77777777", "y", "All-In-One", "kevin", "123")]
         [InlineData("localhost", "8081", "666666", "Building2", "6666", "2023-11-06", "m", "y", "666666", "s", "y", "66666666", "n", "Desktop", "kevin", "1234")]
         [InlineData("192.168.79.54", "8081", "888888", "same", "same", "today", "f", "y", "555555", "e", "y", "same", "y", "same", "kevin", "123")]
-        
+
         public async void GivingAssetArgs_RegisterOnDb_ThenRetrieveDataToCompare(string serverIP, string serverPort, string assetNumber, string building, string roomNumber, string serviceDate, string serviceType, string batteryChange, string ticketNumber, string standard, string inUse, string sealNumber, string tag, string hwType, string username, string password)
         {
             try
             {
                 client = MiscMethods.SetHttpClient(serverIP, serverPort, GenericResources.HTTP_CONTENT_TYPE_JSON, username, password);
-                
+
                 sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_PARAMETERS_URL);
 
                 vBefore = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.V1_API_ASSET_URL + assetNumber);
@@ -150,11 +149,11 @@ namespace AssetInformationAndRegistrationTests
         {
             string[] argsArray = { "--serverIP=" + serverIP, "--serverPort=" + serverPort, "--assetNumber=" + assetNumber, "--building=" + building, "--roomNumber=" + roomNumber, "--serviceDate=" + serviceDate, "--serviceType=" + serviceType, "--batteryChanged=" + batteryChange, "--ticketNumber=" + ticketNumber, "--standard=" + standard, "--inUse=" + inUse, "--sealNumber=" + sealNumber, "--tag=" + tag, "--hwType=" + hwType, "--username=" + username, "--password=" + password };
 
-            Action act = () =>
+            void act()
             {
                 Program.Bootstrap(argsArray);
-            };
-            var httpEx = Assert.Throws<UriFormatException>(act);
+            }
+            UriFormatException httpEx = Assert.Throws<UriFormatException>(act);
             Assert.Equal("URI Inválido: Porta especificada inválida.", httpEx.Message);
         }
     }

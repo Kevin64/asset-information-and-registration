@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration
@@ -15,7 +9,7 @@ namespace AssetInformationAndRegistration
     {
 
 
-        private List<SyncTreeView> linkedTreeViews = new List<SyncTreeView>();
+        private readonly List<SyncTreeView> linkedTreeViews = new List<SyncTreeView>();
 
         /// <summary>
         /// Links the specified tree view to this tree view.  Whenever either treeview
@@ -38,7 +32,7 @@ namespace AssetInformationAndRegistration
                 for (int i = 0; i < linkedTreeViews.Count; i++)
                 {
                     //get the linked treeview
-                    var linkedTreeView = linkedTreeViews[i];
+                    SyncTreeView linkedTreeView = linkedTreeViews[i];
                     //link the treeviews together
                     if (linkedTreeView != treeView)
                         linkedTreeView.AddLinkedTreeView(treeView);
@@ -57,8 +51,8 @@ namespace AssetInformationAndRegistration
             int horizontal = User32.GetScrollPos(source.Handle, Orientation.Horizontal);
             int vertical = User32.GetScrollPos(source.Handle, Orientation.Vertical);
             //set the scroll positions of the destination
-            User32.SetScrollPos(dest.Handle, Orientation.Horizontal, horizontal, true);
-            User32.SetScrollPos(dest.Handle, Orientation.Vertical, vertical, true);
+            _ = User32.SetScrollPos(dest.Handle, Orientation.Horizontal, horizontal, true);
+            _ = User32.SetScrollPos(dest.Handle, Orientation.Vertical, vertical, true);
         }
 
         protected override void WndProc(ref Message m)
@@ -69,7 +63,7 @@ namespace AssetInformationAndRegistration
             //pass scroll messages onto any linked views
             if (m.Msg == User32.WM_VSCROLL || m.Msg == User32.WM_MOUSEWHEEL)
             {
-                foreach (var linkedTreeView in linkedTreeViews)
+                foreach (SyncTreeView linkedTreeView in linkedTreeViews)
                 {
                     //set the scroll positions of the linked tree view
                     SetScrollPositions(this, linkedTreeView);

@@ -15,10 +15,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
 using System.Windows.Forms;
-using Application = System.Windows.Forms.Application;
 using MiscMethods = AssetInformationAndRegistration.Misc.MiscMethods;
 
 namespace AssetInformationAndRegistration.Forms
@@ -95,7 +93,7 @@ namespace AssetInformationAndRegistration.Forms
             comboBoxServerIP.SelectedIndex = 0;
             comboBoxServerPort.SelectedIndex = 0;
 #endif
-            if(isSystemDarkModeEnabled)
+            if (isSystemDarkModeEnabled)
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_DARK, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
             else
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_THEME, LogStrings.LOG_THEME_LIGHT, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));

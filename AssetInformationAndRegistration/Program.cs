@@ -16,7 +16,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -161,12 +160,12 @@ namespace AssetInformationAndRegistration
                 CLIRegister cr = new CLIRegister(client, agent, log, configOptions, argsArray);
                 UpdateChecker.Check(ghc, log, configOptions.Definitions, configOptions.Enforcement.CheckForUpdates, false, true, true);
             }
-            catch(AggregateException e)
+            catch (AggregateException e)
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.InnerException.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
             }
-            catch(UriFormatException e)
+            catch (UriFormatException e)
             {
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), e.Message, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                 Environment.Exit(Convert.ToInt32(ExitCodes.ERROR));
@@ -207,7 +206,7 @@ namespace AssetInformationAndRegistration
                     Process.GetCurrentProcess().Kill();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("This is a test " + e.Message);
             }

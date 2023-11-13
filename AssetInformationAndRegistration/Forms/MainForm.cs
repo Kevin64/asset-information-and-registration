@@ -1,7 +1,6 @@
 using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Properties;
-using ConfigurableQualityPictureBoxDLL;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
 using Dark.Net;
@@ -9,7 +8,6 @@ using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Taskbar;
-using MRG.Controls.UI;
 using Octokit;
 using RestApiDLL;
 using System;
@@ -18,13 +16,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
-using Label = System.Windows.Forms.Label;
 
 namespace AssetInformationAndRegistration.Forms
 {

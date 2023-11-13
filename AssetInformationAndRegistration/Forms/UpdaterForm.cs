@@ -1,14 +1,10 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
 using AssetInformationAndRegistration.Updater;
-using ConstantsDLL;
 using ConstantsDLL.Properties;
-using Dark.Net;
-using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Microsoft.Win32;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace AssetInformationAndRegistration.Forms
