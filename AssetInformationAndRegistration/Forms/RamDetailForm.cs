@@ -45,22 +45,22 @@ namespace AssetInformationAndRegistration.Forms
             //Converts storage raw byte count into a more readable value and adds to the DataGridView
             foreach (List<string> s in auxList)
             {
-                if (!s.Contains(GenericResources.FREE_CODE))
+                if (!s.Contains(GenericResources.RAM_FREE_CODE))
                 {
                     individualRamStr = MiscMethods.FriendlySizeBinary(Convert.ToInt64(s[1]), false);
                     individualRam = Convert.ToInt64(individualRamStr.Substring(0, individualRamStr.Length - 3));
                     s[1] = individualRamStr;
 
                     if (!s[3].Contains(GenericResources.NOT_AVAILABLE_CODE))
-                        s[3] = s[3] + " " + GenericResources.MHZ;
+                        s[3] = s[3] + " " + GenericResources.FREQUENCY_MHZ;
                 }
 
-                if (s[2] != GenericResources.FREE_CODE)
+                if (s[2] != GenericResources.RAM_FREE_CODE)
                     s[2] = Enum.GetName(typeof(HardwareInfo.RamTypes), Convert.ToInt32(s[2]));
 
                 for (int i = 0; i < s.Count; i++)
                 {
-                    if (s[i] == GenericResources.FREE_CODE)
+                    if (s[i] == GenericResources.RAM_FREE_CODE)
                         s[i] = UIStrings.FREE;
                     if (s[i] == GenericResources.NOT_AVAILABLE_CODE)
                         s[i] = GenericResources.NOT_AVAILABLE_NAME;

@@ -169,6 +169,9 @@
   <data name="ALERT_SECURE_BOOT_CLI_TITLE" xml:space="preserve">
     <value>Secure Boot: </value>
   </data>
+  <data name="ALERT_SMART_CLI_TITLE" xml:space="preserve">
+    <value>Status S.M.A.R.T.: </value>
+  </data>
   <data name="ALERT_TOO_MUCH_MEMORY" xml:space="preserve">
     <value>Memória em excesso</value>
   </data>
@@ -301,7 +304,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value>Coletar Novamente</value>
   </data>
   <data name="FIX_PROBLEMS" xml:space="preserve">
-    <value>Corrija os problemas a seguir antes de prosseguir:</value>
+    <value>Corrija os problemas antes de prosseguir</value>
   </data>
   <data name="FORMAT_TEXT" xml:space="preserve">
     <value>formatação</value>
@@ -364,7 +367,7 @@ Este software e suas bibliotecas (DLLs) utilizam artes, bibliotecas Open Source 
     <value> slots de </value>
   </data>
   <data name="SMART_FAIL" xml:space="preserve">
-    <value>Drive com falha iminente</value>
+    <value>Falha iminente no drive </value>
   </data>
   <data name="STUDENT" xml:space="preserve">
     <value>Aluno</value>

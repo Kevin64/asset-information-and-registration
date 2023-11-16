@@ -51,11 +51,11 @@ namespace AssetInformationAndRegistration.Misc
                 rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
             else
                 rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            rk = rk.CreateSubKey(GenericResources.HWINFO_REG_PATH, true);
-            rk.SetValue(GenericResources.ETAG, ui.ETag, RegistryValueKind.String);
-            rk.SetValue(GenericResources.TAG_NAME, ui.TagName, RegistryValueKind.String);
-            rk.SetValue(GenericResources.BODY, ui.Body, RegistryValueKind.String);
-            rk.SetValue(GenericResources.HTML_URL, ui.HtmlUrl, RegistryValueKind.String);
+            rk = rk.CreateSubKey(GenericResources.REGISTRY_AIR_PATH, true);
+            rk.SetValue(GenericResources.GITHUB_ETAG, ui.ETag, RegistryValueKind.String);
+            rk.SetValue(GenericResources.GITHUB_TAG_NAME, ui.TagName, RegistryValueKind.String);
+            rk.SetValue(GenericResources.GITHUB_BODY, ui.Body, RegistryValueKind.String);
+            rk.SetValue(GenericResources.GITHUB_HTML_URL, ui.HtmlUrl, RegistryValueKind.String);
         }
 
         /// <summary>
@@ -72,11 +72,11 @@ namespace AssetInformationAndRegistration.Misc
                     rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
                 else
                     rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-                rk = rk.CreateSubKey(GenericResources.HWINFO_REG_PATH, true);
-                ui.ETag = rk.GetValue(GenericResources.ETAG).ToString();
-                ui.TagName = rk.GetValue(GenericResources.TAG_NAME).ToString();
-                ui.Body = rk.GetValue(GenericResources.BODY).ToString();
-                ui.HtmlUrl = rk.GetValue(GenericResources.HTML_URL).ToString();
+                rk = rk.CreateSubKey(GenericResources.REGISTRY_AIR_PATH, true);
+                ui.ETag = rk.GetValue(GenericResources.GITHUB_ETAG).ToString();
+                ui.TagName = rk.GetValue(GenericResources.GITHUB_TAG_NAME).ToString();
+                ui.Body = rk.GetValue(GenericResources.GITHUB_BODY).ToString();
+                ui.HtmlUrl = rk.GetValue(GenericResources.GITHUB_HTML_URL).ToString();
                 return ui;
             }
             catch
@@ -126,18 +126,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_100);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_100);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_100);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_100);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_100);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_100);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_100);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_100);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_100);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_100);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_100);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_100);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_100);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_100);
                     }
 
                     break;
@@ -147,18 +147,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_125);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_125);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_125);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_125);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_125);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_125);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_125);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_125);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_125);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_125);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_125);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_125);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_125);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_125);
                     }
                     break;
                 case 150:
@@ -167,18 +167,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_150);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_150);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_150);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_150);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_150);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_150);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_150);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_150);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_150);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_150);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_150);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_150);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_150);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_150);
                     }
                     break;
                 case 175:
@@ -187,18 +187,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_175);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_175);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_175);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_175);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_175);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_175);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_175);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_175);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_175);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_175);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_175);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_175);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_175);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_175);
                     }
                     break;
                 case 200:
@@ -207,18 +207,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_200);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_200);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_200);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_200);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_200);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_200);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_200);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_200);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_200);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_200);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_200);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_200);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_200);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_200);
                     }
                     break;
                 case 225:
@@ -227,18 +227,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_225);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_225);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_225);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_225);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_225);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_225);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_225);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_225);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_225);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_225);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_225);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_225);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_225);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_225);
                     }
                     break;
                 case 250:
@@ -247,18 +247,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_250);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_250);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_250);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_250);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_250);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_250);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_250);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_250);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_250);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_250);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_250);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_250);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_250);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_250);
                     }
                     break;
                 case 300:
@@ -267,18 +267,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_300);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_300);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_300);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_300);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_300);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_300);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_300);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_300);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_300);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_300);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_300);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_300);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_300);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_300);
                     }
                     break;
                 case 350:
@@ -287,18 +287,18 @@ namespace AssetInformationAndRegistration.Misc
                     {
                         foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                         {
-                            lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
-                            lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
-                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_350);
-                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_350);
+                            lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_350);
+                            lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_350);
+                            lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_350);
+                            lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_350);
                         }
                     }
                     foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
                     {
-                        lc.NumberSpoke = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_NUMBER_SPOKE_350);
-                        lc.SpokeThickness = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_SPOKE_THICKNESS_350);
-                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_INNER_RADIUS_350);
-                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_OUTER_RADIUS_350);
+                        lc.NumberSpoke = Convert.ToInt32(GenericResources.LOADING_CIRCLE_NUMBER_SPOKE_350);
+                        lc.SpokeThickness = Convert.ToInt32(GenericResources.LOADING_CIRCLE_SPOKE_THICKNESS_350);
+                        lc.InnerCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_INNER_RADIUS_350);
+                        lc.OuterCircleRadius = Convert.ToInt32(GenericResources.LOADING_CIRCLE_OUTER_RADIUS_350);
                     }
                     break;
             }
@@ -307,14 +307,14 @@ namespace AssetInformationAndRegistration.Misc
             {
                 foreach (LoadingCircle lc in gb.Controls.OfType<LoadingCircle>())
                 {
-                    lc.RotationSpeed = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_ROTATION_SPEED);
-                    lc.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
+                    lc.RotationSpeed = Convert.ToInt32(GenericResources.LOADING_CIRCLE_ROTATION_SPEED);
+                    lc.Color = StringsAndConstants.LOADING_CIRCLE_COLOR;
                 }
             }
             foreach (LoadingCircle lc in form.Controls.OfType<LoadingCircle>())
             {
-                lc.RotationSpeed = Convert.ToInt32(GenericResources.ROTATING_CIRCLE_ROTATION_SPEED);
-                lc.Color = StringsAndConstants.ROTATING_CIRCLE_COLOR;
+                lc.RotationSpeed = Convert.ToInt32(GenericResources.LOADING_CIRCLE_ROTATION_SPEED);
+                lc.Color = StringsAndConstants.LOADING_CIRCLE_COLOR;
             }
         }
 
@@ -324,7 +324,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <param name="form">Target form where controls will be changed</param>
         internal static void LightThemeAllControls(Form form)
         {
-            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WIN_10_NAMENUM))
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Light);
 
             form.BackColor = StringsAndConstants.LIGHT_BACKGROUND;
@@ -533,7 +533,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <param name="form">Target form where controls will be changed</param>
         internal static void DarkThemeAllControls(Form form)
         {
-            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
+            if (HardwareInfo.GetWinVersion().Equals(GenericResources.WIN_10_NAMENUM))
                 DarkNet.Instance.SetCurrentProcessTheme(Theme.Dark);
 
             form.BackColor = StringsAndConstants.DARK_BACKGROUND;
@@ -745,32 +745,32 @@ namespace AssetInformationAndRegistration.Misc
             if (bytes >= 1152921504606846976L)
             {
                 friendly = bytes >> 50;
-                sufix = GenericResources.EB;
+                sufix = GenericResources.SIZE_EB;
             }
             else if (bytes >= 1125899906842624L)
             {
                 friendly = bytes >> 40;
-                sufix = GenericResources.PB;
+                sufix = GenericResources.SIZE_PB;
             }
             else if (bytes >= 1099511627776L)
             {
                 friendly = bytes >> 30;
-                sufix = GenericResources.TB;
+                sufix = GenericResources.SIZE_TB;
             }
             else if (bytes >= 1073741824)
             {
                 friendly = bytes >> 20;
-                sufix = GenericResources.GB;
+                sufix = GenericResources.SIZE_GB;
             }
             else if (bytes >= 1048576)
             {
                 friendly = bytes >> 10;
-                sufix = GenericResources.MB;
+                sufix = GenericResources.SIZE_MB;
             }
             else if (bytes >= 1024)
             {
                 friendly = bytes;
-                sufix = GenericResources.KB;
+                sufix = GenericResources.SIZE_KB;
             }
 
             friendly /= 1024;
@@ -790,32 +790,32 @@ namespace AssetInformationAndRegistration.Misc
             if (bytes >= 1000000000000000000L)
             {
                 friendly = bytes / 1000 / 1000 / 1000 / 1000 / 1000;
-                sufix = GenericResources.EB;
+                sufix = GenericResources.SIZE_EB;
             }
             else if (bytes >= 1000000000000000L)
             {
                 friendly = bytes / 1000 / 1000 / 1000 / 1000;
-                sufix = GenericResources.PB;
+                sufix = GenericResources.SIZE_PB;
             }
             else if (bytes >= 1000000000000L)
             {
                 friendly = bytes / 1000 / 1000 / 1000;
-                sufix = GenericResources.TB;
+                sufix = GenericResources.SIZE_TB;
             }
             else if (bytes >= 1000000000)
             {
                 friendly = bytes / 1000 / 1000;
-                sufix = GenericResources.GB;
+                sufix = GenericResources.SIZE_GB;
             }
             else if (bytes >= 1000000)
             {
                 friendly = bytes / 1000;
-                sufix = GenericResources.MB;
+                sufix = GenericResources.SIZE_MB;
             }
             else if (bytes >= 1000)
             {
                 friendly = bytes;
-                sufix = GenericResources.KB;
+                sufix = GenericResources.SIZE_KB;
             }
 
             friendly /= 1000;
@@ -864,11 +864,11 @@ namespace AssetInformationAndRegistration.Misc
         {
             try
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(GenericResources.THEME_REG_PATH))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(GenericResources.REGISTRY_THEME_PATH))
                 {
                     if (key != null)
                     {
-                        object o = key.GetValue(GenericResources.THEME_REG_KEY);
+                        object o = key.GetValue(GenericResources.REGISTRY_THEME_KEY);
                         return o != null && o.Equals(0);
                     }
                     else
@@ -936,7 +936,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <returns>The current window scaling</returns>
         internal static int GetWindowsScaling()
         {
-            return (int)(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
+            return Convert.ToInt32((100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth));
         }
 
         /// <summary>
@@ -972,6 +972,11 @@ namespace AssetInformationAndRegistration.Misc
             Environment.Exit(exitCode);
         }
 
+        /// <summary>
+        /// Generates a unique SHA256 hash according to the asset brand, model, serial number and MAC Address
+        /// </summary>
+        /// <param name="a">Asset object</param>
+        /// <returns>Hash string</returns>
         internal static string HardwareSha256UniqueId(Asset a)
         {
             hardware hwTemp = new hardware();
@@ -998,7 +1003,7 @@ namespace AssetInformationAndRegistration.Misc
         }
 
         /// <summary>
-        /// Generates a unique SHA256 hash according to the asset hardware
+        /// Generates a unique SHA256 hash according to the asset removable hardware
         /// </summary>
         /// <param name="a">Asset object</param>
         /// <returns>Hash string</returns>
@@ -1015,6 +1020,7 @@ namespace AssetInformationAndRegistration.Misc
             assetTemp.adRegistered = null;
             assetTemp.hardware.type = null;
             assetTemp.hwHash = null;
+            assetTemp.assetHash = null;
             assetTemp.location = null;
             assetTemp.network = null;
             assetTemp.firmware = null;

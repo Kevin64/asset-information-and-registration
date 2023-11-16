@@ -214,6 +214,15 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a S.M.A.R.T. Status: .
+        /// </summary>
+        internal static string ALERT_SMART_CLI_TITLE {
+            get {
+                return ResourceManager.GetString("ALERT_SMART_CLI_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Too much memory.
         /// </summary>
         internal static string ALERT_TOO_MUCH_MEMORY {
@@ -374,7 +383,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Fix the following issues before proceeding:.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Fix the issues before proceeding.
         /// </summary>
         internal static string FIX_PROBLEMS {
             get {
@@ -563,7 +572,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Drive with imminent failure.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Imminent failure on drive .
         /// </summary>
         internal static string SMART_FAIL {
             get {

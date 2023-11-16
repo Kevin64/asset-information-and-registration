@@ -46,7 +46,7 @@ namespace AssetInformationAndRegistration.Forms
                 s[5] = individualCacheStr;
 
                 if (!s[2].Contains(UIStrings.UNKNOWN))
-                    s[2] = s[2] + " " + GenericResources.MHZ;
+                    s[2] = s[2] + " " + GenericResources.FREQUENCY_MHZ;
 
                 _ = dataGridView1.Rows.Add(s.ToArray());
             }

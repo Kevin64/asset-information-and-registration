@@ -52,7 +52,7 @@ namespace AssetInformationAndRegistration
             [Option(StringsAndConstants.CLI_SERVER_PORT_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_SERVER_PORT)]
             public string ServerPort { get; set; }
 
-            [Option(StringsAndConstants.CLI_ASSET_NUMBER_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_ASSET_NUMBER, Default = "")]
+            [Option(StringsAndConstants.CLI_ASSET_NUMBER_SWITCH, Required = true, HelpText = StringsAndConstants.CLI_HELP_TEXT_ASSET_NUMBER)]
             public string AssetNumber { get; set; }
 
             [Option(StringsAndConstants.CLI_BUILDING_SWITCH, Required = false, HelpText = StringsAndConstants.CLI_HELP_TEXT_BUILDING, Default = StringsAndConstants.CLI_DEFAULT_UNCHANGED)]
@@ -151,7 +151,7 @@ namespace AssetInformationAndRegistration
 
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 
-                System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.V1_API_AGENT_URL + opts.Username);
+                System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.APCS_V1_API_AGENT_URL + opts.Username);
                 v.Wait();
                 agent = v.Result;
 
@@ -268,7 +268,7 @@ namespace AssetInformationAndRegistration
                 bool fileExists = bool.Parse(Misc.MiscMethods.CheckIfLogExists(configOptions.Definitions.LogLocation));
 
                 //If args has a --help switch, do not show log output
-                if (!args.Contains(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_HELP_SWITCH))
+                if (!args.Contains(GenericResources.DASH_DOUBLE + StringsAndConstants.CLI_HELP_SWITCH))
                     showCLIOutput = true;
 #if DEBUG
                 //Create a new log file (or append to a existing one)
@@ -297,7 +297,7 @@ namespace AssetInformationAndRegistration
 
                     Form lForm = new LoginForm(ghc, log, configOptions, isSystemDarkModeEnabled);
 
-                    if (HardwareInfo.GetWinVersion().Equals(GenericResources.WINDOWS_10))
+                    if (HardwareInfo.GetWinVersion().Equals(GenericResources.WIN_10_NAMENUM))
                     {
                         switch (themeFileSet)
                         {
@@ -317,12 +317,12 @@ namespace AssetInformationAndRegistration
                 else //If given args, hides password from Console and Log file and runs CLIRegister
                 {
                     args.CopyTo(argsLog, 0);
-                    int index = Array.IndexOf(argsLog, GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH);
+                    int index = Array.IndexOf(argsLog, GenericResources.DASH_DOUBLE + StringsAndConstants.CLI_PASSWORD_SWITCH);
                     if (index == -1)
                     {
-                        index = Array.FindIndex(argsLog, x => x.StartsWith(GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH));
+                        index = Array.FindIndex(argsLog, x => x.StartsWith(GenericResources.DASH_DOUBLE + StringsAndConstants.CLI_PASSWORD_SWITCH));
                         if (index != -1)
-                            argsLog[index] = GenericResources.DOUBLE_DASH + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + GenericResources.LOG_PASSWORD_PLACEHOLDER;
+                            argsLog[index] = GenericResources.DASH_DOUBLE + StringsAndConstants.CLI_PASSWORD_SWITCH + "=" + GenericResources.LOG_PASSWORD_PLACEHOLDER;
                     }
                     else
                     {
