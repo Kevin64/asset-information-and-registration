@@ -57,7 +57,7 @@ namespace AssetInformationAndRegistration.Updater
                     if (ui != null)
                         request.Headers.Add("If-None-Match", "\"" + ui.ETag + "\"");
                     response = await httpHeader.SendAsync(request);
-                    if (!(Convert.ToInt32(response.StatusCode).Equals(304)))
+                    if (!Convert.ToInt32(response.StatusCode).Equals(304))
                     {
                         releases = await client.Repository.Release.GetLatest(GenericResources.GITHUB_OWNER_AIR, GenericResources.GITHUB_REPO_AIR);
                         ui = new UpdateInfo

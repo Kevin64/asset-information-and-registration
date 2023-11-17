@@ -115,7 +115,7 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Incorrect name.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Non-standard hostname.
         /// </summary>
         internal static string ALERT_HOSTNAME {
             get {
@@ -318,15 +318,6 @@ namespace AssetInformationAndRegistration.Properties {
         internal static string DAYS_PASSED_TEXT {
             get {
                 return ResourceManager.GetString("DAYS_PASSED_TEXT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a CHANGE-NAME.
-        /// </summary>
-        internal static string DEFAULT_HOSTNAME {
-            get {
-                return ResourceManager.GetString("DEFAULT_HOSTNAME", resourceCulture);
             }
         }
         

@@ -1,5 +1,4 @@
 ﻿using AssetInformationAndRegistration.Forms;
-using AssetInformationAndRegistration.Properties;
 using AssetInformationAndRegistration.Updater;
 using CommandLine;
 using ConstantsDLL;

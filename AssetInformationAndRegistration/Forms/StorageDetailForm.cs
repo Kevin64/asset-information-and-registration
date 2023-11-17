@@ -49,14 +49,14 @@ namespace AssetInformationAndRegistration.Forms
                 totalSize += Convert.ToInt64(s[2]);
                 s[2] = individualSizeStr;
 
-                if (s[1] == (Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageTypes.SSD)).ToString())
+                if (s[1] == Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageTypes.SSD).ToString())
                     s[1] = HardwareInfoDLL.HardwareInfo.StorageTypes.SSD.ToString();
                 else
                     s[1] = HardwareInfoDLL.HardwareInfo.StorageTypes.HDD.ToString();
 
-                if (s[3] == (Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.SATA)).ToString())
+                if (s[3] == Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.SATA).ToString())
                     s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.SATA)];
-                else if (s[3] == (Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.PCI_E).ToString()))
+                else if (s[3] == Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.PCI_E).ToString())
                     s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.PCI_E)];
                 else
                     s[3] = StringsAndConstants.LIST_STORAGE_CONNECTION_TYPES[Convert.ToInt32(HardwareInfoDLL.HardwareInfo.StorageConnectionTypes.IDE)];

@@ -137,7 +137,7 @@
     <value>Atualizar firmware para</value>
   </data>
   <data name="ALERT_HOSTNAME" xml:space="preserve">
-    <value>Nome incorreto</value>
+    <value>Hostname fora do padrão</value>
   </data>
   <data name="ALERT_HOSTNAME_CLI_TITLE" xml:space="preserve">
     <value>Hostname: </value>
@@ -204,9 +204,6 @@
   </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
     <value> dia(s) desde o último </value>
-  </data>
-  <data name="DEFAULT_HOSTNAME" xml:space="preserve">
-    <value>MUDAR-NOME</value>
   </data>
   <data name="DESCRIPTION" xml:space="preserve">
     <value>Software criado, desenvolvido e mantido por Kevin Costa. Programado em C# utilizando .NET Framework 4.8. Sistemas com suporte: Windows 7, 10 e 11.

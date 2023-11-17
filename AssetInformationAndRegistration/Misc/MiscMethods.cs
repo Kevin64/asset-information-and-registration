@@ -936,7 +936,7 @@ namespace AssetInformationAndRegistration.Misc
         /// <returns>The current window scaling</returns>
         internal static int GetWindowsScaling()
         {
-            return Convert.ToInt32((100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth));
+            return Convert.ToInt32(100 * Screen.PrimaryScreen.Bounds.Width / System.Windows.SystemParameters.PrimaryScreenWidth);
         }
 
         /// <summary>

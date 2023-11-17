@@ -1,6 +1,5 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using AssetInformationAndRegistration.Misc;
-using AssetInformationAndRegistration.Properties;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
 using Dark.Net;
