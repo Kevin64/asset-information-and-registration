@@ -199,9 +199,6 @@
   <data name="DATABASE_HARDWARE_ID" xml:space="preserve">
     <value>Database hardware ID</value>
   </data>
-  <data name="DATABASE_REACH_ERROR" xml:space="preserve">
-    <value>Error contacting the database, check your intranet connection and that the web server is up!</value>
-  </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
     <value> day(s) since the last </value>
   </data>

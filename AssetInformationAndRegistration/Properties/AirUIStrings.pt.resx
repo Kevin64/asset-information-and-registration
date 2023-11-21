@@ -199,9 +199,6 @@
   <data name="DATABASE_HARDWARE_ID" xml:space="preserve">
     <value>ID de hardware do banco de dados</value>
   </data>
-  <data name="DATABASE_REACH_ERROR" xml:space="preserve">
-    <value>Erro ao contatar o banco de dados, verifique a sua conexão com a intranet e se o servidor web está ativo!</value>
-  </data>
   <data name="DAYS_PASSED_TEXT" xml:space="preserve">
     <value> dia(s) desde o último </value>
   </data>

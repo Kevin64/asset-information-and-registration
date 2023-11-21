@@ -304,15 +304,6 @@ namespace AssetInformationAndRegistration.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Error contacting the database, check your intranet connection and that the web server is up!.
-        /// </summary>
-        internal static string DATABASE_REACH_ERROR {
-            get {
-                return ResourceManager.GetString("DATABASE_REACH_ERROR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a  day(s) since the last .
         /// </summary>
         internal static string DAYS_PASSED_TEXT {

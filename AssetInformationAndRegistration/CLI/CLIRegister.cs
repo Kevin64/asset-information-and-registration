@@ -218,7 +218,7 @@ namespace AssetInformationAndRegistration.Forms
                     //If server is unreachable
                     catch (HttpRequestException)
                     {
-                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), AirUIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
+                        log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_ERROR), UIStrings.DATABASE_REACH_ERROR, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
                     }
 
                     //If asset Json does not exist and there are some 'same' cmd switch word
@@ -664,7 +664,7 @@ namespace AssetInformationAndRegistration.Forms
                 if (modelTemplate == null)
                 {
                     pass = false;
-                    sA.DatabaseReachError += AirUIStrings.DATABASE_REACH_ERROR;
+                    sA.DatabaseReachError += UIStrings.DATABASE_REACH_ERROR;
                 }
                 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
                 //If model Json file does exist, firmware version enforcement is enabled, and the version is incorrect
