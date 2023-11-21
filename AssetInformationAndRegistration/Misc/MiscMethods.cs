@@ -41,7 +41,7 @@ namespace AssetInformationAndRegistration.Misc
     public static class MiscMethods
     {
         /// <summary> 
-        /// Creates registrys keys when a successful update check is made
+        /// Creates registry keys when a successful update check is made
         /// </summary>
         /// <param name="ui">An UpdateInfo object to write into the registry</param>
         internal static void RegCreateUpdateData(UpdateInfo ui)
@@ -59,10 +59,30 @@ namespace AssetInformationAndRegistration.Misc
         }
 
         /// <summary>
+        /// Deletes AIR registry keys
+        /// </summary>
+        public static void RegDeleteUpdateData()
+        {
+            try
+            {
+                RegistryKey rk;
+                if (Environment.Is64BitOperatingSystem)
+                    rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+                else
+                    rk = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
+                rk.DeleteSubKeyTree(GenericResources.REGISTRY_AIR_PATH);
+            }
+            catch
+            {
+            
+            }
+        }
+
+        /// <summary>
         /// Checks the registry for existing update metadata
         /// </summary>
         /// <returns>An UpdateInfo object containing the ETag, TagName, Body and HtmlURL</returns>
-        internal static UpdateInfo RegCheckUpdateData()
+        public static UpdateInfo RegCheckUpdateData()
         {
             UpdateInfo ui = new UpdateInfo();
             try

@@ -24,7 +24,7 @@ namespace AssetInformationAndRegistration.Updater
     /// <summary> 
     /// Class for handling update checking tasks and UI
     /// </summary>
-    internal static class UpdateChecker
+    public static class UpdateChecker
     {
         private static HttpClient httpHeader;
         private static HttpRequestMessage request;
@@ -40,7 +40,7 @@ namespace AssetInformationAndRegistration.Updater
         /// <param name="parametersList">List containing data from [Parameters]</param>
         /// <param name="isSystemDarkModeEnabled">Theme mode</param>
         /// <param name="autoCheck">Toggle for update autocheck</param>
-        internal static async void Check(GitHubClient client, LogGenerator log, Program.Definitions definitions, bool autoCheck, bool manualCheck, bool cliMode, bool isSystemDarkModeEnabled)
+        public static async void Check(GitHubClient client, LogGenerator log, Program.Definitions definitions, bool autoCheck, bool manualCheck, bool cliMode, bool isSystemDarkModeEnabled)
         {
             try
             {
