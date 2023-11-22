@@ -338,7 +338,7 @@
     $(PostBuildEventDependsOn);
     PostBuildMacros;
   </PostBuildEventDependsOn>
-    <PostBuildEvent>xcopy /Y "$(TargetDir)\..\..\generic-settings\offlineModeParameters.json" &amp; xcopy /Y "$(TargetDir)\..\..\generic-settings\config.json" &amp; xcopy /E /Y "$(TargetDir)\..\..\generic-settings\resources\*.*" "$(TargetDir)\resources\" &amp; if $(ConfigurationName) == Release del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; del /F /Q $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; ren $(TargetFileName) $(TargetName)-v@(VersionNumber)$(TargetExt) &amp; ren $(TargetFileName).config $(TargetName)-v@(VersionNumber)$(TargetExt).config &amp; del /F /Q *.xml &amp; del /F /Q ..\zip\github\$(TargetName)-v@(VersionNumber).7z &amp; 7z a -r ..\zip\github\$(TargetName)-v@(VersionNumber).7z * &amp; 7z h -scrccrc32 -scrccrc64 -scrcsha1 -scrcsha256 -scrcblake2sp ..\zip\github\$(TargetName)-v@(VersionNumber).7z &gt; ..\zip\github\zip-checksum.txt</PostBuildEvent>
+    <PostBuildEvent>xcopy /Y "$(TargetDir)..\..\generic-settings\offlineModeParameters.json" &amp; xcopy /Y "$(TargetDir)..\..\generic-settings\config.json" &amp; xcopy /E /Y "$(TargetDir)..\..\generic-settings\resources\*.*" "$(TargetDir)resources\" &amp; if $(ConfigurationName) == Release del /F /Q "$(TargetDir)*.xml" &amp; del /F /Q "$(TargetDir)*.pdb" &amp; del /F /Q "$(TargetDir)..\zip\github\$(TargetName)-v@(VersionNumber).7z" &amp; 7z a -r "$(TargetDir)..\zip\github\$(TargetName)-v@(VersionNumber).7z" * &amp; 7z h -scrccrc32 -scrccrc64 -scrcsha1 -scrcsha256 -scrcblake2sp "$(TargetDir)..\zip\github\$(TargetName)-v@(VersionNumber).7z" &gt; "$(TargetDir)..\zip\github\zip-checksum.txt"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

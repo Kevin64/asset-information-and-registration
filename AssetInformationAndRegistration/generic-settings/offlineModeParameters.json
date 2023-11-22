@@ -19,6 +19,7 @@
         "SealNumberDigitLimit": 10,
         "RoomNumberDigitLimit": 4,
         "TicketNumberDigitLimit": 6,
+        "DeliveryRegistrationNumberDigitLimit": 8,
         "ServiceTypes": [
             0,
             1
