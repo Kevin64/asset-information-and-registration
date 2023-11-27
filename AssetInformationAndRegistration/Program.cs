@@ -150,7 +150,7 @@ namespace AssetInformationAndRegistration
 
                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_AUTH_USER, opts.Username, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 
-                System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.APCS_V1_API_AGENT_URL + opts.Username);
+                System.Threading.Tasks.Task<Agent> v = AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + opts.ServerIP + ":" + opts.ServerPort + GenericResources.APCS_V1_API_AGENT_USERNAME_URL + opts.Username);
                 v.Wait();
                 agent = v.Result;
 

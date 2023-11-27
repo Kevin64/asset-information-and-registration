@@ -62,7 +62,7 @@ namespace AssetInformationAndRegistrationTests
 
                 sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_PARAMETERS_URL);
 
-                vBefore = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL + assetNumber);
+                vBefore = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL + assetNumber);
 
                 existingAssetObj = new Arguments
                 {
@@ -99,7 +99,7 @@ namespace AssetInformationAndRegistrationTests
 
                 Program.Bootstrap(argsArray);
 
-                vAfter = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL + assetNumber);
+                vAfter = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL + assetNumber);
             }
             catch (HttpRequestException)
             {
@@ -178,9 +178,9 @@ namespace AssetInformationAndRegistrationTests
             Agent agent;
             ServerParam sp;
             client = MiscMethods.SetHttpClient(serverIP, serverPort, GenericResources.HTTP_CONTENT_TYPE_JSON, username, password);
-            asset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL + assetNumber);
+            asset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL + assetNumber);
             model = await ModelHandler.GetModelAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_MODEL_URL + mod);
-            agent = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_URL + username);
+            agent = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_USERNAME_URL + username);
             sp = await ParameterHandler.GetParameterAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_PARAMETERS_URL);
             Assert.NotNull(asset);
             Assert.NotNull(model);
@@ -377,7 +377,7 @@ namespace AssetInformationAndRegistrationTests
                     }
                 }
             };
-            HttpStatusCode hsc = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL, asset);
+            HttpStatusCode hsc = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL, asset);
             try
             {
                 Assert.Equal(201, Convert.ToInt32(hsc));

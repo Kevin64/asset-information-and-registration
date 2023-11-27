@@ -180,7 +180,7 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVER_DATA, comboBoxServerIP.Text + ":" + comboBoxServerPort.Text, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                     //Feches login data from server
-                    agent = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + GenericResources.APCS_V1_API_AGENT_URL + textBoxUsername.Text);
+                    agent = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + comboBoxServerIP.Text + ":" + comboBoxServerPort.Text + GenericResources.APCS_V1_API_AGENT_USERNAME_URL + textBoxUsername.Text);
 
                     //If Agent does exist and is retrieved
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_LOGIN_SUCCESS, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));

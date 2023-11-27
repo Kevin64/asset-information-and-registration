@@ -1030,6 +1030,8 @@ namespace AssetInformationAndRegistration.Misc
         internal static string HardwareSha256Hash(Asset a)
         {
             Asset assetTemp = a.ShallowCopy();
+            hardware hardwareTemp = a.hardware.ShallowCopy();
+            assetTemp.hardware = hardwareTemp;
             assetTemp.assetNumber = null;
             assetTemp.discarded = null;
             assetTemp.inUse = null;
@@ -1038,7 +1040,7 @@ namespace AssetInformationAndRegistration.Misc
             assetTemp.standard = null;
             assetTemp.tag = null;
             assetTemp.adRegistered = null;
-            assetTemp.hardware.type = null;
+            hardwareTemp.type = null;
             assetTemp.hwHash = null;
             assetTemp.assetHash = null;
             assetTemp.location = null;

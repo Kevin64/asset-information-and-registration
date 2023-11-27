@@ -912,7 +912,7 @@ namespace AssetInformationAndRegistration.Forms
 
                         //Fetches existing asset data from server using a hrdware unique ID (hash calculated from Brand, Model, Serial Number and MAC Address)
                         newAsset.assetHash = Misc.MiscMethods.HardwareSha256UniqueId(newAsset);
-                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_HWUID_URL + newAsset.assetHash);
+                        existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_HASH_URL + newAsset.assetHash);
 
                         //If hardware signature changed, alerts the agent
                         newAsset.hwHash = Misc.MiscMethods.HardwareSha256Hash(newAsset);
@@ -937,7 +937,7 @@ namespace AssetInformationAndRegistration.Forms
                         for (int i = 0; i < existingAsset.maintenances.Count; i++)
                         {
                             //Feches agent names from server
-                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_ID_URL + existingAsset.maintenances[i].agentId);
                             if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                             {
                                 _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
@@ -1231,7 +1231,7 @@ namespace AssetInformationAndRegistration.Forms
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                     //Send info to server
-                                    finalHttpCode = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL, newAsset);
+                                    finalHttpCode = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL, newAsset);
 
                                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
@@ -1266,7 +1266,7 @@ namespace AssetInformationAndRegistration.Forms
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_APCS_REGISTERING, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
                                 //Send info to server
-                                finalHttpCode = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL, newAsset);
+                                finalHttpCode = await AssetHandler.SetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL, newAsset);
 
                                 log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_REGISTRY_FINISHED, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
@@ -1352,7 +1352,7 @@ namespace AssetInformationAndRegistration.Forms
                     {
                         try
                         {
-                            existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_URL + textBoxAssetNumber.Text);
+                            existingAsset = await AssetHandler.GetAssetAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_ASSET_NUMBER_URL + textBoxAssetNumber.Text);
 
                             //radioButtonUpdateData.Enabled = true;
                             loadingCircleLastService.Visible = false;
@@ -1364,7 +1364,7 @@ namespace AssetInformationAndRegistration.Forms
                             for (int i = 0; i < existingAsset.maintenances.Count; i++)
                             {
                                 //Feches agent names from server
-                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENTS_URL + existingAsset.maintenances[i].agentId);
+                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_ID_URL + existingAsset.maintenances[i].agentId);
                                 if (agentMaintenances.id == existingAsset.maintenances[i].agentId)
                                 {
                                     _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].serviceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].serviceType)], agentMaintenances.name + " " + agentMaintenances.surname);
