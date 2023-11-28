@@ -1006,10 +1006,10 @@ namespace AssetInformationAndRegistration.Misc
                 hardware = hwTemp,
                 network = nwTemp,
             };
-            assetTemp.hardware.brand = a.hardware.brand;
-            assetTemp.hardware.model = a.hardware.model;
-            assetTemp.hardware.serialNumber = a.hardware.serialNumber;
-            assetTemp.network.macAddress = a.network.macAddress;
+            assetTemp.hardware.hwBrand = a.hardware.hwBrand;
+            assetTemp.hardware.hwModel = a.hardware.hwModel;
+            assetTemp.hardware.hwSerialNumber = a.hardware.hwSerialNumber;
+            assetTemp.network.netMacAddress = a.network.netMacAddress;
 
             using (SHA256 hash = SHA256.Create())
             {
@@ -1040,7 +1040,7 @@ namespace AssetInformationAndRegistration.Misc
             assetTemp.standard = null;
             assetTemp.tag = null;
             assetTemp.adRegistered = null;
-            hardwareTemp.type = null;
+            hardwareTemp.hwType = null;
             assetTemp.hwHash = null;
             assetTemp.assetHash = null;
             assetTemp.location = null;

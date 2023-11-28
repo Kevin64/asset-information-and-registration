@@ -67,17 +67,17 @@ namespace AssetInformationAndRegistrationTests
                 existingAssetObj = new Arguments
                 {
                     AssetNumber = vBefore.assetNumber,
-                    Building = vBefore.location.building,
-                    RoomNumber = vBefore.location.roomNumber,
-                    ServiceDate = vBefore.maintenances[0].serviceDate,
-                    ServiceType = vBefore.maintenances[0].serviceType,
-                    BatteryChange = vBefore.maintenances[0].batteryChange,
-                    TicketNumber = vBefore.maintenances[0].ticketNumber,
+                    Building = vBefore.location.locBuilding,
+                    RoomNumber = vBefore.location.locRoomNumber,
+                    ServiceDate = vBefore.maintenances[0].mainServiceDate,
+                    ServiceType = vBefore.maintenances[0].mainServiceType,
+                    BatteryChange = vBefore.maintenances[0].mainBatteryChange,
+                    TicketNumber = vBefore.maintenances[0].mainTicketNumber,
                     Standard = vBefore.standard,
                     InUse = vBefore.inUse,
                     SealNumber = vBefore.sealNumber,
                     Tag = vBefore.tag,
-                    HardwareType = vBefore.hardware.type
+                    HardwareType = vBefore.hardware.hwType
                 };
                 string[] argsArray = { "--serverIP=" + serverIP, "--serverPort=" + serverPort, "--assetNumber=" + assetNumber, "--building=" + building, "--roomNumber=" + roomNumber, "--serviceDate=" + serviceDate, "--serviceType=" + serviceType, "--batteryChanged=" + batteryChange, "--ticketNumber=" + ticketNumber, "--standard=" + standard, "--inUse=" + inUse, "--sealNumber=" + sealNumber, "--tag=" + tag, "--hwType=" + hwType, "--username=" + username, "--password=" + password };
 
@@ -107,17 +107,17 @@ namespace AssetInformationAndRegistrationTests
             }
 
             if (!argsObj.Building.Contains("same"))
-                Assert.Equal(argsObj.Building, sp.Parameters.Buildings[Convert.ToInt32(vAfter.location.building)]);
+                Assert.Equal(argsObj.Building, sp.Parameters.Buildings[Convert.ToInt32(vAfter.location.locBuilding)]);
             else
-                Assert.Equal(sp.Parameters.Buildings[Convert.ToInt32(existingAssetObj.Building)], sp.Parameters.Buildings[Convert.ToInt32(vAfter.location.building)]);
+                Assert.Equal(sp.Parameters.Buildings[Convert.ToInt32(existingAssetObj.Building)], sp.Parameters.Buildings[Convert.ToInt32(vAfter.location.locBuilding)]);
 
             if (!argsObj.RoomNumber.Contains("same"))
-                Assert.Equal(argsObj.RoomNumber, vAfter.location.roomNumber);
+                Assert.Equal(argsObj.RoomNumber, vAfter.location.locRoomNumber);
             else
-                Assert.Equal(existingAssetObj.RoomNumber, vAfter.location.roomNumber);
+                Assert.Equal(existingAssetObj.RoomNumber, vAfter.location.locRoomNumber);
 
             if (!argsObj.ServiceDate.Contains("today"))
-                Assert.Equal(argsObj.ServiceDate, vAfter.maintenances[0].serviceDate);
+                Assert.Equal(argsObj.ServiceDate, vAfter.maintenances[0].mainServiceDate);
 
             if (!argsObj.Standard.Contains("same"))
                 Assert.Equal(argsObj.Standard, StringsAndConstants.LIST_STANDARD_CLI[Convert.ToInt32(vAfter.standard)]);
@@ -140,14 +140,14 @@ namespace AssetInformationAndRegistrationTests
                 Assert.Equal(StringsAndConstants.LIST_IN_USE_CLI[Convert.ToInt32(existingAssetObj.Tag)], StringsAndConstants.LIST_IN_USE_CLI[Convert.ToInt32(vAfter.tag)]);
 
             if (!argsObj.HardwareType.Contains("same"))
-                Assert.Equal(argsObj.HardwareType, sp.Parameters.HardwareTypes[Convert.ToInt32(vAfter.hardware.type)]);
+                Assert.Equal(argsObj.HardwareType, sp.Parameters.HardwareTypes[Convert.ToInt32(vAfter.hardware.hwType)]);
             else
-                Assert.Equal(sp.Parameters.HardwareTypes[Convert.ToInt32(existingAssetObj.HardwareType)], sp.Parameters.HardwareTypes[Convert.ToInt32(vAfter.hardware.type)]);
+                Assert.Equal(sp.Parameters.HardwareTypes[Convert.ToInt32(existingAssetObj.HardwareType)], sp.Parameters.HardwareTypes[Convert.ToInt32(vAfter.hardware.hwType)]);
 
-            Assert.Equal(argsObj.ServiceType, StringsAndConstants.LIST_SERVICE_TYPE_CLI[Convert.ToInt32(vAfter.maintenances[0].serviceType)]);
+            Assert.Equal(argsObj.ServiceType, StringsAndConstants.LIST_SERVICE_TYPE_CLI[Convert.ToInt32(vAfter.maintenances[0].mainServiceType)]);
             Assert.Equal(argsObj.AssetNumber, vAfter.assetNumber);
-            Assert.Equal(argsObj.BatteryChange, StringsAndConstants.LIST_BATTERY_CLI[Convert.ToInt32(vAfter.maintenances[0].batteryChange)]);
-            Assert.Equal(argsObj.TicketNumber, vAfter.maintenances[0].ticketNumber);
+            Assert.Equal(argsObj.BatteryChange, StringsAndConstants.LIST_BATTERY_CLI[Convert.ToInt32(vAfter.maintenances[0].mainBatteryChange)]);
+            Assert.Equal(argsObj.TicketNumber, vAfter.maintenances[0].mainTicketNumber);
 
         }
 
@@ -223,157 +223,157 @@ namespace AssetInformationAndRegistrationTests
                 tag = "1",
                 firmware = new firmware()
                 {
-                    mediaOperationMode = "1",
-                    secureBoot = "2",
-                    tpmVersion = "1",
-                    type = "1",
-                    version = "1.1test",
-                    virtualizationTechnology = "1"
+                    fwMediaOperationMode = "1",
+                    fwSecureBoot = "2",
+                    fwTpmVersion = "1",
+                    fwType = "1",
+                    fwVersion = "1.1test",
+                    fwVirtualizationTechnology = "1"
                 },
                 hardware = new hardware()
                 {
-                    brand = "TestBrand",
-                    model = "TestModel",
-                    type = "3",
-                    serialNumber = "888888",
+                    hwBrand = "TestBrand",
+                    hwModel = "TestModel",
+                    hwType = "3",
+                    hwSerialNumber = "888888",
                     processor = new List<processor>()
                     {
                         new processor()
                         {
-                            processorId = "0",
-                            name = "Intel Pentium 4 HT 3.06GHz",
-                            frequency = "3060",
-                            numberOfCores = "1",
-                            numberOfThreads = "2",
-                            cache = "1048576"
+                            procId = "0",
+                            procName = "Intel Pentium 4 HT 3.06GHz",
+                            procFrequency = "3060",
+                            procNumberOfCores = "1",
+                            procNumberOfThreads = "2",
+                            procCache = "1048576"
                         },
                         new processor()
                         {
-                            processorId = "1",
-                            name = "Intel Core 2 Duo 2.26GHz",
-                            frequency = "2260",
-                            numberOfCores = "2",
-                            numberOfThreads = "2",
-                            cache = "2097152"
+                            procId = "1",
+                            procName = "Intel Core 2 Duo 2.26GHz",
+                            procFrequency = "2260",
+                            procNumberOfCores = "2",
+                            procNumberOfThreads = "2",
+                            procCache = "2097152"
                         }
                     },
                     ram = new List<ram>()
                     {
                         new ram()
                         {
-                            slot = "0",
-                            type = "24",
-                            frequency = "800",
-                            amount = "1073741824",
-                            manufacturer = "Samsung",
-                            serialNumber = "123987",
-                            partNumber = "ABCXYZ"
+                            ramSlot = "0",
+                            ramType = "24",
+                            ramFrequency = "800",
+                            ramAmount = "1073741824",
+                            ramManufacturer = "Samsung",
+                            ramSerialNumber = "123987",
+                            ramPartNumber = "ABCXYZ"
                         },
                         new ram()
                         {
-                            slot = "1",
-                            type = "22",
-                            frequency = "667",
-                            amount = "2147483648",
-                            manufacturer = "Hynix",
-                            serialNumber = "789321",
-                            partNumber = "CBAZYX"
+                            ramSlot = "1",
+                            ramType = "22",
+                            ramFrequency = "667",
+                            ramAmount = "2147483648",
+                            ramManufacturer = "Hynix",
+                            ramSerialNumber = "789321",
+                            ramPartNumber = "CBAZYX"
                         },
                         new ram()
                         {
-                            slot = "-2",
-                            type = "-2",
-                            frequency = "-2",
-                            amount = "-2",
-                            manufacturer = "-2",
-                            serialNumber = "-2",
-                            partNumber = "-2"
+                            ramSlot = "-2",
+                            ramType = "-2",
+                            ramFrequency = "-2",
+                            ramAmount = "-2",
+                            ramManufacturer = "-2",
+                            ramSerialNumber = "-2",
+                            ramPartNumber = "-2"
                         },
                         new ram()
                         {
-                            slot = "-2",
-                            type = "-2",
-                            frequency = "-2",
-                            amount = "-2",
-                            manufacturer = "-2",
-                            serialNumber = "-2",
-                            partNumber = "-2"
+                            ramSlot = "-2",
+                            ramType = "-2",
+                            ramFrequency = "-2",
+                            ramAmount = "-2",
+                            ramManufacturer = "-2",
+                            ramSerialNumber = "-2",
+                            ramPartNumber = "-2"
                         }
                     },
                     storage = new List<storage>()
                     {
                         new storage()
                         {
-                            storageId = "0",
-                            type = "0",
-                            connection = "1",
-                            model = "Intel 520 HDD",
-                            size = "250000000000",
-                            serialNumber = "IntelSN123",
-                            smartStatus = "0"
+                            storId = "0",
+                            storType = "0",
+                            storConnection = "1",
+                            storModel = "Intel 520 HDD",
+                            storSize = "250000000000",
+                            storSerialNumber = "IntelSN123",
+                            storSmartStatus = "0"
                         },
                         new storage()
                         {
-                            storageId = "1",
-                            type = "1",
-                            connection = "2",
-                            model = "Samsung 990 Pro NVMe SSD",
-                            size = "1000000000000",
-                            serialNumber = "SamsungSN987",
-                            smartStatus = "1"
+                            storId = "1",
+                            storType = "1",
+                            storConnection = "2",
+                            storModel = "Samsung 990 Pro NVMe SSD",
+                            storSize = "1000000000000",
+                            storSerialNumber = "SamsungSN987",
+                            storSmartStatus = "1"
                         }
                     },
                     videoCard = new List<videoCard>()
                     {
                         new videoCard()
                         {
-                            videoCardId = "0",
-                            name = "NVIDIA Geforce RTX 4090 Ti",
-                            vRam = "34359738368"
+                            vcId = "0",
+                            vcName = "NVIDIA Geforce RTX 4090 Ti",
+                            vcRam = "34359738368"
                         },
                         new videoCard()
                         {
-                            videoCardId = "1",
-                            name = "NVIDIA Geforce 5200",
-                            vRam = "268435456"
+                            vcId = "1",
+                            vcName = "NVIDIA Geforce 5200",
+                            vcRam = "268435456"
                         }
                     },
                 },
                 location = new location()
                 {
-                    building = "0",
-                    roomNumber = "8888"
+                    locBuilding = "0",
+                    locRoomNumber = "8888"
                 },
                 network = new network()
                 {
-                    hostname = "PC-002600",
-                    ipAddress = "169.254.140.20",
-                    macAddress = "AA:BB:CC:DD:EE:FF"
+                    netHostname = "PC-002600",
+                    netIpAddress = "169.254.140.20",
+                    netMacAddress = "AA:BB:CC:DD:EE:FF"
                 },
                 operatingSystem = new operatingSystem()
                 {
-                    arch = "0",
-                    build = "5.1.2600",
-                    name = "Windows XP Professional",
-                    version = "Service Pack 3"
+                    osArch = "0",
+                    osBuild = "5.1.2600",
+                    osName = "Windows XP Professional",
+                    osVersion = "Service Pack 3"
                 },
                 maintenances = new List<maintenances>()
                 {
                     new maintenances()
                     {
-                        agentId = "3",
-                        batteryChange = "0",
-                        ticketNumber = "888888",
-                        serviceType = "0",
-                        serviceDate = "2015-07-29"
+                        mainAgentId = "3",
+                        mainBatteryChange = "0",
+                        mainTicketNumber = "888888",
+                        mainServiceType = "0",
+                        mainServiceDate = "2015-07-29"
                     },
                     new maintenances()
                     {
-                        agentId = "62",
-                        batteryChange = "1",
-                        ticketNumber = "888889",
-                        serviceType = "1",
-                        serviceDate = "2023-11-21"
+                        mainAgentId = "62",
+                        mainBatteryChange = "1",
+                        mainTicketNumber = "888889",
+                        mainServiceType = "1",
+                        mainServiceDate = "2023-11-21"
                     }
                 }
             };

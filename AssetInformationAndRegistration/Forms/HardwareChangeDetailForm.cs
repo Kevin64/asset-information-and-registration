@@ -71,7 +71,7 @@ namespace AssetInformationAndRegistration.Forms
             treeViewExistingHardware.Nodes.Clear();
             treeViewNewHardware.Nodes.Clear();
 
-            _ = treeViewExistingHardware.Nodes.Add(existingAsset.maintenances[0].serviceDate);
+            _ = treeViewExistingHardware.Nodes.Add(existingAsset.maintenances[0].mainServiceDate);
             _ = treeViewNewHardware.Nodes.Add(DateTime.Today.ToString(GenericResources.DATE_FORMAT));
 
             PopulateTreeView(treeViewExistingHardware.Nodes[0], existingAsset.hardware);
