@@ -74,7 +74,7 @@ namespace AssetInformationAndRegistration.Misc
             }
             catch
             {
-            
+
             }
         }
 

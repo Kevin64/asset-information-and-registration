@@ -1,12 +1,10 @@
 ﻿using AssetInformationAndRegistration.Interfaces;
 using ConstantsDLL.Properties;
-using JsonDiffPatchDotNet;
+//using JsonDiffPatchDotNet;
 using LogGeneratorDLL;
-using Newtonsoft.Json;
 using RestApiDLL;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -60,11 +58,11 @@ namespace AssetInformationAndRegistration.Forms
             }
         }
 
-        public string CheckDifferences(string treeExisting, string treeNew)
-        {
-            JsonDiffPatch jdp = new JsonDiffPatch();
-            return jdp.Diff(treeExisting, treeNew);
-        }
+        //public string CheckDifferences(string treeExisting, string treeNew)
+        //{
+        //    JsonDiffPatch jdp = new JsonDiffPatch();
+        //    return jdp.Diff(treeExisting, treeNew);
+        //}
 
         public void FillData(Asset existingAsset, Asset newAsset)
         {
@@ -83,20 +81,20 @@ namespace AssetInformationAndRegistration.Forms
             textBoxExistingHardwareHashId.Text = existingAsset.hwHash;
             textBoxNewHardwareHashId.Text = newAsset.hwHash;
 
-            string oldCpu = JsonConvert.SerializeObject(existingAsset.hardware.processor);
-            string newCpu = JsonConvert.SerializeObject(newAsset.hardware.processor);
-            string oldRam = JsonConvert.SerializeObject(existingAsset.hardware.ram);
-            string newRam = JsonConvert.SerializeObject(newAsset.hardware.ram);
-            string oldStorage = JsonConvert.SerializeObject(existingAsset.hardware.storage);
-            string newStorage = JsonConvert.SerializeObject(newAsset.hardware.storage);
-            string oldGpu = JsonConvert.SerializeObject(existingAsset.hardware.videoCard);
-            string newGpu = JsonConvert.SerializeObject(newAsset.hardware.videoCard);
+            //string oldCpu = JsonConvert.SerializeObject(existingAsset.hardware.processor);
+            //string newCpu = JsonConvert.SerializeObject(newAsset.hardware.processor);
+            //string oldRam = JsonConvert.SerializeObject(existingAsset.hardware.ram);
+            //string newRam = JsonConvert.SerializeObject(newAsset.hardware.ram);
+            //string oldStorage = JsonConvert.SerializeObject(existingAsset.hardware.storage);
+            //string newStorage = JsonConvert.SerializeObject(newAsset.hardware.storage);
+            //string oldGpu = JsonConvert.SerializeObject(existingAsset.hardware.videoCard);
+            //string newGpu = JsonConvert.SerializeObject(newAsset.hardware.videoCard);
 
-            string diffCpu = CheckDifferences(oldCpu, newCpu);
-            string diffRam = CheckDifferences(oldRam, newRam);
-            string diffStorage = CheckDifferences(oldStorage, newStorage);
-            string diffGpu = CheckDifferences(oldGpu, newGpu);
-            _ = new List<string>() { diffCpu, diffRam, diffStorage, diffGpu };
+            //string diffCpu = CheckDifferences(oldCpu, newCpu);
+            //string diffRam = CheckDifferences(oldRam, newRam);
+            //string diffStorage = CheckDifferences(oldStorage, newStorage);
+            //string diffGpu = CheckDifferences(oldGpu, newGpu);
+            //_ = new List<string>() { diffCpu, diffRam, diffStorage, diffGpu };
 
         }
 

@@ -2,7 +2,6 @@ using AssetInformationAndRegistration;
 using AssetInformationAndRegistration.Updater;
 using ConstantsDLL;
 using ConstantsDLL.Properties;
-using HardwareInfoDLL;
 using LogGeneratorDLL;
 using Newtonsoft.Json;
 using Octokit;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using Xunit;
 using static AssetInformationAndRegistration.Program;
 
