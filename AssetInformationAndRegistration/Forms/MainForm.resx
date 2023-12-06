@@ -2062,7 +2062,7 @@
     <value>loadingCircleCompliant</value>
   </data>
   <data name="&gt;&gt;loadingCircleCompliant.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleCompliant.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2122,7 +2122,7 @@
     <value>loadingCircleScanTpmVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanTpmVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2146,7 +2146,7 @@
     <value>loadingCircleScanVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2170,7 +2170,7 @@
     <value>loadingCircleScanSecureBoot</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSecureBoot.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2194,7 +2194,7 @@
     <value>loadingCircleScanFwVersion</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwVersion.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2218,7 +2218,7 @@
     <value>loadingCircleScanFwType</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2242,7 +2242,7 @@
     <value>loadingCircleScanIpAddress</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanIpAddress.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2266,7 +2266,7 @@
     <value>loadingCircleScanHostname</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanHostname.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2290,7 +2290,7 @@
     <value>loadingCircleScanOperatingSystem</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2314,7 +2314,7 @@
     <value>loadingCircleScanVideoCard</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVideoCard.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2338,7 +2338,7 @@
     <value>loadingCircleScanMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2362,7 +2362,7 @@
     <value>loadingCircleScanStorageType</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanStorageType.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2386,7 +2386,7 @@
     <value>loadingCircleScanRam</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanRam.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2410,7 +2410,7 @@
     <value>loadingCircleScanProcessor</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanProcessor.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2434,7 +2434,7 @@
     <value>loadingCircleScanSerialNumber</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSerialNumber.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2458,7 +2458,7 @@
     <value>loadingCircleScanModel</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanModel.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2482,7 +2482,7 @@
     <value>loadingCircleScanBrand</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanBrand.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleScanBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2512,7 +2512,7 @@
     <value>iconImgTpmVersion</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTpmVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2575,7 +2575,7 @@
     <value>iconImgVirtualizationTechnology</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVirtualizationTechnology.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2704,7 +2704,7 @@
     <value>iconImgBrand</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBrand.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2734,7 +2734,7 @@
     <value>iconImgSecureBoot</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSecureBoot.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2764,7 +2764,7 @@
     <value>iconImgFwVersion</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwVersion.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2794,7 +2794,7 @@
     <value>iconImgFwType</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgFwType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2824,7 +2824,7 @@
     <value>iconImgIpAddress</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgIpAddress.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2854,7 +2854,7 @@
     <value>iconImgHostname</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHostname.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2884,7 +2884,7 @@
     <value>iconImgOperatingSystem</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgOperatingSystem.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2914,7 +2914,7 @@
     <value>iconImgVideoCard</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgVideoCard.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2944,7 +2944,7 @@
     <value>iconImgMediaOperationMode</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgMediaOperationMode.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -2974,7 +2974,7 @@
     <value>iconImgStorageType</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStorageType.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3004,7 +3004,7 @@
     <value>iconImgRam</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRam.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3034,7 +3034,7 @@
     <value>iconImgProcessor</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgProcessor.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3064,7 +3064,7 @@
     <value>iconImgSerialNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSerialNumber.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3094,7 +3094,7 @@
     <value>iconImgModel</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgModel.Parent" xml:space="preserve">
     <value>groupBoxHwData</value>
@@ -3676,7 +3676,7 @@
     <value>iconImgTicketNumber</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTicketNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -3766,7 +3766,7 @@
     <value>iconImgBatteryChange</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBatteryChange.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4093,7 +4093,7 @@
     <value>iconImgRoomLetter</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomLetter.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4123,7 +4123,7 @@
     <value>iconImgHwType</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgHwType.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4153,7 +4153,7 @@
     <value>iconImgTag</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgTag.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4183,7 +4183,7 @@
     <value>iconImgInUse</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgInUse.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4213,7 +4213,7 @@
     <value>iconImgServiceDate</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgServiceDate.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4243,7 +4243,7 @@
     <value>iconImgStandard</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgStandard.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4273,7 +4273,7 @@
     <value>iconImgAdRegistered</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAdRegistered.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4303,7 +4303,7 @@
     <value>iconImgBuilding</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgBuilding.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4333,7 +4333,7 @@
     <value>iconImgRoomNumber</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgRoomNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4363,7 +4363,7 @@
     <value>iconImgSealNumber</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgSealNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4393,7 +4393,7 @@
     <value>iconImgAssetNumber</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;iconImgAssetNumber.Parent" xml:space="preserve">
     <value>groupBoxAssetData</value>
@@ -4789,7 +4789,7 @@
     <value>loadingCircleLastService</value>
   </data>
   <data name="&gt;&gt;loadingCircleLastService.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleLastService.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5170,7 +5170,7 @@
     <value>imgTopBanner</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Type" xml:space="preserve">
-    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>ConfigurableQualityPictureBoxDLL.ConfigurableQualityPictureBox, ConfigurableQualityPictureBox, Version=5.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;imgTopBanner.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5197,7 +5197,7 @@
     <value>loadingCircleCollectButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleCollectButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5224,7 +5224,7 @@
     <value>loadingCircleRegisterButton</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleRegisterButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5251,7 +5251,7 @@
     <value>loadingCircleServerOperationalStatus</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleServerOperationalStatus.Parent" xml:space="preserve">
     <value>groupBoxServerStatus</value>
@@ -5317,7 +5317,7 @@
     <value>loadingCircleTableMaintenances</value>
   </data>
   <data name="&gt;&gt;loadingCircleTableMaintenances.Type" xml:space="preserve">
-    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8713.26282, Culture=neutral, PublicKeyToken=null</value>
+    <value>MRG.Controls.UI.LoadingCircle, MRG.Controls.UI, Version=1.0.8720.22509, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;loadingCircleTableMaintenances.Parent" xml:space="preserve">
     <value>groupBoxTableMaintenances</value>

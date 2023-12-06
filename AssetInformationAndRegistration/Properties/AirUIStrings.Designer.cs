@@ -318,7 +318,7 @@ namespace AssetInformationAndRegistration.Properties {
         ///    • Copyright © 2023 Kevin Vinícius Teixeira Costa
         ///    • Repository (GitHub): https://github.com/Kevin64/asset-information-and-registration
         ///    • Dependencies repository (GitHub): https://github.com/Kevin64/Dependencies
-        ///    • License: (MIT) https://github.com/Kevin64/asset-information-and-registration/blob/master/LICENSE
+        ///    • License (MIT): https://github.com/Kevin64/asset-information-and-registration/blob/master/LICENSE
         ///
         ///This software must be used in conju [o restante da cadeia de caracteres foi truncado]&quot;;.
         /// </summary>

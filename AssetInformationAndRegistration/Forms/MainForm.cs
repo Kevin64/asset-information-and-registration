@@ -675,9 +675,9 @@ namespace AssetInformationAndRegistration.Forms
                         ramAmount = ramDetail[i][1],
                         ramType = ramDetail[i][2],
                         ramFrequency = ramDetail[i][3],
-                        ramSerialNumber = ramDetail[i][4],
-                        ramPartNumber = ramDetail[i][5],
-                        ramManufacturer = ramDetail[i][6]
+                        ramManufacturer = ramDetail[i][4],
+                        ramSerialNumber = ramDetail[i][5],
+                        ramPartNumber = ramDetail[i][6]
                     };
                     newHardware.ram.Add(r);
                     try
@@ -934,19 +934,9 @@ namespace AssetInformationAndRegistration.Forms
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), lblColorLastService.Text, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
                         log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_SERVICES_MADE, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
-                        for (int i = 0; i < existingAsset.maintenances.Count; i++)
-                        {
-                            //Feches agent names from server
-                            agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_ID_URL + existingAsset.maintenances[i].mainAgentId);
-                            if (agentMaintenances.id == existingAsset.maintenances[i].mainAgentId)
-                            {
-                                _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].mainServiceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].mainServiceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+                        TableMaintenancesFiller();
 
-                                log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), "[" + i + "]", DateTime.ParseExact(existingAsset.maintenances[i].mainServiceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY) + " - " + StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].mainServiceType)] + " - " + agentMaintenances.name + " " + agentMaintenances.surname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
-                            }
-                        }
                         tableMaintenances.Visible = true;
-                        tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                     }
                     //If asset does not exist on the database
                     catch (UnregisteredAssetException ex)
@@ -1361,17 +1351,10 @@ namespace AssetInformationAndRegistration.Forms
                             lblColorLastService.ForeColor = StringsAndConstants.BLUE_FOREGROUND;
 
                             tableMaintenances.Rows.Clear();
-                            for (int i = 0; i < existingAsset.maintenances.Count; i++)
-                            {
-                                //Feches agent names from server
-                                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_ID_URL + existingAsset.maintenances[i].mainAgentId);
-                                if (agentMaintenances.id == existingAsset.maintenances[i].mainAgentId)
-                                {
-                                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].mainServiceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].mainServiceType)], agentMaintenances.name + " " + agentMaintenances.surname);
-                                }
-                            }
+
+                            TableMaintenancesFiller();
+
                             tableMaintenances.Visible = true;
-                            tableMaintenances.Sort(tableMaintenances.Columns["serviceDate"], ListSortDirection.Descending);
                         }
                         //If asset does not exist on the database
                         catch (UnregisteredAssetException ex)
@@ -1460,6 +1443,21 @@ namespace AssetInformationAndRegistration.Forms
         private int ProgressAuxFunction(int k)
         {
             return k * 100 / progressBar1.Maximum;
+        }
+
+        private async void TableMaintenancesFiller()
+        {
+            for (int i = 0; i < existingAsset.maintenances.Count; i++)
+            {
+                //Feches agent names from server
+                agentMaintenances = await AuthenticationHandler.GetAgentAsync(client, GenericResources.HTTP + serverIP + ":" + serverPort + GenericResources.APCS_V1_API_AGENT_ID_URL + existingAsset.maintenances[i].mainAgentId);
+                if (agentMaintenances.id == existingAsset.maintenances[i].mainAgentId)
+                {
+                    _ = tableMaintenances.Rows.Add(DateTime.ParseExact(existingAsset.maintenances[i].mainServiceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY), StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].mainServiceType)], agentMaintenances.name + " " + agentMaintenances.surname);
+
+                    log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), "[" + i + "]", DateTime.ParseExact(existingAsset.maintenances[i].mainServiceDate, GenericResources.DATE_FORMAT, CultureInfo.InvariantCulture).ToString(GenericResources.DATE_DISPLAY) + " - " + StringsAndConstants.LIST_SERVICE_TYPE_GUI[Convert.ToInt32(existingAsset.maintenances[i].mainServiceType)] + " - " + agentMaintenances.name + " " + agentMaintenances.surname, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
+                }
+            }
         }
 
         /// <summary> 

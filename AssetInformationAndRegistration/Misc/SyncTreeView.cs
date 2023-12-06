@@ -7,8 +7,6 @@ namespace AssetInformationAndRegistration
 {
     public partial class SyncTreeView : TreeView
     {
-
-
         private readonly List<SyncTreeView> linkedTreeViews = new List<SyncTreeView>();
 
         /// <summary>

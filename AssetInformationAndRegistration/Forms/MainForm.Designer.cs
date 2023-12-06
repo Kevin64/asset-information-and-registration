@@ -15,6 +15,7 @@ namespace AssetInformationAndRegistration.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblBrand = new System.Windows.Forms.Label();
             this.lblModel = new System.Windows.Forms.Label();
             this.lblSerialNumber = new System.Windows.Forms.Label();
@@ -1306,6 +1307,7 @@ namespace AssetInformationAndRegistration.Forms
             resources.ApplyResources(this.comboBoxBuilding, "comboBoxBuilding");
             this.comboBoxBuilding.FormattingEnabled = true;
             this.comboBoxBuilding.Name = "comboBoxBuilding";
+            this.comboBoxBuilding.Sorted = true;
             // 
             // lblFixedMandatoryTicketNumber
             // 
@@ -1882,6 +1884,9 @@ namespace AssetInformationAndRegistration.Forms
             // serviceDate
             // 
             this.serviceDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.serviceDate.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.serviceDate, "serviceDate");
             this.serviceDate.Name = "serviceDate";
             this.serviceDate.ReadOnly = true;
@@ -2152,8 +2157,6 @@ namespace AssetInformationAndRegistration.Forms
         private Timer timerRamLabelScroll;
         private Timer timerProcessorLabelScroll;
         private Timer timerOSLabelScroll;
-        private DataGridViewTextBoxColumn serviceDate;
-        private DataGridViewTextBoxColumn serviceType;
         private Button processorDetailsButton;
         private Button ramDetailsButton;
         private ConfigurableQualityPictureBox iconImgMediaOperationMode;
@@ -2173,9 +2176,11 @@ namespace AssetInformationAndRegistration.Forms
         private Label hSeparator1;
         private Label lblFixedProgressBarPercent;
         private Label vSeparator5;
-        private DataGridViewTextBoxColumn agentUsername;
         private Label lblNoticeHardwareChanged;
         private ToolTip hwUidToolTip;
         private Button hardwareChangeButton;
+        private DataGridViewTextBoxColumn serviceDate;
+        private DataGridViewTextBoxColumn serviceType;
+        private DataGridViewTextBoxColumn agentUsername;
     }
 }

@@ -208,14 +208,14 @@
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
     • Repository (GitHub): https://github.com/Kevin64/asset-information-and-registration
     • Dependencies repository (GitHub): https://github.com/Kevin64/Dependencies
-    • License: (MIT) https://github.com/Kevin64/asset-information-and-registration/blob/master/LICENSE
+    • License (MIT): https://github.com/Kevin64/asset-information-and-registration/blob/master/LICENSE
 
 This software must be used in conjunction with APCS project to work properly.
 
 ► Asset and Personnel Control System - APCS
     • Copyright © 2023 Kevin Vinícius Teixeira Costa
     • Repository (GitHub): https://github.com/Kevin64/asset-and-personnel-control-system
-    • License: (MIT) https://github.com/Kevin64/asset-and-personnel-control-system/blob/main/LICENSE
+    • License (MIT): https://github.com/Kevin64/asset-and-personnel-control-system/blob/main/LICENSE
 
 This software and its libraries (DLLs) use arts, Open Source libraries and loose codes from third parties. All credits go to their respective creators and maintainers. These components are listed below and in the README on the repository's GitHub page.
 
@@ -225,65 +225,81 @@ This software and its libraries (DLLs) use arts, Open Source libraries and loose
 ► Custom Flat ComboBox (credits to Reza Aghaei)
     • URL: https://stackoverflow.com/a/65976649/16838132
 
+► Tree View Sync (credits to Doctor Jones)
+    • URL: https://stackoverflow.com/a/6456738
+
 ► CommandLineParser
     • Copyright © 2005 - 2015 Giacomo Stelluti Scala &amp; Contributors
     • Repository (GitHub): https://github.com/commandlineparser/commandline
-    • License: (MIT) https://github.com/commandlineparser/commandline/blob/master/License.md
+    • License (MIT): https://github.com/commandlineparser/commandline/blob/master/License.md
 
-► ini parser
-    • Copyright © 2008 Ricardo Amores Hernández
-    • Repository (GitHub): https://github.com/rickyah/ini-parser
-    • License: (MIT) https://github.com/rickyah/ini-parser/blob/master/LICENSE
+► coverlet.collector
+    • Copyright (c) 2018 Toni Solarin-Sodara
+    • Repository (GitHub): https://github.com/coverlet-coverage/coverlet
+    • License (MIT): https://github.com/coverlet-coverage/coverlet/blob/master/LICENSE
 
-► Microsoft.Web.WebView2
+► DarkNet (credits to Ben Hutchison)
+    • Repository (GitHub): https://github.com/Aldaviva/DarkNet
+    • License (Apache-2.0): https://github.com/Aldaviva/DarkNet/blob/master/License.txt
+
+► fluentui-system-icons
+    • Copyright © 2020 Microsoft Corporation.
+    • Repository (GitHub): https://github.com/microsoft/fluentui-system-icons
+    • License (MIT): https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE
+
+► LoadingCircle (credits to Martin Gagne)
+    • URL: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
+    • License (CPOL): https://www.codeproject.com/info/cpol10.aspx
+
+► Microsoft.AspNet.WebApi.Client
     • Copyright © Microsoft Corporation. All rights reserved.
-    • URL: https://learn.microsoft.com/pt-br/microsoft-edge/webview2/
-    • License: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.1722.45/License
+    • URL: https://dotnet.microsoft.com/pt-br/apps/aspnet/apis
+    • License: https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/6.0.0/license
 
-► System.Buffers, System.Memory, System.Numerics.Vectors, System.Runtime.CompilerServices.Unsafe
-    • Copyright (c) .NET Foundation and Contributors
+► Microsoft.NET.Test.Sdk
+    • Copyright © Microsoft Corporation. All rights reserved.
+    • Repository (GitHub): https://github.com/microsoft/vstest
+    • License (MIT): https://github.com/microsoft/vstest/blob/main/LICENSE
+
+► Newtonsoft.Json
+    • Copyright © 2007 James Newton-King
+    • Repository (GitHub): https://github.com/JamesNK/Newtonsoft.Json
+    • License (MIT): https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
+
+► Newtonsoft.Json.Bson
+    • Copyright © 2017 James Newton-King
+    • Repository (GitHub): https://github.com/JamesNK/Newtonsoft.Json.Bson
+    • License (MIT): https://github.com/JamesNK/Newtonsoft.Json.Bson/blob/master/LICENSE.md
+
+► Octokit
+    • Copyright (c) 2017 GitHub, Inc.
+    • Repository (GitHub): https://github.com/octokit/octokit.net
+    • License (MIT): https://github.com/octokit/octokit.net/blob/main/LICENSE.txt
+
+► PowerShellStandard.Library
+    • Copyright © Microsoft Corporation.
+    • Repository (GitHub): https://github.com/PowerShell/PowerShellStandard
+    • License (MIT): https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
+
+► System.Buffers, System.Memory, System.Numerics.Vectors, System.Runtime.CompilerServices.Unsafe, System.Threading.Tasks.Extensions
+    • Copyright © .NET Foundation and Contributors
     • URL: https://dot.net/
-    • License: (MIT) https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
+    • License (MIT): https://github.com/dotnet/corefx/blob/master/LICENSE.TXT
 
 ► WindowsAPICodePack
     • Copyright © Microsoft Corporation. All rights reserved.
     • Repository (GitHub): https://github.com/aybe/Windows-API-Code-Pack-1.1
     • License: https://github.com/aybe/Windows-API-Code-Pack-1.1/blob/master/LICENCE
 
-► PowerShellStandard.Library
-    • Copyright © Microsoft Corporation.
-    • Repository (GitHub): https://github.com/PowerShell/PowerShellStandard
-    • License: (MIT) https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt
+► xunit
+    • Copyright © .NET Foundation
+    • Repository (GitHub): https://github.com/xunit/xunit
+    • License (Apache-2.0): https://licenses.nuget.org/Apache-2.0
 
-► LoadingCircle (credits to Martin Gagne)
-    • URL: https://www.codeproject.com/Articles/14841/How-to-write-a-loading-circle-animation-in-NET
-    • License: (CPOL) https://www.codeproject.com/info/cpol10.aspx
-
-► Newtonsoft.Json
-    • Copyright © 2007 James Newton-King
-    • Repository (GitHub): https://github.com/JamesNK/Newtonsoft.Json
-    • License: (MIT) https://github.com/JamesNK/Newtonsoft.Json/blob/master/LICENSE.md
-
-► BCrypt.Net-Next
-    • Copyright © 2006 Damien Miller djm@mindrot.org (jBCrypt)
-    • Copyright © 2013 Ryan D. Emerle (.Net port)
-    • Copyright © 2016/2021 Chris McKee (.Net-core port / patches)
-    • Repository (GitHub): https://github.com/BcryptNet/bcrypt.net
-    • License: (MIT) https://github.com/BcryptNet/bcrypt.net/blob/main/licence.txt
-
-► DarkNet (credits to Ben Hutchison)
-    • Repository (GitHub): https://github.com/Aldaviva/DarkNet
-    • License: (Apache-2.0) https://github.com/Aldaviva/DarkNet/blob/master/License.txt
-
-► fluentui-system-icons
-    • Copyright © 2020 Microsoft Corporation.
-    • Repository (GitHub): https://github.com/microsoft/fluentui-system-icons
-    • License: (MIT) https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE
-
-► Octokit
-    • Copyright (c) 2017 GitHub, Inc.
-    • Repository (GitHub): https://github.com/octokit/octokit.net
-    • License: (MIT) https://github.com/octokit/octokit.net/blob/main/LICENSE.txt</value>
+► xunit.runner.visualstudio
+    • Copyright © .NET Foundation
+    • Repository (GitHub): https://github.com/xunit/visualstudio.xunit
+    • License (Apache-2.0): https://licenses.nuget.org/Apache-2.0</value>
   </data>
   <data name="EMPLOYEE" xml:space="preserve">
     <value>Employee</value>
