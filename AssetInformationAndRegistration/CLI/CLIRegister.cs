@@ -172,7 +172,7 @@ namespace AssetInformationAndRegistration.Forms
 
             if (serverIP.Length <= 15 && serverIP.Length > 6 && //serverIP
                 serverPort.Length <= 5 && serverPort.All(char.IsDigit) && //serverPort
-                newAsset.assetNumber.Length <= 6 && newAsset.assetNumber.Length >= 0 && newAsset.assetNumber.All(char.IsDigit) && //assetNumber
+                newAsset.assetNumber.Length <= serverParam.Parameters.AssetNumberDigitLimit && newAsset.assetNumber.Length >= 0 && newAsset.assetNumber.All(char.IsDigit) && //assetNumber
                 (serverParam.Parameters.Buildings.Contains(newAsset.location.locBuilding) || newAsset.location.locBuilding.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //building
                 ((newAsset.location.locRoomNumber.Length <= serverParam.Parameters.RoomNumberDigitLimit && newAsset.location.locRoomNumber.Length > 0 && newAsset.location.locRoomNumber.All(char.IsDigit)) || newAsset.location.locRoomNumber.Equals(StringsAndConstants.CLI_DEFAULT_UNCHANGED)) && //roomNumber
                 ((newAsset.maintenances[0].mainServiceDate.Length == 10 && DateTime.TryParseExact(newAsset.maintenances[0].mainServiceDate, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.NoCurrentDateDefault, out DateTime datetime)) || newAsset.maintenances[0].mainServiceDate.Equals(GenericResources.TODAY)) && //serviceDate
@@ -196,10 +196,6 @@ namespace AssetInformationAndRegistration.Forms
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_ONLINE_SERVER, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_CLI));
 
                     CollectThread();
-
-                    //assetNumber
-                    //if (newAsset.assetNumber.Equals(string.Empty))
-                    //    newAsset.assetNumber = HardwareInfo.GetHostname().Substring(3);
 
                     log.LogWrite(Convert.ToInt32(LogGenerator.LOG_SEVERITY.LOG_INFO), LogStrings.LOG_FETCHING_ASSET_DATA, string.Empty, Convert.ToBoolean(GenericResources.CONSOLE_OUT_GUI));
 
