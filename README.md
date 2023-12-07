@@ -3,44 +3,43 @@
 <img align="right" width="150" height="150" src=https://github.com/Kevin64/asset-information-and-registration/assets/1903028/44bdf179-9c9a-410f-9be4-7808627053c3 />
 
 
-AIR is a program designed to scan a PC configuration and then register into a database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (employee or intern) and cannot check for compliance on each asset individually.
+AIR is a program designed to scan a computer configuration and then register into an [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) database on a remote server, while enforcing some settings to ensure a specific level of standardization inside the organization. It's ideal for scenarios where an IT administrator delegates a service to a subordinate agent (employee or intern) and cannot check for compliance on each asset individually.
 
 The software scans various aspects of a computer hardware and configuration, such:
 
 - **Brand**
 - **Model**
 - **Serial Number**
-- **Processor (CPU)**
-- **RAM** - enforced by default (alerts if the RAM amount is too high or too low for x86 or x64 systems respectively)
-- **Total storage size**
-- **S.M.A.R.T. status** - enforced by default (alerts if the storage device is not healthy, according to the OS built-in S.M.A.R.T. reporting)
-- **Storage type**
-- **SATA/M.2 operation mode** - enforced by default (alerts if the storage devices are not operating in the correct mode for a given hardware model)
-- **Video card (GPU)**
-- **Hostname** - enforced by default (alerts if hostname is not different from a name template used in custom system images)
-- **Mac address**
+- **Processor (CPU)** - ID, name, frequency, number of cores, number of threads and cache. Supports more than one CPU.
+- **RAM** - Slot occupied, amount, type, frequency, manufacturer, serial number and part number. Scans details for each module. (Enforced by default - alerts if the RAM amount is too high or too low for x86 or x64 systems respectively)
+- **Storage drives** - ID, type, size, connection, model, serial number and S.M.A.R.T. status. Scans details for each drive. (Enforces S.M.A.R.T. failing status by default (alerts if the storage device is not healthy, according to the OS built-in S.M.A.R.T. reporting))
+- **Video card (GPU)** - ID, name and vRAM.
+- **Hostname** - enforced by default (alerts if hostname is not following Regex rules defined in the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system)' `Parameters` file)
 - **IP address**
-- **Firmware type** - enforced by default (alerts if the OS is not running on the correct firmware type for a given hardware model)
-- **Firmware version** - enforced by default (alerts if the firmware is not updated for a given hardware model)
-- **Secure Boot status** - enforced by default (alerts if the secure boot is disabled on UEFI capable systems)
-- **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is disabled on UEFI capable systems)
-- **TPM version** - enforced by default (alerts if the trusted platform module is not in the right version for a given hardware model)
+- **Storage type**
+- **Firmware type** - enforced by default (alerts if the OS is not running on the correct firmware type for a given hardware model. Shows what's the correct option)
+- **Firmware version** - enforced by default (alerts if the firmware is not updated for a given hardware model. Shows what's the correct version)
+- **Secure Boot status** - enforced by default (alerts if the secure boot is disabled on UEFI capable systems. Shows what's the correct option)
+- **Virtualization Technology status** - enforced by default (alerts if the virtualization technology is disabled on UEFI capable systems. Shows what's the correct option)
+- **TPM version** - enforced by default (alerts if the trusted platform module is not in the right version for a given hardware model. Shows what's the correct version)
+- **SATA/M.2 operation mode** - enforced by default (alerts if the storage devices are not operating in the correct mode for a given hardware model. Shows what's the correct option)
+- **Operating System** - Name, version, build and architecture.
 
-After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server, that supplies a JSON file with the standard configuration set by the IT administrator in the database, for each hardware model. The program then compares the JSON file to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs.
+After the scan, AIR checks with the [APCS](https://github.com/Kevin64/asset-and-personnel-control-system) server, that supplies data with the standard configuration set by the IT administrator in the database, for that specific hardware model. The program then compares the supplied data to the current scanned data, alerting the agent for any incorrect settings or irregularities with the PC specs, as well as any hardware changes that happended with the asset.
 
 ## Screens
 
 ### Main window in dark mode (light mode available):
 
-![AIR_1deAWyhaBO](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/c22e0039-ab42-4062-a15e-3abfb50d69ce)
+![AIR-main-window-2](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/54749654-a258-4c30-a49b-98fbff8ec059)
 
 ### When some specifications are not compliant:
 
-![AIR_TdRtWRvLjo](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/c5758954-aa54-4b82-8e4c-cd642ddf22f3)
+![AIR-main-window-1](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/ac5635c4-3a43-45e3-beec-6e8d1013c4cf)
 
 ### CLI switches
 
-![WindowsTerminal_GzmCl3uaTG](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/1d14b89c-b0c5-4e50-b2b3-a69887bdee68)
+![cmd_LaNVnnrYg0](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/554cafa0-3e52-44a4-8063-0cf5bfff63d8)
 
 ## Offline mode
 
@@ -48,7 +47,7 @@ This software has an 'offline mode', which is used for testing the scanning proc
 
 ## Customization
 
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of `[Parameters]` to change some AIR settings, edit the contents of `[Enforcement]` to choose what settings you want to standardize, and edit the contents of `[OrgData]` section to change the organization names/acronyms.
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of `Definitions` to change some AIR settings, edit the contents of `Enforcement` to choose what settings you want to standardize, and edit the contents of `OrgData` section to change the organization names/acronyms.
 
 ### Pictures aspect ratio
 
@@ -60,40 +59,49 @@ Required aspect ratio for proper image showing, without stretching:
 
 ### Set default switches and settings
 
-Modifying the contents of the `[Parameters]` section allows you to set some settings as default, like setting the log file location, theming and default APCS server IP/Port access. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
+Modifying the contents of the `Definitions` section allows you to set some settings as default, like setting the log file location, theming and default APCS server IP/Port access. The first IP and Port set will be used as the default switches if the agent omits `--serverIP` and/or `--serverPort` on the command line.
 
-```ini
-[Parameters]
-LogLocation=C:\AppLog\
-ServerIP=192.168.1.1,localhost
-ServerPort=8080,80
-ThemeUI=Auto
+```json
+"Definitions": {
+        "LogLocation": "C:\\AppLog\\",
+        "ServerIP": [
+            "192.168.1.1",
+            "localhost"
+        ],
+        "ServerPort": [
+            "8080",
+            "80"
+        ],
+        "ThemeUI": "Auto"
+    },
 ```
 
 ### Flexible enforcement
 
-AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change these parameters, modify the `[Enforcement]` section. The keys are self-explanatory.
+AIR lets the agent choose which specifications and settings will be enforced when registering a computer. To change these parameters, modify the `Enforcement` section. The keys are self-explanatory.
 
-```ini
-[Enforcement]
-RamLimitEnforcement=true
-SmartStatusEnforcement=true
-MediaOperationModeEnforcement=true
-HostnameEnforcement=true
-FirmwareTypeEnforcement=true
-FirmwareVersionEnforcement=true
-SecureBootEnforcement=true
-VirtualizationTechnologyEnforcement=true
-TpmEnforcement=true
+```json
+"Enforcement": {
+        "RamLimit": true,
+        "SmartStatus": true,
+        "MediaOperationMode": true,
+        "Hostname": true,
+        "FirmwareType": true,
+        "FirmwareVersion": true,
+        "SecureBoot": true,
+        "VirtualizationTechnology": true,
+        "Tpm": true
+    }
 ```
 
 ### Automatic update checking
 
-AIR will check for updates when the program is launched, and via 'Check for updates' button in the About window. To disable auto update checks, edit the 'definitions.ini' file and modify the key `CheckForUpdates` inside `[Enforcement]`.
+AIR will check for updates when the program is launched, and via 'Check for updates' button in the About window. To disable auto update checks, edit the 'definitions.ini' file and modify the key `CheckForUpdates` inside `Enforcement`.
 
-```ini
-[Enforcement]
-CheckForUpdates=false
+```json
+"Enforcement": {
+        "CheckForUpdates": true
+    },
 ```
 
 ## Output in APCS
@@ -102,11 +110,11 @@ After finishing, your asset will be recorded on the APCS database and will be sh
 
 ### General asset list
 
-![firefox_FPGod3qbhq](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/57a52e2f-96cc-4927-887e-f0a7f9ce3da7)
+![firefox_iQ2fHF99wJ](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/9de3cbfc-9bf8-4e05-acf4-5d644b9dedff)
 
 ### Asset details 
 
-![Untitled](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/af30b7ac-4c05-4f08-aeff-4ec7e79245c0)
+![Firefox_Screenshot_2023-12-07T17-34-47 231Z](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/835daa44-ba00-4bab-aef1-40094b5288bc)
 
 ## Build from scratch
 
