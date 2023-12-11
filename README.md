@@ -116,6 +116,10 @@ After finishing, your asset will be recorded on the APCS database and will be sh
 
 ![Firefox_Screenshot_2023-12-07T17-34-47 231Z](https://github.com/Kevin64/asset-information-and-registration/assets/1903028/835daa44-ba00-4bab-aef1-40094b5288bc)
 
+### Notice
+
+AIR grabs hardware, firmware and configuration information reported by the operating system (specifically WMI in Windows), and can introduce unintentional errors or fake data when scanning some exotic or old piece of hardware. Some manufacturers won't follow the best practices when hardcoding information into its hardware/firmware. If you witness any bugs or incorrect information collected by the program, create an issue. Collection on PC hardware newer than 2010 should be fine.
+
 ## Build from scratch
 
 If you want to build AIR from source code, you'll also need to clone its [Dependencies](https://github.com/Kevin64/Dependencies).
