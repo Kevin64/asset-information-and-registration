@@ -503,9 +503,9 @@ namespace AssetInformationAndRegistration.Forms
                     ramAmount = ramDetail[i][1],
                     ramType = ramDetail[i][2],
                     ramFrequency = ramDetail[i][3],
-                    ramSerialNumber = ramDetail[i][4],
-                    ramPartNumber = ramDetail[i][5],
-                    ramManufacturer = ramDetail[i][6]
+                    ramManufacturer = ramDetail[i][4],
+                    ramSerialNumber = ramDetail[i][5],
+                    ramPartNumber = ramDetail[i][6]
                 };
                 newHardware.ram.Add(r);
                 try
