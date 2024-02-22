@@ -47,7 +47,7 @@ This software has an 'offline mode', which is used for testing the scanning proc
 
 ## Customization
 
-AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'definitions.ini' file, edit the contents of `Definitions` to change some AIR settings, edit the contents of `Enforcement` to choose what settings you want to standardize, and edit the contents of `OrgData` section to change the organization names/acronyms.
+AIR supports some customization, allowing changing the program organization banners and its names, and all the iconography used. This allows organizations to tailor the program visuals to their specific needs. To accomplish that, you have to navigate to the directory 'resources\header\' to change the banners, 'resources\icons\' to change the iconography, and, inside the 'config.json' file, edit the contents of `Definitions` to change some AIR settings, edit the contents of `Enforcement` to choose what settings you want to standardize, and edit the contents of `OrgData` section to change the organization names/acronyms.
 
 ### Pictures aspect ratio
 
@@ -73,7 +73,7 @@ Modifying the contents of the `Definitions` section allows you to set some setti
             "80"
         ],
         "ThemeUI": "Auto"
-    },
+    }
 ```
 
 ### Flexible enforcement
@@ -96,12 +96,12 @@ AIR lets the agent choose which specifications and settings will be enforced whe
 
 ### Automatic update checking
 
-AIR will check for updates when the program is launched, and via 'Check for updates' button in the About window. To disable auto update checks, edit the 'definitions.ini' file and modify the key `CheckForUpdates` inside `Enforcement`.
+AIR will check for updates when the program is launched, and via 'Check for updates' button in the About window. To disable auto update checks, edit the 'config.json' file and modify the key `CheckForUpdates` inside `Enforcement`.
 
 ```json
 "Enforcement": {
         "CheckForUpdates": true
-    },
+    }
 ```
 
 ## Output in APCS
