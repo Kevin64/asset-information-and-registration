@@ -118,7 +118,7 @@ After finishing, your asset will be recorded on the APCS database and will be sh
 
 ### Notice
 
-AIR grabs hardware, firmware and configuration information reported by the operating system (specifically WMI in Windows), and can introduce unintentional errors or fake data when scanning some exotic or old piece of hardware. Some manufacturers won't follow the best practices when hardcoding information into its hardware/firmware. If you witness any bugs or incorrect information collected by the program, create an issue. Collection on PC hardware newer than 2010 should be fine.
+AIR grabs hardware, firmware and configuration information reported by the operating system (specifically WMI in Windows), and can introduce unintentional errors or fake data when scanning some exotic or old piece of hardware. Some manufacturers won't follow the best practices when hardcoding information into its hardware/firmware. If you witness any bugs or incorrect information collected by the program, create an issue. Collection on PC hardware newer than 2010 should be fine. Using AIR inside virtual machines is not officially supported and may not work properly.
 
 ## Build from scratch
 
